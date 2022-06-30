@@ -22,6 +22,10 @@
     "url": "https://github.com/tetracalibers/React-polyhexUI/issues"
   },
   "homepage": "https://github.com/tetracalibers/React-polyhexUI#readme",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -40,6 +44,7 @@
     "@storybook/react": "^6.5.9",
     "@storybook/testing-library": "^0.0.13",
     "@types/react": "^18.0.14",
+    "@types/react-dom": "^18.0.5",
     "@typescript-eslint/eslint-plugin": "^5.29.0",
     "@typescript-eslint/parser": "^5.29.0",
     "babel-loader": "^8.2.5",
