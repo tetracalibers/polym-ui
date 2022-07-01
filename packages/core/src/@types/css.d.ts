@@ -2,7 +2,7 @@
 import type * as CSS from 'csstype';
 
 declare module 'csstype' {
-  interface Properties {
+  export interface Properties {
     // Add a missing property
     w: CSS.Property.Width
     h: CSS.Property.Height
@@ -69,6 +69,12 @@ declare module 'csstype' {
 
     // ...or allow any other property
     //[index: string]: any;
+  }
+  
+  export interface AtRule {
+    at_counterStyle: CSS.AtRule.CounterStyle
+    at_fontFace: CSS.AtRule.FontFace
+    at_viewport: CSS.AtRule.Viewport
   }
 }
 
