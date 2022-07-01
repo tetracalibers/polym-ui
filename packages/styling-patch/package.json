@@ -1,0 +1,26 @@
+{
+  "name": "@react-polyhexui/styling-patch",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "Kanno Ami <tomix05may@gmail.com> (tomixy)",
+  "homepage": "https://github.com/tetracalibers/React-polyhexUI/tree/main/packages/styling-patch#readme",
+  "license": "ISC",
+  "main": "src/index.ts",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tetracalibers/React-polyhexUI.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/tetracalibers/React-polyhexUI/issues"
+  }
+}
