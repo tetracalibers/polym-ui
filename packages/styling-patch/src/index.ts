@@ -1,5 +1,4 @@
-const sayHello = (name: string) => {
-    return `Hello ${name}`
-}
+//import editJsonFile = require('edit-json-file')
+import { css } from 'mdn-data'
 
-console.log(sayHello('tomixy'))
+console.log(css.atRules)

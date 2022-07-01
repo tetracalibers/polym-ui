@@ -1,11 +1,12 @@
 {
-  "name": "@react-polyhexui/styling-patch",
+  "name": "@react-polyhex-ui/styling-patch",
   "version": "0.0.0",
   "description": "> TODO: description",
   "author": "tomixy",
   "homepage": "https://github.com/tetracalibers/React-polyhexUI/tree/main/packages/styling-patch#readme",
   "license": "MIT",
   "main": "src/index.ts",
+  "type": "module",
   "directories": {
     "lib": "src",
     "test": "__tests__"
@@ -16,14 +17,14 @@
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1",
-    "build": "tsc",
-    "dev": "tsc -w"
+    "build": "rimraf ../dist && tsc",
+    "dev": "rimraf ../dist && tsc -w",
+    "start": "yarn build && node ../dist/styling-patch/src/index.js"
   },
   "bugs": {
     "url": "https://github.com/tetracalibers/React-polyhexUI/issues"
   },
   "devDependencies": {
-    "edit-json-file": "^1.7.0",
-    "mdn-data": "^2.0.27"
+    "rimraf": "^3.0.2"
   }
 }

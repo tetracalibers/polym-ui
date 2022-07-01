@@ -2,12 +2,14 @@
   "compilerOptions": {
     "target": "es2016",
     "lib": ["DOM", "ESNext"],
+    "types": ["node"],
     "jsx": "react-jsx",
-    "module": "esnext",
+    "module": "commonjs",
     "moduleResolution": "node",
     "allowJs": true,
     "sourceMap": true,
     "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noUnusedLocals": true,
@@ -15,12 +17,14 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true,
-    "outDir": "./dist"
+    "outDir": "./dist",
+    "resolveJsonModule": true,
   },
   "include": [
     "./**/*"
   ],
   "exclude": [
+    "node_modules",
     "./**/dist/*"
   ]
 }
