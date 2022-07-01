@@ -22,5 +22,8 @@
   },
   "bugs": {
     "url": "https://github.com/tetracalibers/React-polyhexUI/issues"
+  },
+  "devDependencies": {
+    "mdn-data": "^2.0.27"
   }
 }
