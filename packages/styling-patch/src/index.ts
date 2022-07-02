@@ -47,4 +47,4 @@ const cssKeywordList_properties = createCssKeywordList(properties, 'property')
 
 const cssKeywordList = [...cssKeywordList_atRules, ...cssKeywordList_selectors, ...cssKeywordList_properties]
 
-createJsonFile(cssKeywordList, 'tmp/cssKeywordList')
+createJsonFile(cssKeywordList, 'dump/cssKeywordList')
