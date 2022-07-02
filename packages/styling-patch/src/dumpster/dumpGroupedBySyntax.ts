@@ -1,58 +1,83 @@
-import { getCssKeywordList_arrayExpanded } from './parsedDataArrayExpand'
-import { createJsonFile } from '../util/forJson'
-import alasql from 'alasql'
-
-let excludedList = getCssKeywordList_arrayExpanded
+import { cssKeywordList_arrayExpanded } from './parsedDataArrayExpand';
+import { createJsonFile } from '../util/forJson';
+import alasql from 'alasql';
 
 const getLikeSelectQuery: Function = (like: string): string => {
-  return `SELECT * FROM ? WHERE keyword LIKE '${like}'`
-}
+  return `SELECT * FROM ? WHERE keyword LIKE '${like}'`;
+};
 
 const getNotLikeSelectQuery: Function = (like: string): string => {
-  return getLikeSelectQuery(like).replace('LIKE', 'NOT LIKE')
-}
+  return getLikeSelectQuery(like).replace('LIKE', 'NOT LIKE');
+};
 
-const likeSelectExclude: Function = (like: string, from: object, groupLabel: string, dump = true): object => {
-  const likeResult = alasql(getLikeSelectQuery(like), [from])
-  if (likeResult.length > 0 && dump) {
-    createJsonFile(likeResult, `dump/css-keywords/bySyntax/${groupLabel}`)
-  }
-  const notLikeResult = alasql(getNotLikeSelectQuery(like), [from])
-  return notLikeResult
-}
+const runLikeSelectQuery: Function = (like: string): Function => {
+  return (from: object): Function => {
+    return (addNot = true): object => {
+      return alasql(
+        addNot ? getNotLikeSelectQuery(like) : getLikeSelectQuery(like),
+        [from]
+      );
+    };
+  };
+};
 
-const loop_likeSelectExclude__DESTRUCTIVE: Function = (staticWordList: Array<string>, dump = true): void => {
-  staticWordList.map((like: string) => {
-    const fileName = `s_${like}_e`
-    excludedList = likeSelectExclude(like, excludedList, fileName, dump)
-  })
-}
+const likeResultDump: Function = (like: string): Function => {
+  return (from: object): Function => {
+    const likeResult = runLikeSelectQuery(like)(from)(false);
+    return (fileName: string): void => {
+      if (likeResult.length > 0) {
+        createJsonFile(likeResult, `dump/css-keywords/bySyntax/${fileName}`);
+      }
+    };
+  };
+};
 
-const vendorPrefixList = [
-  '-webkit-',
-  '-moz-',
-  '-ms-',
-]
-
-const s_prefix = vendorPrefixList.map((prefix: string) => `${prefix}%`)
-const s_doubleColon_prefix = vendorPrefixList.map((prefix: string) => `::${prefix}%`)
-const s_colon_prefix = vendorPrefixList.map((prefix: string) => `:${prefix}%`)
-const s_atmark = ['@%']
-const space_suffix_e = ['selectors', 'combinator'].map((suffix: string) => `% ${suffix}`)
-const s_Pseudo_hyphen = ['Pseudo-%']
-const s_doubleColon = ['::%']
-const s_colon = [':%']
-const staticExcludeWords = ['Selector list', '--*']
+const likeResultDumpLoop: Function = (
+  likePatternList: Array<string>
+): Function => {
+  return (updateList: Array<object>): Function => {
+    return (dump = true): Array<object> => {
+      let updatedList = updateList;
+      likePatternList.map((like: string) => {
+        if (dump) likeResultDump(like)(updatedList)(`s_${like}_e`);
+        updatedList = runLikeSelectQuery(like)(updatedList)();
+      });
+      return updatedList;
+    };
+  };
+};
 
 export const dumpCssKeywordList_bySyntax: Function = (): void => {
-  loop_likeSelectExclude__DESTRUCTIVE(s_prefix)
-  loop_likeSelectExclude__DESTRUCTIVE(s_doubleColon_prefix)
-  loop_likeSelectExclude__DESTRUCTIVE(s_colon_prefix)
-  loop_likeSelectExclude__DESTRUCTIVE(s_atmark)
-  loop_likeSelectExclude__DESTRUCTIVE(space_suffix_e, false)
-  loop_likeSelectExclude__DESTRUCTIVE(s_Pseudo_hyphen, false)
-  loop_likeSelectExclude__DESTRUCTIVE(s_doubleColon)
-  loop_likeSelectExclude__DESTRUCTIVE(s_colon)
-  loop_likeSelectExclude__DESTRUCTIVE(staticExcludeWords, false)
-  createJsonFile(excludedList, `dump/css-keywords/bySyntax/kebabCase`)
-}
+  const vendorPrefixList = ['-webkit-', '-moz-', '-ms-'];
+  const dumpLikePatterns = [
+    //s_atmark
+    ['@%'],
+    //s_prefix
+    vendorPrefixList.map((prefix: string) => `${prefix}%`),
+    //s_doubleColon_prefix
+    vendorPrefixList.map((prefix: string) => `::${prefix}%`),
+    //s_colon_prefix
+    vendorPrefixList.map((prefix: string) => `:${prefix}%`),
+    //s_doubleColon
+    ['::%'],
+    //s_colon
+    [':%'],
+  ];
+  const excludePatterns = [
+    //space_suffix_e
+    ['selectors', 'combinator'].map((suffix: string) => `% ${suffix}`),
+    //s_Pseudo_hyphen
+    ['Pseudo-%'],
+    //staticExcludeWords
+    ['Selector list', '--*'],
+  ];
+
+  let notMatchKeywords = cssKeywordList_arrayExpanded;
+  dumpLikePatterns.map((like: Array<string>) => {
+    notMatchKeywords = likeResultDumpLoop(like)(notMatchKeywords)(true);
+  });
+  excludePatterns.map((like: Array<string>) => {
+    notMatchKeywords = likeResultDumpLoop(like)(notMatchKeywords)(false);
+  });
+  createJsonFile(notMatchKeywords, `dump/css-keywords/bySyntax/kebabCase`);
+};

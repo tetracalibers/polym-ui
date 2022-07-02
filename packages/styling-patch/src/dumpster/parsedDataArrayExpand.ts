@@ -16,4 +16,4 @@ const getExpandedArrayCssKeywordList = sequencial.map((_: number, i: number) => 
   FROM ? WHERE moduleCount > ${i}
 `).join(' UNION ALL ')
 
-export const getCssKeywordList_arrayExpanded = alasql(getExpandedArrayCssKeywordList, Array(maxModuleCount).fill(cssKeywordList_usingArray))
+export const cssKeywordList_arrayExpanded = alasql(getExpandedArrayCssKeywordList, Array(maxModuleCount).fill(cssKeywordList_usingArray))

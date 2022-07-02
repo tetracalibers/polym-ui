@@ -1,12 +1,11 @@
 import jsonFormat from 'json-format'
 import { createFile } from './forShell'
 
-const config_jsonFormat = {
-  type: 'space',
-  size: 2
-}
-
 export const toJSON: Function = (data: object): string => {
+  const config_jsonFormat = {
+    type: 'space',
+    size: 2
+  }
   return jsonFormat(data, config_jsonFormat)
 }
 
