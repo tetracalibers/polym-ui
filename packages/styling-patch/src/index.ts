@@ -7,9 +7,6 @@ const mdnModuleGroupList = groupList.enum
 const { atRules, selectors, properties } = css
 
 //console.log(mdnModuleGroupList)
-//console.log(atRules)
-//console.log(selectors)
-//console.log(properties)
 
 interface CssDataByMdn {
   syntax: string
@@ -23,28 +20,31 @@ type cssDataByMdnList = {
   [key: string]: CssDataByMdn
 }
 
-type keywordModuleObjList = {
+type cssKeyword = {
   keyword: string
-  module: Array<string>
+  keywordType: string
+  moduleGroup: Array<string>
 }
 
-function createKeywordModuleObjList(data: cssDataByMdnList, keywordKind: string): keywordModuleObjList {
+type cssKeywordList = Array<cssKeyword>
+
+function createCssKeywordList(data: cssDataByMdnList, keywordKind: string): cssKeywordList {
   const flatObjList: Array<CssDataByMdn> = alasql("SELECT * FROM ?", [data])
   const query = `
       SELECT 
         data._->(0) AS keyword, 
-        data._->(1)->groups AS module,
-        static.kind AS kind
-      FROM ? AS data, (SELECT '${keywordKind}' AS kind) AS static
+        static.keywordType AS keywordType,
+        data._->(1)->groups AS moduleGroup
+      FROM ? AS data, (SELECT '${keywordKind}' AS keywordType) AS static
   `
-  const cssModuleList: keywordModuleObjList = alasql(query, [flatObjList, keywordKind])
+  const cssModuleList: cssKeywordList = alasql(query, [flatObjList])
   return cssModuleList
 }
 
-const keywordModuleObjList_atRules = createKeywordModuleObjList(atRules, 'at-rule')
-const keywordModuleObjList_selectors = createKeywordModuleObjList(selectors, 'selector')
-const keywordModuleObjList_properties = createKeywordModuleObjList(properties, 'property')
+const cssKeywordList_atRules = createCssKeywordList(atRules, 'at-rule')
+const cssKeywordList_selectors = createCssKeywordList(selectors, 'selector')
+const cssKeywordList_properties = createCssKeywordList(properties, 'property')
 
-//console.log(toJSON(keywordModuleObjList_atRules))
-//console.log(toJSON(keywordModuleObjList_selectors))
-//console.log(toJSON(keywordModuleObjList_properties))
+const cssKeywordList = [...cssKeywordList_atRules, ...cssKeywordList_selectors, ...cssKeywordList_properties]
+
+createJsonFile(cssKeywordList, 'tmp/cssKeywordList')
