@@ -1,20 +1,10 @@
 import { css } from 'mdn-data'
 import { groupList } from 'mdn-data/css/definitions.json'
 import alasql from 'alasql'
-import * as shell from 'shelljs'
-import jsonFormat from 'json-format'
+import { createJsonFile } from './util/forJson'
 
 const mdnModuleGroupList = groupList.enum
 const { atRules, selectors, properties } = css
-
-const config_jsonFormat = {
-  type: 'space',
-  size: 2
-}
-
-function toJSON (data: object): string {
-  return jsonFormat(data, config_jsonFormat)
-}
 
 //console.log(mdnModuleGroupList)
 //console.log(atRules)
@@ -40,8 +30,7 @@ type keywordModuleObjList = {
 
 function createKeywordModuleObjList(data: cssDataByMdnList, keywordKind: string): keywordModuleObjList {
   const flatObjList: Array<CssDataByMdn> = alasql("SELECT * FROM ?", [data])
-  shell.cd('tmp')
-  shell.ShellString(toJSON(flatObjList)).to(`${keywordKind}.json`)
+  createJsonFile(flatObjList, keywordKind)
   const cssModuleList: keywordModuleObjList = alasql('SELECT _->(0) AS keyword, _->(1)->groups AS module FROM ?', [flatObjList])
   return cssModuleList
 }
