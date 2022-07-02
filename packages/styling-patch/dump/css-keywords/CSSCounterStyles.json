@@ -1,0 +1,22 @@
+[
+  {
+    "keyword": "@counter-style",
+    "keywordType": "at-rule",
+    "moduleGroup": "CSS Counter Styles"
+  },
+  {
+    "keyword": "counter-increment",
+    "keywordType": "property",
+    "moduleGroup": "CSS Counter Styles"
+  },
+  {
+    "keyword": "counter-reset",
+    "keywordType": "property",
+    "moduleGroup": "CSS Counter Styles"
+  },
+  {
+    "keyword": "counter-set",
+    "keywordType": "property",
+    "moduleGroup": "CSS Counter Styles"
+  }
+]

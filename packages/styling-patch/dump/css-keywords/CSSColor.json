@@ -1,0 +1,27 @@
+[
+  {
+    "keyword": "color",
+    "keywordType": "property",
+    "moduleGroup": "CSS Color"
+  },
+  {
+    "keyword": "print-color-adjust",
+    "keywordType": "property",
+    "moduleGroup": "CSS Color"
+  },
+  {
+    "keyword": "color-scheme",
+    "keywordType": "property",
+    "moduleGroup": "CSS Color"
+  },
+  {
+    "keyword": "forced-color-adjust",
+    "keywordType": "property",
+    "moduleGroup": "CSS Color"
+  },
+  {
+    "keyword": "opacity",
+    "keywordType": "property",
+    "moduleGroup": "CSS Color"
+  }
+]

@@ -1,0 +1,17 @@
+[
+  {
+    "keyword": "shape-image-threshold",
+    "keywordType": "property",
+    "moduleGroup": "CSS Shapes"
+  },
+  {
+    "keyword": "shape-margin",
+    "keywordType": "property",
+    "moduleGroup": "CSS Shapes"
+  },
+  {
+    "keyword": "shape-outside",
+    "keywordType": "property",
+    "moduleGroup": "CSS Shapes"
+  }
+]

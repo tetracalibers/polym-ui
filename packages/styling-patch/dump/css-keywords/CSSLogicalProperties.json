@@ -1,0 +1,267 @@
+[
+  {
+    "keyword": "block-size",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "border-block",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "border-block-color",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "border-block-style",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "border-block-width",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "border-block-end",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "border-block-end-color",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "border-block-end-style",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "border-block-end-width",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "border-block-start",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "border-block-start-color",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "border-block-start-style",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "border-block-start-width",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "border-end-end-radius",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "border-end-start-radius",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "border-inline",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "border-inline-end",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "border-inline-color",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "border-inline-style",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "border-inline-width",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "border-inline-end-color",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "border-inline-end-style",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "border-inline-end-width",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "border-inline-start",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "border-inline-start-color",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "border-inline-start-style",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "border-inline-start-width",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "border-start-end-radius",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "border-start-start-radius",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "inline-size",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "inset",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "inset-block",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "inset-block-end",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "inset-block-start",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "inset-inline",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "inset-inline-end",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "inset-inline-start",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "margin-block",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "margin-block-end",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "margin-block-start",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "margin-inline",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "margin-inline-end",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "margin-inline-start",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "max-block-size",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "max-inline-size",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "min-block-size",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "min-inline-size",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "padding-block",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "padding-block-end",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "padding-block-start",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "padding-inline",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "padding-inline-end",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "padding-inline-start",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "keyword": "align-content",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Alignment"
+  },
+  {
+    "keyword": "align-items",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Alignment"
+  },
+  {
+    "keyword": "align-self",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Alignment"
+  },
+  {
+    "keyword": "column-gap",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Alignment"
+  },
+  {
+    "keyword": "gap",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Alignment"
+  },
+  {
+    "keyword": "justify-content",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Alignment"
+  },
+  {
+    "keyword": "justify-items",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Alignment"
+  },
+  {
+    "keyword": "justify-self",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Alignment"
+  },
+  {
+    "keyword": "place-content",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Alignment"
+  },
+  {
+    "keyword": "place-items",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Alignment"
+  },
+  {
+    "keyword": "place-self",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Alignment"
+  },
+  {
+    "keyword": "row-gap",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Alignment"
+  }
+]

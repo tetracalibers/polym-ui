@@ -1,0 +1,17 @@
+[
+  {
+    "keyword": "background-blend-mode",
+    "keywordType": "property",
+    "moduleGroup": "Compositing and Blending"
+  },
+  {
+    "keyword": "isolation",
+    "keywordType": "property",
+    "moduleGroup": "Compositing and Blending"
+  },
+  {
+    "keyword": "mix-blend-mode",
+    "keywordType": "property",
+    "moduleGroup": "Compositing and Blending"
+  }
+]

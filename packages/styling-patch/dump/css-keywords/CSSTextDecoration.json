@@ -1,0 +1,72 @@
+[
+  {
+    "keyword": "text-decoration",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text Decoration"
+  },
+  {
+    "keyword": "text-decoration-color",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text Decoration"
+  },
+  {
+    "keyword": "text-decoration-line",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text Decoration"
+  },
+  {
+    "keyword": "text-decoration-skip",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text Decoration"
+  },
+  {
+    "keyword": "text-decoration-skip-ink",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text Decoration"
+  },
+  {
+    "keyword": "text-decoration-style",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text Decoration"
+  },
+  {
+    "keyword": "text-decoration-thickness",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text Decoration"
+  },
+  {
+    "keyword": "text-emphasis",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text Decoration"
+  },
+  {
+    "keyword": "text-emphasis-color",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text Decoration"
+  },
+  {
+    "keyword": "text-emphasis-position",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text Decoration"
+  },
+  {
+    "keyword": "text-emphasis-style",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text Decoration"
+  },
+  {
+    "keyword": "text-shadow",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text Decoration"
+  },
+  {
+    "keyword": "text-underline-offset",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text Decoration"
+  },
+  {
+    "keyword": "text-underline-position",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text Decoration"
+  }
+]

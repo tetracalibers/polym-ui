@@ -1,0 +1,22 @@
+[
+  {
+    "keyword": "@document",
+    "keywordType": "at-rule",
+    "moduleGroup": "CSS Conditional Rules"
+  },
+  {
+    "keyword": "@import",
+    "keywordType": "at-rule",
+    "moduleGroup": "CSS Conditional Rules"
+  },
+  {
+    "keyword": "@media",
+    "keywordType": "at-rule",
+    "moduleGroup": "CSS Conditional Rules"
+  },
+  {
+    "keyword": "@supports",
+    "keywordType": "at-rule",
+    "moduleGroup": "CSS Conditional Rules"
+  }
+]

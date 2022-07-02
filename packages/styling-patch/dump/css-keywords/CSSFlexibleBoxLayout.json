@@ -1,0 +1,42 @@
+[
+  {
+    "keyword": "flex",
+    "keywordType": "property",
+    "moduleGroup": "CSS Flexible Box Layout"
+  },
+  {
+    "keyword": "flex-basis",
+    "keywordType": "property",
+    "moduleGroup": "CSS Flexible Box Layout"
+  },
+  {
+    "keyword": "flex-direction",
+    "keywordType": "property",
+    "moduleGroup": "CSS Flexible Box Layout"
+  },
+  {
+    "keyword": "flex-flow",
+    "keywordType": "property",
+    "moduleGroup": "CSS Flexible Box Layout"
+  },
+  {
+    "keyword": "flex-grow",
+    "keywordType": "property",
+    "moduleGroup": "CSS Flexible Box Layout"
+  },
+  {
+    "keyword": "flex-shrink",
+    "keywordType": "property",
+    "moduleGroup": "CSS Flexible Box Layout"
+  },
+  {
+    "keyword": "flex-wrap",
+    "keywordType": "property",
+    "moduleGroup": "CSS Flexible Box Layout"
+  },
+  {
+    "keyword": "order",
+    "keywordType": "property",
+    "moduleGroup": "CSS Flexible Box Layout"
+  }
+]

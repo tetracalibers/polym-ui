@@ -1,0 +1,182 @@
+[
+  {
+    "keyword": "-moz-appearance",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "keyword": "-moz-binding",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "keyword": "-moz-border-bottom-colors",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "keyword": "-moz-border-left-colors",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "keyword": "-moz-border-right-colors",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "keyword": "-moz-border-top-colors",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "keyword": "-moz-context-properties",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "keyword": "-moz-float-edge",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "keyword": "-moz-force-broken-image-icon",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "keyword": "-moz-image-region",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "keyword": "-moz-orient",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "keyword": "-moz-outline-radius",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "keyword": "-moz-outline-radius-bottomleft",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "keyword": "-moz-outline-radius-bottomright",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "keyword": "-moz-outline-radius-topleft",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "keyword": "-moz-outline-radius-topright",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "keyword": "-moz-stack-sizing",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "keyword": "-moz-text-blink",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "keyword": "-moz-user-focus",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "keyword": "-moz-user-input",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "keyword": "-moz-user-modify",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "keyword": "-moz-window-dragging",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "keyword": "-moz-window-shadow",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "keyword": "box-align",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "keyword": "box-direction",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "keyword": "box-flex",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "keyword": "box-flex-group",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "keyword": "box-lines",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "keyword": "box-ordinal-group",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "keyword": "box-orient",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "keyword": "box-pack",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "keyword": "overflow-clip-box",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "moduleGroup": "Mozilla Extensions",
+    "keywordType": "selector",
+    "keyword": "::-moz-progress-bar"
+  },
+  {
+    "moduleGroup": "Mozilla Extensions",
+    "keywordType": "selector",
+    "keyword": "::-moz-range-progress"
+  },
+  {
+    "moduleGroup": "Mozilla Extensions",
+    "keywordType": "selector",
+    "keyword": "::-moz-range-thumb"
+  },
+  {
+    "moduleGroup": "Mozilla Extensions",
+    "keywordType": "selector",
+    "keyword": "::-moz-range-track"
+  }
+]

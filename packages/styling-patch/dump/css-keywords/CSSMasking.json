@@ -1,0 +1,97 @@
+[
+  {
+    "keyword": "clip",
+    "keywordType": "property",
+    "moduleGroup": "CSS Masking"
+  },
+  {
+    "keyword": "clip-path",
+    "keywordType": "property",
+    "moduleGroup": "CSS Masking"
+  },
+  {
+    "keyword": "mask",
+    "keywordType": "property",
+    "moduleGroup": "CSS Masking"
+  },
+  {
+    "keyword": "mask-border",
+    "keywordType": "property",
+    "moduleGroup": "CSS Masking"
+  },
+  {
+    "keyword": "mask-border-mode",
+    "keywordType": "property",
+    "moduleGroup": "CSS Masking"
+  },
+  {
+    "keyword": "mask-border-outset",
+    "keywordType": "property",
+    "moduleGroup": "CSS Masking"
+  },
+  {
+    "keyword": "mask-border-repeat",
+    "keywordType": "property",
+    "moduleGroup": "CSS Masking"
+  },
+  {
+    "keyword": "mask-border-slice",
+    "keywordType": "property",
+    "moduleGroup": "CSS Masking"
+  },
+  {
+    "keyword": "mask-border-source",
+    "keywordType": "property",
+    "moduleGroup": "CSS Masking"
+  },
+  {
+    "keyword": "mask-border-width",
+    "keywordType": "property",
+    "moduleGroup": "CSS Masking"
+  },
+  {
+    "keyword": "mask-clip",
+    "keywordType": "property",
+    "moduleGroup": "CSS Masking"
+  },
+  {
+    "keyword": "mask-composite",
+    "keywordType": "property",
+    "moduleGroup": "CSS Masking"
+  },
+  {
+    "keyword": "mask-image",
+    "keywordType": "property",
+    "moduleGroup": "CSS Masking"
+  },
+  {
+    "keyword": "mask-mode",
+    "keywordType": "property",
+    "moduleGroup": "CSS Masking"
+  },
+  {
+    "keyword": "mask-origin",
+    "keywordType": "property",
+    "moduleGroup": "CSS Masking"
+  },
+  {
+    "keyword": "mask-position",
+    "keywordType": "property",
+    "moduleGroup": "CSS Masking"
+  },
+  {
+    "keyword": "mask-repeat",
+    "keywordType": "property",
+    "moduleGroup": "CSS Masking"
+  },
+  {
+    "keyword": "mask-size",
+    "keywordType": "property",
+    "moduleGroup": "CSS Masking"
+  },
+  {
+    "keyword": "mask-type",
+    "keywordType": "property",
+    "moduleGroup": "CSS Masking"
+  }
+]

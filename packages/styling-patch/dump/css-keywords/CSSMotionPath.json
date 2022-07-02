@@ -1,0 +1,32 @@
+[
+  {
+    "keyword": "offset",
+    "keywordType": "property",
+    "moduleGroup": "CSS Motion Path"
+  },
+  {
+    "keyword": "offset-anchor",
+    "keywordType": "property",
+    "moduleGroup": "CSS Motion Path"
+  },
+  {
+    "keyword": "offset-distance",
+    "keywordType": "property",
+    "moduleGroup": "CSS Motion Path"
+  },
+  {
+    "keyword": "offset-path",
+    "keywordType": "property",
+    "moduleGroup": "CSS Motion Path"
+  },
+  {
+    "keyword": "offset-position",
+    "keywordType": "property",
+    "moduleGroup": "CSS Motion Path"
+  },
+  {
+    "keyword": "offset-rotate",
+    "keywordType": "property",
+    "moduleGroup": "CSS Motion Path"
+  }
+]

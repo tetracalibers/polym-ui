@@ -1,0 +1,32 @@
+[
+  {
+    "keyword": "border-collapse",
+    "keywordType": "property",
+    "moduleGroup": "CSS Table"
+  },
+  {
+    "keyword": "border-spacing",
+    "keywordType": "property",
+    "moduleGroup": "CSS Table"
+  },
+  {
+    "keyword": "caption-side",
+    "keywordType": "property",
+    "moduleGroup": "CSS Table"
+  },
+  {
+    "keyword": "empty-cells",
+    "keywordType": "property",
+    "moduleGroup": "CSS Table"
+  },
+  {
+    "keyword": "table-layout",
+    "keywordType": "property",
+    "moduleGroup": "CSS Table"
+  },
+  {
+    "keyword": "vertical-align",
+    "keywordType": "property",
+    "moduleGroup": "CSS Table"
+  }
+]

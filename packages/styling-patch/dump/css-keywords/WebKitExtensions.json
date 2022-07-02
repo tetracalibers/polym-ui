@@ -1,0 +1,212 @@
+[
+  {
+    "keyword": "-webkit-appearance",
+    "keywordType": "property",
+    "moduleGroup": "WebKit Extensions"
+  },
+  {
+    "keyword": "-webkit-border-before",
+    "keywordType": "property",
+    "moduleGroup": "WebKit Extensions"
+  },
+  {
+    "keyword": "-webkit-border-before-color",
+    "keywordType": "property",
+    "moduleGroup": "WebKit Extensions"
+  },
+  {
+    "keyword": "-webkit-border-before-style",
+    "keywordType": "property",
+    "moduleGroup": "WebKit Extensions"
+  },
+  {
+    "keyword": "-webkit-border-before-width",
+    "keywordType": "property",
+    "moduleGroup": "WebKit Extensions"
+  },
+  {
+    "keyword": "-webkit-box-reflect",
+    "keywordType": "property",
+    "moduleGroup": "WebKit Extensions"
+  },
+  {
+    "keyword": "-webkit-line-clamp",
+    "keywordType": "property",
+    "moduleGroup": "WebKit Extensions"
+  },
+  {
+    "keyword": "-webkit-mask",
+    "keywordType": "property",
+    "moduleGroup": "WebKit Extensions"
+  },
+  {
+    "keyword": "-webkit-mask-attachment",
+    "keywordType": "property",
+    "moduleGroup": "WebKit Extensions"
+  },
+  {
+    "keyword": "-webkit-mask-clip",
+    "keywordType": "property",
+    "moduleGroup": "WebKit Extensions"
+  },
+  {
+    "keyword": "-webkit-mask-composite",
+    "keywordType": "property",
+    "moduleGroup": "WebKit Extensions"
+  },
+  {
+    "keyword": "-webkit-mask-image",
+    "keywordType": "property",
+    "moduleGroup": "WebKit Extensions"
+  },
+  {
+    "keyword": "-webkit-mask-origin",
+    "keywordType": "property",
+    "moduleGroup": "WebKit Extensions"
+  },
+  {
+    "keyword": "-webkit-mask-position",
+    "keywordType": "property",
+    "moduleGroup": "WebKit Extensions"
+  },
+  {
+    "keyword": "-webkit-mask-position-x",
+    "keywordType": "property",
+    "moduleGroup": "WebKit Extensions"
+  },
+  {
+    "keyword": "-webkit-mask-position-y",
+    "keywordType": "property",
+    "moduleGroup": "WebKit Extensions"
+  },
+  {
+    "keyword": "-webkit-mask-repeat",
+    "keywordType": "property",
+    "moduleGroup": "WebKit Extensions"
+  },
+  {
+    "keyword": "-webkit-mask-repeat-x",
+    "keywordType": "property",
+    "moduleGroup": "WebKit Extensions"
+  },
+  {
+    "keyword": "-webkit-mask-repeat-y",
+    "keywordType": "property",
+    "moduleGroup": "WebKit Extensions"
+  },
+  {
+    "keyword": "-webkit-mask-size",
+    "keywordType": "property",
+    "moduleGroup": "WebKit Extensions"
+  },
+  {
+    "keyword": "-webkit-overflow-scrolling",
+    "keywordType": "property",
+    "moduleGroup": "WebKit Extensions"
+  },
+  {
+    "keyword": "-webkit-tap-highlight-color",
+    "keywordType": "property",
+    "moduleGroup": "WebKit Extensions"
+  },
+  {
+    "keyword": "-webkit-text-fill-color",
+    "keywordType": "property",
+    "moduleGroup": "WebKit Extensions"
+  },
+  {
+    "keyword": "-webkit-text-stroke",
+    "keywordType": "property",
+    "moduleGroup": "WebKit Extensions"
+  },
+  {
+    "keyword": "-webkit-text-stroke-color",
+    "keywordType": "property",
+    "moduleGroup": "WebKit Extensions"
+  },
+  {
+    "keyword": "-webkit-text-stroke-width",
+    "keywordType": "property",
+    "moduleGroup": "WebKit Extensions"
+  },
+  {
+    "keyword": "-webkit-touch-callout",
+    "keywordType": "property",
+    "moduleGroup": "WebKit Extensions"
+  },
+  {
+    "keyword": "-webkit-user-modify",
+    "keywordType": "property",
+    "moduleGroup": "WebKit Extensions"
+  },
+  {
+    "moduleGroup": "WebKit Extensions",
+    "keywordType": "property",
+    "keyword": "-moz-appearance"
+  },
+  {
+    "moduleGroup": "WebKit Extensions",
+    "keywordType": "property",
+    "keyword": "box-align"
+  },
+  {
+    "moduleGroup": "WebKit Extensions",
+    "keywordType": "property",
+    "keyword": "box-direction"
+  },
+  {
+    "moduleGroup": "WebKit Extensions",
+    "keywordType": "property",
+    "keyword": "box-flex"
+  },
+  {
+    "moduleGroup": "WebKit Extensions",
+    "keywordType": "property",
+    "keyword": "box-flex-group"
+  },
+  {
+    "moduleGroup": "WebKit Extensions",
+    "keywordType": "property",
+    "keyword": "box-lines"
+  },
+  {
+    "moduleGroup": "WebKit Extensions",
+    "keywordType": "property",
+    "keyword": "box-ordinal-group"
+  },
+  {
+    "moduleGroup": "WebKit Extensions",
+    "keywordType": "property",
+    "keyword": "box-orient"
+  },
+  {
+    "moduleGroup": "WebKit Extensions",
+    "keywordType": "property",
+    "keyword": "box-pack"
+  },
+  {
+    "moduleGroup": "WebKit Extensions",
+    "keywordType": "selector",
+    "keyword": "::-webkit-progress-bar"
+  },
+  {
+    "moduleGroup": "WebKit Extensions",
+    "keywordType": "selector",
+    "keyword": "::-webkit-progress-inner-value"
+  },
+  {
+    "moduleGroup": "WebKit Extensions",
+    "keywordType": "selector",
+    "keyword": "::-webkit-progress-value"
+  },
+  {
+    "moduleGroup": "WebKit Extensions",
+    "keywordType": "selector",
+    "keyword": "::-webkit-slider-runnable-track"
+  },
+  {
+    "moduleGroup": "WebKit Extensions",
+    "keywordType": "selector",
+    "keyword": "::-webkit-slider-thumb"
+  }
+]

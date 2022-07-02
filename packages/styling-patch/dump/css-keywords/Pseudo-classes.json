@@ -1,0 +1,312 @@
+[
+  {
+    "keyword": ":active",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":any-link",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":checked",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":current",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":blank",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":default",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":defined",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":dir",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":disabled",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":empty",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":enabled",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":first",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":first-child",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":first-of-type",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":fullscreen",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":future",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":focus",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":focus-visible",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":focus-within",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":has",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":host()",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":host-context()",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":hover",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":indeterminate",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":in-range",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":invalid",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":is",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":lang",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":last-child",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":last-of-type",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":left",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":link",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":local-link",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":not",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":nth-child",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":nth-col",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":nth-last-child",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":nth-last-col",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":nth-last-of-type",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":nth-of-type",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":only-child",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":only-of-type",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":optional",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":out-of-range",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":past",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":paused",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":placeholder-shown",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":playing",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":read-only",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":read-write",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":required",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":right",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":root",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":scope",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":target",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":target-within",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":user-invalid",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":user-valid",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":valid",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":visited",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":where",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":picture-in-picture",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  }
+]

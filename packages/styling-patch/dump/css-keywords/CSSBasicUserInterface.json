@@ -1,0 +1,82 @@
+[
+  {
+    "keyword": "accent-color",
+    "keywordType": "property",
+    "moduleGroup": "CSS Basic User Interface"
+  },
+  {
+    "keyword": "appearance",
+    "keywordType": "property",
+    "moduleGroup": "CSS Basic User Interface"
+  },
+  {
+    "keyword": "aspect-ratio",
+    "keywordType": "property",
+    "moduleGroup": "CSS Basic User Interface"
+  },
+  {
+    "keyword": "caret-color",
+    "keywordType": "property",
+    "moduleGroup": "CSS Basic User Interface"
+  },
+  {
+    "keyword": "cursor",
+    "keywordType": "property",
+    "moduleGroup": "CSS Basic User Interface"
+  },
+  {
+    "keyword": "ime-mode",
+    "keywordType": "property",
+    "moduleGroup": "CSS Basic User Interface"
+  },
+  {
+    "keyword": "input-security",
+    "keywordType": "property",
+    "moduleGroup": "CSS Basic User Interface"
+  },
+  {
+    "keyword": "outline",
+    "keywordType": "property",
+    "moduleGroup": "CSS Basic User Interface"
+  },
+  {
+    "keyword": "outline-color",
+    "keywordType": "property",
+    "moduleGroup": "CSS Basic User Interface"
+  },
+  {
+    "keyword": "outline-offset",
+    "keywordType": "property",
+    "moduleGroup": "CSS Basic User Interface"
+  },
+  {
+    "keyword": "outline-style",
+    "keywordType": "property",
+    "moduleGroup": "CSS Basic User Interface"
+  },
+  {
+    "keyword": "outline-width",
+    "keywordType": "property",
+    "moduleGroup": "CSS Basic User Interface"
+  },
+  {
+    "keyword": "pointer-events",
+    "keywordType": "property",
+    "moduleGroup": "CSS Basic User Interface"
+  },
+  {
+    "keyword": "resize",
+    "keywordType": "property",
+    "moduleGroup": "CSS Basic User Interface"
+  },
+  {
+    "keyword": "text-overflow",
+    "keywordType": "property",
+    "moduleGroup": "CSS Basic User Interface"
+  },
+  {
+    "keyword": "user-select",
+    "keywordType": "property",
+    "moduleGroup": "CSS Basic User Interface"
+  }
+]

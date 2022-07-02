@@ -1,0 +1,12 @@
+[
+  {
+    "keyword": "contain",
+    "keywordType": "property",
+    "moduleGroup": "CSS Containment"
+  },
+  {
+    "keyword": "content-visibility",
+    "keywordType": "property",
+    "moduleGroup": "CSS Containment"
+  }
+]

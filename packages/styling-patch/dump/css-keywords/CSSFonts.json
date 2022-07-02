@@ -1,0 +1,127 @@
+[
+  {
+    "keyword": "@font-face",
+    "keywordType": "at-rule",
+    "moduleGroup": "CSS Fonts"
+  },
+  {
+    "keyword": "@font-feature-values",
+    "keywordType": "at-rule",
+    "moduleGroup": "CSS Fonts"
+  },
+  {
+    "keyword": "font",
+    "keywordType": "property",
+    "moduleGroup": "CSS Fonts"
+  },
+  {
+    "keyword": "font-family",
+    "keywordType": "property",
+    "moduleGroup": "CSS Fonts"
+  },
+  {
+    "keyword": "font-feature-settings",
+    "keywordType": "property",
+    "moduleGroup": "CSS Fonts"
+  },
+  {
+    "keyword": "font-kerning",
+    "keywordType": "property",
+    "moduleGroup": "CSS Fonts"
+  },
+  {
+    "keyword": "font-language-override",
+    "keywordType": "property",
+    "moduleGroup": "CSS Fonts"
+  },
+  {
+    "keyword": "font-optical-sizing",
+    "keywordType": "property",
+    "moduleGroup": "CSS Fonts"
+  },
+  {
+    "keyword": "font-variation-settings",
+    "keywordType": "property",
+    "moduleGroup": "CSS Fonts"
+  },
+  {
+    "keyword": "font-size",
+    "keywordType": "property",
+    "moduleGroup": "CSS Fonts"
+  },
+  {
+    "keyword": "font-size-adjust",
+    "keywordType": "property",
+    "moduleGroup": "CSS Fonts"
+  },
+  {
+    "keyword": "font-smooth",
+    "keywordType": "property",
+    "moduleGroup": "CSS Fonts"
+  },
+  {
+    "keyword": "font-stretch",
+    "keywordType": "property",
+    "moduleGroup": "CSS Fonts"
+  },
+  {
+    "keyword": "font-style",
+    "keywordType": "property",
+    "moduleGroup": "CSS Fonts"
+  },
+  {
+    "keyword": "font-synthesis",
+    "keywordType": "property",
+    "moduleGroup": "CSS Fonts"
+  },
+  {
+    "keyword": "font-variant",
+    "keywordType": "property",
+    "moduleGroup": "CSS Fonts"
+  },
+  {
+    "keyword": "font-variant-alternates",
+    "keywordType": "property",
+    "moduleGroup": "CSS Fonts"
+  },
+  {
+    "keyword": "font-variant-caps",
+    "keywordType": "property",
+    "moduleGroup": "CSS Fonts"
+  },
+  {
+    "keyword": "font-variant-east-asian",
+    "keywordType": "property",
+    "moduleGroup": "CSS Fonts"
+  },
+  {
+    "keyword": "font-variant-ligatures",
+    "keywordType": "property",
+    "moduleGroup": "CSS Fonts"
+  },
+  {
+    "keyword": "font-variant-numeric",
+    "keywordType": "property",
+    "moduleGroup": "CSS Fonts"
+  },
+  {
+    "keyword": "font-variant-position",
+    "keywordType": "property",
+    "moduleGroup": "CSS Fonts"
+  },
+  {
+    "keyword": "font-weight",
+    "keywordType": "property",
+    "moduleGroup": "CSS Fonts"
+  },
+  {
+    "keyword": "line-height",
+    "keywordType": "property",
+    "moduleGroup": "CSS Fonts"
+  },
+  {
+    "keyword": "line-height-step",
+    "keywordType": "property",
+    "moduleGroup": "CSS Fonts"
+  }
+]

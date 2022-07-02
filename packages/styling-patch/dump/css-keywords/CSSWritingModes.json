@@ -1,0 +1,27 @@
+[
+  {
+    "keyword": "direction",
+    "keywordType": "property",
+    "moduleGroup": "CSS Writing Modes"
+  },
+  {
+    "keyword": "text-combine-upright",
+    "keywordType": "property",
+    "moduleGroup": "CSS Writing Modes"
+  },
+  {
+    "keyword": "text-orientation",
+    "keywordType": "property",
+    "moduleGroup": "CSS Writing Modes"
+  },
+  {
+    "keyword": "unicode-bidi",
+    "keywordType": "property",
+    "moduleGroup": "CSS Writing Modes"
+  },
+  {
+    "keyword": "writing-mode",
+    "keywordType": "property",
+    "moduleGroup": "CSS Writing Modes"
+  }
+]

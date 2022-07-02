@@ -1,0 +1,62 @@
+[
+  {
+    "keyword": "@keyframes",
+    "keywordType": "at-rule",
+    "moduleGroup": "CSS Animations"
+  },
+  {
+    "keyword": "@scroll-timeline",
+    "keywordType": "at-rule",
+    "moduleGroup": "CSS Animations"
+  },
+  {
+    "keyword": "animation",
+    "keywordType": "property",
+    "moduleGroup": "CSS Animations"
+  },
+  {
+    "keyword": "animation-delay",
+    "keywordType": "property",
+    "moduleGroup": "CSS Animations"
+  },
+  {
+    "keyword": "animation-direction",
+    "keywordType": "property",
+    "moduleGroup": "CSS Animations"
+  },
+  {
+    "keyword": "animation-duration",
+    "keywordType": "property",
+    "moduleGroup": "CSS Animations"
+  },
+  {
+    "keyword": "animation-fill-mode",
+    "keywordType": "property",
+    "moduleGroup": "CSS Animations"
+  },
+  {
+    "keyword": "animation-iteration-count",
+    "keywordType": "property",
+    "moduleGroup": "CSS Animations"
+  },
+  {
+    "keyword": "animation-name",
+    "keywordType": "property",
+    "moduleGroup": "CSS Animations"
+  },
+  {
+    "keyword": "animation-play-state",
+    "keywordType": "property",
+    "moduleGroup": "CSS Animations"
+  },
+  {
+    "keyword": "animation-timing-function",
+    "keywordType": "property",
+    "moduleGroup": "CSS Animations"
+  },
+  {
+    "keyword": "animation-timeline",
+    "keywordType": "property",
+    "moduleGroup": "CSS Animations"
+  }
+]

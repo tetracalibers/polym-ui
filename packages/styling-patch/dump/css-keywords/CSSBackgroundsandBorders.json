@@ -1,0 +1,217 @@
+[
+  {
+    "keyword": "background",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "background-attachment",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "background-clip",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "background-color",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "background-image",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "background-origin",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "background-position",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "background-position-x",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "background-position-y",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "background-repeat",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "background-size",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "border",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "border-bottom",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "border-bottom-color",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "border-bottom-left-radius",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "border-bottom-right-radius",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "border-bottom-style",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "border-bottom-width",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "border-color",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "border-image",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "border-image-outset",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "border-image-repeat",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "border-image-slice",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "border-image-source",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "border-image-width",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "border-left",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "border-left-color",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "border-left-style",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "border-left-width",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "border-radius",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "border-right",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "border-right-color",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "border-right-style",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "border-right-width",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "border-style",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "border-top",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "border-top-color",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "border-top-left-radius",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "border-top-right-radius",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "border-top-style",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "border-top-width",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "border-width",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "box-shadow",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  }
+]

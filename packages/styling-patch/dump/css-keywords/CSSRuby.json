@@ -1,0 +1,17 @@
+[
+  {
+    "keyword": "ruby-align",
+    "keywordType": "property",
+    "moduleGroup": "CSS Ruby"
+  },
+  {
+    "keyword": "ruby-merge",
+    "keywordType": "property",
+    "moduleGroup": "CSS Ruby"
+  },
+  {
+    "keyword": "ruby-position",
+    "keywordType": "property",
+    "moduleGroup": "CSS Ruby"
+  }
+]

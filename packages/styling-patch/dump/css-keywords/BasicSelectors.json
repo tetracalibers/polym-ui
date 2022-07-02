@@ -1,0 +1,27 @@
+[
+  {
+    "keyword": "Type selectors",
+    "keywordType": "selector",
+    "moduleGroup": "Basic Selectors"
+  },
+  {
+    "keyword": "Class selectors",
+    "keywordType": "selector",
+    "moduleGroup": "Basic Selectors"
+  },
+  {
+    "keyword": "ID selectors",
+    "keywordType": "selector",
+    "moduleGroup": "Basic Selectors"
+  },
+  {
+    "keyword": "Universal selectors",
+    "keywordType": "selector",
+    "moduleGroup": "Basic Selectors"
+  },
+  {
+    "keyword": "Attribute selectors",
+    "keywordType": "selector",
+    "moduleGroup": "Basic Selectors"
+  }
+]

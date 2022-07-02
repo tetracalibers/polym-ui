@@ -1,0 +1,122 @@
+[
+  {
+    "keyword": "box-sizing",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Model"
+  },
+  {
+    "keyword": "height",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Model"
+  },
+  {
+    "keyword": "margin",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Model"
+  },
+  {
+    "keyword": "margin-bottom",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Model"
+  },
+  {
+    "keyword": "margin-left",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Model"
+  },
+  {
+    "keyword": "margin-right",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Model"
+  },
+  {
+    "keyword": "margin-top",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Model"
+  },
+  {
+    "keyword": "margin-trim",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Model"
+  },
+  {
+    "keyword": "max-height",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Model"
+  },
+  {
+    "keyword": "max-width",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Model"
+  },
+  {
+    "keyword": "min-height",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Model"
+  },
+  {
+    "keyword": "min-width",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Model"
+  },
+  {
+    "keyword": "overscroll-behavior",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Model"
+  },
+  {
+    "keyword": "overscroll-behavior-block",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Model"
+  },
+  {
+    "keyword": "overscroll-behavior-inline",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Model"
+  },
+  {
+    "keyword": "overscroll-behavior-x",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Model"
+  },
+  {
+    "keyword": "overscroll-behavior-y",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Model"
+  },
+  {
+    "keyword": "padding",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Model"
+  },
+  {
+    "keyword": "padding-bottom",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Model"
+  },
+  {
+    "keyword": "padding-left",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Model"
+  },
+  {
+    "keyword": "padding-right",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Model"
+  },
+  {
+    "keyword": "padding-top",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Model"
+  },
+  {
+    "keyword": "visibility",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Model"
+  },
+  {
+    "keyword": "width",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Model"
+  }
+]

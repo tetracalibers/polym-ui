@@ -1,0 +1,307 @@
+[
+  {
+    "keyword": "-ms-accelerator",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-block-progression",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-content-zoom-chaining",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-content-zooming",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-content-zoom-limit",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-content-zoom-limit-max",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-content-zoom-limit-min",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-content-zoom-snap",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-content-zoom-snap-points",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-content-zoom-snap-type",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-filter",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-flow-from",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-flow-into",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-high-contrast-adjust",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-hyphenate-limit-chars",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-hyphenate-limit-lines",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-hyphenate-limit-zone",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-ime-align",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-overflow-style",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-scrollbar-3dlight-color",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-scrollbar-arrow-color",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-scrollbar-base-color",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-scrollbar-darkshadow-color",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-scrollbar-face-color",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-scrollbar-highlight-color",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-scrollbar-shadow-color",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-scrollbar-track-color",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-scroll-chaining",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-scroll-limit",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-scroll-limit-x-max",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-scroll-limit-x-min",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-scroll-limit-y-max",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-scroll-limit-y-min",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-scroll-rails",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-scroll-snap-points-x",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-scroll-snap-points-y",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-scroll-snap-type",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-scroll-snap-x",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-scroll-snap-y",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-scroll-translation",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-text-autospace",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-touch-select",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-user-select",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-wrap-flow",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-wrap-margin",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-wrap-through",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "zoom",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "moduleGroup": "Microsoft Extensions",
+    "keywordType": "selector",
+    "keyword": "::-ms-browse"
+  },
+  {
+    "moduleGroup": "Microsoft Extensions",
+    "keywordType": "selector",
+    "keyword": "::-ms-check"
+  },
+  {
+    "moduleGroup": "Microsoft Extensions",
+    "keywordType": "selector",
+    "keyword": "::-ms-clear"
+  },
+  {
+    "moduleGroup": "Microsoft Extensions",
+    "keywordType": "selector",
+    "keyword": "::-ms-expand"
+  },
+  {
+    "moduleGroup": "Microsoft Extensions",
+    "keywordType": "selector",
+    "keyword": "::-ms-fill"
+  },
+  {
+    "moduleGroup": "Microsoft Extensions",
+    "keywordType": "selector",
+    "keyword": "::-ms-fill-lower"
+  },
+  {
+    "moduleGroup": "Microsoft Extensions",
+    "keywordType": "selector",
+    "keyword": "::-ms-fill-upper"
+  },
+  {
+    "moduleGroup": "Microsoft Extensions",
+    "keywordType": "selector",
+    "keyword": "::-ms-reveal"
+  },
+  {
+    "moduleGroup": "Microsoft Extensions",
+    "keywordType": "selector",
+    "keyword": "::-ms-thumb"
+  },
+  {
+    "moduleGroup": "Microsoft Extensions",
+    "keywordType": "selector",
+    "keyword": "::-ms-ticks-after"
+  },
+  {
+    "moduleGroup": "Microsoft Extensions",
+    "keywordType": "selector",
+    "keyword": "::-ms-ticks-before"
+  },
+  {
+    "moduleGroup": "Microsoft Extensions",
+    "keywordType": "selector",
+    "keyword": "::-ms-tooltip"
+  },
+  {
+    "moduleGroup": "Microsoft Extensions",
+    "keywordType": "selector",
+    "keyword": "::-ms-track"
+  },
+  {
+    "moduleGroup": "Microsoft Extensions",
+    "keywordType": "selector",
+    "keyword": "::-ms-value"
+  }
+]

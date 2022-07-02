@@ -1,0 +1,92 @@
+[
+  {
+    "keyword": "hanging-punctuation",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text"
+  },
+  {
+    "keyword": "hyphenate-character",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text"
+  },
+  {
+    "keyword": "hyphens",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text"
+  },
+  {
+    "keyword": "letter-spacing",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text"
+  },
+  {
+    "keyword": "line-break",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text"
+  },
+  {
+    "keyword": "overflow-wrap",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text"
+  },
+  {
+    "keyword": "paint-order",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text"
+  },
+  {
+    "keyword": "tab-size",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text"
+  },
+  {
+    "keyword": "text-align",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text"
+  },
+  {
+    "keyword": "text-align-last",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text"
+  },
+  {
+    "keyword": "text-indent",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text"
+  },
+  {
+    "keyword": "text-justify",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text"
+  },
+  {
+    "keyword": "text-size-adjust",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text"
+  },
+  {
+    "keyword": "text-transform",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text"
+  },
+  {
+    "keyword": "white-space",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text"
+  },
+  {
+    "keyword": "word-break",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text"
+  },
+  {
+    "keyword": "word-spacing",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text"
+  },
+  {
+    "keyword": "word-wrap",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text"
+  }
+]

@@ -1,0 +1,37 @@
+[
+  {
+    "keyword": "@page",
+    "keywordType": "at-rule",
+    "moduleGroup": "CSS Pages"
+  },
+  {
+    "keyword": "page-break-after",
+    "keywordType": "property",
+    "moduleGroup": "CSS Pages"
+  },
+  {
+    "keyword": "page-break-before",
+    "keywordType": "property",
+    "moduleGroup": "CSS Pages"
+  },
+  {
+    "keyword": "page-break-inside",
+    "keywordType": "property",
+    "moduleGroup": "CSS Pages"
+  },
+  {
+    "moduleGroup": "CSS Pages",
+    "keywordType": "selector",
+    "keyword": ":left"
+  },
+  {
+    "moduleGroup": "CSS Pages",
+    "keywordType": "selector",
+    "keyword": ":right"
+  },
+  {
+    "moduleGroup": "CSS Pages",
+    "keywordType": "selector",
+    "keyword": ":root"
+  }
+]

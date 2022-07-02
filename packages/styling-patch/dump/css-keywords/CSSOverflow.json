@@ -1,0 +1,57 @@
+[
+  {
+    "keyword": "block-overflow",
+    "keywordType": "property",
+    "moduleGroup": "CSS Overflow"
+  },
+  {
+    "keyword": "line-clamp",
+    "keywordType": "property",
+    "moduleGroup": "CSS Overflow"
+  },
+  {
+    "keyword": "max-lines",
+    "keywordType": "property",
+    "moduleGroup": "CSS Overflow"
+  },
+  {
+    "keyword": "overflow",
+    "keywordType": "property",
+    "moduleGroup": "CSS Overflow"
+  },
+  {
+    "keyword": "overflow-block",
+    "keywordType": "property",
+    "moduleGroup": "CSS Overflow"
+  },
+  {
+    "keyword": "overflow-clip-margin",
+    "keywordType": "property",
+    "moduleGroup": "CSS Overflow"
+  },
+  {
+    "keyword": "overflow-inline",
+    "keywordType": "property",
+    "moduleGroup": "CSS Overflow"
+  },
+  {
+    "keyword": "overflow-x",
+    "keywordType": "property",
+    "moduleGroup": "CSS Overflow"
+  },
+  {
+    "keyword": "overflow-y",
+    "keywordType": "property",
+    "moduleGroup": "CSS Overflow"
+  },
+  {
+    "keyword": "scrollbar-gutter",
+    "keywordType": "property",
+    "moduleGroup": "CSS Overflow"
+  },
+  {
+    "moduleGroup": "CSS Overflow",
+    "keywordType": "property",
+    "keyword": "-webkit-line-clamp"
+  }
+]

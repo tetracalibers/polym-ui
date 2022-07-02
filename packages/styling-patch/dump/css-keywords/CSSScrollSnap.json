@@ -1,0 +1,157 @@
+[
+  {
+    "keyword": "scroll-margin",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scroll Snap"
+  },
+  {
+    "keyword": "scroll-margin-block",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scroll Snap"
+  },
+  {
+    "keyword": "scroll-margin-block-start",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scroll Snap"
+  },
+  {
+    "keyword": "scroll-margin-block-end",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scroll Snap"
+  },
+  {
+    "keyword": "scroll-margin-bottom",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scroll Snap"
+  },
+  {
+    "keyword": "scroll-margin-inline",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scroll Snap"
+  },
+  {
+    "keyword": "scroll-margin-inline-start",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scroll Snap"
+  },
+  {
+    "keyword": "scroll-margin-inline-end",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scroll Snap"
+  },
+  {
+    "keyword": "scroll-margin-left",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scroll Snap"
+  },
+  {
+    "keyword": "scroll-margin-right",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scroll Snap"
+  },
+  {
+    "keyword": "scroll-margin-top",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scroll Snap"
+  },
+  {
+    "keyword": "scroll-padding",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scroll Snap"
+  },
+  {
+    "keyword": "scroll-padding-block",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scroll Snap"
+  },
+  {
+    "keyword": "scroll-padding-block-start",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scroll Snap"
+  },
+  {
+    "keyword": "scroll-padding-block-end",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scroll Snap"
+  },
+  {
+    "keyword": "scroll-padding-bottom",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scroll Snap"
+  },
+  {
+    "keyword": "scroll-padding-inline",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scroll Snap"
+  },
+  {
+    "keyword": "scroll-padding-inline-start",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scroll Snap"
+  },
+  {
+    "keyword": "scroll-padding-inline-end",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scroll Snap"
+  },
+  {
+    "keyword": "scroll-padding-left",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scroll Snap"
+  },
+  {
+    "keyword": "scroll-padding-right",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scroll Snap"
+  },
+  {
+    "keyword": "scroll-padding-top",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scroll Snap"
+  },
+  {
+    "keyword": "scroll-snap-align",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scroll Snap"
+  },
+  {
+    "keyword": "scroll-snap-coordinate",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scroll Snap"
+  },
+  {
+    "keyword": "scroll-snap-destination",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scroll Snap"
+  },
+  {
+    "keyword": "scroll-snap-points-x",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scroll Snap"
+  },
+  {
+    "keyword": "scroll-snap-points-y",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scroll Snap"
+  },
+  {
+    "keyword": "scroll-snap-stop",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scroll Snap"
+  },
+  {
+    "keyword": "scroll-snap-type",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scroll Snap"
+  },
+  {
+    "keyword": "scroll-snap-type-x",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scroll Snap"
+  },
+  {
+    "keyword": "scroll-snap-type-y",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scroll Snap"
+  }
+]

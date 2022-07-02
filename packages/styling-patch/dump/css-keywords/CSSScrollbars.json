@@ -1,0 +1,12 @@
+[
+  {
+    "keyword": "scrollbar-color",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scrollbars"
+  },
+  {
+    "keyword": "scrollbar-width",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scrollbars"
+  }
+]

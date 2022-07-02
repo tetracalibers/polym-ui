@@ -1,0 +1,27 @@
+[
+  {
+    "keyword": "transition",
+    "keywordType": "property",
+    "moduleGroup": "CSS Transitions"
+  },
+  {
+    "keyword": "transition-delay",
+    "keywordType": "property",
+    "moduleGroup": "CSS Transitions"
+  },
+  {
+    "keyword": "transition-duration",
+    "keywordType": "property",
+    "moduleGroup": "CSS Transitions"
+  },
+  {
+    "keyword": "transition-property",
+    "keywordType": "property",
+    "moduleGroup": "CSS Transitions"
+  },
+  {
+    "keyword": "transition-timing-function",
+    "keywordType": "property",
+    "moduleGroup": "CSS Transitions"
+  }
+]

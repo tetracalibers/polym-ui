@@ -1,0 +1,32 @@
+[
+  {
+    "keyword": "box-decoration-break",
+    "keywordType": "property",
+    "moduleGroup": "CSS Fragmentation"
+  },
+  {
+    "keyword": "break-after",
+    "keywordType": "property",
+    "moduleGroup": "CSS Fragmentation"
+  },
+  {
+    "keyword": "break-before",
+    "keywordType": "property",
+    "moduleGroup": "CSS Fragmentation"
+  },
+  {
+    "keyword": "break-inside",
+    "keywordType": "property",
+    "moduleGroup": "CSS Fragmentation"
+  },
+  {
+    "keyword": "orphans",
+    "keywordType": "property",
+    "moduleGroup": "CSS Fragmentation"
+  },
+  {
+    "keyword": "widows",
+    "keywordType": "property",
+    "moduleGroup": "CSS Fragmentation"
+  }
+]

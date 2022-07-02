@@ -1,0 +1,52 @@
+[
+  {
+    "keyword": "backface-visibility",
+    "keywordType": "property",
+    "moduleGroup": "CSS Transforms"
+  },
+  {
+    "keyword": "perspective",
+    "keywordType": "property",
+    "moduleGroup": "CSS Transforms"
+  },
+  {
+    "keyword": "perspective-origin",
+    "keywordType": "property",
+    "moduleGroup": "CSS Transforms"
+  },
+  {
+    "keyword": "rotate",
+    "keywordType": "property",
+    "moduleGroup": "CSS Transforms"
+  },
+  {
+    "keyword": "scale",
+    "keywordType": "property",
+    "moduleGroup": "CSS Transforms"
+  },
+  {
+    "keyword": "transform",
+    "keywordType": "property",
+    "moduleGroup": "CSS Transforms"
+  },
+  {
+    "keyword": "transform-box",
+    "keywordType": "property",
+    "moduleGroup": "CSS Transforms"
+  },
+  {
+    "keyword": "transform-origin",
+    "keywordType": "property",
+    "moduleGroup": "CSS Transforms"
+  },
+  {
+    "keyword": "transform-style",
+    "keywordType": "property",
+    "moduleGroup": "CSS Transforms"
+  },
+  {
+    "keyword": "translate",
+    "keywordType": "property",
+    "moduleGroup": "CSS Transforms"
+  }
+]

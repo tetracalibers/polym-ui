@@ -1,0 +1,27 @@
+[
+  {
+    "keyword": "Adjacent sibling combinator",
+    "keywordType": "selector",
+    "moduleGroup": "Combinators"
+  },
+  {
+    "keyword": "General sibling combinator",
+    "keywordType": "selector",
+    "moduleGroup": "Combinators"
+  },
+  {
+    "keyword": "Child combinator",
+    "keywordType": "selector",
+    "moduleGroup": "Combinators"
+  },
+  {
+    "keyword": "Descendant combinator",
+    "keywordType": "selector",
+    "moduleGroup": "Combinators"
+  },
+  {
+    "keyword": "Column combinator",
+    "keywordType": "selector",
+    "moduleGroup": "Combinators"
+  }
+]

@@ -1,0 +1,117 @@
+[
+  {
+    "keyword": "-ms-grid-columns",
+    "keywordType": "property",
+    "moduleGroup": "CSS Grid Layout"
+  },
+  {
+    "keyword": "-ms-grid-rows",
+    "keywordType": "property",
+    "moduleGroup": "CSS Grid Layout"
+  },
+  {
+    "keyword": "align-tracks",
+    "keywordType": "property",
+    "moduleGroup": "CSS Grid Layout"
+  },
+  {
+    "keyword": "grid",
+    "keywordType": "property",
+    "moduleGroup": "CSS Grid Layout"
+  },
+  {
+    "keyword": "grid-area",
+    "keywordType": "property",
+    "moduleGroup": "CSS Grid Layout"
+  },
+  {
+    "keyword": "grid-auto-columns",
+    "keywordType": "property",
+    "moduleGroup": "CSS Grid Layout"
+  },
+  {
+    "keyword": "grid-auto-flow",
+    "keywordType": "property",
+    "moduleGroup": "CSS Grid Layout"
+  },
+  {
+    "keyword": "grid-auto-rows",
+    "keywordType": "property",
+    "moduleGroup": "CSS Grid Layout"
+  },
+  {
+    "keyword": "grid-column",
+    "keywordType": "property",
+    "moduleGroup": "CSS Grid Layout"
+  },
+  {
+    "keyword": "grid-column-end",
+    "keywordType": "property",
+    "moduleGroup": "CSS Grid Layout"
+  },
+  {
+    "keyword": "grid-column-gap",
+    "keywordType": "property",
+    "moduleGroup": "CSS Grid Layout"
+  },
+  {
+    "keyword": "grid-column-start",
+    "keywordType": "property",
+    "moduleGroup": "CSS Grid Layout"
+  },
+  {
+    "keyword": "grid-gap",
+    "keywordType": "property",
+    "moduleGroup": "CSS Grid Layout"
+  },
+  {
+    "keyword": "grid-row",
+    "keywordType": "property",
+    "moduleGroup": "CSS Grid Layout"
+  },
+  {
+    "keyword": "grid-row-end",
+    "keywordType": "property",
+    "moduleGroup": "CSS Grid Layout"
+  },
+  {
+    "keyword": "grid-row-gap",
+    "keywordType": "property",
+    "moduleGroup": "CSS Grid Layout"
+  },
+  {
+    "keyword": "grid-row-start",
+    "keywordType": "property",
+    "moduleGroup": "CSS Grid Layout"
+  },
+  {
+    "keyword": "grid-template",
+    "keywordType": "property",
+    "moduleGroup": "CSS Grid Layout"
+  },
+  {
+    "keyword": "grid-template-areas",
+    "keywordType": "property",
+    "moduleGroup": "CSS Grid Layout"
+  },
+  {
+    "keyword": "grid-template-columns",
+    "keywordType": "property",
+    "moduleGroup": "CSS Grid Layout"
+  },
+  {
+    "keyword": "grid-template-rows",
+    "keywordType": "property",
+    "moduleGroup": "CSS Grid Layout"
+  },
+  {
+    "keyword": "justify-tracks",
+    "keywordType": "property",
+    "moduleGroup": "CSS Grid Layout"
+  },
+  {
+    "keyword": "masonry-auto-flow",
+    "keywordType": "property",
+    "moduleGroup": "CSS Grid Layout"
+  }
+]

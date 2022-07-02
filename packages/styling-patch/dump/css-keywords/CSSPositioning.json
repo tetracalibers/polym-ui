@@ -1,0 +1,42 @@
+[
+  {
+    "keyword": "bottom",
+    "keywordType": "property",
+    "moduleGroup": "CSS Positioning"
+  },
+  {
+    "keyword": "clear",
+    "keywordType": "property",
+    "moduleGroup": "CSS Positioning"
+  },
+  {
+    "keyword": "float",
+    "keywordType": "property",
+    "moduleGroup": "CSS Positioning"
+  },
+  {
+    "keyword": "left",
+    "keywordType": "property",
+    "moduleGroup": "CSS Positioning"
+  },
+  {
+    "keyword": "position",
+    "keywordType": "property",
+    "moduleGroup": "CSS Positioning"
+  },
+  {
+    "keyword": "right",
+    "keywordType": "property",
+    "moduleGroup": "CSS Positioning"
+  },
+  {
+    "keyword": "top",
+    "keywordType": "property",
+    "moduleGroup": "CSS Positioning"
+  },
+  {
+    "keyword": "z-index",
+    "keywordType": "property",
+    "moduleGroup": "CSS Positioning"
+  }
+]

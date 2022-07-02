@@ -1,0 +1,12 @@
+[
+  {
+    "moduleGroup": "Media Queries",
+    "keywordType": "at-rule",
+    "keyword": "@import"
+  },
+  {
+    "moduleGroup": "Media Queries",
+    "keywordType": "at-rule",
+    "keyword": "@media"
+  }
+]

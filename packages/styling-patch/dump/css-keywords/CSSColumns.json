@@ -1,0 +1,47 @@
+[
+  {
+    "keyword": "column-count",
+    "keywordType": "property",
+    "moduleGroup": "CSS Columns"
+  },
+  {
+    "keyword": "column-fill",
+    "keywordType": "property",
+    "moduleGroup": "CSS Columns"
+  },
+  {
+    "keyword": "column-rule",
+    "keywordType": "property",
+    "moduleGroup": "CSS Columns"
+  },
+  {
+    "keyword": "column-rule-color",
+    "keywordType": "property",
+    "moduleGroup": "CSS Columns"
+  },
+  {
+    "keyword": "column-rule-style",
+    "keywordType": "property",
+    "moduleGroup": "CSS Columns"
+  },
+  {
+    "keyword": "column-rule-width",
+    "keywordType": "property",
+    "moduleGroup": "CSS Columns"
+  },
+  {
+    "keyword": "column-span",
+    "keywordType": "property",
+    "moduleGroup": "CSS Columns"
+  },
+  {
+    "keyword": "column-width",
+    "keywordType": "property",
+    "moduleGroup": "CSS Columns"
+  },
+  {
+    "keyword": "columns",
+    "keywordType": "property",
+    "moduleGroup": "CSS Columns"
+  }
+]

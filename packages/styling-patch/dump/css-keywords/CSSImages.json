@@ -1,0 +1,27 @@
+[
+  {
+    "keyword": "image-orientation",
+    "keywordType": "property",
+    "moduleGroup": "CSS Images"
+  },
+  {
+    "keyword": "image-rendering",
+    "keywordType": "property",
+    "moduleGroup": "CSS Images"
+  },
+  {
+    "keyword": "image-resolution",
+    "keywordType": "property",
+    "moduleGroup": "CSS Images"
+  },
+  {
+    "keyword": "object-fit",
+    "keywordType": "property",
+    "moduleGroup": "CSS Images"
+  },
+  {
+    "keyword": "object-position",
+    "keywordType": "property",
+    "moduleGroup": "CSS Images"
+  }
+]

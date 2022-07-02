@@ -1,0 +1,12 @@
+[
+  {
+    "keyword": "backdrop-filter",
+    "keywordType": "property",
+    "moduleGroup": "Filter Effects"
+  },
+  {
+    "keyword": "filter",
+    "keywordType": "property",
+    "moduleGroup": "Filter Effects"
+  }
+]

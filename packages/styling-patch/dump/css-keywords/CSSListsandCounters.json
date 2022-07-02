@@ -1,0 +1,22 @@
+[
+  {
+    "keyword": "list-style",
+    "keywordType": "property",
+    "moduleGroup": "CSS Lists and Counters"
+  },
+  {
+    "keyword": "list-style-image",
+    "keywordType": "property",
+    "moduleGroup": "CSS Lists and Counters"
+  },
+  {
+    "keyword": "list-style-position",
+    "keywordType": "property",
+    "moduleGroup": "CSS Lists and Counters"
+  },
+  {
+    "keyword": "list-style-type",
+    "keywordType": "property",
+    "moduleGroup": "CSS Lists and Counters"
+  }
+]
