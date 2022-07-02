@@ -1,0 +1,212 @@
+[
+  {
+    "keyword": "::-ms-browse",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::-ms-check",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::-ms-clear",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::-ms-expand",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::-ms-fill",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::-ms-fill-lower",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::-ms-fill-upper",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::-ms-reveal",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::-ms-thumb",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::-ms-ticks-after",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::-ms-ticks-before",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::-ms-tooltip",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::-ms-track",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::-ms-value",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::-ms-browse"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::-ms-check"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::-ms-clear"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::-ms-expand"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::-ms-fill"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::-ms-fill-lower"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::-ms-fill-upper"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::-ms-reveal"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::-ms-thumb"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::-ms-ticks-after"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::-ms-ticks-before"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::-ms-tooltip"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::-ms-track"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::-ms-value"
+  },
+  {
+    "moduleGroup": "Microsoft Extensions",
+    "keywordType": "selector",
+    "keyword": "::-ms-browse"
+  },
+  {
+    "moduleGroup": "Microsoft Extensions",
+    "keywordType": "selector",
+    "keyword": "::-ms-check"
+  },
+  {
+    "moduleGroup": "Microsoft Extensions",
+    "keywordType": "selector",
+    "keyword": "::-ms-clear"
+  },
+  {
+    "moduleGroup": "Microsoft Extensions",
+    "keywordType": "selector",
+    "keyword": "::-ms-expand"
+  },
+  {
+    "moduleGroup": "Microsoft Extensions",
+    "keywordType": "selector",
+    "keyword": "::-ms-fill"
+  },
+  {
+    "moduleGroup": "Microsoft Extensions",
+    "keywordType": "selector",
+    "keyword": "::-ms-fill-lower"
+  },
+  {
+    "moduleGroup": "Microsoft Extensions",
+    "keywordType": "selector",
+    "keyword": "::-ms-fill-upper"
+  },
+  {
+    "moduleGroup": "Microsoft Extensions",
+    "keywordType": "selector",
+    "keyword": "::-ms-reveal"
+  },
+  {
+    "moduleGroup": "Microsoft Extensions",
+    "keywordType": "selector",
+    "keyword": "::-ms-thumb"
+  },
+  {
+    "moduleGroup": "Microsoft Extensions",
+    "keywordType": "selector",
+    "keyword": "::-ms-ticks-after"
+  },
+  {
+    "moduleGroup": "Microsoft Extensions",
+    "keywordType": "selector",
+    "keyword": "::-ms-ticks-before"
+  },
+  {
+    "moduleGroup": "Microsoft Extensions",
+    "keywordType": "selector",
+    "keyword": "::-ms-tooltip"
+  },
+  {
+    "moduleGroup": "Microsoft Extensions",
+    "keywordType": "selector",
+    "keyword": "::-ms-track"
+  },
+  {
+    "moduleGroup": "Microsoft Extensions",
+    "keywordType": "selector",
+    "keyword": "::-ms-value"
+  }
+]

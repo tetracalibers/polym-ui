@@ -1,0 +1,22 @@
+[
+  {
+    "keyword": "Pseudo-classes",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo"
+  },
+  {
+    "keyword": "Pseudo-elements",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "Pseudo-classes"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "Pseudo-elements"
+  }
+]

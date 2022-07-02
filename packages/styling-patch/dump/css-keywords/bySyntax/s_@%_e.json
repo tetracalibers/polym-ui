@@ -1,0 +1,87 @@
+[
+  {
+    "keyword": "@charset",
+    "keywordType": "at-rule",
+    "moduleGroup": "CSS Charsets"
+  },
+  {
+    "keyword": "@counter-style",
+    "keywordType": "at-rule",
+    "moduleGroup": "CSS Counter Styles"
+  },
+  {
+    "keyword": "@document",
+    "keywordType": "at-rule",
+    "moduleGroup": "CSS Conditional Rules"
+  },
+  {
+    "keyword": "@font-face",
+    "keywordType": "at-rule",
+    "moduleGroup": "CSS Fonts"
+  },
+  {
+    "keyword": "@font-feature-values",
+    "keywordType": "at-rule",
+    "moduleGroup": "CSS Fonts"
+  },
+  {
+    "keyword": "@import",
+    "keywordType": "at-rule",
+    "moduleGroup": "CSS Conditional Rules"
+  },
+  {
+    "keyword": "@keyframes",
+    "keywordType": "at-rule",
+    "moduleGroup": "CSS Animations"
+  },
+  {
+    "keyword": "@layer",
+    "keywordType": "at-rule",
+    "moduleGroup": "CSS Cascading and Inheritance"
+  },
+  {
+    "keyword": "@media",
+    "keywordType": "at-rule",
+    "moduleGroup": "CSS Conditional Rules"
+  },
+  {
+    "keyword": "@namespace",
+    "keywordType": "at-rule",
+    "moduleGroup": "CSS Namespaces"
+  },
+  {
+    "keyword": "@page",
+    "keywordType": "at-rule",
+    "moduleGroup": "CSS Pages"
+  },
+  {
+    "keyword": "@property",
+    "keywordType": "at-rule",
+    "moduleGroup": "CSS Houdini"
+  },
+  {
+    "keyword": "@scroll-timeline",
+    "keywordType": "at-rule",
+    "moduleGroup": "CSS Animations"
+  },
+  {
+    "keyword": "@supports",
+    "keywordType": "at-rule",
+    "moduleGroup": "CSS Conditional Rules"
+  },
+  {
+    "keyword": "@viewport",
+    "keywordType": "at-rule",
+    "moduleGroup": "CSS Device Adaptation"
+  },
+  {
+    "moduleGroup": "Media Queries",
+    "keywordType": "at-rule",
+    "keyword": "@import"
+  },
+  {
+    "moduleGroup": "Media Queries",
+    "keywordType": "at-rule",
+    "keyword": "@media"
+  }
+]

@@ -1,0 +1,77 @@
+[
+  {
+    "keyword": "::-webkit-progress-bar",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::-webkit-progress-inner-value",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::-webkit-progress-value",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::-webkit-slider-runnable-track",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::-webkit-slider-thumb",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::-webkit-progress-bar"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::-webkit-progress-inner-value"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::-webkit-progress-value"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::-webkit-slider-runnable-track"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::-webkit-slider-thumb"
+  },
+  {
+    "moduleGroup": "WebKit Extensions",
+    "keywordType": "selector",
+    "keyword": "::-webkit-progress-bar"
+  },
+  {
+    "moduleGroup": "WebKit Extensions",
+    "keywordType": "selector",
+    "keyword": "::-webkit-progress-inner-value"
+  },
+  {
+    "moduleGroup": "WebKit Extensions",
+    "keywordType": "selector",
+    "keyword": "::-webkit-progress-value"
+  },
+  {
+    "moduleGroup": "WebKit Extensions",
+    "keywordType": "selector",
+    "keyword": "::-webkit-slider-runnable-track"
+  },
+  {
+    "moduleGroup": "WebKit Extensions",
+    "keywordType": "selector",
+    "keyword": "::-webkit-slider-thumb"
+  }
+]

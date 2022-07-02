@@ -1,0 +1,152 @@
+[
+  {
+    "keyword": "::target-text",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::after",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::backdrop",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::before",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::cue",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::cue-region",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::first-letter",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::first-line",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::grammar-error",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::marker",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::part",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::placeholder",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::selection",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::slotted",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::spelling-error",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::target-text"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::after"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::backdrop"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::before"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::cue"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::cue-region"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::first-letter"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::first-line"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::grammar-error"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::marker"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::part"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::placeholder"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::selection"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::slotted"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::spelling-error"
+  }
+]

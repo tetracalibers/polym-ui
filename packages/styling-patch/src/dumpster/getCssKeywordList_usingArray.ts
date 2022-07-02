@@ -41,4 +41,4 @@ const cssKeywordList_atRules = createCssKeywordList(atRules, 'at-rule')
 const cssKeywordList_selectors = createCssKeywordList(selectors, 'selector')
 const cssKeywordList_properties = createCssKeywordList(properties, 'property')
 
-export const cssKeywordList = [...cssKeywordList_atRules, ...cssKeywordList_selectors, ...cssKeywordList_properties]
+export const cssKeywordList_usingArray = [...cssKeywordList_atRules, ...cssKeywordList_selectors, ...cssKeywordList_properties]

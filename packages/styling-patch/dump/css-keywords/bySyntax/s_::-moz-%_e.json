@@ -1,0 +1,62 @@
+[
+  {
+    "keyword": "::-moz-progress-bar",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::-moz-range-progress",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::-moz-range-thumb",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::-moz-range-track",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::-moz-progress-bar"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::-moz-range-progress"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::-moz-range-thumb"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::-moz-range-track"
+  },
+  {
+    "moduleGroup": "Mozilla Extensions",
+    "keywordType": "selector",
+    "keyword": "::-moz-progress-bar"
+  },
+  {
+    "moduleGroup": "Mozilla Extensions",
+    "keywordType": "selector",
+    "keyword": "::-moz-range-progress"
+  },
+  {
+    "moduleGroup": "Mozilla Extensions",
+    "keywordType": "selector",
+    "keyword": "::-moz-range-thumb"
+  },
+  {
+    "moduleGroup": "Mozilla Extensions",
+    "keywordType": "selector",
+    "keyword": "::-moz-range-track"
+  }
+]
