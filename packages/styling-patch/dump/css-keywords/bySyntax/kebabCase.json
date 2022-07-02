@@ -1,15 +1,5 @@
 [
   {
-    "keyword": "Selector list",
-    "keywordType": "selector",
-    "moduleGroup": "Grouping Selectors"
-  },
-  {
-    "keyword": "--*",
-    "keywordType": "property",
-    "moduleGroup": "CSS Variables"
-  },
-  {
     "keyword": "accent-color",
     "keywordType": "property",
     "moduleGroup": "CSS Basic User Interface"
@@ -2083,11 +2073,6 @@
     "keyword": "zoom",
     "keywordType": "property",
     "moduleGroup": "Microsoft Extensions"
-  },
-  {
-    "moduleGroup": "Selectors",
-    "keywordType": "selector",
-    "keyword": "Selector list"
   },
   {
     "moduleGroup": "WebKit Extensions",

@@ -1,4 +1,4 @@
-import { cssKeywordList } from './getCssKeywordList_arrayExpanded'
+import { cssKeywordList } from './parser/getCssKeywordList_arrayExpanded'
 import { groupList} from 'mdn-data/css/definitions.json'
 import alasql from 'alasql'
 import { createJsonFile } from '../util/forJson'
