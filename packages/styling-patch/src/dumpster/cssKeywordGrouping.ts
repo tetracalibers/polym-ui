@@ -1,5 +1,5 @@
 import { groupList } from 'mdn-data/css/definitions.json'
-import { cssKeywordList } from './cssKeywordList'
+import { cssKeywordList } from './mdnCssDataParse'
 import { createJsonFile } from '../util/forJson'
 import alasql from 'alasql'
 
