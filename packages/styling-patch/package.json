@@ -25,6 +25,7 @@
     "url": "https://github.com/tetracalibers/React-polyhexUI/issues"
   },
   "devDependencies": {
+    "alasql": "^1.7.3",
     "rimraf": "^3.0.2"
   }
 }
