@@ -6,7 +6,7 @@ const config_jsonFormat = {
   size: 2
 }
 
-function toJSON (data: object): string {
+export function toJSON (data: object): string {
   return jsonFormat(data, config_jsonFormat)
 }
 
