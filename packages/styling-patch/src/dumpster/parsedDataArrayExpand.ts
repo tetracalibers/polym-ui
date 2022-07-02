@@ -1,4 +1,4 @@
-import { cssKeywordList_usingArray } from './getCssKeywordList_usingArray'
+import { cssKeywordList_usingArray } from './parseRowData'
 import alasql from 'alasql'
 
 const getMaxModuleCount = `
@@ -16,4 +16,4 @@ const getExpandedArrayCssKeywordList = sequencial.map((_: number, i: number) => 
   FROM ? WHERE moduleCount > ${i}
 `).join(' UNION ALL ')
 
-export const cssKeywordList = alasql(getExpandedArrayCssKeywordList, Array(maxModuleCount).fill(cssKeywordList_usingArray))
+export const getCssKeywordList_arrayExpanded = alasql(getExpandedArrayCssKeywordList, Array(maxModuleCount).fill(cssKeywordList_usingArray))

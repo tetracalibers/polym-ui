@@ -1,8 +1,8 @@
-import { cssKeywordList } from './parser/getCssKeywordList_arrayExpanded'
+import { getCssKeywordList_arrayExpanded } from './parsedDataArrayExpand'
 import { createJsonFile } from '../util/forJson'
 import alasql from 'alasql'
 
-let excludedList = cssKeywordList
+let excludedList = getCssKeywordList_arrayExpanded
 
 const getLikeSelectQuery: Function = (like: string): string => {
   return `SELECT * FROM ? WHERE keyword LIKE '${like}'`

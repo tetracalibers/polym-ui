@@ -1,3 +1,3 @@
-import { dumpCssKeywordList_bySyntax } from './dumpster/dumpCssKeywordList_bySyntax'
+import { dumpCssKeywordList_bySyntax } from './dumpster/dumpGroupedBySyntax'
 
 dumpCssKeywordList_bySyntax()

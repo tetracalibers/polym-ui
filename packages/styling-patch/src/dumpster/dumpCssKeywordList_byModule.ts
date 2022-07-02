@@ -1,4 +1,4 @@
-import { cssKeywordList } from './parser/getCssKeywordList_arrayExpanded'
+import { getCssKeywordList_arrayExpanded} from './parsedDataArrayExpand'
 import { groupList} from 'mdn-data/css/definitions.json'
 import alasql from 'alasql'
 import { createJsonFile } from '../util/forJson'
@@ -11,7 +11,7 @@ export const dumpCssKeywordList_byModule: Function = (): void => {
     const getThisGroupKeywordList = `
       SELECT * FROM ? WHERE moduleGroup LIKE '${moduleGroup}'
     `
-    const thisGroupKeywordList = alasql(getThisGroupKeywordList, [cssKeywordList])
+    const thisGroupKeywordList = alasql(getThisGroupKeywordList, [getCssKeywordList_arrayExpanded])
     if (thisGroupKeywordList.length > 0) {
       createJsonFile(thisGroupKeywordList, `dump/css-keywords/byModule/${moduleGroupNoSpaces}`)
     }
