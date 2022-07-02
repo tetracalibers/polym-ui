@@ -1,6 +1,5 @@
 import { css } from 'mdn-data'
 import alasql from 'alasql'
-import { createJsonFile } from '../util/forJson'
 
 const { atRules, selectors, properties } = css
 
@@ -30,7 +29,8 @@ const createCssKeywordList: Function = (data: cssDataByMdnList, keywordKind: str
       SELECT 
         data._->(0) AS keyword, 
         static.keywordType AS keywordType,
-        data._->(1)->groups AS moduleGroup
+        data._->(1)->groups AS moduleGroup,
+        data._->(1)->groups->length AS moduleCount
       FROM ? AS data, (SELECT '${keywordKind}' AS keywordType) AS static
   `
   const cssModuleList: cssKeywordList = alasql(query, [flatObjList])
@@ -42,5 +42,3 @@ const cssKeywordList_selectors = createCssKeywordList(selectors, 'selector')
 const cssKeywordList_properties = createCssKeywordList(properties, 'property')
 
 export const cssKeywordList = [...cssKeywordList_atRules, ...cssKeywordList_selectors, ...cssKeywordList_properties]
-
-createJsonFile(cssKeywordList, 'dump/cssKeywordList')
