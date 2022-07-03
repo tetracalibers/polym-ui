@@ -3,5 +3,10 @@
     "keyword": "Selector list",
     "keywordType": "selector",
     "moduleGroup": "Grouping Selectors"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "Selector list"
   }
 ]

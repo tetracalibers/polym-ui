@@ -1,5 +1,80 @@
 [
   {
+    "keyword": "@charset",
+    "keywordType": "at-rule",
+    "moduleGroup": "CSS Charsets"
+  },
+  {
+    "keyword": "@counter-style",
+    "keywordType": "at-rule",
+    "moduleGroup": "CSS Counter Styles"
+  },
+  {
+    "keyword": "@document",
+    "keywordType": "at-rule",
+    "moduleGroup": "CSS Conditional Rules"
+  },
+  {
+    "keyword": "@font-face",
+    "keywordType": "at-rule",
+    "moduleGroup": "CSS Fonts"
+  },
+  {
+    "keyword": "@font-feature-values",
+    "keywordType": "at-rule",
+    "moduleGroup": "CSS Fonts"
+  },
+  {
+    "keyword": "@import",
+    "keywordType": "at-rule",
+    "moduleGroup": "CSS Conditional Rules"
+  },
+  {
+    "keyword": "@keyframes",
+    "keywordType": "at-rule",
+    "moduleGroup": "CSS Animations"
+  },
+  {
+    "keyword": "@layer",
+    "keywordType": "at-rule",
+    "moduleGroup": "CSS Cascading and Inheritance"
+  },
+  {
+    "keyword": "@media",
+    "keywordType": "at-rule",
+    "moduleGroup": "CSS Conditional Rules"
+  },
+  {
+    "keyword": "@namespace",
+    "keywordType": "at-rule",
+    "moduleGroup": "CSS Namespaces"
+  },
+  {
+    "keyword": "@page",
+    "keywordType": "at-rule",
+    "moduleGroup": "CSS Pages"
+  },
+  {
+    "keyword": "@property",
+    "keywordType": "at-rule",
+    "moduleGroup": "CSS Houdini"
+  },
+  {
+    "keyword": "@scroll-timeline",
+    "keywordType": "at-rule",
+    "moduleGroup": "CSS Animations"
+  },
+  {
+    "keyword": "@supports",
+    "keywordType": "at-rule",
+    "moduleGroup": "CSS Conditional Rules"
+  },
+  {
+    "keyword": "@viewport",
+    "keywordType": "at-rule",
+    "moduleGroup": "CSS Device Adaptation"
+  },
+  {
     "keyword": ":active",
     "keywordType": "selector",
     "moduleGroup": "Pseudo-classes"
@@ -275,6 +350,11 @@
     "moduleGroup": "Pseudo-classes"
   },
   {
+    "keyword": "::target-text",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
     "keyword": ":target-within",
     "keywordType": "selector",
     "moduleGroup": "Pseudo-classes"
@@ -305,9 +385,2774 @@
     "moduleGroup": "Pseudo-classes"
   },
   {
+    "keyword": "::-moz-progress-bar",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::-moz-range-progress",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::-moz-range-thumb",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::-moz-range-track",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::-ms-browse",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::-ms-check",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::-ms-clear",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::-ms-expand",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::-ms-fill",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::-ms-fill-lower",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::-ms-fill-upper",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::-ms-reveal",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::-ms-thumb",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::-ms-ticks-after",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::-ms-ticks-before",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::-ms-tooltip",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::-ms-track",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::-ms-value",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::-webkit-progress-bar",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::-webkit-progress-inner-value",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::-webkit-progress-value",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::-webkit-slider-runnable-track",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::-webkit-slider-thumb",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::after",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::backdrop",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::before",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::cue",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::cue-region",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::first-letter",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::first-line",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::grammar-error",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::marker",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::part",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
     "keyword": ":picture-in-picture",
     "keywordType": "selector",
     "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": "::placeholder",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::selection",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::slotted",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "::spelling-error",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-elements"
+  },
+  {
+    "keyword": "-ms-accelerator",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-block-progression",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-content-zoom-chaining",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-content-zooming",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-content-zoom-limit",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-content-zoom-limit-max",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-content-zoom-limit-min",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-content-zoom-snap",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-content-zoom-snap-points",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-content-zoom-snap-type",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-filter",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-flow-from",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-flow-into",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-grid-columns",
+    "keywordType": "property",
+    "moduleGroup": "CSS Grid Layout"
+  },
+  {
+    "keyword": "-ms-grid-rows",
+    "keywordType": "property",
+    "moduleGroup": "CSS Grid Layout"
+  },
+  {
+    "keyword": "-ms-high-contrast-adjust",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-hyphenate-limit-chars",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-hyphenate-limit-lines",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-hyphenate-limit-zone",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-ime-align",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-overflow-style",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-scrollbar-3dlight-color",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-scrollbar-arrow-color",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-scrollbar-base-color",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-scrollbar-darkshadow-color",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-scrollbar-face-color",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-scrollbar-highlight-color",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-scrollbar-shadow-color",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-scrollbar-track-color",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-scroll-chaining",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-scroll-limit",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-scroll-limit-x-max",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-scroll-limit-x-min",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-scroll-limit-y-max",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-scroll-limit-y-min",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-scroll-rails",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-scroll-snap-points-x",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-scroll-snap-points-y",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-scroll-snap-type",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-scroll-snap-x",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-scroll-snap-y",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-scroll-translation",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-text-autospace",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-touch-select",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-user-select",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-wrap-flow",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-wrap-margin",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-ms-wrap-through",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "keyword": "-moz-appearance",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "keyword": "-moz-binding",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "keyword": "-moz-border-bottom-colors",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "keyword": "-moz-border-left-colors",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "keyword": "-moz-border-right-colors",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "keyword": "-moz-border-top-colors",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "keyword": "-moz-context-properties",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "keyword": "-moz-float-edge",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "keyword": "-moz-force-broken-image-icon",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "keyword": "-moz-image-region",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "keyword": "-moz-orient",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "keyword": "-moz-outline-radius",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "keyword": "-moz-outline-radius-bottomleft",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "keyword": "-moz-outline-radius-bottomright",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "keyword": "-moz-outline-radius-topleft",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "keyword": "-moz-outline-radius-topright",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "keyword": "-moz-stack-sizing",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "keyword": "-moz-text-blink",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "keyword": "-moz-user-focus",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "keyword": "-moz-user-input",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "keyword": "-moz-user-modify",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "keyword": "-moz-window-dragging",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "keyword": "-moz-window-shadow",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "keyword": "-webkit-appearance",
+    "keywordType": "property",
+    "moduleGroup": "WebKit Extensions"
+  },
+  {
+    "keyword": "-webkit-border-before",
+    "keywordType": "property",
+    "moduleGroup": "WebKit Extensions"
+  },
+  {
+    "keyword": "-webkit-border-before-color",
+    "keywordType": "property",
+    "moduleGroup": "WebKit Extensions"
+  },
+  {
+    "keyword": "-webkit-border-before-style",
+    "keywordType": "property",
+    "moduleGroup": "WebKit Extensions"
+  },
+  {
+    "keyword": "-webkit-border-before-width",
+    "keywordType": "property",
+    "moduleGroup": "WebKit Extensions"
+  },
+  {
+    "keyword": "-webkit-box-reflect",
+    "keywordType": "property",
+    "moduleGroup": "WebKit Extensions"
+  },
+  {
+    "keyword": "-webkit-line-clamp",
+    "keywordType": "property",
+    "moduleGroup": "WebKit Extensions"
+  },
+  {
+    "keyword": "-webkit-mask",
+    "keywordType": "property",
+    "moduleGroup": "WebKit Extensions"
+  },
+  {
+    "keyword": "-webkit-mask-attachment",
+    "keywordType": "property",
+    "moduleGroup": "WebKit Extensions"
+  },
+  {
+    "keyword": "-webkit-mask-clip",
+    "keywordType": "property",
+    "moduleGroup": "WebKit Extensions"
+  },
+  {
+    "keyword": "-webkit-mask-composite",
+    "keywordType": "property",
+    "moduleGroup": "WebKit Extensions"
+  },
+  {
+    "keyword": "-webkit-mask-image",
+    "keywordType": "property",
+    "moduleGroup": "WebKit Extensions"
+  },
+  {
+    "keyword": "-webkit-mask-origin",
+    "keywordType": "property",
+    "moduleGroup": "WebKit Extensions"
+  },
+  {
+    "keyword": "-webkit-mask-position",
+    "keywordType": "property",
+    "moduleGroup": "WebKit Extensions"
+  },
+  {
+    "keyword": "-webkit-mask-position-x",
+    "keywordType": "property",
+    "moduleGroup": "WebKit Extensions"
+  },
+  {
+    "keyword": "-webkit-mask-position-y",
+    "keywordType": "property",
+    "moduleGroup": "WebKit Extensions"
+  },
+  {
+    "keyword": "-webkit-mask-repeat",
+    "keywordType": "property",
+    "moduleGroup": "WebKit Extensions"
+  },
+  {
+    "keyword": "-webkit-mask-repeat-x",
+    "keywordType": "property",
+    "moduleGroup": "WebKit Extensions"
+  },
+  {
+    "keyword": "-webkit-mask-repeat-y",
+    "keywordType": "property",
+    "moduleGroup": "WebKit Extensions"
+  },
+  {
+    "keyword": "-webkit-mask-size",
+    "keywordType": "property",
+    "moduleGroup": "WebKit Extensions"
+  },
+  {
+    "keyword": "-webkit-overflow-scrolling",
+    "keywordType": "property",
+    "moduleGroup": "WebKit Extensions"
+  },
+  {
+    "keyword": "-webkit-tap-highlight-color",
+    "keywordType": "property",
+    "moduleGroup": "WebKit Extensions"
+  },
+  {
+    "keyword": "-webkit-text-fill-color",
+    "keywordType": "property",
+    "moduleGroup": "WebKit Extensions"
+  },
+  {
+    "keyword": "-webkit-text-stroke",
+    "keywordType": "property",
+    "moduleGroup": "WebKit Extensions"
+  },
+  {
+    "keyword": "-webkit-text-stroke-color",
+    "keywordType": "property",
+    "moduleGroup": "WebKit Extensions"
+  },
+  {
+    "keyword": "-webkit-text-stroke-width",
+    "keywordType": "property",
+    "moduleGroup": "WebKit Extensions"
+  },
+  {
+    "keyword": "-webkit-touch-callout",
+    "keywordType": "property",
+    "moduleGroup": "WebKit Extensions"
+  },
+  {
+    "keyword": "-webkit-user-modify",
+    "keywordType": "property",
+    "moduleGroup": "WebKit Extensions"
+  },
+  {
+    "keyword": "accent-color",
+    "keywordType": "property",
+    "moduleGroup": "CSS Basic User Interface"
+  },
+  {
+    "keyword": "align-content",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Alignment"
+  },
+  {
+    "keyword": "align-items",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Alignment"
+  },
+  {
+    "keyword": "align-self",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Alignment"
+  },
+  {
+    "keyword": "align-tracks",
+    "keywordType": "property",
+    "moduleGroup": "CSS Grid Layout"
+  },
+  {
+    "keyword": "all",
+    "keywordType": "property",
+    "moduleGroup": "CSS Miscellaneous"
+  },
+  {
+    "keyword": "animation",
+    "keywordType": "property",
+    "moduleGroup": "CSS Animations"
+  },
+  {
+    "keyword": "animation-delay",
+    "keywordType": "property",
+    "moduleGroup": "CSS Animations"
+  },
+  {
+    "keyword": "animation-direction",
+    "keywordType": "property",
+    "moduleGroup": "CSS Animations"
+  },
+  {
+    "keyword": "animation-duration",
+    "keywordType": "property",
+    "moduleGroup": "CSS Animations"
+  },
+  {
+    "keyword": "animation-fill-mode",
+    "keywordType": "property",
+    "moduleGroup": "CSS Animations"
+  },
+  {
+    "keyword": "animation-iteration-count",
+    "keywordType": "property",
+    "moduleGroup": "CSS Animations"
+  },
+  {
+    "keyword": "animation-name",
+    "keywordType": "property",
+    "moduleGroup": "CSS Animations"
+  },
+  {
+    "keyword": "animation-play-state",
+    "keywordType": "property",
+    "moduleGroup": "CSS Animations"
+  },
+  {
+    "keyword": "animation-timing-function",
+    "keywordType": "property",
+    "moduleGroup": "CSS Animations"
+  },
+  {
+    "keyword": "animation-timeline",
+    "keywordType": "property",
+    "moduleGroup": "CSS Animations"
+  },
+  {
+    "keyword": "appearance",
+    "keywordType": "property",
+    "moduleGroup": "CSS Basic User Interface"
+  },
+  {
+    "keyword": "aspect-ratio",
+    "keywordType": "property",
+    "moduleGroup": "CSS Basic User Interface"
+  },
+  {
+    "keyword": "azimuth",
+    "keywordType": "property",
+    "moduleGroup": "CSS Speech"
+  },
+  {
+    "keyword": "backdrop-filter",
+    "keywordType": "property",
+    "moduleGroup": "Filter Effects"
+  },
+  {
+    "keyword": "backface-visibility",
+    "keywordType": "property",
+    "moduleGroup": "CSS Transforms"
+  },
+  {
+    "keyword": "background",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "background-attachment",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "background-blend-mode",
+    "keywordType": "property",
+    "moduleGroup": "Compositing and Blending"
+  },
+  {
+    "keyword": "background-clip",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "background-color",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "background-image",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "background-origin",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "background-position",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "background-position-x",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "background-position-y",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "background-repeat",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "background-size",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "block-overflow",
+    "keywordType": "property",
+    "moduleGroup": "CSS Overflow"
+  },
+  {
+    "keyword": "block-size",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "border",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "border-block",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "border-block-color",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "border-block-style",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "border-block-width",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "border-block-end",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "border-block-end-color",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "border-block-end-style",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "border-block-end-width",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "border-block-start",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "border-block-start-color",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "border-block-start-style",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "border-block-start-width",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "border-bottom",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "border-bottom-color",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "border-bottom-left-radius",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "border-bottom-right-radius",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "border-bottom-style",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "border-bottom-width",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "border-collapse",
+    "keywordType": "property",
+    "moduleGroup": "CSS Table"
+  },
+  {
+    "keyword": "border-color",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "border-end-end-radius",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "border-end-start-radius",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "border-image",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "border-image-outset",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "border-image-repeat",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "border-image-slice",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "border-image-source",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "border-image-width",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "border-inline",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "border-inline-end",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "border-inline-color",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "border-inline-style",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "border-inline-width",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "border-inline-end-color",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "border-inline-end-style",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "border-inline-end-width",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "border-inline-start",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "border-inline-start-color",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "border-inline-start-style",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "border-inline-start-width",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "border-left",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "border-left-color",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "border-left-style",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "border-left-width",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "border-radius",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "border-right",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "border-right-color",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "border-right-style",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "border-right-width",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "border-spacing",
+    "keywordType": "property",
+    "moduleGroup": "CSS Table"
+  },
+  {
+    "keyword": "border-start-end-radius",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "border-start-start-radius",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "border-style",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "border-top",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "border-top-color",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "border-top-left-radius",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "border-top-right-radius",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "border-top-style",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "border-top-width",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "border-width",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "bottom",
+    "keywordType": "property",
+    "moduleGroup": "CSS Positioning"
+  },
+  {
+    "keyword": "box-align",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "keyword": "box-decoration-break",
+    "keywordType": "property",
+    "moduleGroup": "CSS Fragmentation"
+  },
+  {
+    "keyword": "box-direction",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "keyword": "box-flex",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "keyword": "box-flex-group",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "keyword": "box-lines",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "keyword": "box-ordinal-group",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "keyword": "box-orient",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "keyword": "box-pack",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "keyword": "box-shadow",
+    "keywordType": "property",
+    "moduleGroup": "CSS Backgrounds and Borders"
+  },
+  {
+    "keyword": "box-sizing",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Model"
+  },
+  {
+    "keyword": "break-after",
+    "keywordType": "property",
+    "moduleGroup": "CSS Fragmentation"
+  },
+  {
+    "keyword": "break-before",
+    "keywordType": "property",
+    "moduleGroup": "CSS Fragmentation"
+  },
+  {
+    "keyword": "break-inside",
+    "keywordType": "property",
+    "moduleGroup": "CSS Fragmentation"
+  },
+  {
+    "keyword": "caption-side",
+    "keywordType": "property",
+    "moduleGroup": "CSS Table"
+  },
+  {
+    "keyword": "caret-color",
+    "keywordType": "property",
+    "moduleGroup": "CSS Basic User Interface"
+  },
+  {
+    "keyword": "clear",
+    "keywordType": "property",
+    "moduleGroup": "CSS Positioning"
+  },
+  {
+    "keyword": "clip",
+    "keywordType": "property",
+    "moduleGroup": "CSS Masking"
+  },
+  {
+    "keyword": "clip-path",
+    "keywordType": "property",
+    "moduleGroup": "CSS Masking"
+  },
+  {
+    "keyword": "color",
+    "keywordType": "property",
+    "moduleGroup": "CSS Color"
+  },
+  {
+    "keyword": "print-color-adjust",
+    "keywordType": "property",
+    "moduleGroup": "CSS Color"
+  },
+  {
+    "keyword": "color-scheme",
+    "keywordType": "property",
+    "moduleGroup": "CSS Color"
+  },
+  {
+    "keyword": "column-count",
+    "keywordType": "property",
+    "moduleGroup": "CSS Columns"
+  },
+  {
+    "keyword": "column-fill",
+    "keywordType": "property",
+    "moduleGroup": "CSS Columns"
+  },
+  {
+    "keyword": "column-gap",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Alignment"
+  },
+  {
+    "keyword": "column-rule",
+    "keywordType": "property",
+    "moduleGroup": "CSS Columns"
+  },
+  {
+    "keyword": "column-rule-color",
+    "keywordType": "property",
+    "moduleGroup": "CSS Columns"
+  },
+  {
+    "keyword": "column-rule-style",
+    "keywordType": "property",
+    "moduleGroup": "CSS Columns"
+  },
+  {
+    "keyword": "column-rule-width",
+    "keywordType": "property",
+    "moduleGroup": "CSS Columns"
+  },
+  {
+    "keyword": "column-span",
+    "keywordType": "property",
+    "moduleGroup": "CSS Columns"
+  },
+  {
+    "keyword": "column-width",
+    "keywordType": "property",
+    "moduleGroup": "CSS Columns"
+  },
+  {
+    "keyword": "columns",
+    "keywordType": "property",
+    "moduleGroup": "CSS Columns"
+  },
+  {
+    "keyword": "contain",
+    "keywordType": "property",
+    "moduleGroup": "CSS Containment"
+  },
+  {
+    "keyword": "content",
+    "keywordType": "property",
+    "moduleGroup": "CSS Generated Content"
+  },
+  {
+    "keyword": "content-visibility",
+    "keywordType": "property",
+    "moduleGroup": "CSS Containment"
+  },
+  {
+    "keyword": "counter-increment",
+    "keywordType": "property",
+    "moduleGroup": "CSS Counter Styles"
+  },
+  {
+    "keyword": "counter-reset",
+    "keywordType": "property",
+    "moduleGroup": "CSS Counter Styles"
+  },
+  {
+    "keyword": "counter-set",
+    "keywordType": "property",
+    "moduleGroup": "CSS Counter Styles"
+  },
+  {
+    "keyword": "cursor",
+    "keywordType": "property",
+    "moduleGroup": "CSS Basic User Interface"
+  },
+  {
+    "keyword": "direction",
+    "keywordType": "property",
+    "moduleGroup": "CSS Writing Modes"
+  },
+  {
+    "keyword": "display",
+    "keywordType": "property",
+    "moduleGroup": "CSS Display"
+  },
+  {
+    "keyword": "empty-cells",
+    "keywordType": "property",
+    "moduleGroup": "CSS Table"
+  },
+  {
+    "keyword": "filter",
+    "keywordType": "property",
+    "moduleGroup": "Filter Effects"
+  },
+  {
+    "keyword": "flex",
+    "keywordType": "property",
+    "moduleGroup": "CSS Flexible Box Layout"
+  },
+  {
+    "keyword": "flex-basis",
+    "keywordType": "property",
+    "moduleGroup": "CSS Flexible Box Layout"
+  },
+  {
+    "keyword": "flex-direction",
+    "keywordType": "property",
+    "moduleGroup": "CSS Flexible Box Layout"
+  },
+  {
+    "keyword": "flex-flow",
+    "keywordType": "property",
+    "moduleGroup": "CSS Flexible Box Layout"
+  },
+  {
+    "keyword": "flex-grow",
+    "keywordType": "property",
+    "moduleGroup": "CSS Flexible Box Layout"
+  },
+  {
+    "keyword": "flex-shrink",
+    "keywordType": "property",
+    "moduleGroup": "CSS Flexible Box Layout"
+  },
+  {
+    "keyword": "flex-wrap",
+    "keywordType": "property",
+    "moduleGroup": "CSS Flexible Box Layout"
+  },
+  {
+    "keyword": "float",
+    "keywordType": "property",
+    "moduleGroup": "CSS Positioning"
+  },
+  {
+    "keyword": "font",
+    "keywordType": "property",
+    "moduleGroup": "CSS Fonts"
+  },
+  {
+    "keyword": "font-family",
+    "keywordType": "property",
+    "moduleGroup": "CSS Fonts"
+  },
+  {
+    "keyword": "font-feature-settings",
+    "keywordType": "property",
+    "moduleGroup": "CSS Fonts"
+  },
+  {
+    "keyword": "font-kerning",
+    "keywordType": "property",
+    "moduleGroup": "CSS Fonts"
+  },
+  {
+    "keyword": "font-language-override",
+    "keywordType": "property",
+    "moduleGroup": "CSS Fonts"
+  },
+  {
+    "keyword": "font-optical-sizing",
+    "keywordType": "property",
+    "moduleGroup": "CSS Fonts"
+  },
+  {
+    "keyword": "font-variation-settings",
+    "keywordType": "property",
+    "moduleGroup": "CSS Fonts"
+  },
+  {
+    "keyword": "font-size",
+    "keywordType": "property",
+    "moduleGroup": "CSS Fonts"
+  },
+  {
+    "keyword": "font-size-adjust",
+    "keywordType": "property",
+    "moduleGroup": "CSS Fonts"
+  },
+  {
+    "keyword": "font-smooth",
+    "keywordType": "property",
+    "moduleGroup": "CSS Fonts"
+  },
+  {
+    "keyword": "font-stretch",
+    "keywordType": "property",
+    "moduleGroup": "CSS Fonts"
+  },
+  {
+    "keyword": "font-style",
+    "keywordType": "property",
+    "moduleGroup": "CSS Fonts"
+  },
+  {
+    "keyword": "font-synthesis",
+    "keywordType": "property",
+    "moduleGroup": "CSS Fonts"
+  },
+  {
+    "keyword": "font-variant",
+    "keywordType": "property",
+    "moduleGroup": "CSS Fonts"
+  },
+  {
+    "keyword": "font-variant-alternates",
+    "keywordType": "property",
+    "moduleGroup": "CSS Fonts"
+  },
+  {
+    "keyword": "font-variant-caps",
+    "keywordType": "property",
+    "moduleGroup": "CSS Fonts"
+  },
+  {
+    "keyword": "font-variant-east-asian",
+    "keywordType": "property",
+    "moduleGroup": "CSS Fonts"
+  },
+  {
+    "keyword": "font-variant-ligatures",
+    "keywordType": "property",
+    "moduleGroup": "CSS Fonts"
+  },
+  {
+    "keyword": "font-variant-numeric",
+    "keywordType": "property",
+    "moduleGroup": "CSS Fonts"
+  },
+  {
+    "keyword": "font-variant-position",
+    "keywordType": "property",
+    "moduleGroup": "CSS Fonts"
+  },
+  {
+    "keyword": "font-weight",
+    "keywordType": "property",
+    "moduleGroup": "CSS Fonts"
+  },
+  {
+    "keyword": "forced-color-adjust",
+    "keywordType": "property",
+    "moduleGroup": "CSS Color"
+  },
+  {
+    "keyword": "gap",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Alignment"
+  },
+  {
+    "keyword": "grid",
+    "keywordType": "property",
+    "moduleGroup": "CSS Grid Layout"
+  },
+  {
+    "keyword": "grid-area",
+    "keywordType": "property",
+    "moduleGroup": "CSS Grid Layout"
+  },
+  {
+    "keyword": "grid-auto-columns",
+    "keywordType": "property",
+    "moduleGroup": "CSS Grid Layout"
+  },
+  {
+    "keyword": "grid-auto-flow",
+    "keywordType": "property",
+    "moduleGroup": "CSS Grid Layout"
+  },
+  {
+    "keyword": "grid-auto-rows",
+    "keywordType": "property",
+    "moduleGroup": "CSS Grid Layout"
+  },
+  {
+    "keyword": "grid-column",
+    "keywordType": "property",
+    "moduleGroup": "CSS Grid Layout"
+  },
+  {
+    "keyword": "grid-column-end",
+    "keywordType": "property",
+    "moduleGroup": "CSS Grid Layout"
+  },
+  {
+    "keyword": "grid-column-gap",
+    "keywordType": "property",
+    "moduleGroup": "CSS Grid Layout"
+  },
+  {
+    "keyword": "grid-column-start",
+    "keywordType": "property",
+    "moduleGroup": "CSS Grid Layout"
+  },
+  {
+    "keyword": "grid-gap",
+    "keywordType": "property",
+    "moduleGroup": "CSS Grid Layout"
+  },
+  {
+    "keyword": "grid-row",
+    "keywordType": "property",
+    "moduleGroup": "CSS Grid Layout"
+  },
+  {
+    "keyword": "grid-row-end",
+    "keywordType": "property",
+    "moduleGroup": "CSS Grid Layout"
+  },
+  {
+    "keyword": "grid-row-gap",
+    "keywordType": "property",
+    "moduleGroup": "CSS Grid Layout"
+  },
+  {
+    "keyword": "grid-row-start",
+    "keywordType": "property",
+    "moduleGroup": "CSS Grid Layout"
+  },
+  {
+    "keyword": "grid-template",
+    "keywordType": "property",
+    "moduleGroup": "CSS Grid Layout"
+  },
+  {
+    "keyword": "grid-template-areas",
+    "keywordType": "property",
+    "moduleGroup": "CSS Grid Layout"
+  },
+  {
+    "keyword": "grid-template-columns",
+    "keywordType": "property",
+    "moduleGroup": "CSS Grid Layout"
+  },
+  {
+    "keyword": "grid-template-rows",
+    "keywordType": "property",
+    "moduleGroup": "CSS Grid Layout"
+  },
+  {
+    "keyword": "hanging-punctuation",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text"
+  },
+  {
+    "keyword": "height",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Model"
+  },
+  {
+    "keyword": "hyphenate-character",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text"
+  },
+  {
+    "keyword": "hyphens",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text"
+  },
+  {
+    "keyword": "image-orientation",
+    "keywordType": "property",
+    "moduleGroup": "CSS Images"
+  },
+  {
+    "keyword": "image-rendering",
+    "keywordType": "property",
+    "moduleGroup": "CSS Images"
+  },
+  {
+    "keyword": "image-resolution",
+    "keywordType": "property",
+    "moduleGroup": "CSS Images"
+  },
+  {
+    "keyword": "ime-mode",
+    "keywordType": "property",
+    "moduleGroup": "CSS Basic User Interface"
+  },
+  {
+    "keyword": "initial-letter",
+    "keywordType": "property",
+    "moduleGroup": "CSS Inline"
+  },
+  {
+    "keyword": "initial-letter-align",
+    "keywordType": "property",
+    "moduleGroup": "CSS Inline"
+  },
+  {
+    "keyword": "inline-size",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "input-security",
+    "keywordType": "property",
+    "moduleGroup": "CSS Basic User Interface"
+  },
+  {
+    "keyword": "inset",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "inset-block",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "inset-block-end",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "inset-block-start",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "inset-inline",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "inset-inline-end",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "inset-inline-start",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "isolation",
+    "keywordType": "property",
+    "moduleGroup": "Compositing and Blending"
+  },
+  {
+    "keyword": "justify-content",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Alignment"
+  },
+  {
+    "keyword": "justify-items",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Alignment"
+  },
+  {
+    "keyword": "justify-self",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Alignment"
+  },
+  {
+    "keyword": "justify-tracks",
+    "keywordType": "property",
+    "moduleGroup": "CSS Grid Layout"
+  },
+  {
+    "keyword": "left",
+    "keywordType": "property",
+    "moduleGroup": "CSS Positioning"
+  },
+  {
+    "keyword": "letter-spacing",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text"
+  },
+  {
+    "keyword": "line-break",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text"
+  },
+  {
+    "keyword": "line-clamp",
+    "keywordType": "property",
+    "moduleGroup": "CSS Overflow"
+  },
+  {
+    "keyword": "line-height",
+    "keywordType": "property",
+    "moduleGroup": "CSS Fonts"
+  },
+  {
+    "keyword": "line-height-step",
+    "keywordType": "property",
+    "moduleGroup": "CSS Fonts"
+  },
+  {
+    "keyword": "list-style",
+    "keywordType": "property",
+    "moduleGroup": "CSS Lists and Counters"
+  },
+  {
+    "keyword": "list-style-image",
+    "keywordType": "property",
+    "moduleGroup": "CSS Lists and Counters"
+  },
+  {
+    "keyword": "list-style-position",
+    "keywordType": "property",
+    "moduleGroup": "CSS Lists and Counters"
+  },
+  {
+    "keyword": "list-style-type",
+    "keywordType": "property",
+    "moduleGroup": "CSS Lists and Counters"
+  },
+  {
+    "keyword": "margin",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Model"
+  },
+  {
+    "keyword": "margin-block",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "margin-block-end",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "margin-block-start",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "margin-bottom",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Model"
+  },
+  {
+    "keyword": "margin-inline",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "margin-inline-end",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "margin-inline-start",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "margin-left",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Model"
+  },
+  {
+    "keyword": "margin-right",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Model"
+  },
+  {
+    "keyword": "margin-top",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Model"
+  },
+  {
+    "keyword": "margin-trim",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Model"
+  },
+  {
+    "keyword": "mask",
+    "keywordType": "property",
+    "moduleGroup": "CSS Masking"
+  },
+  {
+    "keyword": "mask-border",
+    "keywordType": "property",
+    "moduleGroup": "CSS Masking"
+  },
+  {
+    "keyword": "mask-border-mode",
+    "keywordType": "property",
+    "moduleGroup": "CSS Masking"
+  },
+  {
+    "keyword": "mask-border-outset",
+    "keywordType": "property",
+    "moduleGroup": "CSS Masking"
+  },
+  {
+    "keyword": "mask-border-repeat",
+    "keywordType": "property",
+    "moduleGroup": "CSS Masking"
+  },
+  {
+    "keyword": "mask-border-slice",
+    "keywordType": "property",
+    "moduleGroup": "CSS Masking"
+  },
+  {
+    "keyword": "mask-border-source",
+    "keywordType": "property",
+    "moduleGroup": "CSS Masking"
+  },
+  {
+    "keyword": "mask-border-width",
+    "keywordType": "property",
+    "moduleGroup": "CSS Masking"
+  },
+  {
+    "keyword": "mask-clip",
+    "keywordType": "property",
+    "moduleGroup": "CSS Masking"
+  },
+  {
+    "keyword": "mask-composite",
+    "keywordType": "property",
+    "moduleGroup": "CSS Masking"
+  },
+  {
+    "keyword": "mask-image",
+    "keywordType": "property",
+    "moduleGroup": "CSS Masking"
+  },
+  {
+    "keyword": "mask-mode",
+    "keywordType": "property",
+    "moduleGroup": "CSS Masking"
+  },
+  {
+    "keyword": "mask-origin",
+    "keywordType": "property",
+    "moduleGroup": "CSS Masking"
+  },
+  {
+    "keyword": "mask-position",
+    "keywordType": "property",
+    "moduleGroup": "CSS Masking"
+  },
+  {
+    "keyword": "mask-repeat",
+    "keywordType": "property",
+    "moduleGroup": "CSS Masking"
+  },
+  {
+    "keyword": "mask-size",
+    "keywordType": "property",
+    "moduleGroup": "CSS Masking"
+  },
+  {
+    "keyword": "mask-type",
+    "keywordType": "property",
+    "moduleGroup": "CSS Masking"
+  },
+  {
+    "keyword": "masonry-auto-flow",
+    "keywordType": "property",
+    "moduleGroup": "CSS Grid Layout"
+  },
+  {
+    "keyword": "math-style",
+    "keywordType": "property",
+    "moduleGroup": "MathML"
+  },
+  {
+    "keyword": "max-block-size",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "max-height",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Model"
+  },
+  {
+    "keyword": "max-inline-size",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "max-lines",
+    "keywordType": "property",
+    "moduleGroup": "CSS Overflow"
+  },
+  {
+    "keyword": "max-width",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Model"
+  },
+  {
+    "keyword": "min-block-size",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "min-height",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Model"
+  },
+  {
+    "keyword": "min-inline-size",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "min-width",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Model"
+  },
+  {
+    "keyword": "mix-blend-mode",
+    "keywordType": "property",
+    "moduleGroup": "Compositing and Blending"
+  },
+  {
+    "keyword": "object-fit",
+    "keywordType": "property",
+    "moduleGroup": "CSS Images"
+  },
+  {
+    "keyword": "object-position",
+    "keywordType": "property",
+    "moduleGroup": "CSS Images"
+  },
+  {
+    "keyword": "offset",
+    "keywordType": "property",
+    "moduleGroup": "CSS Motion Path"
+  },
+  {
+    "keyword": "offset-anchor",
+    "keywordType": "property",
+    "moduleGroup": "CSS Motion Path"
+  },
+  {
+    "keyword": "offset-distance",
+    "keywordType": "property",
+    "moduleGroup": "CSS Motion Path"
+  },
+  {
+    "keyword": "offset-path",
+    "keywordType": "property",
+    "moduleGroup": "CSS Motion Path"
+  },
+  {
+    "keyword": "offset-position",
+    "keywordType": "property",
+    "moduleGroup": "CSS Motion Path"
+  },
+  {
+    "keyword": "offset-rotate",
+    "keywordType": "property",
+    "moduleGroup": "CSS Motion Path"
+  },
+  {
+    "keyword": "opacity",
+    "keywordType": "property",
+    "moduleGroup": "CSS Color"
+  },
+  {
+    "keyword": "order",
+    "keywordType": "property",
+    "moduleGroup": "CSS Flexible Box Layout"
+  },
+  {
+    "keyword": "orphans",
+    "keywordType": "property",
+    "moduleGroup": "CSS Fragmentation"
+  },
+  {
+    "keyword": "outline",
+    "keywordType": "property",
+    "moduleGroup": "CSS Basic User Interface"
+  },
+  {
+    "keyword": "outline-color",
+    "keywordType": "property",
+    "moduleGroup": "CSS Basic User Interface"
+  },
+  {
+    "keyword": "outline-offset",
+    "keywordType": "property",
+    "moduleGroup": "CSS Basic User Interface"
+  },
+  {
+    "keyword": "outline-style",
+    "keywordType": "property",
+    "moduleGroup": "CSS Basic User Interface"
+  },
+  {
+    "keyword": "outline-width",
+    "keywordType": "property",
+    "moduleGroup": "CSS Basic User Interface"
+  },
+  {
+    "keyword": "overflow",
+    "keywordType": "property",
+    "moduleGroup": "CSS Overflow"
+  },
+  {
+    "keyword": "overflow-anchor",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scroll Anchoring"
+  },
+  {
+    "keyword": "overflow-block",
+    "keywordType": "property",
+    "moduleGroup": "CSS Overflow"
+  },
+  {
+    "keyword": "overflow-clip-box",
+    "keywordType": "property",
+    "moduleGroup": "Mozilla Extensions"
+  },
+  {
+    "keyword": "overflow-clip-margin",
+    "keywordType": "property",
+    "moduleGroup": "CSS Overflow"
+  },
+  {
+    "keyword": "overflow-inline",
+    "keywordType": "property",
+    "moduleGroup": "CSS Overflow"
+  },
+  {
+    "keyword": "overflow-wrap",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text"
+  },
+  {
+    "keyword": "overflow-x",
+    "keywordType": "property",
+    "moduleGroup": "CSS Overflow"
+  },
+  {
+    "keyword": "overflow-y",
+    "keywordType": "property",
+    "moduleGroup": "CSS Overflow"
+  },
+  {
+    "keyword": "overscroll-behavior",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Model"
+  },
+  {
+    "keyword": "overscroll-behavior-block",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Model"
+  },
+  {
+    "keyword": "overscroll-behavior-inline",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Model"
+  },
+  {
+    "keyword": "overscroll-behavior-x",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Model"
+  },
+  {
+    "keyword": "overscroll-behavior-y",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Model"
+  },
+  {
+    "keyword": "padding",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Model"
+  },
+  {
+    "keyword": "padding-block",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "padding-block-end",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "padding-block-start",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "padding-bottom",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Model"
+  },
+  {
+    "keyword": "padding-inline",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "padding-inline-end",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "padding-inline-start",
+    "keywordType": "property",
+    "moduleGroup": "CSS Logical Properties"
+  },
+  {
+    "keyword": "padding-left",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Model"
+  },
+  {
+    "keyword": "padding-right",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Model"
+  },
+  {
+    "keyword": "padding-top",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Model"
+  },
+  {
+    "keyword": "page-break-after",
+    "keywordType": "property",
+    "moduleGroup": "CSS Pages"
+  },
+  {
+    "keyword": "page-break-before",
+    "keywordType": "property",
+    "moduleGroup": "CSS Pages"
+  },
+  {
+    "keyword": "page-break-inside",
+    "keywordType": "property",
+    "moduleGroup": "CSS Pages"
+  },
+  {
+    "keyword": "paint-order",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text"
+  },
+  {
+    "keyword": "perspective",
+    "keywordType": "property",
+    "moduleGroup": "CSS Transforms"
+  },
+  {
+    "keyword": "perspective-origin",
+    "keywordType": "property",
+    "moduleGroup": "CSS Transforms"
+  },
+  {
+    "keyword": "place-content",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Alignment"
+  },
+  {
+    "keyword": "place-items",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Alignment"
+  },
+  {
+    "keyword": "place-self",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Alignment"
+  },
+  {
+    "keyword": "pointer-events",
+    "keywordType": "property",
+    "moduleGroup": "CSS Basic User Interface"
+  },
+  {
+    "keyword": "position",
+    "keywordType": "property",
+    "moduleGroup": "CSS Positioning"
+  },
+  {
+    "keyword": "quotes",
+    "keywordType": "property",
+    "moduleGroup": "CSS Generated Content"
+  },
+  {
+    "keyword": "resize",
+    "keywordType": "property",
+    "moduleGroup": "CSS Basic User Interface"
+  },
+  {
+    "keyword": "right",
+    "keywordType": "property",
+    "moduleGroup": "CSS Positioning"
+  },
+  {
+    "keyword": "rotate",
+    "keywordType": "property",
+    "moduleGroup": "CSS Transforms"
+  },
+  {
+    "keyword": "row-gap",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Alignment"
+  },
+  {
+    "keyword": "ruby-align",
+    "keywordType": "property",
+    "moduleGroup": "CSS Ruby"
+  },
+  {
+    "keyword": "ruby-merge",
+    "keywordType": "property",
+    "moduleGroup": "CSS Ruby"
+  },
+  {
+    "keyword": "ruby-position",
+    "keywordType": "property",
+    "moduleGroup": "CSS Ruby"
+  },
+  {
+    "keyword": "scale",
+    "keywordType": "property",
+    "moduleGroup": "CSS Transforms"
+  },
+  {
+    "keyword": "scrollbar-color",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scrollbars"
+  },
+  {
+    "keyword": "scrollbar-gutter",
+    "keywordType": "property",
+    "moduleGroup": "CSS Overflow"
+  },
+  {
+    "keyword": "scrollbar-width",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scrollbars"
+  },
+  {
+    "keyword": "scroll-behavior",
+    "keywordType": "property",
+    "moduleGroup": "CSSOM View"
+  },
+  {
+    "keyword": "scroll-margin",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scroll Snap"
+  },
+  {
+    "keyword": "scroll-margin-block",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scroll Snap"
+  },
+  {
+    "keyword": "scroll-margin-block-start",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scroll Snap"
+  },
+  {
+    "keyword": "scroll-margin-block-end",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scroll Snap"
+  },
+  {
+    "keyword": "scroll-margin-bottom",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scroll Snap"
+  },
+  {
+    "keyword": "scroll-margin-inline",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scroll Snap"
+  },
+  {
+    "keyword": "scroll-margin-inline-start",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scroll Snap"
+  },
+  {
+    "keyword": "scroll-margin-inline-end",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scroll Snap"
+  },
+  {
+    "keyword": "scroll-margin-left",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scroll Snap"
+  },
+  {
+    "keyword": "scroll-margin-right",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scroll Snap"
+  },
+  {
+    "keyword": "scroll-margin-top",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scroll Snap"
+  },
+  {
+    "keyword": "scroll-padding",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scroll Snap"
+  },
+  {
+    "keyword": "scroll-padding-block",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scroll Snap"
+  },
+  {
+    "keyword": "scroll-padding-block-start",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scroll Snap"
+  },
+  {
+    "keyword": "scroll-padding-block-end",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scroll Snap"
+  },
+  {
+    "keyword": "scroll-padding-bottom",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scroll Snap"
+  },
+  {
+    "keyword": "scroll-padding-inline",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scroll Snap"
+  },
+  {
+    "keyword": "scroll-padding-inline-start",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scroll Snap"
+  },
+  {
+    "keyword": "scroll-padding-inline-end",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scroll Snap"
+  },
+  {
+    "keyword": "scroll-padding-left",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scroll Snap"
+  },
+  {
+    "keyword": "scroll-padding-right",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scroll Snap"
+  },
+  {
+    "keyword": "scroll-padding-top",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scroll Snap"
+  },
+  {
+    "keyword": "scroll-snap-align",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scroll Snap"
+  },
+  {
+    "keyword": "scroll-snap-coordinate",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scroll Snap"
+  },
+  {
+    "keyword": "scroll-snap-destination",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scroll Snap"
+  },
+  {
+    "keyword": "scroll-snap-points-x",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scroll Snap"
+  },
+  {
+    "keyword": "scroll-snap-points-y",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scroll Snap"
+  },
+  {
+    "keyword": "scroll-snap-stop",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scroll Snap"
+  },
+  {
+    "keyword": "scroll-snap-type",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scroll Snap"
+  },
+  {
+    "keyword": "scroll-snap-type-x",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scroll Snap"
+  },
+  {
+    "keyword": "scroll-snap-type-y",
+    "keywordType": "property",
+    "moduleGroup": "CSS Scroll Snap"
+  },
+  {
+    "keyword": "shape-image-threshold",
+    "keywordType": "property",
+    "moduleGroup": "CSS Shapes"
+  },
+  {
+    "keyword": "shape-margin",
+    "keywordType": "property",
+    "moduleGroup": "CSS Shapes"
+  },
+  {
+    "keyword": "shape-outside",
+    "keywordType": "property",
+    "moduleGroup": "CSS Shapes"
+  },
+  {
+    "keyword": "tab-size",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text"
+  },
+  {
+    "keyword": "table-layout",
+    "keywordType": "property",
+    "moduleGroup": "CSS Table"
+  },
+  {
+    "keyword": "text-align",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text"
+  },
+  {
+    "keyword": "text-align-last",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text"
+  },
+  {
+    "keyword": "text-combine-upright",
+    "keywordType": "property",
+    "moduleGroup": "CSS Writing Modes"
+  },
+  {
+    "keyword": "text-decoration",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text Decoration"
+  },
+  {
+    "keyword": "text-decoration-color",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text Decoration"
+  },
+  {
+    "keyword": "text-decoration-line",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text Decoration"
+  },
+  {
+    "keyword": "text-decoration-skip",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text Decoration"
+  },
+  {
+    "keyword": "text-decoration-skip-ink",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text Decoration"
+  },
+  {
+    "keyword": "text-decoration-style",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text Decoration"
+  },
+  {
+    "keyword": "text-decoration-thickness",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text Decoration"
+  },
+  {
+    "keyword": "text-emphasis",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text Decoration"
+  },
+  {
+    "keyword": "text-emphasis-color",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text Decoration"
+  },
+  {
+    "keyword": "text-emphasis-position",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text Decoration"
+  },
+  {
+    "keyword": "text-emphasis-style",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text Decoration"
+  },
+  {
+    "keyword": "text-indent",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text"
+  },
+  {
+    "keyword": "text-justify",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text"
+  },
+  {
+    "keyword": "text-orientation",
+    "keywordType": "property",
+    "moduleGroup": "CSS Writing Modes"
+  },
+  {
+    "keyword": "text-overflow",
+    "keywordType": "property",
+    "moduleGroup": "CSS Basic User Interface"
+  },
+  {
+    "keyword": "text-rendering",
+    "keywordType": "property",
+    "moduleGroup": "CSS Miscellaneous"
+  },
+  {
+    "keyword": "text-shadow",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text Decoration"
+  },
+  {
+    "keyword": "text-size-adjust",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text"
+  },
+  {
+    "keyword": "text-transform",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text"
+  },
+  {
+    "keyword": "text-underline-offset",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text Decoration"
+  },
+  {
+    "keyword": "text-underline-position",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text Decoration"
+  },
+  {
+    "keyword": "top",
+    "keywordType": "property",
+    "moduleGroup": "CSS Positioning"
+  },
+  {
+    "keyword": "touch-action",
+    "keywordType": "property",
+    "moduleGroup": "Pointer Events"
+  },
+  {
+    "keyword": "transform",
+    "keywordType": "property",
+    "moduleGroup": "CSS Transforms"
+  },
+  {
+    "keyword": "transform-box",
+    "keywordType": "property",
+    "moduleGroup": "CSS Transforms"
+  },
+  {
+    "keyword": "transform-origin",
+    "keywordType": "property",
+    "moduleGroup": "CSS Transforms"
+  },
+  {
+    "keyword": "transform-style",
+    "keywordType": "property",
+    "moduleGroup": "CSS Transforms"
+  },
+  {
+    "keyword": "transition",
+    "keywordType": "property",
+    "moduleGroup": "CSS Transitions"
+  },
+  {
+    "keyword": "transition-delay",
+    "keywordType": "property",
+    "moduleGroup": "CSS Transitions"
+  },
+  {
+    "keyword": "transition-duration",
+    "keywordType": "property",
+    "moduleGroup": "CSS Transitions"
+  },
+  {
+    "keyword": "transition-property",
+    "keywordType": "property",
+    "moduleGroup": "CSS Transitions"
+  },
+  {
+    "keyword": "transition-timing-function",
+    "keywordType": "property",
+    "moduleGroup": "CSS Transitions"
+  },
+  {
+    "keyword": "translate",
+    "keywordType": "property",
+    "moduleGroup": "CSS Transforms"
+  },
+  {
+    "keyword": "unicode-bidi",
+    "keywordType": "property",
+    "moduleGroup": "CSS Writing Modes"
+  },
+  {
+    "keyword": "user-select",
+    "keywordType": "property",
+    "moduleGroup": "CSS Basic User Interface"
+  },
+  {
+    "keyword": "vertical-align",
+    "keywordType": "property",
+    "moduleGroup": "CSS Table"
+  },
+  {
+    "keyword": "visibility",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Model"
+  },
+  {
+    "keyword": "white-space",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text"
+  },
+  {
+    "keyword": "widows",
+    "keywordType": "property",
+    "moduleGroup": "CSS Fragmentation"
+  },
+  {
+    "keyword": "width",
+    "keywordType": "property",
+    "moduleGroup": "CSS Box Model"
+  },
+  {
+    "keyword": "will-change",
+    "keywordType": "property",
+    "moduleGroup": "CSS Will Change"
+  },
+  {
+    "keyword": "word-break",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text"
+  },
+  {
+    "keyword": "word-spacing",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text"
+  },
+  {
+    "keyword": "word-wrap",
+    "keywordType": "property",
+    "moduleGroup": "CSS Text"
+  },
+  {
+    "keyword": "writing-mode",
+    "keywordType": "property",
+    "moduleGroup": "CSS Writing Modes"
+  },
+  {
+    "keyword": "z-index",
+    "keywordType": "property",
+    "moduleGroup": "CSS Positioning"
+  },
+  {
+    "keyword": "zoom",
+    "keywordType": "property",
+    "moduleGroup": "Microsoft Extensions"
+  },
+  {
+    "moduleGroup": "Media Queries",
+    "keywordType": "at-rule",
+    "keyword": "@import"
+  },
+  {
+    "moduleGroup": "Media Queries",
+    "keywordType": "at-rule",
+    "keyword": "@media"
   },
   {
     "moduleGroup": "Selectors",
@@ -587,6 +3432,11 @@
   {
     "moduleGroup": "Selectors",
     "keywordType": "selector",
+    "keyword": "::target-text"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
     "keyword": ":target-within"
   },
   {
@@ -617,7 +3467,242 @@
   {
     "moduleGroup": "Selectors",
     "keywordType": "selector",
+    "keyword": "::-moz-progress-bar"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::-moz-range-progress"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::-moz-range-thumb"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::-moz-range-track"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::-ms-browse"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::-ms-check"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::-ms-clear"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::-ms-expand"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::-ms-fill"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::-ms-fill-lower"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::-ms-fill-upper"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::-ms-reveal"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::-ms-thumb"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::-ms-ticks-after"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::-ms-ticks-before"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::-ms-tooltip"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::-ms-track"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::-ms-value"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::-webkit-progress-bar"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::-webkit-progress-inner-value"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::-webkit-progress-value"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::-webkit-slider-runnable-track"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::-webkit-slider-thumb"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::after"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::backdrop"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::before"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::cue"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::cue-region"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::first-letter"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::first-line"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::grammar-error"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::marker"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::part"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
     "keyword": ":picture-in-picture"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::placeholder"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::selection"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::slotted"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "::spelling-error"
+  },
+  {
+    "moduleGroup": "WebKit Extensions",
+    "keywordType": "property",
+    "keyword": "-moz-appearance"
+  },
+  {
+    "moduleGroup": "CSS Overflow",
+    "keywordType": "property",
+    "keyword": "-webkit-line-clamp"
+  },
+  {
+    "moduleGroup": "WebKit Extensions",
+    "keywordType": "property",
+    "keyword": "box-align"
+  },
+  {
+    "moduleGroup": "WebKit Extensions",
+    "keywordType": "property",
+    "keyword": "box-direction"
+  },
+  {
+    "moduleGroup": "WebKit Extensions",
+    "keywordType": "property",
+    "keyword": "box-flex"
+  },
+  {
+    "moduleGroup": "WebKit Extensions",
+    "keywordType": "property",
+    "keyword": "box-flex-group"
+  },
+  {
+    "moduleGroup": "WebKit Extensions",
+    "keywordType": "property",
+    "keyword": "box-lines"
+  },
+  {
+    "moduleGroup": "WebKit Extensions",
+    "keywordType": "property",
+    "keyword": "box-ordinal-group"
+  },
+  {
+    "moduleGroup": "WebKit Extensions",
+    "keywordType": "property",
+    "keyword": "box-orient"
+  },
+  {
+    "moduleGroup": "WebKit Extensions",
+    "keywordType": "property",
+    "keyword": "box-pack"
   },
   {
     "moduleGroup": "CSS Pages",
@@ -633,5 +3718,120 @@
     "moduleGroup": "CSS Pages",
     "keywordType": "selector",
     "keyword": ":root"
+  },
+  {
+    "moduleGroup": "Mozilla Extensions",
+    "keywordType": "selector",
+    "keyword": "::-moz-progress-bar"
+  },
+  {
+    "moduleGroup": "Mozilla Extensions",
+    "keywordType": "selector",
+    "keyword": "::-moz-range-progress"
+  },
+  {
+    "moduleGroup": "Mozilla Extensions",
+    "keywordType": "selector",
+    "keyword": "::-moz-range-thumb"
+  },
+  {
+    "moduleGroup": "Mozilla Extensions",
+    "keywordType": "selector",
+    "keyword": "::-moz-range-track"
+  },
+  {
+    "moduleGroup": "Microsoft Extensions",
+    "keywordType": "selector",
+    "keyword": "::-ms-browse"
+  },
+  {
+    "moduleGroup": "Microsoft Extensions",
+    "keywordType": "selector",
+    "keyword": "::-ms-check"
+  },
+  {
+    "moduleGroup": "Microsoft Extensions",
+    "keywordType": "selector",
+    "keyword": "::-ms-clear"
+  },
+  {
+    "moduleGroup": "Microsoft Extensions",
+    "keywordType": "selector",
+    "keyword": "::-ms-expand"
+  },
+  {
+    "moduleGroup": "Microsoft Extensions",
+    "keywordType": "selector",
+    "keyword": "::-ms-fill"
+  },
+  {
+    "moduleGroup": "Microsoft Extensions",
+    "keywordType": "selector",
+    "keyword": "::-ms-fill-lower"
+  },
+  {
+    "moduleGroup": "Microsoft Extensions",
+    "keywordType": "selector",
+    "keyword": "::-ms-fill-upper"
+  },
+  {
+    "moduleGroup": "Microsoft Extensions",
+    "keywordType": "selector",
+    "keyword": "::-ms-reveal"
+  },
+  {
+    "moduleGroup": "Microsoft Extensions",
+    "keywordType": "selector",
+    "keyword": "::-ms-thumb"
+  },
+  {
+    "moduleGroup": "Microsoft Extensions",
+    "keywordType": "selector",
+    "keyword": "::-ms-ticks-after"
+  },
+  {
+    "moduleGroup": "Microsoft Extensions",
+    "keywordType": "selector",
+    "keyword": "::-ms-ticks-before"
+  },
+  {
+    "moduleGroup": "Microsoft Extensions",
+    "keywordType": "selector",
+    "keyword": "::-ms-tooltip"
+  },
+  {
+    "moduleGroup": "Microsoft Extensions",
+    "keywordType": "selector",
+    "keyword": "::-ms-track"
+  },
+  {
+    "moduleGroup": "Microsoft Extensions",
+    "keywordType": "selector",
+    "keyword": "::-ms-value"
+  },
+  {
+    "moduleGroup": "WebKit Extensions",
+    "keywordType": "selector",
+    "keyword": "::-webkit-progress-bar"
+  },
+  {
+    "moduleGroup": "WebKit Extensions",
+    "keywordType": "selector",
+    "keyword": "::-webkit-progress-inner-value"
+  },
+  {
+    "moduleGroup": "WebKit Extensions",
+    "keywordType": "selector",
+    "keyword": "::-webkit-progress-value"
+  },
+  {
+    "moduleGroup": "WebKit Extensions",
+    "keywordType": "selector",
+    "keyword": "::-webkit-slider-runnable-track"
+  },
+  {
+    "moduleGroup": "WebKit Extensions",
+    "keywordType": "selector",
+    "keyword": "::-webkit-slider-thumb"
   }
 ]

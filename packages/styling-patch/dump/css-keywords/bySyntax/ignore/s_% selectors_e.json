@@ -23,5 +23,30 @@
     "keyword": "Attribute selectors",
     "keywordType": "selector",
     "moduleGroup": "Basic Selectors"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "Type selectors"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "Class selectors"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "ID selectors"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "Universal selectors"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "Attribute selectors"
   }
 ]

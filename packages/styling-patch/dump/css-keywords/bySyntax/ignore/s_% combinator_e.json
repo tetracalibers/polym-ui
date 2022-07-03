@@ -23,5 +23,30 @@
     "keyword": "Column combinator",
     "keywordType": "selector",
     "moduleGroup": "Combinators"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "Adjacent sibling combinator"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "General sibling combinator"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "Child combinator"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "Descendant combinator"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": "Column combinator"
   }
 ]

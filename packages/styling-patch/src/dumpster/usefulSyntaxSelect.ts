@@ -12,7 +12,7 @@ const getNotLikeSelectQuery: Function = (like: string): string => {
 
 const runLikeSelectQuery: Function = (like: string): Function => {
   return (from: object): Function => {
-    return (addNot = true): object => {
+    return (addNot = true): string => {
       return alasql(
         addNot ? getNotLikeSelectQuery(like) : getLikeSelectQuery(like),
         [from]
@@ -24,11 +24,11 @@ const runLikeSelectQuery: Function = (like: string): Function => {
 const likeResultDump: Function = (like: string): Function => {
   return (from: object): Function => {
     const likeResult = runLikeSelectQuery(like)(from)(false);
-    return (fileName: string): void => {
+    return (fileName: string): Array<string> => {
       if (likeResult.length > 0) {
         createJsonFile(likeResult, `dump/css-keywords/bySyntax/${fileName}`);
-        createJsonFile(likeResult, `dump/css-keywords/all`, true)
       }
+      return likeResult
     };
   };
 };
@@ -37,18 +37,24 @@ const likeResultDumpLoop: Function = (
   likePatternList: Array<string>
 ): Function => {
   return (updateList: Array<object>): Function => {
-    return (dump = true): Array<object> => {
-      let updatedList = updateList;
+    return (use = true): {
+      reminder: Array<object>,
+      match: Array<string>
+    } => {
+      let reminder = updateList;
+      let match: Array<string> = []
       likePatternList.map((like: string) => {
-        if (dump) likeResultDump(like)(updatedList)(`s_${like}_e`);
-        updatedList = runLikeSelectQuery(like)(updatedList)();
+        let fileName = `s_${like}_e`
+        fileName = use ? fileName : 'ignore/' + fileName
+        match = [...match, ...likeResultDump(like)(reminder)(fileName)]
+        reminder = runLikeSelectQuery(like)(reminder)(true);
       });
-      return updatedList;
+      return { reminder, match };
     };
   };
 };
 
-export const dumpCssKeywordList_bySyntax: Function = (): void => {
+export const dumpUsefulCssKeywordList: Function = (): Array<object> => {
   const vendorPrefixList = ['-webkit-', '-moz-', '-ms-'];
   const dumpLikePatterns = [
     //s_atmark
@@ -75,10 +81,24 @@ export const dumpCssKeywordList_bySyntax: Function = (): void => {
 
   let notMatchKeywords = cssKeywordList_arrayExpanded;
   dumpLikePatterns.map((like: Array<string>) => {
-    notMatchKeywords = likeResultDumpLoop(like)(notMatchKeywords)(true);
+    const { reminder } = likeResultDumpLoop(like)(notMatchKeywords)(true);
+    notMatchKeywords = reminder
   });
+  let ignoreKeywords: Array<object> = []
   excludePatterns.map((like: Array<string>) => {
-    notMatchKeywords = likeResultDumpLoop(like)(notMatchKeywords)(false);
+    const { reminder, match } = likeResultDumpLoop(like)(notMatchKeywords)(false);
+    notMatchKeywords = reminder
+    ignoreKeywords = [...ignoreKeywords, ...match]
   });
-  createJsonFile(notMatchKeywords, `dump/css-keywords/bySyntax/kebabCase`);
+  likeResultDumpLoop(['%'])(notMatchKeywords)(true)
+    
+  const useCssKeywordList = alasql(`
+    SELECT * FROM ?
+    WHERE keyword NOT IN (
+      SELECT keyword FROM ?
+    )
+  `, [cssKeywordList_arrayExpanded, ignoreKeywords])
+  createJsonFile(useCssKeywordList, `dump/css-keywords/all`)
+  
+  return useCssKeywordList
 };
