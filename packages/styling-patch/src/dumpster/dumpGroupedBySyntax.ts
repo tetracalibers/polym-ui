@@ -27,6 +27,7 @@ const likeResultDump: Function = (like: string): Function => {
     return (fileName: string): void => {
       if (likeResult.length > 0) {
         createJsonFile(likeResult, `dump/css-keywords/bySyntax/${fileName}`);
+        createJsonFile(likeResult, `dump/css-keywords/all`, true)
       }
     };
   };

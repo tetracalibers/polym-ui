@@ -1,0 +1,637 @@
+[
+  {
+    "keyword": ":active",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":any-link",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":checked",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":current",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":blank",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":default",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":defined",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":dir",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":disabled",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":empty",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":enabled",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":first",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":first-child",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":first-of-type",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":fullscreen",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":future",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":focus",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":focus-visible",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":focus-within",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":has",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":host()",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":host-context()",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":hover",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":indeterminate",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":in-range",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":invalid",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":is",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":lang",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":last-child",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":last-of-type",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":left",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":link",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":local-link",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":not",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":nth-child",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":nth-col",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":nth-last-child",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":nth-last-col",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":nth-last-of-type",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":nth-of-type",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":only-child",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":only-of-type",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":optional",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":out-of-range",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":past",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":paused",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":placeholder-shown",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":playing",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":read-only",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":read-write",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":required",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":right",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":root",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":scope",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":target",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":target-within",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":user-invalid",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":user-valid",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":valid",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":visited",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":where",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "keyword": ":picture-in-picture",
+    "keywordType": "selector",
+    "moduleGroup": "Pseudo-classes"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": ":active"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": ":any-link"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": ":checked"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": ":current"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": ":blank"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": ":default"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": ":defined"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": ":dir"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": ":disabled"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": ":empty"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": ":enabled"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": ":first"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": ":first-child"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": ":first-of-type"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": ":fullscreen"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": ":future"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": ":focus"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": ":focus-visible"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": ":focus-within"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": ":has"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": ":host()"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": ":host-context()"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": ":hover"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": ":indeterminate"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": ":in-range"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": ":invalid"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": ":is"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": ":lang"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": ":last-child"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": ":last-of-type"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": ":left"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": ":link"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": ":local-link"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": ":not"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": ":nth-child"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": ":nth-col"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": ":nth-last-child"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": ":nth-last-col"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": ":nth-last-of-type"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": ":nth-of-type"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": ":only-child"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": ":only-of-type"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": ":optional"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": ":out-of-range"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": ":past"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": ":paused"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": ":placeholder-shown"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": ":playing"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": ":read-only"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": ":read-write"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": ":required"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": ":right"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": ":root"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": ":scope"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": ":target"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": ":target-within"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": ":user-invalid"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": ":user-valid"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": ":valid"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": ":visited"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": ":where"
+  },
+  {
+    "moduleGroup": "Selectors",
+    "keywordType": "selector",
+    "keyword": ":picture-in-picture"
+  },
+  {
+    "moduleGroup": "CSS Pages",
+    "keywordType": "selector",
+    "keyword": ":left"
+  },
+  {
+    "moduleGroup": "CSS Pages",
+    "keywordType": "selector",
+    "keyword": ":right"
+  },
+  {
+    "moduleGroup": "CSS Pages",
+    "keywordType": "selector",
+    "keyword": ":root"
+  }
+]
