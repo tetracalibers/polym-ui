@@ -2,18 +2,15 @@
   "name": "@react-polyhex-ui/core",
   "version": "0.0.0",
   "description": "> TODO: description",
-  "author": "Kanno Ami <tomix05may@gmail.com> (tomixy)",
+  "author": "tomixy",
   "homepage": "https://github.com/tetracalibers/React-polyhexUI/tree/main/packages/core#readme",
-  "license": "ISC",
-  "main": "lib/core.js",
+  "license": "MIT",
+  "main": "src/index.ts",
   "type": "module",
   "directories": {
-    "lib": "lib",
+    "lib": "src",
     "test": "__tests__"
   },
-  "files": [
-    "lib"
-  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tetracalibers/React-polyhexUI.git"
