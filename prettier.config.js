@@ -1,6 +1,6 @@
 module.exports = {
   // 折り返す行の長さ
-  printWidth: 100,
+  printWidth: 80,
   // インデントのスペース数
   tabWidth: 2,
   // スペースではなくタブで行をインデント

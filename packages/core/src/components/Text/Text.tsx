@@ -1,7 +1,11 @@
-import type { FC } from 'react'
+import { ReactNode, FC } from 'react'
 
-const Text: FC<{ content: string }> = props => {
-  return <span>{props.content}</span>
+type Props = {
+  children: ReactNode
+}
+
+const Text: FC<Props> = props => {
+  return <span>{props.children}</span>
 }
 
 export default Text
