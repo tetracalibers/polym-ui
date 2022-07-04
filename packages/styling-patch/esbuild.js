@@ -11,7 +11,7 @@ build({
   // 'node' 'browser' 'neutral' のいずれかを指定
   platform: 'node',
   // バンドルに含めたくないライブラリがある場合は、パッケージ名を文字列で列挙する
-  external: ['./node_modules/', 'react-native-fetch-blob', 'react-native-fs'],
+  external: ['react-native-fetch-blob', 'react-native-fs', 'shelljs'],
   // trueにすれば、ファイルを監視して自動で再ビルドしてくれるようになる
   watch: false,
   define: {
