@@ -7,8 +7,12 @@
   "license": "MIT",
   "main": "src/index.ts",
   "type": "module",
+  "types": "lib/styling-patch.d.ts",
   "exports": {
-    "default": "./src/index.ts"
+    "import": "./lib/bundle.js",
+    "require": "./lib/bundle.cjs",
+    "node": "./lib/bundle.js",
+    "default": "./lib/bundle.cjs"
   },
   "repository": {
     "type": "git",
@@ -16,23 +20,31 @@
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1",
-    "build": "rimraf dist && node esbuild.js",
-    "start": "yarn build && node dist/index.cjs"
+    "prebuild": "rimraf lib",
+    "build": "rollup -c",
+    "start": "yarn build && node lib/bundle.cjs"
   },
   "bugs": {
     "url": "https://github.com/tetracalibers/React-polyhexUI/issues"
   },
-  "dependencies": {
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^22.0.1",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.3.0",
+    "@rollup/plugin-typescript": "^8.3.3",
+    "@types/shelljs": "^0.8.11",
     "alasql": "^1.7.3",
+    "case": "^1.6.3",
+    "esbuild": "^0.14.48",
     "json-format": "^1.0.1",
     "mdn-data": "latest",
+    "react-native-fs": "^2.20.0",
     "rimraf": "^3.0.2",
-    "shelljs": "^0.8.5"
-  },
-  "devDependencies": {
-    "@types/shelljs": "^0.8.11",
+    "rollup": "^2.75.7",
+    "rollup-plugin-dts": "^4.2.2",
+    "rollup-plugin-esbuild": "^4.9.1",
+    "shelljs": "^0.8.5",
     "tslib": "^2.4.0",
-    "typescript": "^4.7.4",
-    "esbuild": "^0.14.48"
+    "typescript": "^4.7.4"
   }
 }
