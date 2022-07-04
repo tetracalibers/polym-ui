@@ -1,7 +1,6 @@
 import commonjs from '@rollup/plugin-commonjs'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
 import esbuild from 'rollup-plugin-esbuild'
-import dts from 'rollup-plugin-dts'
 import json from '@rollup/plugin-json'
 import typescript from '@rollup/plugin-typescript'
 import Case from 'case'
@@ -99,14 +98,8 @@ const config = [
         declarationDir: '@types',
         declarationMap: true,
       }),
-      //dts(),
     ],
   },
-  //{
-  //  input: 'src/index.d.ts',
-  //  output: [{ file: 'lib/styling-patch.d.ts', format: 'es' }],
-  //  plugins: [dts()],
-  //},
 ]
 
 export default config

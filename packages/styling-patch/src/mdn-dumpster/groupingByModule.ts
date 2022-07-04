@@ -1,4 +1,4 @@
-import { groupList } from 'mdn-data/css/definitions.json' //assert { type: 'json' }
+import { groupList } from 'mdn-data/css/definitions.json'
 import alasql from 'alasql'
 import { createJsonFile } from '../util/forJson'
 

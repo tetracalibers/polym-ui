@@ -1,7 +1,6 @@
 import commonjs from '@rollup/plugin-commonjs'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
 import esbuild from 'rollup-plugin-esbuild'
-import dts from 'rollup-plugin-dts'
 import json from '@rollup/plugin-json'
 import typescript from '@rollup/plugin-typescript'
 import Case from 'case'
@@ -53,7 +52,6 @@ const config = [
       ...Object.keys(pkg.devDependencies || {}),
     ],
     plugins: [
-      //resolve(),
       typescript({
         tsconfig: './tsconfig.json',
         declaration: true,
@@ -102,11 +100,6 @@ const config = [
       }),
     ],
   },
-  //{
-  //  input: 'lib/dts/index.d.ts',
-  //  output: [{ dir: 'lib', format: 'es' }],
-  //  plugins: [dts()],
-  //},
 ]
 
 export default config
