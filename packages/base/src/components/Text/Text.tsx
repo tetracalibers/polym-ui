@@ -5,7 +5,7 @@ type Props = {
   children: ReactNode
 }
 
-const Text: FC<Props> = props => {
+const Text: FC<Props> = (props: Props) => {
   return (
     <StylePatchProvider>
       <span>{props.children}</span>
