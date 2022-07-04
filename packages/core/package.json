@@ -19,7 +19,7 @@
     "test": "echo \"Error: run tests from root\" && exit 1",
     "type:check": "tsc --noEmit",
     "build": "yarn type:check && node esbuild.js",
-    "testrun": "yarn build && node dist/index.js"
+    "start": "yarn build && node dist/index.js"
   },
   "bugs": {
     "url": "https://github.com/tetracalibers/React-polyhexUI/issues"
