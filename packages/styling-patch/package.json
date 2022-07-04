@@ -27,7 +27,14 @@
   "bugs": {
     "url": "https://github.com/tetracalibers/React-polyhexUI/issues"
   },
+  "dependencies": {
+    "styletron-engine-atomic": "^1.4.8",
+    "styletron-react": "^6.0.2"
+  },
   "devDependencies": {
+    "@types/styletron-engine-atomic": "^1.1.1",
+    "@types/styletron-standard": "^2.0.2",
+    "@types/styletron-react": "^5.0.3",
     "@rollup/plugin-commonjs": "^22.0.1",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^13.3.0",
