@@ -17,15 +17,23 @@
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1",
-    "build": "rimraf ../dist && tsc",
-    "dev": "rimraf ../dist && tsc -w",
-    "start": "yarn build && node ../dist/styling-patch/src/index.js"
+    "build": "rimraf dist && node esbuild.js",
+    "start": "yarn build && node dist/index.cjs"
   },
   "bugs": {
     "url": "https://github.com/tetracalibers/React-polyhexUI/issues"
   },
-  "devDependencies": {
+  "dependencies": {
     "alasql": "^1.7.3",
-    "rimraf": "^3.0.2"
+    "json-format": "^1.0.1",
+    "mdn-data": "latest",
+    "rimraf": "^3.0.2",
+    "shelljs": "^0.8.5"
+  },
+  "devDependencies": {
+    "@types/shelljs": "^0.8.11",
+    "tslib": "^2.4.0",
+    "typescript": "^4.7.4",
+    "esbuild": "^0.14.48"
   }
 }
