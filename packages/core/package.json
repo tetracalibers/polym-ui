@@ -7,7 +7,7 @@
   "license": "MIT",
   "main": "src/index.ts",
   "type": "module",
-  "types": "lib/core.d.ts",
+  "types": "lib/@types/index.d.ts",
   "exports": {
     "import": "./lib/bundle.es.js",
     "require": "./lib/bundle.cjs",

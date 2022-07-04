@@ -1,8 +1,6 @@
-import { dumpUsefulCssKeywordList } from './mdn-dumpster/usefulSyntaxSelect'
-import { dumpUsefulCssKeywordList_byModule } from './mdn-dumpster/groupingByModule'
 import { toJSON } from './util/forJson'
 import * as shell from 'shelljs'
 import alasql from 'alasql'
+import { StylePatchProvider } from './provider/StylePatchProvider'
 
-export const usefulCssKeywordList = dumpUsefulCssKeywordList()
-dumpUsefulCssKeywordList_byModule(usefulCssKeywordList)
+export { StylePatchProvider }

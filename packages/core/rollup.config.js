@@ -54,7 +54,13 @@ const config = [
     ],
     plugins: [
       //resolve(),
-      typescript(),
+      typescript({
+        tsconfig: './tsconfig.json',
+        declaration: true,
+        rootDir: 'src',
+        declarationDir: '@types',
+        declarationMap: true,
+      }),
       nodeResolve(),
       esbuild({
         // All options are optional
@@ -96,11 +102,11 @@ const config = [
       }),
     ],
   },
-  {
-    input: 'src/index.d.ts',
-    output: [{ file: 'lib/styling-patch.d.ts', format: 'es' }],
-    plugins: [dts()],
-  },
+  //{
+  //  input: 'lib/dts/index.d.ts',
+  //  output: [{ dir: 'lib', format: 'es' }],
+  //  plugins: [dts()],
+  //},
 ]
 
 export default config

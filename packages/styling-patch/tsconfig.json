@@ -18,9 +18,10 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true,
-    "outDir": "./lib",
     "resolveJsonModule": true,
-    "isolatedModules": false
+    "isolatedModules": false,
+    "removeComments": true,
+    "outDir": "lib"
   },
   "include": ["./**/*"],
   "exclude": ["node_modules", "./lib/*"]

@@ -7,7 +7,10 @@
   "license": "MIT",
   "main": "src/index.ts",
   "type": "module",
-  "types": "lib/styling-patch.d.ts",
+  "types": "lib/@types/index.d.ts",
+  "files": [
+    "lib"
+  ],
   "exports": {
     "import": "./lib/bundle.es.js",
     "require": "./lib/bundle.cjs",
