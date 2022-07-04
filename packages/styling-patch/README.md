@@ -1,6 +1,6 @@
-# `styling-patch`
+# @React-polyhexUI/styling-patch
 
-> TODO: description
+New Styling Solution for React
 
 ## Usage
 

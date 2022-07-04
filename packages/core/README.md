@@ -1,6 +1,6 @@
-# `core`
+# @React-polyhexUI/core
 
-> TODO: description
+experimental system of UI Component Library for React
 
 ## Usage
 
