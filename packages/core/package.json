@@ -16,7 +16,9 @@
     "url": "git+https://github.com/tetracalibers/React-polyhexUI.git"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "type:check": "tsc --noEmit",
+    "build": "yarn type:check && node esbuild.js"
   },
   "bugs": {
     "url": "https://github.com/tetracalibers/React-polyhexUI/issues"

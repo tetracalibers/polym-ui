@@ -1,3 +1,7 @@
-export const Text = (props: { text: string }) => {
-  return <span>{props.text}</span>
+import type { FC } from 'react'
+
+const Text: FC<{ content: string }> = props => {
+  return <span>{props.content}</span>
 }
+
+export default Text
