@@ -1,5 +1,5 @@
 import { getLernaRoot, returnDir, normalizedPath } from '@polyhex-utility/shell'
-import shell, { exec } from 'shelljs'
+import shell from 'shelljs'
 import * as Diff from 'diff'
 
 type beforeStr = {
@@ -37,7 +37,7 @@ export const packageMaker = (
     .then((moveLog: strChangeLog) => {
       packageNames.map((basename: string) => {
         const fullname = prefixFormatter(prefix) + basename
-        exec(`lerna create ${fullname} --yes`)
+        shell.exec(`lerna create ${fullname} --yes`)
       })
       backToCwd(moveLog)
     })
