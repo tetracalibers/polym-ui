@@ -26,7 +26,8 @@
   "workspaces": {
     "packages": [
       "packages/**/*",
-      "examples/**/*"
+      "examples/**/*",
+      "automation"
     ]
   },
   "devDependencies": {

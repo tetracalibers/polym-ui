@@ -1,5 +1,5 @@
 {
-  "packages": ["packages/*", "examples/*"],
+  "packages": ["packages/*", "examples/*", "automation"],
   "useNx": true,
   "npmClient": "yarn",
   "useWorkspaces": true,
