@@ -5,6 +5,7 @@ import {
   doAfterMoveDir,
   createFile,
 } from './module/shelljsWrapper'
+import { getLernaRoot } from './module/lernaRoot'
 
 export {
   normalizedPath,
@@ -12,4 +13,5 @@ export {
   returnDir,
   doAfterMoveDir,
   createFile,
+  getLernaRoot,
 }

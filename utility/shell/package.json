@@ -31,10 +31,7 @@
     "test": "echo \"Error: run tests from root\" && exit 1",
     "prebuild": "rimraf lib",
     "build": "rollup -c",
-    "start": "yarn build && node lib/bundle.cjs"
-  },
-  "dependencies": {
-    "shelljs": "^0.8.5"
+    "start": "yarn build && node lib/bundle.es.js"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^22.0.1",
@@ -47,6 +44,8 @@
     "rollup": "^2.75.7",
     "rollup-plugin-esbuild": "^4.9.1",
     "tslib": "^2.4.0",
-    "typescript": "^4.7.4"
+    "typescript": "^4.7.4",
+    "pkg-dir": "^6.0.1",
+    "shelljs": "^0.8.5"
   }
 }

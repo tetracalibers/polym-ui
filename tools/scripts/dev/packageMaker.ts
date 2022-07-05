@@ -1,15 +1,17 @@
 /** rootで実行 */
 
 import { exec, cd } from 'shelljs'
-import * as pkg from '../../package.json'
+import { packageDirectory } from 'pkg-dir'
 
 export class PackageMaker {
   prefix: string
   packageNames: Array<string>
+  cwd: string
 
   constructor(packageNames: Array<string>, prefix = '') {
     this.packageNames = packageNames
     this.prefix = prefix.length > 0 ? prefix + '/' : prefix
+    this.cwd = process.cwd()
     cd('../..')
   }
 

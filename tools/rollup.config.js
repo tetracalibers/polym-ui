@@ -28,12 +28,12 @@ const config = [
         sourcemap: 'file',
         banner,
       },
-      //{
-      //  file: 'lib/bundle.es.js',
-      //  format: 'es',
-      //  sourcemap: 'file',
-      //  banner,
-      //},
+      {
+        file: 'dist/dev.es.js',
+        format: 'es',
+        sourcemap: 'file',
+        banner,
+      },
       /** for script tag */
       //{
       //  file: 'lib/bundle-web.js',
@@ -59,6 +59,7 @@ const config = [
         exclude: [
           'react-native-fetch-blob',
           'react-native-fs',
+          'pkg-dir',
           'shelljs',
           'alasql',
         ], // default
@@ -86,7 +87,7 @@ const config = [
       commonjs({
         strictRequires: true,
         sourceMap: false,
-        transformMixedEsModules: true,
+        //transformMixedEsModules: true,
       }),
       json({
         compact: true,

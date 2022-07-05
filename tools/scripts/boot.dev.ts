@@ -1,37 +1,3 @@
-import { PackageMaker } from './dev/packageMaker'
-import { pwd } from 'shelljs'
+import { getLernaRoot } from '@polyhex-utility/shell'
 
-const prefix = '@react-polyhex-ui'
-
-const addPackages = [
-  // components
-  'animation',
-  'background',
-  'block',
-  'atomic',
-  'navigation',
-  'form',
-  'media',
-  'link',
-  'button',
-  'content',
-  'feedback',
-  'modal',
-  'graph',
-  'table',
-  'counter',
-  // templates
-  'crud',
-  'editor',
-  'form-builder',
-  'spreadsheet',
-  'operational-list',
-  'search-function',
-  'filtering',
-  'management-system',
-]
-
-//const maker = new PackageMaker(addPackages, prefix)
-//maker.makePackage()
-
-console.log(pwd().toString())
+getLernaRoot().then(rootPath => console.log(rootPath))
