@@ -27,6 +27,7 @@
     "packages": [
       "packages/**/*",
       "examples/**/*",
+      "utility/**/*",
       "tools"
     ]
   },
