@@ -1,34 +1,44 @@
-/** rootで実行 */
+import { getLernaRoot, returnDir, normalizedPath } from '@polyhex-utility/shell'
+import shell, { exec } from 'shelljs'
+import * as Diff from 'diff'
 
-import { exec, cd } from 'shelljs'
-import { packageDirectory } from 'pkg-dir'
+type beforeStr = {
+  count: number
+  value: string
+}
 
-export class PackageMaker {
-  prefix: string
-  packageNames: Array<string>
-  cwd: string
+type afterStr = {
+  count: number
+  added: boolean | undefined
+  removed: boolean | undefined
+  value: string
+}
 
-  constructor(packageNames: Array<string>, prefix = '') {
-    this.packageNames = packageNames
-    this.prefix = prefix.length > 0 ? prefix + '/' : prefix
-    this.cwd = process.cwd()
-    cd('../..')
-  }
+type strChangeLog = [beforeStr, afterStr]
 
-  private returnEntryPoint: Function = (): Promise<boolean> => {
-    cd(pkg.name)
-    return new Promise<boolean>(resolve => resolve(true))
-  }
+const prefixFormatter = (prefix: string): string => {
+  return normalizedPath(prefix).length > 0 ? prefix + '/' : ''
+}
 
-  public makePackage: Function = (
-    packageNames: Array<string>,
-    prefix = ''
-  ): Promise<boolean> => {
-    packageNames.map((basename: string) => {
-      const fullname = prefix.length > 0 ? `${prefix}/${basename}` : basename
-      exec(`lerna create ${fullname} --yes`)
+const backToCwd = (pathChangeLog: strChangeLog) => {
+  const [, { added, removed, value }] = pathChangeLog
+  added ? shell.cd(value) : returnDir(removed)
+}
+
+export const packageMaker = (
+  packageNames: Array<string>,
+  prefix = ''
+): void => {
+  getLernaRoot()
+    .then((root: string) => {
+      shell.cd(root)
+      return Diff.diffWords(root, process.cwd())
     })
-    this.returnEntryPoint()
-    return new Promise(resolve => resolve(true))
-  }
+    .then((moveLog: strChangeLog) => {
+      packageNames.map((basename: string) => {
+        const fullname = prefixFormatter(prefix) + basename
+        exec(`lerna create ${fullname} --yes`)
+      })
+      backToCwd(moveLog)
+    })
 }

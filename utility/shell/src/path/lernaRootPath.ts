@@ -8,7 +8,7 @@ const checkIsLernaRoot: Function = (): Promise<boolean> =>
     .then((content: string) => JSON.parse(content))
     .then((json: object) => Object.keys(json).includes('workspaces'))
 
-export const getLernaRoot: Function = async (): Promise<string> =>
+export const getLernaRoot: Function = (): Promise<string> =>
   checkIsLernaRoot().then((isRoot: boolean) => {
     if (isRoot) {
       return shell.pwd().toString()

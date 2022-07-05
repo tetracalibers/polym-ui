@@ -29,7 +29,7 @@
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1",
-    "prebuild": "rimraf lib",
+    "prebuild": "tsc --no-emit & rimraf lib",
     "build": "rollup -c",
     "start": "yarn build && node lib/bundle.es.js"
   },
