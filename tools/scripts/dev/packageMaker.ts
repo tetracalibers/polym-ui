@@ -1,6 +1,7 @@
 import { getLernaRoot, returnDir, normalizedPath } from '@polyhex-utility/shell'
 import shell from 'shelljs'
 import * as Diff from 'diff'
+import rimraf from 'rimraf'
 
 const { cd, rm, mkdir, exec, cp, touch, cat, ShellString } = shell
 
@@ -47,8 +48,9 @@ export const packageMaker = (
 
 const batch = (root: string, packageName: string, modelDirName: string) => {
   cd(root + '/packages/' + packageName)
-  rm('-rf', '/__test__/*')
-  rm('-rf', '/lib/*')
+  exec('yarn add -D rimraf')
+  exec('rimraf __tests__')
+  exec('rimraf lib')
   mkdir('src')
   cd('src')
   touch('index.ts')

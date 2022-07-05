@@ -1,30 +1,66 @@
 {
   "name": "@react-polyhex-ui/crud",
   "version": "0.0.0",
-  "description": "Now I’m the model of a modern major general / The venerated Virginian veteran whose men are all / Lining up, to put me up on a pedestal / Writin’ letters to relatives / Embellishin’ my elegance and eloquence / But the elephant is in the room / The truth is in ya face when ya hear the British cannons go / BOOM",
-  "keywords": [],
-  "author": "Kanno Ami <tomix05may@gmail.com> (tomixy)",
-  "homepage": "https://github.com/tetracalibers/React-polyhexUI/tree/main/packages/crud#readme",
+  "description": "> TODO: description",
+  "author": "tomixy",
+  "homepage": "https://github.com/tetracalibers/React-polyhexUI/tree/main/packages/layout#readme",
   "license": "MIT",
-  "main": "lib/crud.js",
-  "directories": {
-    "lib": "lib",
-    "test": "__tests__"
-  },
-  "files": [
-    "lib"
-  ],
-  "publishConfig": {
-    "registry": "https://registry.yarnpkg.com"
+  "main": "src/index.ts",
+  "type": "module",
+  "exports": {
+    "import": "./lib/bundle.es.js",
+    "require": "./lib/bundle.cjs",
+    "node": "./lib/bundle.es.js",
+    "default": "./lib/bundle.cjs"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tetracalibers/React-polyhexUI.git"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "type:check": "tsc --noEmit",
+    "prebuild": "yarn type:check && rimraf lib",
+    "build": "rollup -c",
+    "start": "yarn build && node lib/bundle.cjs"
   },
   "bugs": {
     "url": "https://github.com/tetracalibers/React-polyhexUI/issues"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.18.5",
+    "@react-polyhex-ui/styling-patch": "*",
+    "@rollup/plugin-commonjs": "^22.0.1",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.3.0",
+    "@rollup/plugin-typescript": "^8.3.3",
+    "@storybook/addon-actions": "^6.5.9",
+    "@storybook/addon-essentials": "^6.5.9",
+    "@storybook/addon-interactions": "^6.5.9",
+    "@storybook/addon-links": "^6.5.9",
+    "@storybook/addon-storysource": "^6.5.9",
+    "@storybook/builder-webpack4": "^6.5.9",
+    "@storybook/manager-webpack4": "^6.5.9",
+    "@storybook/react": "^6.5.9",
+    "@storybook/testing-library": "^0.0.13",
+    "@types/react": "^18.0.14",
+    "@types/react-dom": "^18.0.5",
+    "@types/styled-components": "^5.1.25",
+    "@types/styletron-engine-atomic": "^1.1.1",
+    "@types/styletron-react": "^5.0.3",
+    "@types/styletron-standard": "^2.0.2",
+    "@whitespace/storybook-addon-html": "^5.0.0",
+    "babel-loader": "^8.2.5",
+    "esbuild": "^0.14.48",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.75.7",
+    "rollup-plugin-esbuild": "^4.9.1",
+    "styled-component": "^2.8.0",
+    "styletron-engine-atomic": "^1.4.8",
+    "styletron-react": "^6.0.2",
+    "tslib": "^2.4.0",
+    "typescript": "^4.7.4"
   }
 }

@@ -30,4 +30,4 @@ const addPackages = [
   'management-system',
 ]
 
-packageInitializer(addPackages)
+//packageInitializer(addPackages)
