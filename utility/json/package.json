@@ -34,7 +34,6 @@
     "start": "yarn build && node lib/bundle.cjs"
   },
   "dependencies": {
-    "alasql": "^1.7.3",
     "json-format": "^1.0.1"
   },
   "devDependencies": {
@@ -45,6 +44,7 @@
     "@types/shelljs": "^0.8.11",
     "@polyhex-utility/shell": "*",
     "esbuild": "^0.14.48",
+    "alasql": "^1.7.3",
     "rimraf": "^3.0.2",
     "rollup": "^2.75.7",
     "rollup-plugin-esbuild": "^4.9.1",

@@ -1,6 +1,6 @@
 import { groupList } from 'mdn-data/css/definitions.json'
 import alasql from 'alasql'
-import { createJsonFile } from '../util/forJson'
+import { createJsonFile } from '@polyhex-utility/json'
 
 const mdnModuleGroupList = groupList.enum
 
