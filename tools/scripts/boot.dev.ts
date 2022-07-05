@@ -1,4 +1,4 @@
-import { packageMaker } from './dev/packageMaker'
+import { packageInitializer } from './dev/packageMaker'
 
 const prefix = '@react-polyhex-ui'
 
@@ -30,4 +30,4 @@ const addPackages = [
   'management-system',
 ]
 
-packageMaker(addPackages, prefix)
+packageInitializer(addPackages)
