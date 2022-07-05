@@ -1,3 +1,3 @@
-# `automation`
+# `helper`
 
 development helper tools

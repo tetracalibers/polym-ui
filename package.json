@@ -27,7 +27,7 @@
     "packages": [
       "packages/**/*",
       "examples/**/*",
-      "automation"
+      "tools"
     ]
   },
   "devDependencies": {

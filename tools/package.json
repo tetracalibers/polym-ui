@@ -1,11 +1,12 @@
 {
-  "name": "automation",
+  "name": "@react-polyhex-ui/tools",
   "version": "0.0.0",
   "description": "> TODO: description",
   "author": "tomixy",
   "homepage": "https://github.com/tetracalibers/React-polyhexUI/tree/main/packages/scripts#readme",
   "license": "MIT",
-  "main": "scripts/exec.ts",
+  "main": "scripts/boot.dev.ts",
+  "type": "module",
   "private": true,
   "repository": {
     "type": "git",
@@ -13,17 +14,27 @@
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1",
-    "prebuild": "rimraf lib",
-    "build": "ts-node scripts/exec.ts"
+    "prebuild": "rimraf dist",
+    "build": "rollup -c",
+    "start": "yarn build && node dist/bundle.cjs"
   },
   "bugs": {
     "url": "https://github.com/tetracalibers/React-polyhexUI/issues"
   },
   "devDependencies": {
-    "ts-node": "^10.8.2",
+    "@types/node": "^18.0.1",
     "@types/shelljs": "^0.8.11",
     "rimraf": "^3.0.2",
+    "shelljs": "^0.8.5",
+    "ts-node": "^10.8.2",
+    "tslib": "^2.4.0",
     "typescript": "^4.7.4",
-    "shelljs": "^0.8.5"
+    "@rollup/plugin-commonjs": "^22.0.1",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.3.0",
+    "@rollup/plugin-typescript": "^8.3.3",
+    "esbuild": "^0.14.48",
+    "rollup": "^2.75.7",
+    "rollup-plugin-esbuild": "^4.9.1"
   }
 }
