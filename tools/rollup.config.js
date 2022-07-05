@@ -23,7 +23,7 @@ const config = [
     input: 'scripts/boot.dev.ts',
     output: [
       {
-        file: 'dist/bundle.cjs',
+        file: 'dist/dev.cjs',
         format: 'cjs',
         sourcemap: 'file',
         banner,

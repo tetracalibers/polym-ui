@@ -16,7 +16,7 @@
     "test": "echo \"Error: run tests from root\" && exit 1",
     "prebuild": "rimraf dist",
     "build": "rollup -c",
-    "start": "yarn build && node dist/bundle.cjs"
+    "boot:dev": "yarn build && node dist/dev.cjs"
   },
   "bugs": {
     "url": "https://github.com/tetracalibers/React-polyhexUI/issues"

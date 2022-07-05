@@ -34,4 +34,4 @@ const addPackages = [
 //const maker = new PackageMaker(addPackages, prefix)
 //maker.makePackage()
 
-console.log(pwd())
+console.log(pwd().toString())
