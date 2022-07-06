@@ -29,11 +29,11 @@ export const doAfterMoveDir: Function = (
 }
 
 const _createFile: Function = (contents: string, fileName: string): void => {
-  shell.ShellString(contents).to(fileName)
+  new shell.ShellString(contents).to(fileName)
 }
 
 const _appendFile: Function = (contents: string, fileName: string): void => {
-  shell.ShellString(contents).toEnd(fileName)
+  new shell.ShellString(contents).toEnd(fileName)
 }
 
 export const createFile: Function = (
@@ -41,12 +41,17 @@ export const createFile: Function = (
   filePath: string,
   append = false
 ): void => {
-  const pathPartsList = normalizedPath(filePath).split('/')
-  const dirPath = [...pathPartsList].slice(0, -1).join('/')
-  const [fileName] = pathPartsList.reverse()
+  //const pathPartsList = normalizedPath(filePath).split('/')
+  //const dirPath = [...pathPartsList].slice(0, -1).join('/')
+  //const [fileName] = pathPartsList.reverse()
   const contents = typeof data === 'string' ? data : data.toString()
-  doAfterMoveDir(dirPath, append ? _appendFile : _createFile, [
-    contents,
-    fileName,
-  ])
+  //doAfterMoveDir(dirPath, append ? _appendFile : _createFile, [
+  //  contents,
+  //  fileName,
+  //])
+  if (append) {
+    _appendFile(contents, filePath)
+  } else {
+    _createFile(contents, filePath)
+  }
 }
