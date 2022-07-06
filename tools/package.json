@@ -17,7 +17,7 @@
     "prebuild": "rimraf dist",
     "build": "rollup -c",
     "boot:dev": "yarn build && node dist/dev.es.js",
-    "merge": "node --loader ts-node/esm scripts/zx/AutoMerger.dev.ts"
+    "merge": "node --loader ts-node/esm scripts/zx/autoMerger.dev.ts"
   },
   "bugs": {
     "url": "https://github.com/tetracalibers/React-polyhexUI/issues"

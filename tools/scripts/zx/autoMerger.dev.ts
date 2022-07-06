@@ -23,6 +23,7 @@ import 'zx/globals'
     }
 
     private async execMerge(): Promise<boolean> {
+      await $`git push origin ${this.currentBranch}`
       await $`git checkout main`
       await $`git merge ${this.currentBranch}`
       await $`git push origin main`
