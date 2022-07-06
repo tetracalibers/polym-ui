@@ -55,6 +55,7 @@
     "@whitespace/storybook-addon-html": "^5.0.0",
     "babel-loader": "^8.2.5",
     "esbuild": "^0.14.48",
+    "pkg-dir": "^6.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-serialize": "^0.2.0",
@@ -67,6 +68,6 @@
     "styletron-react": "^6.0.2",
     "tslib": "^2.4.0",
     "typescript": "^4.7.4",
-    "pkg-dir": "^6.0.1"
+    "xml-formatter": "^2.6.1"
   }
 }

@@ -11,11 +11,13 @@ export default class ComponentFile extends SourceFile {
     this.isStyled = this.subExtension === this.STYLED_JSX_SECOND_EXTENSION
   }
 
-  private getJsx(src: string): string {
-    return src.split(/<\/?StylePatch>/)[1].trim()
+  public getJsx(): string {
+    const regexp = /<(StylePatch)>(?<jsx>.*?)<\/\1>/
+    const jsx = regexp.exec(this.src)?.groups?.jsx
+    return jsx ? jsx.trim() : ''
   }
 
-  private getStylingFilePath(): string {
+  public getStylingFilePath(): string {
     return this.path.replace(this.extension, this.STYLING_FILE_EXTENSION)
   }
 }
