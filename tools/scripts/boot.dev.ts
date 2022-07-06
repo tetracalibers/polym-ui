@@ -31,3 +31,5 @@ const addPackages = [
 ]
 
 //packageInitializer(addPackages)
+
+console.log(process)

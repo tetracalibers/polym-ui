@@ -18,6 +18,65 @@ const banner = `/*!
   Released under the ${pkg.license} License.
 */`
 
+const shebang = '#!/usr/bin/env zx'
+
+const externalConfig = [
+  ...Object.keys(pkg.dependencies || {}),
+  ...Object.keys(pkg.devDependencies || {}),
+]
+
+const commonPlugins = [
+  nodeResolve({
+    preferBuiltins: true,
+  }),
+  esbuild({
+    // All options are optional
+    include: /\.[jt]sx?$/, // default, inferred from `loaders` option
+    exclude: [
+      'react-native-fetch-blob',
+      'react-native-fs',
+      'pkg-dir',
+      'shelljs',
+      'alasql',
+    ], // default
+    sourceMap: false, // by default inferred from rollup's `output.sourcemap` option
+    sourceMap: !production,
+    minify: production,
+    target: 'esnext', // default, or 'es20XX', 'esnext'
+    jsx: 'transform', // default, or 'preserve'
+    jsxFactory: 'React.createElement',
+    jsxFragment: 'React.Fragment',
+    // Like @rollup/plugin-replace
+    define: {
+      __VERSION__: '"x.y.z"',
+    },
+    tsconfig: 'tsconfig.json', // default
+    // Add extra loaders
+    loaders: {
+      // Add .json files support
+      // require @rollup/plugin-commonjs
+      '.json': 'json',
+      // Enable JSX in .js files too
+      '.js': 'jsx',
+    },
+  }),
+  commonjs({
+    strictRequires: true,
+    sourceMap: false,
+    //transformMixedEsModules: true,
+  }),
+  json({
+    compact: true,
+  }),
+  typescript({
+    tsconfig: './tsconfig.json',
+    //declaration: true,
+    //rootDir: 'src',
+    //declarationDir: '@types',
+    //declarationMap: true,
+  }),
+]
+
 const config = [
   {
     input: 'scripts/boot.dev.ts',
@@ -25,81 +84,32 @@ const config = [
       {
         file: 'dist/dev.cjs',
         format: 'cjs',
-        sourcemap: 'file',
+        sourcemap: 'inline',
         banner,
       },
       {
         file: 'dist/dev.es.js',
         format: 'es',
-        sourcemap: 'file',
+        sourcemap: 'inline',
         banner,
       },
-      /** for script tag */
-      //{
-      //  file: 'lib/bundle-web.js',
-      //  format: 'iife',
-      //  name: 'StylingPatch',
-      //},
-      /** for universal */
-      //{
-      //  file: 'lib/bundle.umd.js',
-      //  format: 'umd',
-      //  name: 'StylingPatch',
-      //},
     ],
-    external: [
-      ...Object.keys(pkg.dependencies || {}),
-      ...Object.keys(pkg.devDependencies || {}),
+    external: externalConfig,
+    plugins: commonPlugins,
+  },
+  {
+    input: 'scripts/zx/autoMerger.dev.ts',
+    output: [
+      {
+        dir: 'dist',
+        format: 'es',
+        sourcemap: 'inline',
+        banner: shebang,
+      },
     ],
-    plugins: [
-      nodeResolve(),
-      esbuild({
-        // All options are optional
-        include: /\.[jt]sx?$/, // default, inferred from `loaders` option
-        exclude: [
-          'react-native-fetch-blob',
-          'react-native-fs',
-          'pkg-dir',
-          'shelljs',
-          'alasql',
-        ], // default
-        sourceMap: false, // by default inferred from rollup's `output.sourcemap` option
-        sourceMap: !production,
-        minify: production,
-        target: 'esnext', // default, or 'es20XX', 'esnext'
-        jsx: 'transform', // default, or 'preserve'
-        jsxFactory: 'React.createElement',
-        jsxFragment: 'React.Fragment',
-        // Like @rollup/plugin-replace
-        define: {
-          __VERSION__: '"x.y.z"',
-        },
-        tsconfig: 'tsconfig.json', // default
-        // Add extra loaders
-        loaders: {
-          // Add .json files support
-          // require @rollup/plugin-commonjs
-          '.json': 'json',
-          // Enable JSX in .js files too
-          '.js': 'jsx',
-        },
-      }),
-      commonjs({
-        strictRequires: true,
-        sourceMap: false,
-        //transformMixedEsModules: true,
-      }),
-      json({
-        compact: true,
-      }),
-      typescript({
-        tsconfig: './tsconfig.json',
-        declaration: true,
-        rootDir: 'src',
-        declarationDir: '@types',
-        declarationMap: true,
-      }),
-    ],
+    external: externalConfig,
+    plugins: commonPlugins,
+    preserveEntrySignatures: 'strict',
   },
 ]
 

@@ -1,9 +1,8 @@
 import { getLernaRoot, returnDir, normalizedPath } from '@polyhex-utility/shell'
 import shell from 'shelljs'
 import * as Diff from 'diff'
-import rimraf from 'rimraf'
 
-const { cd, rm, mkdir, exec, cp, touch, cat, ShellString } = shell
+const { cd, mkdir, exec, cp, touch, cat, ShellString } = shell
 
 type beforeStr = {
   count: number
