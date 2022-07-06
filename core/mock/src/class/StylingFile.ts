@@ -15,11 +15,14 @@ export default class StylingFile extends SourceFile {
   }
 
   private deleteJsProgramString(): StylingFile {
-    const jsInAttribute = /<[\w]+(?<js>\s*\{.*?\}\s*).*?>/g.exec(this.jsx)
-      ?.groups?.js
-    if (jsInAttribute) this.jsx = this.jsx.replaceAll(jsInAttribute, '')
-    const jsInChildren = />(?<js>\{.*?\})</g.exec(this.jsx)?.groups?.js
-    if (jsInChildren) this.jsx = this.jsx.replaceAll(jsInChildren, '')
+    const invalidRegExps = [
+      /<[\w]+(?<js>\s*\{.*?\}\s*).*?>/g,
+      />(?<js>\{.*?\})</g,
+    ]
+    invalidRegExps.map(regExp => {
+      const js = regExp.exec(this.jsx)?.groups?.js
+      if (js) this.jsx = this.jsx.replaceAll(js, '')
+    })
     return this
   }
 
@@ -27,14 +30,17 @@ export default class StylingFile extends SourceFile {
     return this.stylePatchWrap().deleteJsProgramString()
   }
 
-  public format(): StylingFile {
-    this.jsx = format(this.formatAsXml().jsx, {
+  private format(): string {
+    return format(this.formatAsXml().jsx, {
       indentation: '  ',
     })
-    return this
   }
 
-  private init(): void {
-    this.format().copyFile(this.path)
+  public init(): void {
+    const jsx = this.format()
+    if (jsx !== this.src) {
+      this.src = jsx
+    }
+    this.copyFile(this.path)
   }
 }
