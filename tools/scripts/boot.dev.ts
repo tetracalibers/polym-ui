@@ -1,35 +1,9 @@
-import { packageInitializer } from './dev/packageMaker'
+import { packageInitializer, packageMaker } from './dev/packageMaker'
 
 const prefix = '@react-polyhex-ui'
+const addPackages = ['mock']
 
-const addPackages = [
-  // components
-  'animation',
-  'background',
-  'block',
-  'atomic',
-  'navigation',
-  'form',
-  'media',
-  'link',
-  'button',
-  'content',
-  'feedback',
-  'modal',
-  'graph',
-  'table',
-  'counter',
-  // templates
-  'crud',
-  'editor',
-  'form-builder',
-  'spreadsheet',
-  'operational-list',
-  'search-function',
-  'filtering',
-  'management-system',
-]
-
-//packageInitializer(addPackages)
-
-console.log(process)
+;(async () => {
+  await packageMaker(addPackages, prefix)
+  await packageInitializer(addPackages)
+})()
