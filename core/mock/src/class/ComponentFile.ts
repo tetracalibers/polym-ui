@@ -1,7 +1,7 @@
 import SourceFile from './SourceFile'
 
 export default class ComponentFile extends SourceFile {
-  private readonly STYLING_FILE_EXTENSION = '.style.xml'
+  private readonly STYLING_FILE_EXTENSION = '.style.mdx'
   private readonly STYLED_JSX_SECOND_EXTENSION = 'styled'
   private readonly ARROW_EXTENSION = ['tsx', 'jsx']
   private isStyled: boolean
