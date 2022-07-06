@@ -47,6 +47,7 @@
     "@storybook/testing-library": "^0.0.13",
     "@types/react": "^18.0.14",
     "@types/react-dom": "^18.0.5",
+    "@types/shelljs": "^0.8.11",
     "@types/styled-components": "^5.1.25",
     "@types/styletron-engine-atomic": "^1.1.1",
     "@types/styletron-react": "^5.0.3",
@@ -56,13 +57,16 @@
     "esbuild": "^0.14.48",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-serialize": "^0.2.0",
     "rimraf": "^3.0.2",
     "rollup": "^2.75.7",
     "rollup-plugin-esbuild": "^4.9.1",
+    "shelljs": "^0.8.5",
     "styled-component": "^2.8.0",
     "styletron-engine-atomic": "^1.4.8",
     "styletron-react": "^6.0.2",
     "tslib": "^2.4.0",
-    "typescript": "^4.7.4"
+    "typescript": "^4.7.4",
+    "pkg-dir": "^6.0.1"
   }
 }
