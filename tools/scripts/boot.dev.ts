@@ -1,9 +1,10 @@
 import { packageInitializer, packageMaker } from './dev/packageMaker'
 
 const prefix = '@react-polyhex-ui'
-const addPackages = ['mock']
+const utilPrefix = '@polyhex-utility'
+const addPackages = ['functional']
 
 ;(async () => {
-  await packageMaker(addPackages, prefix)
+  await packageMaker(addPackages, utilPrefix)
   await packageInitializer(addPackages)
 })()
