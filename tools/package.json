@@ -17,10 +17,13 @@
     "prebuild": "rimraf dist",
     "build": "rollup -c",
     "boot:dev": "yarn build && node dist/dev.es.js",
-    "merge": "yarn build && zx dist/autoMerger.dev.js"
+    "merge": "node --loader ts-node/esm scripts/zx/AutoMerger.dev.ts"
   },
   "bugs": {
     "url": "https://github.com/tetracalibers/React-polyhexUI/issues"
+  },
+  "dependencies": {
+    "zx": "^7.0.7"
   },
   "devDependencies": {
     "@polyhex-utility/shell": "*",
@@ -39,7 +42,6 @@
     "shelljs": "^0.8.5",
     "ts-node": "^10.8.2",
     "tslib": "^2.4.0",
-    "typescript": "^4.7.4",
-    "zx": "^7.0.7"
+    "typescript": "^4.7.4"
   }
 }

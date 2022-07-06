@@ -97,20 +97,6 @@ const config = [
     external: externalConfig,
     plugins: commonPlugins,
   },
-  {
-    input: 'scripts/zx/autoMerger.dev.ts',
-    output: [
-      {
-        dir: 'dist',
-        format: 'es',
-        sourcemap: 'inline',
-        banner: shebang,
-      },
-    ],
-    external: externalConfig,
-    plugins: commonPlugins,
-    preserveEntrySignatures: 'strict',
-  },
 ]
 
 export default config
