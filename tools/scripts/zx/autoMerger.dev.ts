@@ -1,5 +1,4 @@
 import 'zx/globals'
-
 ;(async () => {
   class AutoMerger {
     public static autoMerger: AutoMerger
@@ -15,7 +14,7 @@ import 'zx/globals'
 
     private async setCurrentBranch(): Promise<boolean> {
       const showResult = await $`git branch --show-current`
-      this.currentBranch = showResult.toString()
+      this.currentBranch = showResult.toString().replace(/\r?\n/g, '')
       return true
     }
 
