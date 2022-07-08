@@ -18,6 +18,7 @@ import ImmArray from './object/ImmutableArray'
 import ImmObject from './object/ImmutableObject'
 import RecursiveObject from './object/RecursiveObject'
 import Stack from './object/Stack'
+import Tree from './object/Tree'
 
 import DeterministicCalculator from './utility/DeterministicCalculator'
 import F from './utility/FunctionalUtility'
@@ -46,4 +47,5 @@ export {
   F,
   Stack,
   M,
+  Tree,
 }
