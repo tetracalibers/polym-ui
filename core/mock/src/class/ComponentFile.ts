@@ -13,7 +13,11 @@ interface ComponentFile {
 }
 
 class ComponentFile implements ComponentFile {
-  set SubExtension(__: string | undefined) {
+  constructor(path: string) {
+    this.path = path
+  }
+
+  set setSubExtension(__: string | undefined) {
     this.subExtension = _.chain(_.split(this.name, '.'))
       .dropRight()
       .last()
@@ -51,8 +55,8 @@ class ComponentFile implements ComponentFile {
     return this.path.replace(this.extension, '.styp.jsx')
   }
 
-  copyFile(outFilePath: string): void {
-    new ShellString(this.src).to(outFilePath)
+  initStylingFile(): void {
+    new ShellString(this.src).to(this.stylingFilePath)
   }
 }
 
