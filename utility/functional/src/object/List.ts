@@ -2,7 +2,7 @@ import RecursiveObject from './RecursiveObject'
 import F from '../utility/FunctionalUtility'
 
 export default class List extends RecursiveObject {
-  empty = (_: void | number) => {
+  empty = (_?: any) => {
     return pattern => {
       return pattern.empty()
     }
@@ -18,10 +18,14 @@ export default class List extends RecursiveObject {
    * 空のリストかどうか判定
    * @module isEmpty
    */
-  isEmpty = (alist: Function): Function => {
+  isEmpty = alist => {
     return this.match(alist, {
-      empty: (_: void) => true,
-      cons: (_: Function, __: Function) => false,
+      empty: _ => {
+        return true
+      },
+      cons: (_head, _tail) => {
+        return false
+      },
     })
   }
 
@@ -46,10 +50,14 @@ export default class List extends RecursiveObject {
    * リストの先頭要素を取得
    * @module head
    */
-  head = (alist: Function): Function => {
+  head = alist => {
     return this.match(alist, {
-      empty: (_: void) => null,
-      cons: (head: any) => head,
+      empty: _ => {
+        return undefined
+      },
+      cons: (head, _tail) => {
+        return head
+      },
     })
   }
 
@@ -57,10 +65,14 @@ export default class List extends RecursiveObject {
    * リストの後尾のリストを取得
    * @module tail
    */
-  tail = (alist: Function): Function => {
+  tail = alist => {
     return this.match(alist, {
-      empty: (_: void) => null,
-      cons: (_: void, tail: any) => tail,
+      empty: _ => {
+        return undefined
+      },
+      cons: (_head, tail) => {
+        return tail
+      },
     })
   }
 
@@ -104,6 +116,7 @@ export default class List extends RecursiveObject {
    * 2つのリストを連結
    * @module append
    */
+  /* append:: LIST[T] -> LIST[T] -> LIST[T] */
   append = xs => {
     return ys => {
       return this.match(xs, {
@@ -115,6 +128,19 @@ export default class List extends RecursiveObject {
         },
       })
     }
+  }
+
+  /* concat:: LIST[LIST[T]] -> LIST[T] */
+  concat = xss => {
+    return this.foldr(xss)(this.empty())(this.append)
+  }
+
+  join = xss => {
+    return this.concat(xss)
+  }
+
+  flatten = instanceMM => {
+    return this.concat(instanceMM)
   }
 
   /**
@@ -133,14 +159,16 @@ export default class List extends RecursiveObject {
     return F.compose(this.head, this.reverse)(alist)
   }
 
-  /* map:: FUN[T => T] => LIST[T] =>  LIST[T] */
-  map = alist => {
-    return callback => {
-      // 個々の要素を変換するコールバック関数
-      return this.foldr(alist)(this.empty())(item => {
-        return accumulator => {
-          return this.cons(callback(item), accumulator)
-        }
+  /* map:: LIST[T] -> FUN[T->U] -> LIST[U] */
+  map = instanceM => {
+    return transform => {
+      return this.match(instanceM, {
+        empty: _ => {
+          return this.empty()
+        },
+        cons: (head, tail) => {
+          return this.cons(transform(head), this.map(tail)(transform))
+        },
       })
     }
   }
@@ -212,15 +240,19 @@ export default class List extends RecursiveObject {
   /**
    * リストの畳み込み関数
    */
+  /* foldr:: LIST[T] -> T -> FUN[T -> U -> U] -> T */
   foldr = alist => {
+    // alist:: LIST[T]
     return accumulator => {
-      return callback => {
+      // accumulator:: T
+      return glue => {
+        // glue:: FUN[T -> U -> U]
         return this.match(alist, {
           empty: _ => {
             return accumulator
           },
           cons: (head, tail) => {
-            return callback(head)(this.foldr(tail)(accumulator)(callback))
+            return glue(head)(this.foldr(tail)(accumulator)(glue))
           },
         })
       }
