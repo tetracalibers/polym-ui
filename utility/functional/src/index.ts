@@ -8,6 +8,7 @@ import STREAM from './monad/STREAM'
 import LIST from './monad/LIST'
 import EITHER from './monad/EITHER'
 import ST from './monad/ST'
+import CONT from './monad/CONT'
 
 import Env from './object/Env'
 import List from './object/List'
@@ -34,6 +35,7 @@ export {
   EITHER,
   MAYBE,
   CONSTANT_MONAD,
+  CONT,
   ST,
   Env,
   List,
