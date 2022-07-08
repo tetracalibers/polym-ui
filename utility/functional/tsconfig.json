@@ -11,7 +11,7 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
-    "strict": true,
+    //"strict": true,
     // 宣言されたが使用されていない変数が存在する場合にコンパイルエラーにする
     "noUnusedLocals": false, // TODO 完成したプログラムのbuild時はtrue推奨
     "noUnusedParameters": true,
