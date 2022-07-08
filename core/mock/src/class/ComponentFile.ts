@@ -13,8 +13,11 @@ interface ComponentFile {
 }
 
 class ComponentFile implements ComponentFile {
-  findSubExtension(): string | undefined {
-    return _.chain(_.split(this.name, '.')).dropRight().last().value()
+  set SubExtension(__: string | undefined) {
+    this.subExtension = _.chain(_.split(this.name, '.'))
+      .dropRight()
+      .last()
+      .value()
   }
 
   get src(): string {
@@ -45,7 +48,7 @@ class ComponentFile implements ComponentFile {
   }
 
   get stylingFilePath(): string {
-    return this.path.replace(this.extension, '.styled' + this.extension)
+    return this.path.replace(this.extension, '.styp.jsx')
   }
 
   copyFile(outFilePath: string): void {
