@@ -38,20 +38,28 @@ export default class Stream extends RecursiveObject {
     })
   }
 
+  isEmpty = lazyList => {
+    return this.match(lazyList, {
+      empty: _ => {
+        return true
+      },
+      cons: (_head, _tailThunk) => {
+        return false
+      },
+    })
+  }
+
   toArray = lazyList => {
     return this.match(lazyList, {
       empty: _ => {
         return []
       },
       cons: (head, tailThunk) => {
-        return this.match(tailThunk(), {
-          empty: _ => {
-            return [head]
-          },
-          cons: (_head, _tailThunk_) => {
-            return [head].concat(this.toArray(tailThunk()))
-          },
-        })
+        if (this.isEmpty(tailThunk())) {
+          return [head]
+        } else {
+          return [head].concat(this.toArray(tailThunk()))
+        }
       },
     })
   }
@@ -168,15 +176,74 @@ export default class Stream extends RecursiveObject {
    * ストリームの各要素に対して処理を実行する
    * @module map
    */
-  map = (transform: Function): Function => {
-    return (aStream: Stream) => {
-      const head = aStream[0]
-      return [
-        transform(head),
-        (_: void) => {
-          return this.map(transform)(aStream[1]())
+  map = lazyList => {
+    return transform => {
+      return this.match(lazyList, {
+        empty: _ => {
+          return this.empty()
         },
-      ]
+        cons: (head, tailThunk) => {
+          return this.cons(transform(head), _ => {
+            return this.map(tailThunk())(transform)
+          })
+        },
+      })
+    }
+  }
+
+  append = xs => {
+    return ysThunk => {
+      return this.match(xs, {
+        empty: _ => {
+          return ysThunk()
+        },
+        cons: (head, tailThunk) => {
+          return this.cons(head, _ => {
+            return this.append(tailThunk())(ysThunk)
+          })
+        },
+      })
+    }
+  }
+
+  /* concat:: STREAM[STREAM[T]] -> STREAM[T] */
+  concat = astream => {
+    return this.match(astream, {
+      empty: _ => {
+        return this.empty()
+      },
+      cons: (head, tailThunk) => {
+        return this.append(head)(tailThunk)
+      },
+    })
+  }
+
+  /* flatten :: STREAM[STREAM[T]] => STREAM[T] */
+  flatten = lazyList => {
+    return this.match(lazyList, {
+      empty: _ => {
+        return this.empty()
+      },
+      cons: (head, tailThunk) => {
+        return this.append(head)(_ => {
+          return this.flatten(tailThunk())
+        })
+      },
+    })
+  }
+
+  foldr = instanceM => {
+    return accumulator => {
+      return glue => {
+        return this.match(instanceM, {
+          empty: _ => {
+            return accumulator
+          },
+          cons: (head, tailThunk) => {
+            return glue(head)(this.foldr(tailThunk())(accumulator)(glue))
+          },
+        })
+      }
     }
   }
 
