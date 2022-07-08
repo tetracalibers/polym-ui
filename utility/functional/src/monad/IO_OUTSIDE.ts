@@ -1,6 +1,7 @@
 import Pair from '../object/Pair'
+import IO from './IO'
 
-export default class IO_MONAD_HAS_OUTSIDE {
+export default class IO_OUTSIDE extends IO {
   private pair: Pair
 
   /* unit:: T => IO[T] */

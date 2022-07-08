@@ -1,8 +1,12 @@
-import CompositeIOAction from './monad/CompositeIOAction'
-import IO_MONAD_HAS_OUTSIDE from './monad/IO_MONAD_HAS_OUTSIDE'
-import IO_MONAD_NO_OUTSIDE from './monad/IO_MONAD_NO_OUTSIDE'
+import IO from './monad/IO_OUTSIDE'
+import IO_OUTSIDE from './monad/IO'
 import MAYBE from './monad/MAYBE'
 import CONSTANT_MONAD from './monad/CONSTANT_MONAD'
+import WRITER from './monad/WRITER'
+import READER from './monad/READER'
+import STREAM from './monad/STREAM'
+import LIST from './monad/LIST'
+import EITHER from './monad/EITHER'
 
 import Env from './object/Env'
 import List from './object/List'
@@ -18,9 +22,13 @@ import F from './utility/FunctionalUtility'
 import M from './utility/MathematicsUtility'
 
 export {
-  CompositeIOAction,
-  IO_MONAD_HAS_OUTSIDE,
-  IO_MONAD_NO_OUTSIDE,
+  IO,
+  IO_OUTSIDE,
+  WRITER,
+  READER,
+  STREAM,
+  LIST,
+  EITHER,
   MAYBE,
   CONSTANT_MONAD,
   Env,
