@@ -2,12 +2,6 @@ import RecursiveObject from './RecursiveObject'
 import F from '../utility/FunctionalUtility'
 
 export default class Stream extends RecursiveObject {
-  empty = (_: void) => {
-    return pattern => {
-      return pattern.empty()
-    }
-  }
-
   cons = (head, tailThunk) => {
     return pattern => {
       return pattern.cons(head, tailThunk)

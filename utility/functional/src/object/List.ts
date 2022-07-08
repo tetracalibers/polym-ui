@@ -2,12 +2,6 @@ import RecursiveObject from './RecursiveObject'
 import F from '../utility/FunctionalUtility'
 
 export default class List extends RecursiveObject {
-  empty = (_?: any) => {
-    return pattern => {
-      return pattern.empty()
-    }
-  }
-
   cons = (value, alist) => {
     return pattern => {
       return pattern.cons(value, alist)

@@ -7,6 +7,7 @@ import READER from './monad/READER'
 import STREAM from './monad/STREAM'
 import LIST from './monad/LIST'
 import EITHER from './monad/EITHER'
+import ST from './monad/ST'
 
 import Env from './object/Env'
 import List from './object/List'
@@ -31,6 +32,7 @@ export {
   EITHER,
   MAYBE,
   CONSTANT_MONAD,
+  ST,
   Env,
   List,
   Pair,

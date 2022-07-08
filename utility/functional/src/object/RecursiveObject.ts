@@ -8,4 +8,10 @@ export default class RecursiveObject {
   match = (data, pattern) => {
     return data.call(this, pattern)
   }
+
+  empty = (_?: any) => {
+    return pattern => {
+      return pattern.empty()
+    }
+  }
 }
