@@ -19104,6 +19104,11 @@ styletron-standard@^3.0.5:
     "@rtsao/csstype" "2.6.5-forked.0"
     inline-style-prefixer "^5.1.0"
 
+super-expressive@^1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/super-expressive/-/super-expressive-1.4.1.tgz#4366b32bf2d72e802a0e54312028469bbfeac3bd"
+  integrity sha512-0DwnPZXF5+MQcYzmZc1GsXpj5i3SumqztwGIXtnKMIb9Yj6i0Ua9+86c37wLuWJjuABGLZpWxkYD/57tZW7jmQ==
+
 supports-color@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npmjs.org/supports-color/-/supports-color-2.0.0.tgz"
