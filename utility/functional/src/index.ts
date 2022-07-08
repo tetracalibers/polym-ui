@@ -17,6 +17,7 @@ import EString from './object/EnhancedString'
 import ImmArray from './object/ImmutableArray'
 import ImmObject from './object/ImmutableObject'
 import RecursiveObject from './object/RecursiveObject'
+import Stack from './object/Stack'
 
 import DeterministicCalculator from './utility/DeterministicCalculator'
 import F from './utility/FunctionalUtility'
@@ -43,5 +44,6 @@ export {
   RecursiveObject,
   DeterministicCalculator,
   F,
+  Stack,
   M,
 }

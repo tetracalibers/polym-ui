@@ -30,7 +30,7 @@ export default class ST {
     }
   }
 
-  get = _ => {
+  get = (_: void) => {
     return state => {
       return this.pair.cons(state, state)
     }
