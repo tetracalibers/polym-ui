@@ -10147,6 +10147,11 @@ express@^4.17.1, express@^4.17.3:
     utils-merge "1.0.1"
     vary "~1.1.2"
 
+expressive-ts@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/expressive-ts/-/expressive-ts-0.0.2.tgz#3ce75474879e610c71cfdfb88d106e8164f26cf3"
+  integrity sha512-FypiruhZHavVe7x7uLGRv34MwKdBTSMik57pDyHlLw44y3ivxnLfyqmcKo6sAclagU5LBllpdeE06B1HOSHYVw==
+
 extend-shallow@^2.0.1:
   version "2.0.1"
   resolved "https://registry.npmjs.org/extend-shallow/-/extend-shallow-2.0.1.tgz"
@@ -10621,6 +10626,11 @@ forwarded@0.2.0:
   version "0.2.0"
   resolved "https://registry.npmjs.org/forwarded/-/forwarded-0.2.0.tgz"
   integrity sha512-buRG0fpBtRHSTCOASe6hD258tEubFoRLb4ZNA6NxMVHNw2gOcwHo9wyablzMzOA5z9xA9L1KNjk/Nt6MT9aYow==
+
+fp-ts@^2.12.1:
+  version "2.12.1"
+  resolved "https://registry.yarnpkg.com/fp-ts/-/fp-ts-2.12.1.tgz#e389488bfd1507af06bd5965e97367edcd4fabad"
+  integrity sha512-oxvgqUYR6O9VkKXrxkJ0NOyU0FrE705MeqgBUMEPWyTu6Pwn768cJbHChw2XOBlgFLKfIHxjr2OOBFpv2mUGZw==
 
 frac@~1.1.2:
   version "1.1.2"
@@ -15767,6 +15777,13 @@ parse5@6.0.1, parse5@^6.0.0:
   version "6.0.1"
   resolved "https://registry.npmjs.org/parse5/-/parse5-6.0.1.tgz"
   integrity sha512-Ofn/CTFzRGTTxwpNEs9PP93gXShHcTq255nzRYSKe8AkVpZY7e1fpmTfOyoIvjP5HG7Z2ZM7VS9PPhQGW2pOpw==
+
+parser-ts@^0.6.16:
+  version "0.6.16"
+  resolved "https://registry.yarnpkg.com/parser-ts/-/parser-ts-0.6.16.tgz#e1477d6eea789325ca94dc3a48802dba67506a64"
+  integrity sha512-BC5HBg1UfaGKi/PKwUZKmFwQq56qVsMel1Gx0Lu2JeHf/J+XCqV9fahCil0GOMC+sH2ON3N6jdyIoI6RzCyQqw==
+  dependencies:
+    "@babel/code-frame" "^7.0.0"
 
 parseurl@~1.3.2, parseurl@~1.3.3:
   version "1.3.3"
