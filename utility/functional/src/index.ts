@@ -1,10 +1,9 @@
 import CompositeIOAction from './monad/CompositeIOAction'
 import IO_MONAD_HAS_OUTSIDE from './monad/IO_MONAD_HAS_OUTSIDE'
 import IO_MONAD_NO_OUTSIDE from './monad/IO_MONAD_NO_OUTSIDE'
-import MAYBE_MONAD from './monad/MAYBE_MONAD'
+import MAYBE from './monad/MAYBE'
 import CONSTANT_MONAD from './monad/CONSTANT_MONAD'
 
-import Maybe from './object/Maybe'
 import Env from './object/Env'
 import List from './object/List'
 import Pair from './object/Pair'
@@ -22,9 +21,8 @@ export {
   CompositeIOAction,
   IO_MONAD_HAS_OUTSIDE,
   IO_MONAD_NO_OUTSIDE,
-  MAYBE_MONAD,
+  MAYBE,
   CONSTANT_MONAD,
-  Maybe,
   Env,
   List,
   Pair,
