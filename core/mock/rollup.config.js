@@ -99,6 +99,9 @@ const config = [
         compact: true,
       }),
     ],
+    meta: {
+      watchMode: true,
+    },
   },
 ]
 
