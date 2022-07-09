@@ -69,6 +69,7 @@
     "utility-types": "^3.10.0",
     "xml-formatter": "^2.6.1",
     "xml-js": "^1.6.11",
-    "json-format": "^1.0.1"
+    "json-format": "^1.0.1",
+    "alasql": "^1.7.3"
   }
 }
