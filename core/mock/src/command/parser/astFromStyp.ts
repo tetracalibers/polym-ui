@@ -39,6 +39,22 @@ interface AstNode {
 
 const spaceTrim = P.surroundedBy(S.spaces)
 
+const startFile: P.Parser<string, AstNode> = pipe(
+  S.string('<StylePatch>'),
+  P.map(value => ({
+    kind: 'BEGIN_stypFile',
+    value: value,
+  }))
+)
+
+const endFile: P.Parser<string, AstNode> = pipe(
+  S.string('</StylePatch>'),
+  P.map(value => ({
+    kind: 'END_stypFile',
+    value: value,
+  }))
+)
+
 const openingComponentTag: P.Parser<string, AstNode> = pipe(
   P.manyTill(
     pipe(
@@ -151,7 +167,9 @@ const endNestCss: P.Parser<string, AstNode> = pipe(
 )
 
 const parser: P.Parser<string, AstNode> = pipe(
-  spaceTrim(openingHtmlTag),
+  startFile,
+  P.alt(() => spaceTrim(endFile)),
+  P.alt(() => spaceTrim(openingHtmlTag)),
   P.alt(() => spaceTrim(openingComponentTag)),
   P.alt(() => spaceTrim(closingTag)),
   P.alt(() => spaceTrim(cssProperty)),

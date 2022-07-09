@@ -26,6 +26,8 @@ interface AstNode {
     | 'END_css'
     | 'BEGIN_nesting'
     | 'END_nesting'
+    | 'BEGIN_stypFile'
+    | 'END_stypFile'
   readonly value: string
 }
 
@@ -36,6 +38,8 @@ const css = pipe(
   ast as Ast,
   map(({ kind, value }: AstNode) => {
     return match(kind)
+      .with('BEGIN_stypFile', () => '')
+      .with('END_stypFile', () => '')
       .with('OPEN_componentTag', () => value + '{')
       .with('OPEN_htmlTag', () => value + '{')
       .with('CLOSE_tag', () => '}')
