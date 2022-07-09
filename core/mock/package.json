@@ -30,6 +30,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.18.5",
+    "@morphic-ts/batteries": "^3.0.0",
     "@react-polyhex-ui/styling-patch": "*",
     "@rollup/plugin-commonjs": "^22.0.1",
     "@rollup/plugin-json": "^4.1.0",
@@ -48,9 +49,14 @@
     "@types/react-dom": "^18.0.5",
     "@types/shelljs": "^0.8.11",
     "@whitespace/storybook-addon-html": "^5.0.0",
+    "alasql": "^1.7.3",
     "babel-loader": "^8.2.5",
     "esbuild": "^0.14.48",
+    "fast-check": "^3.0.1",
     "fp-ts": "^2.12.1",
+    "io-ts": "^2.2.16",
+    "io-ts-types": "^0.5.16",
+    "json-format": "^1.0.1",
     "lodash": "^4.17.21",
     "parser-ts": "^0.6.16",
     "pkg-dir": "^6.0.1",
@@ -61,6 +67,7 @@
     "rollup": "^2.75.7",
     "rollup-plugin-esbuild": "^4.9.1",
     "shelljs": "^0.8.5",
+    "spectacles-ts": "^1.0.7",
     "super-expressive": "^1.4.1",
     "ts-pattern": "^4.0.4",
     "tslib": "^2.4.0",
@@ -68,8 +75,6 @@
     "unquote": "^1.1.1",
     "utility-types": "^3.10.0",
     "xml-formatter": "^2.6.1",
-    "xml-js": "^1.6.11",
-    "json-format": "^1.0.1",
-    "alasql": "^1.7.3"
+    "xml-js": "^1.6.11"
   }
 }
