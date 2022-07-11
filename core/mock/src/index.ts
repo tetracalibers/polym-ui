@@ -368,8 +368,16 @@ const css = ast.reduce((prev, curr) => {
   return prev
 }, '')
 
-console.log(css)
-
-new ShellString(css).to('tmp/generated.css')
-
 /* -------------------------------------------------------------------------- */
+
+import postcss from 'postcss'
+import safe from 'postcss-safe-parser'
+import autoprefixer from 'autoprefixer'
+import stylefmt from 'stylefmt'
+;(async () => {
+  const formatted = await postcss([autoprefixer, stylefmt])
+    .process(css, { parser: safe })
+    .then(result => result.css)
+  console.log(formatted)
+  new ShellString(formatted).to('tmp/generated.css')
+})()
