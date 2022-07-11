@@ -41,11 +41,12 @@ const styp = `<StylePatch>
 `.replaceAll(/[\r\n\t]/g, '')
 
 interface AstNode {
-  readonly classification:
+  classification:
     | 'BEGIN_componentTag'
     | 'BEGIN_htmlTag'
     | 'END_tag'
     | 'CSS_property'
+    | 'CSS_selector'
     | 'CSS_value'
     | 'BEGIN_css'
     | 'END_css'
@@ -218,13 +219,13 @@ const parser: P.Parser<string, AstNode> = pipe(
 
 const result = run(P.many(parser), styp)
 
-const ast = result._tag === 'Right' ? result.right : []
+const tokens = result._tag === 'Right' ? result.right : []
 
-const json = jsonFormat(ast, config_jsonFormat)
+const json = jsonFormat(tokens, config_jsonFormat)
 
 console.log(json)
 
-new ShellString(json).to('tmp/building.json')
+new ShellString(json).to('tmp/tokens.json')
 
 /* -------------------------------------------------------------------------- */
 
@@ -234,11 +235,14 @@ import { nanoid } from 'nanoid'
 let currentSelector: Array<string> = []
 let currentProperty = ''
 
-const skip = (_node: AstNode) => {}
+const skip = (_node: AstNode) => {
+  return undefined
+}
 
 const prefix = '_styp_'
 
 const BEGIN_htmlTag = (node: AstNode) => {
+  node['classification'] = 'CSS_selector'
   node['id'] = nanoid()
   node['selector'] = node.body + '.' + prefix + node.id
   node['class'] = prefix + node.id
@@ -253,29 +257,49 @@ const BEGIN_css = (node: AstNode) => {
 }
 
 const CSS_property = (node: AstNode) => {
-  node['selector'] = currentSelector.join(' ')
   node['normalize'] = (() => {
-    let after = node.body
-      .replaceAll('_at_', '@')
-      .replaceAll('__', '::')
-      .replaceAll('_', ':')
-    after = after.slice(0, 2) + _.kebabCase(after.slice(2))
+    const before = node.body
+    let after = node.body.replaceAll('__', '::').replaceAll('_', ':')
+    if (after !== before) {
+      node['classification'] = 'CSS_selector'
+      after = after.slice(0, 2) + _.kebabCase(after.slice(2))
+      after = currentSelector.join(' ') + after
+    } else {
+      after = after.replaceAll('_at_', '@')
+      after = after.slice(0, 2) + _.kebabCase(after.slice(2))
+    }
     return after
   })()
-  node['except'] = {
-    after: ':',
+
+  if (node.classification !== 'CSS_selector') {
+    node['except'] = {
+      after: ':',
+    }
   }
+  node['except'] =
+    node.classification !== 'CSS_selector'
+      ? {
+          after: ':',
+        }
+      : {
+          after: '{',
+          before: '}',
+        }
+  node['selector'] =
+    node.classification === 'CSS_selector'
+      ? node.normalize
+      : currentSelector.join(' ')
   currentProperty = node.normalize
   return node
 }
 
 const CSS_value = (node: AstNode) => {
-  node['selector'] = currentSelector.join(' ')
   node['property'] = currentProperty
-  node['normalize'] = node.body
+  node['normalize'] = node.body.length === 0 ? '""' : node.body
   node['except'] = {
     after: ';',
   }
+  node['selector'] = currentSelector.join(' ')
   return node
 }
 
@@ -286,6 +310,7 @@ const BEGIN_nesting = (node: AstNode) => {
       currentProperty[0] === ':' ? currentProperty : ' ' + currentProperty
     return after
   })()
+  node['normalize'] = ''
   return node
 }
 
@@ -295,6 +320,7 @@ const END_nesting = (node: AstNode) => {
     after = after.includes(':') ? after.slice(0, 1 * after.indexOf(':')) : after
     return after
   })()
+  node['normalize'] = ''
   return node
 }
 
@@ -325,16 +351,25 @@ const controller = (node: AstNode) => {
     .otherwise(() => skip(node))
 }
 
-const detailedAst = ast
+const ast = tokens
   .map((node: AstNode) => controller(node))
-  .filter(elem => elem !== undefined)
+  .filter(elem => elem !== undefined) as AstNode[]
+
+const json2 = jsonFormat(ast, config_jsonFormat)
+console.log(json2)
+new ShellString(json2).to('tmp/ast.json')
 
 /* -------------------------------------------------------------------------- */
 
-const test = detailedAst
+const css = ast.reduce((prev, curr) => {
+  prev += curr.except?.before ? curr.except.before : ''
+  prev += curr.normalize ? curr.normalize : ''
+  prev += curr.except?.after ? curr.except.after : ''
+  return prev
+}, '')
 
-console.log(test)
+console.log(css)
 
-const json2 = jsonFormat(test, config_jsonFormat)
-console.log(json2)
-new ShellString(json2).to('tmp/detailedAst.json')
+new ShellString(css).to('tmp/generated.css')
+
+/* -------------------------------------------------------------------------- */
