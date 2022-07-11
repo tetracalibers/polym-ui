@@ -34,7 +34,7 @@ interface AstNode {
 type Ast = Array<AstNode>
 
 // prettier-ignore
-const css = pipe(
+export const css = pipe(
   ast as Ast,
   map(({ kind, value }: AstNode) => {
     return match(kind)
@@ -54,6 +54,5 @@ const css = pipe(
   ),
   foldMap({ concat: (a: string, b: string) => a + b, empty: '' })((s: string) => s)
 )
-console.log(css)
 
 new ShellString(css).to('tmp/pseudoCSS.scss')
