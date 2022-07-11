@@ -60,6 +60,7 @@
     "io-ts-types": "^0.5.16",
     "json-format": "^1.0.1",
     "lodash": "^4.17.21",
+    "nano-css": "^5.3.5",
     "nanoid": "^4.0.0",
     "parser-ts": "^0.6.16",
     "pkg-dir": "^6.0.1",
