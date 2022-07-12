@@ -2,12 +2,14 @@ import { A } from 'ts-toolbelt'
 import _ from 'lodash'
 import shell from 'shelljs'
 const { cat, ShellString, test } = shell
-import SuperExpressive from 'super-expressive'
+import * as path from 'path'
+const { extname, basename } = path
+import date from 'date-and-time'
 
 interface ComponentFile {
   path: string
   name: string
-  extension: 'tsx' | 'jsx'
+  extension: string
   subExtension?: string
   isStyled?: A.Equals<Pick<ComponentFile, 'subExtension'>, 'styled'>
 }
@@ -15,6 +17,8 @@ interface ComponentFile {
 class ComponentFile implements ComponentFile {
   constructor(path: string) {
     this.path = path
+    this.extension = extname(this.path)
+    this.name = basename(this.path)
   }
 
   set setSubExtension(__: string | undefined) {
@@ -34,29 +38,23 @@ class ComponentFile implements ComponentFile {
 
   // prettier-ignore
   get jsx(): string {
-    // /<(StylePatch)>(?<jsx>.*?)<\/\1>/
-    const regexp = SuperExpressive()
-      .startOfInput
-        .string('<StylePatch>')
-        .namedCapture('jsx')
-          .anyOf
-            .word
-            .nonWord
-          .end()
-        .end()
-        .string('</StylePatch>')
-      .endOfInput
-      .toRegex()
+    const regexp =  /<(StylePatch)>(?<jsx>.*?)<\/\1>/
     const jsx = regexp.exec(this.src)?.groups?.jsx
     return jsx ? jsx.trim() : ''
   }
 
   get stylingFilePath(): string {
-    return this.path.replace(this.extension, '.styp.jsx')
+    return this.path.replace(
+      this.name,
+      `styp/${this.name.replace(this.extension, '')}_${date.format(
+        new Date(),
+        'YYYYMMDD-HHmmss'
+      )}.styp.jsx`
+    )
   }
 
   initStylingFile(): void {
-    new ShellString(this.src).to(this.stylingFilePath)
+    new ShellString(this.jsx).to(this.stylingFilePath)
   }
 }
 

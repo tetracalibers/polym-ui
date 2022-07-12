@@ -54,6 +54,7 @@
     "alasql": "^1.7.3",
     "autoprefixer": "^10.4.7",
     "babel-loader": "^8.2.5",
+    "date-and-time": "^2.4.0",
     "esbuild": "^0.14.48",
     "fast-check": "^3.0.1",
     "fp-ts": "^2.12.1",

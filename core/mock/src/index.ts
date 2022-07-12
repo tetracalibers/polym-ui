@@ -12,6 +12,26 @@ const config_jsonFormat = {
   size: 2,
 }
 
+/* -------------------------------------------------------------------------- */
+
+import ComponentFile from './class/ComponentFile'
+
+const componentRootPath =
+  '/Users/tomixy/MyNpmPackage/React-Polyhedron-UI/Repository/React-polyhexUI/core/mock/src/components/atoms/Balloon/index.tsx'
+
+const jsxFile = new ComponentFile(componentRootPath)
+const jsx = jsxFile.jsx
+
+const stypFilePath = jsxFile.stylingFilePath
+
+import StylingFile from './class/StylingFile'
+
+const stypFile = new StylingFile(stypFilePath, jsx)
+
+//stypFile.init()
+
+/* -------------------------------------------------------------------------- */
+
 const rawStyp = `<StylePatch>
   <span>
     {{
