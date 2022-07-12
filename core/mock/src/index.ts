@@ -270,8 +270,6 @@ const jsxTree = convert.xml2js(escapedJsx, {
   ignoreComment: true,
 }) as JsxTree
 
-console.log(jsxTree)
-
 let currentSelector: Array<string> = []
 let currentProperty = ''
 let currentElement: Array<string> = []
@@ -298,7 +296,6 @@ const BEGIN_htmlTag = (node: AstNode) => {
     [...currentElement, '_attributes', 'styp_className'].join('.'),
     prefix + node.id
   )
-  console.log(jsxTree)
   return node
 }
 
@@ -488,4 +485,26 @@ const newJsx = diffJsx
   })
   .join('')
 
-console.log(newJsx)
+/* -------------------------------------------------------------------------- */
+
+const jsxRegexp = /<(StylePatch)>(?<jsx>.*?)<\/\1>/
+
+const { cat } = shell
+
+const oldSrc = cat(componentRootPath).toString()
+
+const oldJsx = jsxRegexp.exec(oldSrc.replace(/\r?\n/g, ''))?.groups?.jsx
+
+const newSrc =
+  oldJsx !== undefined ? oldSrc.replace(_.trim(oldJsx), newJsx) : oldSrc
+
+import * as path from 'path'
+
+const { basename } = path
+
+new ShellString(newSrc).to(
+  componentRootPath.replace(
+    basename(componentRootPath),
+    'generated/' + basename(componentRootPath)
+  )
+)
