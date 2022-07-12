@@ -5,7 +5,7 @@ import { run } from 'parser-ts/code-frame'
 import { pipe } from 'fp-ts/function'
 import _ from 'lodash'
 import shell from 'shelljs'
-const { ShellString, cat } = shell
+const { ShellString } = shell
 import jsonFormat from 'json-format'
 const config_jsonFormat = {
   type: 'space',
@@ -256,14 +256,25 @@ type JsxTree = {
   [K: string]: JsxTree
 }
 
-const jsxTree = convert.xml2js(stypFile.format(), {
+let escapedJsx = jsx
+
+const attrJsRegExp = /<[\w]+(?<js>\s*\{.*?\}\s*).*?>/g
+
+const attrJs = attrJsRegExp.exec(jsx)?.groups?.js
+if (attrJs) {
+  escapedJsx = jsx.replaceAll(attrJs, ` js_${nanoid()}="${_.trim(attrJs)}"`)
+}
+
+const jsxTree = convert.xml2js(escapedJsx, {
   compact: true,
   ignoreComment: true,
 }) as JsxTree
 
+console.log(jsxTree)
+
 let currentSelector: Array<string> = []
 let currentProperty = ''
-let currentElement = ['StylePatch']
+let currentElement: Array<string> = []
 
 const skip = (_node: AstNode) => {
   return undefined
@@ -284,9 +295,10 @@ const BEGIN_htmlTag = (node: AstNode) => {
   currentElement.push(node.body)
   dot.setProperty(
     jsxTree,
-    [...currentElement, '_styp_key'].join('.'),
-    node.selector
+    [...currentElement, '_attributes', 'styp_className'].join('.'),
+    prefix + node.id
   )
+  console.log(jsxTree)
   return node
 }
 
@@ -449,3 +461,31 @@ const classMap = cssSet.reduce((prev, curr) => {
 const classMapJson = jsonFormat(classMap, config_jsonFormat)
 
 new ShellString(classMapJson).to('tmp/classMap.json')
+
+/* -------------------------------------------------------------------------- */
+
+const rebuildJsx = convert.js2xml(jsxTree, {
+  compact: true,
+})
+
+import diff from 'fast-diff'
+
+const diffJsx = diff(jsx, rebuildJsx)
+
+const newJsx = diffJsx
+  .map(record => {
+    const [status, strings] = record
+    if (status === 0) {
+      return strings
+    }
+    if (strings.slice(0, 'js_'.length) === 'js_') {
+      return ''
+    }
+    if (strings.slice(0, '" styp_'.length) === '" styp_') {
+      return ' ' + strings.slice('" styp_'.length)
+    }
+    return ''
+  })
+  .join('')
+
+console.log(newJsx)
