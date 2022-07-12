@@ -5,7 +5,7 @@ import { run } from 'parser-ts/code-frame'
 import { pipe } from 'fp-ts/function'
 import _ from 'lodash'
 import shell from 'shelljs'
-const { ShellString } = shell
+const { ShellString, cat } = shell
 import jsonFormat from 'json-format'
 const config_jsonFormat = {
   type: 'space',
@@ -21,6 +21,8 @@ const componentRootPath =
 
 const jsxFile = new ComponentFile(componentRootPath)
 const jsx = jsxFile.jsx
+
+import convert from 'xml-js'
 
 const stypFilePath = jsxFile.stylingFilePath
 
@@ -250,8 +252,18 @@ new ShellString(json).to('tmp/tokens.json')
 import { match } from 'ts-pattern'
 import { nanoid } from 'nanoid'
 
+type JsxTree = {
+  [K: string]: JsxTree
+}
+
+const jsxTree = convert.xml2js(stypFile.format(), {
+  compact: true,
+  ignoreComment: true,
+}) as JsxTree
+
 let currentSelector: Array<string> = []
 let currentProperty = ''
+let currentElement = ['StylePatch']
 
 const skip = (_node: AstNode) => {
   return undefined
@@ -259,13 +271,22 @@ const skip = (_node: AstNode) => {
 
 const prefix = '_styp_'
 
+import * as dot from 'dot-prop'
+
 const BEGIN_htmlTag = (node: AstNode) => {
+  const id = nanoid()
   node['classification'] = 'CSS_selector'
-  node['id'] = nanoid()
+  node['id'] = id
   node['selector'] = node.body + '.' + prefix + node.id
   node['class'] = prefix + node.id
   node['normalize'] = node.selector
   currentSelector.push(node.selector)
+  currentElement.push(node.body)
+  dot.setProperty(
+    jsxTree,
+    [...currentElement, '_styp_key'].join('.'),
+    node.selector
+  )
   return node
 }
 

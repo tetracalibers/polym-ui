@@ -33,7 +33,7 @@ export default class StylingFile extends SourceFile {
     return this.stylePatchWrap().deleteJsProgramString()
   }
 
-  private format(): string {
+  public format(): string {
     return format(this.formatAsXml().jsx, {
       indentation: '  ',
     })
