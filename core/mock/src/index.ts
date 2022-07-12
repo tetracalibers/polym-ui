@@ -12,7 +12,7 @@ const config_jsonFormat = {
   size: 2,
 }
 
-const styp = `<StylePatch>
+const rawStyp = `<StylePatch>
   <span>
     {{
       backgroundColor: '#1a1a1a',
@@ -217,13 +217,11 @@ const parser: P.Parser<string, AstNode> = pipe(
   })
 )
 
-const result = run(P.many(parser), styp)
+const result = run(P.many(parser), rawStyp)
 
 const tokens = result._tag === 'Right' ? result.right : []
 
 const json = jsonFormat(tokens, config_jsonFormat)
-
-console.log(json)
 
 new ShellString(json).to('tmp/tokens.json')
 
@@ -356,7 +354,7 @@ const ast = tokens
   .filter(elem => elem !== undefined) as AstNode[]
 
 const json2 = jsonFormat(ast, config_jsonFormat)
-console.log(json2)
+
 new ShellString(json2).to('tmp/ast.json')
 
 /* -------------------------------------------------------------------------- */
@@ -376,8 +374,35 @@ import autoprefixer from 'autoprefixer'
 import stylefmt from 'stylefmt'
 ;(async () => {
   const formatted = await postcss([autoprefixer, stylefmt])
-    .process(css, { parser: safe })
+    .process(css, { parser: safe, from: undefined })
     .then(result => result.css)
-  console.log(formatted)
   new ShellString(formatted).to('tmp/generated.css')
 })()
+
+/* -------------------------------------------------------------------------- */
+
+import postcssJs from 'postcss-js'
+
+const root = postcss.parse(css)
+const cssSet = Object.entries(postcssJs.objectify(root))
+
+import { styp } from '@react-polyhex-ui/styling-patch'
+
+type ClassMap = {
+  key: string
+  atomic: string
+}
+
+const classMap = cssSet.reduce((prev, curr) => {
+  const [selector, values] = curr
+  const classNames = styp.virtual(selector, values)
+  prev.push({
+    key: selector,
+    atomic: classNames,
+  })
+  return prev
+}, [] as ClassMap[])
+
+const classMapJson = jsonFormat(classMap, config_jsonFormat)
+
+new ShellString(classMapJson).to('tmp/classMap.json')

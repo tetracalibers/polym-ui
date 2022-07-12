@@ -4,7 +4,7 @@ import { addon as addonVirtual } from 'nano-css/addon/virtual'
 import { addon as addonExtract } from 'nano-css/addon/extract'
 import { addon as addonRule } from 'nano-css/addon/rule'
 
-const styp = create({
+export const styp = create({
   pfx: '_styp_',
 })
 
