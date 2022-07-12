@@ -422,11 +422,19 @@ import postcss from 'postcss'
 import safe from 'postcss-safe-parser'
 import autoprefixer from 'autoprefixer'
 import stylefmt from 'stylefmt'
+import * as path from 'path'
+const { basename } = path
+
 ;(async () => {
   const formatted = await postcss([autoprefixer, stylefmt])
     .process(css, { parser: safe, from: undefined })
     .then(result => result.css)
-  new ShellString(formatted).to('tmp/generated.css')
+  new ShellString(formatted).to(
+    componentRootPath.replace(
+      basename(componentRootPath),
+      'generated/stylePatch.css'
+    )
+  )
 })()
 
 /* -------------------------------------------------------------------------- */
@@ -497,10 +505,6 @@ const oldJsx = jsxRegexp.exec(oldSrc.replace(/\r?\n/g, ''))?.groups?.jsx
 
 const newSrc =
   oldJsx !== undefined ? oldSrc.replace(_.trim(oldJsx), newJsx) : oldSrc
-
-import * as path from 'path'
-
-const { basename } = path
 
 new ShellString(newSrc).to(
   componentRootPath.replace(
