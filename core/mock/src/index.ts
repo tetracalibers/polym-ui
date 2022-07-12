@@ -383,8 +383,10 @@ import stylefmt from 'stylefmt'
 
 import postcssJs from 'postcss-js'
 
+const prefixer = postcssJs.sync([autoprefixer])
+
 const root = postcss.parse(css)
-const cssSet = Object.entries(postcssJs.objectify(root))
+const cssSet = Object.entries(prefixer(postcssJs.objectify(root)))
 
 import { styp } from '@react-polyhex-ui/styling-patch'
 
