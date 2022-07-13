@@ -28,10 +28,12 @@
   "bugs": {
     "url": "https://github.com/tetracalibers/React-polyhexUI/issues"
   },
+  "dependencies": {
+    "@react-polyhex-ui/styling-patch": "*"
+  },
   "devDependencies": {
     "@babel/core": "^7.18.5",
     "@morphic-ts/batteries": "^3.0.0",
-    "@react-polyhex-ui/styling-patch": "*",
     "@rollup/plugin-commonjs": "^22.0.1",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^13.3.0",

@@ -446,6 +446,10 @@ const prefixer = postcssJs.sync([autoprefixer])
 const root = postcss.parse(css)
 const cssSet = Object.entries(prefixer(postcssJs.objectify(root)))
 
+new ShellString(jsonFormat(cssSet, config_jsonFormat)).to(
+  '/Users/tomixy/MyNpmPackage/React-Polyhedron-UI/Repository/React-polyhexUI/core/mock/src/components/atoms/Balloon/generated/cssSet.json'
+)
+
 import { styp } from '@react-polyhex-ui/styling-patch'
 
 type ClassMap = {
@@ -506,9 +510,9 @@ const oldJsx = jsxRegexp.exec(oldSrc.replace(/\r?\n/g, ''))?.groups?.jsx
 const newSrc =
   oldJsx !== undefined ? oldSrc.replace(_.trim(oldJsx), newJsx) : oldSrc
 
-new ShellString(newSrc).to(
-  componentRootPath.replace(
-    basename(componentRootPath),
-    'generated/' + basename(componentRootPath)
-  )
-)
+//new ShellString(newSrc).to(
+//  componentRootPath.replace(
+//    basename(componentRootPath),
+//    'generated/' + basename(componentRootPath)
+//  )
+//)
