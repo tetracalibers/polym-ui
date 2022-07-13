@@ -1,4 +1,4 @@
-import { cssKeywordList_arrayExpanded } from './parse/parsedDataArrayExpand'
+import { cssKeywordList_arrayExpanded } from '../parse/parsedDataArrayExpand'
 import { createJsonFile } from '@polyhex-utility/json'
 import alasql from 'alasql'
 
