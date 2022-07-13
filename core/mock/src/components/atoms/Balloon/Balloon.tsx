@@ -1,5 +1,5 @@
 import { FC, ReactNode, HTMLAttributes } from 'react'
-import { StylePatch, StylePatchProvider } from '@react-polyhex-ui/styling-patch'
+import { StylePatch } from '@react-polyhex-ui/styling-patch'
 
 type SpanProps = HTMLAttributes<HTMLSpanElement>
 
@@ -9,11 +9,9 @@ type Props = {
 
 const Balloon: FC<Props> = ({ children = '', ...spanProps }) => {
   return (
-    <StylePatchProvider>
-      <StylePatch>
-        <span {...spanProps}>{children}</span>
-      </StylePatch>
-    </StylePatchProvider>
+    <StylePatch>
+      <span {...spanProps}>{children}</span>
+    </StylePatch>
   )
 }
 
