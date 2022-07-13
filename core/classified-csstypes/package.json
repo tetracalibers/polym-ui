@@ -1,5 +1,5 @@
 {
-  "name": "@react-polyhex-ui/styling-patch",
+  "name": "classified-csstypes",
   "version": "0.0.0",
   "description": "> TODO: description",
   "author": "tomixy",
@@ -7,15 +7,12 @@
   "license": "MIT",
   "main": "src/index.ts",
   "type": "module",
-  "types": "lib/@types/index.d.ts",
-  "files": [
-    "lib"
-  ],
+  "types": "dist/@types/index.d.ts",
   "exports": {
-    "import": "./lib/bundle.es.js",
-    "require": "./lib/bundle.cjs",
-    "node": "./lib/bundle.es.js",
-    "default": "./lib/bundle.cjs"
+    "import": "./dist/bundle.es.js",
+    "require": "./dist/bundle.cjs",
+    "node": "./dist/bundle.es.js",
+    "default": "./dist/bundle.cjs"
   },
   "repository": {
     "type": "git",
@@ -23,22 +20,23 @@
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1",
-    "prebuild": "rimraf lib",
+    "prebuild": "rimraf dist",
     "build": "rollup -c",
-    "start": "yarn build && node lib/bundle.cjs"
+    "start": "yarn build && node dist/bundle.es.js"
   },
   "bugs": {
     "url": "https://github.com/tetracalibers/React-polyhexUI/issues"
   },
-  "dependencies": {
-    "nano-css": "^5.3.5"
-  },
   "devDependencies": {
+    "@polyhex-utility/json": "*",
     "@rollup/plugin-commonjs": "^22.0.1",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^13.3.0",
     "@rollup/plugin-typescript": "^8.3.3",
+    "alasql": "^1.7.3",
     "esbuild": "^0.14.48",
+    "mdn-data": "latest",
+    "react-native-fs": "^2.20.0",
     "rimraf": "^3.0.2",
     "rollup": "^2.75.7",
     "rollup-plugin-esbuild": "^4.9.1",

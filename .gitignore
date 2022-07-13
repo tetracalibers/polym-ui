@@ -10,6 +10,7 @@ lerna-debug.log*
 *.txt
 tmp.json
 _package.json
+memo
 
 # for debug
 *.map

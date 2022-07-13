@@ -1,5 +1,6 @@
-import { css } from 'mdn-data'
+import pkg from 'mdn-data'
 import alasql from 'alasql'
+const { css } = pkg
 
 const { atRules, selectors, properties } = css
 
@@ -23,8 +24,11 @@ type cssKeyword = {
 
 type cssKeywordList = Array<cssKeyword>
 
-const createCssKeywordList: Function = (data: cssDataByMdnList, keywordKind: string): cssKeywordList => {
-  const flatObjList: Array<CssDataByMdn> = alasql("SELECT * FROM ?", [data])
+const createCssKeywordList: Function = (
+  data: cssDataByMdnList,
+  keywordKind: string
+): cssKeywordList => {
+  const flatObjList: Array<CssDataByMdn> = alasql('SELECT * FROM ?', [data])
   const query = `
       SELECT 
         data._->(0) AS keyword, 
@@ -41,4 +45,8 @@ const cssKeywordList_atRules = createCssKeywordList(atRules, 'at-rule')
 const cssKeywordList_selectors = createCssKeywordList(selectors, 'selector')
 const cssKeywordList_properties = createCssKeywordList(properties, 'property')
 
-export const cssKeywordList_usingArray = [...cssKeywordList_atRules, ...cssKeywordList_selectors, ...cssKeywordList_properties]
+export const cssKeywordList_usingArray = [
+  ...cssKeywordList_atRules,
+  ...cssKeywordList_selectors,
+  ...cssKeywordList_properties,
+]

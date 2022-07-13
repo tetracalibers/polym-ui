@@ -1,4 +1,4 @@
-import { cssKeywordList_arrayExpanded } from './parsedDataArrayExpand'
+import { cssKeywordList_arrayExpanded } from './parse/parsedDataArrayExpand'
 import { createJsonFile } from '@polyhex-utility/json'
 import alasql from 'alasql'
 
@@ -26,7 +26,7 @@ const likeResultDump: Function = (like: string): Function => {
     const likeResult = runLikeSelectQuery(like)(from)(false)
     return (fileName: string): Array<string> => {
       if (likeResult.length > 0) {
-        createJsonFile(likeResult, `dump/css-keywords/bySyntax/${fileName}`)
+        createJsonFile(likeResult, `lib/cssdata/bySyntax/${fileName}`)
       }
       return likeResult
     }
@@ -47,7 +47,7 @@ const likeResultDumpLoop: Function = (
       let match: Array<string> = []
       likePatternList.map((like: string) => {
         let fileName = `s_${like}_e`
-        fileName = use ? fileName : 'ignore/' + fileName
+        fileName = use ? fileName : 'other/' + fileName
         match = [...match, ...likeResultDump(like)(reminder)(fileName)]
         reminder = runLikeSelectQuery(like)(reminder)(true)
       })
@@ -86,12 +86,12 @@ export const dumpUsefulCssKeywordList: Function = (): Array<object> => {
     const { reminder } = likeResultDumpLoop(like)(notMatchKeywords)(true)
     notMatchKeywords = reminder
   })
-  let ignoreKeywords: Array<object> = []
+  let otherKeywords: Array<object> = []
   excludePatterns.map((like: Array<string>) => {
     const { reminder, match } =
       likeResultDumpLoop(like)(notMatchKeywords)(false)
     notMatchKeywords = reminder
-    ignoreKeywords = [...ignoreKeywords, ...match]
+    otherKeywords = [...otherKeywords, ...match]
   })
   likeResultDumpLoop(['%'])(notMatchKeywords)(true)
 
@@ -102,9 +102,9 @@ export const dumpUsefulCssKeywordList: Function = (): Array<object> => {
       SELECT keyword FROM ?
     )
   `,
-    [cssKeywordList_arrayExpanded, ignoreKeywords]
+    [cssKeywordList_arrayExpanded, otherKeywords]
   )
-  createJsonFile(useCssKeywordList, `dump/css-keywords/all`)
+  createJsonFile(useCssKeywordList, `lib/cssdata/all`)
 
   return useCssKeywordList
 }

@@ -18,7 +18,7 @@ export const dumpUsefulCssKeywordList_byModule: Function = (
     if (thisGroupKeywordList.length > 0) {
       createJsonFile(
         thisGroupKeywordList,
-        `dump/css-keywords/byModule/${moduleGroupNoSpaces}`
+        `lib/cssdata/byModule/${moduleGroupNoSpaces}`
       )
     }
   })
