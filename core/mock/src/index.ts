@@ -455,6 +455,15 @@ const rebuildJsx = convert.js2xml(jsxTree, {
   compact: true,
 })
 
+//console.log(rebuildJsx)
+
+import * as Diff from 'diff'
+
+const diffJsx = Diff.diffWords(jsx, rebuildJsx)
+
+console.log(diffJsx)
+
+/** 
 import diff from 'fast-diff'
 
 const diffJsx = diff(jsx, rebuildJsx)
@@ -477,8 +486,6 @@ const newJsx = diffJsx
 
 console.log(newJsx)
 
-/* -------------------------------------------------------------------------- */
-
 const jsxRegexp = /<(StylePatch)>(?<jsx>.*?)<\/\1>/
 
 const { cat } = shell
@@ -490,6 +497,7 @@ const oldJsx = jsxRegexp.exec(oldSrc.replace(/\r?\n/g, ''))?.groups?.jsx
 const newSrc =
   oldJsx !== undefined ? oldSrc.replace(_.trim(oldJsx), newJsx) : oldSrc
 
+*/
 //new ShellString(newSrc).to(
 //  componentRootPath.replace(
 //    basename(componentRootPath),
