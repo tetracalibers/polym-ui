@@ -54,6 +54,7 @@
     "@types/shelljs": "^0.8.11",
     "@whitespace/storybook-addon-html": "^5.0.0",
     "alasql": "^1.7.3",
+    "diff": "^5.1.0",
     "autoprefixer": "^10.4.7",
     "babel-loader": "^8.2.5",
     "date-and-time": "^2.4.0",
