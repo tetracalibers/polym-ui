@@ -250,7 +250,10 @@ new ShellString(json).to('tmp/tokens.json')
 /* -------------------------------------------------------------------------- */
 
 import { match } from 'ts-pattern'
-import { nanoid } from 'nanoid'
+import { customAlphabet } from 'nanoid'
+import { alphanumeric } from 'nanoid-dictionary'
+
+const nanoid = customAlphabet(alphanumeric)
 
 type JsxTree = {
   [K: string]: JsxTree
@@ -278,7 +281,7 @@ const skip = (_node: AstNode) => {
   return undefined
 }
 
-const prefix = '_styp_'
+const prefix = 'styp_'
 
 import * as dot from 'dot-prop'
 
@@ -455,13 +458,13 @@ const rebuildJsx = convert.js2xml(jsxTree, {
   compact: true,
 })
 
-//console.log(rebuildJsx)
+console.log(rebuildJsx)
 
 import * as Diff from 'diff'
 
 const diffJsx = Diff.diffWords(jsx, rebuildJsx)
 
-console.log(diffJsx)
+//console.log(diffJsx)
 
 /** 
 import diff from 'fast-diff'
