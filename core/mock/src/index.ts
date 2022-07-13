@@ -17,7 +17,7 @@ const config_jsonFormat = {
 import ComponentFile from './class/ComponentFile'
 
 const componentRootPath =
-  '/Users/tomixy/MyNpmPackage/React-Polyhedron-UI/Repository/React-polyhexUI/core/mock/src/components/atoms/Balloon/index.tsx'
+  '/Users/tomixy/MyNpmPackage/React-Polyhedron-UI/Repository/React-polyhexUI/core/mock/src/components/atoms/Balloon/Balloon.tsx'
 
 const jsxFile = new ComponentFile(componentRootPath)
 const jsx = jsxFile.jsx
@@ -444,32 +444,10 @@ import postcssJs from 'postcss-js'
 const prefixer = postcssJs.sync([autoprefixer])
 
 const root = postcss.parse(css)
-const cssSet = Object.entries(prefixer(postcssJs.objectify(root)))
+const cssSet = prefixer(postcssJs.objectify(root))
 
-new ShellString(jsonFormat(cssSet, config_jsonFormat)).to(
-  '/Users/tomixy/MyNpmPackage/React-Polyhedron-UI/Repository/React-polyhexUI/core/mock/src/components/atoms/Balloon/generated/cssSet.json'
-)
-
-import { styp } from '@react-polyhex-ui/styling-patch'
-
-type ClassMap = {
-  key: string
-  atomic: string
-}
-
-const classMap = cssSet.reduce((prev, curr) => {
-  const [selector, values] = curr
-  const classNames = styp.virtual(selector, values)
-  prev.push({
-    key: selector,
-    atomic: classNames,
-  })
-  return prev
-}, [] as ClassMap[])
-
-const classMapJson = jsonFormat(classMap, config_jsonFormat)
-
-new ShellString(classMapJson).to('tmp/classMap.json')
+const cssSetJson = jsonFormat(cssSet, config_jsonFormat)
+new ShellString(cssSetJson).to('tmp/cssSet.json')
 
 /* -------------------------------------------------------------------------- */
 
@@ -496,6 +474,8 @@ const newJsx = diffJsx
     return ''
   })
   .join('')
+
+console.log(newJsx)
 
 /* -------------------------------------------------------------------------- */
 
