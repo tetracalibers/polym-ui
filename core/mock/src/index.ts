@@ -78,19 +78,9 @@ interface AstNode {
     | 'END_stypFile'
     | 'empty'
   readonly body: string
-  id?: string
-  selector?: string
+  key?: string
   property?: string
-  class?: string
   normalize?: string
-  except?: {
-    before?: string
-    after?: string
-  }
-  unexpect?: {
-    before?: string
-    after?: string
-  }
 }
 
 const spaceTrim = P.surroundedBy(S.spaces)
@@ -287,13 +277,16 @@ const prefix = 'styp_'
 
 import * as dot from 'dot-prop'
 
+/**
+TODO CSS型を作成したら、cssInJsオブジェクトを組み立てる処理を書く
+ */
+
 const BEGIN_htmlTag = (node: AstNode) => {
   const id = prefix + nanoid()
   node['classification'] = 'CSS_selector'
-  node['selector'] = node.body + '.' + id
-  node['class'] = id
-  node['normalize'] = node.selector
-  currentSelector.push(node.selector)
+  node['key'] = id
+  node['normalize'] = '&'
+  currentSelector.push(node.key)
   currentElement.push(node.body)
   dot.setProperty(
     jsxTree,
@@ -306,43 +299,24 @@ const BEGIN_htmlTag = (node: AstNode) => {
 }
 
 const BEGIN_css = (node: AstNode) => {
-  node['normalize'] = '{'
   return node
 }
 
 const CSS_property = (node: AstNode) => {
+  node['key'] = currentSelector.join(' ')
   node['normalize'] = (() => {
     const before = node.body
-    let after = node.body.replaceAll('__', '::').replaceAll('_', ':')
+    let after = node.body
+      .replaceAll('__', '::')
+      .replaceAll('_', ':')
+      .replaceAll('_at_', '@')
     if (after !== before) {
       node['classification'] = 'CSS_selector'
-      after = after.slice(0, 2) + _.kebabCase(after.slice(2))
-      after = currentSelector.join(' ') + after
-    } else {
-      after = after.replaceAll('_at_', '@')
-      after = after.slice(0, 2) + _.kebabCase(after.slice(2))
+      node['key'] += after
+      after = '&' + after
     }
     return after
   })()
-
-  if (node.classification !== 'CSS_selector') {
-    node['except'] = {
-      after: ':',
-    }
-  }
-  node['except'] =
-    node.classification !== 'CSS_selector'
-      ? {
-          after: ':',
-        }
-      : {
-          after: '{',
-          before: '}',
-        }
-  node['selector'] =
-    node.classification === 'CSS_selector'
-      ? node.normalize
-      : currentSelector.join(' ')
   currentProperty = node.normalize
   return node
 }
@@ -350,10 +324,7 @@ const CSS_property = (node: AstNode) => {
 const CSS_value = (node: AstNode) => {
   node['property'] = currentProperty
   node['normalize'] = node.body.length === 0 ? '""' : node.body
-  node['except'] = {
-    after: ';',
-  }
-  node['selector'] = currentSelector.join(' ')
+  node['key'] = currentSelector.join(' ')
   return node
 }
 
@@ -364,7 +335,6 @@ const BEGIN_nesting = (node: AstNode) => {
       currentProperty[0] === ':' ? currentProperty : ' ' + currentProperty
     return after
   })()
-  node['normalize'] = ''
   return node
 }
 
@@ -374,18 +344,15 @@ const END_nesting = (node: AstNode) => {
     after = after.includes(':') ? after.slice(0, 1 * after.indexOf(':')) : after
     return after
   })()
-  node['normalize'] = ''
   return node
 }
 
 const END_css = (node: AstNode) => {
-  node['normalize'] = '}'
   return node
 }
 
 const END_tag = (node: AstNode) => {
   currentSelector = currentSelector.slice(-1)
-  node['normalize'] = ''
   return node
 }
 
@@ -413,8 +380,7 @@ const json2 = jsonFormat(ast, config_jsonFormat)
 
 new ShellString(json2).to('tmp/ast.json')
 
-/* -------------------------------------------------------------------------- */
-
+/** 
 const css = ast.reduce((prev, curr) => {
   prev += curr.except?.before ? curr.except.before : ''
   prev += curr.normalize ? curr.normalize : ''
@@ -422,7 +388,11 @@ const css = ast.reduce((prev, curr) => {
   return prev
 }, '')
 
-/* -------------------------------------------------------------------------- */
+console.log(css)
+
+const json3 = jsonFormat(css, config_jsonFormat)
+
+new ShellString(json3).to('tmp/cssObj.json')
 
 import postcss from 'postcss'
 import safe from 'postcss-safe-parser'
@@ -443,8 +413,6 @@ const { basename } = path
   )
 })()
 
-/* -------------------------------------------------------------------------- */
-
 import postcssJs from 'postcss-js'
 
 const prefixer = postcssJs.sync([autoprefixer])
@@ -461,13 +429,13 @@ const rebuildJsx = convert.js2xml(jsxTree, {
   compact: true,
 })
 
-console.log(rebuildJsx)
+//console.log(rebuildJsx)
 
 import * as Diff from 'diff'
 
 const diffJsx = Diff.diffWords(jsx, rebuildJsx)
 
-console.log(diffJsx)
+//console.log(diffJsx)
 
 /** 
 import diff from 'fast-diff'
