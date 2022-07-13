@@ -345,6 +345,10 @@ const controller = (node: AstNode) => {
 }
 tokens.map((node: AstNode) => controller(node))
 
+/**
+TODO CSSの宣言順序保証問題をどうにかする
+ */
+
 console.log(jsonFormat(cssObjCollection, config_jsonFormat), '\n')
 
 /* -------------------------------------------------------------------------- */
@@ -361,29 +365,22 @@ const diffJsx = Diff.diffWords(jsx, rebuildJsx)
 
 console.log(diffJsx, '\n')
 
-/** 
-import diff from 'fast-diff'
-
-const diffJsx = diff(jsx, rebuildJsx)
-
 const newJsx = diffJsx
-  .map(record => {
-    const [status, strings] = record
-    if (status === 0) {
-      return strings
+  .map(r => {
+    if (!r.added && !r.removed) {
+      return r.value
     }
-    if (strings.slice(0, 'js_'.length) === 'js_') {
+    const jsValPrefix = 'js_'
+    if (r.added && r.value.slice(0, jsValPrefix.length) === jsValPrefix) {
       return ''
     }
-    if (strings.slice(0, '" styp_'.length) === '" styp_') {
-      return ' ' + strings.slice('" styp_'.length)
-    }
-    return ''
+    return r.value
   })
   .join('')
 
-console.log(newJsx)
+console.log(newJsx, '\n')
 
+/** 
 const jsxRegexp = /<(StylePatch)>(?<jsx>.*?)<\/\1>/
 
 const { cat } = shell
