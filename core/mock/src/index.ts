@@ -12,6 +12,19 @@ const config_jsonFormat = {
   size: 2,
 }
 
+import { match } from 'ts-pattern'
+import { customAlphabet } from 'nanoid'
+import pkg from 'nanoid-dictionary'
+const { alphanumeric, numbers } = pkg
+
+const nanoid = customAlphabet(alphanumeric)
+const nanoid_numbersOnly = customAlphabet(numbers, 10)
+
+import type { CssInJs } from 'classified-csstypes'
+
+// prettier-ignore
+type CssObjCollection = Record<string, CssInJs>
+
 /* -------------------------------------------------------------------------- */
 
 import ComponentFile from './class/ComponentFile'
@@ -81,7 +94,10 @@ interface AstNode {
   key?: string
   property?: string
   normalize?: string
+  css?: CssInJs
 }
+
+const prefix = 'styp_'
 
 const spaceTrim = P.surroundedBy(S.spaces)
 
@@ -239,14 +255,6 @@ new ShellString(json).to('tmp/tokens.json')
 
 /* -------------------------------------------------------------------------- */
 
-import { match } from 'ts-pattern'
-import { customAlphabet } from 'nanoid'
-import pkg from 'nanoid-dictionary'
-const { alphanumeric, numbers } = pkg
-
-const nanoid = customAlphabet(alphanumeric)
-const nanoid_numbersOnly = customAlphabet(numbers, 10)
-
 type JsxTree = {
   [K: string]: JsxTree
 }
@@ -266,27 +274,25 @@ const jsxTree = convert.xml2js(escapedJsx, {
 }) as JsxTree
 
 let currentSelector: Array<string> = []
-let currentProperty = ''
 let currentElement: Array<string> = []
 
 const skip = (_node: AstNode) => {
   return undefined
 }
 
-const prefix = 'styp_'
-
 import * as dot from 'dot-prop'
 
-/**
-TODO CSS型を作成したら、cssInJsオブジェクトを組み立てる処理を書く
- */
+let cssObjCollection = {} as CssObjCollection
+
+let currentPath: Array<string> = []
 
 const BEGIN_htmlTag = (node: AstNode) => {
   const id = prefix + nanoid()
-  node['classification'] = 'CSS_selector'
-  node['key'] = id
-  node['normalize'] = '&'
-  currentSelector.push(node.key)
+  cssObjCollection[id] = {} as CssInJs
+  currentPath.push(id)
+  currentPath.push('&')
+  console.log(currentPath.join('.'))
+  currentSelector.push(id)
   currentElement.push(node.body)
   dot.setProperty(
     jsxTree,
@@ -298,62 +304,32 @@ const BEGIN_htmlTag = (node: AstNode) => {
   return node
 }
 
-const BEGIN_css = (node: AstNode) => {
-  return node
-}
-
 const CSS_property = (node: AstNode) => {
-  node['key'] = currentSelector.join(' ')
-  node['normalize'] = (() => {
-    const before = node.body
-    let after = node.body
-      .replaceAll('__', '::')
-      .replaceAll('_', ':')
-      .replaceAll('_at_', '@')
-    if (after !== before) {
-      node['classification'] = 'CSS_selector'
-      node['key'] += after
-      after = '&' + after
-    }
-    return after
-  })()
-  currentProperty = node.normalize
+  const normalize = node.body
+    .replaceAll('__', '::')
+    .replaceAll('_', ':')
+    .replaceAll('_at_', '@')
+    .replace(/^:/, '&:')
+  if (normalize.includes('&')) {
+    currentPath.pop()
+  }
+  currentPath.push(normalize)
+  console.log(currentPath.join('.'))
+  dot.setProperty(cssObjCollection, currentPath.join('.'), normalize)
   return node
 }
 
 const CSS_value = (node: AstNode) => {
-  node['property'] = currentProperty
-  node['normalize'] = node.body.length === 0 ? '""' : node.body
-  node['key'] = currentSelector.join(' ')
+  const normalize = node.body.length === 0 ? '""' : node.body
+  dot.setProperty(cssObjCollection, currentPath.join('.'), normalize)
+  currentPath.pop()
+  console.log(currentPath.join('.'))
   return node
 }
 
-const BEGIN_nesting = (node: AstNode) => {
-  currentSelector[_.findLastIndex(currentSelector)] = (() => {
-    let after = currentSelector[_.findLastIndex(currentSelector)]
-    after +=
-      currentProperty[0] === ':' ? currentProperty : ' ' + currentProperty
-    return after
-  })()
-  return node
-}
-
-const END_nesting = (node: AstNode) => {
-  currentSelector[_.findLastIndex(currentSelector)] = (() => {
-    let after = currentSelector[_.findLastIndex(currentSelector)]
-    after = after.includes(':') ? after.slice(0, 1 * after.indexOf(':')) : after
-    return after
-  })()
-  return node
-}
-
-const END_css = (node: AstNode) => {
-  return node
-}
-
-const END_tag = (node: AstNode) => {
+const END_tag = (_node: AstNode) => {
   currentSelector = currentSelector.slice(-1)
-  return node
+  return undefined
 }
 
 const controller = (node: AstNode) => {
@@ -361,24 +337,19 @@ const controller = (node: AstNode) => {
   return match(classification)
     .with('BEGIN_stypFile', () => skip(node))
     .with('BEGIN_htmlTag', () => BEGIN_htmlTag(node))
-    .with('BEGIN_css', () => BEGIN_css(node))
+    .with('BEGIN_css', () => skip(node))
     .with('CSS_property', () => CSS_property(node))
     .with('CSS_value', () => CSS_value(node))
-    .with('BEGIN_nesting', () => BEGIN_nesting(node))
-    .with('END_nesting', () => END_nesting(node))
-    .with('END_css', () => END_css(node))
+    .with('BEGIN_nesting', () => skip(node))
+    .with('END_nesting', () => skip(node))
+    .with('END_css', () => skip(node))
     .with('END_tag', () => END_tag(node))
     .with('END_stypFile', () => skip(node))
     .otherwise(() => skip(node))
 }
+tokens.map((node: AstNode) => controller(node))
 
-const ast = tokens
-  .map((node: AstNode) => controller(node))
-  .filter(elem => elem !== undefined) as AstNode[]
-
-const json2 = jsonFormat(ast, config_jsonFormat)
-
-new ShellString(json2).to('tmp/ast.json')
+console.log(jsonFormat(cssObjCollection, config_jsonFormat))
 
 /** 
 const css = ast.reduce((prev, curr) => {
