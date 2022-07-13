@@ -251,9 +251,11 @@ new ShellString(json).to('tmp/tokens.json')
 
 import { match } from 'ts-pattern'
 import { customAlphabet } from 'nanoid'
-import { alphanumeric } from 'nanoid-dictionary'
+import pkg from 'nanoid-dictionary'
+const { alphanumeric, numbers } = pkg
 
 const nanoid = customAlphabet(alphanumeric)
+const nanoid_numbersOnly = customAlphabet(numbers, 10)
 
 type JsxTree = {
   [K: string]: JsxTree
@@ -286,18 +288,19 @@ const prefix = 'styp_'
 import * as dot from 'dot-prop'
 
 const BEGIN_htmlTag = (node: AstNode) => {
-  const id = nanoid()
+  const id = prefix + nanoid()
   node['classification'] = 'CSS_selector'
-  node['id'] = id
-  node['selector'] = node.body + '.' + prefix + node.id
-  node['class'] = prefix + node.id
+  node['selector'] = node.body + '.' + id
+  node['class'] = id
   node['normalize'] = node.selector
   currentSelector.push(node.selector)
   currentElement.push(node.body)
   dot.setProperty(
     jsxTree,
-    [...currentElement, '_attributes', 'styp_className'].join('.'),
-    prefix + node.id
+    [...currentElement, '_attributes', `styp_${nanoid_numbersOnly()}`].join(
+      '.'
+    ),
+    `styp_classNames['${id}']`
   )
   return node
 }
@@ -464,7 +467,7 @@ import * as Diff from 'diff'
 
 const diffJsx = Diff.diffWords(jsx, rebuildJsx)
 
-//console.log(diffJsx)
+console.log(diffJsx)
 
 /** 
 import diff from 'fast-diff'
