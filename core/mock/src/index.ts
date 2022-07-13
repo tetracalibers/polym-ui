@@ -91,10 +91,6 @@ interface AstNode {
     | 'END_stypFile'
     | 'empty'
   readonly body: string
-  key?: string
-  property?: string
-  normalize?: string
-  css?: CssInJs
 }
 
 const prefix = 'styp_'
@@ -349,50 +345,7 @@ const controller = (node: AstNode) => {
 }
 tokens.map((node: AstNode) => controller(node))
 
-console.log(jsonFormat(cssObjCollection, config_jsonFormat))
-
-/** 
-const css = ast.reduce((prev, curr) => {
-  prev += curr.except?.before ? curr.except.before : ''
-  prev += curr.normalize ? curr.normalize : ''
-  prev += curr.except?.after ? curr.except.after : ''
-  return prev
-}, '')
-
-console.log(css)
-
-const json3 = jsonFormat(css, config_jsonFormat)
-
-new ShellString(json3).to('tmp/cssObj.json')
-
-import postcss from 'postcss'
-import safe from 'postcss-safe-parser'
-import autoprefixer from 'autoprefixer'
-import stylefmt from 'stylefmt'
-import * as path from 'path'
-const { basename } = path
-
-;(async () => {
-  const formatted = await postcss([autoprefixer, stylefmt])
-    .process(css, { parser: safe, from: undefined })
-    .then(result => result.css)
-  new ShellString(formatted).to(
-    componentRootPath.replace(
-      basename(componentRootPath),
-      'generated/static.css'
-    )
-  )
-})()
-
-import postcssJs from 'postcss-js'
-
-const prefixer = postcssJs.sync([autoprefixer])
-
-const root = postcss.parse(css)
-const cssSet = prefixer(postcssJs.objectify(root))
-
-const cssSetJson = jsonFormat(cssSet, config_jsonFormat)
-new ShellString(cssSetJson).to('tmp/cssSet.json')
+console.log(jsonFormat(cssObjCollection, config_jsonFormat), '\n')
 
 /* -------------------------------------------------------------------------- */
 
@@ -400,13 +353,13 @@ const rebuildJsx = convert.js2xml(jsxTree, {
   compact: true,
 })
 
-//console.log(rebuildJsx)
+console.log(rebuildJsx, '\n')
 
 import * as Diff from 'diff'
 
 const diffJsx = Diff.diffWords(jsx, rebuildJsx)
 
-//console.log(diffJsx)
+console.log(diffJsx, '\n')
 
 /** 
 import diff from 'fast-diff'
