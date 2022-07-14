@@ -29,10 +29,10 @@
     "url": "https://github.com/tetracalibers/React-polyhexUI/issues"
   },
   "dependencies": {
-    "@react-polyhex-ui/styling-patch": "*"
+    "@react-polyhex-ui/styling-patch": "*",
+    "classnames": "^2.3.1"
   },
   "devDependencies": {
-    "classified-csstypes": "*",
     "@babel/core": "^7.18.5",
     "@morphic-ts/batteries": "^3.0.0",
     "@rollup/plugin-commonjs": "^22.0.1",
@@ -58,6 +58,7 @@
     "alasql": "^1.7.3",
     "autoprefixer": "^10.4.7",
     "babel-loader": "^8.2.5",
+    "classified-csstypes": "*",
     "date-and-time": "^2.4.0",
     "diff": "^5.1.0",
     "dot-prop": "^7.2.0",
