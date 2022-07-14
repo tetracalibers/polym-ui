@@ -16,6 +16,7 @@ import { match } from 'ts-pattern'
 import { customAlphabet } from 'nanoid'
 import pkg from 'nanoid-dictionary'
 const { alphanumeric, numbers } = pkg
+import jsTokens from 'js-tokens'
 
 const nanoid = customAlphabet(alphanumeric)
 const nanoid_numbersOnly = customAlphabet(numbers, 10)
@@ -48,7 +49,7 @@ const stypFile = new StylingFile(stypFilePath, jsx)
 /* -------------------------------------------------------------------------- */
 
 const rawStyp = `<StylePatch>
-  <span>
+  <span className={classNames('foo', { bar: true, duck: false }, 'baz', { quux: true })}>
     {{
       backgroundColor: '#1a1a1a',
       borderRadius: '2px',
@@ -94,6 +95,15 @@ interface AstNode {
 }
 
 const prefix = 'styp_'
+
+/* -------------------------------------------------------------------------- */
+
+const jstoken = Array.from(jsTokens(rawStyp, { jsx: true }), token => token)
+const jstokenJson = jsonFormat(jstoken, config_jsonFormat)
+
+new ShellString(jstokenJson).to('tmp/jstoken.json')
+
+/* -------------------------------------------------------------------------- */
 
 const spaceTrim = P.surroundedBy(S.spaces)
 
@@ -287,7 +297,7 @@ const BEGIN_htmlTag = (node: AstNode) => {
   cssObjCollection[id] = {} as CssInJs
   currentPath.push(id)
   currentPath.push('&')
-  console.log(currentPath.join('.'))
+  //console.log(currentPath.join('.'))
   currentSelector.push(id)
   currentElement.push(node.body)
   dot.setProperty(
@@ -310,7 +320,7 @@ const CSS_property = (node: AstNode) => {
     currentPath.pop()
   }
   currentPath.push(normalize)
-  console.log(currentPath.join('.'))
+  //console.log(currentPath.join('.'))
   dot.setProperty(cssObjCollection, currentPath.join('.'), normalize)
   return node
 }
@@ -319,7 +329,7 @@ const CSS_value = (node: AstNode) => {
   const normalize = node.body.length === 0 ? '""' : node.body
   dot.setProperty(cssObjCollection, currentPath.join('.'), normalize)
   currentPath.pop()
-  console.log(currentPath.join('.'))
+  //console.log(currentPath.join('.'))
   return node
 }
 
@@ -349,7 +359,7 @@ tokens.map((node: AstNode) => controller(node))
 TODO CSSの宣言順序保証問題をどうにかする
  */
 
-console.log(jsonFormat(cssObjCollection, config_jsonFormat), '\n')
+//console.log(jsonFormat(cssObjCollection, config_jsonFormat), '\n')
 
 /* -------------------------------------------------------------------------- */
 
@@ -363,7 +373,7 @@ import * as Diff from 'diff'
 
 const diffJsx = Diff.diffWords(jsx, rebuildJsx)
 
-console.log(diffJsx, '\n')
+//console.log(diffJsx, '\n')
 
 const newJsx = diffJsx
   .map(r => {
@@ -378,7 +388,7 @@ const newJsx = diffJsx
   })
   .join('')
 
-console.log(newJsx, '\n')
+//console.log(newJsx, '\n')
 
 /** 
 const jsxRegexp = /<(StylePatch)>(?<jsx>.*?)<\/\1>/
