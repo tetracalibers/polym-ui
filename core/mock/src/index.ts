@@ -8,11 +8,6 @@ import { rawStyp } from './test/dummy/styp'
 import { match } from 'ts-pattern'
 import jsTokens from 'js-tokens'
 
-import type { CssInJs } from 'classified-csstypes'
-
-// prettier-ignore
-type CssObjCollection = Record<string, CssInJs>
-
 /* -------------------------------------------------------------------------- */
 
 import ComponentFile from './class/ComponentFile'
@@ -53,22 +48,8 @@ dumpJson(jsxTokenSeqJson)('tmp/jsxToken.json')
 
 /* -------------------------------------------------------------------------- */
 
-import * as STORE from 'fp-ts/Store'
-
-interface Token {
-  type: string
-  value: string
-}
-
-interface Parser extends STORE.Store<number, Token> {
-  next: (_: void) => void
-  traced: (_: void) => Token
-  seek: (p: number) => Parser
-  tokenSeq: Token[]
-}
-
-class TokenSeqParser implements Parser {
-  constructor(tokenSeq: Token[], pos = 0) {
+class TokenSeqParser implements StylePatch.Parser {
+  constructor(tokenSeq: StylePatch.Token[], pos = 0) {
     this.pos = pos
     this.tokenSeq = tokenSeq
   }
@@ -84,58 +65,14 @@ import * as syntaxSchemaJson from './syntax/context/stypContext.json'
 
 const contextFlow = JSON.parse(JSON.stringify(syntaxSchemaJson))
 
-type ArrowTokenType =
-  | 'alphabet'
-  | 'allowUnderline'
-  | 'allowHyphen'
-  | 'cssString'
-  | string[]
-  | {
-      stop?: string[]
-      not?: string[]
-      regexp?: string
-    }
-
-interface SyntaxSchema {
-  token: ArrowTokenType
-  state: string
-}
-
 import * as ARRAY from 'fp-ts/Array'
-
-const stypContextTypes = [
-  'BEGIN_tag',
-  'BEGIN_css',
-  'CSS_property',
-  'CSS_value',
-  'CSS_BEGIN_nesting',
-  'CSS_END_nesting',
-  'END_css',
-  'END_tag',
-  'START',
-  'EOF',
-  'ERROR',
-] as const
-
-type StypContextType = typeof stypContextTypes[number]
-
-interface ParseResult {
-  token: string
-  valid: boolean
-  pos: number
-}
-
-interface NextState {
-  parser: TokenSeqParser
-  context: SyntaxSchema[]
-}
 
 /**
   checker: (p: ParseResult[]) => State<ParseResult[], TokenSeqParser>
   init   : (t: TokenSeqParser) => State<ParseResult[], TokenSeqParser>
  */
 const syntaxChecker = (
-  stypContextType: StypContextType,
+  stypContextType: StylePatch.StypContextType,
   parser: TokenSeqParser
 ) => {
   const validContext = contextFlow[stypContextType]
@@ -145,7 +82,10 @@ const syntaxChecker = (
     context: validContext,
   }
 
-  const judgeValid = (exceptToken: ArrowTokenType, targetToken: string) => {
+  const judgeValid = (
+    exceptToken: StylePatch.ArrowTokenType,
+    targetToken: string
+  ) => {
     if (exceptToken === 'alphabet' && targetToken.match(/^[a-zA-Z]+$/g)) {
       return true
     }
@@ -177,55 +117,54 @@ const syntaxChecker = (
     return false
   }
 
-  const checker = (prev: ParseResult[]) => (currState: NextState) => {
-    const { parser, context } = currState
-    const [except, ...rest] = context
-    const { token: exceptToken } = except
-    const targetToken = parser.traced().value
-    const isValid = judgeValid(exceptToken, targetToken)
-    if (!isValid) {
-      flashError(`[Syntax Error] unexpected token: ${targetToken}`)
+  const checker =
+    (prev: StylePatch.ParseResult[]) => (currState: StylePatch.NextState) => {
+      const { parser, context } = currState
+      const [except, ...rest] = context
+      const { token: exceptToken } = except
+      const targetToken = parser.traced().value
+      const isValid = judgeValid(exceptToken, targetToken)
+      if (!isValid) {
+        flashError(`[Syntax Error] unexpected token: ${targetToken}`)
+      }
+      const currResult = {
+        token: targetToken,
+        valid: isValid,
+        pos: parser.pos,
+      } as StylePatch.ParseResult
+      const next = {
+        parser: parser.next(),
+        context: isValid === 'pending' ? context : rest,
+      }
+      return [ARRAY.concat([currResult])(prev), next] as [
+        StylePatch.ParseResult[],
+        StylePatch.NextState
+      ]
     }
-    const currResult = {
-      token: targetToken,
-      valid: isValid,
-      pos: parser.pos,
-    } as ParseResult
-    const next = {
-      parser: parser.next(),
-      context: isValid === 'pending' ? context : rest,
-    }
-    return [ARRAY.concat([currResult])(prev), next] as [
-      ParseResult[],
-      NextState
-    ]
-  }
-  const initializer = checker([] as ParseResult[])
+  const initializer = checker([] as StylePatch.ParseResult[])
 
   /*
   return STATE.chain(checker)(initializer)(initialState)
   */
-  return parser.tokenSeq.reduce((prevChecker: [ParseResult[], NextState]) => {
-    const [result, next] = prevChecker
-    return next.context.length === 0 ? prevChecker : checker(result)(next)
-  }, initializer(initialState))
+  return parser.tokenSeq.reduce(
+    (prevChecker: [StylePatch.ParseResult[], StylePatch.NextState]) => {
+      const [result, next] = prevChecker
+      return next.context.length === 0 ? prevChecker : checker(result)(next)
+    },
+    initializer(initialState)
+  )
 }
 
 import { P } from 'ts-pattern'
 import * as EITHER from 'fp-ts/Either'
 
-interface ParseLog {
-  classification: StypContextType
-  tokens: ParseResult[]
-}
-
 const syntaxParser =
-  (prevRoute: StypContextType) =>
-  (history: ParseLog[]) =>
+  (prevRoute: StylePatch.StypContextType) =>
+  (history: StylePatch.ParseLog[]) =>
   (nextParser: TokenSeqParser) => {
     const nextToken = nextParser.traced().value
     const nextNextToken = nextParser.next().traced().value
-    const contextCompass = match(prevRoute as StypContextType)
+    const contextCompass = match(prevRoute as StylePatch.StypContextType)
       .with('START', () => EITHER.right('BEGIN_tag'))
       .with('BEGIN_tag', () => {
         return match([nextToken, nextNextToken])
@@ -267,7 +206,9 @@ const syntaxParser =
       })
       .with('END_css', () => EITHER.right('END_tag'))
       .otherwise(() => EITHER.left('ERROR'))
-    const onRight = (route: StypContextType): ParseLog[] => {
+    const onRight = (
+      route: StylePatch.StypContextType
+    ): StylePatch.ParseLog[] => {
       const [result, next] = syntaxChecker(route, nextParser)
       history = [
         ...history,
@@ -276,7 +217,7 @@ const syntaxParser =
           tokens: result,
         },
       ]
-      const last = _.last(result) as ParseResult
+      const last = _.last(result) as StylePatch.ParseResult
       if (last.pos === next.parser.tokenSeq.length - 1) {
         return history
       }
@@ -291,10 +232,15 @@ const syntaxParser =
     return EITHER.match(
       onLeft,
       onRight
-    )(contextCompass as EITHER.Either<StypContextType, StypContextType>)
+    )(
+      contextCompass as EITHER.Either<
+        StylePatch.StypContextType,
+        StylePatch.StypContextType
+      >
+    )
   }
 
-const parseStart = (tokenSeq: Token[]) =>
+const parseStart = (tokenSeq: StylePatch.Token[]) =>
   syntaxParser('START')([])(new TokenSeqParser(tokenSeq))
 
 const parsedStyp = parseStart(stypTokenSeq)
