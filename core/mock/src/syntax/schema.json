@@ -1,18 +1,4 @@
 {
-  "BEGIN_file": [
-    {
-      "token": ["<"],
-      "state": "tag"
-    },
-    {
-      "token": ["StylePatch"],
-      "state": "tag.name"
-    },
-    {
-      "token": [">"],
-      "state": "pending"
-    }
-  ],
   "TAG_prop": [
     {
       "token": "alphabet",
@@ -72,65 +58,44 @@
     },
     {
       "token": {
-        "stop": [",", "}", "},"]
+        "stop": [",", "}"]
       },
       "state": "css.statement.value"
     }
   ],
   "END_css": [
     {
-      "token": "}",
-      "next": "}",
+      "token": {
+        "stop": "}"
+      },
       "state": "css"
     },
     {
-      "token": "}",
-      "next": "<",
+      "token": {
+        "stop": "}"
+      },
       "state": "pending"
+    },
+    {
+      "token": {
+        "stop": ["<"]
+      }
     }
   ],
   "END_tag": [
     {
-      "token": "<",
-      "next": "/",
-      "state": "tag"
-    },
-    {
-      "token": "/",
-      "next": "alphabet",
+      "token": {
+        "stop": ["/"]
+      },
       "state": "tag"
     },
     {
       "token": "alphabet",
-      "next": ">",
       "state": "tag"
     },
     {
       "token": ">",
-      "next": "{ | <",
       "state": "pending"
-    }
-  ],
-  "END_file": [
-    {
-      "token": "<",
-      "next": "/",
-      "state": "tag"
-    },
-    {
-      "token": "/",
-      "next": "StylePatch",
-      "state": "tag"
-    },
-    {
-      "token": "StylePatch",
-      "next": ">",
-      "state": "tag"
-    },
-    {
-      "token": ">",
-      "next": "any",
-      "state": "EOF"
     }
   ]
 }

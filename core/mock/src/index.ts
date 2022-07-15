@@ -1,5 +1,4 @@
 import * as S from 'parser-ts/string'
-import * as P from 'parser-ts/Parser'
 import * as C from 'parser-ts/char'
 import { run } from 'parser-ts/code-frame'
 import { pipe } from 'fp-ts/function'
@@ -347,25 +346,27 @@ const syntaxChecker = (
   }, initializer(initialState))
 }
 
-const bootstrap = () => {
-  const [result, next] = syntaxChecker('BEGIN_file')
-  let nextToken = next.parser.traced()
-  let nextParser = next.parser
-  if (nextToken.value === '<') {
-    const [res2, next2] = syntaxChecker('BEGIN_tag', next.parser)
-    nextToken = next2.parser.traced()
-    nextParser = next2.parser
+import { P } from 'ts-pattern'
+
+const parseStart = (nextParser: TokenSeqParser) => {
+  const nextToken = nextParser.traced().value
+  const nextNextToken = nextParser.next().traced().value
+  const route = match([nextToken, nextNextToken])
+    .with(['/', P._], () => 'END_tag')
+    .with(['<', '/'], () => 'END_tag')
+    .with(['<', P._], () => 'BEGIN_tag')
+    .with(['{', '{'], () => 'BEGIN_css')
+    .with([P.union(',', '}'), P.union('}', ',')], () => 'END_css')
+    .otherwise(() => 'CSS_statement') as ContextType
+  const [result, next] = syntaxChecker(route, nextParser)
+  const last = _.last(result) as ParseResult
+  if (last.pos === tokenSequence.length - 1) {
+    return
   }
-  if (nextToken.value === '{') {
-    const [res4, next4] = syntaxChecker('BEGIN_css', nextParser)
-    nextParser = next4.parser
-    nextToken = next4.parser.traced()
-  }
-  const [res5, next5] = syntaxChecker('CSS_statement', nextParser)
-  console.log(res5)
+  parseStart(next.parser)
 }
 
-bootstrap()
+parseStart(new TokenSeqParser())
 
 /*
 
@@ -542,6 +543,7 @@ const resJson = jsonFormat(res, config_jsonFormat)
 
 /* -------------------------------------------------------------------------- */
 
+/*
 const spaceTrim = P.surroundedBy(S.spaces)
 
 const startFile: P.Parser<string, AstNode> = pipe(
@@ -790,7 +792,7 @@ const controller = (node: AstNode) => {
     .with('END_stypFile', () => skip(node))
     .otherwise(() => skip(node))
 }
-tokens.map((node: AstNode) => controller(node))
+//tokens.map((node: AstNode) => controller(node))
 
 /**
 TODO CSSの宣言順序保証問題をどうにかする
