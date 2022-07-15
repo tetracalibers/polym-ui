@@ -307,74 +307,92 @@ const syntaxChecker = (
 import { P } from 'ts-pattern'
 import * as EITHER from 'fp-ts/Either'
 
-const parseStart = (nextParser: TokenSeqParser) => (prevRoute: ContextType) => {
-  const nextToken = nextParser.traced().value
-  const nextNextToken = nextParser.next().traced().value
-  const contextCompass = match(prevRoute as ContextType)
-    .with('EOF', () => EITHER.left('EOF'))
-    .with('SOF', () => EITHER.right('BEGIN_tag'))
-    .with('BEGIN_tag', () => {
-      return match([nextToken, nextNextToken])
-        .with(['<', '/'], () => EITHER.right('END_tag'))
-        .with(['<', P._], () => EITHER.right('BEGIN_tag'))
-        .with(['{', '{'], () => EITHER.right('BEGIN_css'))
-        .otherwise(() => EITHER.left('ERROR'))
-    })
-    .with('END_tag', () => {
-      return match([nextToken, nextNextToken])
-        .with(['<', '/'], () => EITHER.right('END_tag'))
-        .with(['<', P._], () => EITHER.right('BEGIN_tag'))
-        .otherwise(() => EITHER.left('EOF'))
-    })
-    .with('BEGIN_css', () => {
-      return match(nextToken)
-        .with('}', () => EITHER.right('END_css'))
-        .otherwise(() => EITHER.right('CSS_property'))
-    })
-    .with('CSS_property', () => EITHER.right('CSS_value'))
-    .with('CSS_value', () => {
-      return match([nextToken, nextNextToken])
-        .with(['}', P._], () => EITHER.right('CSS_END_nesting'))
-        .with([P.union(',', '}'), '}'], () => EITHER.right('END_css'))
-        .with([P.when(t => /^[_:@&]+[a-zA-Z_]+$/g.test(t)), ':'], () =>
-          EITHER.right('CSS_BEGIN_nesting')
-        )
-        .otherwise(() => EITHER.right('CSS_property'))
-    })
-    .with('CSS_BEGIN_nesting', () => {
-      return match(nextToken)
-        .with('}', () => EITHER.right('CSS_END_nesting'))
-        .otherwise(() => EITHER.right('CSS_property'))
-    })
-    .with('CSS_END_nesting', () => {
-      return match(nextToken)
-        .with(P.union(',', '}'), () => EITHER.right('END_css'))
-        .otherwise(() => EITHER.right('CSS_property'))
-    })
-    .with('END_css', () => EITHER.right('END_tag'))
-    .otherwise(() => EITHER.left('ERROR'))
-  const onRight = (route: ContextType) => {
-    const [result, next] = syntaxChecker(route, nextParser)
-    console.log(result)
-    const last = _.last(result) as ParseResult
-    if (last.pos === tokenSequence.length - 1) {
-      return
-    }
-    parseStart(next.parser)(route)
-  }
-  const onLeft = (badType: string) => {
-    if (badType === 'ERROR') {
-      return flashError(`[Syntax Error] Contextually Invalid Token Sequence`)
-    }
-    return
-  }
-  return EITHER.match(
-    onLeft,
-    onRight
-  )(contextCompass as EITHER.Either<ContextType, ContextType>)
+interface ParseLog {
+  classification: ContextType
+  tokens: ParseResult[]
 }
 
-parseStart(new TokenSeqParser())('SOF')
+const parseStart =
+  (nextParser: TokenSeqParser) =>
+  (prevRoute: ContextType) =>
+  (history: ParseLog[]) => {
+    const nextToken = nextParser.traced().value
+    const nextNextToken = nextParser.next().traced().value
+    const contextCompass = match(prevRoute as ContextType)
+      .with('EOF', () => EITHER.left('EOF'))
+      .with('SOF', () => EITHER.right('BEGIN_tag'))
+      .with('BEGIN_tag', () => {
+        return match([nextToken, nextNextToken])
+          .with(['<', '/'], () => EITHER.right('END_tag'))
+          .with(['<', P._], () => EITHER.right('BEGIN_tag'))
+          .with(['{', '{'], () => EITHER.right('BEGIN_css'))
+          .otherwise(() => EITHER.left('ERROR'))
+      })
+      .with('END_tag', () => {
+        return match([nextToken, nextNextToken])
+          .with(['<', '/'], () => EITHER.right('END_tag'))
+          .with(['<', P._], () => EITHER.right('BEGIN_tag'))
+          .otherwise(() => EITHER.left('EOF'))
+      })
+      .with('BEGIN_css', () => {
+        return match(nextToken)
+          .with('}', () => EITHER.right('END_css'))
+          .otherwise(() => EITHER.right('CSS_property'))
+      })
+      .with('CSS_property', () => EITHER.right('CSS_value'))
+      .with('CSS_value', () => {
+        return match([nextToken, nextNextToken])
+          .with(['}', P._], () => EITHER.right('CSS_END_nesting'))
+          .with([P.union(',', '}'), '}'], () => EITHER.right('END_css'))
+          .with([P.when(t => /^[_:@&]+[a-zA-Z_]+$/g.test(t)), ':'], () =>
+            EITHER.right('CSS_BEGIN_nesting')
+          )
+          .otherwise(() => EITHER.right('CSS_property'))
+      })
+      .with('CSS_BEGIN_nesting', () => {
+        return match(nextToken)
+          .with('}', () => EITHER.right('CSS_END_nesting'))
+          .otherwise(() => EITHER.right('CSS_property'))
+      })
+      .with('CSS_END_nesting', () => {
+        return match(nextToken)
+          .with(P.union(',', '}'), () => EITHER.right('END_css'))
+          .otherwise(() => EITHER.right('CSS_property'))
+      })
+      .with('END_css', () => EITHER.right('END_tag'))
+      .otherwise(() => EITHER.left('ERROR'))
+    const onRight = (route: ContextType): ParseLog[] => {
+      const [result, next] = syntaxChecker(route, nextParser)
+      history = [
+        ...history,
+        {
+          classification: route,
+          tokens: result,
+        },
+      ]
+      const last = _.last(result) as ParseResult
+      if (last.pos === tokenSequence.length - 1) {
+        return history
+      }
+      return parseStart(next.parser)(route)(history)
+    }
+    const onLeft = (badType: string) => {
+      if (badType === 'ERROR') {
+        flashError(`[Syntax Error] Contextually Invalid Token Sequence`)
+      }
+      return history
+    }
+    return EITHER.match(
+      onLeft,
+      onRight
+    )(contextCompass as EITHER.Either<ContextType, ContextType>)
+  }
+
+const history = parseStart(new TokenSeqParser())('SOF')([])
+
+const historyJson = jsonFormat(history, config_jsonFormat)
+
+new ShellString(historyJson).to('tmp/parseResult.json')
 
 /* -------------------------------------------------------------------------- */
 
