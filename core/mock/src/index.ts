@@ -185,7 +185,7 @@ const tokenSequence = Array.from(
   token => token
 ).filter(token => {
   const { type, value } = token
-  return !value.includes('\n')
+  return !value.includes('\n') && type !== 'WhiteSpace'
 })
 const jstokenJson = jsonFormat(tokenSequence, config_jsonFormat)
 
@@ -349,15 +349,20 @@ const syntaxChecker = (
 
 const bootstrap = () => {
   const [result, next] = syntaxChecker('BEGIN_file')
-  const nextToken = next.parser.traced()
+  let nextToken = next.parser.traced()
+  let nextParser = next.parser
   if (nextToken.value === '<') {
     const [res2, next2] = syntaxChecker('BEGIN_tag', next.parser)
-    const last = _.last(res2) as ParseResult
-    if (last.token.trim().length === 0) {
-      const [res3, next3] = syntaxChecker('TAG_prop', next2.parser)
-      console.log(res3)
-    }
+    nextToken = next2.parser.traced()
+    nextParser = next2.parser
   }
+  if (nextToken.value === '{') {
+    const [res4, next4] = syntaxChecker('BEGIN_css', nextParser)
+    nextParser = next4.parser
+    nextToken = next4.parser.traced()
+  }
+  const [res5, next5] = syntaxChecker('CSS_statement', nextParser)
+  console.log(res5)
 }
 
 bootstrap()

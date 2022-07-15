@@ -43,7 +43,9 @@
       "state": "tag.name"
     },
     {
-      "token": [" ", ">"],
+      "token": {
+        "stop": [">"]
+      },
       "state": "pending"
     }
   ],
@@ -61,24 +63,18 @@
   ],
   "CSS_statement": [
     {
-      "token": "camelcase | paramcase",
-      "next": ":",
+      "token": "alphabet",
       "state": "css.statement"
     },
     {
       "token": ":",
-      "next": "{ | alphabet | number",
       "state": "css.statement"
     },
     {
-      "token": "any",
-      "next": ", | }",
+      "token": {
+        "stop": [",", "}", "},"]
+      },
       "state": "css.statement.value"
-    },
-    {
-      "token": ", | } | },",
-      "next": "alphabet | }}",
-      "state": "css"
     }
   ],
   "END_css": [
