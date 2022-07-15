@@ -1,0 +1,158 @@
+{
+  "BEGIN_file": [
+    {
+      "token": ["<"],
+      "next": "StylePatch",
+      "state": "tag"
+    },
+    {
+      "token": ["StylePatch"],
+      "next": ">",
+      "state": "tag.name"
+    },
+    {
+      "token": [">"],
+      "next": "<",
+      "state": "pending"
+    }
+  ],
+  "TAG_prop": [
+    {
+      "token": "space",
+      "next": "alphabet",
+      "state": "pending"
+    },
+    {
+      "token": "alphabet",
+      "next": "=",
+      "state": "tag.prop"
+    },
+    {
+      "token": "=",
+      "next": "{ | \" | '",
+      "state": "tag.prop"
+    },
+    {
+      "token": "{ | \" | '",
+      "next": "any",
+      "state": "tag.prop.value"
+    },
+    {
+      "token": "any",
+      "next": ", | }",
+      "state": "tag.prop.value"
+    },
+    {
+      "token": ", | } | ,}",
+      "next": "> | space",
+      "state": "tag"
+    }
+  ],
+  "BEGIN_tag": [
+    {
+      "token": "<",
+      "next": "alphtbet",
+      "state": "tag"
+    },
+    {
+      "token": "alphabet",
+      "next": "BEGIN_className | >",
+      "state": "tag.name"
+    },
+    {
+      "token": "BEGIN_className | >",
+      "next": "< | {",
+      "state": "pending"
+    }
+  ],
+  "BEGIN_css": [
+    {
+      "token": "{",
+      "next": "{",
+      "state": "pending"
+    },
+    {
+      "token": "{",
+      "next": "alphabet",
+      "state": "css"
+    }
+  ],
+  "CSS_statement": [
+    {
+      "token": "camelcase | paramcase",
+      "next": ":",
+      "state": "css.statement"
+    },
+    {
+      "token": ":",
+      "next": "{ | alphabet | number",
+      "state": "css.statement"
+    },
+    {
+      "token": "any",
+      "next": ", | }",
+      "state": "css.statement.value"
+    },
+    {
+      "token": ", | } | },",
+      "next": "alphabet | }}",
+      "state": "css"
+    }
+  ],
+  "END_css": [
+    {
+      "token": "}",
+      "next": "}",
+      "state": "css"
+    },
+    {
+      "token": "}",
+      "next": "<",
+      "state": "pending"
+    }
+  ],
+  "END_tag": [
+    {
+      "token": "<",
+      "next": "/",
+      "state": "tag"
+    },
+    {
+      "token": "/",
+      "next": "alphabet",
+      "state": "tag"
+    },
+    {
+      "token": "alphabet",
+      "next": ">",
+      "state": "tag"
+    },
+    {
+      "token": ">",
+      "next": "{ | <",
+      "state": "pending"
+    }
+  ],
+  "END_file": [
+    {
+      "token": "<",
+      "next": "/",
+      "state": "tag"
+    },
+    {
+      "token": "/",
+      "next": "StylePatch",
+      "state": "tag"
+    },
+    {
+      "token": "StylePatch",
+      "next": ">",
+      "state": "tag"
+    },
+    {
+      "token": ">",
+      "next": "any",
+      "state": "EOF"
+    }
+  ]
+}
