@@ -172,9 +172,18 @@ import * as syntaxSchemaJson from './syntax/schema.json'
 
 const contextFlow = JSON.parse(JSON.stringify(syntaxSchemaJson))
 
+type ArrowTokenType =
+  | 'alphabet'
+  | 'jsString'
+  | 'cssString'
+  | string[]
+  | {
+      stop: string[]
+      not?: string[]
+    }
+
 interface SyntaxSchema {
-  token: 'any' | string[]
-  next: 'any' | string[]
+  token: ArrowTokenType
   state: string
 }
 
@@ -217,14 +226,14 @@ const syntaxChecker = (
     context: validContext,
   }
 
-  const judgeValid = (
-    exceptToken: 'any' | 'alphabet' | { stop: string[] } | string[],
-    targetToken: string
-  ) => {
-    if (exceptToken === 'any') {
+  const judgeValid = (exceptToken: ArrowTokenType, targetToken: string) => {
+    if (exceptToken === 'alphabet' && targetToken.match(/^[a-zA-Z]+$/g)) {
       return true
     }
-    if (exceptToken === 'alphabet' && targetToken.match(/[a-zA-Z_]+/)) {
+    if (exceptToken === 'jsString' && targetToken.match(/^[a-zA-Z_]+$/g)) {
+      return true
+    }
+    if (exceptToken === 'cssString' && targetToken.match(/^[a-zA-Z\-]+$/g)) {
       return true
     }
     if (exceptToken === targetToken) {
@@ -292,6 +301,7 @@ const parseStart = (nextParser: TokenSeqParser) => {
     .with([P.union(',', '}'), P.union('}', ',')], () => 'END_css')
     .otherwise(() => 'CSS_statement') as ContextType
   const [result, next] = syntaxChecker(route, nextParser)
+  console.log(result)
   const last = _.last(result) as ParseResult
   if (last.pos === tokenSequence.length - 1) {
     return

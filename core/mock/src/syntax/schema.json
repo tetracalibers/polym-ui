@@ -1,7 +1,7 @@
 {
   "TAG_prop": [
     {
-      "token": "alphabet",
+      "token": "jsString",
       "state": "tag.prop"
     },
     {
@@ -38,18 +38,16 @@
   "BEGIN_css": [
     {
       "token": "{",
-      "next": "{",
       "state": "pending"
     },
     {
       "token": "{",
-      "next": "alphabet",
       "state": "css"
     }
   ],
   "CSS_statement": [
     {
-      "token": "alphabet",
+      "token": "cssString",
       "state": "css.statement"
     },
     {
