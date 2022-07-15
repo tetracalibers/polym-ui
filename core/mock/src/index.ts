@@ -181,32 +181,49 @@ const chain: <E, A, B>(
   return [b, seed3]
 }
 
+interface NextState {
+  parser: TokenSeqParser
+  context: SyntaxSchema[]
+}
+
 /**
   checker: (p: ParseResult[]) => State<ParseResult[], TokenSeqParser>
   init   : (t: TokenSeqParser) => State<ParseResult[], TokenSeqParser>
  */
 const syntaxChecker = (contextType: ContextType) => {
-  let validContext = contextFlow[contextType]
+  const validContext = contextFlow[contextType]
 
-  const checker = (prev: ParseResult[]) => (parser: TokenSeqParser) => {
-    const { token: exceptToken } = _.first(validContext) as SyntaxSchema
+  const initialState = {
+    parser: new TokenSeqParser(),
+    context: validContext,
+  }
+
+  const checker = (prev: ParseResult[]) => (currState: NextState) => {
+    const { parser, context } = currState
+    const [except, ...rest] = context
+    const { token: exceptToken } = except
     const targetToken = parser.traced().value
-    console.log(exceptToken, targetToken)
-    const nextParser = parser.next()
-    const curr = {
+    const currResult = {
       token: targetToken,
       valid: exceptToken === 'any' || exceptToken.includes(targetToken),
       pos: parser.pos,
-      except: validContext,
     } as ParseResult
-    return [ARRAY.concat([curr])(prev), nextParser] as [
+    const next = {
+      parser: parser.next(),
+      context: rest,
+    }
+    return [ARRAY.concat([currResult])(prev), next] as [
       ParseResult[],
-      TokenSeqParser
+      NextState
     ]
   }
   const initializer = checker([] as ParseResult[])
 
-  return chain(checker)(initializer)(new TokenSeqParser())
+  //return STATE.chain(checker)(initializer)(initialState)
+  return validContext.reduce((prevChecker: [ParseResult[], NextState]) => {
+    const [result, next] = prevChecker
+    return next.context.length === 0 ? prevChecker : checker(result)(next)
+  }, initializer(initialState))
 }
 
 console.log(syntaxChecker('BEGIN_file'))
