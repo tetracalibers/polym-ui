@@ -80,7 +80,7 @@ class TokenSeqParser implements Parser {
   next = (_: void) => this.seek(this.pos + 1)
 }
 
-import * as syntaxSchemaJson from './syntax/stypContext.json'
+import * as syntaxSchemaJson from './syntax/context/stypContext.json'
 
 const contextFlow = JSON.parse(JSON.stringify(syntaxSchemaJson))
 
