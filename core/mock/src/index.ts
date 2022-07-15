@@ -4,13 +4,7 @@ import { flashError } from './util/error'
 import { toJson, dumpJson, logJson } from './util/json'
 
 import { match } from 'ts-pattern'
-import { customAlphabet } from 'nanoid'
-import pkg from 'nanoid-dictionary'
-const { alphanumeric, numbers } = pkg
 import jsTokens from 'js-tokens'
-
-const nanoid = customAlphabet(alphanumeric)
-const nanoid_numbersOnly = customAlphabet(numbers, 10)
 
 import type { CssInJs } from 'classified-csstypes'
 
