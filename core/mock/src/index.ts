@@ -1,7 +1,3 @@
-import * as S from 'parser-ts/string'
-import * as C from 'parser-ts/char'
-import { run } from 'parser-ts/code-frame'
-import { pipe } from 'fp-ts/function'
 import _ from 'lodash'
 import shell from 'shelljs'
 const { ShellString } = shell
@@ -14,83 +10,39 @@ const config_jsonFormat = {
 import PrettyError from 'pretty-error'
 const pe = PrettyError.start()
 
-// ... which we can then use to customize like this:
 pe.appendStyle({
-  // this is a simple selector to the element that says 'Error'
   'pretty-error > header > title > kind': {
-    // which we can hide:
-    //display: 'none',
     background: 'white',
     color: 'bright-cyan',
   },
-
-  // the 'colon' after 'Error':
   'pretty-error > header > colon': {
-    // we hide that too:
-    //display: 'none',
     color: 'bright-blue',
   },
-
-  // our error message
   'pretty-error > header > message': {
-    // let's change its color:
     color: 'bright-white',
-
     // we can use black, red, green, yellow, blue, magenta, cyan, white,
     // grey, bright-red, bright-green, bright-yellow, bright-blue,
     // bright-magenta, bright-cyan, and bright-white
-
-    // we can also change the background color:
     background: 'bright-magenta',
-
-    // it understands paddings too!
     padding: '0', // top/bottom left/right
-    //display: 'block',
   },
-
-  // each trace item ...
   'pretty-error > trace > item': {
-    // ... can have a margin ...
     marginLeft: 0,
-
-    // ... and a bullet character!
     bullet: '"<grey>o</grey>"',
-
-    // Notes on bullets:
-    //
-    // The string inside the quotation mark gets used as the character
-    // to show for the bullet point.
-    //
-    // You can set its color/background color using tags.
-    //
-    // This example sets the background color to white, and the text color
-    // to cyan, the character will be a hyphen with a space character
-    // on each side:
-    // example: '"<bg-white><cyan> - </cyan></bg-white>"'
-    //
-    // Note that we should use a margin of 3, since the bullet will be
-    // 3 characters long.
   },
-
   'pretty-error > trace > item > header > pointer > file': {
     color: 'bright-magenta',
   },
-
   'pretty-error > trace > item > header > pointer > colon': {
     color: 'magenta',
   },
-
   'pretty-error > trace > item > header > pointer > line': {
     color: 'bright-magenta',
   },
-
   'pretty-error > trace > item > header > what': {
     color: 'bright-white',
   },
-
-  'pretty-error > trace > item > footer > addr': {
-    //display: 'none',
-  },
+  'pretty-error > trace > item > footer > addr': {},
 })
 
 import { match } from 'ts-pattern'
@@ -155,7 +107,7 @@ const rawStyp = `<StylePatch>
     }}
   </span>
 </StylePatch>
-` //.replaceAll(/[\r\n\t]/g, '')
+`
 
 interface AstNode {
   classification:
@@ -193,8 +145,6 @@ new ShellString(jstokenJson).to('tmp/jstoken.json')
 /* -------------------------------------------------------------------------- */
 
 import * as STORE from 'fp-ts/Store'
-import * as STATE from 'fp-ts/State'
-import * as TRACED from 'fp-ts/Traced'
 
 interface Token {
   type: string
@@ -216,11 +166,6 @@ class TokenSeqParser implements Parser {
   traced = (_: void) => this.peek(this.pos)
   seek = (p: number) => new TokenSeqParser(p)
   next = (_: void) => this.seek(this.pos + 1)
-}
-
-type SyntaxToken = {
-  classification: string
-  body: string
 }
 
 import * as syntaxSchemaJson from './syntax/schema.json'
@@ -254,20 +199,10 @@ interface ParseResult {
   pos: number
 }
 
-const chain: <E, A, B>(
-  f: (a: A) => STATE.State<E, B>
-) => (fa: STATE.State<E, A>) => STATE.State<E, B> = f => generate => seed => {
-  const [a, seed2] = generate(seed)
-  const [b, seed3] = f(a)(seed2)
-  return [b, seed3]
-}
-
 interface NextState {
   parser: TokenSeqParser
   context: SyntaxSchema[]
 }
-
-import Case from 'case'
 
 /**
   checker: (p: ParseResult[]) => State<ParseResult[], TokenSeqParser>
@@ -367,336 +302,6 @@ const parseStart = (nextParser: TokenSeqParser) => {
 }
 
 parseStart(new TokenSeqParser())
-
-/*
-
-import { isLowerCase } from 'is-lower-case'
-
-const state = tokenSequence.map((token: Token) => {
-  const { type, value } = token
-  if (value === '<') {
-    return ['settled', '']
-  }
-  if (value === '>') {
-    return ['pending', '']
-  }
-  return ['settled', value]
-})
-
-import * as ARRAY from 'fp-ts/Array'
-
-console.log(state)
-
-/*
-
-import * as OPTION from 'fp-ts/Option'
-import * as STATE_T from 'fp-ts/StateT'
-
-const evaluate = STATE.evaluate(OPTION.Functor)
-
-import * as CHAIN from 'fp-ts/Chain'
-import type { Applicative2 } from 'fp-ts/lib/Applicative'
-import type { Chain2 } from 'fp-ts/lib/Chain'
-import type { Functor2 } from 'fp-ts/lib/Functor'
-
-const URI2 = 'StateOption'
-type URI2 = typeof URI2
-
-type StateOption<S, A> = STATE_T.StateT1<'Option', S, A>
-
-// 型クラスインスタンスを作るためURItoKindに登録する
-declare module 'fp-ts/lib/HKT' {
-  interface URItoKind2<E, A> {
-    readonly [URI2]: StateOption<E, A>
-  }
-}
-
-// 型クラスのメソッドを作る
-// 'fp-ts/StateT'から提供されてるメソッドにより簡略化できる
-const map = STATE_T.map(OPTION.Functor)
-const ap = STATE_T.ap(OPTION.Chain)
-const of = STATE_T.of(OPTION.Pointed)
-const chain = STATE_T.chain(OPTION.Chain)
-
-// 各インスタンスを作る
-// ST.mapによって作られる`map`とは引数のもらい方が違うため調整する
-const Functor: Functor2<URI2> = {
-  URI: URI2,
-  map: <E, A, B>(ma: StateOption<E, A>, f: (a: A) => B): StateOption<E, B> => {
-    return map(f)(ma)
-  },
-}
-
-// map同様引数を調整する
-const Applicative: Applicative2<URI2> = {
-  ...Functor,
-  of,
-  ap: <E, A, B>(
-    fab: StateOption<E, (a: A) => B>,
-    fa: StateOption<E, A>
-  ): StateOption<E, B> => {
-    return ap(fa)(fab)
-  },
-}
-
-// map同様...
-const Chain: Chain2<URI2> = {
-  ...Applicative,
-  chain: <E, A, B>(
-    fa: StateOption<E, A>,
-    f: (a: A) => StateOption<E, B>
-  ): StateOption<E, B> => {
-    return chain(f)(fa)
-  },
-}
-
-// Chainの制約付きのbindを作る関数`C.bind`を使ってbind関数を作る
-const bind = CHAIN.bind(Chain)
-
-const fromState = STATE_T.fromState(OPTION.Pointed)
-
-const get = <S>() => fromState<S, S>(STATE.get<S>())
-const put = <S>(s: S) => fromState<S, void>(STATE.put<S>(s))
-
-// 与えられた関数の処理を後続する関数に繋がないための関数
-const chainFirst = CHAIN.chainFirst(Chain)
-
-/*
-
-type S = { hello: string }
-console.log(
-  evaluate({ hello: 'world' })(
-    pipe(
-      of<number, S>(1),
-      bind('before', () => {
-        return get()
-      }),
-      // `put`は`State s Option void`を返すため`chain`で繋ぐとそれまでの処理が捨てられるので、`chainFirst`を使う
-      chainFirst(() => {
-        return put({ hello: 'fp-ts' })
-      }),
-      bind('after', () => {
-        return get()
-      })
-    )
-  )
-)
-
-/*
-
-const tokenClassification = (_token: string) => {
-  // token === 'StylePatch'
-  // token === all lowercase
-  // token === capitalize
-  return ''
-}
-
-import * as ARRAY from 'fp-ts/Array'
-
-const astBuildProgress =
-  (currToken: string) =>
-  (classification: string) =>
-  (collection: SyntaxToken[]): [SyntaxToken[], string] => {
-    const currSyntax = {
-      classification: classification,
-      body: currToken,
-    }
-    const newCollection = _.union(collection, [currSyntax])
-    //console.log(newCollection)
-    if (currSyntax.body === '>') {
-      return [newCollection, 'found']
-    } else {
-      return [newCollection, 'continue']
-    }
-  }
-
-const astNodeBuilder = {
-  tag: (
-    syntaxTokenCollection: SyntaxToken[],
-    token: Token
-  ): [SyntaxToken[], string] => {
-    const [collection, status] = astBuildProgress(token.value)(
-      tokenClassification(token.value)
-    )(syntaxTokenCollection)
-    //console.log(collection)
-    return [collection, status]
-  },
-}
-
-const tokenMatcher = (cursor: number, collec = [] as SyntaxToken[]) => {
-  const token = tokenSequenceParser.peek(cursor)
-  //console.log(token)
-  let [updatedCollec, status] = astNodeBuilder.tag(collec, token)
-  //.otherwise(() => [collec, 'continue'])
-  STORE.seek(cursor + 1)(tokenSequenceParser)
-  return match(status)
-    .with('found', () => updatedCollec)
-    .otherwise(() => tokenMatcher(cursor + 1, updatedCollec))
-  //.otherwise(() => [[], []])
-}
-
-const res = tokenSequence.map((_, cursor) => tokenMatcher(cursor))
-
-const resJson = jsonFormat(res, config_jsonFormat)
-
-//console.log(resJson)
-
-/* -------------------------------------------------------------------------- */
-
-/*
-const spaceTrim = P.surroundedBy(S.spaces)
-
-const startFile: P.Parser<string, AstNode> = pipe(
-  S.string('<StylePatch>'),
-  P.map(body => ({
-    classification: 'BEGIN_stypFile',
-    body: body.slice(1, -1),
-  }))
-)
-
-const endFile: P.Parser<string, AstNode> = pipe(
-  S.string('</StylePatch>'),
-  P.map(body => ({
-    classification: 'END_stypFile',
-    body: body.slice(2, -1),
-  }))
-)
-
-const openingComponentTag: P.Parser<string, AstNode> = pipe(
-  P.manyTill(
-    pipe(
-      C.char('<'),
-      P.alt(() => C.letter)
-    ),
-    C.char('>')
-  ),
-  P.map(body => {
-    return {
-      classification: 'BEGIN_componentTag',
-      body: body.slice(1).join(''),
-    }
-  })
-)
-
-const openingHtmlTag: P.Parser<string, AstNode> = pipe(
-  P.manyTill(
-    pipe(
-      C.char('<'),
-      P.alt(() => C.lower)
-    ),
-    C.char('>')
-  ),
-  P.map(body => {
-    return {
-      classification: 'BEGIN_htmlTag',
-      body: body.slice(1).join(''),
-    }
-  })
-)
-
-const closingTag: P.Parser<string, AstNode> = pipe(
-  P.manyTill(
-    pipe(
-      S.string('</'),
-      P.alt(() => C.letter)
-    ),
-    C.char('>')
-  ),
-  P.map(body => ({
-    classification: 'END_tag',
-    body: body.slice(1).join(''),
-  }))
-)
-
-const cssProperty: P.Parser<string, AstNode> = pipe(
-  P.manyTill(
-    pipe(
-      C.letter,
-      P.alt(() => C.oneOf(["'", '_'].join('')))
-    ),
-    C.char(':')
-  ),
-  P.map(body => ({
-    classification: 'CSS_property',
-    body: body.join(''),
-  }))
-)
-
-const cssPropertyValue: P.Parser<string, AstNode> = pipe(
-  P.manyTill(
-    pipe(
-      C.alphanum,
-      P.alt(() =>
-        C.oneOf(
-          ["'", '"', ':', '#', '.', '-', '%', ' ', '(', ')', ','].join('')
-        )
-      )
-    ),
-    S.string("',")
-  ),
-  P.map(body => ({
-    classification: 'CSS_value',
-    body: body.join('').replaceAll(/\'/g, ''),
-  }))
-)
-
-const startStylePatch: P.Parser<string, AstNode> = pipe(
-  S.string('{{'),
-  P.map(body => ({
-    classification: 'BEGIN_css',
-    body: body,
-  }))
-)
-
-const endStylePatch: P.Parser<string, AstNode> = pipe(
-  S.string('}}'),
-  P.map(body => ({
-    classification: 'END_css',
-    body: body,
-  }))
-)
-
-const startNestCss: P.Parser<string, AstNode> = pipe(
-  S.string('{'),
-  P.map(body => ({
-    classification: 'BEGIN_nesting',
-    body: body,
-  }))
-)
-
-const endNestCss: P.Parser<string, AstNode> = pipe(
-  S.string('},'),
-  P.alt(() => C.char('}')),
-  P.map(body => ({
-    classification: 'END_nesting',
-    body: body.replaceAll(',', ''),
-  }))
-)
-
-const parser: P.Parser<string, AstNode> = pipe(
-  startFile,
-  P.alt(() => spaceTrim(endFile)),
-  P.alt(() => spaceTrim(openingHtmlTag)),
-  P.alt(() => spaceTrim(openingComponentTag)),
-  P.alt(() => spaceTrim(closingTag)),
-  P.alt(() => spaceTrim(cssProperty)),
-  P.alt(() => spaceTrim(cssPropertyValue)),
-  P.alt(() => spaceTrim(startStylePatch)),
-  P.alt(() => spaceTrim(endStylePatch)),
-  P.alt(() => spaceTrim(startNestCss)),
-  P.alt(() => spaceTrim(endNestCss)),
-  P.map(body => {
-    return body
-  })
-)
-
-const result = run(P.many(parser), rawStyp)
-
-const tokens = result._tag === 'Right' ? result.right : []
-
-const json = jsonFormat(tokens, config_jsonFormat)
-
-new ShellString(json).to('tmp/ast.json')
 
 /* -------------------------------------------------------------------------- */
 
