@@ -30,7 +30,8 @@
   },
   "dependencies": {
     "@react-polyhex-ui/styling-patch": "*",
-    "classnames": "^2.3.1"
+    "classnames": "^2.3.1",
+    "pretty-error": "^4.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.18.5",
