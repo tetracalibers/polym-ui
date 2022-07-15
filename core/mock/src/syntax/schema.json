@@ -2,66 +2,48 @@
   "BEGIN_file": [
     {
       "token": ["<"],
-      "next": "StylePatch",
       "state": "tag"
     },
     {
       "token": ["StylePatch"],
-      "next": ">",
       "state": "tag.name"
     },
     {
       "token": [">"],
-      "next": "<",
       "state": "pending"
     }
   ],
   "TAG_prop": [
     {
-      "token": "space",
-      "next": "alphabet",
-      "state": "pending"
-    },
-    {
       "token": "alphabet",
-      "next": "=",
       "state": "tag.prop"
     },
     {
       "token": "=",
-      "next": "{ | \" | '",
       "state": "tag.prop"
     },
     {
-      "token": "{ | \" | '",
-      "next": "any",
+      "token": ["{", "\"", "'"],
       "state": "tag.prop.value"
     },
     {
-      "token": "any",
-      "next": ", | }",
+      "token": {
+        "stop": [">"]
+      },
       "state": "tag.prop.value"
-    },
-    {
-      "token": ", | } | ,}",
-      "next": "> | space",
-      "state": "tag"
     }
   ],
   "BEGIN_tag": [
     {
       "token": "<",
-      "next": "alphtbet",
       "state": "tag"
     },
     {
       "token": "alphabet",
-      "next": "BEGIN_className | >",
       "state": "tag.name"
     },
     {
-      "token": "BEGIN_className | >",
-      "next": "< | {",
+      "token": [" ", ">"],
       "state": "pending"
     }
   ],

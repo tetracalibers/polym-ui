@@ -268,16 +268,47 @@ interface NextState {
   context: SyntaxSchema[]
 }
 
+import Case from 'case'
+
 /**
   checker: (p: ParseResult[]) => State<ParseResult[], TokenSeqParser>
   init   : (t: TokenSeqParser) => State<ParseResult[], TokenSeqParser>
  */
-const syntaxChecker = (contextType: ContextType) => {
+const syntaxChecker = (
+  contextType: ContextType,
+  parser = new TokenSeqParser()
+) => {
   const validContext = contextFlow[contextType]
 
   const initialState = {
-    parser: new TokenSeqParser(),
+    parser: parser,
     context: validContext,
+  }
+
+  const judgeValid = (
+    exceptToken: 'any' | 'alphabet' | { stop: string[] } | string[],
+    targetToken: string
+  ) => {
+    if (exceptToken === 'any') {
+      return true
+    }
+    if (exceptToken === 'alphabet' && targetToken.match(/[a-zA-Z_]+/)) {
+      return true
+    }
+    if (exceptToken === targetToken) {
+      return true
+    }
+    if (_.isArray(exceptToken) && exceptToken.includes(targetToken)) {
+      return true
+    }
+    if (_.has(exceptToken, 'stop')) {
+      const stopKeywords = exceptToken as { stop: string[] }
+      if (stopKeywords.stop.includes(targetToken)) {
+        return true
+      }
+      return 'pending'
+    }
+    return false
   }
 
   const checker = (prev: ParseResult[]) => (currState: NextState) => {
@@ -285,14 +316,20 @@ const syntaxChecker = (contextType: ContextType) => {
     const [except, ...rest] = context
     const { token: exceptToken } = except
     const targetToken = parser.traced().value
+    const isValid = judgeValid(exceptToken, targetToken)
+    if (!isValid) {
+      console.error(
+        pe.render(new Error(`[Syntax Error] unexpected token: ${targetToken}`))
+      )
+    }
     const currResult = {
       token: targetToken,
-      valid: exceptToken === 'any' || exceptToken.includes(targetToken),
+      valid: isValid,
       pos: parser.pos,
     } as ParseResult
     const next = {
       parser: parser.next(),
-      context: rest,
+      context: isValid === 'pending' ? context : rest,
     }
     return [ARRAY.concat([currResult])(prev), next] as [
       ParseResult[],
@@ -301,8 +338,10 @@ const syntaxChecker = (contextType: ContextType) => {
   }
   const initializer = checker([] as ParseResult[])
 
-  //return STATE.chain(checker)(initializer)(initialState)
-  return validContext.reduce((prevChecker: [ParseResult[], NextState]) => {
+  /*
+  return STATE.chain(checker)(initializer)(initialState)
+  */
+  return tokenSequence.reduce((prevChecker: [ParseResult[], NextState]) => {
     const [result, next] = prevChecker
     return next.context.length === 0 ? prevChecker : checker(result)(next)
   }, initializer(initialState))
@@ -310,13 +349,15 @@ const syntaxChecker = (contextType: ContextType) => {
 
 const bootstrap = () => {
   const [result, next] = syntaxChecker('BEGIN_file')
-  result.map((obj: ParseResult) => {
-    if (!obj.valid) {
-      console.error(
-        pe.render(new Error(`[Syntax Error] unexpected token: ${obj.token}`))
-      )
+  const nextToken = next.parser.traced()
+  if (nextToken.value === '<') {
+    const [res2, next2] = syntaxChecker('BEGIN_tag', next.parser)
+    const last = _.last(res2) as ParseResult
+    if (last.token.trim().length === 0) {
+      const [res3, next3] = syntaxChecker('TAG_prop', next2.parser)
+      console.log(res3)
     }
-  })
+  }
 }
 
 bootstrap()
@@ -761,6 +802,7 @@ const rebuildJsx = convert.js2xml(jsxTree, {
 console.log(rebuildJsx, '\n')
 
 import * as Diff from 'diff'
+import { isValid } from 'date-and-time'
 
 const diffJsx = Diff.diffWords(jsx, rebuildJsx)
 
