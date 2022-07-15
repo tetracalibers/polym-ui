@@ -1,13 +1,7 @@
 import _ from 'lodash'
-import shell from 'shelljs'
-const { ShellString } = shell
-import jsonFormat from 'json-format'
-const config_jsonFormat = {
-  type: 'space',
-  size: 2,
-}
 
 import { flashError } from './util/error'
+import { toJson, dumpJson, logJson } from './util/json'
 
 import { match } from 'ts-pattern'
 import { customAlphabet } from 'nanoid'
@@ -71,8 +65,6 @@ const prefix = 'styp_'
 
 /* -------------------------------------------------------------------------- */
 
-const toJson = (source: object) => jsonFormat(source, config_jsonFormat)
-
 import * as Diff from 'diff'
 
 const lexer = (source: string) =>
@@ -82,16 +74,16 @@ const stypTokenSeq = lexer(rawStyp).filter(token => {
   const { type, value } = token
   return !value.includes('\n') && type !== 'WhiteSpace'
 })
-const stypTokenSeqJson = jsonFormat(stypTokenSeq, config_jsonFormat)
+const stypTokenSeqJson = toJson(stypTokenSeq)
 
-new ShellString(stypTokenSeqJson).to('tmp/stypToken.json')
+dumpJson(stypTokenSeqJson)('tmp/stypToken.json')
 
 const jsxTokenSeq = lexer(jsx).filter(token => {
   const { type, value } = token
   return !value.includes('\n') && type !== 'WhiteSpace'
 })
-const jsxTokenSeqJson = jsonFormat(jsxTokenSeq, config_jsonFormat)
-new ShellString(jsxTokenSeqJson).to('tmp/jsxToken.json')
+const jsxTokenSeqJson = toJson(jsxTokenSeq)
+dumpJson(jsxTokenSeqJson)('tmp/jsxToken.json')
 
 /* -------------------------------------------------------------------------- */
 
@@ -340,12 +332,12 @@ const parseStart = (tokenSeq: Token[]) =>
   syntaxParser('START')([])(new TokenSeqParser(tokenSeq))
 
 const parsedStyp = parseStart(stypTokenSeq)
-const parsedStypJson = jsonFormat(parsedStyp, config_jsonFormat)
-new ShellString(parsedStypJson).to('tmp/parsedStyp.json')
+const parsedStypJson = toJson(parsedStyp)
+dumpJson(parsedStypJson)('tmp/parsedStyp.json')
 
 const parsedJsx = parseStart(jsxTokenSeq)
 const parsedJsxJson = toJson(parsedJsx)
-new ShellString(parsedJsxJson).to('tmp/parsedJsx.json')
+dumpJson(parsedJsxJson)('tmp/parsedJsx.json')
 
 /* -------------------------------------------------------------------------- */
 
@@ -484,7 +476,7 @@ const newSrc =
   oldJsx !== undefined ? oldSrc.replace(_.trim(oldJsx), newJsx) : oldSrc
 
 */
-//new ShellString(newSrc).to(
+//dumpJson(newSrc)(
 //  componentRootPath.replace(
 //    basename(componentRootPath),
 //    'generated/' + basename(componentRootPath)
