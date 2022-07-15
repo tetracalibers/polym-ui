@@ -181,14 +181,12 @@ interface SyntaxSchema {
 import * as ARRAY from 'fp-ts/Array'
 
 const contextTypes = [
-  'BEGIN_file',
   'TAG_prop',
   'BEGIN_tag',
   'BEGIN_css',
   'CSS_statement',
   'END_css',
   'END_tag',
-  'END_file',
 ] as const
 
 type ContextType = typeof contextTypes[number]
@@ -341,7 +339,6 @@ const BEGIN_htmlTag = (node: AstNode) => {
   cssObjCollection[id] = {} as CssInJs
   currentPath.push(id)
   currentPath.push('&')
-  //console.log(currentPath.join('.'))
   currentSelector.push(id)
   currentElement.push(node.body)
   dot.setProperty(
@@ -364,7 +361,6 @@ const CSS_property = (node: AstNode) => {
     currentPath.pop()
   }
   currentPath.push(normalize)
-  //console.log(currentPath.join('.'))
   dot.setProperty(cssObjCollection, currentPath.join('.'), normalize)
   return node
 }
@@ -373,7 +369,6 @@ const CSS_value = (node: AstNode) => {
   const normalize = node.body.length === 0 ? '""' : node.body
   dot.setProperty(cssObjCollection, currentPath.join('.'), normalize)
   currentPath.pop()
-  //console.log(currentPath.join('.'))
   return node
 }
 
@@ -397,13 +392,10 @@ const controller = (node: AstNode) => {
     .with('END_stypFile', () => skip(node))
     .otherwise(() => skip(node))
 }
-//tokens.map((node: AstNode) => controller(node))
 
 /**
 TODO CSSの宣言順序保証問題をどうにかする
  */
-
-//console.log(jsonFormat(cssObjCollection, config_jsonFormat), '\n')
 
 /* -------------------------------------------------------------------------- */
 
@@ -411,14 +403,10 @@ const rebuildJsx = convert.js2xml(jsxTree, {
   compact: true,
 })
 
-console.log(rebuildJsx, '\n')
-
 import * as Diff from 'diff'
 import { isValid } from 'date-and-time'
 
 const diffJsx = Diff.diffWords(jsx, rebuildJsx)
-
-//console.log(diffJsx, '\n')
 
 const newJsx = diffJsx
   .map(r => {
@@ -432,8 +420,6 @@ const newJsx = diffJsx
     return r.value
   })
   .join('')
-
-//console.log(newJsx, '\n')
 
 /** 
 const jsxRegexp = /<(StylePatch)>(?<jsx>.*?)<\/\1>/
