@@ -1,7 +1,7 @@
 {
   "TAG_prop": [
     {
-      "token": "jsString",
+      "token": "allowUnderline",
       "state": "tag.prop"
     },
     {
@@ -21,7 +21,7 @@
   ],
   "BEGIN_tag": [
     {
-      "token": "<",
+      "token": ["<"],
       "state": "tag"
     },
     {
@@ -37,23 +37,25 @@
   ],
   "BEGIN_css": [
     {
-      "token": "{",
+      "token": ["{"],
       "state": "pending"
     },
     {
-      "token": "{",
+      "token": ["{"],
       "state": "css"
     }
   ],
-  "CSS_statement": [
+  "CSS_property": [
     {
-      "token": "cssString",
+      "token": "allowHyphen",
       "state": "css.statement"
     },
     {
-      "token": ":",
+      "token": [":"],
       "state": "css.statement"
-    },
+    }
+  ],
+  "CSS_value": [
     {
       "token": {
         "stop": [",", "}"]
@@ -61,30 +63,42 @@
       "state": "css.statement.value"
     }
   ],
+  "CSS_BEGIN_nesting": [
+    {
+      "token": {
+        "regexp": "^[_:@&]+[a-zA-Z_]+$"
+      }
+    },
+    {
+      "token": [":"]
+    },
+    {
+      "token": ["{"]
+    }
+  ],
+  "CSS_END_nesting": [
+    {
+      "token": ["}"]
+    }
+  ],
   "END_css": [
     {
       "token": {
-        "stop": "}"
+        "stop": ["}"]
       },
       "state": "css"
     },
     {
-      "token": {
-        "stop": "}"
-      },
+      "token": ["}"],
       "state": "pending"
-    },
-    {
-      "token": {
-        "stop": ["<"]
-      }
     }
   ],
   "END_tag": [
     {
-      "token": {
-        "stop": ["/"]
-      },
+      "token": ["<"]
+    },
+    {
+      "token": ["/"],
       "state": "tag"
     },
     {
@@ -92,7 +106,7 @@
       "state": "tag"
     },
     {
-      "token": ">",
+      "token": [">"],
       "state": "pending"
     }
   ]
