@@ -1,24 +1,4 @@
 {
-  "TAG_prop": [
-    {
-      "token": "allowUnderline",
-      "state": "tag.prop"
-    },
-    {
-      "token": "=",
-      "state": "tag.prop"
-    },
-    {
-      "token": ["{", "\"", "'"],
-      "state": "tag.prop.value"
-    },
-    {
-      "token": {
-        "stop": [">"]
-      },
-      "state": "tag.prop.value"
-    }
-  ],
   "BEGIN_tag": [
     {
       "token": ["<"],

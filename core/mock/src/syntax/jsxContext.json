@@ -1,0 +1,34 @@
+{
+  "BEGIN_tag": [
+    {
+      "token": {
+        "stop": ["<"]
+      }
+    },
+    {
+      "token": "alphabet"
+    },
+    {
+      "token": {
+        "stop": [">"]
+      }
+    }
+  ],
+  "END_tag": [
+    {
+      "token": ["<"]
+    },
+    {
+      "token": ["/"],
+      "state": "tag"
+    },
+    {
+      "token": "alphabet",
+      "state": "tag"
+    },
+    {
+      "token": [">"],
+      "state": "pending"
+    }
+  ]
+}

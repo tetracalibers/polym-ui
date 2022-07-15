@@ -1,5 +1,6 @@
 import { FC, ReactNode, HTMLAttributes } from 'react'
 import { StylePatch } from '@react-polyhex-ui/styling-patch'
+import classNames from 'classnames'
 
 type SpanProps = HTMLAttributes<HTMLSpanElement>
 
@@ -8,9 +9,20 @@ type Props = {
 } & SpanProps
 
 const Balloon: FC<Props> = ({ children = '', ...spanProps }) => {
+  const array = new Array(3)
+
   return (
     <StylePatch>
-      <span {...spanProps}>{children}</span>
+      {array.map(() => (
+        <span
+          className={classNames('foo', { bar: true, duck: false }, 'baz', {
+            quux: true,
+          })}
+          {...spanProps}
+        >
+          {children}
+        </span>
+      ))}
     </StylePatch>
   )
 }

@@ -73,12 +73,6 @@ import convert from 'xml-js'
 
 const stypFilePath = jsxFile.stylingFilePath
 
-import StylingFile from './class/StylingFile'
-
-const stypFile = new StylingFile(stypFilePath, jsx)
-
-//stypFile.init()
-
 /* -------------------------------------------------------------------------- */
 
 const rawStyp = `<StylePatch>
@@ -109,38 +103,31 @@ const rawStyp = `<StylePatch>
 </StylePatch>
 `
 
-interface AstNode {
-  classification:
-    | 'BEGIN_componentTag'
-    | 'BEGIN_htmlTag'
-    | 'END_tag'
-    | 'CSS_property'
-    | 'CSS_selector'
-    | 'CSS_value'
-    | 'BEGIN_css'
-    | 'END_css'
-    | 'BEGIN_nesting'
-    | 'END_nesting'
-    | 'BEGIN_stypFile'
-    | 'END_stypFile'
-    | 'empty'
-  readonly body: string
-}
-
 const prefix = 'styp_'
 
 /* -------------------------------------------------------------------------- */
 
-const tokenSequence = Array.from(
-  jsTokens(rawStyp, { jsx: true }),
-  token => token
-).filter(token => {
+const toJson = (source: object) => jsonFormat(source, config_jsonFormat)
+
+import * as Diff from 'diff'
+
+const lexer = (source: string) =>
+  Array.from(jsTokens(source, { jsx: true }), token => token)
+
+const stypTokenSeq = lexer(rawStyp).filter(token => {
   const { type, value } = token
   return !value.includes('\n') && type !== 'WhiteSpace'
 })
-const jstokenJson = jsonFormat(tokenSequence, config_jsonFormat)
+const stypTokenSeqJson = jsonFormat(stypTokenSeq, config_jsonFormat)
 
-new ShellString(jstokenJson).to('tmp/jstoken.json')
+new ShellString(stypTokenSeqJson).to('tmp/stypToken.json')
+
+const jsxTokenSeq = lexer(jsx).filter(token => {
+  const { type, value } = token
+  return !value.includes('\n') && type !== 'WhiteSpace'
+})
+const jsxTokenSeqJson = jsonFormat(jsxTokenSeq, config_jsonFormat)
+new ShellString(jsxTokenSeqJson).to('tmp/jsxToken.json')
 
 /* -------------------------------------------------------------------------- */
 
@@ -155,20 +142,23 @@ interface Parser extends STORE.Store<number, Token> {
   next: (_: void) => void
   traced: (_: void) => Token
   seek: (p: number) => Parser
+  tokenSeq: Token[]
 }
 
 class TokenSeqParser implements Parser {
-  constructor(pos = 0) {
+  constructor(tokenSeq: Token[], pos = 0) {
     this.pos = pos
+    this.tokenSeq = tokenSeq
   }
-  peek = (pos: number) => tokenSequence[pos]
   pos
+  tokenSeq
+  peek = (pos: number) => this.tokenSeq[pos]
   traced = (_: void) => this.peek(this.pos)
-  seek = (p: number) => new TokenSeqParser(p)
+  seek = (p: number) => new TokenSeqParser(this.tokenSeq, p)
   next = (_: void) => this.seek(this.pos + 1)
 }
 
-import * as syntaxSchemaJson from './syntax/schema.json'
+import * as syntaxSchemaJson from './syntax/stypContext.json'
 
 const contextFlow = JSON.parse(JSON.stringify(syntaxSchemaJson))
 
@@ -191,8 +181,7 @@ interface SyntaxSchema {
 
 import * as ARRAY from 'fp-ts/Array'
 
-const contextTypes = [
-  'TAG_prop',
+const stypContextTypes = [
   'BEGIN_tag',
   'BEGIN_css',
   'CSS_property',
@@ -201,12 +190,12 @@ const contextTypes = [
   'CSS_END_nesting',
   'END_css',
   'END_tag',
-  'SOF',
+  'START',
   'EOF',
   'ERROR',
 ] as const
 
-type ContextType = typeof contextTypes[number]
+type StypContextType = typeof stypContextTypes[number]
 
 interface ParseResult {
   token: string
@@ -228,10 +217,10 @@ const flashError = (message: string) => {
   init   : (t: TokenSeqParser) => State<ParseResult[], TokenSeqParser>
  */
 const syntaxChecker = (
-  contextType: ContextType,
-  parser = new TokenSeqParser()
+  stypContextType: StypContextType,
+  parser: TokenSeqParser
 ) => {
-  const validContext = contextFlow[contextType]
+  const validContext = contextFlow[stypContextType]
 
   const initialState = {
     parser: parser,
@@ -298,7 +287,7 @@ const syntaxChecker = (
   /*
   return STATE.chain(checker)(initializer)(initialState)
   */
-  return tokenSequence.reduce((prevChecker: [ParseResult[], NextState]) => {
+  return parser.tokenSeq.reduce((prevChecker: [ParseResult[], NextState]) => {
     const [result, next] = prevChecker
     return next.context.length === 0 ? prevChecker : checker(result)(next)
   }, initializer(initialState))
@@ -308,19 +297,18 @@ import { P } from 'ts-pattern'
 import * as EITHER from 'fp-ts/Either'
 
 interface ParseLog {
-  classification: ContextType
+  classification: StypContextType
   tokens: ParseResult[]
 }
 
-const parseStart =
-  (nextParser: TokenSeqParser) =>
-  (prevRoute: ContextType) =>
-  (history: ParseLog[]) => {
+const syntaxParser =
+  (prevRoute: StypContextType) =>
+  (history: ParseLog[]) =>
+  (nextParser: TokenSeqParser) => {
     const nextToken = nextParser.traced().value
     const nextNextToken = nextParser.next().traced().value
-    const contextCompass = match(prevRoute as ContextType)
-      .with('EOF', () => EITHER.left('EOF'))
-      .with('SOF', () => EITHER.right('BEGIN_tag'))
+    const contextCompass = match(prevRoute as StypContextType)
+      .with('START', () => EITHER.right('BEGIN_tag'))
       .with('BEGIN_tag', () => {
         return match([nextToken, nextNextToken])
           .with(['<', '/'], () => EITHER.right('END_tag'))
@@ -361,7 +349,7 @@ const parseStart =
       })
       .with('END_css', () => EITHER.right('END_tag'))
       .otherwise(() => EITHER.left('ERROR'))
-    const onRight = (route: ContextType): ParseLog[] => {
+    const onRight = (route: StypContextType): ParseLog[] => {
       const [result, next] = syntaxChecker(route, nextParser)
       history = [
         ...history,
@@ -371,10 +359,10 @@ const parseStart =
         },
       ]
       const last = _.last(result) as ParseResult
-      if (last.pos === tokenSequence.length - 1) {
+      if (last.pos === next.parser.tokenSeq.length - 1) {
         return history
       }
-      return parseStart(next.parser)(route)(history)
+      return syntaxParser(route)(history)(next.parser)
     }
     const onLeft = (badType: string) => {
       if (badType === 'ERROR') {
@@ -385,16 +373,23 @@ const parseStart =
     return EITHER.match(
       onLeft,
       onRight
-    )(contextCompass as EITHER.Either<ContextType, ContextType>)
+    )(contextCompass as EITHER.Either<StypContextType, StypContextType>)
   }
 
-const history = parseStart(new TokenSeqParser())('SOF')([])
+const parseStart = (tokenSeq: Token[]) =>
+  syntaxParser('START')([])(new TokenSeqParser(tokenSeq))
 
-const historyJson = jsonFormat(history, config_jsonFormat)
+const parsedStyp = parseStart(stypTokenSeq)
+const parsedStypJson = jsonFormat(parsedStyp, config_jsonFormat)
+new ShellString(parsedStypJson).to('tmp/parsedStyp.json')
 
-new ShellString(historyJson).to('tmp/parseResult.json')
+const parsedJsx = parseStart(jsxTokenSeq)
+const parsedJsxJson = toJson(parsedJsx)
+new ShellString(parsedJsxJson).to('tmp/parsedJsx.json')
 
 /* -------------------------------------------------------------------------- */
+
+/*
 
 type JsxTree = {
   [K: string]: JsxTree
@@ -491,6 +486,8 @@ TODO CSSの宣言順序保証問題をどうにかする
  */
 
 /* -------------------------------------------------------------------------- */
+
+/*
 
 const rebuildJsx = convert.js2xml(jsxTree, {
   compact: true,
