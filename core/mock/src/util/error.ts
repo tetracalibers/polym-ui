@@ -1,5 +1,7 @@
 import PrettyError from 'pretty-error'
 const pe = PrettyError.start()
+import shell from 'shelljs'
+const { ShellString } = shell
 
 pe.appendStyle({
   'pretty-error > header > title > kind': {
@@ -37,5 +39,6 @@ pe.appendStyle({
 })
 
 export const flashError = (message: string) => {
+  new ShellString(message + '\n').toEnd('tmp/error.log')
   console.error(pe.render(new Error(message)))
 }

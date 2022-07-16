@@ -1,7 +1,7 @@
 import { P, match } from 'ts-pattern'
 import { parserGenerator } from './common/Parser'
 import { stypTokenSeq } from '../lexer/styp'
-import { toJson, dumpJson, fromJson } from '../../util/json'
+import { dumpJson, fromJson } from '../../util/json'
 import * as EITHER from 'fp-ts/Either'
 import * as contextDefJson from '../context/stypContext.json'
 
@@ -70,5 +70,4 @@ const parseStart = parserGenerator(contextDef, contextCompass)
 
 export const parsedStyp = parseStart(stypTokenSeq)
 
-const parsedStypJson = toJson(parsedStyp)
-dumpJson(parsedStypJson)('tmp/parsedStyp.json')
+dumpJson(parsedStyp)('tmp/parsedStyp.json')

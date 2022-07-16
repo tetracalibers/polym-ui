@@ -6,14 +6,14 @@ const config_jsonFormat = {
   size: 2,
 }
 
-export const toJson = (source: object) => jsonFormat(source, config_jsonFormat)
+const toJson = (source: object) => jsonFormat(source, config_jsonFormat)
 
 export const logJson = (source: object) => {
   console.log(toJson(source))
 }
 
-export const dumpJson = (source: string) => (filePath: string) => {
-  new ShellString(source).to(filePath)
+export const dumpJson = (source: object) => (filePath: string) => {
+  new ShellString(toJson(source)).to(filePath)
 }
 
 export const fromJson = (source: object) => {

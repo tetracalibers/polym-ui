@@ -1,7 +1,7 @@
 import { P, match } from 'ts-pattern'
 import { parserGenerator } from './common/Parser'
 import { jsxTokenSeq } from '../lexer/jsx'
-import { toJson, dumpJson, fromJson } from '../../util/json'
+import { dumpJson, fromJson } from '../../util/json'
 import * as EITHER from 'fp-ts/Either'
 import * as contextDefJson from '../context/jsxContext.json'
 
@@ -52,24 +52,24 @@ const contextCompass: StylePatch.ContextCompass = (
       return match([nextToken, nextNextToken])
         .with(...cxF.END_tag)
         .with(...cxF.BEGIN_tag)
-        .with(...cxF.BEGIN_brace)
+        .with(...cxF.JS_BEGIN_brace)
         .with(...cxF.JS_END_parentheses)
         .otherwise(() => EITHER.left('EOF'))
     })
     .with('JS_identifier', () => {
-      return match([nextToken, nextToken])
+      return match([nextToken, nextNextToken])
         .with(...cxF.JS_dot)
         .with(...cxF.JS_BEGIN_parentheses)
         .with(...cxF.JS_END_brace)
         .otherwise(() => EITHER.left('ERROR'))
     })
     .with('JS_dot', () => {
-      return match([nextToken, nextToken])
+      return match([nextToken, nextNextToken])
         .with(...cxF.JS_identifier)
         .otherwise(() => EITHER.left('ERROR'))
     })
     .with('JS_BEGIN_parentheses', () => {
-      return match([nextToken, nextToken])
+      return match([nextToken, nextNextToken])
         .with(...cxF.JS_identifier)
         .with(...cxF.JS_BEGIN_parentheses)
         .with(...cxF.JS_BEGIN_brace)
@@ -78,7 +78,7 @@ const contextCompass: StylePatch.ContextCompass = (
         .otherwise(() => EITHER.left('ERROR'))
     })
     .with('JS_END_parentheses', () => {
-      return match([nextToken, nextToken])
+      return match([nextToken, nextNextToken])
         .with(...cxF.JS_BEGIN_parentheses)
         .with(...cxF.JS_END_parentheses)
         .with(...cxF.JS_BEGIN_brace)
@@ -87,14 +87,14 @@ const contextCompass: StylePatch.ContextCompass = (
         .otherwise(() => EITHER.left('ERROR'))
     })
     .with('JS_arrow', () => {
-      return match([nextToken, nextToken])
+      return match([nextToken, nextNextToken])
         .with(...cxF.JS_BEGIN_parentheses)
         .with(...cxF.JS_BEGIN_brace)
         .with(...cxF.JS_identifier)
         .otherwise(() => EITHER.left('ERROR'))
     })
     .with('JS_BEGIN_brace', () => {
-      return match([nextToken, nextToken])
+      return match([nextToken, nextNextToken])
         .with(...cxF.JS_identifier)
         .with(...cxF.JS_BEGIN_brace)
         .with(...cxF.JS_BEGIN_parentheses)
@@ -102,7 +102,7 @@ const contextCompass: StylePatch.ContextCompass = (
         .otherwise(() => EITHER.left('ERROR'))
     })
     .with('JS_END_brace', () => {
-      return match([nextToken, nextToken])
+      return match([nextToken, nextNextToken])
         .with(...cxF.END_tag)
         .with(...cxF.BEGIN_tag)
         .otherwise(() => EITHER.left('EOF'))
@@ -114,5 +114,4 @@ const parseStart = parserGenerator(contextDef, contextCompass)
 
 export const parsedJsx = parseStart(jsxTokenSeq)
 
-const parsedJsxJson = toJson(parsedJsx)
-dumpJson(parsedJsxJson)('tmp/parsedJsx.json')
+dumpJson(parsedJsx)('tmp/parsedJsx.json')

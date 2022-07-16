@@ -3,6 +3,7 @@ import { syntaxCheckerGenerator } from './SyntaxChecker'
 import { flashError } from '../../../util/error'
 import * as EITHER from 'fp-ts/Either'
 import _ from 'lodash'
+import { logJson } from '../../../util/json'
 
 export const parserGenerator = (
   contextDef: StylePatch.ContextDef,
@@ -28,7 +29,6 @@ export const parserGenerator = (
             tokens: result,
           },
         ]
-        console.log(history)
         const last = _.last(result) as StylePatch.ParseResult
         if (last.pos === next.parser.tokenSeq.length - 1) {
           return history

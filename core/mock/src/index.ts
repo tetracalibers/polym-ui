@@ -1,15 +1,14 @@
 import _ from 'lodash'
 import convert from 'xml-js'
 import * as Diff from 'diff'
-import { toJson, dumpJson, logJson } from './util/json'
+import { dumpJson, logJson } from './util/json'
 import { parsedStyp } from './syntax/parser/styp'
 import { parsedJsx } from './syntax/parser/jsx'
 
-const prefix = 'styp_'
-
 /* -------------------------------------------------------------------------- */
 
-const evaluater = {}
+//const diff = Diff.diffArrays(parsedJsx, parsedStyp)
+//dumpJson(diff)('tmp/diff.json')
 
 /* -------------------------------------------------------------------------- */
 /*

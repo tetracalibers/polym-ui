@@ -1,5 +1,5 @@
 import { rawJsx } from '../dummy/jsx'
-import { toJson, dumpJson } from '../../util/json'
+import { dumpJson } from '../../util/json'
 import { lexer } from './common/Lexer'
 
 export const jsxTokenSeq = lexer(rawJsx).filter(token => {
@@ -7,6 +7,4 @@ export const jsxTokenSeq = lexer(rawJsx).filter(token => {
   return !value.includes('\n') && value.trim().length !== 0
 })
 
-const jsxTokenSeqJson = toJson(jsxTokenSeq)
-
-dumpJson(jsxTokenSeqJson)('tmp/jsxToken.json')
+dumpJson(jsxTokenSeq)('tmp/jsxToken.json')

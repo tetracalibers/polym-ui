@@ -32,7 +32,7 @@
   "JS_identifier": [
     {
       "token": {
-        "regexp": "/^[a-zA-Z_$]+$/"
+        "regexp": "^[a-zA-Z_$]+$"
       }
     }
   ],
