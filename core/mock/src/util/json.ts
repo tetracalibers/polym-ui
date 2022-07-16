@@ -15,3 +15,7 @@ export const logJson = (source: object) => {
 export const dumpJson = (source: string) => (filePath: string) => {
   new ShellString(source).to(filePath)
 }
+
+export const fromJson = (source: object) => {
+  return JSON.parse(JSON.stringify(source))
+}

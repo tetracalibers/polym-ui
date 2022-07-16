@@ -1,7 +1,7 @@
 import jsTokens from 'js-tokens'
-import { rawStyp } from '../dummy/styp'
-import { rawJsx } from '../dummy/jsx'
-import { toJson, dumpJson } from '../../util/json'
+import { rawStyp } from '../../dummy/styp'
+import { rawJsx } from '../../dummy/jsx'
+import { toJson, dumpJson } from '../../../util/json'
 
 const lexer = (source: string) =>
   Array.from(jsTokens(source, { jsx: true }), token => token)

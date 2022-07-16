@@ -1,5 +1,5 @@
 declare namespace StylePatch {
-  const stypContextTypes = [
+  const contextTypes = [
     'BEGIN_tag',
     'BEGIN_css',
     'CSS_property',
@@ -13,12 +13,27 @@ declare namespace StylePatch {
     'ERROR',
   ] as const
 
-  export interface ParseLog {
-    classification: StypContextType
-    tokens: ParseResult[]
+  export type ContextType = typeof contextTypes[number]
+
+  export interface SyntaxSchema {
+    token: ArrowTokenType
+    state: string
   }
 
-  export type StypContextType = typeof stypContextTypes[number]
+  export type ContextDef = {
+    [K in ContextType]: SyntaxSchema[]
+  }
+
+  export type ContextCompass = (
+    prevSyntax: ContextType,
+    nextToken: string,
+    nextNextToken: string
+  ) => EITHER.Either<ContextType, ContextType>
+
+  export interface ParseLog {
+    classification: ContextType
+    tokens: ParseResult[]
+  }
 
   export type CssObjCollection = Record<string, CssInJs>
 
@@ -33,11 +48,6 @@ declare namespace StylePatch {
         not?: string[]
         regexp?: string
       }
-
-  export interface SyntaxSchema {
-    token: ArrowTokenType
-    state: string
-  }
 
   export interface Token {
     type: string
