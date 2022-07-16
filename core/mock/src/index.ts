@@ -4,7 +4,7 @@ import * as Diff from 'diff'
 import { match } from 'ts-pattern'
 import { flashError } from './util/error'
 import { toJson, dumpJson, logJson } from './util/json'
-import { stypTokenSeq, jsxTokenSeq } from './syntax/lexer'
+import { stypTokenSeq, jsxTokenSeq } from './syntax/lexer/lexer'
 
 const prefix = 'styp_'
 
