@@ -68,6 +68,12 @@ declare namespace StylePatch {
     value: string
   }
 
+  export interface Sentence {
+    classify: string
+    tokens: string[]
+    pos: number
+  }
+
   export interface Parser extends STORE.Store<number, Token> {
     next: (_: void) => void
     traced: (_: void) => Token

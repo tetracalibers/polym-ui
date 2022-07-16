@@ -6,7 +6,7 @@ const config_jsonFormat = {
   size: 2,
 }
 
-const toJson = (source: object) => jsonFormat(source, config_jsonFormat)
+export const toJson = (source: object) => jsonFormat(source, config_jsonFormat)
 
 export const logJson = (source: object) => {
   console.log(toJson(source))

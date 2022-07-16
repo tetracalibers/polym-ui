@@ -1,66 +1,47 @@
 import _ from 'lodash'
-import convert from 'xml-js'
 import * as AryDiff from 'fast-array-diff'
 import * as dot from 'dot-prop'
-import { dumpJson, logJson } from './util/json'
-import { parsedStyp } from './syntax/parser/styp'
-import { parsedJsx } from './syntax/parser/jsx'
+import * as Diff from 'diff'
+import { dumpJson, logJson, toJson } from './util/json'
+import { stypSentence, jsxSentence } from './syntax/formatter/parseLogCleansing'
 
 /* -------------------------------------------------------------------------- */
 
-type NoizeRemoved = {
-  class: string
-  tokens: string[]
-  pos: number
-}
+import * as EITHER from 'fp-ts/Either'
+import * as ARRAY from 'fp-ts/Array'
 
-const parseLogNoizeRemover = (
-  history: StylePatch.ParseLog[]
-): NoizeRemoved[] => {
-  return history.map((log: StylePatch.ParseLog, idx: number) => {
-    const { classification, tokens } = log
-    const noiseRemovedTokens = tokens.map((info: StylePatch.ParseResult) => {
-      const { token } = info
-      return token
-    })
-    return {
-      class: classification,
-      tokens: noiseRemovedTokens,
-      pos: idx,
+stypSentence.map((record: StylePatch.Sentence) => {
+  const { tokens, classify } = record
+  if (tokens.includes('<StylePatch>')) {
+    return EITHER.left('skip')
+  }
+  if (classify === 'BEGIN_tag') {
+    const [, tagName, ...rest] = tokens
+    if (rest.length > 1) {
+      const props = ARRAY.dropRight(1)(rest)
+      if (props.includes('className')) {
+        const classStartIdx = _.indexOf(props, 'className')
+        const [otherProps, classNameProps] = ARRAY.splitAt(classStartIdx)(props)
+        const [_className, _equal, className] = classNameProps
+      }
     }
-  })
-}
+  }
+})
 
-const jsxTokens = parseLogNoizeRemover(parsedJsx)
-dumpJson(jsxTokens)('tmp/jsx_classifiedTokens.json')
+/* -------------------------------------------------------------------------- */
 
-const stypTokens = parseLogNoizeRemover(parsedStyp)
-dumpJson(stypTokens)('tmp/styp_classifiedTokens.json')
-
-const comparePredicate = (
-  jsxRecord: NoizeRemoved,
-  stypRecord: NoizeRemoved
-) => {
-  return jsxRecord.tokens.join('') === stypRecord.tokens.join('')
-}
-
-const patch = AryDiff.diff(jsxTokens, stypTokens, comparePredicate)
-dumpJson(patch)('tmp/diff.json')
+//onst comparePredicate = (
+// jsxRecord: StylePatch.ClassifyTokens,
+// stypRecord: StylePatch.ClassifyTokens
+// => {
+// return jsxRecord.tokens.join('') === stypRecord.tokens.join('')
+//
+//
+//onst diff = AryDiff.diff(jsxTokens, stypTokens, comparePredicate)
+//umpJson(diff)('tmp/diff.json')
 
 /* -------------------------------------------------------------------------- */
 /*
-
-let currentSelector: Array<string> = []
-let currentElement: Array<string> = []
-
-const skip = (_node: AstNode) => {
-  return undefined
-}
-
-let cssObjCollection = {} as CssObjCollection
-
-let currentPath: Array<string> = []
-
 const BEGIN_htmlTag = (node: AstNode) => {
   const id = prefix + nanoid()
   cssObjCollection[id] = {} as CssInJs
