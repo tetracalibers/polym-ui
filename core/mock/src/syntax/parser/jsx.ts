@@ -1,6 +1,6 @@
 import { P, match } from 'ts-pattern'
 import { parserGenerator } from './common/Parser'
-import { jsxTokenSeq } from './common/lexer'
+import { jsxTokenSeq } from '../lexer/jsx'
 import { toJson, dumpJson, fromJson } from '../../util/json'
 import * as EITHER from 'fp-ts/Either'
 import * as contextDefJson from '../context/jsxContext.json'

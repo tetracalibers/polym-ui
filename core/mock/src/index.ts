@@ -7,29 +7,12 @@ import { parsedJsx } from './syntax/parser/jsx'
 
 const prefix = 'styp_'
 
-logJson(parsedJsx)
-
 /* -------------------------------------------------------------------------- */
 
+const evaluater = {}
+
+/* -------------------------------------------------------------------------- */
 /*
-
-type JsxTree = {
-  [K: string]: JsxTree
-}
-
-let escapedJsx = jsx
-
-const attrJsRegExp = /<[\w]+(?<js>\s*\{.*?\}\s*).*?>/g
-
-const attrJs = attrJsRegExp.exec(jsx)?.groups?.js
-if (attrJs) {
-  escapedJsx = jsx.replaceAll(attrJs, ` js_${nanoid()}="${_.trim(attrJs)}"`)
-}
-
-const jsxTree = convert.xml2js(escapedJsx, {
-  compact: true,
-  ignoreComment: true,
-}) as JsxTree
 
 let currentSelector: Array<string> = []
 let currentElement: Array<string> = []
