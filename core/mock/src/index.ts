@@ -1,14 +1,51 @@
 import _ from 'lodash'
 import convert from 'xml-js'
-import * as Diff from 'diff'
+import * as AryDiff from 'fast-array-diff'
+import * as dot from 'dot-prop'
 import { dumpJson, logJson } from './util/json'
 import { parsedStyp } from './syntax/parser/styp'
 import { parsedJsx } from './syntax/parser/jsx'
 
 /* -------------------------------------------------------------------------- */
 
-//const diff = Diff.diffArrays(parsedJsx, parsedStyp)
-//dumpJson(diff)('tmp/diff.json')
+type NoizeRemoved = {
+  class: string
+  tokens: string[]
+  pos: number
+}
+
+const parseLogNoizeRemover = (
+  history: StylePatch.ParseLog[]
+): NoizeRemoved[] => {
+  return history.map((log: StylePatch.ParseLog, idx: number) => {
+    const { classification, tokens } = log
+    const noiseRemovedTokens = tokens.map((info: StylePatch.ParseResult) => {
+      const { token } = info
+      return token
+    })
+    return {
+      class: classification,
+      tokens: noiseRemovedTokens,
+      pos: idx,
+    }
+  })
+}
+
+const jsxTokens = parseLogNoizeRemover(parsedJsx)
+dumpJson(jsxTokens)('tmp/jsx_classifiedTokens.json')
+
+const stypTokens = parseLogNoizeRemover(parsedStyp)
+dumpJson(stypTokens)('tmp/styp_classifiedTokens.json')
+
+const comparePredicate = (
+  jsxRecord: NoizeRemoved,
+  stypRecord: NoizeRemoved
+) => {
+  return jsxRecord.tokens.join('') === stypRecord.tokens.join('')
+}
+
+const patch = AryDiff.diff(jsxTokens, stypTokens, comparePredicate)
+dumpJson(patch)('tmp/diff.json')
 
 /* -------------------------------------------------------------------------- */
 /*
@@ -19,8 +56,6 @@ let currentElement: Array<string> = []
 const skip = (_node: AstNode) => {
   return undefined
 }
-
-import * as dot from 'dot-prop'
 
 let cssObjCollection = {} as CssObjCollection
 
