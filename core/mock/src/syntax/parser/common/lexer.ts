@@ -16,7 +16,7 @@ dumpJson(stypTokenSeqJson)('tmp/stypToken.json')
 
 export const jsxTokenSeq = lexer(rawJsx).filter(token => {
   const { type, value } = token
-  return !value.includes('\n') && type !== 'WhiteSpace'
+  return !value.includes('\n') && value.trim().length !== 0
 })
 const jsxTokenSeqJson = toJson(jsxTokenSeq)
 dumpJson(jsxTokenSeqJson)('tmp/jsxToken.json')

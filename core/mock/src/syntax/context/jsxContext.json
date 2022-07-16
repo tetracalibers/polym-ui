@@ -1,9 +1,7 @@
 {
   "BEGIN_tag": [
     {
-      "token": {
-        "stop": ["<"]
-      }
+      "token": ["<"]
     },
     {
       "token": "alphabet"
@@ -29,6 +27,50 @@
     {
       "token": [">"],
       "state": "pending"
+    }
+  ],
+  "JS_identifier": [
+    {
+      "token": {
+        "regexp": "/^[a-zA-Z_$]+$/"
+      }
+    }
+  ],
+  "JS_dot": [
+    {
+      "token": ["."]
+    }
+  ],
+  "JS_BEGIN_parentheses": [
+    {
+      "token": ["("]
+    }
+  ],
+  "JS_END_parentheses": [
+    {
+      "token": [")"]
+    }
+  ],
+  "JS_arrow": [
+    {
+      "token": ["=>"]
+    }
+  ],
+  "JS_BEGIN_brace": [
+    {
+      "token": ["{"]
+    }
+  ],
+  "JS_END_brace": [
+    {
+      "token": ["}"]
+    }
+  ],
+  "JS_literal": [
+    {
+      "token": {
+        "regexp": "^['\"`].*?['\"`]$"
+      }
     }
   ]
 }

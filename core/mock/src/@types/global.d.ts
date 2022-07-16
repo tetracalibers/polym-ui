@@ -11,10 +11,24 @@ declare namespace StylePatch {
     'START',
     'EOF',
     'ERROR',
+    'JS_identifier',
+    'JS_dot',
+    'JS_BEGIN_parentheses',
+    'JS_END_parentheses',
+    'JS_BEGIN_brace',
+    'JS_END_brace',
+    'JS_arrow',
+    'JS_literal',
   ] as const
 
   export type ContextType = typeof contextTypes[number]
 
+  export type ContextFlags = {
+    [K: string]: [
+      [string | typeof P._, string | typeof P._],
+      () => EITHER.Either<StylePatch.ContextType, StylePatch.ContextType>
+    ]
+  }
   export interface SyntaxSchema {
     token: ArrowTokenType
     state: string

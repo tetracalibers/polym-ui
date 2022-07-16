@@ -14,7 +14,7 @@ export const parserGenerator = (
     (history: StylePatch.ParseLog[]) =>
     (nextParser: TokenSeqTraverser) => {
       const nextToken = nextParser.traced().value
-      const nextNextToken = nextParser.next().traced().value
+      const nextNextToken = nextParser.next().traced()?.value
       const exceptContext = contextCompass(prevSyntax, nextToken, nextNextToken)
 
       const onRight = (
@@ -28,6 +28,7 @@ export const parserGenerator = (
             tokens: result,
           },
         ]
+        console.log(history)
         const last = _.last(result) as StylePatch.ParseResult
         if (last.pos === next.parser.tokenSeq.length - 1) {
           return history
