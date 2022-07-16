@@ -18,9 +18,15 @@ const cxF: StylePatch.ContextFlags = {
   JS_dot: [['.', P._], () => EITHER.right('JS_dot')],
   JS_arrow: [['=>', P._], () => EITHER.right('JS_arrow')],
   // prettier-ignore
-  JS_literal: [[P.when(t => /^['"`].*?['"`]$/g.test(t as string)), P._], () => EITHER.right('JS_literal'),],
+  JS_literal: [
+    [P.when(t => /^['"`].*?['"`]$/g.test(t as string)), P._], 
+    () => EITHER.right('JS_literal'),
+  ],
   // prettier-ignore
-  JS_identifier: [[P.when(t => /^[a-zA-Z_]+$/g.test(t as string)), P._], () => EITHER.right('JS_identifier')],
+  JS_identifier: [
+    [P.when(t => /^[a-zA-Z_]+$/g.test(t as string)), P._], 
+    () => EITHER.right('JS_identifier')
+  ],
 }
 
 const contextCompass: StylePatch.ContextCompass = (
