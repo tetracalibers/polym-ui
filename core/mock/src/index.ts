@@ -1,50 +1,12 @@
 import _ from 'lodash'
-
+import convert from 'xml-js'
+import * as Diff from 'diff'
+import { match } from 'ts-pattern'
 import { flashError } from './util/error'
 import { toJson, dumpJson, logJson } from './util/json'
-
-import { rawStyp } from './test/dummy/styp'
-
-import { match } from 'ts-pattern'
-import jsTokens from 'js-tokens'
-
-/* -------------------------------------------------------------------------- */
-
-import ComponentFile from './class/ComponentFile'
-
-const componentRootPath =
-  '/Users/tomixy/MyNpmPackage/React-Polyhedron-UI/Repository/React-polyhexUI/core/mock/src/components/atoms/Balloon/Balloon.tsx'
-
-const jsxFile = new ComponentFile(componentRootPath)
-const jsx = jsxFile.jsx
-
-import convert from 'xml-js'
-
-const stypFilePath = jsxFile.stylingFilePath
+import { stypTokenSeq, jsxTokenSeq } from './syntax/lexer'
 
 const prefix = 'styp_'
-
-/* -------------------------------------------------------------------------- */
-
-import * as Diff from 'diff'
-
-const lexer = (source: string) =>
-  Array.from(jsTokens(source, { jsx: true }), token => token)
-
-const stypTokenSeq = lexer(rawStyp).filter(token => {
-  const { type, value } = token
-  return !value.includes('\n') && type !== 'WhiteSpace'
-})
-const stypTokenSeqJson = toJson(stypTokenSeq)
-
-dumpJson(stypTokenSeqJson)('tmp/stypToken.json')
-
-const jsxTokenSeq = lexer(jsx).filter(token => {
-  const { type, value } = token
-  return !value.includes('\n') && type !== 'WhiteSpace'
-})
-const jsxTokenSeqJson = toJson(jsxTokenSeq)
-dumpJson(jsxTokenSeqJson)('tmp/jsxToken.json')
 
 /* -------------------------------------------------------------------------- */
 
