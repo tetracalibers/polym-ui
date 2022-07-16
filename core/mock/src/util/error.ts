@@ -39,6 +39,6 @@ pe.appendStyle({
 })
 
 export const flashError = (message: string) => {
-  new ShellString(message + '\n').toEnd('tmp/error.log')
+  new ShellString(message + '\n').toEnd('lib/error.log')
   console.error(pe.render(new Error(message)))
 }
