@@ -7,6 +7,18 @@ import * as contextDefJson from '../context/stypContext.json'
 
 const contextDef = fromJson(contextDefJson)
 
+const cxF: StylePatch.ContextFlags = {
+  BEGIN_tag: [['<', P._], () => EITHER.right('BEGIN_tag')],
+  END_tag: [['<', '/'], () => EITHER.right('END_tag')],
+  BEGIN_css: [['{', '{'], () => EITHER.right('BEGIN_css')],
+  END_css: [[P.union(',', '}'), '}'], () => EITHER.right('END_css')],
+  CSS_BEGIN_nesting: [
+    [P.when(t => /^[_:@&]+[a-zA-Z_]+$/g.test(t as string)), ':'],
+    () => EITHER.right('CSS_BEGIN_nesting'),
+  ],
+  CSS_END_nesting: [['}', P._], () => EITHER.right('CSS_END_nesting')],
+}
+
 const contextCompass: StylePatch.ContextCompass = (
   prevContext,
   nextToken,
@@ -16,40 +28,38 @@ const contextCompass: StylePatch.ContextCompass = (
     .with('START', () => EITHER.right('BEGIN_tag'))
     .with('BEGIN_tag', () => {
       return match([nextToken, nextNextToken])
-        .with(['<', '/'], () => EITHER.right('END_tag'))
-        .with(['<', P._], () => EITHER.right('BEGIN_tag'))
-        .with(['{', '{'], () => EITHER.right('BEGIN_css'))
+        .with(...cxF.END_tag)
+        .with(...cxF.BEGIN_tag)
+        .with(...cxF.BEGIN_css)
         .otherwise(() => EITHER.left('ERROR'))
     })
     .with('END_tag', () => {
       return match([nextToken, nextNextToken])
-        .with(['<', '/'], () => EITHER.right('END_tag'))
-        .with(['<', P._], () => EITHER.right('BEGIN_tag'))
+        .with(...cxF.END_tag)
+        .with(...cxF.BEGIN_tag)
         .otherwise(() => EITHER.left('EOF'))
     })
     .with('BEGIN_css', () => {
-      return match(nextToken)
-        .with('}', () => EITHER.right('END_css'))
+      return match([nextToken, nextNextToken])
+        .with(...cxF.END_css)
         .otherwise(() => EITHER.right('CSS_property'))
     })
     .with('CSS_property', () => EITHER.right('CSS_value'))
     .with('CSS_value', () => {
       return match([nextToken, nextNextToken])
-        .with(['}', P._], () => EITHER.right('CSS_END_nesting'))
-        .with([P.union(',', '}'), '}'], () => EITHER.right('END_css'))
-        .with([P.when(t => /^[_:@&]+[a-zA-Z_]+$/g.test(t)), ':'], () =>
-          EITHER.right('CSS_BEGIN_nesting')
-        )
+        .with(...cxF.CSS_END_nesting)
+        .with(...cxF.END_css)
+        .with(...cxF.CSS_BEGIN_nesting)
         .otherwise(() => EITHER.right('CSS_property'))
     })
     .with('CSS_BEGIN_nesting', () => {
-      return match(nextToken)
-        .with('}', () => EITHER.right('CSS_END_nesting'))
+      return match([nextToken, nextNextToken])
+        .with(...cxF.CSS_END_nesting)
         .otherwise(() => EITHER.right('CSS_property'))
     })
     .with('CSS_END_nesting', () => {
-      return match(nextToken)
-        .with(P.union(',', '}'), () => EITHER.right('END_css'))
+      return match([nextToken, nextNextToken])
+        .with(...cxF.END_css)
         .otherwise(() => EITHER.right('CSS_property'))
     })
     .with('END_css', () => EITHER.right('END_tag'))
