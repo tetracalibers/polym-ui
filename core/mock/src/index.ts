@@ -36,7 +36,10 @@ type CssBlock = [string, CssInJs]
 const cssBuilder 
   = (prevState: [CssBlock[], Pointor]): [CssBlock[], Pointor] => {
   const [cssBlocks, currPointer] = prevState
-  const [archive, [prevCss]] = cssBlocks.length > 0 ? ARRAY.splitAt(cssBlocks.length - 1)(cssBlocks) : [[], [['&', {}] as CssBlock]]
+  const [archive, [prevCss]] 
+    = cssBlocks.length > 0 
+    ? ARRAY.splitAt(cssBlocks.length - 1)(cssBlocks) 
+    : [[], [['&', {}] as CssBlock]]
   const [prevSelector, prevProperties] = prevCss
   const { classify, tokens } = currPointer.traced()
   const [name] = tokens
