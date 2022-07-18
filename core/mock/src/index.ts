@@ -1,32 +1,119 @@
+import type { CssInJs } from 'classified-csstypes'
 import _ from 'lodash'
 import * as AryDiff from 'fast-array-diff'
 import * as dot from 'dot-prop'
 import * as Diff from 'diff'
 import { dumpJson, logJson, toJson } from './util/json'
 import { stypSentence, jsxSentence } from './syntax/formatter/parseLogCleansing'
+import { alphanumericId, numberId } from './util/id'
+import * as prefixs from './syntax/config/prefix.json'
 
 /* -------------------------------------------------------------------------- */
 
 import * as EITHER from 'fp-ts/Either'
 import * as ARRAY from 'fp-ts/Array'
+import { match } from 'ts-pattern'
 
-stypSentence.map((record: StylePatch.Sentence) => {
-  const { tokens, classify } = record
-  if (tokens.includes('<StylePatch>')) {
-    return EITHER.left('skip')
+class Pointor {
+  constructor(sentenceSeq: StylePatch.Sentence[], pos = 0) {
+    this.pos = pos
+    this.sentenceSeq = sentenceSeq
   }
-  if (classify === 'BEGIN_tag') {
-    const [, tagName, ...rest] = tokens
-    if (rest.length > 1) {
-      const props = ARRAY.dropRight(1)(rest)
-      if (props.includes('className')) {
-        const classStartIdx = _.indexOf(props, 'className')
-        const [otherProps, classNameProps] = ARRAY.splitAt(classStartIdx)(props)
-        const [_className, _equal, className] = classNameProps
+  pos
+  sentenceSeq
+  peek = (pos: number) => this.sentenceSeq[pos]
+  traced = (_: void) => this.peek(this.pos)
+  seek = (p: number) => new Pointor(this.sentenceSeq, p)
+  next = (_: void) => this.seek(this.pos + 1)
+}
+
+const stypPointer = new Pointor(stypSentence)
+const jsxPointer = new Pointor(jsxSentence)
+
+type TraverseState = [Pointor]
+
+type CssBlock = [string, CssInJs]
+
+// prettier-ignore
+const cssBuilder 
+  = (prevState: [CssBlock[], Pointor]): [CssBlock[], Pointor] => {
+  const [cssBlocks, currPointer] = prevState
+  const [archive, [prevCss]] = ARRAY.splitAt(cssBlocks.length - 1)(cssBlocks)
+  const [prevSelector, prevProperties] = prevCss
+  const { classify, tokens } = currPointer.traced()
+  const [name] = tokens
+  const nextPointer = currPointer.next()
+  return match(classify)
+    .with('CSS_property', () => {
+      const { tokens: valueTokens } = nextPointer.traced()
+      const value = ARRAY.dropRight(1)(valueTokens).join(' ')
+      const properties = dot.setProperty(prevProperties, name, value)
+      return cssBuilder([[...archive, [prevSelector, properties]], nextPointer])
+    })
+    .with('CSS_BEGIN_nesting', () => {
+      const validSelectorName = name
+        .replaceAll('__', '::')
+        .replaceAll('_', ':')
+        .replaceAll('_at_', '@')
+        .replace(/^:/, '&:')
+      return cssBuilder([[...cssBlocks, [validSelectorName, {}]], nextPointer])
+    })
+    .with('CSS_END_nesting', () => {
+      return cssBuilder([cssBlocks, nextPointer])
+    })
+    .otherwise(() => [cssBlocks, nextPointer])
+}
+
+type Tag = {
+  name: string
+  className: unknown[]
+  props: string[]
+  styp: CssBlock[]
+}
+
+// prettier-ignore
+const iterationUnit 
+  = (prevState: [Map<string, Tag>, Pointor]): [Map<string, Tag>, Pointor] => {
+  const [archive, pointer] = prevState
+  const { tokens, classify } = pointer.traced()
+  let nextPointor = pointer.next()
+
+  return match(classify)
+    .with('BEGIN_tag', () => {
+      const [_gourmet, tagName, ...rest] = tokens
+      let tagMeta: Tag = {
+        name: tagName,
+        className: [],
+        props: [],
+        styp: [],
       }
-    }
-  }
-})
+      if (tagName === 'StylePatch') {
+        return iterationUnit([new Map(), nextPointor])
+      }
+      if (rest.length > 1) {
+        const props = ARRAY.dropRight(1)(rest)
+        if (props.includes('className')) {
+          const classStartIdx = _.indexOf(props, 'className')
+          const [otherProps, classNameProps] =
+            ARRAY.splitAt(classStartIdx)(props)
+          const [_className, _equal, className] = classNameProps
+          dot.setProperty(tagMeta, 'props', otherProps)
+          dot.setProperty(tagMeta, 'className', className)
+        }
+      }
+      if (nextPointor.traced().classify === 'BEGIN_css') {
+        const cssStart = nextPointor.next()
+        const [cssBlocks, nextPointorAfterCss] = cssBuilder([[], cssStart])
+        dot.setProperty(tagMeta, 'styp', cssBlocks)
+        nextPointor = nextPointorAfterCss
+      }
+      const id = prefixs.styp + alphanumericId()
+      return iterationUnit([archive.set(id, tagMeta), nextPointor])
+    })
+    .otherwise(() => [archive, nextPointor])
+}
+
+const sentenceTraverser = () => {}
 
 /* -------------------------------------------------------------------------- */
 
@@ -42,43 +129,6 @@ stypSentence.map((record: StylePatch.Sentence) => {
 
 /* -------------------------------------------------------------------------- */
 /*
-const BEGIN_htmlTag = (node: AstNode) => {
-  const id = prefix + nanoid()
-  cssObjCollection[id] = {} as CssInJs
-  currentPath.push(id)
-  currentPath.push('&')
-  currentSelector.push(id)
-  currentElement.push(node.body)
-  dot.setProperty(
-    jsxTree,
-    [...currentElement, '_attributes', `styp_${nanoid_numbersOnly()}`].join(
-      '.'
-    ),
-    `styp_classNames['${id}']`
-  )
-  return node
-}
-
-const CSS_property = (node: AstNode) => {
-  const normalize = node.body
-    .replaceAll('__', '::')
-    .replaceAll('_', ':')
-    .replaceAll('_at_', '@')
-    .replace(/^:/, '&:')
-  if (normalize.includes('&')) {
-    currentPath.pop()
-  }
-  currentPath.push(normalize)
-  dot.setProperty(cssObjCollection, currentPath.join('.'), normalize)
-  return node
-}
-
-const CSS_value = (node: AstNode) => {
-  const normalize = node.body.length === 0 ? '""' : node.body
-  dot.setProperty(cssObjCollection, currentPath.join('.'), normalize)
-  currentPath.pop()
-  return node
-}
 
 const END_tag = (_node: AstNode) => {
   currentSelector = currentSelector.slice(-1)
@@ -101,35 +151,7 @@ const controller = (node: AstNode) => {
     .otherwise(() => skip(node))
 }
 
-/**
-TODO CSSの宣言順序保証問題をどうにかする
- */
-
 /* -------------------------------------------------------------------------- */
-
-/*
-
-const rebuildJsx = convert.js2xml(jsxTree, {
-  compact: true,
-})
-
-import * as Diff from 'diff'
-import { isValid } from 'date-and-time'
-
-const diffJsx = Diff.diffWords(jsx, rebuildJsx)
-
-const newJsx = diffJsx
-  .map(r => {
-    if (!r.added && !r.removed) {
-      return r.value
-    }
-    const jsValPrefix = 'js_'
-    if (r.added && r.value.slice(0, jsValPrefix.length) === jsValPrefix) {
-      return ''
-    }
-    return r.value
-  })
-  .join('')
 
 /** 
 const jsxRegexp = /<(StylePatch)>(?<jsx>.*?)<\/\1>/

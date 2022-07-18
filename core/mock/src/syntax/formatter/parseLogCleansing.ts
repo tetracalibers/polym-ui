@@ -20,7 +20,7 @@ const parseLogNoizeRemover = (
 }
 
 export const jsxSentence = parseLogNoizeRemover(parsedJsx)
-dumpJson(jsxSentence)('tmp/jsx_classifiedTokens.json')
+dumpJson(jsxSentence)('tmp/jsx_sentence.json')
 
 export const stypSentence = parseLogNoizeRemover(parsedStyp)
-dumpJson(stypSentence)('tmp/styp_classifiedTokens.json')
+dumpJson(stypSentence)('tmp/styp_sentence.json')
