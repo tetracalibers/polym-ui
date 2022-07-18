@@ -1,3 +1,4 @@
+import { StylePatch } from './../../styling-patch/src/components/StylePatch'
 import type { CssInJs } from 'classified-csstypes'
 import _ from 'lodash'
 import * as AryDiff from 'fast-array-diff'
@@ -109,6 +110,13 @@ const iterationUnit
       }
       const id = prefixs.styp + alphanumericId()
       return iterationUnit([archive.set(id, tagMeta), nextPointor])
+    })
+    .with('END_tag', () => {
+      const [_gourmet, tagName] = tokens
+      if (tagName === 'StylePatch') {
+        return [archive, nextPointor] as [Map<string, Tag>, Pointor]
+      }
+      return iterationUnit([archive, nextPointor])
     })
     .otherwise(() => [archive, nextPointor])
 }
