@@ -1,4 +1,3 @@
-import { StylePatch } from './../../styling-patch/src/components/StylePatch'
 import type { CssInJs } from 'classified-csstypes'
 import _ from 'lodash'
 import * as AryDiff from 'fast-array-diff'
@@ -28,10 +27,8 @@ class Pointor {
   next = (_: void) => this.seek(this.pos + 1)
 }
 
-const stypPointer = new Pointor(stypSentence)
-const jsxPointer = new Pointor(jsxSentence)
-
-type TraverseState = [Pointor]
+const stypPointor = new Pointor(stypSentence)
+const jsxPointor = new Pointor(jsxSentence)
 
 type CssBlock = [string, CssInJs]
 
@@ -39,7 +36,7 @@ type CssBlock = [string, CssInJs]
 const cssBuilder 
   = (prevState: [CssBlock[], Pointor]): [CssBlock[], Pointor] => {
   const [cssBlocks, currPointer] = prevState
-  const [archive, [prevCss]] = ARRAY.splitAt(cssBlocks.length - 1)(cssBlocks)
+  const [archive, [prevCss]] = cssBlocks.length > 0 ? ARRAY.splitAt(cssBlocks.length - 1)(cssBlocks) : [[], [['&', {}] as CssBlock]]
   const [prevSelector, prevProperties] = prevCss
   const { classify, tokens } = currPointer.traced()
   const [name] = tokens
@@ -49,7 +46,7 @@ const cssBuilder
       const { tokens: valueTokens } = nextPointer.traced()
       const value = ARRAY.dropRight(1)(valueTokens).join(' ')
       const properties = dot.setProperty(prevProperties, name, value)
-      return cssBuilder([[...archive, [prevSelector, properties]], nextPointer])
+      return cssBuilder([[...archive, [prevSelector, properties]], nextPointer.next()])
     })
     .with('CSS_BEGIN_nesting', () => {
       const validSelectorName = name
@@ -68,12 +65,12 @@ const cssBuilder
 type Tag = {
   name: string
   className: unknown[]
-  props: string[]
+  props: string
   styp: CssBlock[]
 }
 
 // prettier-ignore
-const iterationUnit 
+const sentenceTraverser 
   = (prevState: [Map<string, Tag>, Pointor]): [Map<string, Tag>, Pointor] => {
   const [archive, pointer] = prevState
   const { tokens, classify } = pointer.traced()
@@ -85,11 +82,11 @@ const iterationUnit
       let tagMeta: Tag = {
         name: tagName,
         className: [],
-        props: [],
+        props: '',
         styp: [],
       }
       if (tagName === 'StylePatch') {
-        return iterationUnit([new Map(), nextPointor])
+        return sentenceTraverser([new Map(), nextPointor])
       }
       if (rest.length > 1) {
         const props = ARRAY.dropRight(1)(rest)
@@ -97,9 +94,9 @@ const iterationUnit
           const classStartIdx = _.indexOf(props, 'className')
           const [otherProps, classNameProps] =
             ARRAY.splitAt(classStartIdx)(props)
-          const [_className, _equal, className] = classNameProps
-          dot.setProperty(tagMeta, 'props', otherProps)
-          dot.setProperty(tagMeta, 'className', className)
+          const [_className, _equal, ...classNames] = classNameProps
+          dot.setProperty(tagMeta, 'props', otherProps.join(' '))
+          dot.setProperty(tagMeta, 'className', classNames.slice(1, -1).join(' '))
         }
       }
       if (nextPointor.traced().classify === 'BEGIN_css') {
@@ -109,19 +106,19 @@ const iterationUnit
         nextPointor = nextPointorAfterCss
       }
       const id = prefixs.styp + alphanumericId()
-      return iterationUnit([archive.set(id, tagMeta), nextPointor])
+      return sentenceTraverser([archive.set(id, tagMeta), nextPointor])
     })
     .with('END_tag', () => {
-      const [_gourmet, tagName] = tokens
+      const [_gourmet, _slash, tagName] = tokens
       if (tagName === 'StylePatch') {
         return [archive, nextPointor] as [Map<string, Tag>, Pointor]
       }
-      return iterationUnit([archive, nextPointor])
+      return sentenceTraverser([archive, nextPointor])
     })
     .otherwise(() => [archive, nextPointor])
 }
 
-const sentenceTraverser = () => {}
+sentenceTraverser([new Map() as Map<string, Tag>, stypPointor])
 
 /* -------------------------------------------------------------------------- */
 
