@@ -14,31 +14,66 @@ import * as EITHER from 'fp-ts/Either'
 import * as ARRAY from 'fp-ts/Array'
 import { match, P } from 'ts-pattern'
 
-class OpenTag {
+class Context {
   constructor() {
-    this.pending = [] as string[]
+    this._pendings = [] as string[]
   }
-  pending
-  recent = () => _.last(this.pending)
-  waitResolve = (id: string) => (this.pending = [...this.pending, id])
-  close = () => ARRAY.dropRight(1)(this.pending)
+  private _pendings
+  public get pendings() {
+    return this._pendings
+  }
+  public set pendings(value) {
+    this._pendings = value
+  }
+  recent = () => _.last(this._pendings)
+  waitResolve = (id: string) => (this._pendings = [...this._pendings, id])
+  resolve = () => ARRAY.dropRight(1)(this._pendings)
 }
-
 class Pointor {
-  constructor(sentenceSeq: StylePatch.Sentence[], pos = 0) {
-    this.pos = pos
-    this.sentenceSeq = sentenceSeq
+  constructor(traceSeq: StylePatch.Sentence[], pos = 0) {
+    this._pos = pos
+    this._traceSeq = traceSeq
   }
-  pos
-  sentenceSeq
-  peek = (pos: number) => this.sentenceSeq[pos]
-  traced = (_: void) => this.peek(this.pos)
-  seek = (p: number) => new Pointor(this.sentenceSeq, p)
-  next = (_: void) => this.seek(this.pos + 1)
+  private _pos
+  public get pos() {
+    return this._pos
+  }
+  public set pos(value) {
+    this._pos = value
+  }
+  private _traceSeq
+  public get traceSeq() {
+    return this._traceSeq
+  }
+  public set traceSeq(value) {
+    this._traceSeq = value
+  }
+  peek = (pos: number) => this._traceSeq[pos]
+  traced = (_: void) => this.peek(this._pos)
+  seek = (p: number) => new Pointor(this._traceSeq, p)
+  next = (_: void) => this.seek(this._pos + 1)
 }
 
-const stypPointor = new Pointor(stypSentence)
-const jsxPointor = new Pointor(jsxSentence)
+class Walker {
+  constructor(traceSeq: StylePatch.Sentence[]) {
+    this._pointor = new Pointor(traceSeq)
+    this._context = new Context()
+  }
+  private _pointor
+  public get pointor() {
+    return this._pointor
+  }
+  public set pointor(value) {
+    this._pointor = value
+  }
+  private _context
+  public get context() {
+    return this._context
+  }
+  public set context(value) {
+    this._context = value
+  }
+}
 
 type CssBlock = [string, CssInJs]
 
@@ -100,17 +135,17 @@ type Tag =
 
 // prettier-ignore
 const sentenceTraverser 
-  = (prevState: [Map<string, Tag>, Pointor]): [Map<string, Tag>, Pointor] => {
-  const [archive, pointor] = prevState
-  const { tokens, classify } = pointor.traced()
-  let nextPointor = pointor.next()
+  = (prevState: [Map<string, Tag>, Walker]): [Map<string, Tag>, Walker] => {
+  const [archive, walkers] = prevState
+  const { tokens, classify } = walkers.pointor.traced()
+  walkers.pointor = walkers.pointor.next()
   let tagMeta = {} as Tag
 
   return match(classify)
     .with('BEGIN_tag', () => {
       const [_gourmet, tagName, ...rest] = tokens
       if (tagName === 'StylePatch') {
-        return sentenceTraverser([new Map(), nextPointor])
+        return sentenceTraverser([new Map(), walkers])
       }
       dot.setProperty(tagMeta, 'name', tagName)
       if (rest.length > 1) {
@@ -124,37 +159,37 @@ const sentenceTraverser
           dot.setProperty(tagMeta, 'className', classNames.slice(1, -1).join(' '))
         }
       }
-      if (nextPointor.traced().classify === 'BEGIN_css') {
-        const cssStart = nextPointor.next()
+      if (walkers.pointor.traced().classify === 'BEGIN_css') {
+        const cssStart = walkers.pointor.next()
         const [cssBlocks, nextPointorAfterCss] = cssBuilder([[], cssStart])
         dot.setProperty(tagMeta, 'styp', cssBlocks)
-        nextPointor = nextPointorAfterCss
+        walkers.pointor = nextPointorAfterCss
       }
       const id = prefixs.styp + alphanumericId()
-      return sentenceTraverser([archive.set(id, tagMeta), nextPointor])
+      return sentenceTraverser([archive.set(id, tagMeta), walkers])
     })
     .with('END_tag', () => {
       const [_gourmet, _slash, tagName] = tokens
       if (tagName === 'StylePatch') {
-        return [archive, nextPointor] as [Map<string, Tag>, Pointor]
+        return [archive, walkers] as [Map<string, Tag>, Walker]
       }
-      return sentenceTraverser([archive, nextPointor])
+      return sentenceTraverser([archive, walkers])
     })
     .with(P.when((t) => /^JS_/g.test(t as string)), () => {
-      const [jsTokens, nextPointorAfterJs] = jsSetter([[], nextPointor])
+      const [jsTokens, nextPointorAfterJs] = jsSetter([[], walkers.pointor.next()])
       const id = prefixs.js + alphanumericId()
-      nextPointor = nextPointorAfterJs
+      walkers.pointor = nextPointorAfterJs
       dot.setProperty(tagMeta, 'js', jsTokens)
-      return sentenceTraverser([archive.set(id, tagMeta), nextPointor])
+      return sentenceTraverser([archive.set(id, tagMeta), walkers])
     })
-    .otherwise(() => [archive, nextPointor])
+    .otherwise(() => [archive, walkers])
 }
 
-sentenceTraverser([new Map() as Map<string, Tag>, stypPointor])
-sentenceTraverser([new Map() as Map<string, Tag>, jsxPointor])
+sentenceTraverser([new Map() as Map<string, Tag>, new Walker(stypSentence)])
+sentenceTraverser([new Map() as Map<string, Tag>, new Walker(jsxSentence)])
 console.log(
-  '🚀 ~ file: index.ts ~ line 168 ~ sentenceTraverser([new Map() as Map<string, Tag>, jsxPointor])',
-  sentenceTraverser([new Map() as Map<string, Tag>, jsxPointor])
+  '🚀 ~ file: index.ts ~ line 193 ~ sentenceTraverser([new Map() as Map<string, Tag>, new Walker(jsxSentence)])',
+  sentenceTraverser([new Map() as Map<string, Tag>, new Walker(jsxSentence)])
 )
 
 /* -------------------------------------------------------------------------- */
