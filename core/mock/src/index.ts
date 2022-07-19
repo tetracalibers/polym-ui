@@ -152,12 +152,12 @@ const sentenceTraverser
   = (prevState: [Map<string, Tag>, Walker]): [Map<string, Tag>, Walker] => {
   const [archive, walkers] = prevState
   const { tokens, classify } = walkers.pointor.traced()
-  walkers.pointor = walkers.pointor.next()
   let tagMeta = {} as Tag
 
   return match(classify)
     .with('BEGIN_tag', (): [Map<string, Tag>, Walker] => {
       const [_gourmet, tagName, ...rest] = tokens
+      walkers.pointor = walkers.pointor.next()
       if (tagName === 'StylePatch') {
         return sentenceTraverser([new Map(), walkers])
       }
@@ -182,6 +182,7 @@ const sentenceTraverser
     })
     .with('END_tag', () => {
       const [_gourmet, _slash, tagName] = tokens
+      walkers.pointor = walkers.pointor.next()
       if (tagName === 'StylePatch') {
         return [archive, walkers] as [Map<string, Tag>, Walker]
       }
@@ -190,7 +191,8 @@ const sentenceTraverser
       return sentenceTraverser([archive.set(id, {}), walkers])
     })
     .with(P.when((t) => /^JS_/g.test(t as string)), () => {
-      const [jsTokens, nextPointorAfterJs] = jsSetter([[], walkers.pointor.next()])
+      const [jsTokens, nextPointorAfterJs] = jsSetter([[], walkers.pointor])
+      console.log("🚀 ~ file: index.ts ~ line 194 ~ .with ~ jsTokens", jsTokens)
       const id = prefixs.js + alphanumericId()
       walkers.pointor = nextPointorAfterJs
       dot.setProperty(tagMeta, 'js', jsTokens)
