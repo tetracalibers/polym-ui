@@ -1,3 +1,4 @@
+import { flashError } from './util/error'
 import type { CssInJs } from 'classified-csstypes'
 import _ from 'lodash'
 import * as AryDiff from 'fast-array-diff'
@@ -187,9 +188,15 @@ const sentenceTraverser
       if (tagName === 'StylePatch') {
         return [archive, walkers] as [Map<string, Tag>, Walker]
       }
-      const id = `end_${walkers.context.recent}`
+      const openTagId = walkers.context.recent
+      if (openTagId === undefined) {
+        flashError(`[Syntax Error] The start and end tags do not correspond.`)
+      }
+      const thisId = `end_${openTagId}`
       walkers.context.resolve()
-      return sentenceTraverser([archive.set(id, {}), walkers])
+      return sentenceTraverser([archive.set(thisId, {
+        name: archive.get(openTagId as string)?.name
+      }), walkers])
     })
     .with(P.when((t) => /^JS_/g.test(t as string)), () => {
       const [jsTokens, nextPointorAfterJs] = jsSetter(['', walkers.pointor])
