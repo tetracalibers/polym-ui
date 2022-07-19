@@ -14,6 +14,16 @@ import * as EITHER from 'fp-ts/Either'
 import * as ARRAY from 'fp-ts/Array'
 import { match, P } from 'ts-pattern'
 
+class OpenTag {
+  constructor() {
+    this.pending = [] as string[]
+  }
+  pending
+  recent = () => _.last(this.pending)
+  waitResolve = (id: string) => (this.pending = [...this.pending, id])
+  close = () => ARRAY.dropRight(1)(this.pending)
+}
+
 class Pointor {
   constructor(sentenceSeq: StylePatch.Sentence[], pos = 0) {
     this.pos = pos
