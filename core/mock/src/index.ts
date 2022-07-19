@@ -113,15 +113,16 @@ const cssBuilder
     .otherwise(() => [cssBlocks, nextPointer])
 }
 
-const jsSetter = (prevState: [string[], Pointor]): [string[], Pointor] => {
+const jsSetter = (prevState: [string, Pointor]): [string, Pointor] => {
   const [accumulator, pointor] = prevState
   const { classify, tokens } = pointor.traced()
   return match(classify)
     .with(P.union('BEGIN_tag', 'END_tag'), () => {
-      return [accumulator, pointor] as [string[], Pointor]
+      return [accumulator, pointor] as [string, Pointor]
     })
     .otherwise(() => {
-      return jsSetter([[...accumulator, ...tokens], pointor.next()])
+      const updatedAccumulator = [accumulator, tokens.join('')].join('')
+      return jsSetter([updatedAccumulator, pointor.next()])
     })
 }
 
@@ -191,7 +192,7 @@ const sentenceTraverser
       return sentenceTraverser([archive.set(id, {}), walkers])
     })
     .with(P.when((t) => /^JS_/g.test(t as string)), () => {
-      const [jsTokens, nextPointorAfterJs] = jsSetter([[], walkers.pointor])
+      const [jsTokens, nextPointorAfterJs] = jsSetter(['', walkers.pointor])
       console.log("🚀 ~ file: index.ts ~ line 194 ~ .with ~ jsTokens", jsTokens)
       const id = prefixs.js + alphanumericId()
       walkers.pointor = nextPointorAfterJs
