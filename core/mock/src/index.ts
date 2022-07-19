@@ -201,7 +201,6 @@ const sentenceTraverser
     })
     .with(P.when((t) => /^JS_/g.test(t as string)), () => {
       const [jsTokens, nextPointorAfterJs] = jsSetter(['', walkers.pointor])
-      console.log("🚀 ~ file: index.ts ~ line 194 ~ .with ~ jsTokens", jsTokens)
       const id = prefixs.js + alphanumericId()
       walkers.pointor = nextPointorAfterJs
       dot.setProperty(tagMeta, 'js', jsTokens)
