@@ -1,5 +1,5 @@
 import type { CssInJs } from 'classified-csstypes'
-import _ from 'lodash'
+import _, { times } from 'lodash'
 import * as AryDiff from 'fast-array-diff'
 import * as dot from 'dot-prop'
 import * as Diff from 'diff'
@@ -12,7 +12,7 @@ import * as prefixs from './syntax/config/prefix.json'
 
 import * as EITHER from 'fp-ts/Either'
 import * as ARRAY from 'fp-ts/Array'
-import { match } from 'ts-pattern'
+import { match, P } from 'ts-pattern'
 
 class Pointor {
   constructor(sentenceSeq: StylePatch.Sentence[], pos = 0) {
@@ -65,32 +65,44 @@ const cssBuilder
     .otherwise(() => [cssBlocks, nextPointer])
 }
 
-type Tag = {
-  name: string
-  className: unknown[]
-  props: string
-  styp: CssBlock[]
+const jsSetter = (prevState: [string[], Pointor]): [string[], Pointor] => {
+  const [accumulator, pointor] = prevState
+  const { classify, tokens } = pointor.traced()
+  return match(classify)
+    .with(P.union('BEGIN_tag', 'END_tag'), () => {
+      return [accumulator, pointor] as [string[], Pointor]
+    })
+    .otherwise(() => {
+      return jsSetter([[...accumulator, ...tokens], pointor.next()])
+    })
 }
+
+type Tag =
+  | {
+      name: string
+      className: unknown[]
+      props: string
+      styp: CssBlock[]
+    }
+  | {
+      js: string[]
+    }
 
 // prettier-ignore
 const sentenceTraverser 
   = (prevState: [Map<string, Tag>, Pointor]): [Map<string, Tag>, Pointor] => {
-  const [archive, pointer] = prevState
-  const { tokens, classify } = pointer.traced()
-  let nextPointor = pointer.next()
+  const [archive, pointor] = prevState
+  const { tokens, classify } = pointor.traced()
+  let nextPointor = pointor.next()
+  let tagMeta = {} as Tag
 
   return match(classify)
     .with('BEGIN_tag', () => {
       const [_gourmet, tagName, ...rest] = tokens
-      let tagMeta: Tag = {
-        name: tagName,
-        className: [],
-        props: '',
-        styp: [],
-      }
       if (tagName === 'StylePatch') {
         return sentenceTraverser([new Map(), nextPointor])
       }
+      dot.setProperty(tagMeta, 'name', tagName)
       if (rest.length > 1) {
         const props = ARRAY.dropRight(1)(rest)
         if (props.includes('className')) {
@@ -118,10 +130,22 @@ const sentenceTraverser
       }
       return sentenceTraverser([archive, nextPointor])
     })
+    .with(P.when((t) => /^JS_/g.test(t as string)), () => {
+      const [jsTokens, nextPointorAfterJs] = jsSetter([[], nextPointor])
+      const id = prefixs.js + alphanumericId()
+      nextPointor = nextPointorAfterJs
+      dot.setProperty(tagMeta, 'js', jsTokens)
+      return sentenceTraverser([archive.set(id, tagMeta), nextPointor])
+    })
     .otherwise(() => [archive, nextPointor])
 }
 
 sentenceTraverser([new Map() as Map<string, Tag>, stypPointor])
+sentenceTraverser([new Map() as Map<string, Tag>, jsxPointor])
+console.log(
+  '🚀 ~ file: index.ts ~ line 168 ~ sentenceTraverser([new Map() as Map<string, Tag>, jsxPointor])',
+  sentenceTraverser([new Map() as Map<string, Tag>, jsxPointor])
+)
 
 /* -------------------------------------------------------------------------- */
 

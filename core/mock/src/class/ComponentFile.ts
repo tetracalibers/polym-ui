@@ -38,7 +38,7 @@ class ComponentFile implements ComponentFile {
 
   // prettier-ignore
   get jsx(): string {
-    const regexp =  /<(StylePatch)>(?<jsx>.*?)<\/\1>/
+    const regexp =  /(?<jsx><StylePatch>.*?<\/StylePatch>)/
     const jsx = regexp.exec(this.src)?.groups?.jsx
     return jsx ? jsx.trim() : ''
   }
