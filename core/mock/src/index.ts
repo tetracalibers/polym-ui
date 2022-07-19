@@ -25,7 +25,9 @@ class Context {
   public set pendings(value) {
     this._pendings = value
   }
-  recent = () => _.last(this._pendings)
+  get recent() {
+    return _.last(this._pendings)
+  }
   waitResolve = (id: string) => (this._pendings = [...this._pendings, id])
   resolve = () => ARRAY.dropRight(1)(this._pendings)
 }
@@ -122,16 +124,13 @@ const jsSetter = (prevState: [string[], Pointor]): [string[], Pointor] => {
     })
 }
 
-type Tag =
-  | {
-      name: string
-      className: unknown[]
-      props: string
-      styp: CssBlock[]
-    }
-  | {
-      js: string[]
-    }
+type Tag = {
+  name?: string
+  className?: unknown[]
+  props?: string
+  styp?: CssBlock[]
+  js?: string[]
+}
 
 // prettier-ignore
 const sentenceTraverser 
@@ -166,6 +165,7 @@ const sentenceTraverser
         walkers.pointor = nextPointorAfterCss
       }
       const id = prefixs.styp + alphanumericId()
+      walkers.context.waitResolve(id)
       return sentenceTraverser([archive.set(id, tagMeta), walkers])
     })
     .with('END_tag', () => {
@@ -173,7 +173,9 @@ const sentenceTraverser
       if (tagName === 'StylePatch') {
         return [archive, walkers] as [Map<string, Tag>, Walker]
       }
-      return sentenceTraverser([archive, walkers])
+      const id = `end_${walkers.context.recent}`
+      walkers.context.resolve()
+      return sentenceTraverser([archive.set(id, {}), walkers])
     })
     .with(P.when((t) => /^JS_/g.test(t as string)), () => {
       const [jsTokens, nextPointorAfterJs] = jsSetter([[], walkers.pointor.next()])
