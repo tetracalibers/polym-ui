@@ -1,8 +1,9 @@
 import type { CssInJs } from 'classified-csstypes'
-import _, { times } from 'lodash'
+import _ from 'lodash'
 import * as AryDiff from 'fast-array-diff'
 import * as dot from 'dot-prop'
 import * as Diff from 'diff'
+import * as charP from 'character-parser'
 import { dumpJson, logJson, toJson } from './util/json'
 import { stypSentence, jsxSentence } from './syntax/formatter/parseLogCleansing'
 import { alphanumericId, numberId } from './util/id'
@@ -132,6 +133,20 @@ type Tag = {
   js?: string[]
 }
 
+const propsParser = (props: string[]) => {
+  const classStartIdx = _.indexOf(props, 'className')
+  const [beforeProps, sinceClassNameProps] = ARRAY.splitAt(classStartIdx)(props)
+  // prettier-ignore
+  const [_propName, _equal, _openingBracket, ...sinceClassNameValue] = sinceClassNameProps
+  // prettier-ignore
+  const classNameValue = charP.parseUntil(sinceClassNameValue.join(''),'}')
+  const [, afterProps] = ARRAY.splitAt(classNameValue.end + 1)([
+    ...sinceClassNameValue.join(''),
+  ])
+  const otherProps = [beforeProps.join(''), afterProps.join('')].join(' ')
+
+  return [otherProps, classNameValue.src]
+}
 // prettier-ignore
 const sentenceTraverser 
   = (prevState: [Map<string, Tag>, Walker]): [Map<string, Tag>, Walker] => {
@@ -141,7 +156,7 @@ const sentenceTraverser
   let tagMeta = {} as Tag
 
   return match(classify)
-    .with('BEGIN_tag', () => {
+    .with('BEGIN_tag', (): [Map<string, Tag>, Walker] => {
       const [_gourmet, tagName, ...rest] = tokens
       if (tagName === 'StylePatch') {
         return sentenceTraverser([new Map(), walkers])
@@ -150,12 +165,9 @@ const sentenceTraverser
       if (rest.length > 1) {
         const props = ARRAY.dropRight(1)(rest)
         if (props.includes('className')) {
-          const classStartIdx = _.indexOf(props, 'className')
-          const [otherProps, classNameProps] =
-            ARRAY.splitAt(classStartIdx)(props)
-          const [_className, _equal, ...classNames] = classNameProps
-          dot.setProperty(tagMeta, 'props', otherProps.join(' '))
-          dot.setProperty(tagMeta, 'className', classNames.slice(1, -1).join(' '))
+          const [otherProps, classNames] = propsParser(props)
+          dot.setProperty(tagMeta, 'props', otherProps)
+          dot.setProperty(tagMeta, 'className', classNames)
         }
       }
       if (walkers.pointor.traced().classify === 'BEGIN_css') {
@@ -187,12 +199,16 @@ const sentenceTraverser
     .otherwise(() => [archive, walkers])
 }
 
-sentenceTraverser([new Map() as Map<string, Tag>, new Walker(stypSentence)])
-sentenceTraverser([new Map() as Map<string, Tag>, new Walker(jsxSentence)])
-console.log(
-  '🚀 ~ file: index.ts ~ line 193 ~ sentenceTraverser([new Map() as Map<string, Tag>, new Walker(jsxSentence)])',
-  sentenceTraverser([new Map() as Map<string, Tag>, new Walker(jsxSentence)])
-)
+const [result_styp] = sentenceTraverser([
+  new Map() as Map<string, Tag>,
+  new Walker(stypSentence),
+])
+console.log('🚀 ~ file: index.ts ~ line 206 ~ result_styp', result_styp)
+const [result_jsx] = sentenceTraverser([
+  new Map() as Map<string, Tag>,
+  new Walker(jsxSentence),
+])
+console.log('🚀 ~ file: index.ts ~ line 211 ~ result_jsx', result_jsx)
 
 /* -------------------------------------------------------------------------- */
 
