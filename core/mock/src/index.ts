@@ -189,13 +189,14 @@ const sentenceTraverser
         return [archive, walkers] as [Map<string, Tag>, Walker]
       }
       const openTagId = walkers.context.recent
-      if (openTagId === undefined) {
+      const openTag = archive.get(openTagId as string)
+      if (openTag === undefined) {
         flashError(`[Syntax Error] The start and end tags do not correspond.`)
       }
       const thisId = `end_${openTagId}`
       walkers.context.resolve()
       return sentenceTraverser([archive.set(thisId, {
-        name: archive.get(openTagId as string)?.name
+        name: openTag?.name
       }), walkers])
     })
     .with(P.when((t) => /^JS_/g.test(t as string)), () => {
