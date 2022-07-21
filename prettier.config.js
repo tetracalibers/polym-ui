@@ -18,8 +18,6 @@ module.exports = {
   quoteProps: 'consistent',
   // JSXでダブルクォートの代わりにシングルクォートを使用
   jsxSingleQuote: true,
-  // JSX要素を複数行で記述するとき、要素の閉じタグ > を最後の行に含んで表示するかどうか
-  jsxBracketSameLine: false,
   // 末尾のカンマの設定
   /**
    * es5 : ES5で有効な末尾のカンマ(オブジェクト、配列など)
@@ -65,4 +63,13 @@ module.exports = {
    * auto : Prettierが自動的に識別できる場合、埋め込みコードをフォーマットする(デフォルト)
    */
   embeddedLanguageFormatting: 'auto',
+  overrides: [
+    {
+      files: '*.styp.jsx',
+      options: {
+        bracketSpacing: false,
+        singleAttributePerLine: true,
+      },
+    },
+  ],
 }
