@@ -20,16 +20,20 @@ class Context {
   constructor() {
     this._pendings = [] as string[]
   }
+
   private _pendings
   public get pendings() {
     return this._pendings
   }
+
   public set pendings(value) {
     this._pendings = value
   }
+
   get recent() {
     return _.last(this._pendings)
   }
+
   waitResolve = (id: string) => (this._pendings = [...this._pendings, id])
   resolve = () => ARRAY.dropRight(1)(this._pendings)
 }
@@ -38,20 +42,25 @@ class Pointor {
     this._pos = pos
     this._traceSeq = traceSeq
   }
+
   private _pos
   public get pos() {
     return this._pos
   }
+
   public set pos(value) {
     this._pos = value
   }
+
   private _traceSeq
   public get traceSeq() {
     return this._traceSeq
   }
+
   public set traceSeq(value) {
     this._traceSeq = value
   }
+
   peek = (pos: number) => this._traceSeq[pos]
   traced = (_: void) => this.peek(this._pos)
   seek = (p: number) => new Pointor(this._traceSeq, p)
@@ -63,17 +72,21 @@ class Walker {
     this._pointor = new Pointor(traceSeq)
     this._context = new Context()
   }
+
   private _pointor
   public get pointor() {
     return this._pointor
   }
+
   public set pointor(value) {
     this._pointor = value
   }
+
   private _context
   public get context() {
     return this._context
   }
+
   public set context(value) {
     this._context = value
   }
@@ -82,37 +95,37 @@ class Walker {
 type CssBlock = [string, CssInJs]
 
 // prettier-ignore
-const cssBuilder 
-  = (prevState: [CssBlock[], Pointor]): [CssBlock[], Pointor] => {
-  const [cssBlocks, currPointer] = prevState
-  const [archive, [prevCss]] 
-    = cssBlocks.length > 0 
-    ? ARRAY.splitAt(cssBlocks.length - 1)(cssBlocks) 
-    : [[], [['&', {}] as CssBlock]]
-  const [prevSelector, prevProperties] = prevCss
-  const { classify, tokens } = currPointer.traced()
-  const [name] = tokens
-  const nextPointer = currPointer.next()
-  return match(classify)
-    .with('CSS_property', () => {
-      const { tokens: valueTokens } = nextPointer.traced()
-      const value = ARRAY.dropRight(1)(valueTokens).join(' ')
-      const properties = dot.setProperty(prevProperties, name, value)
-      return cssBuilder([[...archive, [prevSelector, properties]], nextPointer.next()])
-    })
-    .with('CSS_BEGIN_nesting', () => {
-      const validSelectorName = name
-        .replaceAll('__', '::')
-        .replaceAll('_', ':')
-        .replaceAll('_at_', '@')
-        .replace(/^:/, '&:')
-      return cssBuilder([[...cssBlocks, [validSelectorName, {}]], nextPointer])
-    })
-    .with('CSS_END_nesting', () => {
-      return cssBuilder([cssBlocks, nextPointer])
-    })
-    .otherwise(() => [cssBlocks, nextPointer])
-}
+const cssBuilder =
+  (prevState: [CssBlock[], Pointor]): [CssBlock[], Pointor] => {
+    const [cssBlocks, currPointer] = prevState
+    const [archive, [prevCss]] =
+    cssBlocks.length > 0
+      ? ARRAY.splitAt(cssBlocks.length - 1)(cssBlocks)
+      : [[], [['&', {}] as CssBlock]]
+    const [prevSelector, prevProperties] = prevCss
+    const { classify, tokens } = currPointer.traced()
+    const [name] = tokens
+    const nextPointer = currPointer.next()
+    return match(classify)
+      .with('CSS_property', () => {
+        const { tokens: valueTokens } = nextPointer.traced()
+        const value = ARRAY.dropRight(1)(valueTokens).join(' ')
+        const properties = dot.setProperty(prevProperties, name, value)
+        return cssBuilder([[...archive, [prevSelector, properties]], nextPointer.next()])
+      })
+      .with('CSS_BEGIN_nesting', () => {
+        const validSelectorName = name
+          .replaceAll('__', '::')
+          .replaceAll('_', ':')
+          .replaceAll('_at_', '@')
+          .replace(/^:/, '&:')
+        return cssBuilder([[...cssBlocks, [validSelectorName, {}]], nextPointer])
+      })
+      .with('CSS_END_nesting', () => {
+        return cssBuilder([cssBlocks, nextPointer])
+      })
+      .otherwise(() => [cssBlocks, nextPointer])
+  }
 
 const jsSetter = (prevState: [string, Pointor]): [string, Pointor] => {
   const [accumulator, pointor] = prevState
@@ -141,7 +154,7 @@ const propsParser = (props: string[]) => {
   // prettier-ignore
   const [_propName, _equal, _openingBracket, ...sinceClassNameValue] = sinceClassNameProps
   // prettier-ignore
-  const classNameValue = charP.parseUntil(sinceClassNameValue.join(''),'}')
+  const classNameValue = charP.parseUntil(sinceClassNameValue.join(''), '}')
   const [, afterProps] = ARRAY.splitAt(classNameValue.end + 1)([
     ...sinceClassNameValue.join(''),
   ])
@@ -150,64 +163,64 @@ const propsParser = (props: string[]) => {
   return [otherProps, classNameValue.src]
 }
 // prettier-ignore
-const sentenceTraverser 
-  = (prevState: [Map<string, Tag>, Walker]): [Map<string, Tag>, Walker] => {
-  const [archive, walkers] = prevState
-  const { tokens, classify } = walkers.pointor.traced()
-  let tagMeta = {} as Tag
+const sentenceTraverser =
+  (prevState: [Map<string, Tag>, Walker]): [Map<string, Tag>, Walker] => {
+    const [archive, walkers] = prevState
+    const { tokens, classify } = walkers.pointor.traced()
+    const tagMeta = {} as Tag
 
-  return match(classify)
-    .with('BEGIN_tag', (): [Map<string, Tag>, Walker] => {
-      const [_gourmet, tagName, ...rest] = tokens
-      walkers.pointor = walkers.pointor.next()
-      if (tagName === 'StylePatch') {
-        return sentenceTraverser([new Map(), walkers])
-      }
-      dot.setProperty(tagMeta, 'name', tagName)
-      if (rest.length > 1) {
-        const props = ARRAY.dropRight(1)(rest)
-        if (props.includes('className')) {
-          const [otherProps, classNames] = propsParser(props)
-          dot.setProperty(tagMeta, 'props', otherProps)
-          dot.setProperty(tagMeta, 'className', classNames)
+    return match(classify)
+      .with('BEGIN_tag', (): [Map<string, Tag>, Walker] => {
+        const [_gourmet, tagName, ...rest] = tokens
+        walkers.pointor = walkers.pointor.next()
+        if (tagName === 'StylePatch') {
+          return sentenceTraverser([new Map(), walkers])
         }
-      }
-      if (walkers.pointor.traced().classify === 'BEGIN_css') {
-        const cssStart = walkers.pointor.next()
-        const [cssBlocks, nextPointorAfterCss] = cssBuilder([[], cssStart])
-        dot.setProperty(tagMeta, 'styp', cssBlocks)
-        walkers.pointor = nextPointorAfterCss
-      }
-      const id = prefixs.styp + alphanumericId()
-      walkers.context.waitResolve(id)
-      return sentenceTraverser([archive.set(id, tagMeta), walkers])
-    })
-    .with('END_tag', () => {
-      const [_gourmet, _slash, tagName] = tokens
-      walkers.pointor = walkers.pointor.next()
-      if (tagName === 'StylePatch') {
-        return [archive, walkers] as [Map<string, Tag>, Walker]
-      }
-      const openTagId = walkers.context.recent
-      const openTag = archive.get(openTagId as string)
-      if (openTag === undefined) {
-        flashError(`[Syntax Error] The start and end tags do not correspond.`)
-      }
-      const thisId = `end_${openTagId}`
-      walkers.context.resolve()
-      return sentenceTraverser([archive.set(thisId, {
-        name: openTag?.name
-      }), walkers])
-    })
-    .with(P.when((t) => /^JS_/g.test(t as string)), () => {
-      const [jsTokens, nextPointorAfterJs] = jsSetter(['', walkers.pointor])
-      const id = prefixs.js + alphanumericId()
-      walkers.pointor = nextPointorAfterJs
-      dot.setProperty(tagMeta, 'js', jsTokens)
-      return sentenceTraverser([archive.set(id, tagMeta), walkers])
-    })
-    .otherwise(() => [archive, walkers])
-}
+        dot.setProperty(tagMeta, 'name', tagName)
+        if (rest.length > 1) {
+          const props = ARRAY.dropRight(1)(rest)
+          if (props.includes('className')) {
+            const [otherProps, classNames] = propsParser(props)
+            dot.setProperty(tagMeta, 'props', otherProps)
+            dot.setProperty(tagMeta, 'className', classNames)
+          }
+        }
+        if (walkers.pointor.traced().classify === 'BEGIN_css') {
+          const cssStart = walkers.pointor.next()
+          const [cssBlocks, nextPointorAfterCss] = cssBuilder([[], cssStart])
+          dot.setProperty(tagMeta, 'styp', cssBlocks)
+          walkers.pointor = nextPointorAfterCss
+        }
+        const id = prefixs.styp + alphanumericId()
+        walkers.context.waitResolve(id)
+        return sentenceTraverser([archive.set(id, tagMeta), walkers])
+      })
+      .with('END_tag', () => {
+        const [_gourmet, _slash, tagName] = tokens
+        walkers.pointor = walkers.pointor.next()
+        if (tagName === 'StylePatch') {
+          return [archive, walkers] as [Map<string, Tag>, Walker]
+        }
+        const openTagId = walkers.context.recent
+        const openTag = archive.get(openTagId as string)
+        if (openTag === undefined) {
+          flashError('[Syntax Error] The start and end tags do not correspond.')
+        }
+        const thisId = `end_${openTagId}`
+        walkers.context.resolve()
+        return sentenceTraverser([archive.set(thisId, {
+          name: openTag?.name
+        }), walkers])
+      })
+      .with(P.when((t) => /^JS_/g.test(t as string)), () => {
+        const [jsTokens, nextPointorAfterJs] = jsSetter(['', walkers.pointor])
+        const id = prefixs.js + alphanumericId()
+        walkers.pointor = nextPointorAfterJs
+        dot.setProperty(tagMeta, 'js', jsTokens)
+        return sentenceTraverser([archive.set(id, tagMeta), walkers])
+      })
+      .otherwise(() => [archive, walkers])
+  }
 
 const [result_styp] = sentenceTraverser([
   new Map() as Map<string, Tag>,
@@ -222,15 +235,15 @@ console.log('🚀 ~ file: index.ts ~ line 211 ~ result_jsx', result_jsx)
 
 /* -------------------------------------------------------------------------- */
 
-//onst comparePredicate = (
+// onst comparePredicate = (
 // jsxRecord: StylePatch.ClassifyTokens,
 // stypRecord: StylePatch.ClassifyTokens
 // => {
 // return jsxRecord.tokens.join('') === stypRecord.tokens.join('')
 //
 //
-//onst diff = AryDiff.diff(jsxTokens, stypTokens, comparePredicate)
-//umpJson(diff)('tmp/diff.json')
+// onst diff = AryDiff.diff(jsxTokens, stypTokens, comparePredicate)
+// umpJson(diff)('tmp/diff.json')
 
 /* -------------------------------------------------------------------------- */
 /*
@@ -258,7 +271,7 @@ const controller = (node: AstNode) => {
 
 /* -------------------------------------------------------------------------- */
 
-/** 
+/**
 const jsxRegexp = /<(StylePatch)>(?<jsx>.*?)<\/\1>/
 
 const { cat } = shell
@@ -271,9 +284,9 @@ const newSrc =
   oldJsx !== undefined ? oldSrc.replace(_.trim(oldJsx), newJsx) : oldSrc
 
 */
-//dumpJson(newSrc)(
+// dumpJson(newSrc)(
 //  componentRootPath.replace(
 //    basename(componentRootPath),
 //    'generated/' + basename(componentRootPath)
 //  )
-//)
+// )

@@ -13,12 +13,13 @@ const Balloon: FC<Props> = ({ children = '', ...spanProps }) => {
 
   return (
     <StylePatch>
-      {array.map(() => (
+      {array.map(item => (
         <span
           className={classNames('foo', { bar: true, duck: false }, 'baz', {
             quux: true,
           })}
           {...spanProps}
+          key={item}
         >
           {children}
         </span>

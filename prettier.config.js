@@ -69,6 +69,7 @@ module.exports = {
       options: {
         bracketSpacing: false,
         singleAttributePerLine: true,
+        spaceBeforeFunctionParen: true,
       },
     },
   ],

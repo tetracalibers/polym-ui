@@ -1,9 +1,9 @@
 <Cascade>
   span {
     content: ''
-    &::after {
-      margin: 50px
-    }
+  }
+  span::after {
+    margin: 50px
   }
 </Cascade>
 
