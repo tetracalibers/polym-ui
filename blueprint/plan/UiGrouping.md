@@ -3,6 +3,8 @@ export_on_save:
   prince: true
 ---
 
+![](../../assets/logo/polyhexUI_light.jpg)
+
 # Classification Concept
 
 All components are built on **Base**.
