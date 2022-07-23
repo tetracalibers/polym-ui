@@ -28,7 +28,7 @@
   <ul>
     <Children>
       @loop
-      <li><Children /></li>
+      <li />
       @endloop
     </Children>
   </ul>

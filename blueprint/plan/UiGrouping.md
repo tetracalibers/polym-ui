@@ -105,6 +105,12 @@ Package name is **Layout**
 
 ![](../../assets/draft/Cluster-styp.png)
 
+## LayAside
+
+**Sidebar** implementation of Every Layout
+
+![](../../assets/draft/LayAside-styp.png)
+
 # Impression -> Utility Motion
 
 ## Animation
