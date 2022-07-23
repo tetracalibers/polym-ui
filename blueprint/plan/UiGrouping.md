@@ -93,6 +93,12 @@ Package name is **Layout**
 
 ![](../../assets/draft/Card-styp.png)
 
+## Center
+
+**Center** implementation of Every Layout
+
+![](../../assets/draft/Center-styp.png)
+
 # Impression -> Utility Motion
 
 ## Animation
