@@ -117,6 +117,12 @@ Package name is **Layout**
 
 ![](../../assets/draft/Switcher-styp.png)
 
+## Cover
+
+**Cover** implementation of Every Layout
+
+![](../../assets/draft/Cover-styp.png)
+
 # Impression -> Utility Motion
 
 ## Animation
