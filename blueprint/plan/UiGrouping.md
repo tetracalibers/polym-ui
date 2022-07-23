@@ -1,10 +1,3 @@
----
-export_on_save:
-  prince: true
----
-
-![](../../assets/logo/polyhexUI_light.jpg)
-
 # Classification Concept
 
 All components are built on **Base**.
@@ -87,6 +80,16 @@ All design is built on **Accessibility**.
 # Layout -> Layout Pattern
 
 Package name is **Layout**
+
+## Stack
+
+**Stack** implementation of Every Layout
+
+![](../../assets/draft/Stack-styp.PNG)
+
+## Card
+
+**Box** implementation of Every Layout
 
 # Impression -> Utility Motion
 
