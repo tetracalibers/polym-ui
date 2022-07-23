@@ -47,13 +47,15 @@
 
 <Structure>
   <div>
-    @loop
-    <Box {isList ?? role="list"}>
+    <Children>
       @loop
-      <Box {isList ?? role="listitem"}></Box>
+      <Box {isList ?? role="list"}>
+        @loop
+        <Box {isList ?? role="listitem"}></Box>
+        @endloop
+      </Box>
       @endloop
-    </Box>
-    @endloop
+    </Children>
   </div>
 </Structure>
 
