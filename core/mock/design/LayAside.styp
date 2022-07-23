@@ -63,10 +63,10 @@
 </Cascade>
 
 <Structure>
-  <div>
+  <Block>
     <Children>
       <Child />
       <Child />
     </Children>
-  </div>
+  </Block>
 </Structure>

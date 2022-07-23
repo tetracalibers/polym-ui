@@ -46,16 +46,16 @@
 </Cascade>
 
 <Structure>
-  <div>
+  <Block>
     <Children>
       @loop
-      <Box {isList ?? role="list"}>
+      <Block {isList ?? role="list"}>
         @loop
-        <Box {isList ?? role="listitem"}></Box>
+        <Block {isList ?? role="listitem"}></Block>
         @endloop
-      </Box>
+      </Block>
       @endloop
     </Children>
-  </div>
+  </Block>
 </Structure>
 

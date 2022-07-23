@@ -111,6 +111,12 @@ Package name is **Layout**
 
 ![](../../assets/draft/LayAside-styp.png)
 
+## Switcher
+
+**Switcher** implementation of Every Layout
+
+![](../../assets/draft/Switcher-styp.png)
+
 # Impression -> Utility Motion
 
 ## Animation

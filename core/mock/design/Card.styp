@@ -47,7 +47,7 @@
 </Cascade>
 
 <Structure>
-  <div>
+  <Block>
     <Children />
-  </div>
+  </Block>
 </Structure>
