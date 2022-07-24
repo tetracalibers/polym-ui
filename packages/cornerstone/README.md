@@ -5,14 +5,33 @@
 #### For both use
 
 - [x] [CSSPositioning](../../core/classified-csstypes/lib/cssdata/byModule/CSSPositioning.json)
+  - [last-updated] 2022-07-24 11:52:26
 - [x] [CompositingandBlending](../../core/classified-csstypes/lib/cssdata/byModule/CompositingandBlending.json)
+  - [last-updated] 2022-07-24 11:52:26
 - [x] [FilterEffects](../../core/classified-csstypes/lib/cssdata/byModule/FilterEffects.json)
+  - [last-updated] 2022-07-24 11:52:26
 - [x] [PointerEvents](../../core/classified-csstypes/lib/cssdata/byModule/PointerEvents.json)
+  - [last-updated] 2022-07-24 11:52:26
 
 #### For text itself or a child element of block
 
 - [x] [CSSColor](../../core/classified-csstypes/lib/cssdata/byModule/CSSColor.json)
-- [ ] [CSSFonts](../../core/classified-csstypes/lib/cssdata/byModule/CSSFonts.json)
+  - [last-updated] 2022-07-24 11:52:26
+- [x] [CSSFonts](../../core/classified-csstypes/lib/cssdata/byModule/CSSFonts.json)
+  - [last-updated] 2022-07-24 12:07:51
+  - (pending) **@font-face**
+  - (pending) **@font-feature-values**
+  - (injected) font-feature-settings
+  - (injected) font-kerning
+  - (MDN:premature) font-language-override
+  - (injected) font-optical-sizing
+  - (injected) font-variation-settings
+  - (injected) font-size-adjust
+  - (MDN:deprecated) font-smooth
+  - (MDN:premature) font-variant-alternates
+  - (injected) font-variant-caps
+  - (MDN:premature) font-variant-position
+  - (MDN:premature) line-height-step
 - [ ] [CSSText](../../core/classified-csstypes/lib/cssdata/byModule/CSSText.json)
 - [ ] [CSSTextDecoration](../../core/classified-csstypes/lib/cssdata/byModule/CSSTextDecoration.json)
 

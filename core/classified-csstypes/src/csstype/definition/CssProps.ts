@@ -40,3 +40,20 @@ export type CssColorProps = {
   color: CSS.Property.Color
   opacity: CSS.Property.Opacity
 }
+
+export type CssFontProps = {
+  fontFamily: CSS.Property.FontFamily
+  fontFeatureSettings: CSS.Property.FontFeatureSettings
+  fontSize: CSS.Property.FontSize
+  fontStretch: CSS.Property.FontStretch
+  fontStyle: CSS.Property.FontStyle
+  fontSynthesis: CSS.Property.FontSynthesis
+  fontVariantEastAsian: CSS.Property.FontVariantEastAsian
+  fontVariantLigatures: CSS.Property.FontVariantLigatures
+  fontVariantNumeric: CSS.Property.FontVariantNumeric
+  fontWeight: CSS.Property.FontWeight
+}
+
+export type CssTextProps = {
+  lineHeight: CSS.Property.LineHeight
+}
