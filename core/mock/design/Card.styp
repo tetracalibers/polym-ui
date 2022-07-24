@@ -2,7 +2,7 @@
 #----Styling----#
   padding: 
     - type: string
-    - default: ""
+    - default: "1.5rem"
     - desc: "paddingの値"
   lightColor:
     - type: string
