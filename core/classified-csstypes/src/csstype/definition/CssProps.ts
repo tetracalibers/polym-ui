@@ -69,3 +69,23 @@ export type CssTextProps = {
   wordBreak: CSS.Property.WordBreak
   wordSpacing: CSS.Property.WordSpacing
 }
+
+export type CssTextDecorationProps = {
+  textDecorationColor: CSS.Property.TextDecorationColor
+  textDecorationLine: CSS.Property.TextDecorationLine
+  textDecorationSkipInk: CSS.Property.TextDecorationSkipInk
+  textDecorationStyle: CSS.Property.TextDecorationStyle
+  textDecorationThickness: CSS.Property.TextDecorationThickness
+  textUnderlineOffset: CSS.Property.TextUnderlineOffset
+  textUnderlinePosition: CSS.Property.TextUnderlinePosition
+}
+
+export type CssTextEmphasisProps = {
+  textEmphasisColor: CSS.Property.TextEmphasisColor
+  textEmphasisPosition: CSS.Property.TextEmphasisPosition
+  textEmphasisStyle: CSS.Property.TextEmphasisStyle
+}
+
+export type CssTextShadowProps = {
+  textShadow: CSS.Property.TextShadow
+}

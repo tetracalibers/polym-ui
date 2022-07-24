@@ -40,7 +40,9 @@
   - (MDN:premature) text-justify
   - (MDN:experimental) text-size-adjust
   - (MDN:deprecated) word-wrap
-- [ ] [CSSTextDecoration](../../core/classified-csstypes/lib/cssdata/byModule/CSSTextDecoration.json)
+- [x] [CSSTextDecoration](../../core/classified-csstypes/lib/cssdata/byModule/CSSTextDecoration.json)
+  - [last-updated] 2022-07-24 12:25:30
+  - (MDN:premature) text-decoration-skip
 
 #### Pseudo-classes or pseudo-elements
 
