@@ -22,3 +22,8 @@ export type CssBlendingProps = {
   isolation: CSS.Property.Isolation
   mixBlendMode: CSS.Property.MixBlendMode
 }
+
+export type CssFilterProps = {
+  backdropFilter: CSS.Property.BackdropFilter
+  filter: CSS.Property.Filter
+}
