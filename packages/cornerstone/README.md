@@ -62,13 +62,15 @@
 
 #### for layout
 
-[CSSBoxAlignment](../../core/classified-csstypes/lib/cssdata/byModule/CSSBoxAlignment.json)
-[CSSBoxModel](../../core/classified-csstypes/lib/cssdata/byModule/CSSBoxModel.json)
-[CSSContainment](../../core/classified-csstypes/lib/cssdata/byModule/CSSContainment.json)
-[CSSDisplay](../../core/classified-csstypes/lib/cssdata/byModule/CSSDisplay.json)
-[CSSFragmentation](../../core/classified-csstypes/lib/cssdata/byModule/CSSFragmentation.json)
-[CSSLogicalProperties](../../core/classified-csstypes/lib/cssdata/byModule/CSSLogicalProperties.json)
-[CSSOverflow](../../core/classified-csstypes/lib/cssdata/byModule/CSSOverflow.json)
+- [x] [CSSBoxAlignment](../../core/classified-csstypes/lib/cssdata/byModule/CSSBoxAlignment.json)
+  - [last-updated] 2022-07-24 13:01:58
+  - (pending)
+- [ ] [CSSBoxModel](../../core/classified-csstypes/lib/cssdata/byModule/CSSBoxModel.json)
+- [ ] [CSSContainment](../../core/classified-csstypes/lib/cssdata/byModule/CSSContainment.json)
+- [ ] [CSSDisplay](../../core/classified-csstypes/lib/cssdata/byModule/CSSDisplay.json)
+- [ ] [CSSFragmentation](../../core/classified-csstypes/lib/cssdata/byModule/CSSFragmentation.json)
+- [ ] [CSSLogicalProperties](../../core/classified-csstypes/lib/cssdata/byModule/CSSLogicalProperties.json)
+- [ ] [CSSOverflow](../../core/classified-csstypes/lib/cssdata/byModule/CSSOverflow.json)
 
 #### for content
 

@@ -89,3 +89,5 @@ export type CssTextEmphasisProps = {
 export type CssTextShadowProps = {
   textShadow: CSS.Property.TextShadow
 }
+
+/* for layout --------------------------------------------------------------- */
