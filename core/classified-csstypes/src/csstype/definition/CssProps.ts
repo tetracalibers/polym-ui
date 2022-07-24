@@ -27,3 +27,7 @@ export type CssFilterProps = {
   backdropFilter: CSS.Property.BackdropFilter
   filter: CSS.Property.Filter
 }
+
+export type CssPointerEventsProps = {
+  touchAction: CSS.Property.TouchAction
+}

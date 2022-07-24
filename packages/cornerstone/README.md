@@ -7,7 +7,7 @@
 - [x] [CSSPositioning](../../core/classified-csstypes/lib/cssdata/byModule/CSSPositioning.json)
 - [x] [CompositingandBlending](../../core/classified-csstypes/lib/cssdata/byModule/CompositingandBlending.json)
 - [x] [FilterEffects](../../core/classified-csstypes/lib/cssdata/byModule/FilterEffects.json)
-- [ ] [PointerEvents](../../core/classified-csstypes/lib/cssdata/byModule/PointerEvents.json)
+- [x] [PointerEvents](../../core/classified-csstypes/lib/cssdata/byModule/PointerEvents.json)
 
 #### For text itself or a child element of block
 
