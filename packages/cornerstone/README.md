@@ -32,7 +32,14 @@
   - (injected) font-variant-caps
   - (MDN:premature) font-variant-position
   - (MDN:premature) line-height-step
-- [ ] [CSSText](../../core/classified-csstypes/lib/cssdata/byModule/CSSText.json)
+- [x] [CSSText](../../core/classified-csstypes/lib/cssdata/byModule/CSSText.json)
+  - [last-updated] 2022-07-24 12:16:57
+  - (MDN:premature) hanging-punctuation
+  - (MDN:notFound) hyphenate-character
+  - (MDN:experimental) paint-order
+  - (MDN:premature) text-justify
+  - (MDN:experimental) text-size-adjust
+  - (MDN:deprecated) word-wrap
 - [ ] [CSSTextDecoration](../../core/classified-csstypes/lib/cssdata/byModule/CSSTextDecoration.json)
 
 #### Pseudo-classes or pseudo-elements

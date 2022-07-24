@@ -56,4 +56,16 @@ export type CssFontProps = {
 
 export type CssTextProps = {
   lineHeight: CSS.Property.LineHeight
+  hyphens: CSS.Property.Hyphens
+  letterSpacing: CSS.Property.LetterSpacing
+  lineBreak: CSS.Property.LineBreak
+  overflowWrap: CSS.Property.OverflowWrap
+  tabSize: CSS.Property.TabSize
+  textAlign: CSS.Property.TextAlign
+  textAlignLast: CSS.Property.TextAlignLast
+  textIndent: CSS.Property.TextIndent
+  textTransform: CSS.Property.TextTransform
+  whiteSpace: CSS.Property.WhiteSpace
+  wordBreak: CSS.Property.WordBreak
+  wordSpacing: CSS.Property.WordSpacing
 }
