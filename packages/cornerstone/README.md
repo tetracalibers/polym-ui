@@ -11,7 +11,7 @@
 
 #### For text itself or a child element of block
 
-- [ ] [CSSColor](../../core/classified-csstypes/lib/cssdata/byModule/CSSColor.json)
+- [x] [CSSColor](../../core/classified-csstypes/lib/cssdata/byModule/CSSColor.json)
 - [ ] [CSSFonts](../../core/classified-csstypes/lib/cssdata/byModule/CSSFonts.json)
 - [ ] [CSSText](../../core/classified-csstypes/lib/cssdata/byModule/CSSText.json)
 - [ ] [CSSTextDecoration](../../core/classified-csstypes/lib/cssdata/byModule/CSSTextDecoration.json)
