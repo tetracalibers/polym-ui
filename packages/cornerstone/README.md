@@ -1,11 +1,53 @@
-# `@react-polyhex-ui/cornerstone`
+# @react-polyhex-ui/cornerstone
 
-> TODO: description
+### Common Provided CSS-props
 
-## Usage
+#### For both use
 
-```
-const cornerstone = require('@react-polyhex-ui/cornerstone');
+[CSSPositioning](../../core/classified-csstypes/lib/cssdata/byModule/CSSPositioning.json)
+[CompositingandBlending](../../core/classified-csstypes/lib/cssdata/byModule/CompositingandBlending.json)
+[FilterEffects](../../core/classified-csstypes/lib/cssdata/byModule/FilterEffects.json)
+[PointerEvents](../../core/classified-csstypes/lib/cssdata/byModule/PointerEvents.json)
 
-// TODO: DEMONSTRATE API
-```
+#### For text itself or a child element of block
+
+[CSSColor](../../core/classified-csstypes/lib/cssdata/byModule/CSSColor.json)
+[CSSFonts](../../core/classified-csstypes/lib/cssdata/byModule/CSSFonts.json)
+[CSSText](../../core/classified-csstypes/lib/cssdata/byModule/CSSText.json)
+[CSSTextDecoration](../../core/classified-csstypes/lib/cssdata/byModule/CSSTextDecoration.json)
+
+#### Pseudo-classes or pseudo-elements
+
+[CSSGeneratedContent](../../core/classified-csstypes/lib/cssdata/byModule/CSSGeneratedContent.json)
+[PseudoClasses](../../core/classified-csstypes/lib/cssdata/byModule/Pseudo-classes.json)
+[PseudoElements](../../core/classified-csstypes/lib/cssdata/byModule/Pseudo-elements.json)
+
+#### Selectors
+
+[Selectors](../../core/classified-csstypes/lib/cssdata/byModule/Selectors.json)
+
+## Text
+
+## Block
+
+### Provided CSS-props
+
+#### for layout
+
+[CSSBoxAlignment](../../core/classified-csstypes/lib/cssdata/byModule/CSSBoxAlignment.json)
+[CSSBoxModel](../../core/classified-csstypes/lib/cssdata/byModule/CSSBoxModel.json)
+[CSSContainment](../../core/classified-csstypes/lib/cssdata/byModule/CSSContainment.json)
+[CSSDisplay](../../core/classified-csstypes/lib/cssdata/byModule/CSSDisplay.json)
+[CSSFragmentation](../../core/classified-csstypes/lib/cssdata/byModule/CSSFragmentation.json)
+[CSSLogicalProperties](../../core/classified-csstypes/lib/cssdata/byModule/CSSLogicalProperties.json)
+[CSSOverflow](../../core/classified-csstypes/lib/cssdata/byModule/CSSOverflow.json)
+
+#### for content
+
+[CSSWritingModes](../../core/classified-csstypes/lib/cssdata/byModule/CSSWritingModes.json)
+
+#### for design
+
+[CSSMasking](../../core/classified-csstypes/lib/cssdata/byModule/CSSMasking.json)
+[CSSShapes](../../core/classified-csstypes/lib/cssdata/byModule/CSSShapes.json)
+[CSSTransforms](../../core/classified-csstypes/lib/cssdata/byModule/CSSTransforms.json)
