@@ -4,10 +4,10 @@
 
 #### For both use
 
-[CSSPositioning](../../core/classified-csstypes/lib/cssdata/byModule/CSSPositioning.json)
-[CompositingandBlending](../../core/classified-csstypes/lib/cssdata/byModule/CompositingandBlending.json)
-[FilterEffects](../../core/classified-csstypes/lib/cssdata/byModule/FilterEffects.json)
-[PointerEvents](../../core/classified-csstypes/lib/cssdata/byModule/PointerEvents.json)
+- [x] [CSSPositioning](../../core/classified-csstypes/lib/cssdata/byModule/CSSPositioning.json)
+- [ ] [CompositingandBlending](../../core/classified-csstypes/lib/cssdata/byModule/CompositingandBlending.json)
+- [ ] [FilterEffects](../../core/classified-csstypes/lib/cssdata/byModule/FilterEffects.json)
+- [ ] [PointerEvents](../../core/classified-csstypes/lib/cssdata/byModule/PointerEvents.json)
 
 #### For text itself or a child element of block
 
