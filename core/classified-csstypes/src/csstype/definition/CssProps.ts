@@ -1,5 +1,7 @@
 import type * as CSS from 'csstype'
 
+/* For both use ------------------------------------------------------------- */
+
 export type CssPositionProps = {
   position: CSS.Property.Position
   top: CSS.Property.Top
@@ -30,4 +32,11 @@ export type CssFilterProps = {
 
 export type CssPointerEventsProps = {
   touchAction: CSS.Property.TouchAction
+}
+
+/* For text itself or a child element of block ------------------------------ */
+
+export type CssColorProps = {
+  color: CSS.Property.Color
+  opacity: CSS.Property.Opacity
 }
