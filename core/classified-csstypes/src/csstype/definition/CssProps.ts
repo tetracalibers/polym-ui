@@ -16,3 +16,9 @@ export type CssFloatProps = {
 export type CssLayerProps = {
   zIndex: CSS.Property.ZIndex
 }
+
+export type CssBlendingProps = {
+  backgroundBlendMode: CSS.Property.BackgroundBlendMode
+  isolation: CSS.Property.Isolation
+  mixBlendMode: CSS.Property.MixBlendMode
+}

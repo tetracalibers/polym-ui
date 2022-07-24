@@ -5,7 +5,7 @@
 #### For both use
 
 - [x] [CSSPositioning](../../core/classified-csstypes/lib/cssdata/byModule/CSSPositioning.json)
-- [ ] [CompositingandBlending](../../core/classified-csstypes/lib/cssdata/byModule/CompositingandBlending.json)
+- [x] [CompositingandBlending](../../core/classified-csstypes/lib/cssdata/byModule/CompositingandBlending.json)
 - [ ] [FilterEffects](../../core/classified-csstypes/lib/cssdata/byModule/FilterEffects.json)
 - [ ] [PointerEvents](../../core/classified-csstypes/lib/cssdata/byModule/PointerEvents.json)
 
