@@ -10,6 +10,7 @@ module.exports = {
     '@storybook/addon-interactions',
     '@storybook/addon-storysource',
     '@whitespace/storybook-addon-html',
+    'storybook-addon-pseudo-states',
   ],
   framework: '@storybook/react',
 }
