@@ -1,0 +1,34 @@
+{
+  "name": "@react-polyhex-ui-dev/git-helper",
+  "version": "0.0.0",
+  "description": "git merge helper for development",
+  "author": {
+    "name": "tomixy",
+    "url": "https://tetracalibers.notion.site/tetracalibers/tomixy-TetraCalibers-30b94fb9fc054d4da667539ef35f42c6"
+  },
+  "homepage": "https://github.com/tetracalibers/React-polyhexUI/tree/main/packages/core#readme",
+  "license": "MIT",
+  "type": "module",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tetracalibers/React-polyhexUI.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "prebuild": "rimraf dist",
+    "build": "rollup -c",
+    "merge": "node --loader ts-node/esm scripts/zx/autoMerger.dev.ts"
+  },
+  "bugs": {
+    "url": "https://github.com/tetracalibers/React-polyhexUI/issues"
+  },
+  "dependencies": {
+    "zx": "^7.0.7"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.1",
+    "ts-node": "^10.8.2",
+    "typescript": "^4.7.4"
+  }
+}
