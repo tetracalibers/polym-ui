@@ -12,6 +12,6 @@ const Root = styled.div`
   justify-content: flex-start;
 `
 
-const Stack: FC<Props> = (props: Props) => {
-  ;<Root></Root>
+export const Stack: FC<Props> = (_props: Props) => {
+  return <Root></Root>
 }
