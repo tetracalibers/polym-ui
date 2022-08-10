@@ -1,27 +1,30 @@
 {
   "compilerOptions": {
     "target": "esnext",
-    "lib": ["DOM", "ESNext"],
+    "lib": ["ESNext"],
     "types": ["node"],
-    "jsx": "react-jsx",
+    //"jsx": "react-jsx",
     "module": "esnext",
     "moduleResolution": "node",
-    "allowJs": true,
-    "sourceMap": true,
+    //"allowJs": true,
+    //"sourceMap": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     // 宣言されたが使用されていない変数が存在する場合にコンパイルエラーにする
-    "noUnusedLocals": false, // TODO 完成したプログラムのbuild時はtrue推奨
-    "noUnusedParameters": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "skipLibCheck": true,
-    "isolatedModules": false,
-    "removeComments": true,
-    "outDir": "./lib",
-    "resolveJsonModule": true
+    //"noUnusedLocals": false, // TODO 完成したプログラムのbuild時はtrue推奨
+    //"noUnusedParameters": true,
+    //"noImplicitReturns": true,
+    //"noFallthroughCasesInSwitch": true,
+    //"skipLibCheck": true,
+    //"isolatedModules": false,
+    //"removeComments": true,
+    "outDir": "lib",
+    //"resolveJsonModule": true,
+    "declaration": true,
+    "rootDir": "src",
+    "emitDeclarationOnly": true
   },
   "include": ["./**/*"],
   "exclude": ["node_modules", "./lib/*"]

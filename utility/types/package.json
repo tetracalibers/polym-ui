@@ -10,38 +10,22 @@
   "license": "MIT",
   "main": "src/index.ts",
   "type": "module",
-  "types": "lib/@types/index.d.ts",
-  "exports": {
-    "import": "./lib/bundle.es.js",
-    "require": "./lib/bundle.cjs",
-    "node": "./lib/bundle.es.js",
-    "default": "./lib/bundle.cjs"
-  },
+  "types": "lib/index.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tetracalibers/React-polyhexUI.git"
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1",
-    "type:check": "tsc --noEmit",
-    "prebuild": " yarn type:check && rimraf lib",
-    "build": "rollup -c --watch"
+    "prebuild": "rimraf lib",
+    "build": "tsc --project tsconfig.json"
   },
   "bugs": {
     "url": "https://github.com/tetracalibers/React-polyhexUI/issues"
   },
   "devDependencies": {
-    "@babel/core": "^7.18.5",
-    "@rollup/plugin-commonjs": "^22.0.1",
-    "@rollup/plugin-json": "^4.1.0",
-    "@rollup/plugin-node-resolve": "^13.3.0",
-    "@rollup/plugin-typescript": "^8.3.3",
-    "babel-loader": "^8.2.5",
     "csstype": "^3.1.0",
-    "esbuild": "^0.14.48",
     "rimraf": "^3.0.2",
-    "rollup": "^2.75.7",
-    "rollup-plugin-esbuild": "^4.9.1",
     "typescript": "^4.7.4"
   }
 }
