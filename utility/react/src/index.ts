@@ -25,48 +25,15 @@ class PropWithDefault<T> {
 }
 
 const setDefault = <T>(defaultV: T) => {
-  const d = new PropWithDefault<T>(defaultV).default
-  return d
+  const ins = new PropWithDefault<T>(defaultV)
+  return {
+    instance: ins,
+    default: ins.default,
+  }
 }
 
 const setNullable = <T>(defaultV: T | Alias.EmptyType = undefined) =>
   setDefault<T | Alias.EmptyType>(defaultV)
-
-const defineProps = function <O, K extends keyof O>(options: O) {
-  type OptionKey = K
-  type OptionValue<k extends OptionKey> = O[k]
-  type AtOptionKey<idx extends number> = [...K[]][idx]
-
-  type ReturnRecord = {
-    [k in OptionKey]: {
-      type: OptionValue<k>
-      default: OptionValue<k> | Alias.EmptyType
-    }
-  }
-
-  const entries = Object.entries(options)
-
-  const _iterUnit = <idx extends number = 0>(
-    building: ReturnRecord = {} as ReturnRecord,
-    restEntries = entries
-  ): ReturnRecord => {
-    const [entry, ...nextRest] = restEntries
-    type NowKey = AtOptionKey<idx>
-    const key = entry[0] as NowKey
-    const value = entry[1] as OptionValue<NowKey>
-    const isValid = value instanceof PropWithDefault
-    building[key as OptionKey] = {
-      type: value,
-      default: isValid ? value.default : undefined,
-    }
-    if (nextRest.length > 0) {
-      return _iterUnit<Str.To.Number<Math.Sum<idx, 1>>>(building, nextRest)
-    }
-    return building
-  }
-  const optRecord = _iterUnit()
-  return optRecord
-}
 
 const options = {
   /*
@@ -104,16 +71,21 @@ const options = {
   isList: setDefault<boolean>(false),
 } as const
 
+type Options = typeof options
+
 type OptionKeyU = keyof typeof options
 
 type Flip<T extends { [key: string | number]: any }> = {
   [K in keyof T as `${T[K]}`]: K
 }
 
-type OptionValueF = Flip<typeof options>
-type OptionValueU = Obj.KeyPaths<OptionValueF>
+type FlipByDefault = {
+  [K in OptionKeyU as `${Options[K]['default']}`]: K
+}
 
-type _UnionTypeMap = Flip<OptionValueF>
+type OptionValueF = FlipByDefault
+
+type UnionTypeMap = Flip<OptionValueF>
 
 type Primitive = string | number | boolean | bigint | null | undefined
 
@@ -125,7 +97,7 @@ type FromStrInUnion<U, S extends Primitive> = P.Equal<
   : U
 
 type OptionTypeMap = {
-  [K in OptionKeyU]: _UnionTypeMap[K] extends infer T
+  [K in OptionKeyU]: UnionTypeMap[K] extends infer T
     ? FromStrInUnion<T, false> extends infer T2
       ? FromStrInUnion<T2, true> extends infer T3
         ? FromStrInUnion<T3, undefined> extends infer T4
@@ -140,4 +112,42 @@ type OptionTypeMap = {
     : never
 }
 
-defineProps<typeof options, OptionKeyU>(options)
+type OptionKey = OptionKeyU
+type OptionValue<k extends OptionKey> = OptionTypeMap[k]
+type AtOptionKey<idx extends number> = Union.To.Tuple<OptionKey>[idx]
+
+type ReturnRecord = {
+  [k in OptionKey]: {
+    default: OptionValue<k>
+  }
+}
+const entries = Object.entries(options)
+
+const _iterUnit = <idx extends number = 0>(
+  building: ReturnRecord = {} as ReturnRecord,
+  restEntries = entries
+): ReturnRecord => {
+  const [entry, ...nextRest] = restEntries
+  type NowKey = AtOptionKey<idx>
+  const key = entry[0] as NowKey
+  const value = entry[1] as {
+    instance: PropWithDefault<OptionValue<NowKey>>
+    default: OptionValue<NowKey>
+  }
+  const defaultProp = value.default
+
+  const builded = {
+    ...building,
+    [key]: defaultProp,
+  }
+
+  if (nextRest.length > 0) {
+    return _iterUnit<Str.To.Number<Math.Sum<idx, 1>>>(builded, nextRest)
+  }
+  return builded
+}
+
+export const defaultProps = _iterUnit()
+export type Props = {
+  [k in OptionKey]: OptionValue<k>
+}
