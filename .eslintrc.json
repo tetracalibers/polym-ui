@@ -25,6 +25,7 @@
     "eol-last": "off",
     "no-trailing-spaces": "off",
     "no-multiple-empty-lines": "off",
-    "spaced-comment": "off"
+    "spaced-comment": "off",
+    "no-useless-constructor": "off"
   }
 }

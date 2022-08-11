@@ -5,18 +5,18 @@ import { Union } from './Union'
 export namespace Default {
   export type Set<D, T = D> = T
 
-  export type TypeAndDefault<T, D> = {
-    type: T
-    default: D
+  export type Definition<TYPE, DEFAULT> = {
+    type: TYPE
+    default: DEFAULT
   }
 
   export type PickByDefaultType<
-    O extends { [_K: string]: TypeAndDefault<unknown, unknown> },
+    O extends { [_K: string]: Definition<unknown, unknown> },
     U
   > = { [k in keyof O as O[k]['default'] extends U ? k : never]: O[k] }
 
   export type OmitByDefaultType<
-    O extends { [_K: string]: TypeAndDefault<unknown, unknown> },
+    O extends { [_K: string]: Definition<unknown, unknown> },
     U
   > = { [k in keyof O as O[k]['default'] extends U ? never : k]: O[k] }
 
@@ -50,9 +50,7 @@ export namespace Default {
       : R
     : never
 
-  export type Def<
-    O extends { [_K: string]: TypeAndDefault<unknown, unknown> }
-  > = {
+  export type Def<O extends { [_K: string]: Definition<unknown, unknown> }> = {
     [K in keyof PickByDefaultType<O, undefined>]?: O[K]['type']
   } extends infer OPTIONAL
     ? {
