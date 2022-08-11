@@ -26,15 +26,6 @@ const setDefault = <T>(defaultV: T) => {
 const setNullable = <T>(defaultV: T | Alias.EmptyType = undefined) =>
   setDefault<T | Alias.EmptyType>(defaultV)
 
-const flipKV = (obj: Record<Alias.ObjIndex, Alias.ObjIndex>) => {
-  return Object.fromEntries(
-    Object.entries(obj).map((entry: [Alias.ObjIndex, Alias.ObjIndex]) => {
-      const [key, value] = entry
-      return [value, key]
-    })
-  )
-}
-
 const defineProps = function <O, K extends keyof O>(options: O) {
   type OptionKey = K
   type OptionValue<k extends OptionKey> = O[k]
