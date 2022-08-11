@@ -22,8 +22,6 @@ class PropWithDefault<T> {
   }
 }
 
-//type GetClassT<C> = C extends C<infer T> ? T : unknown;
-
 const setDefault = <T>(defaultV: T) => {
   const d = new PropWithDefault<T>(defaultV).default
   return d
@@ -31,22 +29,6 @@ const setDefault = <T>(defaultV: T) => {
 
 const setNullable = <T>(defaultV: T | Alias.EmptyType = undefined) =>
   setDefault<T | Alias.EmptyType>(defaultV)
-
-type Split<
-  S extends string,
-  SEP extends string,
-  Flag = false
-> = string extends S
-  ? string[]
-  : S extends ''
-  ? Flag extends false
-    ? SEP extends ''
-      ? []
-      : ['']
-    : []
-  : S extends `${infer Before}${SEP}${infer After}`
-  ? [Before, ...Split<After, SEP, true>]
-  : [S]
 
 const flipKV = (obj: Record<Alias.ObjIndex, Alias.ObjIndex>) => {
   return Object.fromEntries(
@@ -56,136 +38,6 @@ const flipKV = (obj: Record<Alias.ObjIndex, Alias.ObjIndex>) => {
     })
   )
 }
-
-// your answers
-type Enum<
-  T extends readonly string[],
-  N extends boolean = false,
-  R extends object = {}
-> = T extends readonly [
-  ...infer Rest extends string[],
-  infer Last extends string
-]
-  ? Enum<
-      Rest,
-      N,
-      {
-        readonly [key in keyof R | Last as key extends keyof R
-          ? key
-          : Capitalize<Last>]: key extends keyof R
-          ? R[key]
-          : N extends false
-          ? Last
-          : Rest['length']
-      }
-    >
-  : R
-
-type ObjectEntries<T, U = keyof T> = U extends keyof T
-  ? [U, T[U] extends infer Rest | undefined ? Rest : T[U]]
-  : never
-
-type Peano<
-  TLength extends number = 40,
-  TList extends any[] = []
-> = TList['length'] extends TLength
-  ? TLength
-  : TList['length'] | Peano<TLength, [[], ...TList]>
-
-type PeanoToStr = {
-  [K in Peano]: `${K}`
-}
-
-type PeanoFromStr = {
-  [Property in keyof PeanoToStr as `${Property}`]: Property
-}
-
-type ToNumber<S extends string> = S extends keyof PeanoFromStr
-  ? PeanoFromStr[S]
-  : never
-
-type Check<T extends string | number | bigint> = T extends number | bigint
-  ? true
-  : T extends `${infer L}${infer R}`
-  ? L extends '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9'
-    ? Check<R>
-    : false
-  : true
-
-type ToString<T extends string | number | bigint> = T extends `0${infer L}`
-  ? ToString<L>
-  : `${T}`
-
-type STA<
-  T extends string,
-  RR extends string[] = []
-> = T extends `${infer L}${infer R}` ? STA<R, [...RR, L]> : RR
-
-type ATS<T extends unknown[]> = T extends [infer L, ...infer R]
-  ? L extends string
-    ? `${L}${ATS<R>}`
-    : ''
-  : ''
-
-type PlusOne<
-  A extends string,
-  B extends string,
-  AA extends unknown[] = [],
-  BA extends unknown[] = []
-> = `${AA['length']}` extends A
-  ? `${BA['length']}` extends B
-    ? `${[...AA, ...BA]['length'] & number}`
-    : PlusOne<A, B, AA, [...BA, unknown]>
-  : PlusOne<A, B, [...AA, unknown], BA>
-
-type PlusHelper<A, B, F extends boolean = false> = PlusOne<
-  A extends string ? A : '0',
-  PlusOne<B extends string ? B : '0', F extends true ? '1' : '0'>
-> extends `${infer _1}${infer _2}`
-  ? _2 extends ''
-    ? [false, _1]
-    : [true, _2]
-  : [false, '0']
-
-type Plus<
-  A extends unknown[] = [],
-  B extends unknown[] = [],
-  R extends string[] = [],
-  F extends boolean = false
-> = A extends [...infer LA, infer RA]
-  ? B extends [...infer LB, infer RB]
-    ? Plus<LA, LB, [PlusHelper<RA, RB, F>[1], ...R], PlusHelper<RA, RB, F>[0]>
-    : F extends true
-    ? Plus<
-        LA,
-        [],
-        [PlusHelper<RA, '1', false>[1], ...R],
-        PlusHelper<RA, '1', false>[0]
-      >
-    : [...A, ...R]
-  : B extends [...infer LB, infer RB]
-  ? F extends true
-    ? Plus<
-        [],
-        LB,
-        [PlusHelper<'1', RB, false>[1], ...R],
-        PlusHelper<'1', RB, false>[0]
-      >
-    : [...B, ...R]
-  : F extends true
-  ? ['1', ...R]
-  : R
-
-type Helper<A extends string, B extends string> = ATS<Plus<STA<A>, STA<B>>>
-
-type Sum<
-  A extends string | number | bigint,
-  B extends string | number | bigint
-> = Check<A> extends true
-  ? Check<B> extends true
-    ? Helper<ToString<A>, ToString<B>>
-    : never
-  : never
 
 const defineProps = function <O, K extends keyof O>(options: O) {
   type OptionKey = K

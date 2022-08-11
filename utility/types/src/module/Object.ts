@@ -13,6 +13,10 @@ export namespace Object {
       }[keyof T]
     : never
 
+  export type Entries<T, U = keyof T> = U extends keyof T
+    ? [U, T[U] extends infer Rest | undefined ? Rest : T[U]]
+    : never
+
   export type Get<T extends object, K extends string> = K extends keyof T
     ? T[K]
     : K extends `${infer Left}.${infer Rest}`
