@@ -3,6 +3,12 @@ import {
   Alias,
   String as Str,
   Math,
+  Object as Obj,
+  ByType,
+  Num,
+  Union,
+  Collection as C,
+  Predicate as P,
 } from '@react-polyhex-ui-dev/utility-types'
 import _ from 'lodash'
 
@@ -59,7 +65,7 @@ const defineProps = function <O, K extends keyof O>(options: O) {
     return building
   }
   const optRecord = _iterUnit()
-  console.log('🚀 ~ file: index.ts ~ line 207 ~ optRecord', optRecord)
+  return optRecord
 }
 
 const options = {
@@ -98,6 +104,40 @@ const options = {
   isList: setDefault<boolean>(false),
 } as const
 
-type OptionKey = keyof typeof options
+type OptionKeyU = keyof typeof options
 
-defineProps<typeof options, OptionKey>(options)
+type Flip<T extends { [key: string | number]: any }> = {
+  [K in keyof T as `${T[K]}`]: K
+}
+
+type OptionValueF = Flip<typeof options>
+type OptionValueU = Obj.KeyPaths<OptionValueF>
+
+type _UnionTypeMap = Flip<OptionValueF>
+
+type Primitive = string | number | boolean | bigint | null | undefined
+
+type FromStrInUnion<U, S extends Primitive> = P.Equal<
+  Extract<U, `${S}`>,
+  never
+> extends false
+  ? S | Exclude<U, `${S}`>
+  : U
+
+type OptionTypeMap = {
+  [K in OptionKeyU]: _UnionTypeMap[K] extends infer T
+    ? FromStrInUnion<T, false> extends infer T2
+      ? FromStrInUnion<T2, true> extends infer T3
+        ? FromStrInUnion<T3, undefined> extends infer T4
+          ? FromStrInUnion<T4, null> extends infer T5
+            ? FromStrInUnion<T5, number> extends infer T6
+              ? FromStrInUnion<T6, bigint>
+              : never
+            : never
+          : never
+        : never
+      : never
+    : never
+}
+
+defineProps<typeof options, OptionKeyU>(options)
