@@ -1,14 +1,10 @@
 import {
   CssStyle,
   Alias,
-  Union,
-  Object,
-  Collection as C,
-  Predicate as P,
+  String as Str,
+  Math,
 } from '@react-polyhex-ui-dev/utility-types'
-import { ReactNode } from 'react'
 import _ from 'lodash'
-import { pipe } from 'fp-ts/function'
 
 class PropWithDefault<T> {
   private _default: T
@@ -42,13 +38,6 @@ const flipKV = (obj: Record<Alias.ObjIndex, Alias.ObjIndex>) => {
 const defineProps = function <O, K extends keyof O>(options: O) {
   type OptionKey = K
   type OptionValue<k extends OptionKey> = O[k]
-  type OptionRecord = {
-    [k in OptionKey]: OptionValue<k>
-  }
-  type OptionArray = ObjectEntries<OptionRecord>
-  type OptionLength = C.Length<OptionArray>
-  type OptionIdxs = C.AtLeast<OptionLength, number>
-  type OptionKeysTuple = Union.To.Tuple<OptionKey>
   type AtOptionKey<idx extends number> = [...K[]][idx]
 
   type ReturnRecord = {
@@ -57,9 +46,6 @@ const defineProps = function <O, K extends keyof O>(options: O) {
       default: OptionValue<k> | Alias.EmptyType
     }
   }
-
-  const optionLength = Object.keys(options).length
-  const idxs = [...new Array(optionLength)].map((_, i) => i) as OptionIdxs
 
   const entries = Object.entries(options)
 
@@ -77,7 +63,7 @@ const defineProps = function <O, K extends keyof O>(options: O) {
       default: isValid ? value.default : undefined,
     }
     if (nextRest.length > 0) {
-      return _iterUnit<ToNumber<Sum<idx, 1>>>(building, nextRest)
+      return _iterUnit<Str.To.Number<Math.Sum<idx, 1>>>(building, nextRest)
     }
     return building
   }
