@@ -1,6 +1,6 @@
 import { PropTypeWrap } from '../../types/base'
 
-export const setDefault = <T>(defaultV: T | undefined = undefined) => {
+export const Required = <T>(defaultV: T | undefined = undefined) => {
   return {
     instance: new PropTypeWrap<T>(),
     default: defaultV,
@@ -8,7 +8,7 @@ export const setDefault = <T>(defaultV: T | undefined = undefined) => {
   }
 }
 
-export const setNotRequired = <T>(defaultV: T | undefined = undefined) => {
+export const NotRequired = <T>(defaultV: T | undefined = undefined) => {
   return {
     instance: new PropTypeWrap<T>(),
     default: defaultV,
