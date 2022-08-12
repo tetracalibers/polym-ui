@@ -1,7 +1,7 @@
 {
-  "name": "@react-polyhex-ui-dev/git-helper",
+  "name": "auto-git-reflect",
   "version": "0.0.0",
-  "description": "git merge helper for development",
+  "description": "Git operation automation tool",
   "author": {
     "name": "tomixy",
     "url": "https://tetracalibers.notion.site/tetracalibers/tomixy-TetraCalibers-30b94fb9fc054d4da667539ef35f42c6"
@@ -9,7 +9,6 @@
   "homepage": "https://github.com/tetracalibers/React-polyhexUI/tree/main/packages/core#readme",
   "license": "MIT",
   "type": "module",
-  "private": true,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tetracalibers/React-polyhexUI.git"

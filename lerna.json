@@ -1,12 +1,5 @@
 {
-  "packages": [
-    "packages/*",
-    "examples/*",
-    "core/*",
-    "utility/*",
-    "tools",
-    "helper/*"
-  ],
+  "packages": ["packages/*", "examples/*", "core/*", "utility/*", "tools"],
   "useNx": true,
   "npmClient": "yarn",
   "useWorkspaces": true,

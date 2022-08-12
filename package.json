@@ -29,7 +29,6 @@
       "examples/**/*",
       "utility/**/*",
       "core/**/*",
-      "helper/**/*",
       "tools"
     ]
   },
