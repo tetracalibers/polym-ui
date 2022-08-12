@@ -44,6 +44,10 @@ export namespace Object {
     ? Assign<Merge<T, F>, R>
     : T
 
+  export type Flip<T extends { [key: string | number]: any }> = {
+    [K in keyof T as `${T[K]}`]: K
+  }
+
   export namespace Is {
     export type Empty<O extends Object> = P.Equal<
       C.Length<Union.To.Tuple<keyof O>>,

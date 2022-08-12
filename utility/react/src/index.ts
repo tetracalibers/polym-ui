@@ -1,39 +1,11 @@
-import {
-  CssStyle,
-  Alias,
-  String as Str,
-  Math,
-  Object as Obj,
-  ByType,
-  Num,
-  Union,
-  Collection as C,
-  Predicate as P,
-} from '@react-polyhex-ui-dev/utility-types'
+import { CssStyle } from '@react-polyhex-ui-dev/utility-types'
 import _ from 'lodash'
-
-class PropWithDefault<T> {
-  private _default: T
-
-  constructor(defauV: T) {
-    this._default = defauV
-  }
-
-  get default(): T {
-    return this._default
-  }
-}
-
-const setDefault = <T>(defaultV: T) => {
-  const ins = new PropWithDefault<T>(defaultV)
-  return {
-    instance: ins,
-    default: ins.default,
-  }
-}
-
-const setNullable = <T>(defaultV: T | Alias.EmptyType = undefined) =>
-  setDefault<T | Alias.EmptyType>(defaultV)
+import {
+  setDefault,
+  setNullable,
+  getDefaultProps,
+  getPropTypes,
+} from './DefProps'
 
 const options = {
   /*
@@ -71,83 +43,5 @@ const options = {
   isList: setDefault<boolean>(false),
 } as const
 
-type Options = typeof options
-
-type OptionKeyU = keyof typeof options
-
-type Flip<T extends { [key: string | number]: any }> = {
-  [K in keyof T as `${T[K]}`]: K
-}
-
-type FlipByDefault = {
-  [K in OptionKeyU as `${Options[K]['default']}`]: K
-}
-
-type OptionValueF = FlipByDefault
-
-type UnionTypeMap = Flip<OptionValueF>
-
-type Primitive = string | number | boolean | bigint | null | undefined
-
-type FromStrInUnion<U, S extends Primitive> = P.Equal<
-  Extract<U, `${S}`>,
-  never
-> extends false
-  ? S | Exclude<U, `${S}`>
-  : U
-
-type OptionTypeMap = {
-  [K in OptionKeyU]: UnionTypeMap[K] extends infer T
-    ? FromStrInUnion<T, false> extends infer T2
-      ? FromStrInUnion<T2, true> extends infer T3
-        ? FromStrInUnion<T3, undefined> extends infer T4
-          ? FromStrInUnion<T4, null> extends infer T5
-            ? FromStrInUnion<T5, number> extends infer T6
-              ? FromStrInUnion<T6, bigint>
-              : never
-            : never
-          : never
-        : never
-      : never
-    : never
-}
-
-type OptionKey = OptionKeyU
-type OptionValue<k extends OptionKey> = OptionTypeMap[k]
-type AtOptionKey<idx extends number> = Union.To.Tuple<OptionKey>[idx]
-
-type ReturnRecord = {
-  [k in OptionKey]: {
-    default: OptionValue<k>
-  }
-}
-const entries = Object.entries(options)
-
-const _iterUnit = <idx extends number = 0>(
-  building: ReturnRecord = {} as ReturnRecord,
-  restEntries = entries
-): ReturnRecord => {
-  const [entry, ...nextRest] = restEntries
-  type NowKey = AtOptionKey<idx>
-  const key = entry[0] as NowKey
-  const value = entry[1] as {
-    instance: PropWithDefault<OptionValue<NowKey>>
-    default: OptionValue<NowKey>
-  }
-  const defaultProp = value.default
-
-  const builded = {
-    ...building,
-    [key]: defaultProp,
-  }
-
-  if (nextRest.length > 0) {
-    return _iterUnit<Str.To.Number<Math.Sum<idx, 1>>>(builded, nextRest)
-  }
-  return builded
-}
-
-export const defaultProps = _iterUnit()
-export type Props = {
-  [k in OptionKey]: OptionValue<k>
-}
+export type StackProps = getPropTypes<typeof options>
+export const StackDefaultProps = getDefaultProps(options)
