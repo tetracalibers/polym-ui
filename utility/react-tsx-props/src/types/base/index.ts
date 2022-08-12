@@ -3,7 +3,8 @@ import { PropWithDefault } from '../../class/PropWithDefault'
 
 export type OptionValueDictionary<T = unknown> = {
   instance: PropWithDefault<T>
-  default: T
+  default: T | undefined
+  required: boolean
 }
 
 export type OptionRecord<T = Alias.Primitive> = {

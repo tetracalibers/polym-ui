@@ -48,10 +48,24 @@ export namespace Object {
     [K in keyof T as `${T[K]}`]: K
   }
 
+  export type ExpandMerged<T> = {
+    [K in keyof T]: T[K]
+  }
+
   export namespace Is {
     export type Empty<O extends Object> = P.Equal<
       C.Length<Union.To.Tuple<keyof O>>,
       0
+    >
+  }
+
+  export namespace ByKeys {
+    export type Partial<T, K = unknown> = ExpandMerged<
+      {
+        [P in keyof T as P extends K ? P : never]?: T[P]
+      } & {
+        [P in Exclude<keyof T, K>]: T[P]
+      }
     >
   }
 }

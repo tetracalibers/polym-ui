@@ -1,4 +1,4 @@
-import { setDefault, setNullable } from './api/set'
-import { getDefaultProps, getPropTypes } from './api/get'
+import { setDefault, setNotRequired } from './api/set'
+import { getDefaultProps, getPropType } from './api/get'
 
-export { setDefault, setNullable, getDefaultProps, getPropTypes }
+export { setDefault, setNotRequired, getDefaultProps, getPropType }

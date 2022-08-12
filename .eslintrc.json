@@ -27,6 +27,7 @@
     "no-multiple-empty-lines": "off",
     "spaced-comment": "off",
     "no-useless-constructor": "off",
-    "no-redeclare": "off"
+    "no-redeclare": "off",
+    "import/first": "off"
   }
 }

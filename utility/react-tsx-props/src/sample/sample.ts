@@ -1,13 +1,7 @@
 import { CssStyle } from 'ts-typedef-helper'
-import _ from 'lodash'
-import {
-  getDefaultProps,
-  getPropType,
-  setDefault,
-  setNotRequired,
-} from 'react-tsx-props'
+import { setDefault, setNotRequired } from '../api/set'
 
-const props = {
+export const sampleProps = {
   /*
   ┌─────────────────────────────────────────────────────────────────────────────┐
   │   STYLING                                                                   │
@@ -42,6 +36,3 @@ const props = {
    */
   isList: setDefault<boolean>(false),
 } as const
-
-export type StackProps = getPropType<typeof props>
-export const StackDefaultProps = getDefaultProps(props)

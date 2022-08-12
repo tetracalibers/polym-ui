@@ -1,4 +1,4 @@
-import { getPropTypes } from './propType'
+import { getPropType } from './propType'
 import { getDefaultProps } from './defaultProps'
 
-export { getDefaultProps, getPropTypes }
+export { getDefaultProps, getPropType }
