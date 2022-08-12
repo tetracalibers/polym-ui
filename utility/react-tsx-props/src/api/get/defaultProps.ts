@@ -4,8 +4,8 @@ import {
   OptionRecord,
   OptionValueDictionary,
   ObjValTypeMap,
-  DefaultPropsBuilder,
 } from '../../types/api/getDefaultProps'
+import _ from 'lodash'
 
 export const getDefaultProps = (options: OptionRecord<Alias.Primitive>) => {
   const entries = Object.entries(options)
@@ -27,10 +27,15 @@ export const getDefaultProps = (options: OptionRecord<Alias.Primitive>) => {
     const key = entry[0] as NowKey
     const value = entry[1] as OptionValueDictionary<NowVal>
 
-    const builded = {
-      ...building,
-      [key]: value.default,
-    } as DefaultPropsBuilder<typeof building>
+    const defaultV = value.default
+    const builded = (
+      _.isUndefined(defaultV)
+        ? building
+        : {
+            ...building,
+            [key]: value.default!,
+          }
+    ) as DefaultProps<Options>
 
     if (nextRest.length > 0) {
       return _iterUnit<Str.To.Number<Math.Sum<idx, 1>>>(builded, nextRest)
@@ -40,3 +45,12 @@ export const getDefaultProps = (options: OptionRecord<Alias.Primitive>) => {
 
   return _iterUnit()
 }
+
+/* -------------------------------------------------------------------------- */
+/* test                                                                       */
+/* -------------------------------------------------------------------------- */
+
+import { sampleP } from '../../sample/sample'
+
+const s_getDefaultProps = getDefaultProps(sampleP)
+//console.log('s_getDefaultProps =', s_getDefaultProps)

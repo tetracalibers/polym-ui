@@ -1,7 +1,7 @@
 import { CssStyle } from 'ts-typedef-helper'
 import { setDefault, setNotRequired } from '../api/set'
 
-export const sampleProps = {
+export const sampleP = {
   /*
   ┌─────────────────────────────────────────────────────────────────────────────┐
   │   STYLING                                                                   │
@@ -36,3 +36,5 @@ export const sampleProps = {
    */
   isList: setDefault<boolean>(false),
 } as const
+
+export type SampleT = typeof sampleP
