@@ -1,9 +1,8 @@
-import { PropWithDefault } from '../../class/PropWithDefault'
-import { GetOptionalKey, OptionRecord } from '../../types/base'
+import { GetOptionalKey, OptionRecord, PropTypeWrap } from '../../types/base'
 import { Object as O } from 'ts-typedef-helper'
 
 type getPropTypesMap<O extends OptionRecord> = {
-  [k in keyof O]: O[k]['instance'] extends PropWithDefault<infer T> ? T : never
+  [k in keyof O]: O[k]['instance'] extends PropTypeWrap<infer T> ? T : never
 }
 
 export type getPropType<O extends OptionRecord> = Readonly<

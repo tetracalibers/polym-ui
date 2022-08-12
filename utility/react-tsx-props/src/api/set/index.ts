@@ -1,19 +1,17 @@
-import { PropWithDefault } from '../../class/PropWithDefault'
+import { PropTypeWrap } from '../../types/base'
 
-export const setDefault = <T>(defaultV: T) => {
-  const ins = new PropWithDefault<T>(defaultV)
+export const setDefault = <T>(defaultV: T | undefined = undefined) => {
   return {
-    instance: ins,
-    default: ins.default,
+    instance: new PropTypeWrap<T>(),
+    default: defaultV,
     required: true as const,
   }
 }
 
-export const setNotRequired = <T>() => {
-  const ins = new PropWithDefault<T>()
+export const setNotRequired = <T>(defaultV: T | undefined = undefined) => {
   return {
-    instance: ins,
-    default: undefined,
+    instance: new PropTypeWrap<T>(),
+    default: defaultV,
     required: false as const,
   }
 }
