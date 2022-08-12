@@ -1,10 +1,15 @@
-import { StackDefaultProps, StackProps } from './props'
+import { defaultDesignProps, DesignProps } from './designProps'
 import styled from 'styled-components'
 import type { FC, ReactNode } from 'react'
 
-type Props = {
+type StackProps = {
   children: ReactNode
-} & StackProps
+} & DesignProps
+
+const defaultStackProps = {
+  ...defaultDesignProps,
+  children: undefined,
+}
 
 const Root = styled.div`
   display: flex;
@@ -12,6 +17,9 @@ const Root = styled.div`
   justify-content: flex-start;
 `
 
-export const Stack: FC<Props> = (StackDefaultProps: Props) => {
-  return <Root></Root>
+export const Stack: FC<StackProps> = (
+  props: StackProps = defaultStackProps
+) => {
+  const { children } = props
+  return <Root>{children}</Root>
 }

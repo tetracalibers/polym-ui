@@ -43,5 +43,5 @@ const props = {
   isList: Required<boolean>(false),
 } as const
 
-export type StackProps = getPropType<typeof props>
-export const StackDefaultProps = getDefaultProps(props)
+export type DesignProps = getPropType<typeof props>
+export const defaultDesignProps = getDefaultProps<DesignProps>(props)
