@@ -1,4 +1,4 @@
-import { StackProps } from './StackProps'
+import { StackProps } from './props'
 import styled from 'styled-components'
 import type { FC, ReactNode } from 'react'
 
