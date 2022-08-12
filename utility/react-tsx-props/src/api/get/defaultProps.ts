@@ -28,14 +28,10 @@ export const getDefaultProps = (options: OptionRecord<Alias.Primitive>) => {
     const value = entry[1] as OptionValueDictionary<NowVal>
 
     const defaultV = value.default
-    const builded = (
-      _.isUndefined(defaultV)
-        ? building
-        : {
-            ...building,
-            [key]: value.default!,
-          }
-    ) as DefaultProps<Options>
+    const builded = {
+      ...building,
+      [key]: defaultV ?? defaultV!,
+    } as DefaultProps<Options>
 
     if (nextRest.length > 0) {
       return _iterUnit<Str.To.Number<Math.Sum<idx, 1>>>(builded, nextRest)

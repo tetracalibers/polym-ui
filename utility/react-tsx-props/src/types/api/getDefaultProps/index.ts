@@ -1,9 +1,9 @@
-import { GetOptionalKey, OptionRecord, OptionValueDictionary } from '../../base'
+import { OptionRecord, OptionValueDictionary } from '../../base'
 import { ObjValTypeMap } from '../../ObjValueUnionBuilder'
 import { OptionValuePicker } from './helper'
 
 type DefaultProps<O extends OptionRecord = OptionRecord> = {
-  [k in keyof O as k extends GetOptionalKey<O> ? never : k]: {
+  [k in keyof O]: {
     default: OptionValuePicker<k, O>
   }
 }
