@@ -7,7 +7,7 @@ import {
   setNullable,
 } from 'react-tsx-props'
 
-const options = {
+const props = {
   /*
   ┌─────────────────────────────────────────────────────────────────────────────┐
   │   STYLING                                                                   │
@@ -43,5 +43,5 @@ const options = {
   isList: setDefault<boolean>(false),
 } as const
 
-export type StackProps = getPropTypes<typeof options>
-export const StackDefaultProps = getDefaultProps(options)
+export type StackProps = getPropTypes<typeof props>
+export const StackDefaultProps = getDefaultProps(props)
