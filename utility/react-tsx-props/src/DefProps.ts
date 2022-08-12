@@ -5,7 +5,7 @@ import {
   Object as Obj,
   Union,
   Predicate as P,
-} from '@react-polyhex-ui-dev/utility-types'
+} from 'ts-typedef-helper'
 
 export class PropWithDefault<T> {
   private _default: T

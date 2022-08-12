@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.18.5",
-    "@react-polyhex-ui-dev/utility-types": "*",
+    "ts-typedef-helper": "*",
     "@rollup/plugin-commonjs": "^22.0.1",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^13.3.0",

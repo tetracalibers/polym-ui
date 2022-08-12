@@ -1,4 +1,4 @@
-import { CssStyle } from '@react-polyhex-ui-dev/utility-types'
+import { CssStyle } from 'ts-typedef-helper'
 import _ from 'lodash'
 import {
   setDefault,

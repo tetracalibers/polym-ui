@@ -1,4 +1,4 @@
-import { CssStyle, Default as D } from '@react-polyhex-ui-dev/utility-types'
+import { CssStyle, Default as D } from 'ts-typedef-helper'
 
 export type StackProps = D.Def<{
   /*
