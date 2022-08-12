@@ -1,11 +1,7 @@
 import { CssStyle } from 'ts-typedef-helper'
 import _ from 'lodash'
-import {
-  setDefault,
-  setNullable,
-  getDefaultProps,
-  getPropTypes,
-} from './DefProps'
+import { setDefault, setNullable } from './api/set'
+import { getDefaultProps, getPropTypes } from './api/get'
 
 const options = {
   /*
