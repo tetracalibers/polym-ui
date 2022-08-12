@@ -1,18 +1,14 @@
 import { Alias, Object as Obj } from 'ts-typedef-helper'
-import { FromStrInUnion, ObjKeyCast } from '../utility'
+import { FromStrInUnion } from '../utility'
 import { OptionRecord } from '../base'
 
-type FlipByDefault<
-  K extends string,
-  O extends OptionRecord<Alias.Primitive>
-> = {
-  [key in K as `${O[key]['default']}`]: K
+type Mutable<T> = {
+  -readonly [P in keyof T]: T[P]
 }
 
-type ObjValToUnionKey<
-  K extends string,
-  O extends OptionRecord<Alias.Primitive>
-> = FlipByDefault<K, O>
+type ObjValToUnionKey<O extends OptionRecord, K extends keyof O = keyof O> = {
+  [key in K as `${O[key]['default']}`]: key
+}
 
 type ObjKVTypeLiteralMapping<O> = Obj.Flip<O>
 
@@ -32,13 +28,24 @@ type ObjValUnwrapLiteral<O, K extends keyof O = keyof O> = {
     : never
 }
 
-export type ObjValTypeMap<
-  O extends OptionRecord<Alias.Primitive>,
-  K extends keyof O
-> = ObjValToUnionKey<ObjKeyCast<K>, O> extends infer STATE1
-  ? ObjKVTypeLiteralMapping<STATE1> extends infer STATE2
-    ? ObjValUnwrapLiteral<STATE2> extends infer RESULT
-      ? RESULT
+export type ObjValTypeMap<O extends OptionRecord<Alias.Primitive>> =
+  ObjValToUnionKey<O> extends infer S1
+    ? ObjKVTypeLiteralMapping<S1> extends infer S2
+      ? ObjValUnwrapLiteral<S2> extends infer S3
+        ? Mutable<S3>
+        : never
       : never
     : never
-  : never
+
+/* -------------------------------------------------------------------------- */
+/* test                                                                       */
+/* -------------------------------------------------------------------------- */
+
+import { SampleT } from '../../sample/sample'
+
+type test_ObjValToUnionKey = ObjValToUnionKey<SampleT>
+type test_ObjKVTypeLiteralMapping =
+  ObjKVTypeLiteralMapping<test_ObjValToUnionKey>
+type test_ObjValUnwrapLiteral =
+  ObjValUnwrapLiteral<test_ObjKVTypeLiteralMapping>
+type test_ObjValTypeMap = ObjValTypeMap<SampleT>

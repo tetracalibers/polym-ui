@@ -60,10 +60,11 @@ export namespace Object {
   }
 
   export namespace ByKeys {
-    export type Partial<T, K = unknown> = ExpandMerged<
+    export type Partial<T, K = unknown> = Merge<
       {
         [P in keyof T as P extends K ? P : never]?: T[P]
-      } & {
+      },
+      {
         [P in Exclude<keyof T, K>]: T[P]
       }
     >

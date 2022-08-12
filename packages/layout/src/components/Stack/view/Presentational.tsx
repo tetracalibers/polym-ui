@@ -1,4 +1,4 @@
-import { StackProps } from './props'
+import { StackDefaultProps, StackProps } from './props'
 import styled from 'styled-components'
 import type { FC, ReactNode } from 'react'
 
@@ -12,6 +12,6 @@ const Root = styled.div`
   justify-content: flex-start;
 `
 
-export const Stack: FC<Props> = (_props: Props) => {
+export const Stack: FC<Props> = (StackDefaultProps: Props) => {
   return <Root></Root>
 }
