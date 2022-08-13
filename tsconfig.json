@@ -17,12 +17,12 @@
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    "skipLibCheck": false, // .d.ts ファイル内のエラーを抑制する
+    "skipLibCheck": true,
     "isolatedModules": false,
     "removeComments": true,
     "outDir": "./lib",
     "resolveJsonModule": true
   },
   "include": ["./**/*"],
-  "exclude": ["node_modules", "./lib/*", "./src/draft/**/*"]
+  "exclude": ["node_modules", "./lib/*"]
 }
