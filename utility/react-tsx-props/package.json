@@ -12,9 +12,8 @@
   "types": "lib/@types/index.d.ts",
   "exports": {
     ".": "./src/index.ts",
-    "./access": "./src/packages/api/access/index.ts",
-    "./define": "./src/packages/api/define/index.ts",
-    "./_internal": "./src/packages/_internal/index.ts"
+    "./access": "./src/api/access/index.ts",
+    "./define": "./src/api/define/index.ts"
   },
   "repository": {
     "type": "git",
@@ -32,7 +31,6 @@
   },
   "devDependencies": {
     "@babel/core": "^7.18.5",
-    "ts-typedef-helper": "*",
     "@rollup/plugin-commonjs": "^22.0.1",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^13.3.0",
@@ -41,9 +39,11 @@
     "csstype": "^3.1.0",
     "esbuild": "^0.14.48",
     "fp-ts": "^2.12.2",
+    "lodash": "^4.17.21",
     "rimraf": "^3.0.2",
     "rollup": "^2.75.7",
     "rollup-plugin-esbuild": "^4.9.1",
+    "ts-typedef-helper": "*",
     "typescript": "^4.7.4"
   }
 }

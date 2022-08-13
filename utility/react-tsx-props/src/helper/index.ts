@@ -1,8 +1,6 @@
 import { Alias, Object as Obj, Predicate as P } from 'ts-typedef-helper'
 
-export class PropTypeWrap<_T> {}
-
-declare module 'react-tsx-props/_internal' {
+export namespace $ {
   /* -------------------------------------------------------------------------- */
   /* Utility                                                                    */
   /* -------------------------------------------------------------------------- */
@@ -92,7 +90,7 @@ declare module 'react-tsx-props/_internal' {
       : never
   }
 
-  export type ObjValTypeMap<O extends OptionRecord<Alias.Primitive>> =
+  export type ObjValTypeMap<O extends OptionRecord> =
     ObjValToUnionKey<O> extends infer S1
       ? ObjKVTypeLiteralMapping<S1> extends infer S2
         ? ObjValUnwrapLiteral<S2> extends infer S3

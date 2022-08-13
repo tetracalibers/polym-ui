@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import * as $ from 'react-tsx-props/_internal'
+import { $ } from '../../helper'
 
 export function getDefaultProps<T>(options: $.OptionRecord): T {
   type Opt = typeof options

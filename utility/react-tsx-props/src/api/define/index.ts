@@ -1,4 +1,4 @@
-import * as $ from 'react-tsx-props/_internal'
+import { $ } from '../../helper'
 
 export const Required = function <T>(defaultV: T | undefined = undefined) {
   return {
