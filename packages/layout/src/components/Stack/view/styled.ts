@@ -1,5 +1,4 @@
-import { match } from 'ts-pattern'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { StackProps } from './props'
 import { PUT, SELECT } from 'styled-utility-first'
 
@@ -17,9 +16,11 @@ export const Root = styled.div.attrs<StackProps>(props => ({
     ${PUT.margin.vertical.clear()}
   }
 
-  ${props => `
-    ${SELECT.continuousElements({ recursive: props.recursive })} {
-      margin-top: ${props.space}
-    }
-  `}
+  ${({ recursive, space }) => {
+    const selector = SELECT.continuousElements({ recursive })
+    return `
+      ${selector} {
+        margin-top: ${space}
+      }`
+  }}
 `

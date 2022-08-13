@@ -1,9 +1,14 @@
-import { Required, getPropType, getDefaultProps } from 'react-tsx-props'
+import {
+  Required,
+  getPropType,
+  getDefaultProps,
+  NotRequired,
+} from 'react-tsx-props'
 
 export namespace CONTINUOUS_ELEMENTS {
   export const args = {
     recursive: Required<boolean>(false),
-    root: Required<string>('&'),
+    root: NotRequired<string>('&'),
   } as const
 
   export type Args = getPropType<typeof args>
