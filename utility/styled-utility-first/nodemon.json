@@ -1,5 +1,5 @@
 {
   "watch": ["lib"],
-  "ext": "js",
-  "exec": "node lib/bundle.es.js"
+  "ext": "ts",
+  "exec": "node --loader ts-node/esm src/index.ts"
 }

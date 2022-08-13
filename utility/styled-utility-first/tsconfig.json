@@ -17,7 +17,7 @@
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    "skipLibCheck": false, // .d.ts ファイル内のエラーを抑制する
+    "skipLibCheck": true, // .d.ts ファイル内のエラーを抑制する
     "isolatedModules": false,
     "removeComments": true,
     "outDir": "./lib",
