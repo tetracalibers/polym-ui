@@ -1,7 +1,10 @@
-import { GetOptionalKey, OptionRecord, PropTypeWrap } from '../../types/base'
+import { GetOptionalKey, OptionRecord } from '../../types/base'
+import { PropTypeWrapInstance } from '../../types/base/PropTypeWrap'
 
 type getPropTypesMap<O extends OptionRecord> = {
-  [k in keyof O]: O[k]['instance'] extends PropTypeWrap<infer T> ? T : never
+  [k in keyof O]: O[k]['instance'] extends PropTypeWrapInstance<infer T>
+    ? T
+    : never
 }
 
 type PartialByKeys<T, K extends keyof any = keyof T> = {

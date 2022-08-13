@@ -8,14 +8,27 @@
   },
   "homepage": "https://github.com/tetracalibers/React-polyhexUI/tree/main/packages/core#readme",
   "license": "MIT",
-  "main": "src/index.ts",
   "type": "module",
   "types": "lib/@types/index.d.ts",
   "exports": {
-    "import": "./lib/bundle.es.js",
-    "require": "./lib/bundle.cjs",
-    "node": "./lib/bundle.es.js",
-    "default": "./lib/bundle.cjs"
+    ".": {
+      "import": "./src/index.ts",
+      "require": "./src/index.ts",
+      "node": "./src/index.ts",
+      "default": "./src/index.ts"
+    },
+    "./PUT": {
+      "import": "./src/packages/PUT/index.ts",
+      "require": "./src/packages/PUT/index.ts",
+      "node": "./src/packages/PUT/index.ts",
+      "default": "./src/packages/PUT/index.ts"
+    },
+    "./SELECT": {
+      "import": "./src/packages/SELECT/index.ts",
+      "require": "./src/packages/SELECT/index.ts",
+      "node": "./src/packages/SELECT/index.ts",
+      "default": "./src/packages/SELECT/index.ts"
+    }
   },
   "repository": {
     "type": "git",
@@ -25,16 +38,17 @@
     "test": "echo \"Error: run tests from root\" && exit 1",
     "type:check": "tsc --noEmit",
     "prebuild": " yarn type:check && rimraf lib",
-    "build": "rollup -c",
+    "build": "rollup -c --watch",
     "start": "yarn build && node lib/bundle.cjs"
   },
   "bugs": {
     "url": "https://github.com/tetracalibers/React-polyhexUI/issues"
   },
   "dependencies": {
-    "styled-components": "^5.3.5"
+    "react-tsx-props": "*"
   },
   "devDependencies": {
+    "styled-components": "^5.3.5",
     "@babel/core": "^7.18.5",
     "@rollup/plugin-commonjs": "^22.0.1",
     "@rollup/plugin-json": "^4.1.0",
@@ -48,7 +62,6 @@
     "esbuild": "^0.14.48",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-tsx-props": "*",
     "rimraf": "^3.0.2",
     "rollup": "^2.75.7",
     "rollup-plugin-esbuild": "^4.9.1",

@@ -55,7 +55,6 @@ const config = [
       typescript({
         tsconfig: './tsconfig.json',
         declaration: true,
-        rootDir: 'src',
         declarationDir: '@types',
         declarationMap: true,
       }),

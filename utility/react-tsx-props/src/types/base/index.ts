@@ -1,9 +1,8 @@
 import { Alias } from 'ts-typedef-helper'
-
-export class PropTypeWrap<_T> {}
+import { PropTypeWrapInstance } from './PropTypeWrap'
 
 export type OptionValueDictionary<T = unknown> = {
-  instance: PropTypeWrap<T>
+  instance: PropTypeWrapInstance<T>
   default: T | undefined
   required: boolean
 }

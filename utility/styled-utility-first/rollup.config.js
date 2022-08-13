@@ -18,86 +18,77 @@ const banner = `/*!
   Released under the ${pkg.license} License.
 */`
 
+const options = () => ({
+  external: [
+    ...Object.keys(pkg.dependencies || {}),
+    ...Object.keys(pkg.devDependencies || {}),
+  ],
+  plugins: [
+    typescript({
+      tsconfig: './tsconfig.json',
+      declaration: true,
+      declarationDir: '@types',
+      declarationMap: true,
+    }),
+    nodeResolve(),
+    esbuild({
+      // All options are optional
+      include: /\.[jt]sx?$/, // default, inferred from `loaders` option
+      exclude: [
+        'react-native-fetch-blob',
+        'react-native-fs',
+        'shelljs',
+        'alasql',
+      ], // default
+      sourceMap: !production,
+      minify: production,
+      target: 'esnext', // default, or 'es20XX', 'esnext'
+      jsx: 'transform', // default, or 'preserve'
+      jsxFactory: 'React.createElement',
+      jsxFragment: 'React.Fragment',
+      // Like @rollup/plugin-replace
+      define: {
+        __VERSION__: '"x.y.z"',
+      },
+      tsconfig: 'tsconfig.json', // default
+      // Add extra loaders
+      loaders: {
+        // Add .json files support
+        // require @rollup/plugin-commonjs
+        '.json': 'json',
+        // Enable JSX in .js files too
+        '.js': 'jsx',
+      },
+    }),
+    commonjs({
+      strictRequires: true,
+      sourceMap: false,
+      transformMixedEsModules: true,
+    }),
+    json({
+      compact: true,
+    }),
+  ],
+})
+
 const config = [
   {
     input: 'src/index.ts',
     output: [
       {
-        file: 'lib/bundle.cjs',
+        file: 'lib/index.cjs',
         format: 'cjs',
         sourcemap: 'file',
         banner,
       },
       {
-        file: 'lib/bundle.es.js',
+        file: 'lib/index.es.js',
         format: 'es',
         sourcemap: 'file',
         banner,
       },
-      /** for script tag */
-      //{
-      //  file: 'lib/bundle-web.js',
-      //  format: 'iife',
-      //  name: 'StylingPatch',
-      //},
-      /** for universal */
-      //{
-      //  file: 'lib/bundle.umd.js',
-      //  format: 'umd',
-      //  name: 'StylingPatch',
-      //},
     ],
-    external: [
-      ...Object.keys(pkg.dependencies || {}),
-      ...Object.keys(pkg.devDependencies || {}),
-    ],
-    plugins: [
-      typescript({
-        tsconfig: './tsconfig.json',
-        declaration: true,
-        rootDir: 'src',
-        declarationDir: '@types',
-        declarationMap: true,
-      }),
-      nodeResolve(),
-      esbuild({
-        // All options are optional
-        include: /\.[jt]sx?$/, // default, inferred from `loaders` option
-        exclude: [
-          'react-native-fetch-blob',
-          'react-native-fs',
-          'shelljs',
-          'alasql',
-        ], // default
-        sourceMap: !production,
-        minify: production,
-        target: 'esnext', // default, or 'es20XX', 'esnext'
-        jsx: 'transform', // default, or 'preserve'
-        jsxFactory: 'React.createElement',
-        jsxFragment: 'React.Fragment',
-        // Like @rollup/plugin-replace
-        define: {
-          __VERSION__: '"x.y.z"',
-        },
-        tsconfig: 'tsconfig.json', // default
-        // Add extra loaders
-        loaders: {
-          // Add .json files support
-          // require @rollup/plugin-commonjs
-          '.json': 'json',
-          // Enable JSX in .js files too
-          '.js': 'jsx',
-        },
-      }),
-      commonjs({
-        strictRequires: true,
-        sourceMap: false,
-        transformMixedEsModules: true,
-      }),
-      json({
-        compact: true,
-      }),
-    ],
+    ...options(),
   },
 ]
 
