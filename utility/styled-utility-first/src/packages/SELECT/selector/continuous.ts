@@ -1,12 +1,12 @@
-import * as P from 'react-tsx-props'
+import { ACCESS, DEFINE } from 'react-tsx-props'
 
 const args = {
-  recursive: P.Required<boolean>(false),
-  root: P.Required<string>('&'),
+  recursive: DEFINE.Required<boolean>(false),
+  root: DEFINE.Required<string>('&'),
 } as const
 
-export type Args = P.getPropType<typeof args>
-const args_default = P.getDefaultProps<Args>(args)
+export type Args = ACCESS.getPropType<typeof args>
+const args_default = ACCESS.getDefaultProps<Args>(args)
 
 export function continuousElements(args: Args = args_default) {
   const { recursive, root } = args
