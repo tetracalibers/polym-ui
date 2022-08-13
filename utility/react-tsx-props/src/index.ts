@@ -1,4 +1,5 @@
-import { Required, NotRequired } from './api/set'
-import { getDefaultProps, getPropType } from './api/get'
+import * as ACCESS from 'react-tsx-props/access'
+import * as DEFINE from 'react-tsx-props/define'
 
-export { Required, NotRequired, getDefaultProps, getPropType }
+export const { getDefaultProps, getPropType } = ACCESS
+export const { Required, NotRequired } = DEFINE
