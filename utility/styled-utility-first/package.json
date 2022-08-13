@@ -16,18 +16,6 @@
       "require": "./src/index.ts",
       "node": "./src/index.ts",
       "default": "./src/index.ts"
-    },
-    "./PUT": {
-      "import": "./src/packages/PUT/index.ts",
-      "require": "./src/packages/PUT/index.ts",
-      "node": "./src/packages/PUT/index.ts",
-      "default": "./src/packages/PUT/index.ts"
-    },
-    "./SELECT": {
-      "import": "./src/packages/SELECT/index.ts",
-      "require": "./src/packages/SELECT/index.ts",
-      "node": "./src/packages/SELECT/index.ts",
-      "default": "./src/packages/SELECT/index.ts"
     }
   },
   "repository": {
