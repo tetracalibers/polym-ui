@@ -14,5 +14,5 @@ export const Root = styled.div.attrs<StackProps>(props => ({
     ${PUT.margin.vertical.clear()}
   }
 
-  ${SELECT}
+  ${SELECT.continuousElements()}
 `
