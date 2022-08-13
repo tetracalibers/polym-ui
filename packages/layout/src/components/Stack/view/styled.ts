@@ -1,10 +1,11 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { StackProps } from './props'
 import { PUT, SELECT } from 'styled-utility-first'
 
 export const Root = styled.div.attrs<StackProps>(props => ({
   recursive: props.recursive,
   space: props.space,
+  separateFrom: props.separateFrom,
 }))<StackProps>`
   & {
     display: flex;
@@ -18,9 +19,21 @@ export const Root = styled.div.attrs<StackProps>(props => ({
 
   ${({ recursive, space }) => {
     const selector = SELECT.continuousElements({ recursive })
-    return `
+    return css`
       ${selector} {
-        margin-top: ${space}
-      }`
+        margin-top: ${space};
+      }
+    `
+  }}
+
+  ${({ separateFrom }) => {
+    return (
+      separateFrom &&
+      css`
+        & > :nth-child(${separateFrom}) {
+          margin-bottom: auto;
+        }
+      `
+    )
   }}
 `
