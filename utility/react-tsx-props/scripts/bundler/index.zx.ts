@@ -9,9 +9,9 @@ const isEven = (n: number) => n % 2 === 0
 
 const commands = [...new Array(bundleResource.length * 2)].map((_, idx) => {
   const targetId = Math.floor(idx / 2)
-  const build = () => $`echo "rollup --config --config_target_idx ${targetId}"`
+  const build = () => $`rollup --config --config_target_idx ${targetId}`
   const prebuild = () =>
-    $`echo "rollup --config --config_type_check_mode --config_target_idx ${targetId}"`
+    $`rollup --config --config_type_check_mode --config_target_idx ${targetId}`
   return isEven(idx) ? prebuild : build
 })
 
