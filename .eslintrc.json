@@ -28,6 +28,8 @@
     "spaced-comment": "off",
     "no-useless-constructor": "off",
     "no-redeclare": "off",
-    "import/first": "off"
+    "import/first": "off",
+    "generator-star-spacing": "off",
+    "yield-star-spacing": "off"
   }
 }
