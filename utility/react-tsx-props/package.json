@@ -9,6 +9,7 @@
   "homepage": "https://github.com/tetracalibers/React-polyhexUI/tree/main/packages/core#readme",
   "license": "MIT",
   "type": "module",
+  "types": "lib/@types/index.d.ts",
   "module": "lib/index.es.js",
   "exports": {
     "./util-types": {
@@ -23,7 +24,7 @@
       "require": "./lib/index.cjs",
       "node": "./lib/index.es.js",
       "default": "./lib/index.cjs",
-      "types": "./lib/@types/api/index.d.ts"
+      "types": "./lib/@types/index.d.ts"
     }
   },
   "files": [
@@ -36,7 +37,7 @@
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1",
-    "build": "node --loader ts-node/esm scripts/bundler/index.zx.ts"
+    "build": "node --loader ts-node/esm scripts/bundler/bundle.zx.ts"
   },
   "bugs": {
     "url": "https://github.com/tetracalibers/React-polyhexUI/issues"
