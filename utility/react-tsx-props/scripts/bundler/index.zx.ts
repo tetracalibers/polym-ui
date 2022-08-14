@@ -5,36 +5,34 @@
 import 'zx/globals'
 import { bundleResource } from './rollup/rollup.resource.js'
 
-function* iteratorGenerator(collection: (() => ProcessPromise)[]) {
-  yield* collection
-}
-
 const isEven = (n: number) => n % 2 === 0
 
 const commands = [...new Array(bundleResource.length * 2)].map((_, idx) => {
   const targetId = Math.floor(idx / 2)
-  const build = () => $`rollup --config --config_target_idx ${targetId}`
+  const build = () => $`echo "rollup --config --config_target_idx ${targetId}"`
   const prebuild = () =>
-    $`rollup --config --config_type_check_mode --config_target_idx ${targetId}`
+    $`echo "rollup --config --config_type_check_mode --config_target_idx ${targetId}"`
   return isEven(idx) ? prebuild : build
 })
 
-const next = (
-  commandG: Generator<() => ProcessPromise, void, undefined>
-): Generator<() => ProcessPromise, void, undefined> => {
-  const { done, value: command } = commandG.next()
-  if (done) {
-    return (function* () {
-      yield* commandG
-    })()
-  }
-  command()
-  return next(commandG)
+function* traverserGenerator<T>(collec: (() => T)[]) {
+  yield* collec
 }
 
-const boot = (commands: (() => ProcessPromise)[]) => {
-  const taskI = iteratorGenerator(commands)
-  return next(taskI)
+function* execCycleGenerator<T>(
+  task: void | (() => T)
+): Generator<void | T, void, unknown> {
+  yield task && task()
 }
 
-boot(commands)
+const commandList = traverserGenerator(commands)
+
+const exec = <T>(
+  taskListTraverser: Generator<() => T, void, undefined>
+): boolean => {
+  const { done, value: task } = taskListTraverser.next()
+  execCycleGenerator<T>(task).next()
+  return done || exec(taskListTraverser)
+}
+
+exec(commandList)
