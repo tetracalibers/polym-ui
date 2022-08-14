@@ -2,9 +2,8 @@ import { bundleResource } from './scripts/bundler/rollup/rollup.resource.js'
 import { options } from './scripts/bundler/rollup/rollup.options.js'
 import * as pkg from './package.json'
 import { copyright } from './scripts/bundler/meta/copyright.js'
-import _ from 'lodash'
 
-const addCopyright = _.mapValues(bundleResource, v => {
+const addCopyright = bundleResource.map(v => {
   const output = v.file.output.map(obj => {
     return {
       ...obj,
@@ -20,8 +19,7 @@ const addCopyright = _.mapValues(bundleResource, v => {
   }
 })
 
-const packageNames = Object.keys(bundleResource)
-const select = idx => addCopyright[packageNames[idx]]
+const select = idx => addCopyright[idx]
 
 export default commandLineArgs => {
   const { config_type_check_mode, config_target_idx } = commandLineArgs
