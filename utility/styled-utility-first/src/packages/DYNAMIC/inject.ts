@@ -1,7 +1,9 @@
 import { css } from 'styled-components'
 import * as CSST from 'csstype'
 import { Alias, Object as Obj } from 'ts-typedef-helper'
-import { $ } from 'react-tsx-props/util-types'
+import utilTypes from 'react-tsx-props/util-types'
+
+$.PropTypeWrap
 
 type FieldType<Field> = 's' extends Field
   ? string

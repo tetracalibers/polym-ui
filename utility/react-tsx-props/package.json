@@ -9,23 +9,27 @@
   "homepage": "https://github.com/tetracalibers/React-polyhexUI/tree/main/packages/core#readme",
   "license": "MIT",
   "type": "module",
-  "types": "./@types/global.d.ts",
+  "module": "lib/index.es.js",
   "exports": {
     "./util-types": {
-      "import": "./src/util-types/index.ts",
-      "require": "./src/util-types/index.ts",
-      "node": "./src/util-types/index.ts",
-      "default": "./src/util-types/index.ts",
+      "import": "./lib/util-types/index.es.js",
+      "require": "./lib/util-types/index.cjs",
+      "node": "./lib/util-types/index.es.js",
+      "default": "./lib/util-types/index.cjs",
       "types": "./lib/util-types/@types/index.d.ts"
     },
     ".": {
-      "import": "./src/def-tools/index.ts",
-      "require": "./src/def-tools/index.ts",
-      "node": "./src/def-tools/index.ts",
-      "default": "./src/def-tools/index.ts",
-      "types": "./lib/def-tool/@types/def-tool/index.d.ts"
+      "import": "./lib/index.es.js",
+      "require": "./lib/index.cjs",
+      "node": "./lib/index.es.js",
+      "default": "./lib/index.cjs",
+      "types": "./lib/@types/api/index.d.ts"
     }
   },
+  "files": [
+    "lib/**/*",
+    "@types/*"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tetracalibers/React-polyhexUI.git"

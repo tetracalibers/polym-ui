@@ -1,4 +1,4 @@
-import { $ } from '../util-types/index'
+import { $ } from '../util-types'
 import _ from 'lodash'
 
 export const Required = function <T>(defaultV: T | undefined = undefined) {

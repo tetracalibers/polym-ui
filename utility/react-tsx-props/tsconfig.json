@@ -22,10 +22,7 @@
     "removeComments": true,
     "outDir": "./lib",
     "resolveJsonModule": true,
-    "baseUrl": "./",
-    "paths": {
-      "react-tsx-props/util-types": ["./src/util-types"]
-    }
+    "baseUrl": "./"
   },
   "include": ["./**/*"],
   "exclude": ["node_modules", "./lib/*", "./test/*"]

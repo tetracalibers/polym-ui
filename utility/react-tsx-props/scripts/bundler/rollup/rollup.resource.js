@@ -19,15 +19,15 @@ export const bundleResource = [
   },
   {
     file: {
-      input: 'src/def-tool/index.ts',
+      input: 'src/api/index.ts',
       output: [
         {
-          file: 'lib/def-tool/index.cjs',
+          file: 'lib/index.cjs',
           format: 'cjs',
           sourcemap: 'file',
         },
         {
-          file: 'lib/def-tool/index.es.js',
+          file: 'lib/index.es.js',
           format: 'es',
           sourcemap: 'file',
         },
