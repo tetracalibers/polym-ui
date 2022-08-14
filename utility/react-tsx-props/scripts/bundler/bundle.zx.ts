@@ -84,7 +84,7 @@ const buildCommandList = [...new Array(bundleResource.length * 2)].map(
   }
 )
 
-const done = await exec(traverserGenerator(buildCommandList))
+await exec(traverserGenerator(buildCommandList))
 
 /* -------------------------------------------------------------------------- */
 /* POSTPROCESS                                                                */
@@ -92,12 +92,12 @@ const done = await exec(traverserGenerator(buildCommandList))
 
 const copyDfileToOutDir = copyFilesToDir(GLOBAL_DECLARE_FILE_OUTPUT_DIR)
 
-if (done) {
-  const ls_typesDir_Csv = (await $`ls -m ${GLOBAL_DECLARE_FILE_DIR}`).stdout
-  const d_fileNameList = ls_typesDir_Csv.split(',').map(s => s.trim())
-  const publishDfileTasks = d_fileNameList.map((fileName: string) => {
-    const filePath = path.join(GLOBAL_DECLARE_FILE_DIR, fileName)
-    return copyDfileToOutDir(filePath)
-  })
-  await exec(traverserGenerator(publishDfileTasks))
-}
+const ls_typesDir_Csv = (await $`ls -m ${GLOBAL_DECLARE_FILE_DIR}`).stdout
+const d_fileNameList = ls_typesDir_Csv.split(',').map(s => s.trim())
+
+const publishDfileTasks = d_fileNameList.map((fileName: string) => {
+  const filePath = path.join(GLOBAL_DECLARE_FILE_DIR, fileName)
+  return copyDfileToOutDir(filePath)
+})
+
+await exec(traverserGenerator(publishDfileTasks))
