@@ -13,16 +13,6 @@ import { bundleResource } from './rollup/rollup.resource.js'
 
 const DEBUG = true
 
-/* -------------------------------------------------------------------------- */
-/* UTILITIES                                                                  */
-/* -------------------------------------------------------------------------- */
-
-const isEven = (n: number) => n % 2 === 0
-
-/* -------------------------------------------------------------------------- */
-/* COMMAND                                                                    */
-/* -------------------------------------------------------------------------- */
-
 const PREBUILD_FLAGS = [
   '--config',
   '--config_type_check_mode',
@@ -30,6 +20,12 @@ const PREBUILD_FLAGS = [
 ]
 
 const BUILD_FLAGS = _.without(PREBUILD_FLAGS, '--config_type_check_mode')
+
+/* -------------------------------------------------------------------------- */
+/* COMMAND                                                                    */
+/* -------------------------------------------------------------------------- */
+
+const isEven = (n: number) => n % 2 === 0
 
 const commandList = [...new Array(bundleResource.length * 2)].map((_, idx) => {
   const targetId = Math.floor(idx / 2)
