@@ -1,4 +1,3 @@
-import { banner } from '../meta/copyright.js'
 import _ from 'lodash'
 
 export const bundleResource = {
@@ -10,13 +9,11 @@ export const bundleResource = {
           file: 'lib/util-types/index.cjs',
           format: 'cjs',
           sourcemap: 'file',
-          banner,
         },
         {
           file: 'lib/util-types/index.es.js',
           format: 'es',
           sourcemap: 'file',
-          banner,
         },
       ],
     },
@@ -30,13 +27,11 @@ export const bundleResource = {
           file: 'lib/util-types/index.cjs',
           format: 'cjs',
           sourcemap: 'file',
-          banner,
         },
         {
           file: 'lib/util-types/index.es.js',
           format: 'es',
           sourcemap: 'file',
-          banner,
         },
       ],
     },

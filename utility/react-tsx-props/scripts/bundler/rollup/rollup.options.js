@@ -1,19 +1,20 @@
-import * as pkg from '../tmp/pkg.js'
-
 import commonjs from '@rollup/plugin-commonjs'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
 import esbuild from 'rollup-plugin-esbuild'
 import json from '@rollup/plugin-json'
 import typescript from '@rollup/plugin-typescript'
+import { copyright } from '../meta/copyright'
 
 const production = process.env.NODE_ENV === 'production'
 
-export const options = ({
+// prettier-ignore
+export const options = (pkg) => ({
   rootDir = 'src',
   tsconfig = './tsconfig.json',
   typeCheck = false,
   tsOnly = false,
 }) => ({
+  banner: copyright(pkg),
   external: [
     ...Object.keys(pkg.dependencies || {}),
     ...Object.keys(pkg.devDependencies || {}),
