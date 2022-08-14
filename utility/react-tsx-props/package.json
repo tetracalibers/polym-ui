@@ -11,9 +11,18 @@
   "type": "module",
   "types": "lib/@types/index.d.ts",
   "exports": {
-    ".": "./src/index.ts",
-    "./access": "./src/api/access/index.ts",
-    "./define": "./src/api/define/index.ts"
+    "./util-types": {
+      "import": "./lib/util-types/index.es.js",
+      "require": "./lib/util-types/index.cjs",
+      "node": "./lib/util-types/index.es.js",
+      "default": "./lib/util-types/index.cjs"
+    },
+    ".": {
+      "import": "./lib/def-tools/index.es.js",
+      "require": "./lib/def-tools/index.cjs",
+      "node": "./lib/def-tools/index.es.js",
+      "default": "./lib/def-tools/index.cjs"
+    }
   },
   "repository": {
     "type": "git",
@@ -21,9 +30,10 @@
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1",
-    "type:check": "tsc --noEmit",
-    "prebuild": " yarn type:check && rimraf lib",
-    "build": "rollup -c --watch",
+    "bundle:util-types": "tsc --noEmit --rootDir=src/util-types && rollup --config rollup.util-types.config.js",
+    "bundle:def-tool": "tsc --noEmit --rootDir=src/def-tool' && rollup --config rollup.def-tool.config.js",
+    "prebuild": "rimraf lib",
+    "build": "yarn bundle:util-types && yarn bundle:def-tool",
     "start": "yarn build && node lib/bundle.cjs"
   },
   "bugs": {
