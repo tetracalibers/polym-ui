@@ -11,7 +11,7 @@ import { bundleResource } from './rollup/rollup.resource.js'
 /* CONFIG                                                                     */
 /* -------------------------------------------------------------------------- */
 
-const DEBUG = true
+const DEBUG = false
 
 const PREBUILD_FLAGS = [
   '--config',
@@ -21,30 +21,16 @@ const PREBUILD_FLAGS = [
 
 const BUILD_FLAGS = _.without(PREBUILD_FLAGS, '--config_type_check_mode')
 
+const GLOBAL_DECLARE_FILE_DIR = '@types'
+const GLOBAL_DECLARE_FILE_OUTPUT_DIR = 'lib/@types'
+
 /* -------------------------------------------------------------------------- */
-/* COMMAND                                                                    */
+/* UTILITY                                                                    */
 /* -------------------------------------------------------------------------- */
 
 const isEven = (n: number) => n % 2 === 0
 
-const commandList = [...new Array(bundleResource.length * 2)].map((_, idx) => {
-  const targetId = Math.floor(idx / 2)
-  const build = () =>
-    DEBUG
-      ? echo`rollup ${BUILD_FLAGS} ${targetId}`
-      : $`rollup ${BUILD_FLAGS} ${targetId}`
-  const prebuild = () =>
-    DEBUG
-      ? echo`rollup ${PREBUILD_FLAGS} ${targetId}`
-      : $`rollup ${PREBUILD_FLAGS} ${targetId}`
-  return isEven(idx) ? prebuild : build
-})
-
-/* -------------------------------------------------------------------------- */
-/* CORE                                                                       */
-/* -------------------------------------------------------------------------- */
-
-function* traverserGenerator<T>(collec: (() => T)[]) {
+function* traverserGenerator<T>(collec: T[]) {
   yield* collec
 }
 
@@ -63,14 +49,55 @@ const exec = async <T>(
   return done || exec(taskListTraverser)
 }
 
+const copyFilesToDir =
+  (toDirPath: string) => (fromFilePath: string) => async () => {
+    const fromDirPath = path.dirname(fromFilePath)
+    await fs.mkdirp(fromDirPath)
+    const toFilePath = toDirPath + '/' + path.basename(fromFilePath)
+    await fs.copy(fromFilePath, toFilePath)
+  }
+
 /* -------------------------------------------------------------------------- */
-/* EXEC                                                                       */
+/* PREPROCESS                                                                 */
 /* -------------------------------------------------------------------------- */
 
-const commandListTraverser = traverserGenerator(commandList)
+if (!DEBUG) {
+  await $`rimraf lib`
+}
 
-const done = await exec(commandListTraverser)
+/* -------------------------------------------------------------------------- */
+/* MAIN                                                                       */
+/* -------------------------------------------------------------------------- */
+
+const buildCommandList = [...new Array(bundleResource.length * 2)].map(
+  (_, idx) => {
+    const targetId = Math.floor(idx / 2)
+    const build = () =>
+      DEBUG
+        ? echo`rollup ${BUILD_FLAGS} ${targetId}`
+        : $`rollup ${BUILD_FLAGS} ${targetId}`
+    const prebuild = () =>
+      DEBUG
+        ? echo`rollup ${PREBUILD_FLAGS} ${targetId}`
+        : $`rollup ${PREBUILD_FLAGS} ${targetId}`
+    return isEven(idx) ? prebuild : build
+  }
+)
+
+const done = await exec(traverserGenerator(buildCommandList))
+
+/* -------------------------------------------------------------------------- */
+/* POSTPROCESS                                                                */
+/* -------------------------------------------------------------------------- */
+
+const copyDfileToOutDir = copyFilesToDir(GLOBAL_DECLARE_FILE_OUTPUT_DIR)
 
 if (done) {
-  //fs.copy('@types/')
+  const ls_typesDir_Csv = (await $`ls -m ${GLOBAL_DECLARE_FILE_DIR}`).stdout
+  const d_fileNameList = ls_typesDir_Csv.split(',').map(s => s.trim())
+  const publishDfileTasks = d_fileNameList.map((fileName: string) => {
+    const filePath = path.join(GLOBAL_DECLARE_FILE_DIR, fileName)
+    return copyDfileToOutDir(filePath)
+  })
+  await exec(traverserGenerator(publishDfileTasks))
 }
