@@ -12,16 +12,16 @@
   "types": "lib/@types/index.d.ts",
   "exports": {
     "./util-types": {
-      "import": "./lib/util-types/index.es.js",
-      "require": "./lib/util-types/index.cjs",
-      "node": "./lib/util-types/index.es.js",
-      "default": "./lib/util-types/index.cjs"
+      "import": "./src/util-types/index.ts",
+      "require": "./src/util-types/index.ts",
+      "node": "./src/util-types/index.ts",
+      "default": "./src/util-types/index.ts"
     },
     ".": {
-      "import": "./lib/def-tools/index.es.js",
-      "require": "./lib/def-tools/index.cjs",
-      "node": "./lib/def-tools/index.es.js",
-      "default": "./lib/def-tools/index.cjs"
+      "import": "./src/def-tools/index.ts",
+      "require": "./src/def-tools/index.ts",
+      "node": "./src/def-tools/index.ts",
+      "default": "./src/def-tools/index.ts"
     }
   },
   "repository": {
