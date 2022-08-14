@@ -1,5 +1,5 @@
 import Case from 'case'
-import pkg from './pkg'
+import * as pkg from '../tmp/pkg.js'
 
 // Scopeを除去する
 const moduleName = Case.pascal(pkg.name.replace(/^@.*\//, ''))

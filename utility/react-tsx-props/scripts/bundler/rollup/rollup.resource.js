@@ -1,4 +1,5 @@
-import { banner } from '../meta/copyright'
+import { banner } from '../meta/copyright.js'
+import _ from 'lodash'
 
 export const bundleResource = {
   utilTypes: {
@@ -42,3 +43,7 @@ export const bundleResource = {
     root: 'src/def-tool',
   },
 }
+
+export const targetList = Object.keys(
+  _.mapKeys(bundleResource, k => _.kebabCase(k))
+)

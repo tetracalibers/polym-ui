@@ -1,4 +1,4 @@
-import pkg from '../meta/pkg'
+import * as pkg from '../tmp/pkg.js'
 
 import commonjs from '@rollup/plugin-commonjs'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
@@ -8,14 +8,19 @@ import typescript from '@rollup/plugin-typescript'
 
 const production = process.env.NODE_ENV === 'production'
 
-export const options = (rootDir = 'src', typeCheck = false) => ({
+export const options = ({
+  rootDir = 'src',
+  tsconfig = './tsconfig.json',
+  typeCheck = false,
+  tsOnly = false,
+}) => ({
   external: [
     ...Object.keys(pkg.dependencies || {}),
     ...Object.keys(pkg.devDependencies || {}),
   ],
   plugins: [
     typescript({
-      tsconfig: './tsconfig.json',
+      tsconfig,
       declaration: true,
       rootDir,
       noEmit: typeCheck,
@@ -25,7 +30,7 @@ export const options = (rootDir = 'src', typeCheck = false) => ({
     nodeResolve(),
     esbuild({
       // All options are optional
-      include: /\.[jt]sx?$/, // default, inferred from `loaders` option
+      include: tsOnly ? /\.tsx?$/ : /\.[jt]sx?$/, // default, inferred from `loaders` option
       exclude: [
         'react-native-fetch-blob',
         'react-native-fs',

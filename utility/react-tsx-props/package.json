@@ -30,11 +30,8 @@
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1",
-    "bundle:util-types": "tsc --noEmit --rootDir=src/util-types && rollup --config rollup.util-types.config.js",
-    "bundle:def-tool": "tsc --noEmit --rootDir=src/def-tool' && rollup --config rollup.def-tool.config.js",
     "prebuild": "rimraf lib",
-    "build": "yarn bundle:util-types && yarn bundle:def-tool",
-    "start": "yarn build && node lib/bundle.cjs"
+    "build": "node --loader ts-node/esm scripts/bundler/index.zx.ts"
   },
   "bugs": {
     "url": "https://github.com/tetracalibers/React-polyhexUI/issues"
