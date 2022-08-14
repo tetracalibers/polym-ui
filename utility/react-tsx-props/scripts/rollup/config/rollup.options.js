@@ -1,22 +1,12 @@
+import pkg from '../meta/pkg'
+
 import commonjs from '@rollup/plugin-commonjs'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
 import esbuild from 'rollup-plugin-esbuild'
 import json from '@rollup/plugin-json'
 import typescript from '@rollup/plugin-typescript'
-import Case from 'case'
-import pkg from '../../package.json'
 
 const production = process.env.NODE_ENV === 'production'
-
-// Scopeを除去する
-const moduleName = Case.pascal(pkg.name.replace(/^@.*\//, ''))
-
-// ライブラリに埋め込むcopyright
-export const banner = `/*!
-  ${moduleName}.js v${pkg.version}
-  ${pkg.homepage}
-  Released under the ${pkg.license} License.
-*/`
 
 export const options = (rootDir = 'src', typeCheck = false) => ({
   external: [
