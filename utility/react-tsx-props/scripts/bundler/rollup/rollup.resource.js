@@ -33,6 +33,6 @@ export const bundleResource = [
         },
       ],
     },
-    root: 'src/def-tool',
+    root: 'src',
   },
 ]

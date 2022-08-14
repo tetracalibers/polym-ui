@@ -62,7 +62,7 @@ export namespace $ {
   }
 
   /* -------------------------------------------------------------------------- */
-  /* Value type of InputObject                                                  */
+  /* Value export type of InputObject                                                  */
   /* -------------------------------------------------------------------------- */
 
   export type ObjValToUnionKey<

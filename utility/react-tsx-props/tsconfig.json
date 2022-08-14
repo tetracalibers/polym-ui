@@ -21,7 +21,11 @@
     "isolatedModules": false,
     "removeComments": true,
     "outDir": "./lib",
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "baseUrl": "./",
+    "paths": {
+      "react-tsx-props/util-types": ["./src/util-types"]
+    }
   },
   "include": ["./**/*"],
   "exclude": ["node_modules", "./lib/*", "./test/*"]
