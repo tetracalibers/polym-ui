@@ -19,19 +19,20 @@ function* traverserGenerator<T>(collec: (() => T)[]) {
   yield* collec
 }
 
-function* execCycleGenerator<T>(
+async function* execCycleGenerator<T>(
   task: void | (() => T)
-): Generator<void | T, void, unknown> {
-  yield task && task()
+): AsyncGenerator<void | Awaited<T>, void, unknown> {
+  task && (await task())
+  yield
 }
 
 const commandList = traverserGenerator(commands)
 
-const exec = <T>(
+const exec = async <T>(
   taskListTraverser: Generator<() => T, void, undefined>
-): boolean => {
+): Promise<boolean> => {
   const { done, value: task } = taskListTraverser.next()
-  execCycleGenerator<T>(task).next()
+  await execCycleGenerator<T>(task).next()
   return done || exec(taskListTraverser)
 }
 
