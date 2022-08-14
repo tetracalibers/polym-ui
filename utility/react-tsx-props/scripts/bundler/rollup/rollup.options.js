@@ -3,7 +3,6 @@ import { nodeResolve } from '@rollup/plugin-node-resolve'
 import esbuild from 'rollup-plugin-esbuild'
 import json from '@rollup/plugin-json'
 import typescript from '@rollup/plugin-typescript'
-import { copyright } from '../meta/copyright'
 
 const production = process.env.NODE_ENV === 'production'
 
@@ -14,7 +13,6 @@ export const options = (pkg) => ({
   typeCheck = false,
   tsOnly = false,
 }) => ({
-  banner: copyright(pkg),
   external: [
     ...Object.keys(pkg.dependencies || {}),
     ...Object.keys(pkg.devDependencies || {}),
