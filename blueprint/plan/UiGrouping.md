@@ -31,43 +31,29 @@ Package name is **Layout**
 
 **Stack** implementation of Every Layout
 
-![](../../assets/draft/Stack-styp.PNG)
-
 ## Card
 
 **Box** implementation of Every Layout
-
-![](../../assets/draft/Card-styp.png)
 
 ## Center
 
 **Center** implementation of Every Layout
 
-![](../../assets/draft/Center-styp.png)
-
 ## Cluster
 
 **Cluster** implementation of Every Layout
-
-![](../../assets/draft/Cluster-styp.png)
 
 ## LayAside
 
 **Sidebar** implementation of Every Layout
 
-![](../../assets/draft/LayAside-styp.png)
-
 ## Switcher
 
 **Switcher** implementation of Every Layout
 
-![](../../assets/draft/Switcher-styp.png)
-
 ## Cover
 
 **Cover** implementation of Every Layout
-
-![](../../assets/draft/Cover-styp.png)
 
 # Impression -> Utility Motion
 
