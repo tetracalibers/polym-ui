@@ -12,17 +12,16 @@
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
-    // 宣言されたが使用されていない変数が存在する場合にコンパイルエラーにする
-    "noUnusedLocals": false, // TODO 完成したプログラムのbuild時はtrue推奨
+    "noUnusedLocals": false,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true,
     "isolatedModules": false,
     "removeComments": true,
-    "outDir": "./lib",
     "resolveJsonModule": true,
-    "baseUrl": "."
+    "baseUrl": ".",
+    "declarationDir": "./@types"
   },
   "include": ["./**/*"],
   "exclude": ["node_modules", "./lib/*", "./test/*"]

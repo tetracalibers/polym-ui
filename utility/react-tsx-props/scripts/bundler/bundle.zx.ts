@@ -8,11 +8,19 @@ import _ from 'lodash'
 import { globby } from 'globby'
 import { bundleResource } from './rollup/rollup.resource.js'
 
+type BundleResourceConfig = typeof bundleResource extends Array<infer T>
+  ? T
+  : never
+
+type CommandThunk = () => void | ProcessPromise
+
 /* -------------------------------------------------------------------------- */
 /* CONFIG                                                                     */
 /* -------------------------------------------------------------------------- */
 
 const DEBUG = true
+
+/* COMMAND OPTIONS ---------------------------------------------------------- */
 
 const ON_TYPE_CHECK_MODE_FLAGS = [
   '--config',
@@ -20,10 +28,32 @@ const ON_TYPE_CHECK_MODE_FLAGS = [
   '--config_target_idx',
 ]
 
+const ON_DTS_DUMP_MODE_FLAGS = [
+  /* ---------------------- */
+  '--lib',
+  'esnext',
+  /* ---------------------- */
+  '--emitDeclarationOnly',
+  /* ---------------------- */
+  '-d',
+  /* ---------------------- */
+  '--declarationDir',
+  '@types',
+  /* ---------------------- */
+  '--moduleResolution',
+  'node',
+  /* ---------------------- */
+  '--skipLibCheck',
+  /* ---------------------- */
+  '--esModuleInterop',
+]
+
 const ON_BUILD_MODE_FLAGS = _.without(
   ON_TYPE_CHECK_MODE_FLAGS,
   '--config_type_check_mode'
 )
+
+/* GLOBAL DTS FILE ---------------------------------------------------------- */
 
 const GLOBAL_DECLARE_FILE_DIR = '@types'
 const GLOBAL_DECLARE_FILE_OUTPUT_DIR = 'lib'
@@ -44,6 +74,11 @@ const typeCheckCommandBuilder = (targetIdx: number) => {
       : $`rollup ${ON_TYPE_CHECK_MODE_FLAGS} ${targetIdx}`
 }
 
+const dumpDtsCommandBuilder = (targetInfo: BundleResourceConfig) => {
+  const inFile = targetInfo.file.input
+  return () => $`tsc ${ON_DTS_DUMP_MODE_FLAGS} ${inFile}`
+}
+
 const buildCommandBuilder = (targetIdx: number) => {
   return () =>
     DEBUG
@@ -51,9 +86,14 @@ const buildCommandBuilder = (targetIdx: number) => {
       : $`rollup ${ON_BUILD_MODE_FLAGS} ${targetIdx}`
 }
 
-const bundleCommandList = bundleResource.reduce((prev, _, idx) => {
-  return [...prev, typeCheckCommandBuilder(idx), buildCommandBuilder(idx)]
-}, [] as (() => void | ProcessPromise)[])
+const bundleCommandList = bundleResource.reduce((prev, info, idx) => {
+  return [
+    ...prev,
+    typeCheckCommandBuilder(idx),
+    dumpDtsCommandBuilder(info),
+    buildCommandBuilder(idx),
+  ]
+}, [] as CommandThunk[])
 
 /* -------------------------------------------------------------------------- */
 /* UTILITY                                                                    */
