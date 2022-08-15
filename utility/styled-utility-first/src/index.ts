@@ -15,7 +15,7 @@ export namespace PUT {
 import { CONTINUOUS_ELEMENTS } from './packages/SELECT/selector/continuous'
 
 export namespace SELECT {
-  export const continuousElements = CONTINUOUS_ELEMENTS.continuousElements
+  export const continuousE = CONTINUOUS_ELEMENTS.continuousElements
 }
 
 /* -------------------------------------------------------------------------- */

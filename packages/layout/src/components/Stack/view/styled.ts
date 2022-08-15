@@ -21,7 +21,7 @@ export const Root = styled.div.attrs<StackProps>(props => ({
   // 連続する要素にだけ上方向のマージンを適用
   ${({ recursive, space }) => {
     return css`
-      ${SELECT.continuousElements({ recursive })} {
+      ${SELECT.continuousE({ recursive })} {
         margin-top: ${space};
       }
     `
