@@ -5,13 +5,14 @@
 
 import 'zx/globals'
 import _ from 'lodash'
+import { globby } from 'globby'
 import { bundleResource } from './rollup/rollup.resource.js'
 
 /* -------------------------------------------------------------------------- */
 /* CONFIG                                                                     */
 /* -------------------------------------------------------------------------- */
 
-const DEBUG = false
+const DEBUG = true
 
 const PREBUILD_FLAGS = [
   '--config',
@@ -89,6 +90,10 @@ await exec(traverserGenerator(buildCommandList))
 /* -------------------------------------------------------------------------- */
 /* POSTPROCESS                                                                */
 /* -------------------------------------------------------------------------- */
+
+const shouldHaveDfileDir = await globby('lib/**/@types', {
+  onlyFiles: false,
+})
 
 const copyDfileToOutDir = copyFilesToDir(GLOBAL_DECLARE_FILE_OUTPUT_DIR)
 
