@@ -1,21 +1,21 @@
 export const bundleResource = [
   {
     file: {
-      input: 'src/util-types/index.ts',
+      input: 'src/util-types.ts',
       output: [
         {
-          file: 'lib/util-types/index.cjs',
+          file: 'lib/util-types.cjs',
           format: 'cjs',
           sourcemap: 'file',
         },
         {
-          file: 'lib/util-types/index.es.js',
+          file: 'lib/util-types.es.js',
           format: 'es',
           sourcemap: 'file',
         },
       ],
     },
-    root: 'src/util-types',
+    root: 'src',
   },
   {
     file: {

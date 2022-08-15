@@ -23,7 +23,12 @@ const PREBUILD_FLAGS = [
 const BUILD_FLAGS = _.without(PREBUILD_FLAGS, '--config_type_check_mode')
 
 const GLOBAL_DECLARE_FILE_DIR = '@types'
-const GLOBAL_DECLARE_FILE_OUTPUT_DIR = 'lib/**/@types'
+const GLOBAL_DECLARE_FILE_OUTPUT_DIR = 'lib'
+
+const GLOBBY_OPTION = {
+  onlyDirectories: true,
+  expandDirectories: false,
+}
 
 /* -------------------------------------------------------------------------- */
 /* UTILITY                                                                    */
@@ -49,14 +54,6 @@ const exec = async <T>(
   await execCycleGenerator<T>(task).next()
   return done || exec(taskListTraverser)
 }
-
-const copyFilesToDir =
-  (toDirPath: string) => (fromFilePath: string) => async () => {
-    const fromDirPath = path.dirname(fromFilePath)
-    await fs.mkdirp(fromDirPath)
-    const toFilePath = toDirPath + '/' + path.basename(fromFilePath)
-    await fs.copy(fromFilePath, toFilePath)
-  }
 
 /* -------------------------------------------------------------------------- */
 /* PREPROCESS                                                                 */
@@ -91,18 +88,27 @@ await exec(traverserGenerator(buildCommandList))
 /* POSTPROCESS                                                                */
 /* -------------------------------------------------------------------------- */
 
-const shouldHaveDfileDir = await globby(GLOBAL_DECLARE_FILE_OUTPUT_DIR, {
-  onlyFiles: false,
-  markDirectories: true,
-})
+const copyFilesToDir =
+  (toDirPath: string) => (fromFilePath: string) => async () => {
+    await fs.mkdirp(toDirPath)
+    const toFilePath = path.join(toDirPath, path.basename(fromFilePath))
+    await fs.copy(fromFilePath, toFilePath)
+  }
+
+const shouldHaveDfileDir = await globby(
+  GLOBAL_DECLARE_FILE_OUTPUT_DIR,
+  GLOBBY_OPTION
+)
 
 const ls_typesDir_Csv = (await $`ls -m ${GLOBAL_DECLARE_FILE_DIR}`).stdout
 const d_fileNameList = ls_typesDir_Csv.split(',').map(s => s.trim())
 
-const setCopyDfileTasks = (handle: (filePath: string) => () => Promise<void>) =>
+const setCopyDfileTasks = (
+  handle: (toFilePath: string) => () => Promise<void>
+) =>
   d_fileNameList.map((fileName: string) => {
-    const filePath = path.join(GLOBAL_DECLARE_FILE_DIR, fileName)
-    return handle(filePath)
+    const fromFilePath = path.join(GLOBAL_DECLARE_FILE_DIR, fileName)
+    return handle(fromFilePath)
   })
 
 for (const outDir of shouldHaveDfileDir) {

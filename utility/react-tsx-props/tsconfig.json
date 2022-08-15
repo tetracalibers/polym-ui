@@ -22,7 +22,10 @@
     "removeComments": true,
     "outDir": "./lib",
     "resolveJsonModule": true,
-    "baseUrl": "./"
+    "baseUrl": ".",
+    "paths": {
+      "*": ["@types/*"]
+    }
   },
   "include": ["./**/*"],
   "exclude": ["node_modules", "./lib/*", "./test/*"]
