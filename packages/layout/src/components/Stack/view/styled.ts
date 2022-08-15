@@ -18,9 +18,8 @@ export const Root = styled.div.attrs<StackProps>(props => ({
   }
 
   ${({ recursive, space }) => {
-    const selector = SELECT.continuousElements({ recursive })
     return css`
-      ${selector} {
+      ${SELECT.continuousElements({ recursive })} {
         margin-top: ${space};
       }
     `
