@@ -9,22 +9,20 @@
   "homepage": "https://github.com/tetracalibers/React-polyhexUI/tree/main/packages/core#readme",
   "license": "MIT",
   "type": "module",
-  "types": "lib/@types/index.d.ts",
-  "module": "lib/index.es.js",
   "exports": {
-    "./util-types": {
-      "import": "./lib/util-types/index.es.js",
-      "require": "./lib/util-types/index.cjs",
-      "node": "./lib/util-types/index.es.js",
-      "default": "./lib/util-types/index.cjs",
-      "types": "./lib/util-types/@types/index.d.ts"
-    },
     ".": {
       "import": "./lib/index.es.js",
       "require": "./lib/index.cjs",
       "node": "./lib/index.es.js",
       "default": "./lib/index.cjs",
       "types": "./lib/@types/index.d.ts"
+    },
+    "./util-types": {
+      "import": "./lib/util-types/index.es.js",
+      "require": "./lib/util-types/index.cjs",
+      "node": "./lib/util-types/index.es.js",
+      "default": "./lib/util-types/index.cjs",
+      "types": "./lib/util-types/@types/index.d.ts"
     }
   },
   "files": [

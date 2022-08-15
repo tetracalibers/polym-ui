@@ -12,7 +12,7 @@ import { bundleResource } from './rollup/rollup.resource.js'
 /* CONFIG                                                                     */
 /* -------------------------------------------------------------------------- */
 
-const DEBUG = true
+const DEBUG = false
 
 const PREBUILD_FLAGS = [
   '--config',
@@ -23,7 +23,7 @@ const PREBUILD_FLAGS = [
 const BUILD_FLAGS = _.without(PREBUILD_FLAGS, '--config_type_check_mode')
 
 const GLOBAL_DECLARE_FILE_DIR = '@types'
-const GLOBAL_DECLARE_FILE_OUTPUT_DIR = 'lib/@types'
+const GLOBAL_DECLARE_FILE_OUTPUT_DIR = 'lib/**/@types'
 
 /* -------------------------------------------------------------------------- */
 /* UTILITY                                                                    */
@@ -91,18 +91,22 @@ await exec(traverserGenerator(buildCommandList))
 /* POSTPROCESS                                                                */
 /* -------------------------------------------------------------------------- */
 
-const shouldHaveDfileDir = await globby('lib/**/@types', {
+const shouldHaveDfileDir = await globby(GLOBAL_DECLARE_FILE_OUTPUT_DIR, {
   onlyFiles: false,
+  markDirectories: true,
 })
-
-const copyDfileToOutDir = copyFilesToDir(GLOBAL_DECLARE_FILE_OUTPUT_DIR)
 
 const ls_typesDir_Csv = (await $`ls -m ${GLOBAL_DECLARE_FILE_DIR}`).stdout
 const d_fileNameList = ls_typesDir_Csv.split(',').map(s => s.trim())
 
-const publishDfileTasks = d_fileNameList.map((fileName: string) => {
-  const filePath = path.join(GLOBAL_DECLARE_FILE_DIR, fileName)
-  return copyDfileToOutDir(filePath)
-})
+const setCopyDfileTasks = (handle: (filePath: string) => () => Promise<void>) =>
+  d_fileNameList.map((fileName: string) => {
+    const filePath = path.join(GLOBAL_DECLARE_FILE_DIR, fileName)
+    return handle(filePath)
+  })
 
-await exec(traverserGenerator(publishDfileTasks))
+for (const outDir of shouldHaveDfileDir) {
+  const copyToOutDirFunc = copyFilesToDir(outDir)
+  const copyTasks = setCopyDfileTasks(copyToOutDirFunc)
+  await exec(traverserGenerator(copyTasks))
+}
