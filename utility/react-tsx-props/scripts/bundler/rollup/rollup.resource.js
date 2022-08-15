@@ -19,7 +19,7 @@ export const bundleResource = [
   },
   {
     file: {
-      input: 'src/api/index.ts',
+      input: 'src/index.ts',
       output: [
         {
           file: 'lib/index.cjs',

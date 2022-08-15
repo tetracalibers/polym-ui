@@ -1,7 +1,7 @@
-import { $ } from '../util-types'
+import { $ } from './util-types'
 import _ from 'lodash'
 
-export const Required = function <T>(defaultV: T | undefined = undefined) {
+export const Required = <T>(defaultV: T | undefined = undefined) => {
   return {
     instance: new $.PropTypeWrap() as $.PropTypeWrapInstance<T>,
     default: defaultV ?? defaultV!,
@@ -9,7 +9,7 @@ export const Required = function <T>(defaultV: T | undefined = undefined) {
   }
 }
 
-export function NotRequired<T>(defaultV: T | undefined = undefined) {
+export const NotRequired = <T>(defaultV: T | undefined = undefined) => {
   return {
     instance: new $.PropTypeWrap() as $.PropTypeWrapInstance<T>,
     default: defaultV ?? defaultV!,
@@ -17,7 +17,7 @@ export function NotRequired<T>(defaultV: T | undefined = undefined) {
   }
 }
 
-export function getDefaultProps<T>(options: $.OptionRecord): T {
+export const getDefaultProps = <T>(options: $.OptionRecord): T => {
   type Opt = typeof options
   type OptKey = keyof Opt
   type OptVal = $.ObjValTypeMap<Opt>
