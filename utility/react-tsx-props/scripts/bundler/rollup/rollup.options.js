@@ -20,11 +20,8 @@ export const options = (pkg) => ({
   plugins: [
     typescript({
       tsconfig,
-      declaration: typeCheck,
       rootDir,
       noEmit: typeCheck,
-      declarationDir: '@types',
-      declarationMap: true,
     }),
     nodeResolve(),
     esbuild({

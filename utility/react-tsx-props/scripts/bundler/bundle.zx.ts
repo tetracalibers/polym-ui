@@ -18,7 +18,7 @@ type CommandThunk = () => void | ProcessPromise
 /* CONFIG                                                                     */
 /* -------------------------------------------------------------------------- */
 
-const DEBUG = true
+const DEBUG = false
 
 /* COMMAND OPTIONS ---------------------------------------------------------- */
 
@@ -46,22 +46,15 @@ const ON_DTS_DUMP_MODE_FLAGS = [
   '--skipLibCheck',
   /* ---------------------- */
   '--esModuleInterop',
+  /* ---------------------- */
+  '--declarationMap',
+  /* ---------------------- */
 ]
 
 const ON_BUILD_MODE_FLAGS = _.without(
   ON_TYPE_CHECK_MODE_FLAGS,
   '--config_type_check_mode'
 )
-
-/* GLOBAL DTS FILE ---------------------------------------------------------- */
-
-const GLOBAL_DECLARE_FILE_DIR = '@types'
-const GLOBAL_DECLARE_FILE_OUTPUT_DIR = 'lib'
-
-const GLOBBY_OPTION = {
-  onlyDirectories: true,
-  expandDirectories: false,
-}
 
 /* -------------------------------------------------------------------------- */
 /* COMMAND                                                                    */
@@ -122,9 +115,8 @@ const exec = async <T>(
 /* PREPROCESS                                                                 */
 /* -------------------------------------------------------------------------- */
 
-if (!DEBUG) {
-  await $`rimraf lib`
-}
+if (!DEBUG) await $`rimraf lib`
+await $`rimraf @types`
 
 /* -------------------------------------------------------------------------- */
 /* MAIN                                                                       */
@@ -136,31 +128,25 @@ await exec(traverserGenerator(bundleCommandList))
 /* POSTPROCESS                                                                */
 /* -------------------------------------------------------------------------- */
 
-const copyFilesToDir =
-  (toDirPath: string) => (fromFilePath: string) => async () => {
-    await fs.mkdirp(toDirPath)
-    const toFilePath = path.join(toDirPath, path.basename(fromFilePath))
+const copyFilesToDir = (toDirPath: string) => {
+  return (fromFilePath: string) => async () => {
+    const toFilePath = path.join(toDirPath, fromFilePath)
     await fs.copy(fromFilePath, toFilePath)
   }
+}
 
-const shouldHaveDfileDir = await globby(
-  GLOBAL_DECLARE_FILE_OUTPUT_DIR,
-  GLOBBY_OPTION
-)
-
-const ls_typesDir_Csv = (await $`ls -m ${GLOBAL_DECLARE_FILE_DIR}`).stdout
-const d_fileNameList = ls_typesDir_Csv.split(',').map(s => s.trim())
+const d_filePathList = await globby('@types/**/*', {
+  onlyFiles: true,
+})
 
 const setCopyDfileTasks = (
-  handle: (toFilePath: string) => () => Promise<void>
-) =>
-  d_fileNameList.map((fileName: string) => {
-    const fromFilePath = path.join(GLOBAL_DECLARE_FILE_DIR, fileName)
+  handle: (fileFilePath: string) => () => Promise<void>
+) => {
+  return d_filePathList.map((fromFilePath: string) => {
     return handle(fromFilePath)
   })
-
-for (const outDir of shouldHaveDfileDir) {
-  const copyToOutDirFunc = copyFilesToDir(outDir)
-  const copyTasks = setCopyDfileTasks(copyToOutDirFunc)
-  await exec(traverserGenerator(copyTasks))
 }
+
+const copyToOutDirFunc = copyFilesToDir('lib')
+const copyTasks = setCopyDfileTasks(copyToOutDirFunc)
+await exec(traverserGenerator(copyTasks))
