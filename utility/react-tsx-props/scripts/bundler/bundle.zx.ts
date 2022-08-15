@@ -5,8 +5,9 @@
 
 import 'zx/globals'
 import _ from 'lodash'
-import { globby } from 'globby'
 import { bundleResource } from './rollup/rollup.resource.js'
+
+const { extname } = path
 
 type BundleResourceConfig = typeof bundleResource extends Array<infer T>
   ? T
@@ -131,15 +132,15 @@ await exec(traverserGenerator(bundleCommandList))
 const copyFilesToDir = (toDirPath: string) => {
   return (fromFilePath: string) => async () => {
     const toFilePath = path.join(toDirPath, fromFilePath)
-    await fs.copy(fromFilePath, toFilePath)
+    const operate: (src: string, dist: string) => Promise<void> =
+      extname(fromFilePath) === '.map' ? fs.move : fs.copy
+    await operate(fromFilePath, toFilePath)
   }
 }
 
-const standard_d_ts = await globby('@types/**/*', {
+const d_filePathList = await globby('{@types,src}/**/*.d.ts{,.map}', {
   onlyFiles: true,
 })
-
-const d_filePathList = [...standard_d_ts, 'global.d.ts']
 
 const setCopyDfileTasks = (
   handle: (fileFilePath: string) => () => Promise<void>

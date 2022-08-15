@@ -1,4 +1,4 @@
-import { $ } from './util-types'
+import { $ } from './util-types/export'
 import _ from 'lodash'
 
 export const Required = <T>(defaultV: T | undefined = undefined) => {
@@ -33,3 +33,5 @@ export type getPropType<O extends $.OptionRecord> = $.PartialByKeys<
   $.getPropTypesMap<O>,
   $.GetOptionalKey<O>
 >
+
+export { $ }

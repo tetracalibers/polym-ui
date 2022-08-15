@@ -1,4 +1,4 @@
-import { $ } from './util-types';
+import { $ } from './util-types/export';
 export declare const Required: <T>(defaultV?: T) => {
     instance: $.PropTypeWrap<T>;
     default: T;
@@ -11,4 +11,5 @@ export declare const NotRequired: <T>(defaultV?: T) => {
 };
 export declare const getDefaultProps: <T>(options: $.OptionRecord) => T;
 export declare type getPropType<O extends $.OptionRecord> = $.PartialByKeys<$.getPropTypesMap<O>, $.GetOptionalKey<O>>;
+export { $ };
 //# sourceMappingURL=index.d.ts.map

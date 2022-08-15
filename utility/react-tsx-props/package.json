@@ -9,18 +9,9 @@
   "homepage": "https://github.com/tetracalibers/React-polyhexUI/tree/main/packages/core#readme",
   "license": "MIT",
   "type": "module",
-  "types": "lib/@types/index.d.ts",
-  "exports": {
-    "import": "./lib/index.es.js",
-    "require": "./lib/index.cjs",
-    "node": "./lib/index.es.js",
-    "default": "./lib/index.cjs",
-    "types": "./lib/@types/index.d.ts"
-  },
-  "files": [
-    "lib/**/*",
-    "@types/*"
-  ],
+  "main": "./lib/index.cjs",
+  "module": "./lib/index.es.js",
+  "types": "./lib/@types/index.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tetracalibers/React-polyhexUI.git"
@@ -43,7 +34,6 @@
     "csstype": "^3.1.0",
     "esbuild": "^0.14.48",
     "fp-ts": "^2.12.2",
-    "globby": "^13.1.2",
     "lodash": "^4.17.21",
     "rimraf": "^3.0.2",
     "rollup": "^2.75.7",
