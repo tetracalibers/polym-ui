@@ -3,10 +3,6 @@ import * as CSST from 'csstype'
 import { Alias, Object as Obj } from 'ts-typedef-helper'
 import $ from 'react-tsx-props/util-types'
 
-$.PropTypeWrap
-
-$.Mutable
-
 type FieldType<Field> = 's' extends Field
   ? string
   : 'f' extends Field
