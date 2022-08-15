@@ -2,11 +2,9 @@ import styled, { css } from 'styled-components'
 import { StackProps } from './props'
 import { PUT, SELECT, Exist } from 'styled-utility-first'
 
-export const Root = styled.div.attrs<StackProps>(props => ({
-  recursive: props.recursive,
-  space: props.space,
-  separateFrom: props.separateFrom,
-}))<StackProps>`
+type RootProps = Omit<StackProps, 'isList'>
+
+export const Root = styled.div<RootProps>`
   & {
     display: flex;
     flex-direction: column;

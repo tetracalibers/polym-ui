@@ -5,9 +5,9 @@ import { Root } from './styled'
 export const Stack: FC<StackProps> = (
   props: StackProps = default_StackProps
 ) => {
-  const { children, space, recursive } = props
+  const { children, space, recursive, separateFrom } = props
   return (
-    <Root recursive={recursive} space={space}>
+    <Root space={space} recursive={recursive} separateFrom={separateFrom}>
       {children}
     </Root>
   )
