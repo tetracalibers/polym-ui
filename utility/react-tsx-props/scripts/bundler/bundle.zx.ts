@@ -12,15 +12,18 @@ import { bundleResource } from './rollup/rollup.resource.js'
 /* CONFIG                                                                     */
 /* -------------------------------------------------------------------------- */
 
-const DEBUG = false
+const DEBUG = true
 
-const PREBUILD_FLAGS = [
+const ON_TYPE_CHECK_MODE_FLAGS = [
   '--config',
   '--config_type_check_mode',
   '--config_target_idx',
 ]
 
-const BUILD_FLAGS = _.without(PREBUILD_FLAGS, '--config_type_check_mode')
+const ON_BUILD_MODE_FLAGS = _.without(
+  ON_TYPE_CHECK_MODE_FLAGS,
+  '--config_type_check_mode'
+)
 
 const GLOBAL_DECLARE_FILE_DIR = '@types'
 const GLOBAL_DECLARE_FILE_OUTPUT_DIR = 'lib'
@@ -31,10 +34,30 @@ const GLOBBY_OPTION = {
 }
 
 /* -------------------------------------------------------------------------- */
-/* UTILITY                                                                    */
+/* COMMAND                                                                    */
 /* -------------------------------------------------------------------------- */
 
-const isEven = (n: number) => n % 2 === 0
+const typeCheckCommandBuilder = (targetIdx: number) => {
+  return () =>
+    DEBUG
+      ? echo`rollup ${ON_TYPE_CHECK_MODE_FLAGS} ${targetIdx}`
+      : $`rollup ${ON_TYPE_CHECK_MODE_FLAGS} ${targetIdx}`
+}
+
+const buildCommandBuilder = (targetIdx: number) => {
+  return () =>
+    DEBUG
+      ? echo`rollup ${ON_BUILD_MODE_FLAGS} ${targetIdx}`
+      : $`rollup ${ON_BUILD_MODE_FLAGS} ${targetIdx}`
+}
+
+const bundleCommandList = bundleResource.reduce((prev, _, idx) => {
+  return [...prev, typeCheckCommandBuilder(idx), buildCommandBuilder(idx)]
+}, [] as (() => void | ProcessPromise)[])
+
+/* -------------------------------------------------------------------------- */
+/* UTILITY                                                                    */
+/* -------------------------------------------------------------------------- */
 
 function* traverserGenerator<T>(collec: T[]) {
   yield* collec
@@ -67,22 +90,7 @@ if (!DEBUG) {
 /* MAIN                                                                       */
 /* -------------------------------------------------------------------------- */
 
-const buildCommandList = [...new Array(bundleResource.length * 2)].map(
-  (_, idx) => {
-    const targetId = Math.floor(idx / 2)
-    const build = () =>
-      DEBUG
-        ? echo`rollup ${BUILD_FLAGS} ${targetId}`
-        : $`rollup ${BUILD_FLAGS} ${targetId}`
-    const prebuild = () =>
-      DEBUG
-        ? echo`rollup ${PREBUILD_FLAGS} ${targetId}`
-        : $`rollup ${PREBUILD_FLAGS} ${targetId}`
-    return isEven(idx) ? prebuild : build
-  }
-)
-
-await exec(traverserGenerator(buildCommandList))
+await exec(traverserGenerator(bundleCommandList))
 
 /* -------------------------------------------------------------------------- */
 /* POSTPROCESS                                                                */
