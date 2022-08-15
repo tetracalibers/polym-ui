@@ -135,9 +135,11 @@ const copyFilesToDir = (toDirPath: string) => {
   }
 }
 
-const d_filePathList = await globby('@types/**/*', {
+const standard_d_ts = await globby('@types/**/*', {
   onlyFiles: true,
 })
+
+const d_filePathList = [...standard_d_ts, 'global.d.ts']
 
 const setCopyDfileTasks = (
   handle: (fileFilePath: string) => () => Promise<void>
