@@ -1,20 +1,6 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import styled, { css } from 'styled-components'
 import { StackProps } from './props'
-import { PUT, SELECT } from 'styled-utility-first'
-
-class _Truthy<P> {
-  private _prop: P
-  constructor(prop: P) {
-    this._prop = prop
-  }
-
-  when(cssTemplateLiteral: FlattenSimpleInterpolation) {
-    return this._prop && cssTemplateLiteral
-  }
-}
-
-const Truthy = <P>(prop: P) => new _Truthy<P>(prop)
-const Exist = <P>(prop: P) => new _Truthy<P>(prop)
+import { PUT, SELECT, Exist } from 'styled-utility-first'
 
 export const Root = styled.div.attrs<StackProps>(props => ({
   recursive: props.recursive,
