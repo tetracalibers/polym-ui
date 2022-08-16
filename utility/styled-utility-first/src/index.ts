@@ -2,7 +2,7 @@
 /* PUT                                                                        */
 /* -------------------------------------------------------------------------- */
 
-import { MARGIN } from './packages/PUT/property/margin'
+import { MARGIN } from './packages/property/margin'
 
 export namespace PUT {
   export const margin = MARGIN
@@ -12,7 +12,7 @@ export namespace PUT {
 /* SELECT                                                                     */
 /* -------------------------------------------------------------------------- */
 
-import { CONTINUOUS_ELEMENTS } from './packages/SELECT/selector/continuous'
+import { CONTINUOUS_ELEMENTS } from './packages/selector/continuous'
 
 export namespace SELECT {
   export const continuousE = CONTINUOUS_ELEMENTS.continuousElements
