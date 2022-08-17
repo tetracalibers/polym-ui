@@ -1,30 +1,24 @@
 import * as CSST from 'csstype'
-import { css } from 'styled-components'
-import { makeMixin } from './helper/mixinMaker'
-import { Exist } from '../dynamic/conditional'
+import { getMixins } from './helper/mixinMaker'
 import _ from 'lodash'
-import { getDefaultProps, getPropType, Required, $ } from 'react-tsx-props'
-
-export type TextDecorationProps = {
-  /* textDecoration ----------------------------- */
-  textDecoration: CSST.Property.TextDecoration
-  textDecorationColor: CSST.Property.TextDecorationColor
-  textDecorationLine: CSST.Property.TextDecorationLine
-  textDecorationSkip: CSST.Property.TextDecorationSkip
-  textDecorationSkipInk: CSST.Property.TextDecorationSkipInk
-  textDecorationStyle: CSST.Property.TextDecorationStyle
-  textDecorationThickness: CSST.Property.TextDecorationThickness
-  /* textUnderline ------------------------------ */
-  textUnderlineOffset: CSST.Property.TextUnderlineOffset
-  textUnderlinePosition: CSST.Property.TextUnderlinePosition
-}
+import { getPropType, Required } from 'react-tsx-props'
 
 const conf = {
+  /* textDecoration ----------------------------- */
   textDecoration: Required<CSST.Property.TextDecoration>(),
+  textDecorationColor: Required<CSST.Property.TextDecorationColor>(),
+  textDecorationLine: Required<CSST.Property.TextDecorationLine>(),
+  textDecorationSkip: Required<CSST.Property.TextDecorationSkip>(),
+  textDecorationSkipInk: Required<CSST.Property.TextDecorationSkipInk>(),
+  textDecorationStyle: Required<CSST.Property.TextDecorationStyle>(),
+  textDecorationThickness: Required<CSST.Property.TextDecorationThickness>(),
+  /* textUnderline ------------------------------ */
+  textUnderlineOffset: Required<CSST.Property.TextUnderlineOffset>(),
+  textUnderlinePosition: Required<CSST.Property.TextUnderlinePosition>(),
 }
 
-type Props = getPropType<typeof conf>
+type Conf = typeof conf
 
-export const textDecorationMixin = {
-  textDecoration: makeMixin<Props>('textDecoration'),
-}
+export type TextDecorationProps = getPropType<typeof conf>
+
+export const textDecorationMixin = getMixins<TextDecorationProps, Conf>(conf)
