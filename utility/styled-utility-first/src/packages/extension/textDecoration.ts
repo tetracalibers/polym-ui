@@ -1,5 +1,9 @@
 import * as CSST from 'csstype'
 import { css } from 'styled-components'
+import { makeMixin } from './helper/mixinMaker'
+import { Exist } from '../dynamic/conditional'
+import _ from 'lodash'
+import { getDefaultProps, getPropType, Required, $ } from 'react-tsx-props'
 
 export type TextDecorationProps = {
   /* textDecoration ----------------------------- */
@@ -15,33 +19,12 @@ export type TextDecorationProps = {
   textUnderlinePosition: CSST.Property.TextUnderlinePosition
 }
 
-export const textDecorationMixin = css<Partial<TextDecorationProps>>`
-  /* textDecoration ----------------------------- */
-  ${({ textDecoration }) =>
-    textDecoration !== null && `text-decoration: ${textDecoration};`}
-  ${({ textDecorationColor }) =>
-    textDecorationColor !== null &&
-    `text-decoration-color: ${textDecorationColor};`}
-  ${({ textDecorationLine }) =>
-    textDecorationLine !== null &&
-    `text-decoration-line: ${textDecorationLine};`}
-  ${({ textDecorationSkip }) =>
-    textDecorationSkip !== null &&
-    `text-decoration-skip: ${textDecorationSkip};`}
-  ${({ textDecorationSkipInk }) =>
-    textDecorationSkipInk !== null &&
-    `text-decoration-skip-ink: ${textDecorationSkipInk};`}
-  ${({ textDecorationStyle }) =>
-    textDecorationStyle !== null &&
-    `text-decoration-style: ${textDecorationStyle};`}
-  ${({ textDecorationThickness }) =>
-    textDecorationThickness !== null &&
-    `text-decoration-thickness: ${textDecorationThickness};`}
-  /* textUnderline ------------------------------ */
-  ${({ textUnderlineOffset }) =>
-    textUnderlineOffset !== null &&
-    `text-underline-offset: ${textUnderlineOffset};`}
-  ${({ textUnderlinePosition }) =>
-    textUnderlinePosition !== null &&
-    `text-underline-position: ${textUnderlinePosition};`}
-`
+const conf = {
+  textDecoration: Required<CSST.Property.TextDecoration>(),
+}
+
+type Props = getPropType<typeof conf>
+
+export const textDecorationMixin = {
+  textDecoration: makeMixin<Props>('textDecoration'),
+}
