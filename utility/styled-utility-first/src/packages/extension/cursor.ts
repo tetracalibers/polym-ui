@@ -6,5 +6,5 @@ export type CursorProps = {
 }
 
 export const cursorMixin = css<Partial<CursorProps>>`
-  ${({ cursor }) => cursor !== null && `cursor: ${cursor}`}
+  ${({ cursor }) => cursor !== null && `cursor: ${cursor};`}
 `

@@ -1,6 +1,7 @@
 import * as $ from 'styled-system'
 import { boxModelMixin, BoxModelProps } from '../extension/boxModel'
 import { cursorMixin, CursorProps } from '../extension/cursor'
+import { listStyleMixin, ListStyleProps } from '../extension/listStyle'
 
 export namespace StyledSystem {
   const propsCategory = [
@@ -17,6 +18,7 @@ export namespace StyledSystem {
     /* original mixin ----------------------------- */
     'boxModel',
     'cursor',
+    'listStyle',
   ] as const
 
   export type PropsCategory = typeof propsCategory[number]
@@ -34,6 +36,7 @@ export namespace StyledSystem {
     /* original mixin ----------------------------- */
     boxModel: BoxModelProps
     cursor: CursorProps
+    listStyle: ListStyleProps
   }
 
   export const styleFn = {
@@ -50,5 +53,6 @@ export namespace StyledSystem {
   export const mixin = {
     boxModel: boxModelMixin,
     cursor: cursorMixin,
+    listStyle: listStyleMixin,
   } as const
 }
