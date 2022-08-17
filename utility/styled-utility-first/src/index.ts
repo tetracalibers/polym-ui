@@ -32,7 +32,15 @@ export { Exist, Truthy }
 
 const config = {
   text: ['color', 'typography'],
-  box: ['this.text', 'space', 'layout', 'position', 'boxModel', 'listStyle'],
+  box: [
+    'this.text',
+    'space',
+    'layout',
+    'position',
+    'boxModel',
+    'listStyle',
+    'outline',
+  ],
   decorativeText: ['this.text', { shadow: 'textShadow' }],
   decorativeBox: ['this.box', 'border', 'background', 'shadow'],
   button: ['this.box', 'border', { shadow: 'boxShadow' }, 'cursor'],
