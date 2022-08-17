@@ -3,6 +3,7 @@ import _ from 'lodash'
 import { styleFn } from 'styled-system'
 
 type InheritanceSyntax = `this.${string}`
+
 type PickImportSyatax<ModuleCategories = StyledSystem.PropsCategory> =
   ModuleCategories extends StyledSystem.PropsCategory
     ? {
@@ -85,7 +86,7 @@ const getStyleFn = (pickCategory: string) => {
     : undefined
 }
 
-export const styleFnMapGenerator = (propsMap: AbstractConf) => {
+export const styleFnMapGenerator = <PropsMap>(propsMap: AbstractConf) => {
   return _.mapValues(propsMap, confValueList => {
     const { moduleCategory, inheritanceSyntax, pickImportSyatax } =
       groupingConfValue(confValueList)
@@ -97,5 +98,5 @@ export const styleFnMapGenerator = (propsMap: AbstractConf) => {
     return expandedConfValueList
       .map(name => getStyleFn(name as string))
       .filter(fn => fn !== undefined)
-  })
+  }) as { [Key in keyof PropsMap]: styleFn[] }
 }

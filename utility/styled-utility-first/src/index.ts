@@ -53,6 +53,12 @@ export type ButtonCssProps = CssProps<Config, 'button'>
 /* styleFn ------------------------------------ */
 
 import { styleFnMapGenerator } from './packages/generator/styleFn'
+import { compose } from 'styled-system'
 
-const styleFnMap = styleFnMapGenerator(config)
-console.log('🚀 ~ file: index.ts ~ line 58 ~ styleFnMap', styleFnMap)
+const styleFnMap = styleFnMapGenerator<Config>(config)
+
+export namespace provideCssProps {
+  export const as = (kind: keyof Config) => {
+    return compose(...styleFnMap[kind])
+  }
+}
