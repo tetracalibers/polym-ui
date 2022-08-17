@@ -37,6 +37,7 @@ const config = {
   box: ['this.text', 'space', 'layout', 'position'],
   decorativeText: ['this.text', { shadow: 'textShadow' }],
   decorativeBox: ['this.box', 'border', 'background', { shadow: 'boxShadow' }],
+  button: ['this.box', 'border', { shadow: 'boxShadow' }],
 } as const
 
 type Config = typeof config
@@ -45,3 +46,4 @@ export type TextCssProps = CssProps<Config, 'text'>
 export type BoxCssProps = CssProps<Config, 'box'>
 export type DecorativeTextCssProps = CssProps<Config, 'decorativeText'>
 export type DecorativeBoxCssProps = CssProps<Config, 'decorativeBox'>
+export type ButtonCssProps = CssProps<Config, 'button'>
