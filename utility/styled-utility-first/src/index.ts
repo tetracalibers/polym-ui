@@ -34,8 +34,9 @@ const config = {
   text: ['color', 'typography'],
   box: ['this.text', 'space', 'layout', 'position', 'boxModel'],
   decorativeText: ['this.text', { shadow: 'textShadow' }],
-  decorativeBox: ['this.box', 'border', 'background', { shadow: 'boxShadow' }],
-  button: ['this.box', 'border', { shadow: 'boxShadow' }],
+  decorativeBox: ['this.box', 'border', 'background', 'shadow'],
+  button: ['this.box', 'border', { shadow: 'boxShadow' }, 'cursor'],
+  link: ['this.decorativeBox', 'cursor'],
 } as const
 
 /* types -------------------------------------- */
@@ -49,6 +50,7 @@ export type BoxCssProps = CssProps<Config, 'box'>
 export type DecorativeTextCssProps = CssProps<Config, 'decorativeText'>
 export type DecorativeBoxCssProps = CssProps<Config, 'decorativeBox'>
 export type ButtonCssProps = CssProps<Config, 'button'>
+export type LinkCssProps = CssProps<Config, 'link'>
 
 /* styleFn ------------------------------------ */
 

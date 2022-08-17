@@ -6,5 +6,5 @@ export type BoxModelProps = {
 }
 
 export const boxModelMixin = css<Partial<BoxModelProps>>`
-  ${({ boxSizing }) => boxSizing != null && `font-size: ${boxSizing};`}
+  ${({ boxSizing }) => boxSizing !== null && `font-size: ${boxSizing};`}
 `

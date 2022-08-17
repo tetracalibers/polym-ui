@@ -17,4 +17,6 @@ Example1.args = {
   borderRadius: '8px',
   borderStyle: 'none',
   boxSizing: 'border-box',
+  color: '#fff',
+  cursor: 'pointer',
 }
