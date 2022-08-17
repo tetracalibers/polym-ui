@@ -2,9 +2,10 @@ import { ReactNode, FC, ComponentPropsWithoutRef } from 'react'
 import { ButtonCssProps, provideCssProps } from 'styled-utility-first'
 import styled from 'styled-components'
 
-type ButtonProps = ComponentPropsWithoutRef<'button'> & {
-  children: ReactNode
-}
+type ButtonProps = ComponentPropsWithoutRef<'button'> &
+  ButtonCssProps & {
+    children: ReactNode
+  }
 
 const BaseButton = styled.button<ButtonCssProps>`
   ${provideCssProps.as('button')}
