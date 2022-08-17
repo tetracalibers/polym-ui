@@ -32,7 +32,16 @@ export { Exist, Truthy }
 
 import { CssProps } from './packages/generator/CssProps'
 
-export type TextCssProps = CssProps.As<'text'>
-export type BoxCssProps = CssProps.As<'box'>
-export type DecorativeTextCssProps = CssProps.As<'decorativeText'>
-export type DecorativeBoxCssProps = CssProps.As<'decorativeBox'>
+const config = {
+  text: ['color', 'typography'],
+  box: ['this.text', 'space', 'layout', 'position'],
+  decorativeText: ['this.text', { shadow: 'textShadow' }],
+  decorativeBox: ['this.box', 'border', 'background', { shadow: 'boxShadow' }],
+} as const
+
+type Config = typeof config
+
+export type TextCssProps = CssProps<Config, 'text'>
+export type BoxCssProps = CssProps<Config, 'box'>
+export type DecorativeTextCssProps = CssProps<Config, 'decorativeText'>
+export type DecorativeBoxCssProps = CssProps<Config, 'decorativeBox'>

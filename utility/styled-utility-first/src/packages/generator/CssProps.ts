@@ -1,17 +1,12 @@
 import { $ as $$ } from 'react-tsx-props'
-import { Const } from './_internal/constants'
+import { StyledSystem } from './_internal/constants'
 
-type ProvideStyledSysCssPropertyMap<GROUP> =
-  GROUP extends Const.FromStyledSystem.PropsCategory
-    ? { [KEY in GROUP]: keyof Const.FromStyledSystem.Props[KEY] }
+type ProvideStyledSysCssPropertyMap<GROUP = StyledSystem.PropsCategory> =
+  GROUP extends StyledSystem.PropsCategory
+    ? {
+        [KEY in GROUP]: keyof StyledSystem.Props[KEY]
+      }
     : never
-
-type InheritanceRefKey = `this.${Const.GroupingBased.PropsCategory}`
-
-type TokenInUsingStyledSysProps =
-  | InheritanceRefKey
-  | Const.FromStyledSystem.PropsCategory
-  | ProvideStyledSysCssPropertyMap<Const.FromStyledSystem.PropsCategory>
 
 type JoinTypeInArray<T extends unknown[], RESULT = T[0]> = T extends [
   infer FIRST,
@@ -20,52 +15,69 @@ type JoinTypeInArray<T extends unknown[], RESULT = T[0]> = T extends [
   ? JoinTypeInArray<REST, RESULT & FIRST>
   : RESULT
 
-type ParseTokenInUsingStyledSysPropsList<
-  TOKEN extends TokenInUsingStyledSysProps = TokenInUsingStyledSysProps
-> = TOKEN extends string
-  ? TOKEN extends keyof Const.FromStyledSystem.Props
-    ? Const.FromStyledSystem.Props[TOKEN]
+type ParseConfValue<ConfValues, Value extends ConfValues> = Value extends string
+  ? Value extends keyof StyledSystem.Props
+    ? StyledSystem.Props[Value]
     : never
-  : TOKEN extends { [k in infer OBJ_KEY]: infer OBJ_VAL }
-  ? OBJ_KEY extends Const.FromStyledSystem.PropsCategory
-    ? OBJ_VAL extends keyof Const.FromStyledSystem.Props[OBJ_KEY]
-      ? Pick<Const.FromStyledSystem.Props[OBJ_KEY], OBJ_VAL>
+  : Value extends { [k in infer OBJ_KEY]: infer OBJ_VAL }
+  ? OBJ_KEY extends StyledSystem.PropsCategory
+    ? OBJ_VAL extends keyof StyledSystem.Props[OBJ_KEY]
+      ? Pick<StyledSystem.Props[OBJ_KEY], OBJ_VAL>
       : never
     : never
   : never
 
-type ParseUsingStyledSysPropsList<
-  LIST extends TokenInUsingStyledSysProps[],
-  RESULT extends ParseTokenInUsingStyledSysPropsList[] = []
+type ParseConfValuesList<
+  ConfValues,
+  LIST extends ConfValues[],
+  RESULT extends ParseConfValue<ConfValues, ConfValues>[] = []
 > = LIST extends [infer FIRST, ...infer REST]
-  ? FIRST extends TokenInUsingStyledSysProps
-    ? REST extends TokenInUsingStyledSysProps[]
-      ? ParseUsingStyledSysPropsList<
+  ? FIRST extends ConfValues
+    ? REST extends ConfValues[]
+      ? ParseConfValuesList<
+          ConfValues,
           REST,
-          [...RESULT, ParseTokenInUsingStyledSysPropsList<FIRST>]
+          [...RESULT, ParseConfValue<ConfValues, FIRST>]
         >
-      : ParseUsingStyledSysPropsList<[FIRST], RESULT>
+      : ParseConfValuesList<ConfValues, [FIRST], RESULT>
     : RESULT
   : RESULT
 
-type RemoveThis<S extends InheritanceRefKey> = S extends `this.${infer NAME}`
-  ? NAME extends Const.GroupingBased.PropsCategory
+type InheritanceRefKey<PropsMap> = keyof PropsMap extends string
+  ? `this.${keyof PropsMap}`
+  : never
+
+type ConfValues<PropsMap> =
+  | StyledSystem.PropsCategory
+  | InheritanceRefKey<PropsMap>
+  | ProvideStyledSysCssPropertyMap<StyledSystem.PropsCategory>
+
+type PropsMapFormat<PropsMap> = {
+  readonly [Key in keyof PropsMap]: readonly ConfValues<PropsMap>[]
+}
+
+type RemoveThis<
+  PropsMap,
+  S extends InheritanceRefKey<PropsMap>
+> = S extends `this.${infer NAME}`
+  ? NAME extends keyof PropsMap
     ? NAME
     : never
   : never
 
 type GroupByWhetherInheritanceRef<
-  LIST extends readonly TokenInUsingStyledSysProps[],
-  OTHER extends readonly TokenInUsingStyledSysProps[] = [],
-  INHERI extends readonly TokenInUsingStyledSysProps[] = []
+  PropsMap,
+  LIST extends readonly ConfValues<PropsMap>[],
+  OTHER extends readonly ConfValues<PropsMap>[] = [],
+  INHERI extends readonly InheritanceRefKey<PropsMap>[] = []
 > = LIST extends readonly [infer F, ...infer R]
-  ? F extends InheritanceRefKey
-    ? R extends readonly TokenInUsingStyledSysProps[]
-      ? GroupByWhetherInheritanceRef<R, OTHER, [...INHERI, F]>
+  ? F extends InheritanceRefKey<PropsMap>
+    ? R extends readonly ConfValues<PropsMap>[]
+      ? GroupByWhetherInheritanceRef<PropsMap, R, OTHER, [...INHERI, F]>
       : never
-    : R extends readonly TokenInUsingStyledSysProps[]
-    ? F extends TokenInUsingStyledSysProps
-      ? GroupByWhetherInheritanceRef<R, [...OTHER, F], INHERI>
+    : R extends readonly ConfValues<PropsMap>[]
+    ? F extends ConfValues<PropsMap>
+      ? GroupByWhetherInheritanceRef<PropsMap, R, [...OTHER, F], INHERI>
       : never
     : never
   : {
@@ -74,56 +86,66 @@ type GroupByWhetherInheritanceRef<
     }
 
 type ToStyledSysNativeProps<
-  ORIGINAL extends InheritanceRefKey[],
-  RESULT extends TokenInUsingStyledSysProps[] = []
+  PropsCategory,
+  PropsMap extends PropsMapFormat<PropsMap>,
+  ORIGINAL extends InheritanceRefKey<PropsMap>[],
+  RESULT extends ConfValues<PropsMap>[] = []
 > = ORIGINAL['length'] extends 0
   ? RESULT
   : ORIGINAL extends [infer F, ...infer R]
-  ? F extends InheritanceRefKey
-    ? R extends InheritanceRefKey[]
-      ? RemoveThis<F> extends Const.GroupingBased.PropsCategory
+  ? F extends InheritanceRefKey<PropsMap>
+    ? R extends InheritanceRefKey<PropsMap>[]
+      ? RemoveThis<PropsMap, F> extends keyof PropsMap
         ? GroupByWhetherInheritanceRef<
-            Const.GroupingBased.PropsMap[RemoveThis<F>]
+            PropsMap,
+            PropsMap[RemoveThis<PropsMap, F>]
           > extends {
             ref: infer REF
             other: infer OTHER
           }
-          ? REF extends InheritanceRefKey[]
-            ? OTHER extends TokenInUsingStyledSysProps[]
-              ? ToStyledSysNativeProps<[...REF, ...R], [...RESULT, ...OTHER]>
+          ? REF extends InheritanceRefKey<PropsMap>[]
+            ? OTHER extends ConfValues<PropsMap>[]
+              ? ToStyledSysNativeProps<
+                  PropsCategory,
+                  PropsMap,
+                  [...REF, ...R],
+                  [...RESULT, ...OTHER]
+                >
               : never
             : never
           : never
         : ToStyledSysNativeProps<
+            PropsCategory,
+            PropsMap,
             R,
-            [...RESULT, ...Const.GroupingBased.PropsMap[RemoveThis<F>]]
+            [...RESULT, ...PropsMap[RemoveThis<PropsMap, F>]]
           >
       : never
     : never
   : never
 
-type UsingCssAsProps<KEY extends Const.GroupingBased.PropsCategory> =
-  $$.Mutable<Const.GroupingBased.PropsMap[KEY]> extends infer LIST
-    ? LIST extends TokenInUsingStyledSysProps[]
-      ? GroupByWhetherInheritanceRef<LIST> extends {
-          ref: infer REF
-          other: infer OTHER
-        }
-        ? REF extends InheritanceRefKey[]
-          ? OTHER extends TokenInUsingStyledSysProps[]
-            ? JoinTypeInArray<
-                [
-                  ...ParseUsingStyledSysPropsList<ToStyledSysNativeProps<REF>>,
-                  ...ParseUsingStyledSysPropsList<OTHER>
-                ]
-              >
-            : never
+export type CssProps<
+  PropsMap extends PropsMapFormat<PropsMap>,
+  PickKey extends keyof PropsMap
+> = $$.Mutable<PropsMap[PickKey]> extends infer LIST
+  ? LIST extends ConfValues<PropsMap>[]
+    ? GroupByWhetherInheritanceRef<PropsMap, LIST> extends {
+        ref: infer REF
+        other: infer OTHER
+      }
+      ? REF extends InheritanceRefKey<PropsMap>[]
+        ? OTHER extends ConfValues<PropsMap>[]
+          ? JoinTypeInArray<
+              [
+                ...ParseConfValuesList<
+                  ConfValues<PropsMap>,
+                  ToStyledSysNativeProps<keyof PropsMap, PropsMap, REF>
+                >,
+                ...ParseConfValuesList<ConfValues<PropsMap>, OTHER>
+              ]
+            >
           : never
         : never
       : never
     : never
-
-export namespace CssProps {
-  export type As<L extends Const.GroupingBased.PropsCategory> =
-    UsingCssAsProps<L>
-}
+  : never
