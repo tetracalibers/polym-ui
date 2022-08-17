@@ -30,8 +30,6 @@ export { Exist, Truthy }
 /* CSS PROPS                                    */
 /* -------------------------------------------- */
 
-import { CssProps } from './packages/generator/CssProps'
-
 const config = {
   text: ['color', 'typography'],
   box: ['this.text', 'space', 'layout', 'position'],
@@ -40,6 +38,10 @@ const config = {
   button: ['this.box', 'border', { shadow: 'boxShadow' }],
 } as const
 
+/* types -------------------------------------- */
+
+import { CssProps } from './packages/generator/CssProps'
+
 type Config = typeof config
 
 export type TextCssProps = CssProps<Config, 'text'>
@@ -47,3 +49,10 @@ export type BoxCssProps = CssProps<Config, 'box'>
 export type DecorativeTextCssProps = CssProps<Config, 'decorativeText'>
 export type DecorativeBoxCssProps = CssProps<Config, 'decorativeBox'>
 export type ButtonCssProps = CssProps<Config, 'button'>
+
+/* styleFn ------------------------------------ */
+
+import { styleFnMapGenerator } from './packages/generator/styleFn'
+
+const styleFnMap = styleFnMapGenerator(config)
+console.log('🚀 ~ file: index.ts ~ line 58 ~ styleFnMap', styleFnMap)

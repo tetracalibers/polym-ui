@@ -30,6 +30,7 @@
     "no-redeclare": "off",
     "import/first": "off",
     "generator-star-spacing": "off",
-    "yield-star-spacing": "off"
+    "yield-star-spacing": "off",
+    "indent": "off"
   }
 }
