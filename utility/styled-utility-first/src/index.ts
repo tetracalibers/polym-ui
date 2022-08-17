@@ -32,7 +32,7 @@ export { Exist, Truthy }
 
 const config = {
   text: ['color', 'typography'],
-  box: ['this.text', 'space', 'layout', 'position'],
+  box: ['this.text', 'space', 'layout', 'position', 'boxModel'],
   decorativeText: ['this.text', { shadow: 'textShadow' }],
   decorativeBox: ['this.box', 'border', 'background', { shadow: 'boxShadow' }],
   button: ['this.box', 'border', { shadow: 'boxShadow' }],
@@ -53,12 +53,11 @@ export type ButtonCssProps = CssProps<Config, 'button'>
 /* styleFn ------------------------------------ */
 
 import { styleFnMapGenerator } from './packages/generator/styleFn'
-import { compose } from 'styled-system'
 
-const styleFnMap = styleFnMapGenerator<Config>(config)
+const styleFnMap = styleFnMapGenerator(config)
 
 export namespace provideCssProps {
   export const as = (kind: keyof Config) => {
-    return compose(...styleFnMap[kind])
+    return styleFnMap[kind]
   }
 }

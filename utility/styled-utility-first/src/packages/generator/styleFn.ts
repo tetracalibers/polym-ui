@@ -1,23 +1,40 @@
-import { StyledSystem } from '../_internal/StyledSystem'
+import { StyledSystem } from '../constants/cssprops'
 import _ from 'lodash'
-import { styleFn } from 'styled-system'
+import { compose, styleFn } from 'styled-system'
+import { css, FlattenInterpolation, ThemedStyledProps } from 'styled-components'
+
+/* -------------------------------------------- */
+/* SYNTAX                                       */
+/* -------------------------------------------- */
+
+type CallStyleFnSyntax = keyof typeof StyledSystem.styleFn
+
+type CallMixinFnSyntax = keyof typeof StyledSystem.mixin
 
 type InheritanceSyntax = `this.${string}`
 
-type PickImportSyatax<ModuleCategories = StyledSystem.PropsCategory> =
-  ModuleCategories extends StyledSystem.PropsCategory
+type PickImportSyatax<ModuleCategories = CallStyleFnSyntax> =
+  ModuleCategories extends CallStyleFnSyntax
     ? {
         [PickCategory in ModuleCategories]: keyof StyledSystem.Props[PickCategory]
       }
     : never
 
+/* -------------------------------------------- */
+/* CONFIG OBJECT STRUCTURE                      */
+/* -------------------------------------------- */
+
 type AbstractConfValue<T extends 'str' | 'obj' | 'all' = 'all'> =
   T extends 'str'
-    ? InheritanceSyntax | StyledSystem.PropsCategory
+    ? InheritanceSyntax | CallStyleFnSyntax | CallMixinFnSyntax
     : T extends 'obj'
     ? PickImportSyatax
     : T extends 'all'
-    ? InheritanceSyntax | PickImportSyatax | StyledSystem.PropsCategory
+    ?
+        | InheritanceSyntax
+        | PickImportSyatax
+        | CallStyleFnSyntax
+        | CallMixinFnSyntax
     : never
 
 type AbstractConfKey = string
@@ -25,6 +42,10 @@ type AbstractConfKey = string
 export type AbstractConf = {
   readonly [Key: AbstractConfKey]: readonly AbstractConfValue[]
 }
+
+/* -------------------------------------------- */
+/* IS PREDICATE                                 */
+/* -------------------------------------------- */
 
 const isInheritanceSyntax = (
   token: AbstractConfValue<'str'>
@@ -39,6 +60,21 @@ const isConfKeys = (
   return Object.keys(obj).includes(pickKey)
 }
 
+const isMixinName = (pickKey: string): pickKey is CallMixinFnSyntax => {
+  return Object.keys(StyledSystem.mixin).includes(pickKey)
+}
+
+const isNativeStyleFnName = (
+  pickCategory: string
+): pickCategory is CallStyleFnSyntax => {
+  const moduleCategories = Object.keys(styleFnRecord)
+  return moduleCategories.includes(pickCategory)
+}
+
+/* -------------------------------------------- */
+/* PARSER                                       */
+/* -------------------------------------------- */
+
 const groupingConfValue = (confValues: readonly AbstractConfValue[]) => {
   const [stringSyntax, objSyntax] = _.partition(confValues, value =>
     _.isString(value)
@@ -47,8 +83,15 @@ const groupingConfValue = (confValues: readonly AbstractConfValue[]) => {
     stringSyntax as AbstractConfValue<'str'>[],
     value => isInheritanceSyntax(value)
   )
+
+  const [callMixinSyntax, callStyleFnSyntax] = _.partition(
+    notInheritanceSyntax,
+    value => isMixinName(value)
+  )
+
   return {
-    moduleCategory: notInheritanceSyntax as StyledSystem.PropsCategory[],
+    callMixinSyntax: callMixinSyntax as CallMixinFnSyntax[],
+    callStyleFnSyntax: callStyleFnSyntax as CallStyleFnSyntax[],
     inheritanceSyntax: inheritanceSyntax as InheritanceSyntax[],
     pickImportSyatax: objSyntax as PickImportSyatax[],
   }
@@ -60,10 +103,15 @@ const expandInheritanceSyntax =
     const propName = token.replace('this.', '')
     if (!isConfKeys(propsMap, propName)) return []
     const expanded = propsMap[propName]
-    const { moduleCategory, inheritanceSyntax, pickImportSyatax } =
-      groupingConfValue(expanded)
+    const {
+      callStyleFnSyntax,
+      callMixinSyntax,
+      inheritanceSyntax,
+      pickImportSyatax,
+    } = groupingConfValue(expanded)
     return _.flatMap([
-      ...moduleCategory,
+      ...callStyleFnSyntax,
+      ...callMixinSyntax,
       ...pickImportSyatax,
       ...inheritanceSyntax.map(inhToken =>
         expandInheritanceSyntax(propsMap)(inhToken as InheritanceSyntax)
@@ -71,32 +119,51 @@ const expandInheritanceSyntax =
     ])
   }
 
-const styleFnRecord = StyledSystem.styleFn as Record<string, styleFn>
+/* -------------------------------------------- */
+/* MIXIN & STYLEFN                              */
+/* -------------------------------------------- */
 
-const isStyledSystemModuleCategory = (
-  pickCategory: string
-): pickCategory is StyledSystem.PropsCategory => {
-  const moduleCategories = Object.keys(styleFnRecord)
-  return moduleCategories.includes(pickCategory)
-}
+type Mixin = FlattenInterpolation<ThemedStyledProps<unknown, unknown>>
+
+const styleFnRecord = StyledSystem.styleFn as Record<string, styleFn>
+const mixinRecord = StyledSystem.mixin as Record<string, Mixin>
 
 const getStyleFn = (pickCategory: string) => {
-  return isStyledSystemModuleCategory(pickCategory)
+  return isNativeStyleFnName(pickCategory)
     ? styleFnRecord[pickCategory]
     : undefined
 }
 
-export const styleFnMapGenerator = <PropsMap>(propsMap: AbstractConf) => {
+const getMixin = (pickCategory: string) => {
+  return isMixinName(pickCategory) ? mixinRecord[pickCategory] : undefined
+}
+
+/* -------------------------------------------- */
+/* GENERATOR                                    */
+/* -------------------------------------------- */
+
+export const styleFnMapGenerator = (propsMap: AbstractConf) => {
   return _.mapValues(propsMap, confValueList => {
-    const { moduleCategory, inheritanceSyntax, pickImportSyatax } =
-      groupingConfValue(confValueList)
+    const {
+      callMixinSyntax,
+      callStyleFnSyntax,
+      inheritanceSyntax,
+      pickImportSyatax,
+    } = groupingConfValue(confValueList)
     const expandedConfValueList = _.flatMap([
-      ...moduleCategory,
+      ...callStyleFnSyntax,
       ...pickImportSyatax.map(record => Object.keys(record)),
       ...inheritanceSyntax.map(inh => expandInheritanceSyntax(propsMap)(inh)),
     ])
-    return expandedConfValueList
+    const styleFnList = expandedConfValueList
       .map(name => getStyleFn(name as string))
-      .filter(fn => fn !== undefined)
-  }) as { [Key in keyof PropsMap]: styleFn[] }
+      .filter(fn => fn !== undefined) as styleFn[]
+    const mixinList = callMixinSyntax
+      .map(name => getMixin(name as string))
+      .filter(fn => fn !== undefined) as Mixin[]
+    return css`
+      ${compose(...styleFnList)}
+      ${mixinList}
+    `
+  })
 }

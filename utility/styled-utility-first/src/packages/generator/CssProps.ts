@@ -1,5 +1,5 @@
 import { $ as $$ } from 'react-tsx-props'
-import { StyledSystem } from '../_internal/StyledSystem'
+import { StyledSystem } from '../constants/cssprops'
 
 type ProvideStyledSysCssPropertyMap<GROUP = StyledSystem.PropsCategory> =
   GROUP extends StyledSystem.PropsCategory
