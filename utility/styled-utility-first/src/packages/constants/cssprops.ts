@@ -3,6 +3,10 @@ import { boxModelMixin, BoxModelProps } from '../extension/boxModel'
 import { cursorMixin, CursorProps } from '../extension/cursor'
 import { listStyleMixin, ListStyleProps } from '../extension/listStyle'
 import { outlineMixin, OutlineProps } from '../extension/outline'
+import {
+  textDecorationMixin,
+  TextDecorationProps,
+} from '../extension/textDecoration'
 
 export namespace StyledSystem {
   const propsCategory = [
@@ -21,6 +25,7 @@ export namespace StyledSystem {
     'cursor',
     'listStyle',
     'outline',
+    'textDecoration',
   ] as const
 
   export type PropsCategory = typeof propsCategory[number]
@@ -40,6 +45,7 @@ export namespace StyledSystem {
     cursor: CursorProps
     listStyle: ListStyleProps
     outline: OutlineProps
+    textDecoration: TextDecorationProps
   }
 
   export const styleFn = {
@@ -58,5 +64,6 @@ export namespace StyledSystem {
     cursor: cursorMixin,
     listStyle: listStyleMixin,
     outline: outlineMixin,
+    textDecoration: textDecorationMixin,
   } as const
 }

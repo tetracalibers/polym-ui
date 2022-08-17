@@ -32,4 +32,5 @@ Example1.args = {
   paddingX: '16px',
   position: 'relative',
   textAlign: 'center',
+  textDecoration: 'none',
 }

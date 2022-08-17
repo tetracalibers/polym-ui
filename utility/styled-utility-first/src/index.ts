@@ -31,7 +31,7 @@ export { Exist, Truthy }
 /* -------------------------------------------- */
 
 const config = {
-  text: ['color', 'typography'],
+  text: ['color', 'typography', { shadow: 'textShadow' }, 'textDecoration'],
   box: [
     'this.text',
     'space',
@@ -41,7 +41,6 @@ const config = {
     'listStyle',
     'outline',
   ],
-  decorativeText: ['this.text', { shadow: 'textShadow' }],
   decorativeBox: ['this.box', 'border', 'background', 'shadow'],
   button: ['this.box', 'border', { shadow: 'boxShadow' }, 'cursor'],
   link: ['this.decorativeBox', 'cursor'],
@@ -55,7 +54,6 @@ type Config = typeof config
 
 export type TextCssProps = CssProps<Config, 'text'>
 export type BoxCssProps = CssProps<Config, 'box'>
-export type DecorativeTextCssProps = CssProps<Config, 'decorativeText'>
 export type DecorativeBoxCssProps = CssProps<Config, 'decorativeBox'>
 export type ButtonCssProps = CssProps<Config, 'button'>
 export type LinkCssProps = CssProps<Config, 'link'>
