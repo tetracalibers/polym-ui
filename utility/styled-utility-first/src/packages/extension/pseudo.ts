@@ -1,14 +1,14 @@
 import { css } from 'styled-components'
 import * as CSST from 'csstype'
 
-export type PseudoProps<Props> = {
+export type PseudoProps<Props> = Partial<{
   pseudo: {
     select: CSST.SimplePseudos[]
     style: {
       [property in keyof Props]: Props[property]
     }
   }
-}
+}>
 
 const pseudoSelector = (selector: CSST.SimplePseudos[]) => {
   return selector.join(', ')

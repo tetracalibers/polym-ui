@@ -15,7 +15,7 @@ type ButtonProps = ComponentPropsWithoutRef<'button'> & {
   children: ReactNode
 } & CssProps
 
-const BaseButton = styled.button<ButtonCssProps>`
+const BaseButton = styled.button<CssProps>`
   ${provideCssProps.as('button')}
   ${pseudoMixin<BasicCssProps>()}
 `

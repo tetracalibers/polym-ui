@@ -9,6 +9,8 @@ module.exports = {
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
     '@storybook/addon-storysource',
+    '@storybook/addon-actions/register',
+    '@storybook/addon-console',
     '@whitespace/storybook-addon-html',
     'storybook-addon-pseudo-states',
   ],
