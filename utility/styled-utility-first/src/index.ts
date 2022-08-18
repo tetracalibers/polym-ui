@@ -71,3 +71,9 @@ export namespace provideCssProps {
     return styleFnMap[kind]
   }
 }
+
+/* pseudo ------------------------------------- */
+
+import { pseudoMixin, PseudoProps } from './packages/extension/pseudo'
+
+export { PseudoProps, pseudoMixin }

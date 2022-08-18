@@ -124,7 +124,7 @@ type ToStyledSysNativeProps<
     : never
   : never
 
-export type CssProps<
+type AllRequiredCssProps<
   PropsMap extends PropsMapFormat<PropsMap>,
   PickKey extends keyof PropsMap
 > = $$.Mutable<PropsMap[PickKey]> extends infer LIST
@@ -149,3 +149,8 @@ export type CssProps<
       : never
     : never
   : never
+
+export type CssProps<
+  PropsMap extends PropsMapFormat<PropsMap>,
+  PickKey extends keyof PropsMap
+> = Partial<AllRequiredCssProps<PropsMap, PickKey>>

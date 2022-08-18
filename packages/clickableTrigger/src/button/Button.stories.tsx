@@ -38,4 +38,10 @@ Example1.args = {
   verticalAlign: 'baseline',
   userSelect: 'none',
   touchAction: 'manipulation',
+  pseudo: {
+    select: [':hover', ':focus'],
+    style: {
+      backgroundColor: '#f082ac',
+    },
+  },
 }
