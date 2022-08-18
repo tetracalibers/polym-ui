@@ -6,6 +6,7 @@ const conf = {
   cursor: Required<CSST.Property.Cursor>(),
   userSelect: Required<CSST.Property.UserSelect>(),
   pointerEvents: Required<CSST.Property.PointerEvents>(),
+  touchAction: Required<CSST.Property.TouchAction>(),
 }
 type Conf = typeof conf
 

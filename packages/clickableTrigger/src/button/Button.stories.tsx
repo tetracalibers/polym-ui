@@ -37,4 +37,5 @@ Example1.args = {
   transitionDuration: '100ms',
   verticalAlign: 'baseline',
   userSelect: 'none',
+  touchAction: 'manipulation',
 }
