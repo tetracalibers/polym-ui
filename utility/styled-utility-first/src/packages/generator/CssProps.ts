@@ -124,7 +124,7 @@ type ToStyledSysNativeProps<
     : never
   : never
 
-type AllRequiredCssProps<
+export type AllRequiredCssProps<
   PropsMap extends PropsMapFormat<PropsMap>,
   PickKey extends keyof PropsMap
 > = $$.Mutable<PropsMap[PickKey]> extends infer LIST
@@ -150,7 +150,16 @@ type AllRequiredCssProps<
     : never
   : never
 
+export type PseudoProps<Props, Property extends keyof Props> = {
+  // @ts-ignore
+  [Selector in `${StyledSystem.Pseudo}${Capitalize<Property>}`]: Props[Property]
+}
+
 export type CssProps<
   PropsMap extends PropsMapFormat<PropsMap>,
   PickKey extends keyof PropsMap
-> = Partial<AllRequiredCssProps<PropsMap, PickKey>>
+> = Partial<AllRequiredCssProps<PropsMap, PickKey>> &
+  PseudoProps<
+    AllRequiredCssProps<PropsMap, PickKey>,
+    keyof AllRequiredCssProps<PropsMap, PickKey>
+  >

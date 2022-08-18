@@ -42,14 +42,14 @@ const config = {
     'outline',
   ],
   decorativeBox: ['this.box', 'border', 'background', 'shadow'],
-  button: ['this.box', 'border', { shadow: 'boxShadow' }, 'userAction'],
+  button: ['this.decorativeBox', 'userAction'],
   link: ['this.decorativeBox', 'userAction'],
   animation: ['transition'],
 } as const
 
 /* types -------------------------------------- */
 
-import { CssProps } from './packages/generator/CssProps'
+import { CssProps, PseudoProps } from './packages/generator/CssProps'
 
 type Config = typeof config
 
@@ -74,6 +74,4 @@ export namespace provideCssProps {
 
 /* pseudo ------------------------------------- */
 
-import { pseudoMixin, PseudoProps } from './packages/extension/pseudo'
-
-export { PseudoProps, pseudoMixin }
+export { PseudoProps }

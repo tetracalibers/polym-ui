@@ -165,6 +165,6 @@ export const styleFnMapGenerator = (propsMap: AbstractConf) => {
         })
         .filter(fn => fn !== undefined)
     )
-    return compose(...styleFnList, ...mixinList)
+    return [...styleFnList, ...mixinList]
   })
 }

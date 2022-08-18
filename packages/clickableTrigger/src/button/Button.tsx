@@ -3,13 +3,10 @@ import {
   AnimationCssProps,
   ButtonCssProps,
   provideCssProps,
-  PseudoProps,
-  pseudoMixin,
 } from 'styled-utility-first'
 import styled from 'styled-components'
 
-type BasicCssProps = ButtonCssProps & AnimationCssProps
-type CssProps = PseudoProps<BasicCssProps> & BasicCssProps
+type CssProps = ButtonCssProps & AnimationCssProps
 
 type ButtonProps = ComponentPropsWithoutRef<'button'> & {
   children: ReactNode
@@ -17,12 +14,9 @@ type ButtonProps = ComponentPropsWithoutRef<'button'> & {
 
 const BaseButton = styled.button<CssProps>`
   ${provideCssProps.as('button')}
-  ${pseudoMixin<BasicCssProps>()}
 `
-console.log(
-  '🚀 ~ file: Button.tsx ~ line 19 ~ BaseButton',
-  provideCssProps.as('button')
-)
+
+console.log(BaseButton)
 
 const Button: FC<ButtonProps> = ({ children, ...props }: ButtonProps) => {
   return <BaseButton {...props}>{children}</BaseButton>
