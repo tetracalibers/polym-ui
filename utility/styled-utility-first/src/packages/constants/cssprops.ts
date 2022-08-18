@@ -1,6 +1,6 @@
 import * as $ from 'styled-system'
 import { boxModelMixin, BoxModelProps } from '../extension/boxModel'
-import { cursorMixin, CursorProps } from '../extension/cursor'
+import { userActionMixin, UserActionProps } from '../extension/userAction'
 import { listStyleMixin, ListStyleProps } from '../extension/listStyle'
 import { outlineMixin, OutlineProps } from '../extension/outline'
 import {
@@ -23,7 +23,7 @@ export namespace StyledSystem {
     'shadow',
     /* original mixin ----------------------------- */
     'boxModel',
-    'cursor',
+    'userAction',
     'listStyle',
     'outline',
     'textDecoration',
@@ -44,7 +44,7 @@ export namespace StyledSystem {
     shadow: $.ShadowProps
     /* original mixin ----------------------------- */
     boxModel: BoxModelProps
-    cursor: CursorProps
+    userAction: UserActionProps
     listStyle: ListStyleProps
     outline: OutlineProps
     textDecoration: TextDecorationProps
@@ -64,7 +64,7 @@ export namespace StyledSystem {
 
   export const mixin = {
     boxModel: boxModelMixin,
-    cursor: cursorMixin,
+    userAction: userActionMixin,
     listStyle: listStyleMixin,
     outline: outlineMixin,
     textDecoration: textDecorationMixin,

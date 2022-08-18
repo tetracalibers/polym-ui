@@ -35,4 +35,6 @@ Example1.args = {
   textDecorationNone: true,
   transitionProperty: 'color',
   transitionDuration: '100ms',
+  verticalAlign: 'baseline',
+  userSelect: 'none',
 }
