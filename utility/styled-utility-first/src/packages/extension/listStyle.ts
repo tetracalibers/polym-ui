@@ -1,19 +1,14 @@
 import * as CSST from 'csstype'
-import { css } from 'styled-components'
+import { getPropType, Required } from 'react-tsx-props'
+import { mixinBuilder } from './helper/mixinMaker'
 
-export type ListStyleProps = {
-  listStyle: CSST.Property.ListStyle
-  listStyleImage: CSST.Property.ListStyleImage
-  listStylePosition: CSST.Property.ListStylePosition
-  listStyleType: CSST.Property.ListStyleType
+const conf = {
+  listStyle: Required<CSST.Property.ListStyle>(),
+  listStyleImage: Required<CSST.Property.ListStyleImage>(),
+  listStylePosition: Required<CSST.Property.ListStylePosition>(),
+  listStyleType: Required<CSST.Property.ListStyleType>(),
 }
 
-export const listStyleMixin = css<Partial<ListStyleProps>>`
-  ${({ listStyle }) => listStyle !== null && `list-style: ${listStyle};`}
-  ${({ listStyleImage }) =>
-    listStyleImage !== null && `list-style-image: ${listStyleImage};`}
-  ${({ listStylePosition }) =>
-    listStylePosition !== null && `list-style-position: ${listStylePosition};`}
-  ${({ listStyleType }) =>
-    listStyleType !== null && `list-style-type: ${listStyleType};`}
-`
+export type ListStyleProps = getPropType<typeof conf>
+
+export const listStyleMixin = mixinBuilder<ListStyleProps, typeof conf>(conf)

@@ -1,7 +1,7 @@
 import { StyledSystem } from '../constants/cssprops'
 import _ from 'lodash'
-import { compose, styleFn } from 'styled-system'
-import { css, FlattenInterpolation, ThemedStyledProps } from 'styled-components'
+import { compose, createStyleFunction, styleFn, system } from 'styled-system'
+import { css } from 'styled-components'
 
 /* -------------------------------------------- */
 /* SYNTAX                                       */
@@ -123,10 +123,8 @@ const expandInheritanceSyntax =
 /* MIXIN & STYLEFN                              */
 /* -------------------------------------------- */
 
-type Mixin = FlattenInterpolation<ThemedStyledProps<unknown, unknown>>
-
 const styleFnRecord = StyledSystem.styleFn as Record<string, styleFn>
-const mixinRecord = StyledSystem.mixin as Record<string, Mixin>
+const mixinRecord = StyledSystem.mixin
 
 const getStyleFn = (pickCategory: string) => {
   return isNativeStyleFnName(pickCategory)
@@ -158,12 +156,15 @@ export const styleFnMapGenerator = (propsMap: AbstractConf) => {
     const styleFnList = expandedConfValueList
       .map(name => getStyleFn(name as string))
       .filter(fn => fn !== undefined) as styleFn[]
-    const mixinList = callMixinSyntax
-      .map(name => getMixin(name as string))
-      .filter(fn => fn !== undefined) as Mixin[]
-    return css`
-      ${compose(...styleFnList)}
-      ${mixinList}
-    `
+    const mixinList = _.flatMap(
+      callMixinSyntax
+        .map(name => {
+          const mixins = getMixin(name)
+          const parser = system(mixins!)
+          return parser
+        })
+        .filter(fn => fn !== undefined)
+    )
+    return compose(...styleFnList, ...mixinList)
   })
 }

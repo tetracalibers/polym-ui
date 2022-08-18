@@ -1,8 +1,7 @@
 import * as CSST from 'csstype'
-import { getMixins } from './helper/mixinMaker'
 import _ from 'lodash'
 import { getPropType, Required } from 'react-tsx-props'
-import { css } from 'styled-components'
+import { mixinBuilder } from './helper/mixinMaker'
 
 const conf = {
   /* textDecoration ----------------------------- */
@@ -23,7 +22,8 @@ export type TextDecorationProps = getPropType<typeof conf> & {
   textDecorationNone?: boolean
 }
 
-export const textDecorationMixin = css<TextDecorationProps>`
-  ${getMixins<Omit<TextDecorationProps, 'textDecorationNone'>, Conf>(conf)}
-  ${({ textDecorationNone }) => textDecorationNone && 'text-decoration: none;'}
-`
+export const textDecorationMixin = {
+  ...mixinBuilder<TextDecorationProps, Conf>(conf),
+  textDecorationNone: (props: TextDecorationProps) =>
+    props.textDecorationNone && 'text-decoration: none;',
+}

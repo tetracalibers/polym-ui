@@ -1,6 +1,6 @@
 import * as CSST from 'csstype'
 import { getPropType, Required } from 'react-tsx-props'
-import { getMixins } from './helper/mixinMaker'
+import { mixinBuilder } from './helper/mixinMaker'
 
 const conf = {
   transitionDelay: Required<CSST.Property.TransitionDelay>(),
@@ -10,4 +10,4 @@ const conf = {
 }
 
 export type TransitionProps = getPropType<typeof conf>
-export const transitionMixin = getMixins<TransitionProps, typeof conf>(conf)
+export const transitionMixin = mixinBuilder<TransitionProps, typeof conf>(conf)

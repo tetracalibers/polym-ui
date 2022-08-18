@@ -1,7 +1,6 @@
 import * as CSST from 'csstype'
 import { getPropType, Required } from 'react-tsx-props'
-import { css } from 'styled-components'
-import { getMixins } from './helper/mixinMaker'
+import { mixinBuilder } from './helper/mixinMaker'
 
 const conf = {
   outlineColor: Required<CSST.Property.OutlineColor>(),
@@ -14,7 +13,7 @@ export type OutlineProps = getPropType<typeof conf> & {
   outlineNone?: boolean
 }
 
-export const outlineMixin = css<OutlineProps>`
-  ${getMixins<Omit<OutlineProps, 'outlineNone'>, typeof conf>(conf)}
-  ${({ outlineNone }) => outlineNone && 'outline: none;'}
-`
+export const outlineMixin = {
+  ...mixinBuilder<OutlineProps, typeof conf>(conf),
+  outlineNone: (props: OutlineProps) => props.outlineNone && 'outline: none;',
+}

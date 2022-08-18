@@ -1,6 +1,6 @@
 import * as CSST from 'csstype'
 import { getPropType, Required } from 'react-tsx-props'
-import { getMixins } from './helper/mixinMaker'
+import { mixinBuilder } from './helper/mixinMaker'
 
 const conf = {
   cursor: Required<CSST.Property.Cursor>(),
@@ -11,4 +11,4 @@ const conf = {
 type Conf = typeof conf
 
 export type UserActionProps = getPropType<Conf>
-export const userActionMixin = getMixins<UserActionProps, Conf>(conf)
+export const userActionMixin = mixinBuilder<UserActionProps, Conf>(conf)

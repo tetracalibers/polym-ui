@@ -1,10 +1,19 @@
 import * as CSST from 'csstype'
-import { css } from 'styled-components'
+import { getPropType, Required } from 'react-tsx-props'
+import { mixinBuilder } from './helper/mixinMaker'
 
-export type BoxModelProps = {
-  boxSizing: CSST.Property.BoxSizing
+const conf = {
+  boxSizing: Required<CSST.Property.BoxSizing>(),
 }
 
-export const boxModelMixin = css<Partial<BoxModelProps>>`
-  ${({ boxSizing }) => boxSizing !== null && `font-size: ${boxSizing};`}
-`
+type Conf = typeof conf
+
+export type BoxModelProps = getPropType<Conf>
+
+export const boxModelMixin = mixinBuilder<BoxModelProps, Conf>(conf)
+/* 
+{
+  boxSizing: (props: BoxModelProps) =>
+    props.boxSizing !== null && `box-sizing: ${props.boxSizing};`,
+}
+*/

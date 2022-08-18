@@ -19,6 +19,10 @@ const BaseButton = styled.button<CssProps>`
   ${provideCssProps.as('button')}
   ${pseudoMixin<BasicCssProps>()}
 `
+console.log(
+  '🚀 ~ file: Button.tsx ~ line 19 ~ BaseButton',
+  provideCssProps.as('button')
+)
 
 const Button: FC<ButtonProps> = ({ children, ...props }: ButtonProps) => {
   return <BaseButton {...props}>{children}</BaseButton>
