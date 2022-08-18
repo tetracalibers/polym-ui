@@ -22,8 +22,13 @@ export type TextDecorationProps = getPropType<typeof conf> & {
   textDecorationNone?: boolean
 }
 
+export const textDecorationMixin = mixinBuilder<TextDecorationProps, Conf>(conf)
+
+/*
 export const textDecorationMixin = {
   ...mixinBuilder<TextDecorationProps, Conf>(conf),
   textDecorationNone: (props: TextDecorationProps) =>
     props.textDecorationNone && 'text-decoration: none;',
 }
+
+*/

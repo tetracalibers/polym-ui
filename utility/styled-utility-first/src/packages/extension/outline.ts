@@ -13,7 +13,11 @@ export type OutlineProps = getPropType<typeof conf> & {
   outlineNone?: boolean
 }
 
+export const outlineMixin = mixinBuilder<OutlineProps, typeof conf>(conf)
+
+/*
 export const outlineMixin = {
   ...mixinBuilder<OutlineProps, typeof conf>(conf),
   outlineNone: (props: OutlineProps) => props.outlineNone && 'outline: none;',
 }
+*/

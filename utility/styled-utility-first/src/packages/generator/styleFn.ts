@@ -1,7 +1,6 @@
 import { StyledSystem } from '../constants/cssprops'
 import _ from 'lodash'
-import { compose, createStyleFunction, styleFn, system } from 'styled-system'
-import { css } from 'styled-components'
+import { compose, styleFn } from 'styled-system'
 
 /* -------------------------------------------- */
 /* SYNTAX                                       */
@@ -160,11 +159,10 @@ export const styleFnMapGenerator = (propsMap: AbstractConf) => {
       callMixinSyntax
         .map(name => {
           const mixins = getMixin(name)
-          const parser = system(mixins!)
-          return parser
+          return mixins
         })
-        .filter(fn => fn !== undefined)
+        .filter(fn => fn !== undefined) as styleFn[]
     )
-    return [...styleFnList, ...mixinList]
+    return compose(...styleFnList, ...mixinList)
   })
 }
