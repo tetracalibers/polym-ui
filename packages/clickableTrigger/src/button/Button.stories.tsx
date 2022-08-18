@@ -32,5 +32,7 @@ Example1.args = {
   paddingX: '16px',
   position: 'relative',
   textAlign: 'center',
-  textDecoration: 'none',
+  textDecorationNone: true,
+  transitionProperty: 'color',
+  transitionDuration: '100ms',
 }
