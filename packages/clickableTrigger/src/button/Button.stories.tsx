@@ -27,7 +27,7 @@ Example1.args = {
   lineHeight: '20px',
   listStyle: 'none',
   margin: '0',
-  outline: 'none',
+  outlineNone: true,
   paddingY: '10px',
   paddingX: '16px',
   position: 'relative',

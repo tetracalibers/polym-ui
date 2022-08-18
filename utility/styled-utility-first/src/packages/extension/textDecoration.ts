@@ -20,7 +20,7 @@ const conf = {
 type Conf = typeof conf
 
 export type TextDecorationProps = getPropType<typeof conf> & {
-  textDecorationNone: boolean
+  textDecorationNone?: boolean
 }
 
 export const textDecorationMixin = css<TextDecorationProps>`
