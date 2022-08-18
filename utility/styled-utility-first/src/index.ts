@@ -44,6 +44,7 @@ const config = {
   decorativeBox: ['this.box', 'border', 'background', 'shadow'],
   button: ['this.box', 'border', { shadow: 'boxShadow' }, 'cursor'],
   link: ['this.decorativeBox', 'cursor'],
+  animation: ['transition'],
 } as const
 
 /* types -------------------------------------- */
@@ -57,6 +58,7 @@ export type BoxCssProps = CssProps<Config, 'box'>
 export type DecorativeBoxCssProps = CssProps<Config, 'decorativeBox'>
 export type ButtonCssProps = CssProps<Config, 'button'>
 export type LinkCssProps = CssProps<Config, 'link'>
+export type AnimationCssProps = CssProps<Config, 'animation'>
 
 /* styleFn ------------------------------------ */
 

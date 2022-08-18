@@ -7,6 +7,7 @@ import {
   textDecorationMixin,
   TextDecorationProps,
 } from '../extension/textDecoration'
+import { transitionMixin, TransitionProps } from '../extension/transition'
 
 export namespace StyledSystem {
   const propsCategory = [
@@ -26,6 +27,7 @@ export namespace StyledSystem {
     'listStyle',
     'outline',
     'textDecoration',
+    'transition',
   ] as const
 
   export type PropsCategory = typeof propsCategory[number]
@@ -46,6 +48,7 @@ export namespace StyledSystem {
     listStyle: ListStyleProps
     outline: OutlineProps
     textDecoration: TextDecorationProps
+    transition: TransitionProps
   }
 
   export const styleFn = {
@@ -65,5 +68,6 @@ export namespace StyledSystem {
     listStyle: listStyleMixin,
     outline: outlineMixin,
     textDecoration: textDecorationMixin,
+    transition: transitionMixin,
   } as const
 }
