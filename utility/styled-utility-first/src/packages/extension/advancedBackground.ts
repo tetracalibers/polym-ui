@@ -4,6 +4,7 @@ import { mixinBuilder } from './helper/mixinMaker'
 
 const conf = {
   backgroundClip: Required<CSST.Property.BackgroundClip>(),
+  backgroundOrigin: Required<CSST.Property.BackgroundOrigin>(),
 }
 
 type Conf = typeof conf
