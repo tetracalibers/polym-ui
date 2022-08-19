@@ -421,3 +421,46 @@ Example7.args = {
     boxShadow: 'none',
   },
 }
+
+export const Example8 = Template.bind({})
+Example8.args = {
+  children: 'Example8',
+  disabled: false,
+  fontFamily: 'Aboreto',
+  backgroundColor: '#e1ecf4',
+  borderRadius: '3px',
+  border: '1px solid #7aa7c7',
+  boxShadow: 'rgba(255, 255, 255, 0.7) 0 1px 0 0 inset',
+  boxSizing: 'border-box',
+  color: '#39739d',
+  cursor: 'pointer',
+  display: 'inline-block',
+  fontSize: '13px',
+  fontWeight: '400',
+  lineHeight: '1.15385',
+  margin: '0',
+  outline: 'none',
+  paddingY: '8px',
+  paddingX: '0.8em',
+  position: 'relative',
+  textAlign: 'center',
+  textDecoration: 'none',
+  userSelect: 'none',
+  touchAction: 'manipulation',
+  verticalAlign: 'baseline',
+  whiteSpace: 'nowrap',
+  hoverStyle: {
+    backgroundColor: '#b3d3ea',
+    color: '#2c5777',
+  },
+  focusStyle: {
+    backgroundColor: '#b3d3ea',
+    color: '#2c5777',
+    boxShadow: '0 0 0 4px rgba(0, 149, 255, 0.15)',
+  },
+  activeStyle: {
+    backgroundColor: '#a0c7e4',
+    boxShadow: 'none',
+    color: '#2c5777',
+  },
+}
