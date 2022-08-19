@@ -46,6 +46,7 @@ const config = {
     'boxModel',
     'listStyle',
     'outline',
+    'flexbox',
   ],
   decorativeBox: ['this.box', 'border', 'background', 'shadow'],
   button: ['this.decorativeBox', 'userAction', 'formInterface'],

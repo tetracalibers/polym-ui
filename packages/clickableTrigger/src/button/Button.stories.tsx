@@ -276,7 +276,7 @@ export const Example5 = Template.bind({})
 Example5.args = {
   children: 'Example5',
   disabled: false,
-  alignItems: center, // TODO
+  alignItems: 'center',
   backgroundClip: 'padding-box',
   backgroundColor: '#fa6400',
   borderWidth: '1px',
@@ -291,7 +291,7 @@ Example5.args = {
   fontFamily: 'Aboreto',
   fontSize: '16px',
   fontWeight: '600',
-  justifyContent: 'center', // TODO
+  justifyContent: 'center',
   lineHeight: '1.25',
   margin: '0',
   minHeight: '3rem',

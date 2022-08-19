@@ -26,6 +26,7 @@ export namespace StyledSystem {
     'border',
     'position',
     'shadow',
+    'flexbox',
     /* original mixin ----------------------------- */
     'boxModel',
     'userAction',
@@ -49,6 +50,7 @@ export namespace StyledSystem {
     border: $.BorderProps
     position: $.PositionProps
     shadow: $.ShadowProps
+    flexbox: $.FlexboxProps
     /* original mixin ----------------------------- */
     boxModel: BoxModelProps
     userAction: UserActionProps
@@ -69,6 +71,7 @@ export namespace StyledSystem {
     border: $.border,
     position: $.position,
     shadow: $.shadow,
+    flexbox: $.flexbox,
   } as const
 
   export const mixin = {
