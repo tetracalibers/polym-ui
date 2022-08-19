@@ -95,6 +95,9 @@ export default {
     transitionTimingFunction: {
       ...controlType('text'),
     },
+    wordWrap: {
+      ...controlTypeSelectAs('wordWrap'),
+    },
   },
 } as ComponentMeta<typeof Button>
 
