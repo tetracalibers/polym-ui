@@ -518,3 +518,29 @@ Example9.args = {
       'rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .2) 0 6px 15px 0, rgba(0, 0, 0, .1) 0 2px 2px 0, rgba(50, 151, 211, .3) 0 0 0 4px',
   },
 }
+
+export const Example10 = Template.bind({})
+Example10.args = {
+  children: 'Example10',
+  disabled: false,
+  fontFamily: 'Aboreto',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  paddingY: '6px',
+  paddingX: '14px',
+  borderRadius: '6px',
+  border: 'none',
+  color: '#fff',
+  background: 'linear-gradient(180deg, #4B91F7 0%, #367AF6 100%)',
+  backgroundOrigin: 'border-box',
+  boxShadow:
+    '0px 0.5px 1.5px rgba(54, 122, 246, 0.25), inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2)',
+  userSelect: 'none',
+  touchAction: 'manipulation',
+  focusStyle: {
+    boxShadow:
+      'inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2), 0px 0.5px 1.5px rgba(54, 122, 246, 0.25), 0px 0px 0px 3.5px rgba(58, 108, 217, 0.5)',
+    outline: '0',
+  },
+}
