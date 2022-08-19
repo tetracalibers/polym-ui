@@ -133,4 +133,5 @@ export const customOptions = {
     'stretch',
   ],
   overflow: ['visible', 'hidden', 'clip', 'scroll', 'auto'],
+  backgroundOrigin: ['border-box', 'padding-box', 'content-box'],
 }
