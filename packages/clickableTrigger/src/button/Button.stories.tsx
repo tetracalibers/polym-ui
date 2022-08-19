@@ -206,3 +206,34 @@ Example3.args = {
     boxShadow: 'rgba(20, 70, 32, 0.2) 0 1px 0 inset',
   },
 }
+
+export const Example4 = Template.bind({})
+Example4.args = {
+  children: 'Example4',
+  appearance: 'none',
+  backgroundColor: '#fafbfc',
+  border: '1px solid rgba(27, 31, 35, 0.15)',
+  borderRadius: '6px',
+  boxShadow:
+    'rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset',
+  boxSizing: 'border-box',
+  color: '#24292e',
+  cursor: 'pointer',
+  display: 'inline-block',
+  fontFamily: 'Aboreto',
+  fontSize: '14px',
+  fontWeight: '500',
+  lineHeight: '20px',
+  listStyle: 'none',
+  paddingY: '6px',
+  paddingX: '16px',
+  position: 'relative',
+  transitionProperty: 'background-color',
+  transitionDuration: '0.2s',
+  transitionTimingFunction: 'cubic-bezier(0.3, 0, 0.5, 1)',
+  userSelect: 'none',
+  touchAction: 'manipulation',
+  verticalAlign: 'middle',
+  whiteSpace: 'nowrap',
+  wordWrap: 'break-word',
+}
