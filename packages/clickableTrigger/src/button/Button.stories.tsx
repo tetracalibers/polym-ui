@@ -11,6 +11,9 @@ export default {
     children: {
       ...controlType('text'),
     },
+    flexDirection: {
+      ...controlTypeSelectAs('flexDirection'),
+    },
     backgroundColor: {
       ...controlType('color'),
     },
