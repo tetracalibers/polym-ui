@@ -1214,3 +1214,52 @@ Example24.args = {
     opacity: '.5',
   },
 }
+
+export const Example25 = Template.bind({})
+Example25.args = {
+  children: 'Example25',
+  disabled: false,
+  fontFamily: 'Aboreto',
+  backgroundColor: '#36A9AE',
+  backgroundImage: 'linear-gradient(#37ADB2, #329CA0)',
+  borderWidth: '1px',
+  borderStyle: 'solid',
+  borderColor: '#2a8387',
+  borderRadius: '4px',
+  boxShadow: 'rgba(0, 0, 0, 0.12) 0 1px 1px',
+  color: '#FFFFFF',
+  cursor: 'pointer',
+  display: 'block',
+  fontSize: '17px',
+  lineHeight: '100%',
+  margin: '0',
+  outline: '0',
+  paddingTop: '11px',
+  paddingX: '15px',
+  paddingBottom: '12px',
+  textAlign: 'center',
+  transition: 'box-shadow .05s ease-in-out,opacity .05s ease-in-out',
+  userSelect: 'none',
+  touchAction: 'manipulation',
+  width: '100%',
+  hoverStyle: {
+    boxShadow:
+      'rgba(255, 255, 255, 0.3) 0 0 2px inset, rgba(0, 0, 0, 0.4) 0 1px 2px',
+    textDecoration: 'none',
+    transitionDuration: '.15s, .15s',
+  },
+  activeStyle: {
+    boxShadow:
+      'rgba(0, 0, 0, 0.15) 0 2px 4px inset, rgba(0, 0, 0, 0.4) 0 1px 1px',
+  },
+  disabledStyle: {
+    cursor: 'not-allowed',
+    opacity: '.6',
+    ':active': {
+      pointerEvents: 'none',
+    },
+    ':hover': {
+      boxShadow: 'none',
+    },
+  },
+}
