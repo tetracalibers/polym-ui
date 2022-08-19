@@ -159,8 +159,10 @@ export type PseudoProps<Props, Property extends keyof Props> = {
 export type CssProps<
   PropsMap extends PropsMapFormat<PropsMap>,
   PickKey extends keyof PropsMap
-> = Partial<AllRequiredCssProps<PropsMap, PickKey>> &
-  PseudoProps<
-    AllRequiredCssProps<PropsMap, PickKey>,
-    keyof AllRequiredCssProps<PropsMap, PickKey>
-  >
+> = Partial<
+  AllRequiredCssProps<PropsMap, PickKey> &
+    PseudoProps<
+      AllRequiredCssProps<PropsMap, PickKey>,
+      keyof AllRequiredCssProps<PropsMap, PickKey>
+    >
+>

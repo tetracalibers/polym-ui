@@ -1,18 +1,17 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import Button from './Button'
-
 export default {
   title: 'clickable-trigger/Button',
   component: Button,
 } as ComponentMeta<typeof Button>
 
-const Template: ComponentStory<typeof Button> = args => (
-  <Button {...args}>{args.children}</Button>
+const Template: ComponentStory<typeof Button> = ({ children, ...props }) => (
+  <Button {...props}>{children}</Button>
 )
 
 export const Example1 = Template.bind({})
 Example1.args = {
-  children: 'example1',
+  children: 'sample 1',
   backgroundColor: '#ea4c89',
   borderRadius: '8px',
   borderStyle: 'none',
@@ -38,12 +37,10 @@ Example1.args = {
   verticalAlign: 'baseline',
   userSelect: 'none',
   touchAction: 'manipulation',
-  pseudo: {
-    hover: {
-      backgroundColor: '#f082ac',
-    },
-    focus: {
-      backgroundColor: '#f082ac',
-    },
+  hover: {
+    backgroundColor: '#f082ac',
+  },
+  focus: {
+    backgroundColor: '#f082ac',
   },
 }

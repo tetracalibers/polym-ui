@@ -6,31 +6,34 @@ import {
   Pseudo,
 } from 'styled-utility-first'
 import styled from 'styled-components'
-import OnInteraction from './OnInteraction'
+import usePseudoStyleContext from './PseudoStyleProvider'
+
+const PseudoStyleProvider = usePseudoStyleContext('button')
 
 type UseCssProps = ButtonCssProps & AnimationCssProps
 
 type ButtonProps = ComponentPropsWithoutRef<'button'> & {
   children: ReactNode
-  pseudo?: {
-    [pseu in Pseudo]?: {
-      [property in keyof UseCssProps]?: UseCssProps[property]
-    }
+} & UseCssProps & {
+    [pseudo in Pseudo]?: UseCssProps
   }
-} & UseCssProps
 
 const StyledButton = styled.button<UseCssProps>`
   ${provideCssProps.as('button')}
 `
 
-const Button: FC<ButtonProps> = ({ children, ...props }: ButtonProps) => {
-  const { pseudo } = props
-  return pseudo === undefined ? (
-    <StyledButton {...props}>{children}</StyledButton>
-  ) : (
-    <OnInteraction cssCategory='button' {...pseudo}>
-      <StyledButton {...props}>{children}</StyledButton>
-    </OnInteraction>
+const Button: FC<ButtonProps> = ({
+  children,
+  hover,
+  focus,
+  ...props
+}: ButtonProps) => {
+  return (
+    <PseudoStyleProvider pseudo='focus' {...focus}>
+      <PseudoStyleProvider pseudo='hover' {...hover}>
+        <StyledButton {...props}>{children}</StyledButton>
+      </PseudoStyleProvider>
+    </PseudoStyleProvider>
   )
 }
 
