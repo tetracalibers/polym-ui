@@ -864,3 +864,52 @@ Example17.args = {
       'rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px',
   },
 }
+
+export const Example18 = Template.bind({})
+Example18.args = {
+  children: 'Example18',
+  disabled: false,
+  fontFamily: 'Aboreto',
+  alignItems: 'center',
+  backgroundColor: '#0A66C2',
+  border: '0',
+  borderRadius: '100px',
+  boxSizing: 'border-box',
+  color: '#ffffff',
+  cursor: 'pointer',
+  display: 'inline-flex',
+  fontSize: '16px',
+  fontWeight: '600',
+  justifyContent: 'center',
+  lineHeight: '20px',
+  maxWidth: '480px',
+  minHeight: '40px',
+  minWidth: '0px',
+  overflow: 'hidden',
+  padding: '0px',
+  paddingLeft: '20px',
+  paddingRight: '20px',
+  textAlign: 'center',
+  touchAction: 'manipulation',
+  transition:
+    'background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s',
+  userSelect: 'none',
+  verticalAlign: 'middle',
+  hoverStyle: {
+    backgroundColor: '#16437E',
+    color: '#ffffff',
+  },
+  focusStyle: {
+    backgroundColor: '#16437E',
+    color: '#ffffff',
+  },
+  activeStyle: {
+    background: '#09223b',
+    color: 'rgb(255, 255, 255, .7)',
+  },
+  disabledStyle: {
+    cursor: 'not-allowed',
+    background: 'rgba(0, 0, 0, .08)',
+    color: 'rgba(0, 0, 0, .3)',
+  },
+}
