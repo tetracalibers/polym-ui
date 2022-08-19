@@ -1,5 +1,6 @@
 import { $ as $$ } from 'react-tsx-props'
 import { StyledSystem } from '../constants/cssprops'
+import { NotPseudoProps } from '../extension/not'
 import { PseudoProps } from '../extension/pseudo'
 
 type ProvideStyledSysCssPropertyMap<GROUP = StyledSystem.PropsCategory> =
@@ -154,4 +155,6 @@ export type AllRequiredCssProps<
 export type CssProps<
   PropsMap extends PropsMapFormat<PropsMap>,
   PickKey extends keyof PropsMap
-> = Partial<AllRequiredCssProps<PropsMap, PickKey> & PseudoProps>
+> = Partial<
+  AllRequiredCssProps<PropsMap, PickKey> & PseudoProps & NotPseudoProps
+>

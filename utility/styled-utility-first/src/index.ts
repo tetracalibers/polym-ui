@@ -90,8 +90,9 @@ export { Pseudo }
 /* styleFn ------------------------------------ */
 
 import { styleFnMapGenerator } from './packages/generator/styleFn'
+import { PseudoProps, pseudoMixin } from './packages/extension/pseudo'
 import { css } from 'styled-components'
-import { PseudoMixin, PseudoProps } from './packages/extension/pseudo'
+import { NotPseudoProps } from './packages/extension/not'
 
 const styleFnMap = styleFnMapGenerator(config)
 
@@ -99,12 +100,18 @@ export namespace provideCssProps {
   export const as = (kind: keyof Config) => {
     return styleFnMap[kind]
   }
-  export const pseudo = css<PseudoProps>`
-    ${({ hoverStyle }) => PseudoMixin('hover', hoverStyle)}
-    ${({ focusStyle }) => PseudoMixin('focus', focusStyle)}
-    ${({ disabledStyle }) => PseudoMixin('disabled', disabledStyle)}
-    ${({ activeStyle }) => PseudoMixin('active', activeStyle)}
-    ${({ afterStyle }) => PseudoMixin('after', afterStyle)}
-    ${({ beforeStyle }) => PseudoMixin('before', beforeStyle)}
+  export const pseudo = css<PseudoProps & NotPseudoProps>`
+    ${({ hoverStyle }) => pseudoMixin('hover', hoverStyle)}
+    ${({ focusStyle }) => pseudoMixin('focus', focusStyle)}
+    ${({ disabledStyle }) => pseudoMixin('disabled', disabledStyle)}
+    ${({ activeStyle }) => pseudoMixin('active', activeStyle)}
+    
+    ${({ afterStyle }) => pseudoMixin('after', afterStyle)}
+    ${({ beforeStyle }) => pseudoMixin('before', beforeStyle)}
+    
+    ${({ notHoverStyle }) => pseudoMixin('hover', notHoverStyle)}
+    ${({ notFocusStyle }) => pseudoMixin('focus', notFocusStyle)}
+    ${({ notDisabledStyle }) => pseudoMixin('disabled', notDisabledStyle)}
+    ${({ notActiveStyle }) => pseudoMixin('active', notActiveStyle)}
   `
 }

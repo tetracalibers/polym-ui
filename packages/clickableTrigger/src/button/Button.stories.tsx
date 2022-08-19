@@ -834,4 +834,24 @@ Example17.args = {
     outline: 'none',
     border: '2px solid #4285f4',
   },
+  notDisabledStyle: {
+    boxShadow:
+      'rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px',
+    ':hover': {
+      boxShadow:
+        'rgba(60, 64, 67, .3) 0 2px 3px 0, rgba(60, 64, 67, .15) 0 6px 10px 4px',
+    },
+    ':focus': {
+      boxShadow:
+        'rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px',
+    },
+    ':active': {
+      boxShadow:
+        'rgba(60, 64, 67, .3) 0 4px 4px 0, rgba(60, 64, 67, .15) 0 8px 12px 6px',
+    },
+  },
+  disabledStyle: {
+    boxShadow:
+      'rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px',
+  },
 }
