@@ -1307,3 +1307,47 @@ Example26.args = {
     borderColor: '#0039D7',
   },
 }
+
+export const Example27 = Template.bind({})
+Example27.args = {
+  children: 'Example27',
+  disabled: false,
+  fontFamily: 'Aboreto',
+  appearance: 'none',
+  backgroundColor: '#000000',
+  borderColor: '#1A1A1A',
+  borderWidth: '2px',
+  borderStyle: 'solid',
+  borderRadius: '15px',
+  boxSizing: 'border-box',
+  color: '#FFFFFF',
+  cursor: 'pointer',
+  display: 'inline-block',
+  fontSize: '16px',
+  fontWeight: '600',
+  lineHeight: 'normal',
+  margin: '0',
+  minHeight: '60px',
+  minWidth: '0',
+  outline: 'none',
+  paddingY: '24px',
+  paddingX: '24px',
+  textAlign: 'center',
+  textDecoration: 'none',
+  transition: 'all 300ms cubic-bezier(.23, 1, 0.32, 1)',
+  userSelect: 'none',
+  touchAction: 'manipulation',
+  width: '100%',
+  willChange: 'transform',
+  disabledStyle: {
+    pointerEvents: 'none',
+  },
+  hoverStyle: {
+    boxShadow: 'rgba(0, 0, 0, 0.25) 0 8px 15px',
+    transform: 'translateY(-2px)',
+  },
+  activeStyle: {
+    boxShadow: 'none',
+    transform: 'translateY(0)',
+  },
+}
