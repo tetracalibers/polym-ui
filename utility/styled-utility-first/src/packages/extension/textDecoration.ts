@@ -5,6 +5,7 @@ import { mixinBuilder } from './helper/mixinMaker'
 
 const conf = {
   /* textDecoration ----------------------------- */
+  textDecoration: Required<CSST.Property.TextDecoration>(),
   textDecorationColor: Required<CSST.Property.TextDecorationColor>(),
   textDecorationLine: Required<CSST.Property.TextDecorationLine>(),
   textDecorationSkip: Required<CSST.Property.TextDecorationSkip>(),
@@ -18,17 +19,5 @@ const conf = {
 
 type Conf = typeof conf
 
-export type TextDecorationProps = getPropType<typeof conf> & {
-  textDecorationNone?: boolean
-}
-
+export type TextDecorationProps = getPropType<typeof conf>
 export const textDecorationMixin = mixinBuilder<TextDecorationProps, Conf>(conf)
-
-/*
-export const textDecorationMixin = {
-  ...mixinBuilder<TextDecorationProps, Conf>(conf),
-  textDecorationNone: (props: TextDecorationProps) =>
-    props.textDecorationNone && 'text-decoration: none;',
-}
-
-*/
