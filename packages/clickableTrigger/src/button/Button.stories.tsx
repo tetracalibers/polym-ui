@@ -308,7 +308,7 @@ Example5.args = {
   hoverStyle: {
     backgroundColor: '#fb8332',
     boxShadow: 'rgba(0, 0, 0, 0.1) 0 4px 12px',
-    translateY: '-1px', // TODO
+    translateY: '-1px',
   },
   focusStyle: {
     backgroundColor: '#fb8332',

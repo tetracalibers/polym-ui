@@ -3,10 +3,11 @@ import {
   AnimationCssProps,
   ButtonCssProps,
   provideCssProps,
+  TransformCssProps,
 } from 'styled-utility-first'
 import styled from 'styled-components'
 
-export type UseCssProps = ButtonCssProps & AnimationCssProps
+export type UseCssProps = ButtonCssProps & AnimationCssProps & TransformCssProps
 
 type ButtonProps = ComponentPropsWithoutRef<'button'> & {
   children: ReactNode
@@ -15,6 +16,7 @@ type ButtonProps = ComponentPropsWithoutRef<'button'> & {
 const StyledButton = styled.button<UseCssProps>`
   ${provideCssProps.as('button')}
   ${provideCssProps.as('animation')}
+  ${provideCssProps.as('transform')}
   ${provideCssProps.pseudo}
 `
 

@@ -63,6 +63,8 @@ const config = {
 /* types -------------------------------------- */
 
 import { CssProps } from './packages/generator/CssProps'
+import { TransformProps, transformMixin } from './packages/extension/transform'
+import { Pseudo } from './packages/constants/pseudo'
 
 type Config = typeof config
 
@@ -72,12 +74,15 @@ export type DecorativeBoxCssProps = CssProps<Config, 'decorativeBox'>
 export type ButtonCssProps = CssProps<Config, 'button'>
 export type LinkCssProps = CssProps<Config, 'link'>
 export type AnimationCssProps = CssProps<Config, 'animation'>
+export type TransformCssProps = TransformProps
 
 export type CssPropsCategory = keyof Config
 export type CssPropsTypeFactory<K extends CssPropsCategory> = CssProps<
   Config,
   K
 >
+
+export { Pseudo }
 
 /* styleFn ------------------------------------ */
 
@@ -88,7 +93,12 @@ import { PseudoMixin, PseudoProps } from './packages/extension/pseudo'
 const styleFnMap = styleFnMapGenerator(config)
 
 export namespace provideCssProps {
-  export const as = (kind: keyof Config) => {
+  export const as = (kind: keyof Config | 'transform') => {
+    if (kind === 'transform') {
+      return css<TransformProps>`
+        ${({ transform }) => transformMixin(transform)}
+      `
+    }
     return styleFnMap[kind]
   }
   export const pseudo = css<PseudoProps>`
@@ -100,9 +110,3 @@ export namespace provideCssProps {
     ${({ beforeStyle }) => PseudoMixin('before', beforeStyle)}
   `
 }
-
-/* pseudo ------------------------------------- */
-
-import { Pseudo } from './packages/constants/pseudo'
-
-export { Pseudo }
