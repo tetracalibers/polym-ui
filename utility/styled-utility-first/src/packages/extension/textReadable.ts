@@ -4,6 +4,7 @@ import { mixinBuilder } from './helper/mixinMaker'
 
 const conf = {
   whiteSpace: Required<CSST.Property.WhiteSpace>(),
+  wordWrap: Required<CSST.Property.WordWrap>(),
 }
 
 type Conf = typeof conf
