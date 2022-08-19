@@ -577,3 +577,28 @@ Example11.args = {
     outline: '0',
   },
 }
+
+export const Example12 = Template.bind({})
+Example12.args = {
+  children: 'Example12',
+  disabled: false,
+  fontFamily: 'Aboreto',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  paddingY: '6px',
+  paddingX: '14px',
+  borderRadius: '6px',
+  border: 'none',
+  background: '#6E6D70',
+  boxShadow:
+    '0px 0.5px 1px rgba(0, 0, 0, 0.1), inset 0px 0.5px 0.5px rgba(255, 255, 255, 0.5), 0px 0px 0px 0.5px rgba(0, 0, 0, 0.12)',
+  color: '#DFDEDF',
+  userSelect: 'none',
+  touchAction: 'manipulation',
+  focusStyle: {
+    boxShadow:
+      'inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2), 0px 0.5px 1px rgba(0, 0, 0, 0.1), 0px 0px 0px 3.5px rgba(58, 108, 217, 0.5)',
+    outline: '0',
+  },
+}
