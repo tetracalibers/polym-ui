@@ -1,33 +1,6 @@
-import * as mdnCssPropertiesJson from 'mdn-data/css/properties.json'
-import _ from 'lodash'
+import { getSelectTypeControlOption } from './css-props/browser'
 
-const mdnCssProperties = JSON.parse(
-  JSON.stringify(mdnCssPropertiesJson)
-).default
+export { getSelectTypeControlOption }
 
-const acronymOf = (word: string) => word.slice(0, 1)
-
-const withoutVendorProperties = _.pick(
-  mdnCssProperties,
-  Object.keys(mdnCssProperties).filter((propName: string) => {
-    return acronymOf(propName) !== '-'
-  })
-)
-
-const pickSyntax = _.mapValues(withoutVendorProperties, val => {
-  return {
-    control: {
-      type: 'select',
-    },
-    options: _.words(val.syntax),
-  }
-})
-
-const convertedToCamelCase = _.mapKeys(pickSyntax, (_val, key) =>
-  _.camelCase(key)
-)
-
-export const getSelectTypeControlOption =
-  <PropType extends string>() =>
-  (cssPropName: PropType) =>
-    convertedToCamelCase[cssPropName]
+// テスト用（バンドル時はコメントアウト）
+//import './css-props/use-fs'
