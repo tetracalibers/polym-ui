@@ -702,6 +702,9 @@ Example14.args = {
 
 export const Example15 = Template.bind({})
 Example15.args = {
+  children: 'Example15',
+  disabled: false,
+  fontFamily: 'Aboreto',
   backgroundImage: 'linear-gradient(#42A1EC, #0070C9)',
   borderWidth: '1px',
   borderStyle: 'solid',

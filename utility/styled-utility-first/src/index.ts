@@ -37,6 +37,7 @@ const config = {
     { shadow: 'textShadow' },
     'textDecoration',
     'textReadable',
+    'writingMode',
   ],
   box: [
     'this.text',
