@@ -86,6 +86,9 @@ export default {
     touchAction: {
       ...controlTypeSelectAs('touchAction'),
     },
+    whiteSpace: {
+      ...controlTypeSelectAs('whiteSpace'),
+    },
   },
 } as ComponentMeta<typeof Button>
 
