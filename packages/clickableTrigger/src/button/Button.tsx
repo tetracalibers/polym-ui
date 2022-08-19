@@ -5,36 +5,37 @@ import {
   provideCssProps,
   Pseudo,
 } from 'styled-utility-first'
-import styled from 'styled-components'
-import usePseudoStyleContext from './PseudoStyleProvider'
-
-const PseudoStyleProvider = usePseudoStyleContext('button')
+import styled, { css, CSSObject } from 'styled-components'
 
 type UseCssProps = ButtonCssProps & AnimationCssProps
 
+type UseCssPropsAllowPseudo = UseCssProps & {
+  [pseudo in Pseudo as `${pseudo}Style`]?: CSSObject
+}
+
 type ButtonProps = ComponentPropsWithoutRef<'button'> & {
   children: ReactNode
-} & UseCssProps & {
-    [pseudo in Pseudo]?: UseCssProps
-  }
+} & UseCssPropsAllowPseudo
 
-const StyledButton = styled.button<UseCssProps>`
+const PseudoMixin = (pseudo: Pseudo, ruleset: CSSObject) => {
+  // prettier-ignore
+  return css`
+    &:${pseudo} {
+      ${ruleset}
+    }
+  `
+}
+
+const StyledButton = styled.button<UseCssPropsAllowPseudo>`
   ${provideCssProps.as('button')}
+  ${({ hoverStyle }) =>
+    hoverStyle !== undefined && PseudoMixin('hover', hoverStyle)}
+  ${({ focusStyle }) =>
+    focusStyle !== undefined && PseudoMixin('focus', focusStyle)}
 `
 
-const Button: FC<ButtonProps> = ({
-  children,
-  hover,
-  focus,
-  ...props
-}: ButtonProps) => {
-  return (
-    <PseudoStyleProvider pseudo='focus' {...focus}>
-      <PseudoStyleProvider pseudo='hover' {...hover}>
-        <StyledButton {...props}>{children}</StyledButton>
-      </PseudoStyleProvider>
-    </PseudoStyleProvider>
-  )
+const Button: FC<ButtonProps> = ({ children, ...props }: ButtonProps) => {
+  return <StyledButton {...props}>{children}</StyledButton>
 }
 
 export default Button

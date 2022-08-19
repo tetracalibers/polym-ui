@@ -37,10 +37,10 @@ Example1.args = {
   verticalAlign: 'baseline',
   userSelect: 'none',
   touchAction: 'manipulation',
-  hover: {
+  hoverStyle: {
     backgroundColor: '#f082ac',
   },
-  focus: {
+  focusStyle: {
     backgroundColor: '#f082ac',
   },
 }
