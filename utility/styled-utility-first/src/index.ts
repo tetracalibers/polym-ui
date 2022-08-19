@@ -58,7 +58,7 @@ const config = {
   ],
   button: ['this.decorativeBox', 'userAction', 'formInterface'],
   link: ['this.decorativeBox', 'userAction'],
-  animation: ['transition'],
+  animation: ['transition', 'willChange'],
   transform: ['transform'],
   svg: ['svg'],
 } as const

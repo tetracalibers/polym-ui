@@ -20,6 +20,7 @@ import {
 import { transformMixin, TransformProps } from '../extension/transform'
 import { writingModeMixin, WritingModeProps } from '../extension/writingMode'
 import { svgMixin, SvgProps } from '../extension/svg'
+import { willChangeMixin, WillChangeProps } from '../extension/willChange'
 
 export namespace StyledSystem {
   const propsCategory = [
@@ -47,6 +48,7 @@ export namespace StyledSystem {
     'transform',
     'writingMode',
     'svg',
+    'willChange',
   ] as const
 
   export type PropsCategory = typeof propsCategory[number]
@@ -75,6 +77,7 @@ export namespace StyledSystem {
     transform: TransformProps
     writingMode: WritingModeProps
     svg: SvgProps
+    willChange: WillChangeProps
   }
 
   export const styleFn = {
@@ -102,5 +105,6 @@ export namespace StyledSystem {
     transform: transformMixin,
     writingMode: writingModeMixin,
     svg: svgMixin,
+    willChange: willChangeMixin,
   } as const
 }
