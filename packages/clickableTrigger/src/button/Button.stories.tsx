@@ -20,6 +20,9 @@ export default {
     direction: {
       ...controlTypeSelectAs('direction'),
     },
+    transition: {
+      ...controlType('text'),
+    },
     outlineWidth: {
       ...controlType('text'),
     },
