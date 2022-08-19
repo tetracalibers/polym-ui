@@ -15,7 +15,7 @@ module.exports = {
    * consistent: オブジェクトの少なくとも1つのプロパティに引用符が必要な場合は、すべてのプロパティを引用符で囲む
    * preserve : 入力された引用符を尊重する
    */
-  quoteProps: 'consistent',
+  quoteProps: 'as-needed',
   // JSXでダブルクォートの代わりにシングルクォートを使用
   jsxSingleQuote: true,
   // 末尾のカンマの設定

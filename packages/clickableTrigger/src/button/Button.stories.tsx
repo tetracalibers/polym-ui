@@ -239,6 +239,10 @@ Example3.args = {
   focusStyle: {
     boxShadow: 'rgba(46, 164, 79, 0.4) 0 0 0 3px',
     outline: 'none',
+    ':not(:focus-visible)': {
+      boxShadow: 'none',
+      outline: 'none',
+    },
   },
   disabledStyle: {
     backgroundColor: '#94d3ac',
@@ -678,6 +682,9 @@ Example14.args = {
   whiteSpace: 'nowrap',
   activeStyle: {
     borderBottomColor: '#a2a6ac',
+    ':hover': {
+      borderBottomColor: '#a2a6ac',
+    },
   },
   hoverStyle: {
     borderColor: '#a2a6ac #979aa1 #82858a',
