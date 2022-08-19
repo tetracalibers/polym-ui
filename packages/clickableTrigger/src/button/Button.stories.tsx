@@ -110,6 +110,9 @@ export default {
     backfaceVisibility: {
       ...controlTypeSelectAs('backfaceVisibility'),
     },
+    overflow: {
+      ...controlTypeSelectAs('overflow'),
+    },
   },
 } as ComponentMeta<typeof Button>
 

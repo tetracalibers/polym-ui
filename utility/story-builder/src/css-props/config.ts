@@ -132,4 +132,5 @@ export const customOptions = {
     'space-evenly',
     'stretch',
   ],
+  overflow: ['visible', 'hidden', 'clip', 'scroll', 'auto'],
 }
