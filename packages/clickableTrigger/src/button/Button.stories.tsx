@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
-import { getSelectTypeControlOption } from 'story-builder'
+import { getSelectTypeControlOption, controlType } from 'story-builder'
 import Button, { UseCssProps } from './Button'
 
 const selectOption = getSelectTypeControlOption<keyof UseCssProps>()
@@ -9,19 +9,13 @@ export default {
   component: Button,
   argTypes: {
     children: {
-      control: {
-        type: 'text',
-      },
+      ...controlType('text'),
     },
     backgroundColor: {
-      control: {
-        type: 'color',
-      },
+      ...controlType('color'),
     },
     borderRadius: {
-      control: {
-        type: 'text',
-      },
+      ...controlType('text'),
     },
     borderStyle: {
       ...selectOption('borderStyle'),
@@ -30,9 +24,7 @@ export default {
       ...selectOption('boxSizing'),
     },
     color: {
-      control: {
-        type: 'color',
-      },
+      ...controlType('color'),
     },
     cursor: {
       ...selectOption('cursor'),
@@ -41,37 +33,58 @@ export default {
       ...selectOption('display'),
     },
     fontFamily: {
-      control: {
-        type: 'text',
-      },
+      ...controlType('text'),
     },
     fontSize: {
-      control: {
-        type: 'text',
-      },
+      ...controlType('text'),
     },
     fontWeight: {
-      control: {
-        type: 'text',
-      },
+      ...controlType('text'),
     },
     height: {
-      control: {
-        type: 'text',
-      },
+      ...controlType('text'),
     },
     lineHeight: {
-      control: {
-        type: 'text',
-      },
+      ...controlType('text'),
     },
     listStyle: {
       ...selectOption('listStyle'),
     },
     margin: {
-      control: {
-        type: 'text',
-      },
+      ...controlType('text'),
+    },
+    outline: {
+      ...selectOption('outline'),
+    },
+    paddingX: {
+      ...controlType('text'),
+    },
+    paddingY: {
+      ...controlType('text'),
+    },
+    position: {
+      ...selectOption('position'),
+    },
+    textAlign: {
+      ...selectOption('textAlign'),
+    },
+    textDecoration: {
+      ...selectOption('textDecoration'),
+    },
+    transitionProperty: {
+      ...controlType('text'),
+    },
+    transitionDuration: {
+      ...controlType('text'),
+    },
+    verticalAlign: {
+      ...selectOption('verticalAlign'),
+    },
+    userSelect: {
+      ...selectOption('userSelect'),
+    },
+    touchAction: {
+      ...selectOption('touchAction'),
     },
   },
 } as ComponentMeta<typeof Button>
