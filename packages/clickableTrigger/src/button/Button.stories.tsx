@@ -699,3 +699,48 @@ Example14.args = {
     outline: '0',
   },
 }
+
+export const Example15 = Template.bind({})
+Example15.args = {
+  backgroundImage: 'linear-gradient(#42A1EC, #0070C9)',
+  borderWidth: '1px',
+  borderStyle: 'solid',
+  borderColor: '#0077CC',
+  borderRadius: '4px',
+  boxSizing: 'border-box',
+  color: '#FFFFFF',
+  cursor: 'pointer',
+  direction: 'ltr',
+  display: 'block',
+  fontSize: '17px',
+  fontWeight: '400',
+  letterSpacing: '-.022em',
+  lineHeight: '1.47059',
+  minWidth: '30px',
+  overflow: 'visible',
+  paddingY: '4px',
+  paddingX: '15px',
+  textAlign: 'center',
+  verticalAlign: 'baseline',
+  userSelect: 'none',
+  touchAction: 'manipulation',
+  whiteSpace: 'nowrap',
+  disabledStyle: {
+    cursor: 'default',
+    opacity: '.3',
+  },
+  hoverStyle: {
+    backgroundImage: 'linear-gradient(#51A9EE, #147BCD)',
+    borderColor: '#1482D0',
+    textDecoration: 'none',
+  },
+  activeStyle: {
+    backgroundImage: 'linear-gradient(#3D94D9, #0067B9)',
+    borderColor: '#006DBC',
+    outline: 'none',
+  },
+  focusStyle: {
+    boxShadow: 'rgba(131, 192, 253, 0.5) 0 0 0 3px',
+    outline: 'none',
+  },
+}
