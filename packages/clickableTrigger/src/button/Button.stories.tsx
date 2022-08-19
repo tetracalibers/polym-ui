@@ -3,6 +3,88 @@ import Button from './Button'
 export default {
   title: 'clickable-trigger/Button',
   component: Button,
+  argTypes: {
+    children: {
+      control: {
+        type: 'text',
+      },
+    },
+    backgroundColor: {
+      control: {
+        type: 'color',
+      },
+    },
+    borderRadius: {
+      control: {
+        type: 'text',
+      },
+    },
+    borderStyle: {
+      control: {
+        type: 'select',
+      },
+      options: ['none'],
+    },
+    boxSizing: {
+      control: {
+        type: 'select',
+      },
+      options: ['border-box', 'content-box'],
+    },
+    color: {
+      control: {
+        type: 'color',
+      },
+    },
+    cursor: {
+      control: {
+        type: 'select',
+      },
+      options: ['pointer'],
+    },
+    display: {
+      control: {
+        type: 'select',
+      },
+      options: ['inline-block', 'block'],
+    },
+    fontFamily: {
+      control: {
+        type: 'text',
+      },
+    },
+    fontSize: {
+      control: {
+        type: 'text',
+      },
+    },
+    fontWeight: {
+      control: {
+        type: 'text',
+      },
+    },
+    height: {
+      control: {
+        type: 'text',
+      },
+    },
+    lineHeight: {
+      control: {
+        type: 'text',
+      },
+    },
+    listStyle: {
+      control: {
+        type: 'select',
+      },
+      options: ['none'],
+    },
+    margin: {
+      control: {
+        type: 'text',
+      },
+    },
+  },
 } as ComponentMeta<typeof Button>
 
 const Template: ComponentStory<typeof Button> = ({ children, ...props }) => (
