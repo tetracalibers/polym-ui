@@ -381,3 +381,43 @@ Example6.args = {
     transform: 'translateY(0)',
   },
 }
+
+export const Example7 = Template.bind({})
+Example7.args = {
+  children: 'Example7',
+  disabled: false,
+  fontFamily: 'Aboreto',
+  backgroundColor: '#0095ff',
+  border: '1px solid transparent',
+  borderRadius: '3px',
+  boxShadow: 'rgba(255, 255, 255, 0.4) 0 1px 0 0 inset',
+  boxSizing: 'border-box',
+  color: '#fff',
+  cursor: 'pointer',
+  display: 'inline-block',
+  fontSize: '13px',
+  fontWeight: '400',
+  lineHeight: '1.15385',
+  margin: '0',
+  outline: 'none',
+  paddingY: '8px',
+  paddingX: '0.8em',
+  position: 'relative',
+  textAlign: 'center',
+  textDecoration: 'none',
+  userSelect: 'none',
+  touchAction: 'manipulation',
+  verticalAlign: 'baseline',
+  whiteSpace: 'nowrap',
+  hoverStyle: {
+    backgroundColor: '#07c',
+  },
+  focusStyle: {
+    backgroundColor: '#07c',
+    boxShadow: '0 0 0 4px rgba(0, 149, 255, 0.15)',
+  },
+  activeStyle: {
+    backgroundColor: '#0064bd',
+    boxShadow: 'none',
+  },
+}
