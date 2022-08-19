@@ -1088,3 +1088,39 @@ Example21.args = {
     backgroundPosition: '-20px -20px',
   },
 }
+
+export const Example22 = Template.bind({})
+Example22.args = {
+  children: 'Example22',
+  disabled: false,
+  fontFamily: 'Aboreto',
+  alignItems: 'center',
+  appearance: 'button',
+  backgroundColor: '#0276FF',
+  borderRadius: '8px',
+  borderStyle: 'none',
+  boxShadow: 'rgba(255, 255, 255, 0.26) 0 1px 2px inset',
+  boxSizing: 'border-box',
+  color: '#fff',
+  cursor: 'pointer',
+  display: 'flex',
+  flexDirection: 'row',
+  flexShrink: '0',
+  fontSize: '100%',
+  lineHeight: '1.15',
+  margin: '0',
+  paddingY: '10px',
+  paddingX: '21px',
+  textAlign: 'center',
+  textTransform: 'none',
+  transition:
+    'color .13s ease-in-out,background .13s ease-in-out,opacity .13s ease-in-out,box-shadow .13s ease-in-out',
+  userSelect: 'none',
+  touchAction: 'manipulation',
+  activeStyle: {
+    backgroundColor: '#006AE8',
+  },
+  hoverStyle: {
+    backgroundColor: '#1C84FF',
+  },
+}
