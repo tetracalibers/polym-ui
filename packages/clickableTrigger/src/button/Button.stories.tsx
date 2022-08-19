@@ -979,3 +979,67 @@ Example19.args = {
     cursor: 'auto',
   },
 }
+
+export const Example20 = Template.bind({})
+Example20.args = {
+  children: 'Example20',
+  disabled: false,
+  fontFamily: 'Aboreto',
+  appearance: 'button',
+  backgroundColor: '#4D4AE8',
+  backgroundImage:
+    'linear-gradient(180deg, rgba(255, 255, 255, .15), rgba(255, 255, 255, 0))',
+  borderWidth: '1px',
+  borderStyle: 'solid',
+  borderColor: '#4D4AE8',
+  borderRadius: '1rem',
+  boxShadow:
+    'rgba(255, 255, 255, 0.15) 0 1px 0 inset,rgba(46, 54, 80, 0.075) 0 1px 1px',
+  boxSizing: 'border-box',
+  color: '#FFFFFF',
+  cursor: 'pointer',
+  display: 'inline-block',
+  fontSize: '1rem',
+  fontWeight: '500',
+  lineHeight: '1.5',
+  margin: '0',
+  paddingY: '.5rem',
+  paddingX: '1rem',
+  textAlign: 'center',
+  textTransform: 'none',
+  transition:
+    'color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out',
+  userSelect: 'none',
+  touchAction: 'manipulation',
+  verticalAlign: 'middle',
+  focusStyle: {
+    outline: '0',
+    backgroundColor: '#413FC5',
+    borderColor: '#3E3BBA',
+    boxShadow:
+      'rgba(255, 255, 255, 0.15) 0 1px 0 inset, rgba(46, 54, 80, 0.075) 0 1px 1px, rgba(104, 101, 235, 0.5) 0 0 0 .2rem',
+    ':not(:focus-visible)': {
+      outline: '0',
+    },
+  },
+  hoverStyle: {
+    backgroundColor: '#3733E5',
+    borderColor: '#3733E5',
+  },
+  activeStyle: {
+    backgroundColor: '#3E3BBA',
+    backgroundImage: 'none',
+    borderColor: '#3A38AE',
+    boxShadow: 'rgba(46, 54, 80, 0.125) 0 3px 5px inset',
+    ':focus': {
+      boxShadow:
+        'rgba(46, 54, 80, 0.125) 0 3px 5px inset, rgba(104, 101, 235, 0.5) 0 0 0 .2rem',
+    },
+  },
+  disabledStyle: {
+    backgroundImage: 'none',
+    boxShadow: 'none',
+    opacity: '.65',
+    pointerEvents: 'none',
+  },
+}
