@@ -3,6 +3,7 @@ import { getPropType, Required } from 'react-tsx-props'
 import { mixinBuilder } from './helper/mixinMaker'
 
 const conf = {
+  transition: Required<CSST.Property.Transition>(),
   transitionDelay: Required<CSST.Property.TransitionDelay>(),
   transitionDuration: Required<CSST.Property.TransitionDuration>(),
   transitionProperty: Required<CSST.Property.TransitionProperty>(),
