@@ -2,7 +2,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react'
 import { getSelectTypeControlOption, controlType } from 'story-builder'
 import Button, { UseCssProps } from './Button'
 
-const selectOption = getSelectTypeControlOption<keyof UseCssProps>()
+const controlTypeSelectAs = getSelectTypeControlOption<keyof UseCssProps>()
 
 export default {
   title: 'clickable-trigger/Button',
@@ -18,19 +18,19 @@ export default {
       ...controlType('text'),
     },
     borderStyle: {
-      ...selectOption('borderStyle'),
+      ...controlTypeSelectAs('borderStyle'),
     },
     boxSizing: {
-      ...selectOption('boxSizing'),
+      ...controlTypeSelectAs('boxSizing'),
     },
     color: {
       ...controlType('color'),
     },
     cursor: {
-      ...selectOption('cursor'),
+      ...controlTypeSelectAs('cursor'),
     },
     display: {
-      ...selectOption('display'),
+      ...controlTypeSelectAs('display'),
     },
     fontFamily: {
       ...controlType('text'),
@@ -48,13 +48,13 @@ export default {
       ...controlType('text'),
     },
     listStyle: {
-      ...selectOption('listStyle'),
+      ...controlTypeSelectAs('listStyle'),
     },
     margin: {
       ...controlType('text'),
     },
     outline: {
-      ...selectOption('outline'),
+      ...controlTypeSelectAs('outline'),
     },
     paddingX: {
       ...controlType('text'),
@@ -63,13 +63,13 @@ export default {
       ...controlType('text'),
     },
     position: {
-      ...selectOption('position'),
+      ...controlTypeSelectAs('position'),
     },
     textAlign: {
-      ...selectOption('textAlign'),
+      ...controlTypeSelectAs('textAlign'),
     },
     textDecoration: {
-      ...selectOption('textDecoration'),
+      ...controlTypeSelectAs('textDecoration'),
     },
     transitionProperty: {
       ...controlType('text'),
@@ -78,13 +78,13 @@ export default {
       ...controlType('text'),
     },
     verticalAlign: {
-      ...selectOption('verticalAlign'),
+      ...controlTypeSelectAs('verticalAlign'),
     },
     userSelect: {
-      ...selectOption('userSelect'),
+      ...controlTypeSelectAs('userSelect'),
     },
     touchAction: {
-      ...selectOption('touchAction'),
+      ...controlTypeSelectAs('touchAction'),
     },
   },
 } as ComponentMeta<typeof Button>
