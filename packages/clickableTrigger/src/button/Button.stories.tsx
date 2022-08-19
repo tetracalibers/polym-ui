@@ -113,6 +113,9 @@ export default {
     overflow: {
       ...controlTypeSelectAs('overflow'),
     },
+    textTransform: {
+      ...controlTypeSelectAs('textTransform'),
+    },
   },
 } as ComponentMeta<typeof Button>
 
