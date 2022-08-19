@@ -89,6 +89,9 @@ export default {
     whiteSpace: {
       ...controlTypeSelectAs('whiteSpace'),
     },
+    appearance: {
+      ...controlTypeSelectAs('appearance'),
+    },
   },
 } as ComponentMeta<typeof Button>
 

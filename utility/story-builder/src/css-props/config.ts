@@ -86,4 +86,5 @@ export const customOptions = {
     'revert',
     'unset',
   ],
+  appearance: ['none', 'auto', 'textfield', 'menulist-button'],
 }
