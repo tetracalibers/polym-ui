@@ -69,12 +69,18 @@ export type CssPropsTypeFactory<K extends CssPropsCategory> = CssProps<
 /* styleFn ------------------------------------ */
 
 import { styleFnMapGenerator } from './packages/generator/styleFn'
+import { css } from 'styled-components'
+import { PseudoMixin, PseudoProps } from './packages/extension/pseudo'
 
 const styleFnMap = styleFnMapGenerator(config)
 
 export namespace provideCssProps {
   export const as = (kind: keyof Config) => {
-    return styleFnMap[kind]
+    return css<PseudoProps>`
+      ${styleFnMap[kind]}
+      ${({ hoverStyle }) => PseudoMixin('hover', hoverStyle)}
+      ${({ focusStyle }) => PseudoMixin('focus', focusStyle)}
+    `
   }
 }
 
