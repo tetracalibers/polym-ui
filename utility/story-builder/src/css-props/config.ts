@@ -101,4 +101,18 @@ export const customOptions = {
     'baseline',
   ],
   backgroundClip: ['border-box', 'padding-box', 'content-box', 'text'],
+  justifyContent: [
+    'center',
+    'start',
+    'end',
+    'flex-start',
+    'flex-end',
+    'left',
+    'right',
+    'normal',
+    'space-between',
+    'space-around',
+    'space-evenly',
+    'stretch',
+  ],
 }

@@ -104,6 +104,9 @@ export default {
     backgroundClip: {
       ...controlTypeSelectAs('backgroundClip'),
     },
+    justifyContent: {
+      ...controlTypeSelectAs('justifyContent'),
+    },
   },
 } as ComponentMeta<typeof Button>
 
