@@ -1,5 +1,9 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
-import Button from './Button'
+import { getSelectTypeControlOption } from 'story-builder'
+import Button, { UseCssProps } from './Button'
+
+const selectOption = getSelectTypeControlOption<keyof UseCssProps>()
+
 export default {
   title: 'clickable-trigger/Button',
   component: Button,
@@ -20,16 +24,10 @@ export default {
       },
     },
     borderStyle: {
-      control: {
-        type: 'select',
-      },
-      options: ['none'],
+      ...selectOption('borderStyle'),
     },
     boxSizing: {
-      control: {
-        type: 'select',
-      },
-      options: ['border-box', 'content-box'],
+      ...selectOption('boxSizing'),
     },
     color: {
       control: {
@@ -37,16 +35,10 @@ export default {
       },
     },
     cursor: {
-      control: {
-        type: 'select',
-      },
-      options: ['pointer'],
+      ...selectOption('cursor'),
     },
     display: {
-      control: {
-        type: 'select',
-      },
-      options: ['inline-block', 'block'],
+      ...selectOption('display'),
     },
     fontFamily: {
       control: {
@@ -74,10 +66,7 @@ export default {
       },
     },
     listStyle: {
-      control: {
-        type: 'select',
-      },
-      options: ['none'],
+      ...selectOption('listStyle'),
     },
     margin: {
       control: {

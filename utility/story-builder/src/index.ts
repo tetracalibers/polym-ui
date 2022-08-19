@@ -1,8 +1,9 @@
-import { dumpJson, fromJson, logJson } from 'json-microscope'
 import * as mdnCssPropertiesJson from 'mdn-data/css/properties.json'
 import _ from 'lodash'
 
-const mdnCssProperties = fromJson(mdnCssPropertiesJson).default
+const mdnCssProperties = JSON.parse(
+  JSON.stringify(mdnCssPropertiesJson)
+).default
 
 const acronymOf = (word: string) => word.slice(0, 1)
 
@@ -26,4 +27,7 @@ const convertedToCamelCase = _.mapKeys(pickSyntax, (_val, key) =>
   _.camelCase(key)
 )
 
-export const getCssPropSelectType = convertedToCamelCase
+export const getSelectTypeControlOption =
+  <PropType extends string>() =>
+  (cssPropName: PropType) =>
+    convertedToCamelCase[cssPropName]

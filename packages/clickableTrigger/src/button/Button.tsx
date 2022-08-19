@@ -6,7 +6,7 @@ import {
 } from 'styled-utility-first'
 import styled from 'styled-components'
 
-type UseCssProps = ButtonCssProps & AnimationCssProps
+export type UseCssProps = ButtonCssProps & AnimationCssProps
 
 type ButtonProps = ComponentPropsWithoutRef<'button'> & {
   children: ReactNode
