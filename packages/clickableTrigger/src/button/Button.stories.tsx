@@ -317,7 +317,7 @@ Example5.args = {
   hoverStyle: {
     backgroundColor: '#fb8332',
     boxShadow: 'rgba(0, 0, 0, 0.1) 0 4px 12px',
-    translateY: '-1px',
+    transform: 'translateY(-1px)',
   },
   focusStyle: {
     backgroundColor: '#fb8332',
@@ -326,6 +326,6 @@ Example5.args = {
   activeStyle: {
     backgroundColor: '#c85000',
     boxShadow: 'rgba(0, 0, 0, 0.06) 0 2px 4px',
-    translateY: '0',
+    transform: 'translateY(0)',
   },
 }
