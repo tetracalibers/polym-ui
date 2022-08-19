@@ -660,7 +660,7 @@ Example14.args = {
   display: 'inline-block',
   height: '29px',
   fontSize: '13px',
-  outline: '0',
+  outlineWidth: '0',
   overflow: 'hidden',
   paddingY: '0',
   paddingX: '11px',

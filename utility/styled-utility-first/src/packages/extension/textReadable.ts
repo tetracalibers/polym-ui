@@ -6,6 +6,7 @@ const conf = {
   whiteSpace: Required<CSST.Property.WhiteSpace>(),
   wordWrap: Required<CSST.Property.WordWrap>(),
   textTransform: Required<CSST.Property.TextTransform>(),
+  textOverflow: Required<CSST.Property.TextOverflow>(),
 }
 
 type Conf = typeof conf
