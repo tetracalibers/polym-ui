@@ -1124,3 +1124,49 @@ Example22.args = {
     backgroundColor: '#1C84FF',
   },
 }
+
+export const Example23 = Template.bind({})
+Example23.args = {
+  children: 'Example23',
+  disabled: false,
+  fontFamily: 'Aboreto',
+  backgroundColor: '#FFFFFF',
+  borderWidth: '1px',
+  borderStyle: 'solid',
+  borderColor: '#222',
+  borderRadius: '8px',
+  boxSizing: 'border-box',
+  color: '#222222',
+  cursor: 'pointer',
+  display: 'inline-block',
+  fontSize: '16px',
+  fontWeight: '600',
+  lineHeight: '20px',
+  margin: '0',
+  outline: 'none',
+  paddingY: '13px',
+  paddingX: '23px',
+  position: 'relative',
+  textAlign: 'center',
+  textDecoration: 'none',
+  touchAction: 'manipulation',
+  transition:
+    'box-shadow .2s,-ms-transform .1s,-webkit-transform .1s,transform .1s',
+  userSelect: 'none',
+  width: 'auto',
+  focusVisibleStyle: {
+    boxShadow: '#222222 0 0 0 2px, rgba(255, 255, 255, 0.8) 0 0 0 4px',
+    transition: 'box-shadow .2s',
+  },
+  activeStyle: {
+    backgroundColor: '#F7F7F7',
+    borderColor: '#000000',
+    transform: 'scale(.96)',
+  },
+  disabledStyle: {
+    borderColor: '#DDDDDD',
+    color: '#DDDDDD',
+    cursor: 'not-allowed',
+    opacity: '1',
+  },
+}
