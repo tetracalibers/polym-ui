@@ -271,3 +271,52 @@ Example4.args = {
     display: 'none',
   },
 }
+
+export const Example5 = Template.bind({})
+Example5.args = {
+  children: 'Example5',
+  disabled: false,
+  alignItems: center, // TODO
+  backgroundClip: 'padding-box',
+  backgroundColor: '#fa6400',
+  borderWidth: '1px',
+  borderStyle: 'solid',
+  borderColor: 'transparent',
+  borderRadius: '0.25rem',
+  boxShadow: 'rgba(0, 0, 0, 0.02) 0 1px 3px 0',
+  boxSizing: 'border-box',
+  color: '#fff',
+  cursor: 'pointer',
+  display: 'inline-flex',
+  fontFamily: 'Aboreto',
+  fontSize: '16px',
+  fontWeight: '600',
+  justifyContent: 'center', // TODO
+  lineHeight: '1.25',
+  margin: '0',
+  minHeight: '3rem',
+  paddingY: 'calc(0.875rem - 1px)',
+  paddingX: 'calc(1.5rem - 1px)',
+  position: 'relative',
+  textDecoration: 'none',
+  transitionProperty: 'all',
+  transitionDuration: '250ms',
+  userSelect: 'none',
+  touchAction: 'manipulation',
+  verticalAlign: 'baseline',
+  width: 'auto',
+  hoverStyle: {
+    backgroundColor: '#fb8332',
+    boxShadow: 'rgba(0, 0, 0, 0.1) 0 4px 12px',
+    translateY: '-1px', // TODO
+  },
+  focusStyle: {
+    backgroundColor: '#fb8332',
+    boxShadow: 'rgba(0, 0, 0, 0.1) 0 4px 12px',
+  },
+  activeStyle: {
+    backgroundColor: '#c85000',
+    boxShadow: 'rgba(0, 0, 0, 0.06) 0 2px 4px',
+    translateY: '0',
+  },
+}
