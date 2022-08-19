@@ -267,4 +267,7 @@ Example4.args = {
     outlineWidth: '1px',
     outlineColor: 'transparent',
   },
+  beforeStyle: {
+    display: 'none',
+  },
 }

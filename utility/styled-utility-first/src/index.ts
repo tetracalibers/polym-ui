@@ -89,6 +89,8 @@ export namespace provideCssProps {
     ${({ focusStyle }) => PseudoMixin('focus', focusStyle)}
     ${({ disabledStyle }) => PseudoMixin('disabled', disabledStyle)}
     ${({ activeStyle }) => PseudoMixin('active', activeStyle)}
+    ${({ afterStyle }) => PseudoMixin('after', afterStyle)}
+    ${({ beforeStyle }) => PseudoMixin('before', beforeStyle)}
   `
 }
 
