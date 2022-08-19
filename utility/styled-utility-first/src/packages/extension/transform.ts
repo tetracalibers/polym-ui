@@ -4,6 +4,7 @@ import { mixinBuilder } from './helper/mixinMaker'
 
 const conf = {
   transform: Required<CSST.Property.Transform>(),
+  backfaceVisibility: Required<CSST.Property.BackfaceVisibility>(),
 }
 
 type Conf = typeof conf
