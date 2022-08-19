@@ -100,4 +100,5 @@ export const customOptions = {
     'flex-end',
     'baseline',
   ],
+  backgroundClip: ['border-box', 'padding-box', 'content-box', 'text'],
 }

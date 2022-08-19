@@ -101,6 +101,9 @@ export default {
     alignItems: {
       ...controlTypeSelectAs('alignItems'),
     },
+    backgroundClip: {
+      ...controlTypeSelectAs('backgroundClip'),
+    },
   },
 } as ComponentMeta<typeof Button>
 
