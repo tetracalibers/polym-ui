@@ -188,4 +188,21 @@ Example3.args = {
   touchAction: 'manipulation',
   verticalAlign: 'middle',
   whiteSpace: 'nowrap',
+  hoverStyle: {
+    backgroundColor: '#2c974b',
+  },
+  focusStyle: {
+    boxShadow: 'rgba(46, 164, 79, 0.4) 0 0 0 3px',
+    outline: 'none',
+  },
+  disabledStyle: {
+    backgroundColor: '#94d3ac',
+    borderColor: 'rgba(27, 31, 35, 0.1)',
+    color: 'rgba(255, 255, 255, 0.8)',
+    cursor: 'default',
+  },
+  activeStyle: {
+    backgroundColor: '#298e46',
+    boxShadow: 'rgba(20, 70, 32, 0.2) 0 1px 0 inset',
+  },
 }

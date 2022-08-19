@@ -87,6 +87,8 @@ export namespace provideCssProps {
   export const pseudo = css<PseudoProps>`
     ${({ hoverStyle }) => PseudoMixin('hover', hoverStyle)}
     ${({ focusStyle }) => PseudoMixin('focus', focusStyle)}
+    ${({ disabledStyle }) => PseudoMixin('disabled', disabledStyle)}
+    ${({ activeStyle }) => PseudoMixin('active', activeStyle)}
   `
 }
 
