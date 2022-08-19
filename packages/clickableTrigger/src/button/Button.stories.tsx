@@ -95,7 +95,7 @@ const Template: ComponentStory<typeof Button> = ({ children, ...props }) => (
 
 export const Example1 = Template.bind({})
 Example1.args = {
-  children: 'sample 1',
+  children: 'Example1',
   backgroundColor: '#ea4c89',
   borderRadius: '8px',
   borderStyle: 'none',
@@ -103,7 +103,7 @@ Example1.args = {
   color: '#fff',
   cursor: 'pointer',
   display: 'inline-block',
-  fontFamily: 'Hina Mincho',
+  fontFamily: 'Aboreto',
   fontSize: '14px',
   fontWeight: '500',
   height: '40px',
@@ -127,4 +127,31 @@ Example1.args = {
   focusStyle: {
     backgroundColor: '#f082ac',
   },
+}
+
+export const Example2 = Template.bind({})
+
+Example2.args = {
+  children: 'Example2',
+  backgroundColor: 'rgba(51, 51, 51, 0.05)',
+  borderRadius: '8px',
+  borderWidth: 0,
+  color: '#333',
+  cursor: 'pointer',
+  display: 'inline-block',
+  fontFamily: 'Aboreto',
+  fontSize: '14px',
+  fontWeight: 500,
+  lineHeight: '20px',
+  listStyle: 'none',
+  margin: 0,
+  paddingY: '10px',
+  paddingX: '12px',
+  textAlign: 'center',
+  transitionProperty: 'all',
+  transitionDuration: '200ms',
+  verticalAlign: 'baseline',
+  whiteSpace: 'nowrap',
+  userSelect: 'none',
+  touchAction: 'manipulation',
 }
