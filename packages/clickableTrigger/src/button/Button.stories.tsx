@@ -92,6 +92,9 @@ export default {
     appearance: {
       ...controlTypeSelectAs('appearance'),
     },
+    transitionTimingFunction: {
+      ...controlType('text'),
+    },
   },
 } as ComponentMeta<typeof Button>
 
