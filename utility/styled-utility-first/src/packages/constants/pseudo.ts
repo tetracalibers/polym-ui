@@ -1,4 +1,10 @@
-export const pseudoClass = ['hover', 'focus', 'disabled', 'active'] as const
+export const pseudoClass = [
+  'hover',
+  'focus',
+  'disabled',
+  'active',
+  'focus-visible',
+] as const
 export type PseudoClass = typeof pseudoClass[number]
 
 export const pseudoElement = ['before', 'after'] as const
