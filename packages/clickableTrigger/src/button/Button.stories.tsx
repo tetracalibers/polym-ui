@@ -464,3 +464,42 @@ Example8.args = {
     color: '#2c5777',
   },
 }
+
+export const Example9 = Template.bind({})
+Example9.args = {
+  children: 'Example9',
+  disabled: false,
+  fontFamily: 'Aboreto',
+  appearance: 'button',
+  backfaceVisibility: 'hidden',
+  backgroundColor: '#405cf5',
+  borderRadius: '6px',
+  borderWidth: '0',
+  boxShadow:
+    'rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0',
+  boxSizing: 'border-box',
+  color: '#fff',
+  cursor: 'pointer',
+  fontSize: '100%',
+  height: '44px',
+  lineHeight: '1.15',
+  margin: '12px 0 0',
+  outline: 'none',
+  overflow: 'hidden',
+  padding: '0 25px',
+  position: 'relative',
+  textAlign: 'center',
+  textTransform: 'none',
+  transform: 'translateZ(0)',
+  transition: 'all .2s box-shadow .08s ease-in',
+  userSelect: 'none',
+  touchAction: 'manipulation',
+  width: '100%',
+  disabledStyle: {
+    cursor: 'default',
+  },
+  focusStyle: {
+    boxShadow:
+      'rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .2) 0 6px 15px 0, rgba(0, 0, 0, .1) 0 2px 2px 0, rgba(50, 151, 211, .3) 0 0 0 4px',
+  },
+}
