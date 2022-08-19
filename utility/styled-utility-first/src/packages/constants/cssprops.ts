@@ -1,3 +1,7 @@
+import {
+  generatedContentMixin,
+  GeneratedContentProps,
+} from './../extension/generatedContent'
 import * as $ from 'styled-system'
 import { boxModelMixin, BoxModelProps } from '../extension/boxModel'
 import { userActionMixin, UserActionProps } from '../extension/userAction'
@@ -49,6 +53,7 @@ export namespace StyledSystem {
     'writingMode',
     'svg',
     'willChange',
+    'generatedContent',
   ] as const
 
   export type PropsCategory = typeof propsCategory[number]
@@ -78,6 +83,7 @@ export namespace StyledSystem {
     writingMode: WritingModeProps
     svg: SvgProps
     willChange: WillChangeProps
+    generatedContent: GeneratedContentProps
   }
 
   export const styleFn = {
@@ -106,5 +112,6 @@ export namespace StyledSystem {
     writingMode: writingModeMixin,
     svg: svgMixin,
     willChange: willChangeMixin,
+    generatedContent: generatedContentMixin,
   } as const
 }

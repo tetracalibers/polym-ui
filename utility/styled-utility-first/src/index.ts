@@ -38,6 +38,7 @@ const config = {
     'textDecoration',
     'textReadable',
     'writingMode',
+    'generatedContent',
   ],
   box: [
     'this.text',
