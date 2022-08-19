@@ -98,6 +98,9 @@ export default {
     wordWrap: {
       ...controlTypeSelectAs('wordWrap'),
     },
+    alignItems: {
+      ...controlTypeSelectAs('alignItems'),
+    },
   },
 } as ComponentMeta<typeof Button>
 
