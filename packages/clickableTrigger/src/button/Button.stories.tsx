@@ -81,7 +81,7 @@ export default {
       ...controlType('text'),
     },
     outline: {
-      ...controlTypeSelectAs('outline'),
+      ...controlType('text'),
     },
     paddingX: {
       ...controlType('text'),
