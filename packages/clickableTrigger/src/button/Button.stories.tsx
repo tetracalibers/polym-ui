@@ -133,7 +133,6 @@ Example1.args = {
 }
 
 export const Example2 = Template.bind({})
-
 Example2.args = {
   children: 'Example2',
   backgroundColor: 'rgba(51, 51, 51, 0.05)',
@@ -157,4 +156,32 @@ Example2.args = {
   whiteSpace: 'nowrap',
   userSelect: 'none',
   touchAction: 'manipulation',
+}
+
+export const Example3 = Template.bind({})
+Example3.args = {
+  appearance: 'none',
+  backgroundColor: '#2ea44f',
+  borderWidth: '1px',
+  borderStyle: 'solid',
+  borderColor: 'rgba(27, 31, 35, 0.15)',
+  borderRadius: '6px',
+  boxShadow: 'rgba(27, 31, 35, 0.1) 0 1px 0',
+  boxSizing: 'border-box',
+  color: '#fff',
+  cursor: 'pointer',
+  display: 'inline-block',
+  fontFamily: 'Aboreto',
+  fontSize: '14px',
+  fontWeight: '600',
+  lineHeight: '20px',
+  paddingY: '6px',
+  paddingX: '16px',
+  position: 'relative',
+  textAlign: 'center',
+  textDecoration: 'none',
+  userSelect: 'none',
+  touchAction: 'manipulation',
+  verticalAlign: 'middle',
+  whiteSpace: 'nowrap',
 }
