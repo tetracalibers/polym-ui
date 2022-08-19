@@ -3,23 +3,35 @@ import {
   AnimationCssProps,
   ButtonCssProps,
   provideCssProps,
+  Pseudo,
 } from 'styled-utility-first'
 import styled from 'styled-components'
+import OnInteraction from './OnInteraction'
 
-type CssProps = ButtonCssProps & AnimationCssProps
+type UseCssProps = ButtonCssProps & AnimationCssProps
 
 type ButtonProps = ComponentPropsWithoutRef<'button'> & {
   children: ReactNode
-} & CssProps
+  pseudo?: {
+    [pseu in Pseudo]?: {
+      [property in keyof UseCssProps]?: UseCssProps[property]
+    }
+  }
+} & UseCssProps
 
-const BaseButton = styled.button<CssProps>`
+const StyledButton = styled.button<UseCssProps>`
   ${provideCssProps.as('button')}
 `
 
-console.log(BaseButton)
-
 const Button: FC<ButtonProps> = ({ children, ...props }: ButtonProps) => {
-  return <BaseButton {...props}>{children}</BaseButton>
+  const { pseudo } = props
+  return pseudo === undefined ? (
+    <StyledButton {...props}>{children}</StyledButton>
+  ) : (
+    <OnInteraction cssCategory='button' {...pseudo}>
+      <StyledButton {...props}>{children}</StyledButton>
+    </OnInteraction>
+  )
 }
 
 export default Button

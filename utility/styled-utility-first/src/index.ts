@@ -49,7 +49,7 @@ const config = {
 
 /* types -------------------------------------- */
 
-import { CssProps, PseudoProps } from './packages/generator/CssProps'
+import { CssProps } from './packages/generator/CssProps'
 
 type Config = typeof config
 
@@ -59,6 +59,12 @@ export type DecorativeBoxCssProps = CssProps<Config, 'decorativeBox'>
 export type ButtonCssProps = CssProps<Config, 'button'>
 export type LinkCssProps = CssProps<Config, 'link'>
 export type AnimationCssProps = CssProps<Config, 'animation'>
+
+export type CssPropsCategory = keyof Config
+export type CssPropsTypeFactory<K extends CssPropsCategory> = CssProps<
+  Config,
+  K
+>
 
 /* styleFn ------------------------------------ */
 
@@ -74,4 +80,6 @@ export namespace provideCssProps {
 
 /* pseudo ------------------------------------- */
 
-export { PseudoProps }
+import { Pseudo } from './packages/constants/pseudo'
+
+export { Pseudo }

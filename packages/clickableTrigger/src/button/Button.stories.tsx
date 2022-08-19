@@ -38,5 +38,12 @@ Example1.args = {
   verticalAlign: 'baseline',
   userSelect: 'none',
   touchAction: 'manipulation',
-  hoverBackgroundColor: '#f082ac',
+  pseudo: {
+    hover: {
+      backgroundColor: '#f082ac',
+    },
+    focus: {
+      backgroundColor: '#f082ac',
+    },
+  },
 }

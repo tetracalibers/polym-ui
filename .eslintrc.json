@@ -31,6 +31,8 @@
     "import/first": "off",
     "generator-star-spacing": "off",
     "yield-star-spacing": "off",
-    "indent": "off"
+    "indent": "off",
+    "comma-spacing": "off",
+    "multiline-ternary": "off"
   }
 }
