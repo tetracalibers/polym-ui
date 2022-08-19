@@ -83,6 +83,9 @@ export default {
     outline: {
       ...controlType('text'),
     },
+    textRendering: {
+      ...controlTypeSelectAs('textRendering'),
+    },
     paddingX: {
       ...controlType('text'),
     },
@@ -1194,7 +1197,7 @@ Example24.args = {
   paddingY: '12px',
   paddingX: '14px',
   textAlign: 'center',
-  textRendering: 'geometricprecision',
+  textRendering: 'geometricPrecision',
   textTransform: 'none',
   userSelect: 'none',
   touchAction: 'manipulation',
