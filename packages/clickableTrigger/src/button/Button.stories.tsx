@@ -116,6 +116,9 @@ export default {
     textTransform: {
       ...controlTypeSelectAs('textTransform'),
     },
+    transform: {
+      ...controlType('text'),
+    },
   },
 } as ComponentMeta<typeof Button>
 
