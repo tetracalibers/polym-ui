@@ -7,6 +7,7 @@ const conf = {
   wordWrap: Required<CSST.Property.WordWrap>(),
   textTransform: Required<CSST.Property.TextTransform>(),
   textOverflow: Required<CSST.Property.TextOverflow>(),
+  textRendering: Required<CSST.Property.TextRendering>(),
 }
 
 type Conf = typeof conf
