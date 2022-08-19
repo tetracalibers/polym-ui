@@ -1263,3 +1263,47 @@ Example25.args = {
     },
   },
 }
+
+export const Example26 = Template.bind({})
+Example26.args = {
+  children: 'Example26',
+  disabled: false,
+  fontFamily: 'Aboreto',
+  appearance: 'button',
+  backgroundColor: '#1652F0',
+  borderWidth: '1px',
+  borderStyle: 'solid',
+  borderColor: '#1652f0',
+  borderRadius: '4px',
+  boxSizing: 'border-box',
+  color: '#FFFFFF',
+  cursor: 'pointer',
+  fontSize: '14px',
+  lineHeight: '1.15',
+  overflow: 'visible',
+  paddingY: '12px',
+  paddingX: '16px',
+  position: 'relative',
+  textAlign: 'center',
+  textTransform: 'none',
+  transitionProperty: 'all',
+  transitionDuration: '80ms',
+  transitionTimingFunction: 'ease-in-out',
+  userSelect: 'none',
+  touchAction: 'manipulation',
+  width: 'fit-content',
+  disabledStyle: {
+    opacity: '.5',
+  },
+  focusStyle: {
+    outline: '0',
+  },
+  hoverStyle: {
+    backgroundColor: '#0A46E4',
+    borderColor: '#0A46E4',
+  },
+  activeStyle: {
+    backgroundColor: '#0039D7',
+    borderColor: '#0039D7',
+  },
+}
