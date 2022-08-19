@@ -1,16 +1,15 @@
 <!-- HTML !-->
-<button class="button-5" role="button">Button 5</button>
+<button class="button-6" role="button">Button 6</button>
 
 /* CSS */
-.button-5 {
+.button-6 {
   align-items: center;
-  background-clip: padding-box;
-  background-color: #fa6400;
-  border: 1px solid transparent;
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 0.25rem;
   box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
   box-sizing: border-box;
-  color: #fff;
+  color: rgba(0, 0, 0, 0.85);
   cursor: pointer;
   display: inline-flex;
   font-family: system-ui, -apple-system, system-ui, 'Helvetica Neue', Helvetica,
@@ -32,18 +31,21 @@
   width: auto;
 }
 
-.button-5:hover,
-.button-5:focus {
-  background-color: #fb8332;
+.button-6:hover,
+.button-6:focus {
+  border-color: rgba(0, 0, 0, 0.15);
   box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  color: rgba(0, 0, 0, 0.65);
 }
 
-.button-5:hover {
+.button-6:hover {
   transform: translateY(-1px);
 }
 
-.button-5:active {
-  background-color: #c85000;
+.button-6:active {
+  background-color: #f0f0f1;
+  border-color: rgba(0, 0, 0, 0.15);
   box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+  color: rgba(0, 0, 0, 0.65);
   transform: translateY(0);
 }
