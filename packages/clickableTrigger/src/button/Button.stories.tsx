@@ -750,3 +750,36 @@ Example15.args = {
     outline: 'none',
   },
 }
+
+export const Example16 = Template.bind({})
+Example16.args = {
+  children: 'Example16',
+  disabled: false,
+  fontFamily: 'Aboreto',
+  backgroundColor: '#f8f9fa',
+  borderWidth: '1px',
+  borderStyle: 'solid',
+  borderColor: '#f8f9fa',
+  borderRadius: '4px',
+  color: '#3c4043',
+  cursor: 'pointer',
+  fontSize: '14px',
+  height: '36px',
+  lineHeight: '27px',
+  minWidth: '54px',
+  paddingY: '0',
+  paddingX: '16px',
+  textAlign: 'center',
+  userSelect: 'none',
+  touchAction: 'manipulation',
+  whiteSpace: 'pre',
+  hoverStyle: {
+    borderColor: '#dadce0',
+    boxShadow: 'rgba(0, 0, 0, .1) 0 1px 1px',
+    color: '#202124',
+  },
+  focusStyle: {
+    borderColor: '#4285f4',
+    outline: 'none',
+  },
+}
