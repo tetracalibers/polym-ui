@@ -553,3 +553,27 @@ Example10.args = {
     outline: '0',
   },
 }
+
+export const Example11 = Template.bind({})
+Example11.args = {
+  children: 'Example11',
+  disabled: false,
+  fontFamily: 'Aboreto',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  paddingY: '6px',
+  paddingX: '14px',
+  borderRadius: '6px',
+  color: '#3D3D3D',
+  background: '#fff',
+  border: 'none',
+  boxShadow: '0px 0.5px 1px rgba(0, 0, 0, 0.1)',
+  userSelect: 'none',
+  touchAction: 'manipulation',
+  focusStyle: {
+    boxShadow:
+      '0px 0.5px 1px rgba(0, 0, 0, 0.1), 0px 0px 0px 3.5px rgba(58, 108, 217, 0.5)',
+    outline: '0',
+  },
+}
