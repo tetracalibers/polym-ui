@@ -60,6 +60,7 @@ const config = {
   link: ['this.decorativeBox', 'userAction'],
   animation: ['transition'],
   transform: ['transform'],
+  svg: ['svg'],
 } as const
 
 /* types -------------------------------------- */
@@ -76,6 +77,7 @@ export type ButtonCssProps = CssProps<Config, 'button'>
 export type LinkCssProps = CssProps<Config, 'link'>
 export type AnimationCssProps = CssProps<Config, 'animation'>
 export type TransformCssProps = CssProps<Config, 'transform'>
+export type SvgCssProps = CssProps<Config, 'svg'>
 
 export type CssPropsCategory = keyof Config
 export type CssPropsTypeFactory<K extends CssPropsCategory> = CssProps<

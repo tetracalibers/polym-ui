@@ -19,6 +19,7 @@ import {
 } from '../extension/advancedBackground'
 import { transformMixin, TransformProps } from '../extension/transform'
 import { writingModeMixin, WritingModeProps } from '../extension/writingMode'
+import { svgMixin, SvgProps } from '../extension/svg'
 
 export namespace StyledSystem {
   const propsCategory = [
@@ -45,6 +46,7 @@ export namespace StyledSystem {
     'advancedBackground',
     'transform',
     'writingMode',
+    'svg',
   ] as const
 
   export type PropsCategory = typeof propsCategory[number]
@@ -72,6 +74,7 @@ export namespace StyledSystem {
     advancedBackground: AdvancedBackgroundProps
     transform: TransformProps
     writingMode: WritingModeProps
+    SvgProps: SvgProps
   }
 
   export const styleFn = {
@@ -98,5 +101,6 @@ export namespace StyledSystem {
     advancedBackground: advancedBackgroundMixin,
     transform: transformMixin,
     writingMode: writingModeMixin,
+    svg: svgMixin,
   } as const
 }
