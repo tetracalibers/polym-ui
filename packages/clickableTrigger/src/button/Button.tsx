@@ -17,9 +17,9 @@ type ButtonProps = ComponentPropsWithoutRef<'button'> & {
   children: ReactNode
 } & UseCssPropsAllowPseudo
 
-const PseudoMixin = (pseudo: Pseudo, ruleset: CSSObject) => {
+const PseudoMixin = (pseudo: Pseudo, ruleset: CSSObject | undefined) => {
   // prettier-ignore
-  return css`
+  return ruleset !== undefined && css`
     &:${pseudo} {
       ${ruleset}
     }
@@ -28,10 +28,8 @@ const PseudoMixin = (pseudo: Pseudo, ruleset: CSSObject) => {
 
 const StyledButton = styled.button<UseCssPropsAllowPseudo>`
   ${provideCssProps.as('button')}
-  ${({ hoverStyle }) =>
-    hoverStyle !== undefined && PseudoMixin('hover', hoverStyle)}
-  ${({ focusStyle }) =>
-    focusStyle !== undefined && PseudoMixin('focus', focusStyle)}
+  ${({ hoverStyle }) => PseudoMixin('hover', hoverStyle)}
+  ${({ focusStyle }) => PseudoMixin('focus', focusStyle)}
 `
 
 const Button: FC<ButtonProps> = ({ children, ...props }: ButtonProps) => {
