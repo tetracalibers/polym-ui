@@ -17,6 +17,9 @@ export default {
     outlineWidth: {
       ...controlType('text'),
     },
+    textOverflow: {
+      ...controlTypeSelectAs('textOverflow'),
+    },
     backgroundOrigin: {
       ...controlTypeSelectAs('backgroundOrigin'),
     },

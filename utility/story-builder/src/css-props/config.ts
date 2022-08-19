@@ -134,4 +134,5 @@ export const customOptions = {
   ],
   overflow: ['visible', 'hidden', 'clip', 'scroll', 'auto'],
   backgroundOrigin: ['border-box', 'padding-box', 'content-box'],
+  textOverflow: ['clip', 'ellipsis'],
 }
