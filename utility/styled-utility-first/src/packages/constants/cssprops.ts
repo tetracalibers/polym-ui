@@ -1,4 +1,8 @@
 import {
+  filterEffectMixin,
+  FilterEffectProps,
+} from './../extension/filterEffect'
+import {
   generatedContentMixin,
   GeneratedContentProps,
 } from './../extension/generatedContent'
@@ -54,6 +58,7 @@ export namespace StyledSystem {
     'svg',
     'willChange',
     'generatedContent',
+    'filterEffect',
   ] as const
 
   export type PropsCategory = typeof propsCategory[number]
@@ -84,6 +89,7 @@ export namespace StyledSystem {
     svg: SvgProps
     willChange: WillChangeProps
     generatedContent: GeneratedContentProps
+    filterEffect: FilterEffectProps
   }
 
   export const styleFn = {
@@ -113,5 +119,6 @@ export namespace StyledSystem {
     svg: svgMixin,
     willChange: willChangeMixin,
     generatedContent: generatedContentMixin,
+    filterEffect: filterEffectMixin,
   } as const
 }

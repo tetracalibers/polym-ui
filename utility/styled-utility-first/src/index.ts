@@ -56,6 +56,7 @@ const config = {
     'background',
     'shadow',
     'advancedBackground',
+    'filterEffect',
   ],
   button: ['this.decorativeBox', 'userAction', 'formInterface'],
   link: ['this.decorativeBox', 'userAction'],
