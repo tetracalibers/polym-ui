@@ -14,6 +14,8 @@ type ButtonProps = ComponentPropsWithoutRef<'button'> & {
 
 const StyledButton = styled.button<UseCssProps>`
   ${provideCssProps.as('button')}
+  ${provideCssProps.as('animation')}
+  ${provideCssProps.pseudo}
 `
 
 const Button: FC<ButtonProps> = ({ children, ...props }: ButtonProps) => {

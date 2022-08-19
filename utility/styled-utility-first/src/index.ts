@@ -76,12 +76,12 @@ const styleFnMap = styleFnMapGenerator(config)
 
 export namespace provideCssProps {
   export const as = (kind: keyof Config) => {
-    return css<PseudoProps>`
-      ${styleFnMap[kind]}
-      ${({ hoverStyle }) => PseudoMixin('hover', hoverStyle)}
-      ${({ focusStyle }) => PseudoMixin('focus', focusStyle)}
-    `
+    return styleFnMap[kind]
   }
+  export const pseudo = css<PseudoProps>`
+    ${({ hoverStyle }) => PseudoMixin('hover', hoverStyle)}
+    ${({ focusStyle }) => PseudoMixin('focus', focusStyle)}
+  `
 }
 
 /* pseudo ------------------------------------- */
