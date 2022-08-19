@@ -48,7 +48,7 @@ const config = {
     'outline',
   ],
   decorativeBox: ['this.box', 'border', 'background', 'shadow'],
-  button: ['this.decorativeBox', 'userAction'],
+  button: ['this.decorativeBox', 'userAction', 'formInterface'],
   link: ['this.decorativeBox', 'userAction'],
   animation: ['transition'],
 } as const

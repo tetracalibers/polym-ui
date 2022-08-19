@@ -160,6 +160,7 @@ Example2.args = {
 
 export const Example3 = Template.bind({})
 Example3.args = {
+  children: 'Example3',
   appearance: 'none',
   backgroundColor: '#2ea44f',
   borderWidth: '1px',
