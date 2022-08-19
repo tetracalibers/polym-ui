@@ -1,5 +1,16 @@
 export const customOptions = {
-  borderStyle: ['none'],
+  borderStyle: [
+    'none',
+    'hidden',
+    'dotted',
+    'dashed',
+    'solid',
+    'double',
+    'groove',
+    'ridge',
+    'inset',
+    'outset',
+  ],
   listStyle: ['none'],
   cursor: [
     'auto',
