@@ -1,0 +1,47 @@
+{
+  "name": "json-microscope",
+  "version": "0.0.0",
+  "description": "Collection of tools to convert objects to JSON and peek into their contents",
+  "author": {
+    "name": "tomixy",
+    "url": "https://tetracalibers.notion.site/tetracalibers/tomixy-TetraCalibers-30b94fb9fc054d4da667539ef35f42c6"
+  },
+  "homepage": "https://github.com/tetracalibers/React-polyhexUI/tree/main/packages/core#readme",
+  "license": "MIT",
+  "type": "module",
+  "types": "lib/@types/index.d.ts",
+  "main": "lib/index.cjs",
+  "module": "lib/index.es.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tetracalibers/React-polyhexUI.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "type:check": "tsc --noEmit",
+    "prebuild": " yarn type:check && rimraf lib",
+    "build": "rollup -c --watch",
+    "start": "yarn build && node lib/bundle.cjs"
+  },
+  "bugs": {
+    "url": "https://github.com/tetracalibers/React-polyhexUI/issues"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.18.5",
+    "@rollup/plugin-commonjs": "^22.0.1",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.3.0",
+    "@rollup/plugin-typescript": "^8.3.3",
+    "@types/shelljs": "^0.8.11",
+    "babel-loader": "^8.2.5",
+    "esbuild": "^0.14.48",
+    "json-format": "^1.0.1",
+    "lodash": "^4.17.21",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.75.7",
+    "rollup-plugin-esbuild": "^4.9.1",
+    "shelljs": "^0.8.5",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.7.4"
+  }
+}
