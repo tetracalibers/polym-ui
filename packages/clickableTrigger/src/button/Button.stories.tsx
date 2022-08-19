@@ -14,6 +14,9 @@ export default {
     flexDirection: {
       ...controlTypeSelectAs('flexDirection'),
     },
+    outlineWidth: {
+      ...controlType('text'),
+    },
     backgroundOrigin: {
       ...controlTypeSelectAs('backgroundOrigin'),
     },
