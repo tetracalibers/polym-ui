@@ -107,6 +107,9 @@ export default {
     justifyContent: {
       ...controlTypeSelectAs('justifyContent'),
     },
+    backfaceVisibility: {
+      ...controlTypeSelectAs('backfaceVisibility'),
+    },
   },
 } as ComponentMeta<typeof Button>
 
