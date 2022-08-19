@@ -74,7 +74,7 @@ export namespace StyledSystem {
     advancedBackground: AdvancedBackgroundProps
     transform: TransformProps
     writingMode: WritingModeProps
-    SvgProps: SvgProps
+    svg: SvgProps
   }
 
   export const styleFn = {
