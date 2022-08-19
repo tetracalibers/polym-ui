@@ -1,29 +1,12 @@
 import * as CSST from 'csstype'
-import { css } from 'styled-components'
+import { getPropType, Required } from 'react-tsx-props'
+import { mixinBuilder } from './helper/mixinMaker'
 
-export type TransformFunc = {
-  translateX?: CSST.Property.Translate
-  translateY?: CSST.Property.Translate
+const conf = {
+  transform: Required<CSST.Property.Transform>(),
 }
 
-export type TransformFuncKind = keyof TransformFunc
+type Conf = typeof conf
 
-export type TransformProps = {
-  transform?: 'none' | TransformFunc
-}
-
-export const transformMixin = (func: TransformFunc | 'none' | undefined) => {
-  if (func === undefined) {
-    return
-  }
-  if (func === 'none') {
-    return css`
-      transform: none;
-    `
-  }
-  return css`
-    transform: ${Object.entries(func)
-      .map((key, value) => `${key}(${value})`)
-      .join(' ')};
-  `
-}
+export type TransformProps = getPropType<Conf>
+export const transformMixin = mixinBuilder<TransformProps, Conf>(conf)

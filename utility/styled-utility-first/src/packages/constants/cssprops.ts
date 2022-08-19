@@ -17,6 +17,7 @@ import {
   advancedBackgroundMixin,
   AdvancedBackgroundProps,
 } from '../extension/advancedBackground'
+import { transformMixin, TransformProps } from '../extension/transform'
 
 export namespace StyledSystem {
   const propsCategory = [
@@ -41,6 +42,7 @@ export namespace StyledSystem {
     'textReadable',
     'formInterface',
     'advancedBackground',
+    'transform',
   ] as const
 
   export type PropsCategory = typeof propsCategory[number]
@@ -66,6 +68,7 @@ export namespace StyledSystem {
     textReadable: TextReadableProps
     formInterface: FormInterfaceProps
     advancedBackground: AdvancedBackgroundProps
+    transform: TransformProps
   }
 
   export const styleFn = {
@@ -90,5 +93,6 @@ export namespace StyledSystem {
     textReadable: textReadableMixin,
     formInterface: formInterfaceMixin,
     advancedBackground: advancedBackgroundMixin,
+    transform: transformMixin,
   } as const
 }
