@@ -23,6 +23,9 @@ export default {
     transition: {
       ...controlType('text'),
     },
+    willChange: {
+      ...controlType('text'),
+    },
     outlineWidth: {
       ...controlType('text'),
     },
