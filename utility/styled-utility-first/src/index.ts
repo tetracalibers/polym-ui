@@ -31,7 +31,13 @@ export { Exist, Truthy }
 /* -------------------------------------------- */
 
 const config = {
-  text: ['color', 'typography', { shadow: 'textShadow' }, 'textDecoration'],
+  text: [
+    'color',
+    'typography',
+    { shadow: 'textShadow' },
+    'textDecoration',
+    'textReadable',
+  ],
   box: [
     'this.text',
     'space',

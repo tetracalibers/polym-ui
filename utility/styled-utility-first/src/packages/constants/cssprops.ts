@@ -8,6 +8,7 @@ import {
   TextDecorationProps,
 } from '../extension/textDecoration'
 import { transitionMixin, TransitionProps } from '../extension/transition'
+import { textReadableMixin, TextReadableProps } from '../extension/textReadable'
 
 export namespace StyledSystem {
   const propsCategory = [
@@ -28,6 +29,7 @@ export namespace StyledSystem {
     'outline',
     'textDecoration',
     'transition',
+    'textReadable',
   ] as const
 
   export type PropsCategory = typeof propsCategory[number]
@@ -49,6 +51,7 @@ export namespace StyledSystem {
     outline: OutlineProps
     textDecoration: TextDecorationProps
     transition: TransitionProps
+    textReadable: TextReadableProps
   }
 
   export const styleFn = {
@@ -69,5 +72,6 @@ export namespace StyledSystem {
     outline: outlineMixin,
     textDecoration: textDecorationMixin,
     transition: transitionMixin,
+    textReadable: textReadableMixin,
   } as const
 }
