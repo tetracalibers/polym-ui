@@ -108,6 +108,7 @@ const Template: ComponentStory<typeof Button> = ({ children, ...props }) => (
 export const Example1 = Template.bind({})
 Example1.args = {
   children: 'Example1',
+  disabled: false,
   backgroundColor: '#ea4c89',
   borderRadius: '8px',
   borderStyle: 'none',
@@ -144,6 +145,7 @@ Example1.args = {
 export const Example2 = Template.bind({})
 Example2.args = {
   children: 'Example2',
+  disabled: false,
   backgroundColor: 'rgba(51, 51, 51, 0.05)',
   borderRadius: '8px',
   borderWidth: '0',
@@ -170,6 +172,7 @@ Example2.args = {
 export const Example3 = Template.bind({})
 Example3.args = {
   children: 'Example3',
+  disabled: false,
   appearance: 'none',
   backgroundColor: '#2ea44f',
   borderWidth: '1px',
@@ -216,6 +219,7 @@ Example3.args = {
 export const Example4 = Template.bind({})
 Example4.args = {
   children: 'Example4',
+  disabled: false,
   appearance: 'none',
   backgroundColor: '#fafbfc',
   border: '1px solid rgba(27, 31, 35, 0.15)',
@@ -242,4 +246,25 @@ Example4.args = {
   verticalAlign: 'middle',
   whiteSpace: 'nowrap',
   wordWrap: 'break-word',
+  hoverStyle: {
+    backgroundColor: '#f3f4f6',
+    textDecoration: 'none',
+    transitionDuration: '0.1s',
+  },
+  disabledStyle: {
+    backgroundColor: '#fafbfc',
+    borderColor: 'rgba(27, 31, 35, 0.15)',
+    color: '#959da5',
+    cursor: 'default',
+  },
+  activeStyle: {
+    backgroundColor: '#edeff2',
+    boxShadow: 'rgba(225, 228, 232, 0.2) 0 1px 0 inset',
+    transitionProperty: 'none',
+    transitionDuration: '0s',
+  },
+  focusStyle: {
+    outlineWidth: '1px',
+    outlineColor: 'transparent',
+  },
 }
