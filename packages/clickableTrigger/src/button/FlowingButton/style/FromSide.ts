@@ -15,6 +15,11 @@ const transform = (preset: FlowingButtonProps['preset']) => {
         transform: scale(1, 0);
       `
     })
+    .with('center-to-corner', () => {
+      return css`
+        transform: scale(0, 0);
+      `
+    })
     .otherwise(() => '')
 }
 
@@ -35,7 +40,7 @@ const transformOrigin = (preset: FlowingButtonProps['preset']) => {
         transform-origin: top;
       `
     })
-    .with('center-to-vertical', () => {
+    .with('center-to-vertical', 'center-to-corner', () => {
       return css`
         transform-origin: center;
       `
@@ -50,6 +55,7 @@ const transitionProperty = (preset: FlowingButtonProps['preset']) => {
       'from-right',
       'center-to-horizontal',
       'center-to-vertical',
+      'center-to-corner',
       () => {
         return css`
           transition-property: transform;
@@ -71,11 +77,18 @@ const transitionDuration = (preset: FlowingButtonProps['preset']) => {
         transition-duration: 0.6s;
       `
     })
-    .with('up', 'down', 'center-to-horizontal', 'center-to-vertical', () => {
-      return css`
-        transition-duration: 0.3s;
-      `
-    })
+    .with(
+      'up',
+      'down',
+      'center-to-horizontal',
+      'center-to-vertical',
+      'center-to-corner',
+      () => {
+        return css`
+          transition-duration: 0.3s;
+        `
+      }
+    )
     .otherwise(() => '')
 }
 
@@ -86,6 +99,7 @@ const height = (preset: FlowingButtonProps['preset']) => {
       'from-right',
       'center-to-horizontal',
       'center-to-vertical',
+      'center-to-corner',
       () => {
         return css`
           height: 100%;
@@ -107,6 +121,7 @@ const hoverBeforeRuleset = (preset: FlowingButtonProps['preset']) => {
       'from-right',
       'center-to-horizontal',
       'center-to-vertical',
+      'center-to-corner',
       () => {
         return css`
           ${transformOrigin(preset)}
@@ -119,12 +134,18 @@ const hoverBeforeRuleset = (preset: FlowingButtonProps['preset']) => {
 
 const position = (preset: FlowingButtonProps['preset']) => {
   return match(preset)
-    .with('from-left', 'center-to-horizontal', 'center-to-vertical', () => {
-      return css`
-        top: 0;
-        left: 0;
-      `
-    })
+    .with(
+      'from-left',
+      'center-to-horizontal',
+      'center-to-vertical',
+      'center-to-corner',
+      () => {
+        return css`
+          top: 0;
+          left: 0;
+        `
+      }
+    )
     .with('from-right', () => {
       return css`
         top: 0;
