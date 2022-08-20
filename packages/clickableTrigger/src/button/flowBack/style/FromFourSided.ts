@@ -55,7 +55,7 @@ const position = (from: FromFourSidedProps['from']) => {
       `
 }
 
-export const FromFourSided = styled(BaseStyled)<FromFourSidedProps>`
+export const FromFourSidedStyled = styled(BaseStyled)<FromFourSidedProps>`
   &::before {
     /* 位置調整 */
     content: '';
