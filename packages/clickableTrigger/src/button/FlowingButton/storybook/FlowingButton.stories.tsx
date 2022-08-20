@@ -95,8 +95,8 @@ const Template: ComponentStory<typeof FlowingButton> = ({
   </FlowingButton>
 )
 
-export const FormLeft = Template.bind({})
-FormLeft.args = {
+export const basic = Template.bind({})
+basic.args = {
   ...defaultProps,
   children: 'flowing!!',
   preset: 'from-left',
