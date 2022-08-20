@@ -2,6 +2,15 @@ import styled, { css } from 'styled-components'
 import { BaseStyled } from './Base'
 import { FromFourSidedProps } from '../model/props'
 
+const transform = (from: FromFourSidedProps['from']) => {
+  return (
+    ['left', 'right'].includes(from) &&
+    css`
+      transform: scale(0, 1);
+    `
+  )
+}
+
 const transformOrigin = (from: FromFourSidedProps['from']) => {
   return (
     ['left', 'right'].includes(from) &&
@@ -9,6 +18,16 @@ const transformOrigin = (from: FromFourSidedProps['from']) => {
       transform-origin: ${from} top;
     `
   )
+}
+
+const transitionProperty = (from: FromFourSidedProps['from']) => {
+  return ['left', 'right'].includes(from)
+    ? css`
+        transition-property: transform;
+      `
+    : css`
+        transition-property: all;
+      `
 }
 
 const transitionDuration = (from: FromFourSidedProps['from']) => {
@@ -36,6 +55,8 @@ const hoverBeforeRuleset = (from: FromFourSidedProps['from']) => {
     ? css`
         ${transformOrigin(from)}
         transform: scale(1, 1);
+        height: 100%;
+        background-color: #333;
       `
     : css`
         height: 100%;
@@ -67,11 +88,11 @@ export const FromFourSidedStyled = styled(BaseStyled)<FromFourSidedProps>`
     width: 100%;
     ${({ from }) => height(from)}
     /* アニメーション */
-    transition-property: transform;
+    ${({ from }) => transitionProperty(from)}
     ${({ from }) => transitionDuration(from)}
     transition-timing-function: cubic-bezier(0.8, 0, 0.2, 1);
     transition-delay: 0s;
-    transform: scale(0, 1);
+    ${({ from }) => transform(from)}
     ${({ from }) => transformOrigin(from)}
   }
 

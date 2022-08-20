@@ -1,8 +1,8 @@
-import { ComponentPropsWithoutRef, FC, ReactNode } from 'react'
+import { FC, ReactNode } from 'react'
 import { FromFourSidedProps } from '../model/props'
 import { FromFourSidedStyled } from '../style/FromFourSided'
 
-type ThisProps = ComponentPropsWithoutRef<'button'> & {
+type ThisProps = {
   children: ReactNode
 } & FromFourSidedProps
 
@@ -12,7 +12,7 @@ const FlowBackFromFourSidedButton: FC<ThisProps> = ({
   ...props
 }: ThisProps) => {
   return (
-    <FromFourSidedStyled from={from} as='button' {...props}>
+    <FromFourSidedStyled from={from} {...props}>
       <span>{children}</span>
     </FromFourSidedStyled>
   )
