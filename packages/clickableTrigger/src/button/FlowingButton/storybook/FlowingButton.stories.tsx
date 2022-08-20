@@ -1,9 +1,8 @@
 import { ComponentStory } from '@storybook/react'
 import FlowingButton from '../components/FlowingButton'
 import { presets, defaultProps } from '../model/props'
-import { cssStoryMeta } from 'story-builder'
 import _ from 'lodash'
-import { substyleArgTypes } from '../../substyle/argTypes'
+import { substyleArgTypes } from '../css-props/argTypes'
 
 export default {
   title: 'Button/FlowingButton',
@@ -43,43 +42,6 @@ export default {
         required: true,
       },
       options: presets,
-    },
-    /* 必須 ----------------------------------------- */
-    borderWidth: {
-      ...cssStoryMeta.borderWidth,
-      type: {
-        required: true,
-      },
-    },
-    borderStyle: {
-      ...cssStoryMeta.borderStyle,
-      type: {
-        required: true,
-      },
-    },
-    borderColor: {
-      ...cssStoryMeta.borderColor,
-      type: {
-        required: true,
-      },
-    },
-    color: {
-      ...cssStoryMeta.color,
-      type: {
-        required: true,
-      },
-    },
-    backgroundColor: {
-      ...cssStoryMeta.backgroundColor,
-      type: {
-        required: true,
-      },
-    },
-    transitionDuration: {
-      ...cssStoryMeta.transitionDuration,
-      type: {
-        required: true,
-      },
     },
     ...substyleArgTypes,
   },

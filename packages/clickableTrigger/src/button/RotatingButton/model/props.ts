@@ -1,5 +1,8 @@
 import { getDefaultProps, getPropType, Required } from 'react-tsx-props'
-import { ButtonSubstyleProps, substyleDefaultProps } from '../../substyle/props'
+import {
+  ButtonSubstyleProps,
+  substyleDefaultProps,
+} from '../../FlowingButton/css-props/props'
 
 export const rotateTo = ['front', 'back'] as const
 export type RotateTo = typeof rotateTo[number]

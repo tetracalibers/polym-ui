@@ -14,6 +14,7 @@ const conf = {
   borderColor: Required<CSST.Property.BorderColor>('#555'),
   color: Required<CSST.Property.Color>('#333'),
   backgroundColor: Required<CSST.Property.BackgroundColor>('#fff'),
+  transitionDuration: Required<CSST.Property.TransitionDuration>('0.4s'),
   /* Option ------------------------------------- */
   padding: NotRequired<CSST.Property.Padding>('.5rem 1rem'),
   borderRadius: NotRequired<CSST.Property.BorderRadius>('1rem'),

@@ -1,9 +1,8 @@
 import { ComponentStory } from '@storybook/react'
 import RotatingButton from '../components/RotatingButton'
 import { defaultProps, rotateTo } from '../model/props'
-import { cssStoryMeta } from 'story-builder'
 import _ from 'lodash'
-import { substyleArgTypes } from '../../substyle/argTypes'
+import { substyleArgTypes } from '../../FlowingButton/css-props/argTypes'
 
 export default {
   title: 'Button/RotatingButton',
@@ -58,37 +57,6 @@ export default {
         required: true,
       },
       options: rotateTo,
-    },
-    /* 必須 ----------------------------------------- */
-    borderWidth: {
-      ...cssStoryMeta.borderWidth,
-      type: {
-        required: true,
-      },
-    },
-    borderStyle: {
-      ...cssStoryMeta.borderStyle,
-      type: {
-        required: true,
-      },
-    },
-    borderColor: {
-      ...cssStoryMeta.borderColor,
-      type: {
-        required: true,
-      },
-    },
-    color: {
-      ...cssStoryMeta.color,
-      type: {
-        required: true,
-      },
-    },
-    backgroundColor: {
-      ...cssStoryMeta.backgroundColor,
-      type: {
-        required: true,
-      },
     },
     ...substyleArgTypes,
   },

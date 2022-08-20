@@ -2,7 +2,7 @@ import { match } from 'ts-pattern'
 import styled, { css, keyframes } from 'styled-components'
 import { ResetCss } from 'styled-utility-first'
 import { FlowingButtonProps } from '../model/props'
-import { buttonSubStyle } from '../../substyle/props'
+import { buttonSubStyle } from '../css-props/props'
 
 const diagonalKeyframes = keyframes`
   100% {

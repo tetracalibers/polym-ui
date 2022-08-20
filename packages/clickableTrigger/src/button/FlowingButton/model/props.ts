@@ -1,9 +1,5 @@
-import {
-  ButtonSubstyleProps,
-  substyleDefaultProps,
-} from './../../substyle/props'
+import { ButtonSubstyleProps, substyleDefaultProps } from '../css-props/props'
 import { getDefaultProps, getPropType, Required } from 'react-tsx-props'
-import * as CSST from 'csstype'
 
 export const presets = [
   'from-left',
@@ -19,7 +15,6 @@ export type Preset = typeof presets[number]
 
 const conf = {
   preset: Required<Preset>('from-left'),
-  transitionDuration: Required<CSST.Property.TransitionDuration>('0.4s'),
 }
 type Conf = typeof conf
 

@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 import { RotatingButtonProps } from './../model/props'
 import { ResetCss } from 'styled-utility-first'
-import { buttonSubStyle } from '../../substyle/props'
+import { buttonSubStyle } from '../../FlowingButton/css-props/props'
 
 const hoverNth1Rotate = (rotateTo: RotatingButtonProps['rotateTo']) => {
   return css`
@@ -17,7 +17,6 @@ const nth2Rotate = (rotateTo: RotatingButtonProps['rotateTo']) => {
 
 export const RotatingStyled = styled.button<RotatingButtonProps>`
   ${ResetCss.button}
-  ${buttonSubStyle}
 
   /* 背景の基点 */
   position: relative;
@@ -35,7 +34,6 @@ export const RotatingStyled = styled.button<RotatingButtonProps>`
     position: absolute;
     width: 100%;
     height: 100%;
-    border: 1px solid #333;
     /* 重なりを3dで表示 */
     transform-style: preserve-3d;
     /* 数字が小さくなるほど早く回転 */
