@@ -4,3 +4,5 @@ import { mdnCssProperties, withoutVendorProperties, final } from './browser'
 dumpJson(mdnCssProperties)('tmp/all.json')
 dumpJson(withoutVendorProperties)('tmp/without-vendor.json')
 dumpJson(final)('tmp/final.json')
+
+dumpJson(final)('src/data/css-prop-doc.json')

@@ -64,14 +64,18 @@ export const final = _.mapValues(convertedToCamelCase, (val, key) => {
   return {
     ...controlInfo,
     description: config[key]?.desc ?? '',
-    defaultValue: {
-      summary: val.intial !== '' ? val.initial : undefined,
-    },
     table: {
       category: 'CSS',
       subcategory: val.groups
         .map((group: string) => group.replace('CSS', '').trim())
         .join(', '),
+      type: {
+        summary: null,
+      },
+      defaultValue: {
+        detail:
+          typeof val.initial === 'object' ? val.initial.join(',') : val.initial,
+      },
     },
   }
 })
