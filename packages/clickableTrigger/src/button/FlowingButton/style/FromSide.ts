@@ -1,7 +1,13 @@
 import { match } from 'ts-pattern'
-import styled, { css } from 'styled-components'
+import styled, { css, keyframes } from 'styled-components'
 import { BaseStyled } from './Base'
 import { FlowingButtonProps } from '../model/props'
+
+const diagonalKeyframes = keyframes`
+  100% {
+    left: -10%;
+  }
+`
 
 const transform = (preset: FlowingButtonProps['preset']) => {
   return match(preset)
@@ -92,6 +98,20 @@ const transitionDuration = (preset: FlowingButtonProps['preset']) => {
     .otherwise(() => '')
 }
 
+const width = (preset: FlowingButtonProps['preset']) => {
+  return match(preset)
+    .with('diagonal', () => {
+      return css`
+        width: 120%;
+      `
+    })
+    .otherwise(() => {
+      return css`
+        width: 100%;
+      `
+    })
+}
+
 const height = (preset: FlowingButtonProps['preset']) => {
   return match(preset)
     .with(
@@ -100,6 +120,7 @@ const height = (preset: FlowingButtonProps['preset']) => {
       'center-to-horizontal',
       'center-to-vertical',
       'center-to-corner',
+      'diagonal',
       () => {
         return css`
           height: 100%;
@@ -114,7 +135,7 @@ const height = (preset: FlowingButtonProps['preset']) => {
     .otherwise(() => '')
 }
 
-const hoverBeforeRuleset = (preset: FlowingButtonProps['preset']) => {
+const hoverBeforeAnimation = (preset: FlowingButtonProps['preset']) => {
   return match(preset)
     .with(
       'from-left',
@@ -129,6 +150,11 @@ const hoverBeforeRuleset = (preset: FlowingButtonProps['preset']) => {
         `
       }
     )
+    .with('diagonal', () => {
+      return css`
+        animation: ${diagonalKeyframes} 0.5s forwards;
+      `
+    })
     .otherwise(() => '')
 }
 
@@ -164,7 +190,32 @@ const position = (preset: FlowingButtonProps['preset']) => {
         left: 0;
       `
     })
+    .with('diagonal', () => {
+      return css`
+        top: 0;
+        left: -130%;
+      `
+    })
     .otherwise(() => '')
+}
+
+const beforeAnimation = (preset: FlowingButtonProps['preset']) => {
+  return match(preset)
+    .with('diagonal', () => {
+      return css`
+        transform: skewX(-25deg);
+      `
+    })
+    .otherwise(() => {
+      return css`
+        ${transitionProperty(preset)}
+        ${transitionDuration(preset)}
+        transition-timing-function: cubic-bezier(0.8, 0, 0.2, 1);
+        transition-delay: 0s;
+        ${transform(preset)}
+        ${transformOrigin(preset)}
+      `
+    })
 }
 
 export const FromSideStyled = styled(BaseStyled)<FlowingButtonProps>`
@@ -176,19 +227,14 @@ export const FromSideStyled = styled(BaseStyled)<FlowingButtonProps>`
     z-index: 2;
     /* 見た目 */
     background-color: '#333';
-    width: 100%;
+    ${({ preset }) => width(preset)}
     ${({ preset }) => height(preset)}
     /* アニメーション */
-    ${({ preset }) => transitionProperty(preset)}
-    ${({ preset }) => transitionDuration(preset)}
-    transition-timing-function: cubic-bezier(0.8, 0, 0.2, 1);
-    transition-delay: 0s;
-    ${({ preset }) => transform(preset)}
-    ${({ preset }) => transformOrigin(preset)}
+    ${({ preset }) => beforeAnimation(preset)}
   }
 
   &:hover::before {
-    ${({ preset }) => hoverBeforeRuleset(preset)}
+    ${({ preset }) => hoverBeforeAnimation(preset)}
     height: 100%;
     background-color: #333;
   }
