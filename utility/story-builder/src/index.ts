@@ -1,16 +1,6 @@
-import { getSelectTypeControlOption } from './css-props/browser'
+import { getSelectTypeControlOption, controlType } from './css-control/browser'
 
-export { getSelectTypeControlOption }
+export { getSelectTypeControlOption, controlType }
 
 // テスト用（バンドル時はコメントアウト）
 //import './css-props/use-fs'
-
-export type ControlType = 'text' | 'color'
-
-export const controlType = (type: ControlType) => {
-  return {
-    control: {
-      type,
-    },
-  }
-}

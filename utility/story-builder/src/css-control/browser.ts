@@ -39,3 +39,13 @@ export const getSelectTypeControlOption =
   <PropType extends string>() =>
   (cssPropName: PropType) =>
     final[cssPropName]
+
+export type ControlType = 'text' | 'color'
+
+export const controlType = (type: ControlType) => {
+  return {
+    control: {
+      type,
+    },
+  }
+}
