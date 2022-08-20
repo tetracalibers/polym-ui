@@ -1,4 +1,4 @@
-import { controlType, getSelectTypeControlOption } from '../css-control/browser'
+import { controlType, getSelectTypeControlOption } from './browser'
 import { AllCssProps } from 'styled-utility-first'
 
 const controlTypeSelectAs = getSelectTypeControlOption<AllCssProps>()
