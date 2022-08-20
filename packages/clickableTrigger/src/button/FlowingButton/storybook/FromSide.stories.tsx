@@ -6,7 +6,7 @@ export default {
   title: 'Button/FlowingButton',
   component: FlowingButton,
   argTypes: {
-    from: {
+    preset: {
       control: {
         type: 'radio',
       },

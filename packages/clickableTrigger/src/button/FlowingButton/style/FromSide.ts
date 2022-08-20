@@ -98,13 +98,13 @@ const position = (preset: FlowingButtonProps['preset']) => {
         right: 0;
       `
     })
-    .with('up', () => {
+    .with('down', () => {
       return css`
         top: 0;
         left: 0;
       `
     })
-    .with('down', () => {
+    .with('up', () => {
       return css`
         bottom: 0;
         left: 0;
