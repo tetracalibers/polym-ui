@@ -9,11 +9,26 @@ export default {
   title: 'Button/RotatingButton',
   component: RotatingButton,
   argTypes: {
-    children: {
+    beforeChild: {
       control: {
         type: 'text',
       },
-      description: 'Button Label',
+      description: 'Label of button before rotation',
+      table: {
+        type: {
+          summary: null,
+        },
+        category: 'character',
+      },
+      type: {
+        required: true,
+      },
+    },
+    afterChild: {
+      control: {
+        type: 'text',
+      },
+      description: 'Label of button after rotation',
       table: {
         type: {
           summary: null,
@@ -80,18 +95,14 @@ export default {
 }
 
 const Template: ComponentStory<typeof RotatingButton> = ({
-  children,
   rotateTo,
   ...args
-}) => (
-  <RotatingButton rotateTo={rotateTo} {...args}>
-    {children}
-  </RotatingButton>
-)
+}) => <RotatingButton rotateTo={rotateTo} {...args} />
 
 export const basic = Template.bind({})
 basic.args = {
   ...defaultProps,
-  children: 'Rotating!!',
+  beforeChild: 'Before Rotating!!',
+  afterChild: 'After Rotating!!',
   rotateTo: 'front',
 }

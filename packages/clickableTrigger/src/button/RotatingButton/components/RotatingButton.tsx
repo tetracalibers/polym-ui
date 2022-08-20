@@ -1,17 +1,31 @@
 import { ComponentPropsWithoutRef, FC, ReactNode } from 'react'
-import { defaultProps, RotatingButtonProps } from '../model/props'
+import {
+  defaultProps as _defaultProps,
+  RotatingButtonProps,
+} from '../model/props'
 import { RotatingStyled } from '../style/RotatingStyled'
 
-type ThisProps = ComponentPropsWithoutRef<'button'> & {
-  children: ReactNode
-} & RotatingButtonProps
+type ThisProps = Omit<
+  ComponentPropsWithoutRef<'button'> & {
+    beforeChild: ReactNode
+    afterChild: ReactNode
+  } & RotatingButtonProps,
+  'children'
+>
+
+const defaultProps = {
+  ..._defaultProps,
+  beforeChild: '',
+  afterChild: '',
+}
 
 const RotatingButton: FC<ThisProps> = (
-  { ...props }: ThisProps = { ...defaultProps, children: '' }
+  { ...props }: ThisProps = { ...defaultProps }
 ) => {
   return (
     <RotatingStyled {...props}>
-      <span>{props.children}</span>
+      <span>{props.beforeChild}</span>
+      <span>{props.afterChild}</span>
     </RotatingStyled>
   )
 }
