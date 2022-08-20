@@ -31,7 +31,7 @@ const Template: ComponentStory<typeof FlowingButton> = ({
 
 export const FormLeft = Template.bind({})
 FormLeft.args = {
-  children: 'from left',
+  children: 'flowing!!',
   preset: 'from-left',
   paddingY: '.5rem',
   paddingX: '1rem',
