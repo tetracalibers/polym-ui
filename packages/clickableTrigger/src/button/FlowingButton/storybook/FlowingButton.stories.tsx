@@ -3,18 +3,10 @@ import FlowingButton from '../components/FlowingButton'
 import { presets, defaultProps } from '../model/props'
 import { cssStoryMeta } from 'story-builder'
 import _ from 'lodash'
-// @ts-ignore
-import storyDoc from './story-doc.mdx'
 
 export default {
   title: 'Button/FlowingButton',
   component: FlowingButton,
-  parameters: {
-    docs: {
-      //page: storyDoc,
-      //inlineStories: true,
-    },
-  },
   argTypes: {
     children: {
       control: {
