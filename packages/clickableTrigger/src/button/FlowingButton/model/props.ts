@@ -21,10 +21,9 @@ const conf = {
   borderColor: Required<CSST.Property.BorderColor>('#555'),
   color: Required<CSST.Property.Color>('#333'),
   backgroundColor: Required<CSST.Property.BackgroundColor>('#fff'),
-  transitionDuration: Required<CSST.Property.TransitionDuration>('.4s'),
+  transitionDuration: Required<CSST.Property.TransitionDuration>('0.4s'),
 }
 type Conf = typeof conf
 
 export type FlowingButtonProps = ComponentBaseButtonCssProps & getPropType<Conf>
-export const flowingButtonDefaultProps =
-  getDefaultProps<FlowingButtonProps>(conf)
+export const defaultProps = getDefaultProps<FlowingButtonProps>(conf)

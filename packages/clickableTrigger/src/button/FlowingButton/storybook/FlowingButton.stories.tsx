@@ -1,10 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import FlowingButton from '../components/FlowingButton'
-import { FlowingButtonProps, presets } from '../model/props'
-import { getSelectTypeControlOption, controlType } from 'story-builder'
-
-const controlTypeSelectAs =
-  getSelectTypeControlOption<keyof FlowingButtonProps>()
+import { presets, defaultProps } from '../model/props'
+import { cssPropsDoc } from 'story-builder'
 
 export default {
   title: 'Button/FlowingButton',
@@ -16,6 +13,19 @@ export default {
       },
       options: presets,
     },
+    /* 必須 ----------------------------------------- */
+    ...cssPropsDoc.borderWidth,
+    ...cssPropsDoc.borderStyle,
+    ...cssPropsDoc.borderColor,
+    ...cssPropsDoc.color,
+    ...cssPropsDoc.backgroundColor,
+    ...cssPropsDoc.transitionDuration,
+    /* オプション -------------------------------------- */
+    ...cssPropsDoc.fontFamily,
+    ...cssPropsDoc.paddingX,
+    ...cssPropsDoc.paddingY,
+    ...cssPropsDoc.textAlign,
+    ...cssPropsDoc.borderRadius,
   },
 } as ComponentMeta<typeof FlowingButton>
 
@@ -33,6 +43,12 @@ export const FormLeft = Template.bind({})
 FormLeft.args = {
   children: 'flowing!!',
   preset: 'from-left',
+  borderWidth: defaultProps.borderWidth,
+  borderColor: defaultProps.borderColor,
+  borderStyle: defaultProps.borderStyle,
+  color: defaultProps.color,
+  backgroundColor: defaultProps.backgroundColor,
+  transitionDuration: defaultProps.transitionDuration,
   paddingY: '.5rem',
   paddingX: '1rem',
   fontFamily: 'Aboreto',

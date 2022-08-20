@@ -3,7 +3,7 @@ import { AllCssProps } from 'styled-utility-first'
 
 const controlTypeSelectAs = getSelectTypeControlOption<AllCssProps>()
 
-export const CssPropsDoc = {
+export const cssPropsDoc = {
   flexDirection: {
     ...controlTypeSelectAs('flexDirection'),
   },
@@ -39,6 +39,12 @@ export const CssPropsDoc = {
   },
   borderStyle: {
     ...controlTypeSelectAs('borderStyle'),
+  },
+  borderWidth: {
+    ...controlType('text'),
+  },
+  borderColor: {
+    ...controlType('color'),
   },
   boxSizing: {
     ...controlTypeSelectAs('boxSizing'),

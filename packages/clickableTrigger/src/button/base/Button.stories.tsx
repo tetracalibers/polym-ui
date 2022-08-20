@@ -1,8 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
-import { getSelectTypeControlOption, controlType } from 'story-builder'
-import Button, { UseCssProps } from './Button'
-
-const controlTypeSelectAs = getSelectTypeControlOption<keyof UseCssProps>()
+import { controlType, cssPropsDoc } from 'story-builder'
+import Button from './Button'
 
 export default {
   title: 'css-prop-example/Button',
@@ -11,6 +9,7 @@ export default {
     children: {
       ...controlType('text'),
     },
+    ...cssPropsDoc,
   },
 } as ComponentMeta<typeof Button>
 
