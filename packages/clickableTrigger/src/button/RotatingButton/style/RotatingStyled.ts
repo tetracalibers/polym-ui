@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { RotatingButtonProps } from './../model/props'
 import { ResetCss } from 'styled-utility-first'
-import { buttonSubStyle } from '../../substyle/mixin'
+import { buttonSubStyle } from '../../substyle/props'
 
 export const RotatingStyled = styled.button<RotatingButtonProps>`
   ${ResetCss.button}

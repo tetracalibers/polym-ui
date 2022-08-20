@@ -97,14 +97,7 @@ const Template: ComponentStory<typeof FlowingButton> = ({
 
 export const FormLeft = Template.bind({})
 FormLeft.args = {
+  ...defaultProps,
   children: 'flowing!!',
   preset: 'from-left',
-  borderWidth: defaultProps.borderWidth,
-  borderColor: defaultProps.borderColor,
-  borderStyle: defaultProps.borderStyle,
-  color: defaultProps.color,
-  backgroundColor: defaultProps.backgroundColor,
-  transitionDuration: defaultProps.transitionDuration,
-  padding: '.5rem 1rem',
-  borderRadius: '1rem',
 }

@@ -175,3 +175,11 @@ import { textReadableProps } from './packages/extension/textReadable'
 import { writingModeProps } from './packages/extension/writingMode'
 
 export { textDecorationProps, textReadableProps, writingModeProps }
+
+/* -------------------------------------------- */
+/* BUILDER                                      */
+/* -------------------------------------------- */
+
+import { mixinBuilder } from './packages/extension/helper/mixinMaker'
+
+export { mixinBuilder }
