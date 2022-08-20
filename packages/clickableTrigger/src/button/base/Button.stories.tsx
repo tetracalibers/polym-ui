@@ -5,7 +5,7 @@ import Button, { UseCssProps } from './Button'
 const controlTypeSelectAs = getSelectTypeControlOption<keyof UseCssProps>()
 
 export default {
-  title: 'clickable-trigger/Button',
+  title: 'css-prop-example/Button',
   component: Button,
   argTypes: {
     children: {
