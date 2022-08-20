@@ -208,6 +208,7 @@ export const FlowingStyled = styled.button<FlowingButtonProps>`
   overflow: hidden;
   /* ボタンの形状 */
   display: inline-block;
+  text-align: center;
   /* アニメーション設定 */
   transition: ease 0.2s;
 

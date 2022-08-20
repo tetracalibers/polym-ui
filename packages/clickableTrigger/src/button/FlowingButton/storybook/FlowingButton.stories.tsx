@@ -3,6 +3,7 @@ import FlowingButton from '../components/FlowingButton'
 import { presets, defaultProps } from '../model/props'
 import { cssStoryMeta } from 'story-builder'
 import _ from 'lodash'
+import { substyleArgTypes } from '../../substyle/argTypes'
 
 export default {
   title: 'Button/FlowingButton',
@@ -80,6 +81,7 @@ export default {
         required: true,
       },
     },
+    ...substyleArgTypes,
   },
 }
 
@@ -104,6 +106,5 @@ FormLeft.args = {
   backgroundColor: defaultProps.backgroundColor,
   transitionDuration: defaultProps.transitionDuration,
   padding: '.5rem 1rem',
-  textAlign: 'center',
   borderRadius: '1rem',
 }
