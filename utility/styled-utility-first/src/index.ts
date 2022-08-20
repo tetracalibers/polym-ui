@@ -116,6 +116,25 @@ export type CssPropsTypeFactory<K extends CssPropsCategory> = CssProps<
   K
 >
 
+type UnionToIntersection<U> = (U extends U ? (a: U) => void : never) extends (
+  a: infer R
+) => void
+  ? R
+  : never
+
+type Distribute<U> = U extends CssPropsCategory
+  ? {
+      [key in keyof CssPropsWithoutPseudo<
+        Config,
+        U
+      >]: CssPropsTypeFactory<U>[key]
+    }
+  : never
+
+export type AllCssProps = keyof UnionToIntersection<
+  Distribute<CssPropsCategory>
+>
+
 export { Pseudo }
 
 /* styleFn ------------------------------------ */
