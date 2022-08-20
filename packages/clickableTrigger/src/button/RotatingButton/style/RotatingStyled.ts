@@ -1,8 +1,7 @@
 import styled, { css } from 'styled-components'
 import { RotatingButtonProps } from './../model/props'
 import { ResetCss } from 'styled-utility-first'
-import { buttonSubStyle, ButtonSubstyleProps } from '../../substyle/props'
-import { match } from 'ts-pattern'
+import { buttonSubStyle } from '../../substyle/props'
 
 const hoverNth1Rotate = (rotateTo: RotatingButtonProps['rotateTo']) => {
   return css`
