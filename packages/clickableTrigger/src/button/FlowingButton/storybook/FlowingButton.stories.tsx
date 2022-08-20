@@ -112,7 +112,6 @@ FormLeft.args = {
   backgroundColor: defaultProps.backgroundColor,
   transitionDuration: defaultProps.transitionDuration,
   padding: '.5rem 1rem',
-  fontFamily: 'Aboreto',
   textAlign: 'center',
   borderRadius: '1rem',
 }
