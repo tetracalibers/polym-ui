@@ -1,5 +1,5 @@
 import { ComponentPropsWithoutRef, FC, ReactNode } from 'react'
-import { FromSideStyled } from '../style/FromSide'
+import { FlowingStyled } from '../style/Flowing'
 import { FlowingButtonProps } from '../model/props'
 
 type ThisProps = ComponentPropsWithoutRef<'button'> & {
@@ -12,9 +12,9 @@ const FlowingButton: FC<ThisProps> = ({
   ...props
 }: ThisProps) => {
   return (
-    <FromSideStyled preset={preset} {...props}>
+    <FlowingStyled preset={preset} {...props}>
       <span>{children}</span>
-    </FromSideStyled>
+    </FlowingStyled>
   )
 }
 

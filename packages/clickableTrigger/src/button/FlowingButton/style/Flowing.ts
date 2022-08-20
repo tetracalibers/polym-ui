@@ -218,7 +218,7 @@ const beforeAnimation = (preset: FlowingButtonProps['preset']) => {
     })
 }
 
-export const FromSideStyled = styled(BaseStyled)<FlowingButtonProps>`
+export const FlowingStyled = styled(BaseStyled)<FlowingButtonProps>`
   &::before {
     /* 位置調整 */
     content: '';
