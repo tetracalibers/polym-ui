@@ -158,3 +158,8 @@ export type CssProps<
 > = Partial<
   AllRequiredCssProps<PropsMap, PickKey> & PseudoProps & NotPseudoProps
 >
+
+export type CssPropsWithoutPseudo<
+  PropsMap extends PropsMapFormat<PropsMap>,
+  PickKey extends keyof PropsMap
+> = Partial<AllRequiredCssProps<PropsMap, PickKey>>

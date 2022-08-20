@@ -1,6 +1,6 @@
 import { ComponentPropsWithoutRef, FC, ReactNode } from 'react'
 import { FlowingStyled } from '../style/Flowing'
-import { FlowingButtonProps } from '../model/props'
+import { flowingButtonDefaultProps, FlowingButtonProps } from '../model/props'
 
 type ThisProps = ComponentPropsWithoutRef<'button'> & {
   children: ReactNode
@@ -9,10 +9,25 @@ type ThisProps = ComponentPropsWithoutRef<'button'> & {
 const FlowingButton: FC<ThisProps> = ({
   children,
   preset,
+  borderWidth = flowingButtonDefaultProps.borderWidth,
+  borderStyle = flowingButtonDefaultProps.borderStyle,
+  borderColor = flowingButtonDefaultProps.borderColor,
+  color = flowingButtonDefaultProps.color,
+  backgroundColor = flowingButtonDefaultProps.backgroundColor,
+  transitionDuration = flowingButtonDefaultProps.transitionDuration,
   ...props
 }: ThisProps) => {
   return (
-    <FlowingStyled preset={preset} {...props}>
+    <FlowingStyled
+      preset={preset}
+      borderWidth={borderWidth}
+      borderColor={borderColor}
+      borderStyle={borderStyle}
+      color={color}
+      backgroundColor={backgroundColor}
+      transitionDuration={transitionDuration}
+      {...props}
+    >
       <span>{children}</span>
     </FlowingStyled>
   )

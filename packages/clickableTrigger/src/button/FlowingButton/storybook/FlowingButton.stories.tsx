@@ -1,6 +1,10 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import FlowingButton from '../components/FlowingButton'
-import { presets } from '../model/props'
+import { FlowingButtonProps, presets } from '../model/props'
+import { getSelectTypeControlOption, controlType } from 'story-builder'
+
+const controlTypeSelectAs =
+  getSelectTypeControlOption<keyof FlowingButtonProps>()
 
 export default {
   title: 'Button/FlowingButton',
@@ -25,8 +29,13 @@ const Template: ComponentStory<typeof FlowingButton> = ({
   </FlowingButton>
 )
 
-export const Left = Template.bind({})
-Left.args = {
-  children: 'From Left',
+export const FormLeft = Template.bind({})
+FormLeft.args = {
+  children: 'from left',
   preset: 'from-left',
+  paddingY: '.5rem',
+  paddingX: '1rem',
+  fontFamily: 'Aboreto',
+  textAlign: 'center',
+  borderRadius: '1rem',
 }

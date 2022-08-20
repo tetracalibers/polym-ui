@@ -65,7 +65,20 @@ const config = {
     'advancedBackground',
     'filterEffect',
   ],
+  // componentBase ....ライブラリ提供コンポーネント用
+  // position指定とanimation付加ができない
+  componentBaseBox: [
+    'this.text',
+    'space',
+    'layout',
+    'background',
+    'border',
+    'shadow',
+    'advancedBackground',
+    'filterEffect',
+  ],
   button: ['this.decorativeBox', 'userAction', 'formInterface'],
+  componentBaseButton: ['this.componentBaseBox', 'userAction', 'formInterface'],
   link: ['this.decorativeBox', 'userAction'],
   animation: ['transition', 'willChange'],
   transform: ['transform'],
@@ -74,7 +87,7 @@ const config = {
 
 /* types -------------------------------------- */
 
-import { CssProps } from './packages/generator/CssProps'
+import { CssProps, CssPropsWithoutPseudo } from './packages/generator/CssProps'
 import { Pseudo } from './packages/constants/pseudo'
 
 type Config = typeof config
@@ -87,6 +100,15 @@ export type LinkCssProps = CssProps<Config, 'link'>
 export type AnimationCssProps = CssProps<Config, 'animation'>
 export type TransformCssProps = CssProps<Config, 'transform'>
 export type SvgCssProps = CssProps<Config, 'svg'>
+
+export type ComponentBaseBoxCssProps = CssPropsWithoutPseudo<
+  Config,
+  'componentBaseBox'
+>
+export type ComponentBaseButtonCssProps = CssPropsWithoutPseudo<
+  Config,
+  'componentBaseButton'
+>
 
 export type CssPropsCategory = keyof Config
 export type CssPropsTypeFactory<K extends CssPropsCategory> = CssProps<

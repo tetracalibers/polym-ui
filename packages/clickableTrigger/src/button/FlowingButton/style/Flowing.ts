@@ -1,6 +1,6 @@
 import { match } from 'ts-pattern'
 import styled, { css, keyframes } from 'styled-components'
-import { ResetCss } from 'styled-utility-first'
+import { provideCssProps, ResetCss } from 'styled-utility-first'
 import { FlowingButtonProps } from '../model/props'
 
 const diagonalKeyframes = keyframes`
@@ -73,28 +73,6 @@ const transitionProperty = (preset: FlowingButtonProps['preset']) => {
         transition-property: all;
       `
     })
-    .otherwise(() => '')
-}
-
-const transitionDuration = (preset: FlowingButtonProps['preset']) => {
-  return match(preset)
-    .with('from-left', 'from-right', () => {
-      return css`
-        transition-duration: 0.6s;
-      `
-    })
-    .with(
-      'up',
-      'down',
-      'center-to-horizontal',
-      'center-to-vertical',
-      'center-to-corner',
-      () => {
-        return css`
-          transition-duration: 0.3s;
-        `
-      }
-    )
     .otherwise(() => '')
 }
 
@@ -199,7 +177,10 @@ const position = (preset: FlowingButtonProps['preset']) => {
     .otherwise(() => '')
 }
 
-const beforeAnimation = (preset: FlowingButtonProps['preset']) => {
+const beforeAnimation = (
+  preset: FlowingButtonProps['preset'],
+  duration: FlowingButtonProps['transitionDuration']
+) => {
   return match(preset)
     .with('diagonal', () => {
       return css`
@@ -209,7 +190,7 @@ const beforeAnimation = (preset: FlowingButtonProps['preset']) => {
     .otherwise(() => {
       return css`
         ${transitionProperty(preset)}
-        ${transitionDuration(preset)}
+        transition-duration: ${duration};
         transition-timing-function: cubic-bezier(0.8, 0, 0.2, 1);
         transition-delay: 0s;
         ${transform(preset)}
@@ -220,18 +201,13 @@ const beforeAnimation = (preset: FlowingButtonProps['preset']) => {
 
 export const FlowingStyled = styled.button<FlowingButtonProps>`
   ${ResetCss.button}
+  ${provideCssProps.as('componentBaseButton')}
 
   /* アニメーションの起点 */
   position: relative;
   overflow: hidden;
   /* ボタンの形状 */
-  text-decoration: none;
   display: inline-block;
-  /* ボーダー */
-  border: 1px solid #555;
-  padding: 10px 30px;
-  text-align: center;
-  outline: none;
   /* アニメーション設定 */
   transition: ease 0.2s;
 
@@ -239,11 +215,11 @@ export const FlowingStyled = styled.button<FlowingButtonProps>`
     position: relative;
     /* 文字を背景より手前に表示 */
     z-index: 3;
-    color: #333;
+    color: ${({ color }) => color};
   }
 
   &:hover span {
-    color: #fff;
+    color: ${({ backgroundColor }) => backgroundColor};
   }
 
   &::before {
@@ -253,16 +229,17 @@ export const FlowingStyled = styled.button<FlowingButtonProps>`
     ${({ preset }) => position(preset)}
     z-index: 2;
     /* 見た目 */
-    background-color: '#333';
+    background-color: ${({ backgroundColor }) => backgroundColor};
     ${({ preset }) => width(preset)}
     ${({ preset }) => height(preset)}
     /* アニメーション */
-    ${({ preset }) => beforeAnimation(preset)}
+    ${({ preset, transitionDuration }) =>
+      beforeAnimation(preset, transitionDuration)}
   }
 
   &:hover::before {
     ${({ preset }) => hoverBeforeAnimation(preset)}
     height: 100%;
-    background-color: #333;
+    background-color: ${({ color }) => color};
   }
 `
