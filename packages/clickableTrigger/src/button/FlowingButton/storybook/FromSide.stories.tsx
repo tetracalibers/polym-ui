@@ -1,8 +1,8 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
-import FlowBackFromFourSidedButton from '../components/FromFourSided'
+import FlowBackFromFourSidedButton from '../components/FromSide'
 
 export default {
-  title: 'clickable-trigger/FlowBackFromFourSidedButton',
+  title: 'Button/FlowingButton',
   component: FlowBackFromFourSidedButton,
   argTypes: {
     from: {
