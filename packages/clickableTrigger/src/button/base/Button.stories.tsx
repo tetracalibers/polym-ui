@@ -1,5 +1,5 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react'
-import { controlType, cssPropsDoc } from 'story-builder'
+import { ComponentStory } from '@storybook/react'
+import { cssStoryMeta } from 'story-builder'
 import Button from './Button'
 
 export default {
@@ -7,11 +7,22 @@ export default {
   component: Button,
   argTypes: {
     children: {
-      ...controlType('text'),
+      control: {
+        type: 'text',
+      },
+      description: 'Button Label',
+      table: {
+        type: {
+          summary: 'string',
+        },
+        category: 'character',
+      },
+      type: {
+        required: true,
+      },
     },
-    ...cssPropsDoc,
   },
-} as ComponentMeta<typeof Button>
+}
 
 const Template: ComponentStory<typeof Button> = ({ children, ...props }) => (
   <Button {...props}>{children}</Button>

@@ -1,7 +1,7 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { ComponentStory } from '@storybook/react'
 import FlowingButton from '../components/FlowingButton'
 import { presets, defaultProps } from '../model/props'
-import { controlType, cssPropsDoc } from 'story-builder'
+import { cssStoryMeta } from 'story-builder'
 // @ts-ignore
 import storyDoc from './story-doc.mdx'
 
@@ -11,12 +11,14 @@ export default {
   parameters: {
     docs: {
       //page: storyDoc,
-      inlineStories: true,
+      //inlineStories: true,
     },
   },
   argTypes: {
     children: {
-      ...controlType('text'),
+      control: {
+        type: 'text',
+      },
       description: 'Button Label',
       table: {
         type: {
@@ -50,22 +52,41 @@ export default {
     },
     /* 必須 ----------------------------------------- */
     borderWidth: {
-      ...cssPropsDoc.borderWidth,
+      ...cssStoryMeta.borderWidth,
       type: {
         required: true,
       },
     },
-    ...cssPropsDoc.borderStyle,
-    ...cssPropsDoc.borderColor,
-    ...cssPropsDoc.color,
-    ...cssPropsDoc.backgroundColor,
-    ...cssPropsDoc.transitionDuration,
-    /* オプション -------------------------------------- */
-    ...cssPropsDoc.fontFamily,
-    ...cssPropsDoc.paddingX,
-    ...cssPropsDoc.paddingY,
-    ...cssPropsDoc.textAlign,
-    ...cssPropsDoc.borderRadius,
+    borderStyle: {
+      ...cssStoryMeta.borderStyle,
+      type: {
+        required: true,
+      },
+    },
+    borderColor: {
+      ...cssStoryMeta.borderColor,
+      type: {
+        required: true,
+      },
+    },
+    color: {
+      ...cssStoryMeta.color,
+      type: {
+        required: true,
+      },
+    },
+    backgroundColor: {
+      ...cssStoryMeta.backgroundColor,
+      type: {
+        required: true,
+      },
+    },
+    transitionDuration: {
+      ...cssStoryMeta.transitionDuration,
+      type: {
+        required: true,
+      },
+    },
   },
 }
 
