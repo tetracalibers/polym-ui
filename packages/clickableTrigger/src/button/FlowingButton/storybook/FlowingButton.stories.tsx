@@ -16,7 +16,7 @@ export default {
       description: 'Button Label',
       table: {
         type: {
-          summary: 'string',
+          summary: null,
         },
         category: 'character',
       },
@@ -32,7 +32,7 @@ export default {
       description: 'Type of Animation',
       table: {
         type: {
-          summary: presets.join(', '),
+          summary: null,
         },
         defaultValue: {
           summary: defaultProps.preset,
