@@ -17,7 +17,6 @@ const nth2Rotate = (rotateTo: RotatingButtonProps['rotateTo']) => {
 
 export const RotatingStyled = styled.button<RotatingButtonProps>`
   ${ResetCss.button}
-  ${styleMixin}
 
   /* 背景の基点 */
   position: relative;
@@ -31,6 +30,7 @@ export const RotatingStyled = styled.button<RotatingButtonProps>`
   outline: none;
 
   & span {
+    ${styleMixin}
     display: block;
     position: absolute;
     width: 100%;
