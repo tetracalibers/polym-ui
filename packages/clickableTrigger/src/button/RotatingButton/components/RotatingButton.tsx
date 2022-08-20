@@ -6,27 +6,12 @@ type ThisProps = ComponentPropsWithoutRef<'button'> & {
   children: ReactNode
 } & RotatingButtonProps
 
-const RotatingButton: FC<ThisProps> = ({
-  children,
-  rotateTo,
-  borderWidth = defaultProps.borderWidth,
-  borderStyle = defaultProps.borderStyle,
-  borderColor = defaultProps.borderColor,
-  color = defaultProps.color,
-  backgroundColor = defaultProps.backgroundColor,
-  ...props
-}: ThisProps) => {
+const RotatingButton: FC<ThisProps> = (
+  { ...props }: ThisProps = { ...defaultProps, children: '' }
+) => {
   return (
-    <RotatingStyled
-      rotateTo={rotateTo}
-      borderWidth={borderWidth}
-      borderColor={borderColor}
-      borderStyle={borderStyle}
-      color={color}
-      backgroundColor={backgroundColor}
-      {...props}
-    >
-      <span>{children}</span>
+    <RotatingStyled {...props}>
+      <span>{props.children}</span>
     </RotatingStyled>
   )
 }

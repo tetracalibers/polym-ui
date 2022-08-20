@@ -6,29 +6,12 @@ type ThisProps = ComponentPropsWithoutRef<'button'> & {
   children: ReactNode
 } & FlowingButtonProps
 
-const FlowingButton: FC<ThisProps> = ({
-  children,
-  preset,
-  borderWidth = defaultProps.borderWidth,
-  borderStyle = defaultProps.borderStyle,
-  borderColor = defaultProps.borderColor,
-  color = defaultProps.color,
-  backgroundColor = defaultProps.backgroundColor,
-  transitionDuration = defaultProps.transitionDuration,
-  ...props
-}: ThisProps) => {
+const FlowingButton: FC<ThisProps> = (
+  { ...props }: ThisProps = { ...defaultProps, children: '' }
+) => {
   return (
-    <FlowingStyled
-      preset={preset}
-      borderWidth={borderWidth}
-      borderColor={borderColor}
-      borderStyle={borderStyle}
-      color={color}
-      backgroundColor={backgroundColor}
-      transitionDuration={transitionDuration}
-      {...props}
-    >
-      <span>{children}</span>
+    <FlowingStyled {...props}>
+      <span>{props.children}</span>
     </FlowingStyled>
   )
 }
