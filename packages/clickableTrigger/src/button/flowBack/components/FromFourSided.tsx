@@ -1,8 +1,8 @@
-import { FC, ReactNode } from 'react'
+import { ComponentPropsWithoutRef, FC, ReactNode } from 'react'
 import { FromFourSidedProps } from '../model/props'
 import { FromFourSidedStyled } from '../style/FromFourSided'
 
-type ThisProps = {
+type ThisProps = ComponentPropsWithoutRef<'button'> & {
   children: ReactNode
 } & FromFourSidedProps
 

@@ -1,6 +1,8 @@
 import styled from 'styled-components'
+import { ResetCss } from 'styled-utility-first'
 
-export const BaseStyled = styled.a`
+export const BaseStyled = styled.button`
+  ${ResetCss.button}
   /* -------------------------------------------- */
   /* WRAPPER                                      */
   /* -------------------------------------------- */
