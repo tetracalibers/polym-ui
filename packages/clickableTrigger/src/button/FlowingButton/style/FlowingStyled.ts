@@ -3,7 +3,6 @@ import styled, { css, keyframes } from 'styled-components'
 import { ResetCss } from 'styled-utility-first'
 import { FlowingButtonProps } from '../model/props'
 import { buttonSubStyle } from '../../substyle/props'
-import { system } from 'styled-system'
 
 const diagonalKeyframes = keyframes`
   100% {
