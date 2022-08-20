@@ -17,12 +17,11 @@
 
 #### props
 
-- **variation**
+- **preset**
   - from-left
   - from-right
   - up
   - down
-  - from-center
   - center-to-horizontal
   - center-to-vertical
   - center-to-corner
@@ -31,6 +30,12 @@
 ### RotatingButton
 
 くるっと回転
+
+#### props
+
+- **rotateTo**
+  - front
+  - back
 
 ### RippleButton
 
