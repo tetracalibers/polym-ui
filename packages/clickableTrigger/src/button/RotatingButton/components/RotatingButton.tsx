@@ -3,7 +3,7 @@ import {
   defaultProps as _defaultProps,
   RotatingButtonProps,
 } from '../model/props'
-import { RotatingStyled } from '../style/RotatingStyled'
+import { RotatingStyled } from '../styled/RotatingStyled'
 
 type ThisProps = Omit<
   ComponentPropsWithoutRef<'button'> & {
