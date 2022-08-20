@@ -2,6 +2,7 @@ import { ComponentStory } from '@storybook/react'
 import RotatingButton from '../components/RotatingButton'
 import { defaultProps, rotateTo } from '../model/props'
 import _ from 'lodash'
+import { styleArgTypes } from '../css-props/argTypes'
 
 export default {
   title: 'Button/RotatingButton',
@@ -57,6 +58,7 @@ export default {
       },
       options: rotateTo,
     },
+    ...styleArgTypes,
   },
 }
 

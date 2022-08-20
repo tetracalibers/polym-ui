@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components'
 import { RotatingButtonProps } from '../model/props'
 import { ResetCss } from 'styled-utility-first'
+import { styleMixin } from '../css-props/props'
 
 const hoverNth1Rotate = (rotateTo: RotatingButtonProps['rotateTo']) => {
   return css`
@@ -16,6 +17,7 @@ const nth2Rotate = (rotateTo: RotatingButtonProps['rotateTo']) => {
 
 export const RotatingStyled = styled.button<RotatingButtonProps>`
   ${ResetCss.button}
+  ${styleMixin}
 
   /* 背景の基点 */
   position: relative;
