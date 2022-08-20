@@ -1,7 +1,8 @@
 import styled from 'styled-components'
 import { ResetCss } from 'styled-utility-first'
+import { FlowingButtonProps } from '../model/props'
 
-export const BaseStyled = styled.button`
+export const BaseStyled = styled.button<FlowingButtonProps>`
   ${ResetCss.button}
   /* -------------------------------------------- */
   /* WRAPPER                                      */

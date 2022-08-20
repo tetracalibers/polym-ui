@@ -1,79 +1,116 @@
+import { match } from 'ts-pattern'
 import styled, { css } from 'styled-components'
 import { BaseStyled } from './Base'
 import { FlowingButtonProps } from '../model/props'
 
 const transform = (preset: FlowingButtonProps['preset']) => {
-  return (
-    ['from-left', 'from-right'].includes(preset) &&
-    css`
-      transform: scale(0, 1);
-    `
-  )
+  return match(preset)
+    .with('from-left', 'from-right', () => {
+      return css`
+        transform: scale(0, 1);
+      `
+    })
+    .otherwise(() => '')
 }
 
 const transformOrigin = (preset: FlowingButtonProps['preset']) => {
-  return (
-    ['from-left', 'from-right'].includes(preset) &&
-    css`
-      transform-origin: ${preset} top;
-    `
-  )
+  return match(preset)
+    .with('from-left', () => {
+      return css`
+        transform-origin: left top;
+      `
+    })
+    .with('from-right', () => {
+      return css`
+        transform-origin: right top;
+      `
+    })
+    .otherwise(() => '')
 }
 
 const transitionProperty = (preset: FlowingButtonProps['preset']) => {
-  return ['from-left', 'from-right'].includes(preset)
-    ? css`
+  return match(preset)
+    .with('from-left', 'from-right', () => {
+      return css`
         transition-property: transform;
       `
-    : css`
+    })
+    .with('up', 'down', () => {
+      return css`
         transition-property: all;
       `
+    })
+    .otherwise(() => '')
 }
 
 const transitionDuration = (preset: FlowingButtonProps['preset']) => {
-  return ['from-left', 'from-right'].includes(preset)
-    ? css`
+  return match(preset)
+    .with('from-left', 'from-right', () => {
+      return css`
         transition-duration: 0.6s;
       `
-    : css`
+    })
+    .with('up', 'down', () => {
+      return css`
         transition-duration: 0.3s;
       `
+    })
+    .otherwise(() => '')
 }
 
 const height = (preset: FlowingButtonProps['preset']) => {
-  return ['from-left', 'from-right'].includes(preset)
-    ? css`
+  return match(preset)
+    .with('from-left', 'from-right', () => {
+      return css`
         height: 100%;
       `
-    : css`
+    })
+    .with('up', 'down', () => {
+      return css`
         height: 0;
       `
+    })
+    .otherwise(() => '')
 }
 
 const hoverBeforeRuleset = (preset: FlowingButtonProps['preset']) => {
-  return ['from-left', 'from-right'].includes(preset)
-    ? css`
+  return match(preset)
+    .with('from-left', 'from-right', () => {
+      return css`
         ${transformOrigin(preset)}
         transform: scale(1, 1);
-        height: 100%;
-        background-color: #333;
       `
-    : css`
-        height: 100%;
-        background-color: #333;
-      `
+    })
+    .otherwise(() => '')
 }
 
 const position = (preset: FlowingButtonProps['preset']) => {
-  return ['from-left', 'from-right'].includes(preset)
-    ? css`
+  return match(preset)
+    .with('from-left', () => {
+      return css`
         top: 0;
-        ${preset}: 0;
-      `
-    : css`
-        ${preset}: 0;
         left: 0;
       `
+    })
+    .with('from-right', () => {
+      return css`
+        top: 0;
+        right: 0;
+      `
+    })
+    .with('up', () => {
+      return css`
+        top: 0;
+        left: 0;
+      `
+    })
+    .with('down', () => {
+      return css`
+        bottom: 0;
+        left: 0;
+      `
+    })
+    .otherwise(() => '')
 }
 
 export const FromSideStyled = styled(BaseStyled)<FlowingButtonProps>`
@@ -98,5 +135,7 @@ export const FromSideStyled = styled(BaseStyled)<FlowingButtonProps>`
 
   &:hover::before {
     ${({ preset }) => hoverBeforeRuleset(preset)}
+    height: 100%;
+    background-color: #333;
   }
 `
