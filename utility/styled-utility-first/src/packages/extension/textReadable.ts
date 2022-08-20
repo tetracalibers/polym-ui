@@ -14,3 +14,4 @@ type Conf = typeof conf
 
 export type TextReadableProps = getPropType<Conf>
 export const textReadableMixin = mixinBuilder<TextReadableProps, Conf>(conf)
+export const textReadableProps = Object.keys(conf)

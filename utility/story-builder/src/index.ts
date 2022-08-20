@@ -1,7 +1,14 @@
 // テスト用（バンドル時はコメントアウト）
 //import './dumpster/use-fs'
-import { AllCssProps } from '../../styled-utility-first/lib/@types'
+import _ from 'lodash'
+import {
+  AllCssProps,
+  textDecorationProps,
+  textReadableProps,
+  writingModeProps,
+} from 'styled-utility-first'
 import * as cssStoryMetaJson from './data/css-prop-doc.json'
+
 export const cssStoryMeta = JSON.parse(JSON.stringify(cssStoryMetaJson)) as {
   [k in AllCssProps]: {
     control: {
@@ -17,4 +24,10 @@ export const cssStoryMeta = JSON.parse(JSON.stringify(cssStoryMetaJson)) as {
       subcategory: string
     }
   }
+}
+
+export const cssStoryMetaOf = {
+  textDecoration: _.pick(cssStoryMeta, textDecorationProps),
+  textReadable: _.pick(cssStoryMeta, textReadableProps),
+  writingMode: _.pick(cssStoryMeta, writingModeProps),
 }

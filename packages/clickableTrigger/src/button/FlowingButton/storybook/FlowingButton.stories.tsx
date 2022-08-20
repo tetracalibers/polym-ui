@@ -2,6 +2,7 @@ import { ComponentStory } from '@storybook/react'
 import FlowingButton from '../components/FlowingButton'
 import { presets, defaultProps } from '../model/props'
 import { cssStoryMeta } from 'story-builder'
+import _ from 'lodash'
 // @ts-ignore
 import storyDoc from './story-doc.mdx'
 
@@ -110,8 +111,7 @@ FormLeft.args = {
   color: defaultProps.color,
   backgroundColor: defaultProps.backgroundColor,
   transitionDuration: defaultProps.transitionDuration,
-  paddingY: '.5rem',
-  paddingX: '1rem',
+  padding: '.5rem 1rem',
   fontFamily: 'Aboreto',
   textAlign: 'center',
   borderRadius: '1rem',

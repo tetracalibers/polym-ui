@@ -21,3 +21,4 @@ type Conf = typeof conf
 
 export type TextDecorationProps = getPropType<typeof conf>
 export const textDecorationMixin = mixinBuilder<TextDecorationProps, Conf>(conf)
+export const textDecorationProps = Object.keys(conf)

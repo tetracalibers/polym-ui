@@ -10,3 +10,4 @@ type Conf = typeof conf
 
 export type WritingModeProps = getPropType<Conf>
 export const writingModeMixin = mixinBuilder<WritingModeProps, Conf>(conf)
+export const writingModeProps = Object.keys(conf)

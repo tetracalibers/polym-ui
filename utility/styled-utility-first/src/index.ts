@@ -165,3 +165,13 @@ export namespace provideCssProps {
     ${({ notActiveStyle }) => pseudoMixin('active', notActiveStyle)}
   `
 }
+
+/* -------------------------------------------- */
+/* PROP NAMES                                   */
+/* -------------------------------------------- */
+
+import { textDecorationProps } from './packages/extension/textDecoration'
+import { textReadableProps } from './packages/extension/textReadable'
+import { writingModeProps } from './packages/extension/writingMode'
+
+export { textDecorationProps, textReadableProps, writingModeProps }
