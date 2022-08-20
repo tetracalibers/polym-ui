@@ -42,6 +42,10 @@ export const cssPropsDoc = {
   },
   borderWidth: {
     ...controlType('text'),
+    table: {
+      category: 'css',
+    },
+    description: '枠線の太さ',
   },
   borderColor: {
     ...controlType('color'),
