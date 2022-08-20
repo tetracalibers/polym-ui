@@ -10,6 +10,11 @@ const transform = (preset: FlowingButtonProps['preset']) => {
         transform: scale(0, 1);
       `
     })
+    .with('center-to-vertical', () => {
+      return css`
+        transform: scale(1, 0);
+      `
+    })
     .otherwise(() => '')
 }
 
@@ -30,16 +35,27 @@ const transformOrigin = (preset: FlowingButtonProps['preset']) => {
         transform-origin: top;
       `
     })
+    .with('center-to-vertical', () => {
+      return css`
+        transform-origin: center;
+      `
+    })
     .otherwise(() => '')
 }
 
 const transitionProperty = (preset: FlowingButtonProps['preset']) => {
   return match(preset)
-    .with('from-left', 'from-right', 'center-to-horizontal', () => {
-      return css`
-        transition-property: transform;
-      `
-    })
+    .with(
+      'from-left',
+      'from-right',
+      'center-to-horizontal',
+      'center-to-vertical',
+      () => {
+        return css`
+          transition-property: transform;
+        `
+      }
+    )
     .with('up', 'down', () => {
       return css`
         transition-property: all;
@@ -55,7 +71,7 @@ const transitionDuration = (preset: FlowingButtonProps['preset']) => {
         transition-duration: 0.6s;
       `
     })
-    .with('up', 'down', 'center-to-horizontal', () => {
+    .with('up', 'down', 'center-to-horizontal', 'center-to-vertical', () => {
       return css`
         transition-duration: 0.3s;
       `
@@ -65,11 +81,17 @@ const transitionDuration = (preset: FlowingButtonProps['preset']) => {
 
 const height = (preset: FlowingButtonProps['preset']) => {
   return match(preset)
-    .with('from-left', 'from-right', 'center-to-horizontal', () => {
-      return css`
-        height: 100%;
-      `
-    })
+    .with(
+      'from-left',
+      'from-right',
+      'center-to-horizontal',
+      'center-to-vertical',
+      () => {
+        return css`
+          height: 100%;
+        `
+      }
+    )
     .with('up', 'down', () => {
       return css`
         height: 0;
@@ -80,18 +102,24 @@ const height = (preset: FlowingButtonProps['preset']) => {
 
 const hoverBeforeRuleset = (preset: FlowingButtonProps['preset']) => {
   return match(preset)
-    .with('from-left', 'from-right', 'center-to-horizontal', () => {
-      return css`
-        ${transformOrigin(preset)}
-        transform: scale(1, 1);
-      `
-    })
+    .with(
+      'from-left',
+      'from-right',
+      'center-to-horizontal',
+      'center-to-vertical',
+      () => {
+        return css`
+          ${transformOrigin(preset)}
+          transform: scale(1, 1);
+        `
+      }
+    )
     .otherwise(() => '')
 }
 
 const position = (preset: FlowingButtonProps['preset']) => {
   return match(preset)
-    .with('from-left', 'center-to-horizontal', () => {
+    .with('from-left', 'center-to-horizontal', 'center-to-vertical', () => {
       return css`
         top: 0;
         left: 0;
