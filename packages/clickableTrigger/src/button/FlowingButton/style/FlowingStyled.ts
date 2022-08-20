@@ -203,7 +203,7 @@ export const FlowingStyled = styled.button<FlowingButtonProps>`
   ${ResetCss.button}
   ${provideCssProps.as('componentBaseButton')}
 
-  /* アニメーションの起点 */
+  /* アニメーションの基点 */
   position: relative;
   overflow: hidden;
   /* ボタンの形状 */
