@@ -5,7 +5,7 @@ import { FlowingButtonProps } from '../model/props'
 
 const transform = (preset: FlowingButtonProps['preset']) => {
   return match(preset)
-    .with('from-left', 'from-right', () => {
+    .with('from-left', 'from-right', 'center-to-horizontal', () => {
       return css`
         transform: scale(0, 1);
       `
@@ -25,12 +25,17 @@ const transformOrigin = (preset: FlowingButtonProps['preset']) => {
         transform-origin: right top;
       `
     })
+    .with('center-to-horizontal', () => {
+      return css`
+        transform-origin: top;
+      `
+    })
     .otherwise(() => '')
 }
 
 const transitionProperty = (preset: FlowingButtonProps['preset']) => {
   return match(preset)
-    .with('from-left', 'from-right', () => {
+    .with('from-left', 'from-right', 'center-to-horizontal', () => {
       return css`
         transition-property: transform;
       `
@@ -50,7 +55,7 @@ const transitionDuration = (preset: FlowingButtonProps['preset']) => {
         transition-duration: 0.6s;
       `
     })
-    .with('up', 'down', () => {
+    .with('up', 'down', 'center-to-horizontal', () => {
       return css`
         transition-duration: 0.3s;
       `
@@ -60,7 +65,7 @@ const transitionDuration = (preset: FlowingButtonProps['preset']) => {
 
 const height = (preset: FlowingButtonProps['preset']) => {
   return match(preset)
-    .with('from-left', 'from-right', () => {
+    .with('from-left', 'from-right', 'center-to-horizontal', () => {
       return css`
         height: 100%;
       `
@@ -75,7 +80,7 @@ const height = (preset: FlowingButtonProps['preset']) => {
 
 const hoverBeforeRuleset = (preset: FlowingButtonProps['preset']) => {
   return match(preset)
-    .with('from-left', 'from-right', () => {
+    .with('from-left', 'from-right', 'center-to-horizontal', () => {
       return css`
         ${transformOrigin(preset)}
         transform: scale(1, 1);
@@ -86,7 +91,7 @@ const hoverBeforeRuleset = (preset: FlowingButtonProps['preset']) => {
 
 const position = (preset: FlowingButtonProps['preset']) => {
   return match(preset)
-    .with('from-left', () => {
+    .with('from-left', 'center-to-horizontal', () => {
       return css`
         top: 0;
         left: 0;
