@@ -1,6 +1,6 @@
 import { match } from 'ts-pattern'
 import styled, { css, keyframes } from 'styled-components'
-import { BaseStyled } from './Base'
+import { ResetCss } from 'styled-utility-first'
 import { FlowingButtonProps } from '../model/props'
 
 const diagonalKeyframes = keyframes`
@@ -218,7 +218,34 @@ const beforeAnimation = (preset: FlowingButtonProps['preset']) => {
     })
 }
 
-export const FlowingStyled = styled(BaseStyled)<FlowingButtonProps>`
+export const FlowingStyled = styled.button<FlowingButtonProps>`
+  ${ResetCss.button}
+
+  /* アニメーションの起点 */
+  position: relative;
+  overflow: hidden;
+  /* ボタンの形状 */
+  text-decoration: none;
+  display: inline-block;
+  /* ボーダー */
+  border: 1px solid #555;
+  padding: 10px 30px;
+  text-align: center;
+  outline: none;
+  /* アニメーション設定 */
+  transition: ease 0.2s;
+
+  & span {
+    position: relative;
+    /* 文字を背景より手前に表示 */
+    z-index: 3;
+    color: #333;
+  }
+
+  &:hover span {
+    color: #fff;
+  }
+
   &::before {
     /* 位置調整 */
     content: '';
