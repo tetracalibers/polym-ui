@@ -1,27 +1,27 @@
 import styled, { css } from 'styled-components'
 import { BaseStyled } from './Base'
-import { FromFourSidedProps } from '../model/props'
+import { FlowingButtonProps } from '../model/props'
 
-const transform = (from: FromFourSidedProps['from']) => {
+const transform = (preset: FlowingButtonProps['preset']) => {
   return (
-    ['left', 'right'].includes(from) &&
+    ['from-left', 'from-right'].includes(preset) &&
     css`
       transform: scale(0, 1);
     `
   )
 }
 
-const transformOrigin = (from: FromFourSidedProps['from']) => {
+const transformOrigin = (preset: FlowingButtonProps['preset']) => {
   return (
-    ['left', 'right'].includes(from) &&
+    ['from-left', 'from-right'].includes(preset) &&
     css`
-      transform-origin: ${from} top;
+      transform-origin: ${preset} top;
     `
   )
 }
 
-const transitionProperty = (from: FromFourSidedProps['from']) => {
-  return ['left', 'right'].includes(from)
+const transitionProperty = (preset: FlowingButtonProps['preset']) => {
+  return ['from-left', 'from-right'].includes(preset)
     ? css`
         transition-property: transform;
       `
@@ -30,8 +30,8 @@ const transitionProperty = (from: FromFourSidedProps['from']) => {
       `
 }
 
-const transitionDuration = (from: FromFourSidedProps['from']) => {
-  return ['left', 'right'].includes(from)
+const transitionDuration = (preset: FlowingButtonProps['preset']) => {
+  return ['from-left', 'from-right'].includes(preset)
     ? css`
         transition-duration: 0.6s;
       `
@@ -40,8 +40,8 @@ const transitionDuration = (from: FromFourSidedProps['from']) => {
       `
 }
 
-const height = (from: FromFourSidedProps['from']) => {
-  return ['left', 'right'].includes(from)
+const height = (preset: FlowingButtonProps['preset']) => {
+  return ['from-left', 'from-right'].includes(preset)
     ? css`
         height: 100%;
       `
@@ -50,10 +50,10 @@ const height = (from: FromFourSidedProps['from']) => {
       `
 }
 
-const hoverBeforeRuleset = (from: FromFourSidedProps['from']) => {
-  return ['left', 'right'].includes(from)
+const hoverBeforeRuleset = (preset: FlowingButtonProps['preset']) => {
+  return ['from-left', 'from-right'].includes(preset)
     ? css`
-        ${transformOrigin(from)}
+        ${transformOrigin(preset)}
         transform: scale(1, 1);
         height: 100%;
         background-color: #333;
@@ -64,39 +64,39 @@ const hoverBeforeRuleset = (from: FromFourSidedProps['from']) => {
       `
 }
 
-const position = (from: FromFourSidedProps['from']) => {
-  return ['left', 'right'].includes(from)
+const position = (preset: FlowingButtonProps['preset']) => {
+  return ['from-left', 'from-right'].includes(preset)
     ? css`
         top: 0;
-        ${from}: 0;
+        ${preset}: 0;
       `
     : css`
-        ${from}: 0;
+        ${preset}: 0;
         left: 0;
       `
 }
 
-export const FromFourSidedStyled = styled(BaseStyled)<FromFourSidedProps>`
+export const FromSideStyled = styled(BaseStyled)<FlowingButtonProps>`
   &::before {
     /* 位置調整 */
     content: '';
     position: absolute;
-    ${({ from }) => position(from)}
+    ${({ preset }) => position(preset)}
     z-index: 2;
     /* 見た目 */
     background-color: '#333';
     width: 100%;
-    ${({ from }) => height(from)}
+    ${({ preset }) => height(preset)}
     /* アニメーション */
-    ${({ from }) => transitionProperty(from)}
-    ${({ from }) => transitionDuration(from)}
+    ${({ preset }) => transitionProperty(preset)}
+    ${({ preset }) => transitionDuration(preset)}
     transition-timing-function: cubic-bezier(0.8, 0, 0.2, 1);
     transition-delay: 0s;
-    ${({ from }) => transform(from)}
-    ${({ from }) => transformOrigin(from)}
+    ${({ preset }) => transform(preset)}
+    ${({ preset }) => transformOrigin(preset)}
   }
 
   &:hover::before {
-    ${({ from }) => hoverBeforeRuleset(from)}
+    ${({ preset }) => hoverBeforeRuleset(preset)}
   }
 `

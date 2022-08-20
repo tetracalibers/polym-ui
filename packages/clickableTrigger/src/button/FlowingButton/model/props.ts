@@ -1,25 +1,22 @@
-export type FromFourSidedProps = {
-  /* default: 'left' ---------------------------- */
-  from: 'left' | 'right' | 'top' | 'bottom'
-  /* -------------------------------------------- */
-  orientation?: never
-  diagonal?: never
-}
+import { getDefaultProps, getPropType, Required } from 'react-tsx-props'
 
-export type FromCenterProps = {
-  from: 'center'
-  /* default: 'horizontal' ---------------------- */
-  orientation: 'vertical' | 'horizontal' | 'corner'
-  /* -------------------------------------------- */
-  diagonal?: never
-}
+export const presets = [
+  'from-left',
+  'from-right',
+  'up',
+  'down',
+  'center-to-horizontal',
+  'center-to-vertical',
+  'center-to-corner',
+  'diagonal',
+] as const
+export type Preset = typeof presets[number]
 
-export type DiagonalProps = {
-  /* default: true ------------------------------ */
-  diagonal: boolean
-  /* -------------------------------------------- */
-  from?: never
-  orientation?: never
+const conf = {
+  preset: Required<Preset>('from-left'),
 }
+type Conf = typeof conf
 
-export type Props = FromFourSidedProps | FromCenterProps | DiagonalProps
+export type FlowingButtonProps = getPropType<Conf>
+export const flowingButtonDefaultProps =
+  getDefaultProps<FlowingButtonProps>(conf)

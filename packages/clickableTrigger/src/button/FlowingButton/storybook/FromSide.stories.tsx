@@ -1,31 +1,32 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
-import FlowBackFromFourSidedButton from '../components/FromSide'
+import FlowingButton from '../components/FlowingButton'
+import { presets } from '../model/props'
 
 export default {
   title: 'Button/FlowingButton',
-  component: FlowBackFromFourSidedButton,
+  component: FlowingButton,
   argTypes: {
     from: {
       control: {
         type: 'radio',
       },
-      options: ['left', 'right', 'top', 'bottom'],
+      options: presets,
     },
   },
-} as ComponentMeta<typeof FlowBackFromFourSidedButton>
+} as ComponentMeta<typeof FlowingButton>
 
-const Template: ComponentStory<typeof FlowBackFromFourSidedButton> = ({
+const Template: ComponentStory<typeof FlowingButton> = ({
   children,
-  from,
+  preset,
   ...args
 }) => (
-  <FlowBackFromFourSidedButton from={from} {...args}>
+  <FlowingButton preset={preset} {...args}>
     {children}
-  </FlowBackFromFourSidedButton>
+  </FlowingButton>
 )
 
 export const Left = Template.bind({})
 Left.args = {
   children: 'From Left',
-  from: 'left',
+  preset: 'from-left',
 }
