@@ -2,7 +2,7 @@ import { ComponentStory } from '@storybook/react'
 import FlowingButton from '../components/FlowingButton'
 import { presets, defaultProps } from '../model/props'
 import _ from 'lodash'
-import { substyleArgTypes } from '../css-props/argTypes'
+import { styleArgTypes } from '../css-props/argTypes'
 
 export default {
   title: 'Button/FlowingButton',
@@ -43,7 +43,7 @@ export default {
       },
       options: presets,
     },
-    ...substyleArgTypes,
+    ...styleArgTypes,
   },
 }
 

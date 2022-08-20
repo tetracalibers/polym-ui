@@ -2,7 +2,7 @@ import { match } from 'ts-pattern'
 import styled, { css, keyframes } from 'styled-components'
 import { ResetCss } from 'styled-utility-first'
 import { FlowingButtonProps } from '../model/props'
-import { buttonSubStyle } from '../css-props/props'
+import { styleMixin } from '../css-props/props'
 
 const diagonalKeyframes = keyframes`
   100% {
@@ -202,7 +202,7 @@ const beforeAnimation = (
 
 export const FlowingStyled = styled.button<FlowingButtonProps>`
   ${ResetCss.button}
-  ${buttonSubStyle}
+  ${styleMixin}
 
   /* アニメーションの基点 */
   position: relative;

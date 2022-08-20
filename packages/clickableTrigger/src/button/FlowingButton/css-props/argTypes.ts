@@ -1,6 +1,6 @@
 import { cssStoryMeta } from 'story-builder'
 
-export const substyleArgTypes = {
+export const styleArgTypes = {
   borderWidth: {
     ...cssStoryMeta.borderWidth,
     type: {

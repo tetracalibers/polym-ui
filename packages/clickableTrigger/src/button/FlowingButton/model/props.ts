@@ -1,4 +1,4 @@
-import { ButtonSubstyleProps, substyleDefaultProps } from '../css-props/props'
+import { StyleProps, styleDefaultProps } from '../css-props/props'
 import { getDefaultProps, getPropType, Required } from 'react-tsx-props'
 
 export const presets = [
@@ -18,8 +18,8 @@ const conf = {
 }
 type Conf = typeof conf
 
-export type FlowingButtonProps = ButtonSubstyleProps & getPropType<Conf>
+export type FlowingButtonProps = StyleProps & getPropType<Conf>
 export const defaultProps = {
   ...getDefaultProps<FlowingButtonProps>(conf),
-  ...substyleDefaultProps,
+  ...styleDefaultProps,
 }
