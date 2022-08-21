@@ -1,19 +1,20 @@
 import styled, { css } from 'styled-components'
 import { ResetCss } from 'styled-utility-first'
+import { styleMixin, StyleProps } from '../css-props/props'
 
-const collapsingCircleStyle = css`
+const collapsingCircleStyle = css<StyleProps>`
+  ${styleMixin}
+
   /*周囲の線の起点とするためrelativeを指定*/
   position: relative;
   /*円の形状*/
-  width: 100px;
-  height: 100px;
+  width: ${({ width }) => width};
+  height: ${({ width }) => width};
   box-sizing: border-box;
-  padding: 0 10px;
-  margin: 20px auto;
   text-align: center;
-  background: #333;
+  background: ${({ backgroundColor }) => backgroundColor};
   border-radius: 50%;
-  color: #fff;
+  color: ${({ color }) => color};
   text-decoration: none;
   outline: none;
   /*天地中央にテキストを配置*/
@@ -31,7 +32,9 @@ const collapsingCircleStyle = css`
     /*線の形状*/
     width: 85%;
     height: 85%;
-    border: 2px solid #333;
+    border-width: ${({ borderWidth }) => borderWidth};
+    border-style: ${({ borderStyle }) => borderStyle};
+    border-color: ${({ backgroundColor }) => backgroundColor};
     border-radius: 50%;
     transform: translate(-50%, -50%) scale(1.1);
     /*アニメーションの指定*/
@@ -41,7 +44,7 @@ const collapsingCircleStyle = css`
   /*hoverをしたら枠線が小さくなる*/
   &:hover::after {
     transform: translate(-50%, -50%) scale(1);
-    border-color: #fff;
+    border-color: ${({ color }) => color};
   }
 `
 
