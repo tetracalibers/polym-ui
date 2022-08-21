@@ -14,6 +14,7 @@ const collapsingCircleStyle = css<StyleProps>`
   text-align: center;
   background: ${({ backgroundColor }) => backgroundColor};
   border-radius: 50%;
+  border: none;
   color: ${({ color }) => color};
   text-decoration: none;
   outline: none;
