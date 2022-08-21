@@ -1,23 +1,21 @@
 import styled, { css } from 'styled-components'
-import { RotatingButtonProps } from '../model/props'
+import { CharacterProps } from '../model/props'
 import { ResetCss } from 'styled-utility-first'
 import { styleMixin } from '../css-props/props'
 
-const hoverNth1Rotate = (rotateTo: RotatingButtonProps['rotateTo']) => {
+const hoverNth1Rotate = (rotateTo: CharacterProps['rotateTo']) => {
   return css`
     transform: rotateX(${rotateTo === 'front' ? '-90def' : '90deg'});
   `
 }
 
-const nth2Rotate = (rotateTo: RotatingButtonProps['rotateTo']) => {
+const nth2Rotate = (rotateTo: CharacterProps['rotateTo']) => {
   return css`
     transform: rotateX(${rotateTo === 'front' ? '90deg' : '-90deg'});
   `
 }
 
-export const RotatingStyled = styled.button<RotatingButtonProps>`
-  ${ResetCss.button}
-
+const rotatingCss = css<CharacterProps>`
   /* 背景の基点 */
   position: relative;
   /* ボタンの形状 */
@@ -67,4 +65,13 @@ export const RotatingStyled = styled.button<RotatingButtonProps>`
   &:hover span:nth-child(2) {
     transform: rotateX(0deg); /* X軸に0度回転 */
   }
+`
+
+export const RotatingButton = styled.button<CharacterProps>`
+  ${ResetCss.button}
+  ${rotatingCss}
+`
+
+export const RotatingLink = styled.a<CharacterProps>`
+  ${rotatingCss}
 `

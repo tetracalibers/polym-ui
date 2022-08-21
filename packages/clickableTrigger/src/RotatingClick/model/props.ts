@@ -10,9 +10,9 @@ const conf = {
 }
 type Conf = typeof conf
 
-export type RotatingButtonProps = getPropType<Conf> & StyleProps & CommonProps
-export const defaultProps = {
-  ...getDefaultProps<RotatingButtonProps>(conf),
+export type CharacterProps = getPropType<Conf> & StyleProps & CommonProps
+export const _defaultProps = {
+  ...getDefaultProps<CharacterProps>(conf),
   ...styleDefaultProps,
   ...commonDefaultProps,
 }

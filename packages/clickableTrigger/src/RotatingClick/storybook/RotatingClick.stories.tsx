@@ -1,13 +1,13 @@
 import { ComponentStory } from '@storybook/react'
-import RotatingButton from '..'
-import { defaultProps, rotateTo } from '../model/props'
+import RotatingClick, { defaultProps } from '..'
+import { rotateTo } from '../model/props'
 import _ from 'lodash'
 import { styleArgTypes } from '../css-props/argTypes'
 import { commmonArgTypes } from '../../common/argTypes'
 
 export default {
-  title: 'Button/RotatingButton',
-  component: RotatingButton,
+  title: 'Button&Link/RotatingClick',
+  component: RotatingClick,
   argTypes: {
     beforeChild: {
       control: {
@@ -63,10 +63,10 @@ export default {
   },
 }
 
-const Template: ComponentStory<typeof RotatingButton> = ({
+const Template: ComponentStory<typeof RotatingClick> = ({
   rotateTo,
   ...args
-}) => <RotatingButton rotateTo={rotateTo} {...args} />
+}) => <RotatingClick rotateTo={rotateTo} {...args} />
 
 export const playground = Template.bind({})
 playground.args = {
