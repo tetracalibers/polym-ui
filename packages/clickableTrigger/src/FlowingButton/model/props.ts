@@ -1,5 +1,6 @@
 import { StyleProps, styleDefaultProps } from '../css-props/props'
 import { getDefaultProps, getPropType, Required } from 'react-tsx-props'
+import { commonDefaultProps, CommonProps } from '../../common/props'
 
 export const presets = [
   'from-left',
@@ -18,8 +19,9 @@ const conf = {
 }
 type Conf = typeof conf
 
-export type FlowingButtonProps = StyleProps & getPropType<Conf>
+export type FlowingButtonProps = StyleProps & getPropType<Conf> & CommonProps
 export const defaultProps = {
   ...getDefaultProps<FlowingButtonProps>(conf),
   ...styleDefaultProps,
+  ...commonDefaultProps,
 }
