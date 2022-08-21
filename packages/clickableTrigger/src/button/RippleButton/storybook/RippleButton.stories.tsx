@@ -1,5 +1,6 @@
 import { ComponentStory } from '@storybook/react'
 import RippleButton from '../components/RippleButton'
+import { styleArgTypes } from '../css-props/argTypes'
 import { defaultProps, trigger } from '../model/props'
 
 export default {
@@ -40,6 +41,7 @@ export default {
         required: true,
       },
     },
+    ...styleArgTypes,
   },
 }
 
