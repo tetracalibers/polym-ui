@@ -67,8 +67,8 @@ const Template: ComponentStory<typeof RotatingButton> = ({
   ...args
 }) => <RotatingButton rotateTo={rotateTo} {...args} />
 
-export const basic = Template.bind({})
-basic.args = {
+export const playground = Template.bind({})
+playground.args = {
   ...defaultProps,
   beforeChild: 'Before Rotating!!',
   afterChild: 'After Rotating!!',

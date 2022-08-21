@@ -57,8 +57,8 @@ const Template: ComponentStory<typeof FlowingButton> = ({
   </FlowingButton>
 )
 
-export const basic = Template.bind({})
-basic.args = {
+export const playground = Template.bind({})
+playground.args = {
   ...defaultProps,
   children: 'flowing!!',
   preset: 'from-left',
