@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { ResetCss } from 'styled-utility-first'
 import { styleMixin, StyleProps } from '../css-props/props'
 
-export const TriggerClickModeStyled = styled.button<StyleProps>`
+export const RippleStyled = styled.button<StyleProps>`
   ${ResetCss.button}
   ${styleMixin}
 

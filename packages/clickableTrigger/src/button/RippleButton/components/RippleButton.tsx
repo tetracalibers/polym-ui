@@ -3,7 +3,7 @@ import {
   RippleButtonProps,
   defaultProps as _defaultProps,
 } from '../model/props'
-import { TriggerClickModeStyled } from '../styled/TriggerAsClick'
+import { RippleStyled } from '../styled/RippleButton'
 
 type ThisProps = ComponentPropsWithoutRef<'button'> & {
   children: ReactNode
@@ -17,9 +17,7 @@ const defaultProps = {
 const RippleButton: FC<ThisProps> = (
   { ...props }: ThisProps = { ...defaultProps }
 ) => {
-  return (
-    <TriggerClickModeStyled {...props}>{props.children}</TriggerClickModeStyled>
-  )
+  return <RippleStyled {...props}>{props.children}</RippleStyled>
 }
 
 export default RippleButton
