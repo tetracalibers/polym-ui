@@ -1,8 +1,43 @@
 import styled, { css } from 'styled-components'
 import { ResetCss } from 'styled-utility-first'
 import { CharacterProps } from '../model/props'
+import { match } from 'ts-pattern'
 
-const thisCss = css`
+const shadowPosition = (pushTo: CharacterProps['pushTo']) => {
+  return match(pushTo)
+    .with('bottom', () => {
+      return css`
+        top: 4px;
+        left: 0;
+      `
+    })
+    .with('right', () => {
+      return css`
+        top: 4px;
+        left: 4px;
+      `
+    })
+    .otherwise(() => {
+      return ''
+    })
+}
+
+const hoverTransform = (pushTo: CharacterProps['pushTo']) => {
+  return match(pushTo)
+    .with('bottom', () => {
+      return css`
+        transform: translateY(4px);
+      `
+    })
+    .with('right', () => {
+      return css`
+        transform: translate(4px, 4px);
+      `
+    })
+    .otherwise(() => '')
+}
+
+const thisCss = css<CharacterProps>`
   /*影の基点とするためrelativeを指定*/
   position: relative;
   /*ボタンの形状*/
@@ -41,8 +76,7 @@ const thisCss = css`
     /*絶対配置で影の位置を決める*/
     position: absolute;
     z-index: -1;
-    top: 4px;
-    left: 0;
+    ${({ pushTo }) => shadowPosition(pushTo)}
     /*影の形状*/
     width: 100%;
     height: 100%;
@@ -50,19 +84,18 @@ const thisCss = css`
     background-color: #333;
   }
 
-  /*hoverの際にY軸に4pxずらす*/
   &:hover span {
     background-color: #333;
     color: #fff;
-    transform: translateY(4px);
+    ${({ pushTo }) => hoverTransform(pushTo)}
   }
 `
 
-export const StyledButton = styled.button`
+export const StyledButton = styled.button<CharacterProps>`
   ${ResetCss.button}
   ${thisCss}
 `
 
-export const StyledLink = styled.a`
+export const StyledLink = styled.a<CharacterProps>`
   ${thisCss}
 `
