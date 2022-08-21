@@ -1,13 +1,12 @@
 import { ComponentStory } from '@storybook/react'
-import RippleCircle from '..'
-import { defaultProps } from '../model/props'
+import RippleCircleClick, { defaultProps } from '..'
 import { MdFavorite } from 'react-icons/md'
 import { styleArgTypes } from '../css-props/argTypes'
 import { commmonArgTypes } from '../../common/argTypes'
 
 export default {
-  title: 'Button/RippleCircle',
-  component: RippleCircle,
+  title: 'Button&Link/RippleCircleClick',
+  component: RippleCircleClick,
   argTypes: {
     children: {
       control: {
@@ -29,10 +28,10 @@ export default {
   },
 }
 
-const Template: ComponentStory<typeof RippleCircle> = ({
+const Template: ComponentStory<typeof RippleCircleClick> = ({
   children,
   ...args
-}) => <RippleCircle {...args}>{children}</RippleCircle>
+}) => <RippleCircleClick {...args}>{children}</RippleCircleClick>
 
 export const exapmle = Template.bind({})
 exapmle.args = {

@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components'
+import styled, { css, keyframes } from 'styled-components'
 import { ResetCss } from 'styled-utility-first'
 import { styleMixin, StyleProps } from '../css-props/props'
 
@@ -12,8 +12,7 @@ const waveKeyframes = keyframes`
   }
 `
 
-export const RippleStyled = styled.button<StyleProps>`
-  ${ResetCss.button}
+const rippleCircleStyle = css<StyleProps>`
   ${styleMixin}
 
   /*波紋の基点とするためrelativeを指定*/
@@ -63,4 +62,13 @@ export const RippleStyled = styled.button<StyleProps>`
     justify-content: center;
     align-items: center;
   }
+`
+
+export const RippleCircleButton = styled.button<StyleProps>`
+  ${ResetCss.button}
+  ${rippleCircleStyle}
+`
+
+export const RippleCircleLink = styled.a<StyleProps>`
+  ${rippleCircleStyle}
 `

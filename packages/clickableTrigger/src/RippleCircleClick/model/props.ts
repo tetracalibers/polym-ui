@@ -5,9 +5,9 @@ import { styleDefaultProps, StyleProps } from '../css-props/props'
 const conf = {}
 type Conf = typeof conf
 
-export type RippleCircleProps = getPropType<Conf> & StyleProps & CommonProps
-export const defaultProps = {
-  ...getDefaultProps<RippleCircleProps>(conf),
+export type CharacterProps = getPropType<Conf> & StyleProps & CommonProps
+export const _defaultProps = {
+  ...getDefaultProps<CharacterProps>(conf),
   ...styleDefaultProps,
   ...commonDefaultProps,
 }
