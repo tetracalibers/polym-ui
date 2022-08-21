@@ -1,19 +1,19 @@
 import { ComponentStory } from '@storybook/react'
-import FlowingButton from '..'
-import { presets, defaultProps } from '../model/props'
+import FlowingClick, { defaultProps } from '..'
+import { presets } from '../model/props'
 import _ from 'lodash'
 import { styleArgTypes } from '../css-props/argTypes'
 import { commmonArgTypes } from '../../common/argTypes'
 
 export default {
-  title: 'Button/FlowingButton',
-  component: FlowingButton,
+  title: 'Button&Link/FlowingClick',
+  component: FlowingClick,
   argTypes: {
     children: {
       control: {
         type: 'text',
       },
-      description: 'Button Label',
+      description: 'label',
       table: {
         type: {
           summary: null,
@@ -48,14 +48,14 @@ export default {
   },
 }
 
-const Template: ComponentStory<typeof FlowingButton> = ({
+const Template: ComponentStory<typeof FlowingClick> = ({
   children,
   preset,
   ...args
 }) => (
-  <FlowingButton preset={preset} {...args}>
+  <FlowingClick preset={preset} {...args}>
     {children}
-  </FlowingButton>
+  </FlowingClick>
 )
 
 export const playground = Template.bind({})

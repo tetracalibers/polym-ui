@@ -19,9 +19,9 @@ const conf = {
 }
 type Conf = typeof conf
 
-export type FlowingButtonProps = StyleProps & getPropType<Conf> & CommonProps
-export const defaultProps = {
-  ...getDefaultProps<FlowingButtonProps>(conf),
+export type CharacterProps = StyleProps & getPropType<Conf> & CommonProps
+export const _defaultProps = {
+  ...getDefaultProps<CharacterProps>(conf),
   ...styleDefaultProps,
   ...commonDefaultProps,
 }

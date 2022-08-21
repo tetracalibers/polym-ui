@@ -11,7 +11,7 @@ export default {
       control: {
         type: 'text',
       },
-      description: 'Label of button',
+      description: 'label',
       table: {
         type: {
           summary: null,

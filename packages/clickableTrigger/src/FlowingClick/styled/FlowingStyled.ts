@@ -1,7 +1,7 @@
 import { match } from 'ts-pattern'
 import styled, { css, keyframes } from 'styled-components'
 import { ResetCss } from 'styled-utility-first'
-import { FlowingButtonProps } from '../model/props'
+import { CharacterProps } from '../model/props'
 import { styleMixin } from '../css-props/props'
 
 const diagonalKeyframes = keyframes`
@@ -10,7 +10,7 @@ const diagonalKeyframes = keyframes`
   }
 `
 
-const transform = (preset: FlowingButtonProps['preset']) => {
+const transform = (preset: CharacterProps['preset']) => {
   return match(preset)
     .with('from-left', 'from-right', 'center-to-horizontal', () => {
       return css`
@@ -30,7 +30,7 @@ const transform = (preset: FlowingButtonProps['preset']) => {
     .otherwise(() => '')
 }
 
-const transformOrigin = (preset: FlowingButtonProps['preset']) => {
+const transformOrigin = (preset: CharacterProps['preset']) => {
   return match(preset)
     .with('from-left', () => {
       return css`
@@ -55,7 +55,7 @@ const transformOrigin = (preset: FlowingButtonProps['preset']) => {
     .otherwise(() => '')
 }
 
-const transitionProperty = (preset: FlowingButtonProps['preset']) => {
+const transitionProperty = (preset: CharacterProps['preset']) => {
   return match(preset)
     .with(
       'from-left',
@@ -77,7 +77,7 @@ const transitionProperty = (preset: FlowingButtonProps['preset']) => {
     .otherwise(() => '')
 }
 
-const width = (preset: FlowingButtonProps['preset']) => {
+const width = (preset: CharacterProps['preset']) => {
   return match(preset)
     .with('diagonal', () => {
       return css`
@@ -91,7 +91,7 @@ const width = (preset: FlowingButtonProps['preset']) => {
     })
 }
 
-const height = (preset: FlowingButtonProps['preset']) => {
+const height = (preset: CharacterProps['preset']) => {
   return match(preset)
     .with(
       'from-left',
@@ -114,7 +114,7 @@ const height = (preset: FlowingButtonProps['preset']) => {
     .otherwise(() => '')
 }
 
-const hoverBeforeAnimation = (preset: FlowingButtonProps['preset']) => {
+const hoverBeforeAnimation = (preset: CharacterProps['preset']) => {
   return match(preset)
     .with(
       'from-left',
@@ -137,7 +137,7 @@ const hoverBeforeAnimation = (preset: FlowingButtonProps['preset']) => {
     .otherwise(() => '')
 }
 
-const position = (preset: FlowingButtonProps['preset']) => {
+const position = (preset: CharacterProps['preset']) => {
   return match(preset)
     .with(
       'from-left',
@@ -179,8 +179,8 @@ const position = (preset: FlowingButtonProps['preset']) => {
 }
 
 const beforeAnimation = (
-  preset: FlowingButtonProps['preset'],
-  duration: FlowingButtonProps['transitionDuration']
+  preset: CharacterProps['preset'],
+  duration: CharacterProps['transitionDuration']
 ) => {
   return match(preset)
     .with('diagonal', () => {
@@ -200,8 +200,7 @@ const beforeAnimation = (
     })
 }
 
-export const FlowingStyled = styled.button<FlowingButtonProps>`
-  ${ResetCss.button}
+const flowingCss = css<CharacterProps>`
   ${styleMixin}
 
   /* アニメーションの基点 */
@@ -244,4 +243,13 @@ export const FlowingStyled = styled.button<FlowingButtonProps>`
     height: 100%;
     background-color: ${({ color }) => color};
   }
+`
+
+export const FlowingButton = styled.button<CharacterProps>`
+  ${ResetCss.button}
+  ${flowingCss}
+`
+
+export const FlowingLink = styled.a<CharacterProps>`
+  ${flowingCss}
 `
