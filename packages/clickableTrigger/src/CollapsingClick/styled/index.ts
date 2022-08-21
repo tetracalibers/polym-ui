@@ -34,6 +34,28 @@ const thisCss = css`
     /*アニメーションの指定*/
     transition: all 0.3s ease;
   }
+
+  /*影の設定*/
+  &:before {
+    content: '';
+    /*絶対配置で影の位置を決める*/
+    position: absolute;
+    z-index: -1;
+    top: 4px;
+    left: 0;
+    /*影の形状*/
+    width: 100%;
+    height: 100%;
+    border-radius: 25px;
+    background-color: #333;
+  }
+
+  /*hoverの際にY軸に4pxずらす*/
+  &:hover span {
+    background-color: #333;
+    color: #fff;
+    transform: translateY(4px);
+  }
 `
 
 export const StyledButton = styled.button`
