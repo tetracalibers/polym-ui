@@ -3,6 +3,7 @@ import RippleCircle from '..'
 import { defaultProps } from '../model/props'
 import { MdFavorite } from 'react-icons/md'
 import { styleArgTypes } from '../css-props/argTypes'
+import { commmonArgTypes } from '../../common/argTypes'
 
 export default {
   title: 'Button/RippleCircle',
@@ -24,6 +25,7 @@ export default {
       },
     },
     ...styleArgTypes,
+    ...commmonArgTypes,
   },
 }
 

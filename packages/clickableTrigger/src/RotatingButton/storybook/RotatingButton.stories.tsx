@@ -3,6 +3,7 @@ import RotatingButton from '..'
 import { defaultProps, rotateTo } from '../model/props'
 import _ from 'lodash'
 import { styleArgTypes } from '../css-props/argTypes'
+import { commmonArgTypes } from '../../common/argTypes'
 
 export default {
   title: 'Button/RotatingButton',
@@ -58,6 +59,7 @@ export default {
       },
     },
     ...styleArgTypes,
+    ...commmonArgTypes,
   },
 }
 

@@ -17,5 +17,8 @@ export const commmonArgTypes = {
         summary: commonDefaultProps.as,
       },
     },
+    type: {
+      required: true,
+    },
   },
 }

@@ -1,5 +1,6 @@
 import { ComponentStory } from '@storybook/react'
 import RippleButton from '..'
+import { commmonArgTypes } from '../../common/argTypes'
 import { styleArgTypes } from '../css-props/argTypes'
 import { defaultProps } from '../model/props'
 
@@ -23,6 +24,7 @@ export default {
       },
     },
     ...styleArgTypes,
+    ...commmonArgTypes,
   },
 }
 

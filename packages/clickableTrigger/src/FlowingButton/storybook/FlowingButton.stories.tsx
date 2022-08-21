@@ -3,6 +3,7 @@ import FlowingButton from '..'
 import { presets, defaultProps } from '../model/props'
 import _ from 'lodash'
 import { styleArgTypes } from '../css-props/argTypes'
+import { commmonArgTypes } from '../../common/argTypes'
 
 export default {
   title: 'Button/FlowingButton',
@@ -43,6 +44,7 @@ export default {
       },
     },
     ...styleArgTypes,
+    ...commmonArgTypes,
   },
 }
 
