@@ -1,6 +1,7 @@
 import { ComponentStory } from '@storybook/react'
 import CollapsingCircleClick, { defaultProps } from '..'
 import { commmonArgTypes } from '../../common/argTypes'
+import { styleArgTypes } from '../css-props/argTypes'
 
 export default {
   title: 'Button&Link/CollapsingCircleClick',
@@ -22,6 +23,7 @@ export default {
       },
     },
     ...commmonArgTypes,
+    ...styleArgTypes,
   },
 }
 
