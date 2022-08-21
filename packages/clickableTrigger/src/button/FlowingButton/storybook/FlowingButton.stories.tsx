@@ -31,8 +31,7 @@ export default {
       description: 'Type of Animation',
       table: {
         type: {
-          summary: 'Click to view all options',
-          detail: presets.join(' | '),
+          summary: null,
         },
         defaultValue: {
           summary: defaultProps.preset,
@@ -56,6 +55,21 @@ const Template: ComponentStory<typeof FlowingButton> = ({
     {children}
   </FlowingButton>
 )
+
+export const playground = Template.bind({})
+playground.args = {
+  ...defaultProps,
+  children: 'flowing!!',
+  preset: 'from-left',
+}
+playground.argTypes = {
+  preset: {
+    control: {
+      type: 'radio',
+    },
+    options: presets,
+  },
+}
 
 export const from_left = Template.bind({})
 from_left.args = {

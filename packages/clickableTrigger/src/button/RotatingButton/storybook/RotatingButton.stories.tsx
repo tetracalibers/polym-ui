@@ -46,8 +46,7 @@ export default {
       description: 'Type of Animation',
       table: {
         type: {
-          summary: 'Click to view all options',
-          detail: rotateTo.join(' | '),
+          summary: null,
         },
         defaultValue: {
           summary: defaultProps.rotateTo,
@@ -66,6 +65,22 @@ const Template: ComponentStory<typeof RotatingButton> = ({
   rotateTo,
   ...args
 }) => <RotatingButton rotateTo={rotateTo} {...args} />
+
+export const playground = Template.bind({})
+playground.args = {
+  ...defaultProps,
+  beforeChild: 'Before Rotating!!',
+  afterChild: 'After Rotating!!',
+  rotateTo: 'front',
+}
+playground.argTypes = {
+  rotateTo: {
+    control: {
+      type: 'radio',
+    },
+    options: rotateTo,
+  },
+}
 
 export const front = Template.bind({})
 front.args = {
