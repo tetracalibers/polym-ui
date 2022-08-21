@@ -3632,18 +3632,9 @@
   },
   "height": {
     "control": {
-      "type": "select"
+      "type": "text"
     },
-    "options": [
-      "auto",
-      "<length>",
-      "<percentage>",
-      "min-content",
-      "max-content",
-      "fit-content",
-      "fit-content(<length-percentage>)"
-    ],
-    "description": "",
+    "description": "Height of element",
     "table": {
       "category": "CSS",
       "subcategory": "Box Model",
@@ -7548,18 +7539,9 @@
   },
   "width": {
     "control": {
-      "type": "select"
+      "type": "text"
     },
-    "options": [
-      "auto",
-      "<length>",
-      "<percentage>",
-      "min-content",
-      "max-content",
-      "fit-content",
-      "fit-content(<length-percentage>)"
-    ],
-    "description": "",
+    "description": "Width of the element",
     "table": {
       "category": "CSS",
       "subcategory": "Box Model",

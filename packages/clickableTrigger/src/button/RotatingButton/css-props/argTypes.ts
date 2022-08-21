@@ -38,7 +38,7 @@ export const styleArgTypes = {
     },
   },
   width: {
-    ...cssStoryMeta.maxWidth,
+    ...cssStoryMeta.width,
     type: { required: true },
   },
   height: {
