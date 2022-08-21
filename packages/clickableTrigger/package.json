@@ -56,17 +56,18 @@
     "esbuild": "^0.14.48",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^4.4.0",
     "react-tsx-props": "*",
     "rimraf": "^3.0.2",
     "rollup": "^2.75.7",
     "rollup-plugin-esbuild": "^4.9.1",
+    "story-builder": "*",
     "storybook-addon-pseudo-states": "^1.15.1",
     "styled-components": "^5.3.5",
     "styled-system": "^5.1.5",
     "styled-utility-first": "*",
     "ts-pattern": "^4.0.5",
     "ts-typedef-helper": "*",
-    "typescript": "^4.7.4",
-    "story-builder": "*"
+    "typescript": "^4.7.4"
   }
 }

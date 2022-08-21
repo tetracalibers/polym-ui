@@ -54,4 +54,10 @@ export const RippleStyled = styled.button`
   &::before {
     animation-delay: 0.5s;
   }
+
+  & span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 `

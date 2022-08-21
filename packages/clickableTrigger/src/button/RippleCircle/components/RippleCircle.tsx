@@ -17,7 +17,11 @@ const defaultProps = {
 const RippleCircle: FC<ThisProps> = (
   { ...props }: ThisProps = { ...defaultProps }
 ) => {
-  return <RippleStyled {...props}>{props.children}</RippleStyled>
+  return (
+    <RippleStyled {...props}>
+      <span>{props.children}</span>
+    </RippleStyled>
+  )
 }
 
 export default RippleCircle
