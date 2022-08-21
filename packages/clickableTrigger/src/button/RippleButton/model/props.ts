@@ -9,6 +9,6 @@ const conf = {
 type Conf = typeof conf
 
 export type RippleButtonProps = getPropType<Conf>
-export const _defaultProps = {
+export const defaultProps = {
   ...getDefaultProps<RippleButtonProps>(conf),
 }

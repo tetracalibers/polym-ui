@@ -1,5 +1,8 @@
 import { ComponentPropsWithoutRef, FC, ReactNode } from 'react'
-import { RippleButtonProps, _defaultProps } from '../model/props'
+import {
+  RippleButtonProps,
+  defaultProps as _defaultProps,
+} from '../model/props'
 import { TriggerClickModeStyled } from '../styled/TriggerAsClick'
 
 type ThisProps = ComponentPropsWithoutRef<'button'> & {
