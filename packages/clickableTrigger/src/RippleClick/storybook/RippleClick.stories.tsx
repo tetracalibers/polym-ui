@@ -1,12 +1,11 @@
 import { ComponentStory } from '@storybook/react'
-import RippleButton from '..'
+import RippleClick, { defaultProps } from '..'
 import { commmonArgTypes } from '../../common/argTypes'
 import { styleArgTypes } from '../css-props/argTypes'
-import { defaultProps } from '../model/props'
 
 export default {
-  title: 'Button/RippleButton',
-  component: RippleButton,
+  title: 'Button&Link/RippleClick',
+  component: RippleClick,
   argTypes: {
     children: {
       control: {
@@ -28,12 +27,13 @@ export default {
   },
 }
 
-const Template: ComponentStory<typeof RippleButton> = ({ ...args }) => (
-  <RippleButton {...args} />
+const Template: ComponentStory<typeof RippleClick> = ({ ...args }) => (
+  <RippleClick {...args} />
 )
 
 export const playground = Template.bind({})
 playground.args = {
   ...defaultProps,
   children: 'Click!',
+  as: 'button',
 }

@@ -1,4 +1,9 @@
-import { getDefaultProps, getPropType, Required } from 'react-tsx-props'
+import {
+  getDefaultProps,
+  getPropType,
+  NotRequired,
+  Required,
+} from 'react-tsx-props'
 
 export const htmlTagType = ['button', 'a'] as const
 export type HtmlTagType = typeof htmlTagType[number]
