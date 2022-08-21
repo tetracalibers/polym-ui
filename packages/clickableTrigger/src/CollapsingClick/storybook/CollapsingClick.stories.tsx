@@ -1,6 +1,7 @@
 import { ComponentStory } from '@storybook/react'
 import CollapsingClick, { defaultProps } from '..'
 import { commmonArgTypes } from '../../common/argTypes'
+import { styleArgTypes } from '../css-props/argTypes'
 import { pushToOptions } from '../model/props'
 
 export default {
@@ -32,12 +33,17 @@ export default {
           summary: null,
         },
         category: 'character',
+        defaultValue: {
+          summary: defaultProps.pushTo,
+          detail: null,
+        },
       },
       type: {
         required: true,
       },
     },
     ...commmonArgTypes,
+    ...styleArgTypes,
   },
 }
 

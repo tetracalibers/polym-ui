@@ -1,9 +1,4 @@
-import {
-  getDefaultProps,
-  getPropType,
-  NotRequired,
-  Required,
-} from 'react-tsx-props'
+import { getDefaultProps, getPropType, Required } from 'react-tsx-props'
 import * as CSST from 'csstype'
 
 export const offsetOptions = [3, 4, 5] as const
