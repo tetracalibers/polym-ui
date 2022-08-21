@@ -1,8 +1,10 @@
 import styled from 'styled-components'
 import { ResetCss } from 'styled-utility-first'
+import { styleMixin, StyleProps } from '../css-props/props'
 
-export const TriggerClickModeStyled = styled.button`
+export const TriggerClickModeStyled = styled.button<StyleProps>`
   ${ResetCss.button}
+  ${styleMixin}
 
   /*波紋の基点とするためrelativeを指定*/
   position: relative;
@@ -11,10 +13,8 @@ export const TriggerClickModeStyled = styled.button`
   /*ボタンの形状*/
   text-decoration: none;
   display: inline-block;
-  background: #333;
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 25px;
+  background: ${({ backgroundColor }) => backgroundColor};
+  color: ${({ color }) => color};
   outline: none;
 
   &:after {
