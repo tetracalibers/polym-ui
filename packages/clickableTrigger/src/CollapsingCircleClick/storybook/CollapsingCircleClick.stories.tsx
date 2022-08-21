@@ -32,8 +32,8 @@ const Template: ComponentStory<typeof CollapsingCircleClick> = ({
   ...args
 }) => <CollapsingCircleClick {...args}>{children}</CollapsingCircleClick>
 
-export const exapmle = Template.bind({})
-exapmle.args = {
+export const playground = Template.bind({})
+playground.args = {
   ...defaultProps,
   children: 'Press!!',
 }
