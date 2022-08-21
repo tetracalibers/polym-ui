@@ -25,13 +25,14 @@ export default {
     },
     preset: {
       control: {
-        type: 'radio',
+        type: null,
       },
       defaultValue: defaultProps.preset,
       description: 'Type of Animation',
       table: {
         type: {
-          summary: null,
+          summary: 'Click to view all options',
+          detail: presets.join(' | '),
         },
         defaultValue: {
           summary: defaultProps.preset,
@@ -41,7 +42,6 @@ export default {
       type: {
         required: true,
       },
-      options: presets,
     },
     ...styleArgTypes,
   },
@@ -57,9 +57,51 @@ const Template: ComponentStory<typeof FlowingButton> = ({
   </FlowingButton>
 )
 
-export const playground = Template.bind({})
-playground.args = {
+export const from_left = Template.bind({})
+from_left.args = {
   ...defaultProps,
   children: 'flowing!!',
   preset: 'from-left',
+}
+
+export const from_right = Template.bind({})
+from_right.args = {
+  ...defaultProps,
+  children: 'flowing!!',
+  preset: 'from-right',
+}
+
+export const up = Template.bind({})
+up.args = {
+  ...defaultProps,
+  children: 'flowing!!',
+  preset: 'up',
+}
+
+export const down = Template.bind({})
+down.args = {
+  ...defaultProps,
+  children: 'flowing!!',
+  preset: 'down',
+}
+
+export const center_to_horizontal = Template.bind({})
+center_to_horizontal.args = {
+  ...defaultProps,
+  children: 'flowing!!',
+  preset: 'center-to-horizontal',
+}
+
+export const center_to_vertical = Template.bind({})
+center_to_vertical.args = {
+  ...defaultProps,
+  children: 'flowing!!',
+  preset: 'center-to-vertical',
+}
+
+export const diagonal = Template.bind({})
+diagonal.args = {
+  ...defaultProps,
+  children: 'flowing!!',
+  preset: 'diagonal',
 }
