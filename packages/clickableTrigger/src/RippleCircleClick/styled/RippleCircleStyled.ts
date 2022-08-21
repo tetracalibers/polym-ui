@@ -58,6 +58,7 @@ const rippleCircleStyle = css<StyleProps>`
 
   /* childrenの中央配置 */
   & span {
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
