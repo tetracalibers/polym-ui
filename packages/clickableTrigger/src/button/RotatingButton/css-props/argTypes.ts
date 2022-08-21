@@ -37,6 +37,16 @@ export const styleArgTypes = {
       required: true,
     },
   },
+  width: {
+    ...cssStoryMeta.maxWidth,
+    type: { required: true },
+  },
+  height: {
+    ...cssStoryMeta.height,
+    type: {
+      required: true,
+    },
+  },
   padding: {
     ...cssStoryMeta.padding,
   },

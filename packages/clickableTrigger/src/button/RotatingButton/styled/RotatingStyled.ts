@@ -23,9 +23,9 @@ export const RotatingStyled = styled.button<RotatingButtonProps>`
   /* ボタンの形状 */
   display: inline-block;
   width: 100%;
-  max-width: 250px;
-  height: 50px;
-  line-height: 50px;
+  max-width: ${({ width }) => width};
+  height: ${({ height }) => height};
+  line-height: ${({ height }) => height};
   text-align: center;
   outline: none;
 
@@ -37,14 +37,15 @@ export const RotatingStyled = styled.button<RotatingButtonProps>`
     height: 100%;
     /* 重なりを3dで表示 */
     transform-style: preserve-3d;
+    transition-property: all;
     /* 数字が小さくなるほど早く回転 */
-    transition: 0.5s;
+    transition-duration: ${({ transitionDuration }) => transitionDuration};
   }
 
   /* 回転前 */
   & span:nth-child(1) {
-    background: #fff;
-    color: #000;
+    background: ${({ backgroundColor }) => backgroundColor};
+    color: ${({ color }) => color};
     /* 初めは回転なし */
     transform: rotateX(0deg);
     /* 回転する起点 */
@@ -57,8 +58,8 @@ export const RotatingStyled = styled.button<RotatingButtonProps>`
 
   /* 回転後 */
   & span:nth-child(2) {
-    background: #000;
-    color: #fff;
+    background: ${({ color }) => color};
+    color: ${({ backgroundColor }) => backgroundColor};
     ${({ rotateTo }) => nth2Rotate(rotateTo)}
     transform-origin: 0 50% -25px; /* 回転する起点 */
   }
