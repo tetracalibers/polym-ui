@@ -17,9 +17,13 @@ const shadowPosition = (pushTo: CharacterProps['pushTo']) => {
         left: 4px;
       `
     })
-    .otherwise(() => {
-      return ''
+    .with('left', () => {
+      return css`
+        top: 4px;
+        right: 4px;
+      `
     })
+    .exhaustive()
 }
 
 const hoverTransform = (pushTo: CharacterProps['pushTo']) => {
@@ -34,7 +38,12 @@ const hoverTransform = (pushTo: CharacterProps['pushTo']) => {
         transform: translate(4px, 4px);
       `
     })
-    .otherwise(() => '')
+    .with('left', () => {
+      return css`
+        transform: translate(-4px, 4px);
+      `
+    })
+    .exhaustive()
 }
 
 const thisCss = css<CharacterProps>`
