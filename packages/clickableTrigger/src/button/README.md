@@ -41,6 +41,13 @@
 
 波紋が広がる
 
+#### props
+
+- **trigger**
+  - click
+  - infinite
+  - hover
+
 ### CollapsingButton
 
 押し込まれる
