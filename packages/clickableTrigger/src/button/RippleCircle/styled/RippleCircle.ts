@@ -1,5 +1,6 @@
 import styled, { keyframes } from 'styled-components'
 import { ResetCss } from 'styled-utility-first'
+import { styleMixin, StyleProps } from '../css-props/props'
 
 const waveKeyframes = keyframes`
   0% {
@@ -11,24 +12,25 @@ const waveKeyframes = keyframes`
   }
 `
 
-export const RippleStyled = styled.button`
+export const RippleStyled = styled.button<StyleProps>`
   ${ResetCss.button}
+  ${styleMixin}
 
   /*波紋の基点とするためrelativeを指定*/
   position: relative;
   /*波紋の形状*/
   display: inline-block;
-  background: #333;
+  background: ${({ backgroundColor }) => backgroundColor};
   width: 70px;
   height: 70px;
   border-radius: 50%;
-  color: #ccc;
+  color: ${({ color }) => color};
   outline: none;
   /*アニメーションの設定*/
   transition: all 0.3s;
 
   &:hover {
-    background: #666;
+    ${({ hoverStyle }) => hoverStyle}
   }
 
   /*波形を2つ設定*/
@@ -40,7 +42,7 @@ export const RippleStyled = styled.button`
     left: -25%;
     top: -25%;
     /*波形の形状*/
-    border: 1px solid #333;
+    border: 1px solid ${({ backgroundColor }) => backgroundColor};
     width: 150%;
     height: 150%;
     border-radius: 50%;
@@ -55,6 +57,7 @@ export const RippleStyled = styled.button`
     animation-delay: 0.5s;
   }
 
+  /* childrenの中央配置 */
   & span {
     display: flex;
     justify-content: center;
