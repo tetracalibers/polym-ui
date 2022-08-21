@@ -1,14 +1,8 @@
-import {
-  getDefaultProps,
-  getPropType,
-  NotRequired,
-  Required,
-} from 'react-tsx-props'
+import { getDefaultProps, getPropType, Required } from 'react-tsx-props'
 import * as CSST from 'csstype'
 import { mixinBuilder } from 'styled-utility-first'
 
 const conf = {
-  /* Required ----------------------------------- */
   borderWidth: Required<CSST.Property.BorderWidth>('1px'),
   borderStyle: Required<CSST.Property.BorderStyle>('solid'),
   borderColor: Required<CSST.Property.BorderColor>('#555'),
@@ -17,10 +11,8 @@ const conf = {
   transitionDuration: Required<CSST.Property.TransitionDuration>('0.5s'),
   width: Required<CSST.Property.Width>('250px'),
   height: Required<CSST.Property.Height>('50px'),
-  /* Option ------------------------------------- */
-  padding: NotRequired<CSST.Property.Padding>('0'),
-  borderRadius: NotRequired<CSST.Property.BorderRadius>('0'),
-  /* -------------------------------------------- */
+  padding: Required<CSST.Property.Padding>('0'),
+  borderRadius: Required<CSST.Property.BorderRadius>('0'),
 }
 type Conf = typeof conf
 
