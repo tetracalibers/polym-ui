@@ -1,11 +1,9 @@
-import styled, { StyledComponent } from 'styled-components'
+import styled, { css } from 'styled-components'
 import { ResetCss } from 'styled-utility-first'
-import { CommonProps, HtmlTagType } from '../../common/props'
 import { styleMixin, StyleProps } from '../css-props/props'
 
 // prettier-ignore
-export const StyledClickElement: StyledComponent<HtmlTagType, {}> = styled.button<StyleProps & CommonProps>`
-  ${({ as }) => as === 'button' && ResetCss.button}
+const rippleStyle = css<StyleProps>`
   ${styleMixin}
 
   /*波紋の基点とするためrelativeを指定*/
@@ -41,4 +39,13 @@ export const StyledClickElement: StyledComponent<HtmlTagType, {}> = styled.butto
     transition: 0s;
     opacity: 0.3;
   }
+`
+
+export const RippleButton = styled.button<StyleProps>`
+  ${ResetCss.button}
+  ${rippleStyle}
+`
+
+export const RippleLink = styled.a<StyleProps>`
+  ${rippleStyle}
 `

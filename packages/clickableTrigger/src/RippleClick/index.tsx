@@ -1,7 +1,8 @@
 import { ComponentPropsWithoutRef, FC, ReactNode } from 'react'
+import { StyledComponent } from 'styled-components'
 import { HtmlTagType } from '../common/props'
 import { CharacterProps, _defaultProps } from './model/props'
-import { StyledClickElement } from './styled/RippleClick'
+import { RippleButton, RippleLink } from './styled/RippleClick'
 
 export type RippleClickProps = {
   children: ReactNode
@@ -16,8 +17,10 @@ const RippleClick = <As extends HtmlTagType>(
   { as, ...props }: RippleClickProps = { ...defaultProps },
   { ...attrs }: ComponentPropsWithoutRef<As>
 ) => {
+  const StyledClickElement: StyledComponent<HtmlTagType, {}> =
+    as === 'button' ? RippleButton : RippleLink
   return (
-    <StyledClickElement forwardedAs={as} {...props} {...attrs}>
+    <StyledClickElement {...props} {...attrs}>
       {props.children}
     </StyledClickElement>
   )
