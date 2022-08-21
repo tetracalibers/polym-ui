@@ -3,44 +3,50 @@ import { ResetCss } from 'styled-utility-first'
 import { CharacterProps } from '../model/props'
 import { match } from 'ts-pattern'
 
-const shadowPosition = (pushTo: CharacterProps['pushTo']) => {
+const shadowPosition = (
+  pushTo: CharacterProps['pushTo'],
+  offset: CharacterProps['offset']
+) => {
   return match(pushTo)
     .with('bottom', () => {
       return css`
-        top: 4px;
+        top: ${offset}px;
         left: 0;
       `
     })
     .with('right', () => {
       return css`
-        top: 4px;
-        left: 4px;
+        top: ${offset}px;
+        left: ${offset}px;
       `
     })
     .with('left', () => {
       return css`
-        top: 4px;
-        right: 4px;
+        top: ${offset}px;
+        right: ${offset}px;
       `
     })
     .exhaustive()
 }
 
-const hoverTransform = (pushTo: CharacterProps['pushTo']) => {
+const hoverTransform = (
+  pushTo: CharacterProps['pushTo'],
+  offset: CharacterProps['offset']
+) => {
   return match(pushTo)
     .with('bottom', () => {
       return css`
-        transform: translateY(4px);
+        transform: translateY(${offset}px);
       `
     })
     .with('right', () => {
       return css`
-        transform: translate(4px, 4px);
+        transform: translate(${offset}px, ${offset}px);
       `
     })
     .with('left', () => {
       return css`
-        transform: translate(-4px, 4px);
+        transform: translate(calc(-1 * ${offset}px), ${offset}px);
       `
     })
     .exhaustive()
@@ -54,8 +60,8 @@ const thisCss = css<CharacterProps>`
   display: inline-block;
   text-align: center;
   background: transparent;
-  border-radius: 25px;
-  border: solid 1px #333;
+  border-radius: ${({ borderRadius }) => borderRadius};
+  border: solid 1px ${({ color }) => color};
   outline: none;
   /*アニメーションの指定*/
   transition: all 0.2s ease;
@@ -71,10 +77,10 @@ const thisCss = css<CharacterProps>`
     z-index: 2; /*z-indexの数値をあげて文字を背景よりも手前に表示*/
     /*テキストの形状*/
     display: block;
-    padding: 10px 30px;
-    background: #fff;
-    border-radius: 25px;
-    color: #333;
+    padding: ${({ padding }) => padding};
+    background: ${({ backgroundColor }) => backgroundColor};
+    border-radius: ${({ borderRadius }) => borderRadius};
+    color: ${({ color }) => color};
     /*アニメーションの指定*/
     transition: all 0.3s ease;
   }
@@ -85,18 +91,18 @@ const thisCss = css<CharacterProps>`
     /*絶対配置で影の位置を決める*/
     position: absolute;
     z-index: -1;
-    ${({ pushTo }) => shadowPosition(pushTo)}
+    ${({ pushTo, offset }) => shadowPosition(pushTo, offset)}
     /*影の形状*/
     width: 100%;
     height: 100%;
-    border-radius: 25px;
-    background-color: #333;
+    border-radius: ${({ borderRadius }) => borderRadius};
+    background-color: ${({ color }) => color};
   }
 
   &:hover span {
-    background-color: #333;
-    color: #fff;
-    ${({ pushTo }) => hoverTransform(pushTo)}
+    background-color: ${({ color }) => color};
+    color: ${({ backgroundColor }) => backgroundColor};
+    ${({ pushTo, offset }) => hoverTransform(pushTo, offset)}
   }
 `
 

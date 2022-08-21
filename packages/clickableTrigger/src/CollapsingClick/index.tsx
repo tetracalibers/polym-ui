@@ -1,6 +1,7 @@
 import { ComponentPropsWithoutRef, FC, ReactNode } from 'react'
 import { StyledComponent } from 'styled-components'
 import { HtmlTagType } from '../common/props'
+import { StyleProps } from './css-props/props'
 import { CharacterProps, _defaultProps } from './model/props'
 import { StyledButton, StyledLink } from './styled'
 
