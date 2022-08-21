@@ -2,6 +2,7 @@ import { ComponentStory } from '@storybook/react'
 import RippleCircle from '../components/RippleCircle'
 import { defaultProps } from '../model/props'
 import { MdFavorite } from 'react-icons/md'
+import { styleArgTypes } from '../css-props/argTypes'
 
 export default {
   title: 'Button/RippleCircle',
@@ -22,6 +23,7 @@ export default {
         required: true,
       },
     },
+    ...styleArgTypes,
   },
 }
 
@@ -30,8 +32,8 @@ const Template: ComponentStory<typeof RippleCircle> = ({
   ...args
 }) => <RippleCircle {...args}>{children}</RippleCircle>
 
-export const playground = Template.bind({})
-playground.args = {
+export const exapmle = Template.bind({})
+exapmle.args = {
   ...defaultProps,
   children: <MdFavorite size='2rem' />,
 }

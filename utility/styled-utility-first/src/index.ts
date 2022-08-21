@@ -89,6 +89,7 @@ const config = {
 
 import { CssProps, CssPropsWithoutPseudo } from './packages/generator/CssProps'
 import { Pseudo } from './packages/constants/pseudo'
+import { PseudoProps, pseudoMixin } from './packages/extension/pseudo'
 
 type Config = typeof config
 
@@ -135,12 +136,13 @@ export type AllCssProps = keyof UnionToIntersection<
   Distribute<CssPropsCategory>
 >
 
+export type AllPseudoStyleProps = keyof PseudoProps
+
 export { Pseudo }
 
 /* styleFn ------------------------------------ */
 
 import { styleFnMapGenerator } from './packages/generator/styleFn'
-import { PseudoProps, pseudoMixin } from './packages/extension/pseudo'
 import { css } from 'styled-components'
 import { NotPseudoProps } from './packages/extension/not'
 

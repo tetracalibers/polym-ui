@@ -4,6 +4,7 @@
 import _ from 'lodash'
 import {
   AllCssProps,
+  AllPseudoStyleProps,
   textDecorationProps,
   textReadableProps,
   writingModeProps,
@@ -11,7 +12,7 @@ import {
 import * as cssStoryMetaJson from './data/css-prop-doc.json'
 
 export const cssStoryMeta = JSON.parse(JSON.stringify(cssStoryMetaJson)) as {
-  [k in AllCssProps]: {
+  [k in AllCssProps | AllPseudoStyleProps]: {
     control: {
       type: 'select' | 'text' | 'color'
     }

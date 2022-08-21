@@ -7677,5 +7677,18 @@
         "detail": "normal"
       }
     }
+  },
+  "hoverStyle": {
+    "description": "Object representing the style on hover",
+    "table": {
+      "category": "CSS",
+      "subcategory": "Pseudo Class",
+      "type": {
+        "summary": "CSSObject"
+      },
+      "defaultValue": {
+        "detail": null
+      }
+    }
   }
 }
