@@ -1,9 +1,6 @@
 import { ComponentPropsWithoutRef, FC, ReactNode } from 'react'
-import {
-  RippleButtonProps,
-  defaultProps as _defaultProps,
-} from '../model/props'
-import { RippleStyled } from '../styled/RippleButton'
+import { RippleButtonProps, defaultProps as _defaultProps } from './model/props'
+import { RippleStyled } from './styled/RippleButton'
 
 type ThisProps = ComponentPropsWithoutRef<'button'> & {
   children: ReactNode

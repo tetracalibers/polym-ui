@@ -1,6 +1,6 @@
 import { ComponentPropsWithoutRef, FC, ReactNode } from 'react'
-import { FlowingStyled } from '../styled/FlowingStyled'
-import { defaultProps, FlowingButtonProps } from '../model/props'
+import { FlowingStyled } from './styled/FlowingStyled'
+import { defaultProps, FlowingButtonProps } from './model/props'
 
 type ThisProps = ComponentPropsWithoutRef<'button'> & {
   children: ReactNode

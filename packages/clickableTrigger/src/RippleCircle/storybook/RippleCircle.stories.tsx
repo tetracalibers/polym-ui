@@ -1,5 +1,5 @@
 import { ComponentStory } from '@storybook/react'
-import RippleCircle from '../components/RippleCircle'
+import RippleCircle from '..'
 import { defaultProps } from '../model/props'
 import { MdFavorite } from 'react-icons/md'
 import { styleArgTypes } from '../css-props/argTypes'

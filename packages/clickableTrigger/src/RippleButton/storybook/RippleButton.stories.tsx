@@ -1,5 +1,5 @@
 import { ComponentStory } from '@storybook/react'
-import RippleButton from '../components/RippleButton'
+import RippleButton from '..'
 import { styleArgTypes } from '../css-props/argTypes'
 import { defaultProps } from '../model/props'
 

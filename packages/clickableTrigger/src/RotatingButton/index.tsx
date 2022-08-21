@@ -2,8 +2,8 @@ import { ComponentPropsWithoutRef, FC, ReactNode } from 'react'
 import {
   defaultProps as _defaultProps,
   RotatingButtonProps,
-} from '../model/props'
-import { RotatingStyled } from '../styled/RotatingStyled'
+} from './model/props'
+import { RotatingStyled } from './styled/RotatingStyled'
 
 type ThisProps = Omit<
   ComponentPropsWithoutRef<'button'> & {

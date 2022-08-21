@@ -1,5 +1,5 @@
 import { ComponentStory } from '@storybook/react'
-import RotatingButton from '../components/RotatingButton'
+import RotatingButton from '..'
 import { defaultProps, rotateTo } from '../model/props'
 import _ from 'lodash'
 import { styleArgTypes } from '../css-props/argTypes'

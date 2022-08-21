@@ -1,5 +1,5 @@
 import { ComponentStory } from '@storybook/react'
-import FlowingButton from '../components/FlowingButton'
+import FlowingButton from '..'
 import { presets, defaultProps } from '../model/props'
 import _ from 'lodash'
 import { styleArgTypes } from '../css-props/argTypes'

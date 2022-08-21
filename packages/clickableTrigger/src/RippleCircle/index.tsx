@@ -1,9 +1,6 @@
 import { ComponentPropsWithoutRef, FC, ReactNode } from 'react'
-import {
-  RippleCircleProps,
-  defaultProps as _defaultProps,
-} from '../model/props'
-import { RippleStyled } from '../styled/RippleCircle'
+import { RippleCircleProps, defaultProps as _defaultProps } from './model/props'
+import { RippleStyled } from './styled/RippleCircle'
 
 type ThisProps = ComponentPropsWithoutRef<'button'> & {
   children: ReactNode
