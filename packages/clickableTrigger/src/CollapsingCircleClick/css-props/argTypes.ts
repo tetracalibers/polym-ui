@@ -1,32 +1,35 @@
-import { cssStoryMeta } from 'story-builder'
+import { useSetDefaultAs } from 'story-builder'
+import { styleDefaultProps } from './props'
+
+const withDefaultAs = useSetDefaultAs(styleDefaultProps)
 
 export const styleArgTypes = {
   borderWidth: {
-    ...cssStoryMeta.borderWidth,
+    ...withDefaultAs('borderWidth'),
     type: {
       required: true,
     },
   },
   borderStyle: {
-    ...cssStoryMeta.borderStyle,
+    ...withDefaultAs('borderStyle'),
     type: {
       required: true,
     },
   },
   color: {
-    ...cssStoryMeta.color,
+    ...withDefaultAs('color'),
     type: {
       required: true,
     },
   },
   backgroundColor: {
-    ...cssStoryMeta.backgroundColor,
+    ...withDefaultAs('backgroundColor'),
     type: {
       required: true,
     },
   },
   width: {
-    ...cssStoryMeta.width,
+    ...withDefaultAs('width'),
     type: { required: true },
   },
 }

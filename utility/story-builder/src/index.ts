@@ -33,3 +33,14 @@ export const cssStoryMetaOf = {
   textReadable: _.pick(cssStoryMeta, textReadableProps),
   writingMode: _.pick(cssStoryMeta, writingModeProps),
 }
+
+export const useSetDefaultAs =
+  (defaultProps: Record<string, unknown>) =>
+  (propName: AllCssProps | AllPseudoStyleProps) => {
+    const defaultV = defaultProps[propName]
+    return _.set(
+      _.set(cssStoryMeta[propName], 'table.defaultValue.detail', null),
+      'table.defaultValue.summary',
+      defaultV
+    )
+  }
