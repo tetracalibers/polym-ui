@@ -1,7 +1,7 @@
 import { ComponentStory } from '@storybook/react'
 import { defaultProps, WillBlur, WillBlurProps } from '..'
 import { commmonArgTypes } from '../../common/argTypes'
-import { StyledBox } from '../../mock/TestBox'
+import { FillBox } from '../../mock/TestBox'
 import { styleArgTypes } from '../css-props/argTypes'
 import type { FC } from 'react'
 
@@ -30,7 +30,7 @@ export default {
 }
 
 const Template: ComponentStory<FC<WillBlurProps>> = ({ children, ...args }) => (
-  <WillBlur {...args} as={StyledBox}>
+  <WillBlur {...args} as={FillBox}>
     {children}
   </WillBlur>
 )

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const StyledBox = styled.div`
+export const FillBox = styled.div`
   width: 200px;
   height: 200px;
   margin: 5rem auto;

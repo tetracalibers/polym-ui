@@ -1,7 +1,7 @@
 import { ComponentStory } from '@storybook/react'
 import { defaultProps, WillFlip, WillFlipProps } from '..'
 import { commmonArgTypes } from '../../common/argTypes'
-import { StyledBox } from '../../mock/TestBox'
+import { FillBox } from '../../mock/TestBox'
 import { styleArgTypes } from '../css-props/argTypes'
 import type { FC } from 'react'
 import { flipToOptions } from '../model/props'
@@ -50,7 +50,7 @@ export default {
 }
 
 const Template: ComponentStory<FC<WillFlipProps>> = ({ children, ...args }) => (
-  <WillFlip {...args} as={StyledBox}>
+  <WillFlip {...args} as={FillBox}>
     {children}
   </WillFlip>
 )

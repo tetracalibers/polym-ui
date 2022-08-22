@@ -1,7 +1,7 @@
 import { ComponentStory } from '@storybook/react'
 import { defaultProps, WillRotate, WillRotateProps } from '..'
 import { commmonArgTypes } from '../../common/argTypes'
-import { StyledBox } from '../../mock/TestBox'
+import { FillBox } from '../../mock/TestBox'
 import { styleArgTypes } from '../css-props/argTypes'
 import type { FC } from 'react'
 import { rotateOptions } from '../model/props'
@@ -53,7 +53,7 @@ const Template: ComponentStory<FC<WillRotateProps>> = ({
   children,
   ...args
 }) => (
-  <WillRotate {...args} as={StyledBox}>
+  <WillRotate {...args} as={FillBox}>
     {children}
   </WillRotate>
 )

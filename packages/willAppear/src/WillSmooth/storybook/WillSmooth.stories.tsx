@@ -1,7 +1,7 @@
 import { ComponentStory } from '@storybook/react'
 import { defaultProps, WillSmooth, WillSmoothProps } from '..'
 import { commmonArgTypes } from '../../common/argTypes'
-import { StyledBox } from '../../mock/TestBox'
+import { FillBox } from '../../mock/TestBox'
 import { styleArgTypes } from '../css-props/argTypes'
 import type { FC } from 'react'
 
@@ -33,7 +33,7 @@ const Template: ComponentStory<FC<WillSmoothProps>> = ({
   children,
   ...args
 }) => (
-  <WillSmooth {...args} as={StyledBox}>
+  <WillSmooth {...args} as={FillBox}>
     {children}
   </WillSmooth>
 )
