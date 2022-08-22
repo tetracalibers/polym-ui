@@ -16,5 +16,7 @@ await within(async () => {
 
   /* storiesファイルの改名 ----------------------------- */
   cd('storybook')
-  await fs.move('componentName.stories.tsx', `${componentName}.stories.tsx`)
+  await fs.move('componentName.stories.tsx', `${componentName}.stories.tsx`, {
+    overwrite: true,
+  })
 })
