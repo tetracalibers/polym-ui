@@ -4,16 +4,17 @@ import * as $ from './keyframes'
 import { TagType } from '../../common/props'
 
 const animation = {
-  fadeFrom: {
-    here: $.fadeInKeyframes,
-    bottom: $.fadeUpKeyframes,
-    top: $.fadeDownKeyframes,
-    left: $.fadeLeftKeyframes,
-    right: $.fadeRightKeyframes,
+  zoom: {
+    in: $.zoomInKeyframes,
+    out: $.zoomOutKeyframes,
   },
 }
 
-const thisCss = css<CharacterProps>``
+const thisCss = css<CharacterProps>`
+  animation-name: ${({ zoom }) => animation.zoom[zoom]};
+  animation-duration: ${({ animationDuration }) => animationDuration};
+  animation-fill-mode: forwards;
+`
 
 export const StyledElement: StyledComponent<TagType, {}> = styled.div`
   ${thisCss}

@@ -1,54 +1,19 @@
 import { keyframes } from 'styled-components'
 
-export const fadeInKeyframes = keyframes`
+export const zoomInKeyframes = keyframes`
   from {
-    opacity: 0;
+    transform: scale(0.6);
   }
   to {
-    opacity: 1;
+    transform: scale(1);
   }
 `
 
-export const fadeUpKeyframes = keyframes`
+export const zoomOutKeyframes = keyframes`
   from {
-    opacity: 0;
-    transform: translateY(100px);
+    transform: scale(1.2);
   }
   to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-`
-
-export const fadeDownKeyframes = keyframes`
-  from {
-    opacity: 0;
-    transform: translateY(-100px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-`
-
-export const fadeLeftKeyframes = keyframes`
-  from {
-    opacity: 0;
-    transform: translateX(-100px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-`
-
-export const fadeRightKeyframes = keyframes`
-  from {
-    opacity: 0;
-    transform: translateX(100px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
+    transform: scale(1);
   }
 `
