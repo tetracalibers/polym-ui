@@ -13,13 +13,26 @@ export const defaultProps = {
 }
 
 export const WillBorder = <As extends TagType>(
-  { as, borderColor, ...props }: WillBorderProps = { ...defaultProps },
+  { as, borderColor, animationDuration, ...props }: WillBorderProps = {
+    ...defaultProps,
+  },
   { ...attrs }: ComponentPropsWithoutRef<As>
 ) => {
   return (
-    <WillHorizontalLine borderColor={borderColor}>
-      <WillVerticalLine borderColor={borderColor}>
-        <ChildrenWrapper as={as} {...props} {...attrs}>
+    <WillHorizontalLine
+      borderColor={borderColor}
+      animationDuration={animationDuration}
+    >
+      <WillVerticalLine
+        borderColor={borderColor}
+        animationDuration={animationDuration}
+      >
+        <ChildrenWrapper
+          as={as}
+          animationDuration={animationDuration}
+          {...props}
+          {...attrs}
+        >
           {props.children}
         </ChildrenWrapper>
       </WillVerticalLine>

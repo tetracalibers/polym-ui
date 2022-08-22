@@ -7,4 +7,7 @@ export const styleArgTypes = {
   borderColor: {
     ...withDefaultAs('borderColor'),
   },
+  animationDuration: {
+    ...withDefaultAs('animationDuration'),
+  },
 }

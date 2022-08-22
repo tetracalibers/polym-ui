@@ -3,6 +3,12 @@ import { CharacterProps } from '../model/props'
 import * as $ from './keyframes'
 import { TagType } from '../../common/props'
 
+const eachAnimationDuration = (
+  duration: CharacterProps['animationDuration']
+) => {
+  return duration / 4
+}
+
 // 上下線が伸びる設定
 export const WillHorizontalLine: StyledComponent<
   TagType,
@@ -27,7 +33,8 @@ export const WillHorizontalLine: StyledComponent<
     left: 0;
     /*表示されて0秒後に上線が0.5秒かけて表示*/
     animation-name: ${$.horizontalLineKeyframes};
-    animation-duration: 0.5s;
+    animation-duration: ${({ animationDuration }) =>
+      eachAnimationDuration(animationDuration)}s;
     animation-timing-function: linear;
     animation-delay: 0s;
     animation-fill-mode: forwards;
@@ -39,9 +46,11 @@ export const WillHorizontalLine: StyledComponent<
     right: 0;
     /*表示されて1秒後に下線が0.5秒かけて表示*/
     animation-name: ${$.horizontalLineKeyframes};
-    animation-duration: 0.5s;
+    animation-duration: ${({ animationDuration }) =>
+      eachAnimationDuration(animationDuration)}s;
     animation-timing-function: linear;
-    animation-delay: 1s;
+    animation-delay: ${({ animationDuration }) =>
+      eachAnimationDuration(animationDuration) * 2}s;
     animation-fill-mode: forwards;
   }
 `
@@ -67,9 +76,11 @@ export const WillVerticalLine: StyledComponent<
     right: 0;
     /*表示されて0.5秒後に右線が0.5秒かけて表示*/
     animation-name: ${$.verticalLineKeyframes};
-    animation-duration: 0.5s;
+    animation-duration: ${({ animationDuration }) =>
+      eachAnimationDuration(animationDuration)}s;
     animation-timing-function: linear;
-    animation-delay: 0.5s;
+    animation-delay: ${({ animationDuration }) =>
+      eachAnimationDuration(animationDuration)}s;
     animation-fill-mode: forwards;
   }
 
@@ -79,9 +90,11 @@ export const WillVerticalLine: StyledComponent<
     left: 0;
     /*表示されて1.5秒後に左線が0.5秒かけて表示*/
     animation-name: ${$.verticalLineKeyframes};
-    animation-duration: 0.5s;
+    animation-duration: ${({ animationDuration }) =>
+      eachAnimationDuration(animationDuration)}s;
     animation-timing-function: linear;
-    animation-delay: 1.5s;
+    animation-delay: ${({ animationDuration }) =>
+      eachAnimationDuration(animationDuration) * 3}s;
     animation-fill-mode: forwards;
   }
 `
@@ -92,9 +105,11 @@ export const ChildrenWrapper: StyledComponent<
 > = styled.div<CharacterProps>`
   /*1.5秒後に中央のエリアが0.5秒かけて表示*/
   animation-name: ${$.childrenDelayKeyframes};
-  animation-duration: 0.5s;
+  animation-duration: ${({ animationDuration }) =>
+    eachAnimationDuration(animationDuration)}s;
   animation-timing-function: linear;
-  animation-delay: 1.5s;
+  animation-delay: ${({ animationDuration }) =>
+    eachAnimationDuration(animationDuration) * 3}s;
   animation-fill-mode: forwards;
   opacity: 0; /*初期値を透過0にする*/
 `
