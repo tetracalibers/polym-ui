@@ -1,5 +1,4 @@
 import { getDefaultProps, getPropType, Required } from 'react-tsx-props'
-import * as CSST from 'csstype'
 
 const conf = {
   animationDuration: Required<number>(2),

@@ -24,25 +24,6 @@ export default {
         required: true,
       },
     },
-    fadeFrom: {
-      control: {
-        type: null,
-      },
-      description: 'Which direction the elements appear from',
-      table: {
-        type: {
-          summary: null,
-        },
-        category: 'character',
-        defaultValue: {
-          summary: '', // TODO
-          details: null,
-        },
-      },
-      type: {
-        required: true,
-      },
-    },
     ...commmonArgTypes,
     ...styleArgTypes,
   },
@@ -62,4 +43,3 @@ playground.args = {
   ...defaultProps,
   children: 'Border!!',
 }
-playground.argTypes = {}
