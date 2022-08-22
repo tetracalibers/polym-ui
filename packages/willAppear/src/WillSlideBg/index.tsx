@@ -13,11 +13,11 @@ export const defaultProps = {
 }
 
 export const WillSlideBg = <As extends TagType>(
-  { as, ...props }: WillSlideBgProps = { ...defaultProps },
+  { as, slideFrom, ...props }: WillSlideBgProps = { ...defaultProps },
   { ...attrs }: ComponentPropsWithoutRef<As>
 ) => {
   return (
-    <SlideBackground>
+    <SlideBackground slideFrom={slideFrom}>
       <ChildrenWrapper as={as} {...props} {...attrs}>
         {props.children}
       </ChildrenWrapper>

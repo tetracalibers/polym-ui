@@ -16,6 +16,8 @@ export const SlideBackground: StyledComponent<
   TagType,
   {}
 > = styled.div<CharacterProps>`
+  /* 子要素のwidthに合わせる */
+  display: inline-block;
   animation-name: ${$.bgDelayKeyframes};
   animation-duration: 1s;
   animation-fill-mode: forwards;
@@ -45,4 +47,9 @@ export const ChildrenWrapper: StyledComponent<
   animation-delay: 0.6s;
   animation-fill-mode: forwards;
   opacity: 0;
+
+  /* 子要素のcolor指定を打ち消す */
+  && {
+    color: #666;
+  }
 `
