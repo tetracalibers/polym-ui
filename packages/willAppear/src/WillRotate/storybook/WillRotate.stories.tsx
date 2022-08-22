@@ -35,6 +35,10 @@ export default {
           summary: null,
         },
         category: 'character',
+        defaultValue: {
+          summary: defaultProps.rotate,
+          details: null,
+        },
       },
       type: {
         required: true,

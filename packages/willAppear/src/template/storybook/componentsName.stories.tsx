@@ -34,6 +34,10 @@ export default {
           summary: null,
         },
         category: 'character',
+        defaultValue: {
+          summary: '', // TODO
+          details: null,
+        },
       },
       type: {
         required: true,
