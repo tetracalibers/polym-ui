@@ -1,54 +1,37 @@
 import { keyframes } from 'styled-components'
 
-export const fadeInKeyframes = keyframes`
+export const rotateXKeyframes = keyframes`
   from {
-    opacity: 0;
+    transform: rotateX(0);
   }
   to {
-    opacity: 1;
+    transform: rotateX(-360deg);
   }
 `
 
-export const fadeUpKeyframes = keyframes`
+export const rotateYKeyframes = keyframes`
   from {
-    opacity: 0;
-    transform: translateY(100px);
+    transform: rotateY(0);
   }
   to {
-    opacity: 1;
-    transform: translateY(0);
+    transform: rotateY(-360deg);
   }
 `
 
-export const fadeDownKeyframes = keyframes`
+export const rotateZleftKeyframes = keyframes`
   from {
-    opacity: 0;
-    transform: translateY(-100px);
+    transform: rotateZ(0);
   }
   to {
-    opacity: 1;
-    transform: translateY(0);
+    transform: rotateZ(-360deg);
   }
 `
 
-export const fadeLeftKeyframes = keyframes`
+export const rotateZrightKeyframes = keyframes`
   from {
-    opacity: 0;
-    transform: translateX(-100px);
+    transform: rotateZ(0);
   }
   to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-`
-
-export const fadeRightKeyframes = keyframes`
-  from {
-    opacity: 0;
-    transform: translateX(100px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
+    transform: rotateZ(360deg);
   }
 `

@@ -4,16 +4,19 @@ import * as $ from './keyframes'
 import { TagType } from '../../common/props'
 
 const animation = {
-  fadeFrom: {
-    here: $.fadeInKeyframes,
-    bottom: $.fadeUpKeyframes,
-    top: $.fadeDownKeyframes,
-    left: $.fadeLeftKeyframes,
-    right: $.fadeRightKeyframes,
+  rotate: {
+    X: $.rotateXKeyframes,
+    Y: $.rotateYKeyframes,
+    Zleft: $.rotateZleftKeyframes,
+    Zright: $.rotateZrightKeyframes,
   },
 }
 
-const thisCss = css<CharacterProps>``
+const thisCss = css<CharacterProps>`
+  animation-name: ${({ rotate }) => animation.rotate[rotate]};
+  animation-duration: ${({ animationDuration }) => animationDuration};
+  animation-fill-mode: forwards;
+`
 
 export const StyledElement: StyledComponent<TagType, {}> = styled.div`
   ${thisCss}
