@@ -5,7 +5,7 @@ import { TagType } from '../../common/props'
 
 const thisCss = css<CharacterProps>`
   animation-name: ${({ blurRadius }) => computeBlurKeyframes(blurRadius)};
-  animation-duration: ${({ animationDuration }) => animationDuration};
+  animation-duration: ${({ animationDuration }) => animationDuration}s;
   animation-fill-mode: forwards;
 `
 

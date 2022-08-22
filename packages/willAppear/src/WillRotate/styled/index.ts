@@ -14,7 +14,7 @@ const animation = {
 
 const thisCss = css<CharacterProps>`
   animation-name: ${({ rotate }) => animation.rotate[rotate]};
-  animation-duration: ${({ animationDuration }) => animationDuration};
+  animation-duration: ${({ animationDuration }) => animationDuration}s;
   animation-fill-mode: forwards;
 `
 

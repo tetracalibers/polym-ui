@@ -1,5 +1,4 @@
 import { getDefaultProps, getPropType, Required } from 'react-tsx-props'
-import * as CSST from 'csstype'
 
 type CreateArrayWithLengthX<
   LENGTH extends number,
@@ -20,7 +19,7 @@ export type BlurRadiusRange = NumericRange<CreateArrayWithLengthX<1>, 20>
 export const blurRadiusRange = [...new Array(20)].map((_, idx) => idx + 1)
 
 const conf = {
-  animationDuration: Required<CSST.Property.AnimationDuration>('1s'),
+  animationDuration: Required<number>(1),
   blurRadius: Required<BlurRadiusRange>(10),
 }
 type Conf = typeof conf
