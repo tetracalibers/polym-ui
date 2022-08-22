@@ -179,7 +179,7 @@
   },
   "animationDuration": {
     "control": {
-      "type": "text"
+      "type": "number"
     },
     "description": "Time required to complete one animation cycle",
     "table": {
@@ -189,7 +189,7 @@
         "summary": null
       },
       "defaultValue": {
-        "detail": "0s"
+        "detail": 0
       }
     }
   },
@@ -7342,7 +7342,7 @@
   },
   "transitionDuration": {
     "control": {
-      "type": "text"
+      "type": "number"
     },
     "description": "Time required to complete animation",
     "table": {
@@ -7352,7 +7352,7 @@
         "summary": null
       },
       "defaultValue": {
-        "summary": "0s",
+        "summary": 0,
         "detail": null
       }
     }
