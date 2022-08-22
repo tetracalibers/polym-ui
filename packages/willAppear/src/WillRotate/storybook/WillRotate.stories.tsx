@@ -1,13 +1,14 @@
 import { ComponentStory } from '@storybook/react'
-import { defaultProps, WillFade, WillFadeProps } from '..'
+import { defaultProps, WillRotate, WillRotateProps } from '..'
 import { commmonArgTypes } from '../../common/argTypes'
 import { StyledBox } from '../../mock/TestBox'
 import { styleArgTypes } from '../css-props/argTypes'
 import type { FC } from 'react'
+import { rotateOptions } from '../model/props'
 
 export default {
-  title: 'will appear/WillFade',
-  component: WillFade,
+  title: 'will appear/WillRotate',
+  component: WillRotate,
   argTypes: {
     children: {
       control: {
@@ -24,11 +25,11 @@ export default {
         required: true,
       },
     },
-    fadeFrom: {
+    rotate: {
       control: {
         type: null,
       },
-      description: 'Which direction the elements appear from',
+      description: 'Around which axis the elements appear as they rotate',
       table: {
         type: {
           summary: null,
@@ -44,15 +45,25 @@ export default {
   },
 }
 
-const Template: ComponentStory<FC<WillFadeProps>> = ({ children, ...args }) => (
-  <WillFade {...args} as={StyledBox}>
+const Template: ComponentStory<FC<WillRotateProps>> = ({
+  children,
+  ...args
+}) => (
+  <WillRotate {...args} as={StyledBox}>
     {children}
-  </WillFade>
+  </WillRotate>
 )
 
 export const playground = Template.bind({})
 playground.args = {
   ...defaultProps,
-  children: 'Fade!!',
+  children: 'Rotate!!',
 }
-playground.argTypes = {}
+playground.argTypes = {
+  rotate: {
+    control: {
+      type: 'radio',
+    },
+    options: rotateOptions,
+  },
+}
