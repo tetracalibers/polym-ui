@@ -1,11 +1,10 @@
-import { commonDefaultProps, htmlTagType } from './props'
+import { commonDefaultProps } from './props'
 
 export const commmonArgTypes = {
   as: {
     control: {
-      type: 'radio',
+      type: null,
     },
-    options: htmlTagType,
     description: 'Use the component as a link or a button',
     table: {
       category: 'Accessibility',

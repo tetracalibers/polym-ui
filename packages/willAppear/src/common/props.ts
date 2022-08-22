@@ -1,19 +1,15 @@
-import {
-  getDefaultProps,
-  getPropType,
-  NotRequired,
-  Required,
-} from 'react-tsx-props'
-import type { IntrinsicElementsKeys } from 'styled-components'
+import React from 'react'
+import { getDefaultProps, getPropType } from 'react-tsx-props'
 
-export type HtmlTagType = IntrinsicElementsKeys
+export type TagType = React.ElementType
 
-const conf = {
-  as: Required<HtmlTagType>('button'),
-}
+const conf = {}
 type Conf = typeof conf
 
-export type CommonProps = getPropType<Conf>
+export type CommonProps = getPropType<Conf> & {
+  as: TagType
+}
 export const commonDefaultProps = {
   ...getDefaultProps<CommonProps>(conf),
+  as: 'div' as TagType,
 }
