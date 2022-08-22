@@ -4,7 +4,7 @@ import * as $ from './keyframes'
 import { TagType } from '../../common/props'
 
 const thisCss = css<CharacterProps>`
-  animation-duration: ${$.smoothKeyframes};
+  animation-name: ${$.smoothKeyframes};
   animation-duration: ${({ animationDuration }) => animationDuration};
   animation-fill-mode: forwards;
   transform-origin: left;
