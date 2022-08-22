@@ -18,7 +18,7 @@ export const WillHorizontalLine: StyledComponent<
     content: '';
     width: 0;
     height: 1px;
-    background: #333; /* 枠線の色*/
+    background: ${({ borderColor }) => borderColor}; /* 枠線の色*/
   }
 
   /*上線*/
@@ -58,7 +58,7 @@ export const WillVerticalLine: StyledComponent<
     content: '';
     width: 1px;
     height: 0;
-    background: #333; /* 枠線の色*/
+    background: ${({ borderColor }) => borderColor}; /* 枠線の色*/
   }
 
   /*右線*/

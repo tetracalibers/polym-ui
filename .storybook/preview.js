@@ -11,6 +11,7 @@ export const parameters = {
     presetColors: ColorPalette.all,
   },
   backgrounds: {
+    default: 'light',
     values: [
       { name: 'light', value: ColorPalette.grayScale.light },
       { name: 'dark', value: ColorPalette.grayScale.dark },

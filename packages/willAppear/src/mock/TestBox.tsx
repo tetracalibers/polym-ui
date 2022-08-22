@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { ColorPalette as $ } from 'styled-utility-first'
 
 export const FillBox = styled.div`
   display: inline-block;
@@ -45,4 +46,5 @@ export const FillBox = styled.div`
 export const InlineBox = styled.div`
   padding: 1rem 2rem;
   text-align: center;
+  color: ${$.grayScale.dark};
 `

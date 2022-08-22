@@ -13,12 +13,12 @@ export const defaultProps = {
 }
 
 export const WillBorder = <As extends TagType>(
-  { as, ...props }: WillBorderProps = { ...defaultProps },
+  { as, borderColor, ...props }: WillBorderProps = { ...defaultProps },
   { ...attrs }: ComponentPropsWithoutRef<As>
 ) => {
   return (
-    <WillHorizontalLine>
-      <WillVerticalLine>
+    <WillHorizontalLine borderColor={borderColor}>
+      <WillVerticalLine borderColor={borderColor}>
         <ChildrenWrapper as={as} {...props} {...attrs}>
           {props.children}
         </ChildrenWrapper>
