@@ -7,4 +7,7 @@ export const styleArgTypes = {
   animationDuration: {
     ...withDefaultAs('animationDuration'),
   },
+  backgroundColor: {
+    ...withDefaultAs('backgroundColor'),
+  },
 }

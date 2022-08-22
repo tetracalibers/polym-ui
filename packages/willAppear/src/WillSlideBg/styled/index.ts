@@ -34,7 +34,8 @@ export const SlideBackground: StyledComponent<
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: #666; /*伸びる背景色の設定*/
+    background-color: ${({ backgroundColor }) =>
+      backgroundColor}; /*伸びる背景色の設定*/
   }
 `
 
@@ -50,6 +51,6 @@ export const ChildrenWrapper: StyledComponent<
 
   /* 子要素のcolor指定を打ち消す */
   && {
-    color: #666;
+    color: ${({ backgroundColor }) => backgroundColor};
   }
 `
