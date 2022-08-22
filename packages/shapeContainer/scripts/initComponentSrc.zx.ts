@@ -3,10 +3,8 @@
 import 'zx/globals'
 import _ from 'lodash'
 
-const PREFIX = 'Will'
-
 const argument = process.argv[2]
-const componentName = `${PREFIX}${_.capitalize(argument)}`
+const componentName = `${argument}`
 const dirname = `src/${componentName}`
 
 await fs.copy('src/template', dirname)

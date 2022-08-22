@@ -1,13 +1,13 @@
 import { ComponentStory } from '@storybook/react'
-import { defaultProps, WillFade, WillFadeProps } from '..'
+import { defaultProps, PointedTag, PointedTagProps } from '..'
 import { commmonArgTypes } from '../../common/argTypes'
 import { DarkTextBox } from '../../mock/TestBox'
 import { styleArgTypes } from '../css-props/argTypes'
 import type { FC } from 'react'
 
 export default {
-  title: 'will appear/WillFade',
-  component: WillFade,
+  title: 'will appear/PointedTag',
+  component: PointedTag,
   argTypes: {
     children: {
       control: {
@@ -48,10 +48,13 @@ export default {
   },
 }
 
-const Template: ComponentStory<FC<WillFadeProps>> = ({ children, ...args }) => (
-  <WillFade {...args} as={DarkTextBox}>
+const Template: ComponentStory<FC<PointedTagProps>> = ({
+  children,
+  ...args
+}) => (
+  <PointedTag {...args} as={DarkTextBox}>
     {children}
-  </WillFade>
+  </PointedTag>
 )
 
 export const playground = Template.bind({})
