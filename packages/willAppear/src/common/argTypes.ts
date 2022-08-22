@@ -6,7 +6,7 @@ export const commmonArgTypes = {
       type: null,
     },
     description:
-      'HTML elements or React components that you want to appear in the animation',
+      'HTML elements or StyledComponents that you want to appear in the animation',
     table: {
       category: 'character',
       type: {

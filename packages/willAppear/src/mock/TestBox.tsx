@@ -1,7 +1,7 @@
 import { FC, ReactNode } from 'react'
 import styled from 'styled-components'
 
-const StyledBox = styled.div`
+export const StyledBox = styled.div`
   width: 200px;
   height: 200px;
   margin: 5rem auto;
