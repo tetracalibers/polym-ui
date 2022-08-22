@@ -1,13 +1,14 @@
 import { ComponentStory } from '@storybook/react'
-import { defaultProps, WillFade, WillFadeProps } from '..'
+import { defaultProps, WillZoom, WillZoomProps } from '..'
 import { commmonArgTypes } from '../../common/argTypes'
 import { StyledBox } from '../../mock/TestBox'
 import { styleArgTypes } from '../css-props/argTypes'
 import type { FC } from 'react'
+import { zoomOptions } from '../model/props'
 
 export default {
-  title: 'will appear/WillFade',
-  component: WillFade,
+  title: 'will appear/WillZoom',
+  component: WillZoom,
   argTypes: {
     children: {
       control: {
@@ -24,7 +25,7 @@ export default {
         required: true,
       },
     },
-    fadeFrom: {
+    zoom: {
       control: {
         type: null,
       },
@@ -34,6 +35,10 @@ export default {
           summary: null,
         },
         category: 'character',
+        defaultValue: {
+          summary: defaultProps.zoom,
+          details: null,
+        },
       },
       type: {
         required: true,
@@ -44,15 +49,22 @@ export default {
   },
 }
 
-const Template: ComponentStory<FC<WillFadeProps>> = ({ children, ...args }) => (
-  <WillFade {...args} as={StyledBox}>
+const Template: ComponentStory<FC<WillZoomProps>> = ({ children, ...args }) => (
+  <WillZoom {...args} as={StyledBox}>
     {children}
-  </WillFade>
+  </WillZoom>
 )
 
 export const playground = Template.bind({})
 playground.args = {
   ...defaultProps,
-  children: 'Fade!!',
+  children: 'Zoom!!',
 }
-playground.argTypes = {}
+playground.argTypes = {
+  zoom: {
+    control: {
+      type: 'radio',
+    },
+    options: zoomOptions,
+  },
+}
