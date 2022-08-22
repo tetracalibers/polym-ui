@@ -1,8 +1,11 @@
 import { keyframes } from 'styled-components'
+import { CharacterProps } from '../model/props'
 
-export const blurKeyframes = keyframes`
+export const computeBlurKeyframes = (
+  blurRadius: CharacterProps['blurRadius']
+) => keyframes`
   from {
-    filter: blur(10px);
+    filter: blur(${blurRadius}px);
     transform: scale(1.02);
   }
   to {
