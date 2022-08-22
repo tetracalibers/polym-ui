@@ -4,6 +4,7 @@ import { commmonArgTypes } from '../../common/argTypes'
 import { InlineBox } from '../../mock/TestBox'
 import { styleArgTypes } from '../css-props/argTypes'
 import type { FC } from 'react'
+import { slideFromOptions } from '../model/props'
 
 export default {
   title: 'will appear/WillSlideBg',
@@ -24,18 +25,18 @@ export default {
         required: true,
       },
     },
-    PaintFrom: {
+    slideFrom: {
       control: {
         type: null,
       },
-      description: 'Which direction the elements appear from',
+      description: 'Which direction the background will come from',
       table: {
         type: {
           summary: null,
         },
         category: 'character',
         defaultValue: {
-          summary: '', // TODO
+          summary: defaultProps.slideFrom,
           details: null,
         },
       },
@@ -60,6 +61,13 @@ const Template: ComponentStory<FC<WillSlideBgProps>> = ({
 export const playground = Template.bind({})
 playground.args = {
   ...defaultProps,
-  children: 'Paint!!',
+  children: 'SlideBack!!',
 }
-playground.argTypes = {}
+playground.argTypes = {
+  slideFrom: {
+    control: {
+      type: 'radio',
+    },
+    options: slideFromOptions,
+  },
+}
