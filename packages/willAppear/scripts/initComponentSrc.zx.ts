@@ -4,6 +4,17 @@ import 'zx/globals'
 import _ from 'lodash'
 
 const PREFIX = 'Will'
-const componentName = process.argv[2]
 
-await fs.copy('src/template', `src/${PREFIX}${_.capitalize(componentName)}`)
+const argument = process.argv[2]
+const componentName = `${PREFIX}${_.capitalize(argument)}`
+const dirname = `src/${componentName}`
+
+await fs.copy('src/template', dirname)
+
+await within(async () => {
+  cd(dirname)
+
+  /* storiesファイルの改名 ----------------------------- */
+  cd('storybook')
+  await fs.move('componentName.stories.tsx', `${componentName}.stories.tsx`)
+})
