@@ -37,7 +37,7 @@ const rotatingCss = css<CharacterProps>`
     transform-style: preserve-3d;
     transition-property: all;
     /* 数字が小さくなるほど早く回転 */
-    transition-duration: ${({ transitionDuration }) => transitionDuration};
+    transition-duration: ${({ transitionDuration }) => transitionDuration}s;
   }
 
   /* 回転前 */

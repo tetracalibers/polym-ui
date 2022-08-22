@@ -8,7 +8,7 @@ const conf = {
   borderColor: Required<CSST.Property.BorderColor>('#555'),
   color: Required<CSST.Property.Color>('#333'),
   backgroundColor: Required<CSST.Property.BackgroundColor>('#fff'),
-  transitionDuration: Required<CSST.Property.TransitionDuration>('0.5s'),
+  transitionDuration: Required<number>(0.5),
   width: Required<CSST.Property.Width>('250px'),
   height: Required<CSST.Property.Height>('50px'),
   padding: Required<CSST.Property.Padding>('0'),

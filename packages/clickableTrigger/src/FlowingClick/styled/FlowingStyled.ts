@@ -191,7 +191,7 @@ const beforeAnimation = (
     .otherwise(() => {
       return css`
         ${transitionProperty(preset)}
-        transition-duration: ${duration};
+        transition-duration: ${duration}s;
         transition-timing-function: cubic-bezier(0.8, 0, 0.2, 1);
         transition-delay: 0s;
         ${transform(preset)}
