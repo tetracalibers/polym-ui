@@ -3,4 +3,9 @@ import { styleDefaultProps } from './props'
 
 const withDefaultAs = useSetDefaultAs(styleDefaultProps)
 
-export const styleArgTypes = {}
+export const styleArgTypes = {
+  animationDuration: {
+    // @ts-ignore
+    ...withDefaultAs('animationDuration'),
+  },
+}

@@ -179,9 +179,8 @@
   },
   "animationDuration": {
     "control": {
-      "type": "select"
+      "type": "text"
     },
-    "options": ["<time>#"],
     "description": "",
     "table": {
       "category": "CSS",

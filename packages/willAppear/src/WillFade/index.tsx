@@ -13,16 +13,14 @@ export const defaultProps = {
   children: '',
 }
 
-const WillFade = <As extends TagType>(
+export const WillFade = <As extends TagType>(
   { as, ...props }: WillFadeProps = { ...defaultProps },
   { ...attrs }: ComponentPropsWithoutRef<As>
 ) => {
   const StyledElement: StyledComponent<TagType, {}> = getStyledElement(as)
   return (
     <StyledElement {...props} {...attrs}>
-      <span>{props.children}</span>
+      {props.children}
     </StyledElement>
   )
 }
-
-export default WillFade as FC<WillFadeProps>

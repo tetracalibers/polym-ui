@@ -5,10 +5,10 @@ export const commmonArgTypes = {
     control: {
       type: null,
     },
-    description: 'Use the component as a link or a button',
+    description:
+      'HTML elements or React components that you want to appear in the animation',
     table: {
-      category: 'Accessibility',
-      subcategory: 'markup',
+      category: 'character',
       type: {
         summary: null,
       },
