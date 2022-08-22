@@ -1,13 +1,13 @@
 import { ComponentStory } from '@storybook/react'
-import { defaultProps, WillFade, WillFadeProps } from '..'
+import { defaultProps, WillBlur, WillBlurProps } from '..'
 import { commmonArgTypes } from '../../common/argTypes'
 import { StyledBox } from '../../mock/TestBox'
 import { styleArgTypes } from '../css-props/argTypes'
 import type { FC } from 'react'
 
 export default {
-  title: 'will appear/WillFade',
-  component: WillFade,
+  title: 'will appear/WillBlur',
+  component: WillBlur,
   argTypes: {
     children: {
       control: {
@@ -24,39 +24,19 @@ export default {
         required: true,
       },
     },
-    fadeFrom: {
-      control: {
-        type: null,
-      },
-      description: 'Which direction the elements appear from',
-      table: {
-        type: {
-          summary: null,
-        },
-        category: 'character',
-        defaultValue: {
-          summary: '', // TODO
-          details: null,
-        },
-      },
-      type: {
-        required: true,
-      },
-    },
     ...commmonArgTypes,
     ...styleArgTypes,
   },
 }
 
-const Template: ComponentStory<FC<WillFadeProps>> = ({ children, ...args }) => (
-  <WillFade {...args} as={StyledBox}>
+const Template: ComponentStory<FC<WillBlurProps>> = ({ children, ...args }) => (
+  <WillBlur {...args} as={StyledBox}>
     {children}
-  </WillFade>
+  </WillBlur>
 )
 
 export const playground = Template.bind({})
 playground.args = {
   ...defaultProps,
-  children: 'Fade!!',
+  children: 'Blur!!',
 }
-playground.argTypes = {}
