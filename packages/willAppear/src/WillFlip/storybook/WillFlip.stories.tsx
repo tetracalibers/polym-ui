@@ -1,13 +1,14 @@
 import { ComponentStory } from '@storybook/react'
-import { defaultProps, WillFade, WillFadeProps } from '..'
+import { defaultProps, WillFlip, WillFlipProps } from '..'
 import { commmonArgTypes } from '../../common/argTypes'
 import { StyledBox } from '../../mock/TestBox'
 import { styleArgTypes } from '../css-props/argTypes'
 import type { FC } from 'react'
+import { flipToOptions } from '../model/props'
 
 export default {
-  title: 'will appear/WillFade',
-  component: WillFade,
+  title: 'will appear/WillFlip',
+  component: WillFlip,
   argTypes: {
     children: {
       control: {
@@ -24,11 +25,11 @@ export default {
         required: true,
       },
     },
-    fadeFrom: {
+    flipTo: {
       control: {
         type: null,
       },
-      description: 'Which direction the elements appear from',
+      description: 'In which direction the elements appear while flipping',
       table: {
         type: {
           summary: null,
@@ -44,15 +45,22 @@ export default {
   },
 }
 
-const Template: ComponentStory<FC<WillFadeProps>> = ({ children, ...args }) => (
-  <WillFade {...args} as={StyledBox}>
+const Template: ComponentStory<FC<WillFlipProps>> = ({ children, ...args }) => (
+  <WillFlip {...args} as={StyledBox}>
     {children}
-  </WillFade>
+  </WillFlip>
 )
 
 export const playground = Template.bind({})
 playground.args = {
   ...defaultProps,
-  children: 'Fade!!',
+  children: 'Flip!!',
 }
-playground.argTypes = {}
+playground.argTypes = {
+  flipTo: {
+    control: {
+      type: 'radio',
+    },
+    options: flipToOptions,
+  },
+}
