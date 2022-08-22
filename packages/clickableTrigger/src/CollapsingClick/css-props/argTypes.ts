@@ -26,7 +26,7 @@ export const styleArgTypes = {
       type: {
         summary: null,
       },
-      category: 'component style',
+      category: 'Style Control',
       defaultValue: {
         summary: styleDefaultProps.offset,
         detail: null,
