@@ -5,7 +5,7 @@ import { StyleProps } from './css-props/props'
 import { CharacterProps, _defaultProps } from './model/props'
 import { StyledButton, StyledLink } from './styled'
 
-export type CollapsingClickProps = {
+export type WillFadeProps = {
   children: ReactNode
 } & CharacterProps
 
@@ -14,8 +14,8 @@ export const defaultProps = {
   children: '',
 }
 
-const CollapsingClick = <As extends HtmlTagType>(
-  { as, ...props }: CollapsingClickProps = { ...defaultProps },
+const WillFade = <As extends HtmlTagType>(
+  { as, ...props }: WillFadeProps = { ...defaultProps },
   { ...attrs }: ComponentPropsWithoutRef<As>
 ) => {
   const StyledClickElement: StyledComponent<HtmlTagType, {}> =
@@ -27,4 +27,4 @@ const CollapsingClick = <As extends HtmlTagType>(
   )
 }
 
-export default CollapsingClick as FC<CollapsingClickProps>
+export default WillFade as FC<WillFadeProps>

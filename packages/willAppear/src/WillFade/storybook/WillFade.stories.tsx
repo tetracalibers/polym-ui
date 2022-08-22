@@ -1,11 +1,11 @@
 import { ComponentStory } from '@storybook/react'
-import CollapsingClick, { defaultProps } from '..'
+import WillFade, { defaultProps } from '..'
 import { commmonArgTypes } from '../../common/argTypes'
 import { styleArgTypes } from '../css-props/argTypes'
 
 export default {
-  title: 'Button&Link/CollapsingClick',
-  component: CollapsingClick,
+  title: 'will appear/WillFade',
+  component: WillFade,
   argTypes: {
     children: {
       control: {
@@ -27,10 +27,9 @@ export default {
   },
 }
 
-const Template: ComponentStory<typeof CollapsingClick> = ({
-  children,
-  ...args
-}) => <CollapsingClick {...args}>{children}</CollapsingClick>
+const Template: ComponentStory<typeof WillFade> = ({ children, ...args }) => (
+  <WillFade {...args}>{children}</WillFade>
+)
 
 export const playground = Template.bind({})
 playground.args = {
