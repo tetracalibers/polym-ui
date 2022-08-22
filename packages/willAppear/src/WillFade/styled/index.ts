@@ -23,7 +23,3 @@ const thisCss = css<CharacterProps>`
 export const StyledElement: StyledComponent<TagType, {}> = styled.div`
   ${thisCss}
 `
-
-export const getStyledElement = (as: TagType) => styled(as)<CharacterProps>`
-  ${thisCss}
-`

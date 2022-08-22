@@ -1,15 +1,20 @@
-import styled, { css } from 'styled-components'
-import { ResetCss } from 'styled-utility-first'
+import styled, { css, StyledComponent } from 'styled-components'
 import { CharacterProps } from '../model/props'
-import { match } from 'ts-pattern'
+import * as $ from './keyframes'
+import { TagType } from '../../common/props'
+
+const animation = {
+  fadeFrom: {
+    here: $.fadeInKeyframes,
+    bottom: $.fadeUpKeyframes,
+    top: $.fadeDownKeyframes,
+    left: $.fadeLeftKeyframes,
+    right: $.fadeRightKeyframes,
+  },
+}
 
 const thisCss = css<CharacterProps>``
 
-export const StyledButton = styled.button<CharacterProps>`
-  ${ResetCss.button}
-  ${thisCss}
-`
-
-export const StyledLink = styled.a<CharacterProps>`
+export const StyledElement: StyledComponent<TagType, {}> = styled.div`
   ${thisCss}
 `

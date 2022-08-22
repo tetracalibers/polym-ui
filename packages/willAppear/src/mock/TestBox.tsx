@@ -1,4 +1,3 @@
-import { FC, ReactNode } from 'react'
 import styled from 'styled-components'
 
 export const StyledBox = styled.div`
@@ -11,11 +10,3 @@ export const StyledBox = styled.div`
   justify-content: center;
   align-items: center;
 `
-
-type Props = {
-  children: ReactNode
-}
-
-export const TestBox: FC<Props> = ({ children }) => {
-  return <StyledBox>{children}</StyledBox>
-}
