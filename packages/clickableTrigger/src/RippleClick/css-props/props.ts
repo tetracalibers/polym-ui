@@ -1,10 +1,12 @@
 import { getDefaultProps, getPropType, Required } from 'react-tsx-props'
 import * as CSST from 'csstype'
-import { mixinBuilder } from 'styled-utility-first'
+import { ColorPalette, mixinBuilder } from 'styled-utility-first'
 
 const conf = {
-  color: Required<CSST.Property.Color>('#fff'),
-  backgroundColor: Required<CSST.Property.BackgroundColor>('#333'),
+  color: Required<CSST.Property.Color>(ColorPalette.grayScale.light),
+  backgroundColor: Required<CSST.Property.BackgroundColor>(
+    ColorPalette.grayScale.dark
+  ),
   padding: Required<CSST.Property.Padding>('.5rem 2rem'),
   borderRadius: Required<CSST.Property.BorderRadius>('1rem'),
 }

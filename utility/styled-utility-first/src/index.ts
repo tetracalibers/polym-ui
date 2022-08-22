@@ -214,5 +214,6 @@ export namespace ColorPalette {
   export const all = Object.values({
     ...grayScale,
     ...pastel,
+    ...vivid,
   })
 }
