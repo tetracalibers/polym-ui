@@ -4,9 +4,9 @@ import {
   NotRequired,
   Required,
 } from 'react-tsx-props'
+import type { IntrinsicElementsKeys } from 'styled-components'
 
-export const htmlTagType = ['button', 'a'] as const
-export type HtmlTagType = typeof htmlTagType[number]
+export type HtmlTagType = IntrinsicElementsKeys
 
 const conf = {
   as: Required<HtmlTagType>('button'),
