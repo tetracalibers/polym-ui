@@ -3,16 +3,18 @@
 
 import _ from 'lodash'
 import {
-  AllCssProps,
   AllPseudoStyleProps,
   textDecorationProps,
   textReadableProps,
   writingModeProps,
 } from 'styled-utility-first'
+import * as CSST from 'csstype'
 import * as cssStoryMetaJson from './data/css-prop-doc.json'
 
+type ProvideCssPropNames = keyof CSST.Properties | AllPseudoStyleProps
+
 export const cssStoryMeta = JSON.parse(JSON.stringify(cssStoryMetaJson)) as {
-  [k in AllCssProps | AllPseudoStyleProps]: {
+  [k in ProvideCssPropNames]: {
     control: {
       type: 'select' | 'text' | 'color'
     }
@@ -36,7 +38,7 @@ export const cssStoryMetaOf = {
 
 export const useSetDefaultAs =
   (defaultProps: Record<string, unknown>) =>
-  (propName: AllCssProps | AllPseudoStyleProps) => {
+  (propName: ProvideCssPropNames) => {
     const defaultV = defaultProps[propName]
     return _.set(
       _.set(cssStoryMeta[propName], 'table.defaultValue.detail', null),

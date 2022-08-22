@@ -5,7 +5,6 @@ const withDefaultAs = useSetDefaultAs(styleDefaultProps)
 
 export const styleArgTypes = {
   animationDuration: {
-    // @ts-ignore
     ...withDefaultAs('animationDuration'),
   },
 }
