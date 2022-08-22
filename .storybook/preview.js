@@ -1,4 +1,5 @@
 import './style.css'
+import { ColorPalette } from '../utility/styled-utility-first/lib/index.es'
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -7,11 +8,12 @@ export const parameters = {
       color: /(background|color)$/i,
       date: /Date$/,
     },
+    presetColors: ColorPalette.all,
   },
   backgrounds: {
     values: [
-      { name: 'light', value: '#f5f4f0' },
-      { name: 'dark', value: '#4d608b' },
+      { name: 'light', value: ColorPalette.grayScale.light },
+      { name: 'dark', value: ColorPalette.grayScale.dark },
     ],
   },
 }

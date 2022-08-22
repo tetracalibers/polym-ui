@@ -185,3 +185,34 @@ export { textDecorationProps, textReadableProps, writingModeProps }
 import { mixinBuilder } from './packages/extension/helper/mixinMaker'
 
 export { mixinBuilder }
+
+/* -------------------------------------------- */
+/* COLOR                                        */
+/* -------------------------------------------- */
+
+export namespace ColorPalette {
+  export const grayScale = {
+    dark: '#4d608b',
+    light: '#f5f4f0',
+  }
+
+  export const pastel = {
+    pink: '#ffa6a6',
+    purple: '#a2a7fe',
+    water: '#69e3eb',
+    green: '#70c500',
+    yellow: '#ffca8d',
+  }
+
+  export const vivid = {
+    green: '#00b294',
+    pink: '#ee5af6',
+    blue: '#2876fc',
+    red: '#ff0f6d',
+  }
+
+  export const all = Object.values({
+    ...grayScale,
+    ...pastel,
+  })
+}
