@@ -24,14 +24,24 @@ export const WillHorizontalLine: StyledComponent<
   &::before {
     top: 0;
     left: 0;
-    animation: ${$.horizontalLineKeyframes} 0.5s linear 0s forwards; /*表示されて0秒後に上線が0.5秒かけて表示*/
+    /*表示されて0秒後に上線が0.5秒かけて表示*/
+    animation-name: ${$.horizontalLineKeyframes};
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-delay: 0s;
+    animation-fill-mode: forwards;
   }
 
   /*下線*/
   &::after {
     bottom: 0;
     right: 0;
-    animation: ${$.horizontalLineKeyframes} 0.5s linear 1s forwards; /*表示されて1秒後に下線が0.5秒かけて表示*/
+    /*表示されて1秒後に下線が0.5秒かけて表示*/
+    animation-name: ${$.horizontalLineKeyframes};
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
   }
 `
 
@@ -54,14 +64,24 @@ export const WillVerticalLine: StyledComponent<
   &::before {
     top: 0;
     right: 0;
-    animation: ${$.verticalLineKeyframes} 0.5s linear 0.5s forwards; /*表示されて0.5秒後に右線が0.5秒かけて表示*/
+    /*表示されて0.5秒後に右線が0.5秒かけて表示*/
+    animation-name: ${$.verticalLineKeyframes};
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-delay: 0.5s;
+    animation-fill-mode: forwards;
   }
 
   /*左線*/
   &::after {
     bottom: 0;
     left: 0;
-    animation: ${$.verticalLineKeyframes} 0.5s linear 1.5s forwards; /*表示されて1.5秒後に左線が0.5秒かけて表示*/
+    /*表示されて1.5秒後に左線が0.5秒かけて表示*/
+    animation-name: ${$.verticalLineKeyframes};
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-delay: 1.5s;
+    animation-fill-mode: forwards;
   }
 `
 
@@ -69,7 +89,11 @@ export const ChildrenWrapper: StyledComponent<
   TagType,
   {}
 > = styled.div<CharacterProps>`
-  /*枠線内側の要素*/
-  animation: ${$.childrenDelayKeyframes} 0.5s linear 1.5s forwards; /*1.5秒後に中央のエリアが0.5秒かけて表示*/
+  /*1.5秒後に中央のエリアが0.5秒かけて表示*/
+  animation-name: ${$.childrenDelayKeyframes};
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-delay: 1.5s;
+  animation-fill-mode: forwards;
   opacity: 0; /*初期値を透過0にする*/
 `
