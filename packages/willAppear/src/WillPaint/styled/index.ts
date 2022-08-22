@@ -3,18 +3,12 @@ import { CharacterProps } from '../model/props'
 import * as $ from './keyframes'
 import { TagType } from '../../common/props'
 
-const animation = {
-  fadeFrom: {
-    here: $.fadeInKeyframes,
-    bottom: $.fadeUpKeyframes,
-    top: $.fadeDownKeyframes,
-    left: $.fadeLeftKeyframes,
-    right: $.fadeRightKeyframes,
-  },
-}
+export const SlideBackground: StyledComponent<
+  TagType,
+  {}
+> = styled.div<CharacterProps>``
 
-const thisCss = css<CharacterProps>``
-
-export const StyledElement: StyledComponent<TagType, {}> = styled.div`
-  ${thisCss}
-`
+export const ChildrenWrapper: StyledComponent<
+  TagType,
+  {}
+> = styled.span<CharacterProps>``

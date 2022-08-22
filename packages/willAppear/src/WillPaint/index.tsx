@@ -1,7 +1,7 @@
 import { ComponentPropsWithoutRef, ReactNode } from 'react'
 import { TagType } from '../common/props'
 import { CharacterProps, _defaultProps } from './model/props'
-import { StyledElement } from './styled'
+import { ChildrenWrapper, SlideBackground } from './styled'
 
 export type WillPaintProps = {
   children: ReactNode
@@ -17,8 +17,8 @@ export const WillPaint = <As extends TagType>(
   { ...attrs }: ComponentPropsWithoutRef<As>
 ) => {
   return (
-    <StyledElement as={as} {...props} {...attrs}>
-      {props.children}
-    </StyledElement>
+    <SlideBackground as={as} {...props} {...attrs}>
+      <ChildrenWrapper>{props.children}</ChildrenWrapper>
+    </SlideBackground>
   )
 }
