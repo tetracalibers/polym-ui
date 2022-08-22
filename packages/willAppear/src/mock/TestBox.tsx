@@ -43,8 +43,12 @@ export const FillBox = styled.div`
   }
 `
 
-export const InlineBox = styled.div`
+export const DarkTextBox = styled.div`
   padding: 1rem 2rem;
   text-align: center;
   color: ${$.grayScale.dark};
+`
+
+export const LightTextBox = styled(DarkTextBox)`
+  color: ${$.grayScale.light};
 `

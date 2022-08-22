@@ -1,7 +1,7 @@
 import { ComponentStory } from '@storybook/react'
 import { defaultProps, WillSlideBg, WillSlideBgProps } from '..'
 import { commmonArgTypes } from '../../common/argTypes'
-import { InlineBox } from '../../mock/TestBox'
+import { LightTextBox } from '../../mock/TestBox'
 import { styleArgTypes } from '../css-props/argTypes'
 import type { FC } from 'react'
 import { slideFromOptions } from '../model/props'
@@ -53,7 +53,7 @@ const Template: ComponentStory<FC<WillSlideBgProps>> = ({
   children,
   ...args
 }) => (
-  <WillSlideBg {...args} as={InlineBox}>
+  <WillSlideBg {...args} as={LightTextBox}>
     {children}
   </WillSlideBg>
 )
