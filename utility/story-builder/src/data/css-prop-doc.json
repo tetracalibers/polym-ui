@@ -181,7 +181,7 @@
     "control": {
       "type": "text"
     },
-    "description": "",
+    "description": "Time required to complete one animation cycle",
     "table": {
       "category": "CSS",
       "subcategory": "Animations",
