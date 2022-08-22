@@ -3817,11 +3817,6 @@
     estree-walker "^2.0.1"
     picomatch "^2.2.2"
 
-"@rtsao/csstype@2.6.5-forked.0":
-  version "2.6.5-forked.0"
-  resolved "https://registry.npmjs.org/@rtsao/csstype/-/csstype-2.6.5-forked.0.tgz"
-  integrity sha512-0HwnY8uPWcCloTgdbbaJG3MbDUfNf6yKWZfCKxFv9yj2Sbp4mSKaIjC7Cr/5L4hMxvrrk85CU3wlAg7EtBBJ1Q==
-
 "@rushstack/eslint-patch@^1.1.0":
   version "1.1.4"
   resolved "https://registry.npmjs.org/@rushstack/eslint-patch/-/eslint-patch-1.1.4.tgz"
@@ -5114,11 +5109,6 @@
   dependencies:
     "@types/ms" "*"
 
-"@types/diff@^5.0.2":
-  version "5.0.2"
-  resolved "https://registry.yarnpkg.com/@types/diff/-/diff-5.0.2.tgz#dd565e0086ccf8bc6522c6ebafd8a3125c91c12b"
-  integrity sha512-uw8eYMIReOwstQ0QKF0sICefSy8cNO/v7gOTiIy9SbwuHyEecJUm7qlgueOO5S1udZ5I/irVydHVwMchgzbKTg==
-
 "@types/eslint-scope@^3.7.3":
   version "3.7.3"
   resolved "https://registry.npmjs.org/@types/eslint-scope/-/eslint-scope-3.7.3.tgz"
@@ -5542,28 +5532,6 @@
   version "5.1.15"
   resolved "https://registry.yarnpkg.com/@types/styled-system/-/styled-system-5.1.15.tgz#075f969cc028a895dba916c07708e2fe828d7077"
   integrity sha512-1uls4wipZn8FtYFZ7upRVFDoEeOXTQTs2zuyOZPn02T6rjIxtvj2P2lG5qsxXHhKuKsu3thveCZrtaeLE/ibLg==
-  dependencies:
-    csstype "^3.0.2"
-
-"@types/styletron-engine-atomic@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.npmjs.org/@types/styletron-engine-atomic/-/styletron-engine-atomic-1.1.1.tgz"
-  integrity sha512-Jthl51uLiVZHkY0HRBGtDOjjtI4H0nYaERZtzzdDgnJSa+PqQG55ScMQPmSAu6ikzYWp6+jJbbtuIX+TqVfFeg==
-  dependencies:
-    "@types/styletron-standard" "*"
-
-"@types/styletron-react@^5.0.3":
-  version "5.0.3"
-  resolved "https://registry.npmjs.org/@types/styletron-react/-/styletron-react-5.0.3.tgz"
-  integrity sha512-mNM8WrFrCYWXNxudjdMMeHZmGdXLfVF/fQmj1Qnz7E99niL2d7IcQubbx731FX3YEVGoF9Au1J6uBkPoEzqypw==
-  dependencies:
-    "@types/react" "*"
-    "@types/styletron-standard" "*"
-
-"@types/styletron-standard@*", "@types/styletron-standard@^2.0.2":
-  version "2.0.2"
-  resolved "https://registry.npmjs.org/@types/styletron-standard/-/styletron-standard-2.0.2.tgz"
-  integrity sha512-ZpPB8k2Yhskq/oggg2wjWeP/bBxRDfwIzRrHbdksVOQXfHOLf4rRqs2tlWLK/NRJvWU3E3MlXeNcoVSZjuAPiQ==
   dependencies:
     csstype "^3.0.2"
 
@@ -12282,13 +12250,6 @@ inline-style-parser@0.1.1:
   resolved "https://registry.npmjs.org/inline-style-parser/-/inline-style-parser-0.1.1.tgz"
   integrity sha512-7NXolsK4CAS5+xvdj5OMMbI962hU/wvwoxk+LWR9Ek9bVtyuuYScDN6eS0rUm6TxApFpw7CX1o4uJzcd4AyD3Q==
 
-inline-style-prefixer@^5.1.0:
-  version "5.1.2"
-  resolved "https://registry.npmjs.org/inline-style-prefixer/-/inline-style-prefixer-5.1.2.tgz"
-  integrity sha512-PYUF+94gDfhy+LsQxM0g3d6Hge4l1pAqOSOiZuHWzMvQEGsbRQ/ck2WioLqrY2ZkHyPgVUXxn+hrkF7D6QUGbA==
-  dependencies:
-    css-in-js-utils "^2.0.0"
-
 inline-style-prefixer@^6.0.0:
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/inline-style-prefixer/-/inline-style-prefixer-6.0.1.tgz#c5c0e43ba8831707afc5f5bbfd97edf45c1fa7ae"
@@ -17756,7 +17717,7 @@ promzard@^0.3.0:
   dependencies:
     read "1"
 
-prop-types@^15.0.0, prop-types@^15.6.0, prop-types@^15.7.2, prop-types@^15.8.1:
+prop-types@^15.0.0, prop-types@^15.7.2, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.npmjs.org/prop-types/-/prop-types-15.8.1.tgz"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -20141,30 +20102,6 @@ stylehacks@^5.1.0:
   dependencies:
     browserslist "^4.16.6"
     postcss-selector-parser "^6.0.4"
-
-styletron-engine-atomic@^1.4.8:
-  version "1.4.8"
-  resolved "https://registry.npmjs.org/styletron-engine-atomic/-/styletron-engine-atomic-1.4.8.tgz"
-  integrity sha512-KLyDkigcIrIMzUlX0usBfO/BBwnh1yC/48+DqP4LSZn8UgGP00oStxoezAH8pYhal1amvBJ7tLVs7tNZDUTAdg==
-  dependencies:
-    inline-style-prefixer "^5.1.0"
-    styletron-standard "^3.0.5"
-
-styletron-react@^6.0.2:
-  version "6.0.2"
-  resolved "https://registry.npmjs.org/styletron-react/-/styletron-react-6.0.2.tgz"
-  integrity sha512-xMRnM8CUMbo8q/7BQlh7DfmNB0SDFixIHpzGqdfia9QF+haU/z+podgcJvnA4BWG6Gt2ZmrxZ6Qhrfvaalcyyg==
-  dependencies:
-    prop-types "^15.6.0"
-    styletron-standard "^3.0.5"
-
-styletron-standard@^3.0.5:
-  version "3.0.5"
-  resolved "https://registry.npmjs.org/styletron-standard/-/styletron-standard-3.0.5.tgz"
-  integrity sha512-0paxpsQg2QnlapGLnM49yEPZ015VEi/ovys9Hu0wBduimKshYUZLLl1Emfs5jx1LHVXrDn4j+DYVclJGWJC7Jw==
-  dependencies:
-    "@rtsao/csstype" "2.6.5-forked.0"
-    inline-style-prefixer "^5.1.0"
 
 stylis@^4.0.6:
   version "4.1.1"
