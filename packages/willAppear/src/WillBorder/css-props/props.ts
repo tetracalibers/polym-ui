@@ -3,7 +3,6 @@ import * as CSST from 'csstype'
 import { ColorPalette } from 'styled-utility-first'
 
 const conf = {
-  animationDuration: Required<number>(2),
   borderColor: Required<CSST.Property.BorderColor>(ColorPalette.grayScale.dark),
 }
 type Conf = typeof conf
