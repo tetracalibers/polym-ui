@@ -1,6 +1,6 @@
 import { keyframes } from 'styled-components'
 
-export const fadeInKeyframes = keyframes`
+export const slideBgKeyframes = keyframes`
   from {
     opacity: 0;
   }
@@ -9,46 +9,11 @@ export const fadeInKeyframes = keyframes`
   }
 `
 
-export const fadeUpKeyframes = keyframes`
-  from {
+export const childrenDelayKeyframes = keyframes`
+  0% {
     opacity: 0;
-    transform: translateY(100px);
   }
-  to {
+  100% {
     opacity: 1;
-    transform: translateY(0);
-  }
-`
-
-export const fadeDownKeyframes = keyframes`
-  from {
-    opacity: 0;
-    transform: translateY(-100px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-`
-
-export const fadeLeftKeyframes = keyframes`
-  from {
-    opacity: 0;
-    transform: translateX(-100px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-`
-
-export const fadeRightKeyframes = keyframes`
-  from {
-    opacity: 0;
-    transform: translateX(100px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
   }
 `
