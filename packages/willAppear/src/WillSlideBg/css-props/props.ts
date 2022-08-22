@@ -2,7 +2,7 @@ import { getDefaultProps, getPropType, Required } from 'react-tsx-props'
 import * as CSST from 'csstype'
 
 const conf = {
-  animationDuration: Required<CSST.Property.AnimationDuration>('0.5s'),
+  animationDuration: Required<number>(1),
 }
 type Conf = typeof conf
 

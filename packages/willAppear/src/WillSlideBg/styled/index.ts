@@ -19,7 +19,7 @@ export const SlideBackground: StyledComponent<
   /* 子要素のwidthに合わせる */
   display: inline-block;
   animation-name: ${$.bgDelayKeyframes};
-  animation-duration: 1s;
+  animation-duration: ${({ animationDuration }) => animationDuration}s;
   animation-fill-mode: forwards;
   position: relative;
   overflow: hidden; /*はみ出た色要素を隠す*/
@@ -28,7 +28,7 @@ export const SlideBackground: StyledComponent<
   /* スライドする背景 */
   &::before {
     animation-name: ${({ slideFrom }) => slideAnimation.from[slideFrom]};
-    animation-duration: 1s;
+    animation-duration: ${({ animationDuration }) => animationDuration}s;
     animation-fill-mode: forwards;
     content: '';
     position: absolute;
@@ -43,7 +43,7 @@ export const ChildrenWrapper: StyledComponent<
   {}
 > = styled.div<CharacterProps>`
   animation-name: ${$.childrenDelayKeyframes};
-  animation-duration: 1s;
+  animation-duration: ${({ animationDuration }) => animationDuration}s;
   animation-delay: 0.6s;
   animation-fill-mode: forwards;
   opacity: 0;
