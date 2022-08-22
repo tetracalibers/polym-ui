@@ -1,6 +1,6 @@
 module.exports = {
   stories: [
-    '../packages/**/src/**/*.stories.@(tsx|ts|mdx)',
+    '../packages/**/src/!(template)/**/*.stories.@(tsx|ts|mdx)',
     //'../core/mock/src/components/**/*.stories.@(tsx|ts|mdx)',
     //'../examples/syntax/src/components/**/*.stories.@(tsx|ts|mdx)',
   ],
