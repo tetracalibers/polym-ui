@@ -2,7 +2,7 @@ import { keyframes } from 'styled-components'
 
 export const smoothKeyframes = keyframes`
   from {
-    transform: translate3d(0, 100%, 0) skewY(12deg);
+    transform: translate3d(0, 10%, 0) skewY(40deg);
     opacity: 0;
   }
   to {
