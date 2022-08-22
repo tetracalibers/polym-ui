@@ -13,8 +13,10 @@ const animation = {
   },
 }
 
-const thisCss = css<CharacterProps>``
+// 上下線が伸びる設定
+export const WillHorizontalLine = styled.div``
 
-export const StyledElement: StyledComponent<TagType, {}> = styled.div`
-  ${thisCss}
-`
+// 左右線が伸びる設定
+export const WillVerticalLine = styled.div``
+
+export const ChildrenWrapper: StyledComponent<TagType, {}> = styled.div``

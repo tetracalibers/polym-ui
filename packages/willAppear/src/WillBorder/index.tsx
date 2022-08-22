@@ -1,7 +1,7 @@
 import { ComponentPropsWithoutRef, ReactNode } from 'react'
 import { TagType } from '../common/props'
 import { CharacterProps, _defaultProps } from './model/props'
-import { StyledElement } from './styled'
+import { ChildrenWrapper, WillHorizontalLine, WillVerticalLine } from './styled'
 
 export type WillBorderProps = {
   children: ReactNode
@@ -17,8 +17,12 @@ export const WillBorder = <As extends TagType>(
   { ...attrs }: ComponentPropsWithoutRef<As>
 ) => {
   return (
-    <StyledElement as={as} {...props} {...attrs}>
-      {props.children}
-    </StyledElement>
+    <WillHorizontalLine>
+      <WillVerticalLine>
+        <ChildrenWrapper as={as} {...props} {...attrs}>
+          {props.children}
+        </ChildrenWrapper>
+      </WillVerticalLine>
+    </WillHorizontalLine>
   )
 }
