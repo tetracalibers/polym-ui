@@ -1,13 +1,13 @@
 import { ComponentStory } from '@storybook/react'
-import { defaultProps, WillLine, WillLineProps } from '..'
+import { defaultProps, WillBorder, WillBorderProps } from '..'
 import { commmonArgTypes } from '../../common/argTypes'
 import { StyledBox } from '../../mock/TestBox'
 import { styleArgTypes } from '../css-props/argTypes'
 import type { FC } from 'react'
 
 export default {
-  title: 'will appear/WillLine',
-  component: WillLine,
+  title: 'will appear/WillBorder',
+  component: WillBorder,
   argTypes: {
     children: {
       control: {
@@ -48,15 +48,18 @@ export default {
   },
 }
 
-const Template: ComponentStory<FC<WillLineProps>> = ({ children, ...args }) => (
-  <WillLine {...args} as={StyledBox}>
+const Template: ComponentStory<FC<WillBorderProps>> = ({
+  children,
+  ...args
+}) => (
+  <WillBorder {...args} as={StyledBox}>
     {children}
-  </WillLine>
+  </WillBorder>
 )
 
 export const playground = Template.bind({})
 playground.args = {
   ...defaultProps,
-  children: 'Line!!',
+  children: 'Border!!',
 }
 playground.argTypes = {}
