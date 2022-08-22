@@ -2,11 +2,11 @@ import { getDefaultProps, getPropType, Required } from 'react-tsx-props'
 import { commonDefaultProps, CommonProps } from '../../common/props'
 import { styleDefaultProps, StyleProps } from '../css-props/props'
 
-export const extendFromOptions = ['left', 'right', 'top', 'bottom'] as const
-export type ExtendFromOptions = typeof extendFromOptions[number]
+export const slideFromOptions = ['left', 'right', 'top', 'bottom'] as const
+export type SlideFromOptions = typeof slideFromOptions[number]
 
 const conf = {
-  extendFrom: Required<ExtendFromOptions>('left'),
+  slideFrom: Required<SlideFromOptions>('left'),
 }
 type Conf = typeof conf
 

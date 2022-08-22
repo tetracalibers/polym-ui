@@ -3,7 +3,7 @@ import { TagType } from '../common/props'
 import { CharacterProps, _defaultProps } from './model/props'
 import { ChildrenWrapper, SlideBackground } from './styled'
 
-export type WillPaintProps = {
+export type WillSlideBgProps = {
   children: ReactNode
 } & CharacterProps
 
@@ -12,8 +12,8 @@ export const defaultProps = {
   children: '',
 }
 
-export const WillPaint = <As extends TagType>(
-  { as, ...props }: WillPaintProps = { ...defaultProps },
+export const WillSlideBg = <As extends TagType>(
+  { as, ...props }: WillSlideBgProps = { ...defaultProps },
   { ...attrs }: ComponentPropsWithoutRef<As>
 ) => {
   return (
