@@ -2,16 +2,11 @@ import { getDefaultProps, getPropType, Required } from 'react-tsx-props'
 import { commonDefaultProps, CommonProps } from '../../common/props'
 import { styleDefaultProps, StyleProps } from '../css-props/props'
 
-export const rotateToOptions = [
-  'vertical',
-  'horizontal',
-  'left',
-  'right',
-] as const
-export type RotateToOptions = typeof rotateToOptions[number]
+export const rotateOptions = ['X', 'Y', 'Zleft', 'Zright'] as const
+export type RotateOptions = typeof rotateOptions[number]
 
 const conf = {
-  rotateTo: Required<RotateToOptions>('vertical'),
+  rotate: Required<RotateOptions>('X'),
 }
 type Conf = typeof conf
 
