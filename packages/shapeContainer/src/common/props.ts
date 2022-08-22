@@ -1,19 +1,17 @@
-import { ComponentType } from 'react'
+import React, { ComponentType } from 'react'
 import { getDefaultProps, getPropType } from 'react-tsx-props'
-import { IntrinsicElementsKeys, StyledComponent } from 'styled-components'
+import {
+  IntrinsicElementsKeys,
+  StyledComponent,
+  StyledComponentBase,
+} from 'styled-components'
 
-export type TagType = StyledComponent<
-  IntrinsicElementsKeys | ComponentType<any>,
-  {}
->
+export type TagType = React.ElementType
 
 const conf = {}
 type Conf = typeof conf
 
-export type CommonProps = getPropType<Conf> & {
-  as: TagType
-}
+export type CommonProps = getPropType<Conf>
 export const commonDefaultProps = {
   ...getDefaultProps<CommonProps>(conf),
-  as: 'div' as TagType,
 }

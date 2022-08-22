@@ -44,6 +44,8 @@ const thisCss = css<CharacterProps>`
   }
 `
 
-export const StyledElement: StyledComponent<TagType, {}> = styled.div`
+export const getStyledElement = <As extends TagType>(baseAs: As) => styled(
+  baseAs
+)`
   ${thisCss}
 `

@@ -4,6 +4,9 @@ import { commmonArgTypes } from '../../common/argTypes'
 import { DarkTextLink } from '../../mock/TestBox'
 import { styleArgTypes } from '../css-props/argTypes'
 import type { FC } from 'react'
+import React from 'react'
+import { TagType } from '../../common/props'
+import { StyledComponentInnerComponent } from 'styled-components'
 
 export default {
   title: 'shape container/PointedTag',
@@ -29,11 +32,8 @@ export default {
   },
 }
 
-const Template: ComponentStory<FC<PointedTagProps>> = ({
-  children,
-  ...args
-}) => (
-  <PointedTag {...args} as={DarkTextLink}>
+const Template: ComponentStory<typeof PointedTag> = ({ children, ...args }) => (
+  <PointedTag {...args} as={DarkTextLink} href='#'>
     {children}
   </PointedTag>
 )
