@@ -1,13 +1,13 @@
 import { ComponentStory } from '@storybook/react'
-import { defaultProps, WillFade, WillFadeProps } from '..'
+import { defaultProps, WillPaint, WillPaintProps } from '..'
 import { commmonArgTypes } from '../../common/argTypes'
 import { InlineBox } from '../../mock/TestBox'
 import { styleArgTypes } from '../css-props/argTypes'
 import type { FC } from 'react'
 
 export default {
-  title: 'will appear/WillFade',
-  component: WillFade,
+  title: 'will appear/WillPaint',
+  component: WillPaint,
   argTypes: {
     children: {
       control: {
@@ -24,7 +24,7 @@ export default {
         required: true,
       },
     },
-    fadeFrom: {
+    PaintFrom: {
       control: {
         type: null,
       },
@@ -48,15 +48,18 @@ export default {
   },
 }
 
-const Template: ComponentStory<FC<WillFadeProps>> = ({ children, ...args }) => (
-  <WillFade {...args} as={InlineBox}>
+const Template: ComponentStory<FC<WillPaintProps>> = ({
+  children,
+  ...args
+}) => (
+  <WillPaint {...args} as={InlineBox}>
     {children}
-  </WillFade>
+  </WillPaint>
 )
 
 export const playground = Template.bind({})
 playground.args = {
   ...defaultProps,
-  children: 'Fade!!',
+  children: 'Paint!!',
 }
 playground.argTypes = {}
