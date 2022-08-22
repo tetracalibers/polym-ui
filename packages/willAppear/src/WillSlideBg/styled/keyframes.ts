@@ -1,6 +1,6 @@
 import { keyframes } from 'styled-components'
 
-export const slideBgKeyframes = keyframes`
+export const bgDelayKeyframes = keyframes`
   from {
     opacity: 0;
   }

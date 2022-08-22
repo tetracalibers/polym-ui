@@ -7,7 +7,7 @@ export const SlideBackground: StyledComponent<
   TagType,
   {}
 > = styled.div<CharacterProps>`
-  animation-name: ${$.slideBgKeyframes};
+  animation-name: ${$.bgDelayKeyframes};
   animation-duration: 1s;
   animation-fill-mode: forwards;
   position: relative;
