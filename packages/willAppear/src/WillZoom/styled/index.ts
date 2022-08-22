@@ -5,13 +5,14 @@ import { TagType } from '../../common/props'
 
 const animation = {
   zoom: {
-    in: $.zoomInKeyframes,
-    out: $.zoomOutKeyframes,
+    in: $.getZoomInKeyframes,
+    out: $.getZoomOutKeyframes,
   },
 }
 
 const thisCss = css<CharacterProps>`
-  animation-name: ${({ zoom }) => animation.zoom[zoom]};
+  animation-name: ${({ zoom, scaleFactor }) =>
+    animation.zoom[zoom](scaleFactor)};
   animation-duration: ${({ animationDuration }) => animationDuration};
   animation-fill-mode: forwards;
 `
