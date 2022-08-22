@@ -41,3 +41,8 @@ export const FillBox = styled.div`
     top: 17px;
   }
 `
+
+export const InlineBox = styled.div`
+  padding: 1rem 2rem;
+  text-align: center;
+`

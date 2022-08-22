@@ -9,7 +9,8 @@ export const WillHorizontalLine: StyledComponent<
   {}
 > = styled.div<CharacterProps>`
   position: relative; /* 枠線が書かれる基点*/
-
+  /* 子要素のwidthに合わせる */
+  display: inline-block;
   /*上下線*/
   &::before,
   &::after {
