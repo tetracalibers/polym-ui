@@ -4,6 +4,9 @@ import { ColorPalette } from 'styled-utility-first'
 
 const conf = {
   borderRadius: Required<CSST.Property.BorderRadius>('10px'),
+  backgroundColor: Required<CSST.Property.BackgroundColor>(
+    ColorPalette.grayScale.dark
+  ),
 }
 type Conf = typeof conf
 

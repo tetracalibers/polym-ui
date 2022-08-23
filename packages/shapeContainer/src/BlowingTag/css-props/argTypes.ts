@@ -7,4 +7,7 @@ export const styleArgTypes = {
   borderRadius: {
     ...withDefaultAs('borderRadius'),
   },
+  backgroundColor: {
+    ...withDefaultAs('backgroundColor'),
+  },
 }

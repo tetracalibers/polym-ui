@@ -43,29 +43,32 @@ const tailPosition = (tailPos: CharacterProps['tailPos']) => {
     .exhaustive()
 }
 
-const tailVisibleBorder = (tailPos: CharacterProps['tailPos']) => {
+const tailVisibleBorder = (
+  tailPos: CharacterProps['tailPos'],
+  backgroundColor: CharacterProps['backgroundColor']
+) => {
   return match(tailPos)
     .with('bottom', () => {
       return css`
-        border-top-color: #333;
+        border-top-color: ${backgroundColor};
         border-bottom: 0;
       `
     })
     .with('top', () => {
       return css`
-        border-bottom-color: #333;
+        border-bottom-color: ${backgroundColor};
         border-top: 0;
       `
     })
     .with('left', () => {
       return css`
-        border-right-color: #333;
+        border-right-color: ${backgroundColor};
         border-left: 0;
       `
     })
     .with('right', () => {
       return css`
-        border-left-color: #333;
+        border-left-color: ${backgroundColor};
         border-right: 0;
       `
     })
@@ -105,10 +108,10 @@ const thisCss = css<CharacterProps>`
   position: relative;
   width: 50px;
   height: calc(50px * 0.66);
-  background: #333;
+  background: ${({ backgroundColor }) => backgroundColor};
   border-radius: ${({ borderRadius }) => borderRadius};
 
-  ${({ tailPos }) => {
+  ${({ tailPos, backgroundColor }) => {
     return css`
       ${tailSelector(tailPos)} {
         content: '';
@@ -117,7 +120,7 @@ const thisCss = css<CharacterProps>`
         width: 0;
         height: 0;
         border: calc(50px * 0.13) solid transparent;
-        ${tailVisibleBorder(tailPos)}
+        ${tailVisibleBorder(tailPos, backgroundColor)}
         ${tailMargin(tailPos)}
       }
     `
