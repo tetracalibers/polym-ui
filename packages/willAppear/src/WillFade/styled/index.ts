@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components'
 import { CharacterProps } from '../model/props'
 import * as $ from './keyframes'
-import { ElementType } from 'react'
 
 const animation = {
   fadeFrom: {
@@ -20,8 +19,6 @@ const thisCss = css<CharacterProps>`
   opacity: 0;
 `
 
-export const getStyledElement = <As extends ElementType>(baseAs: As) => styled(
-  baseAs
-)`
+export const StyledElement = styled.div`
   ${thisCss}
 `
