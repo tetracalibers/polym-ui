@@ -36,9 +36,7 @@ export const SlideBackground = styled.div<CharacterProps>`
   }
 `
 
-export const getChildrenWrapper = <As extends ElementType>(
-  baseAs: As
-) => styled(baseAs)<Omit<CharacterProps, 'slideFrom'>>`
+export const ChildrenWrapper = styled.div<Omit<CharacterProps, 'slideFrom'>>`
   animation-name: ${$.childrenDelayKeyframes};
   animation-duration: ${({ animationDuration }) => animationDuration}s;
   animation-delay: 0.6s;
