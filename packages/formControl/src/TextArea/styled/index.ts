@@ -3,4 +3,4 @@ import { CharacterProps } from '../model/props'
 import { ElementType } from 'react'
 import { match } from 'ts-pattern'
 
-export const StyledElement = styled.div``
+export const StyledElement = styled.textarea``
