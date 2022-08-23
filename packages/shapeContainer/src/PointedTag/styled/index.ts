@@ -15,7 +15,6 @@ const thisCss = css<CharacterProps>`
   position: relative;
   color: white;
   line-height: ${({ height }) => height};
-  padding: 0 10px 0 10px;
 
   /* Makes the triangle */
   &::before {
