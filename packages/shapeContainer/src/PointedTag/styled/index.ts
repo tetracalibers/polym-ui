@@ -4,7 +4,7 @@ import React from 'react'
 
 const thisCss = css<CharacterProps>`
   display: inline-block;
-  width: auto;
+  width: ${({ width }) => width};
   height: 38px;
   background-color: #69e3eb;
   border-radius: 2.5px 4px 4px 2.5px;
