@@ -1,9 +1,9 @@
 import { ComponentStory } from '@storybook/react'
-import { defaultProps, WillFade, WillFadeProps } from '..'
+import { WillFade } from '..'
 import { commmonArgTypes } from '../../common/argTypes'
-import { InlineBox } from '../../mock/TestBox'
+import { DarkTextBox } from '../../mock/TestBox'
 import { styleArgTypes } from '../css-props/argTypes'
-import type { FC } from 'react'
+import { defaultProps } from '../model/props'
 
 export default {
   title: 'will appear/WillFade',
@@ -48,8 +48,8 @@ export default {
   },
 }
 
-const Template: ComponentStory<FC<WillFadeProps>> = ({ children, ...args }) => (
-  <WillFade {...args} as={InlineBox}>
+const Template: ComponentStory<typeof WillFade> = ({ children, ...args }) => (
+  <WillFade {...args} as={DarkTextBox}>
     {children}
   </WillFade>
 )
