@@ -5,13 +5,13 @@ import { match } from 'ts-pattern'
 
 const tailSelector = (tailPos: CharacterProps['tailPos']) => {
   return match(tailPos)
-    .with('bottom', 'top', () => {
+    .with('bottom', 'top', 'right', () => {
       return '&::after'
     })
     .with('left', () => {
       return '&::before'
     })
-    .otherwise(() => '')
+    .exhaustive()
 }
 
 const tailPosition = (tailPos: CharacterProps['tailPos']) => {
@@ -34,7 +34,13 @@ const tailPosition = (tailPos: CharacterProps['tailPos']) => {
         top: 50%;
       `
     })
-    .otherwise(() => '')
+    .with('right', () => {
+      return css`
+        right: 0;
+        top: 50%;
+      `
+    })
+    .exhaustive()
 }
 
 const tailVisibleBorder = (tailPos: CharacterProps['tailPos']) => {
@@ -57,7 +63,13 @@ const tailVisibleBorder = (tailPos: CharacterProps['tailPos']) => {
         border-left: 0;
       `
     })
-    .otherwise(() => '')
+    .with('right', () => {
+      return css`
+        border-left-color: #333;
+        border-right: 0;
+      `
+    })
+    .exhaustive()
 }
 
 const tailMargin = (tailPos: CharacterProps['tailPos']) => {
@@ -80,7 +92,13 @@ const tailMargin = (tailPos: CharacterProps['tailPos']) => {
         margin-left: calc(50px * 0.13 * -1);
       `
     })
-    .otherwise(() => '')
+    .with('right', () => {
+      return css`
+        margin-top: calc(50px * 0.13 * -1);
+        margin-right: calc(50px * 0.13 * -1);
+      `
+    })
+    .exhaustive()
 }
 
 const thisCss = css<CharacterProps>`
