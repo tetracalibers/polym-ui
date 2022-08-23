@@ -1,47 +1,48 @@
 import _ from 'lodash'
-import { ElementType, ReactElement } from 'react'
-import { AnyStyledComponent } from 'styled-components'
-import { PolymorphicComponentProp } from '../common/polymorphic'
-import { CharacterProps, defaultProps } from './model/props'
+import { ElementType, forwardRef, ReactElement } from 'react'
 import {
-  getChildrenWrapper,
-  WillHorizontalLine,
-  WillVerticalLine,
-} from './styled'
+  PolymorphicComponentPropWithRef,
+  PolymorphicRef,
+} from '../common/polymorphic'
+import { CharacterProps, defaultProps } from './model/props'
+import { ChildrenWrapper, WillHorizontalLine, WillVerticalLine } from './styled'
 
-export type WillBorderProps<As extends ElementType> = PolymorphicComponentProp<
-  As,
-  CharacterProps
->
+export type WillBorderProps<As extends ElementType> =
+  PolymorphicComponentPropWithRef<As, CharacterProps>
 
 export type WillBorderComponent = <As extends ElementType>(
   props: WillBorderProps<As>
-) => ReactElement
+) => ReactElement | null
 
-export const WillBorder: WillBorderComponent = <As extends ElementType>({
-  as,
-  children,
-  ..._props
-}: WillBorderProps<As>) => {
-  const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
-    _.isUndefined(input) ? defaul : input
-  )
-  const { borderColor, animationDuration } = props
-  const ChildrenWrapper = getChildrenWrapper<As>(as) as AnyStyledComponent
+export const WillBorder: WillBorderComponent = forwardRef(
+  <As extends ElementType>(
+    { as, children, ..._props }: WillBorderProps<As>,
+    ref?: PolymorphicRef<As>
+  ) => {
+    const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
+      _.isUndefined(input) ? defaul : input
+    )
+    const { borderColor, animationDuration } = props
 
-  return (
-    <WillHorizontalLine
-      borderColor={borderColor}
-      animationDuration={animationDuration}
-    >
-      <WillVerticalLine
+    return (
+      <WillHorizontalLine
         borderColor={borderColor}
         animationDuration={animationDuration}
       >
-        <ChildrenWrapper {...props} animationDuration={animationDuration}>
-          {children}
-        </ChildrenWrapper>
-      </WillVerticalLine>
-    </WillHorizontalLine>
-  )
-}
+        <WillVerticalLine
+          borderColor={borderColor}
+          animationDuration={animationDuration}
+        >
+          <ChildrenWrapper
+            {...props}
+            animationDuration={animationDuration}
+            ref={ref}
+            as={as as unknown as undefined}
+          >
+            {children}
+          </ChildrenWrapper>
+        </WillVerticalLine>
+      </WillHorizontalLine>
+    )
+  }
+)

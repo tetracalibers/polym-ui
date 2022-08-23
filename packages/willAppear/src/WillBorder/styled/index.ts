@@ -1,5 +1,4 @@
-import { ElementType } from 'react'
-import styled, { StyledComponent } from 'styled-components'
+import styled from 'styled-components'
 import { CharacterProps } from '../model/props'
 import * as $ from './keyframes'
 
@@ -93,9 +92,7 @@ export const WillVerticalLine = styled.div<CharacterProps>`
   }
 `
 
-export const getChildrenWrapper = <As extends ElementType>(
-  baseAs: As
-) => styled(baseAs)<CharacterProps>`
+export const ChildrenWrapper = styled.div<CharacterProps>`
   /*1.5秒後に中央のエリアが0.5秒かけて表示*/
   animation-name: ${$.childrenDelayKeyframes};
   animation-duration: ${({ animationDuration }) =>
