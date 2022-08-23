@@ -33,8 +33,6 @@ const thisCss = css<CharacterProps>`
   opacity: 0;
 `
 
-export const getStyledElement = <As extends ElementType>(baseAs: As) => styled(
-  baseAs
-)`
+export const StyledElement = styled.div`
   ${thisCss}
 `
