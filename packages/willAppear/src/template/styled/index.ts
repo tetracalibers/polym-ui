@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components'
 import { CharacterProps } from '../model/props'
 import * as $ from './keyframes'
 import { ElementType } from 'react'
+import { match } from 'ts-pattern'
 
 const animation = {
   fadeFrom: {
