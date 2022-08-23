@@ -1,5 +1,6 @@
 import { getDefaultProps, getPropType, Required } from 'react-tsx-props'
 import * as CSST from 'csstype'
+import { ColorPalette } from 'styled-utility-first'
 
 const conf = {
   animationDuration: Required<number>(1),
