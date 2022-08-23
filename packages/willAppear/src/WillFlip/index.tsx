@@ -1,24 +1,27 @@
-import { ComponentPropsWithoutRef, ReactNode } from 'react'
-import { TagType } from '../common/props'
-import { CharacterProps, _defaultProps } from './model/props'
-import { StyledElement } from './styled'
+import _ from 'lodash'
+import { ElementType, ReactElement } from 'react'
+import { AnyStyledComponent } from 'styled-components'
+import { PolymorphicComponentProp } from '../common/polymorphic'
+import { CharacterProps, defaultProps } from './model/props'
+import { getStyledElement } from './styled'
 
-export type WillFlipProps = {
-  children: ReactNode
-} & CharacterProps
+export type WillFlipProps<As extends ElementType> = PolymorphicComponentProp<
+  As,
+  CharacterProps
+>
 
-export const defaultProps = {
-  ..._defaultProps,
-  children: '',
-}
+export type WillFlipComponent = <As extends ElementType>(
+  props: WillFlipProps<As>
+) => ReactElement
 
-export const WillFlip = <As extends TagType>(
-  { as, ...props }: WillFlipProps = { ...defaultProps },
-  { ...attrs }: ComponentPropsWithoutRef<As>
-) => {
-  return (
-    <StyledElement as={as} {...props} {...attrs}>
-      {props.children}
-    </StyledElement>
+export const WillFlip: WillFlipComponent = <As extends ElementType>({
+  as,
+  children,
+  ..._props
+}: WillFlipProps<As>) => {
+  const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
+    _.isUndefined(input) ? defaul : input
   )
+  const StyledElement = getStyledElement<As>(as) as AnyStyledComponent
+  return <StyledElement {...props}>{children}</StyledElement>
 }

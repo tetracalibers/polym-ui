@@ -1,9 +1,9 @@
-import styled, { css, Keyframes, StyledComponent } from 'styled-components'
+import styled, { css, Keyframes } from 'styled-components'
 import { CharacterProps } from '../model/props'
 import * as $ from './keyframes'
-import { TagType } from '../../common/props'
 import _ from 'lodash'
 import { match } from 'ts-pattern'
+import { ElementType } from 'react'
 
 const animation = {
   flipTo: {
@@ -33,6 +33,8 @@ const thisCss = css<CharacterProps>`
   opacity: 0;
 `
 
-export const StyledElement: StyledComponent<TagType, {}> = styled.div`
+export const getStyledElement = <As extends ElementType>(baseAs: As) => styled(
+  baseAs
+)`
   ${thisCss}
 `
