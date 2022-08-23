@@ -1,4 +1,3 @@
-import { ElementType } from 'react'
 import styled, { css } from 'styled-components'
 import { CharacterProps } from '../model/props'
 import { computeBlurKeyframes } from './keyframes'
@@ -9,8 +8,6 @@ const thisCss = css<CharacterProps>`
   animation-fill-mode: forwards;
 `
 
-export const getStyledElement = <As extends ElementType>(baseAs: As) => styled(
-  baseAs
-)`
+export const StyledElement = styled.div`
   ${thisCss}
 `
