@@ -1,27 +1,31 @@
 import _ from 'lodash'
-import { ElementType, ReactElement } from 'react'
-import { AnyStyledComponent } from 'styled-components'
-import { PolymorphicComponentProp } from '../common/polymorphic'
+import { ElementType, forwardRef, ReactElement } from 'react'
+import {
+  PolymorphicComponentPropWithRef,
+  PolymorphicRef,
+} from '../common/polymorphic'
 import { CharacterProps, defaultProps } from './model/props'
-import { getStyledElement } from './styled'
+import { StyledElement } from './styled'
 
-export type WillZoomProps<As extends ElementType> = PolymorphicComponentProp<
-  As,
-  CharacterProps
->
+export type WillZoomProps<As extends ElementType> =
+  PolymorphicComponentPropWithRef<As, CharacterProps>
 
 export type WillZoomComponent = <As extends ElementType>(
   props: WillZoomProps<As>
-) => ReactElement
+) => ReactElement | null
 
-export const WillZoom: WillZoomComponent = <As extends ElementType>({
-  as,
-  children,
-  ..._props
-}: WillZoomProps<As>) => {
-  const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
-    _.isUndefined(input) ? defaul : input
-  )
-  const StyledElement = getStyledElement<As>(as) as AnyStyledComponent
-  return <StyledElement {...props}>{children}</StyledElement>
-}
+export const WillZoom: WillZoomComponent = forwardRef(
+  <As extends ElementType>(
+    { as, children, ..._props }: WillZoomProps<As>,
+    ref?: PolymorphicRef<As>
+  ) => {
+    const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
+      _.isUndefined(input) ? defaul : input
+    )
+    return (
+      <StyledElement {...props} ref={ref} as={as as unknown as undefined}>
+        {children}
+      </StyledElement>
+    )
+  }
+)
