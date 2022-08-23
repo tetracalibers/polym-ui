@@ -1,7 +1,7 @@
-import styled, { css, StyledComponent } from 'styled-components'
+import styled, { css } from 'styled-components'
 import { CharacterProps } from '../model/props'
 import * as $ from './keyframes'
-import { TagType } from '../../common/props'
+import { ElementType } from 'react'
 
 const animation = {
   fadeFrom: {
@@ -15,6 +15,8 @@ const animation = {
 
 const thisCss = css<CharacterProps>``
 
-export const StyledElement: StyledComponent<TagType, {}> = styled.div`
+export const getStyledElement = <As extends ElementType>(baseAs: As) => styled(
+  baseAs
+)`
   ${thisCss}
 `
