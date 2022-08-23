@@ -23,5 +23,5 @@ export const PointedTag: PointedTagComponent = <As extends React.ElementType>({
   ...props
 }: PointedTagProps<As>) => {
   const StyledElement = getStyledElement<As>(as) as AnyStyledComponent
-  return <StyledElement {...props}>{props.children}</StyledElement>
+  return <StyledElement {...props}>{children}</StyledElement>
 }

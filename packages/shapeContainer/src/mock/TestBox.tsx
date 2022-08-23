@@ -13,6 +13,7 @@ export const LightTextBox = styled(DarkTextBox)`
 
 export const DarkTextLink = styled.a`
   color: ${$.grayScale.dark};
+  text-decoration: none;
 `
 
 export const LightTextLink = styled(DarkTextLink)`
