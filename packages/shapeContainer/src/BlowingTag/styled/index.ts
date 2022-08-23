@@ -106,7 +106,7 @@ const thisCss = css<CharacterProps>`
   width: 50px;
   height: calc(50px * 0.66);
   background: #333;
-  border-radius: 10px;
+  border-radius: ${({ borderRadius }) => borderRadius};
 
   ${({ tailPos }) => {
     return css`
