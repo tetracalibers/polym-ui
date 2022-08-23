@@ -1,10 +1,9 @@
 import { ComponentStory } from '@storybook/react'
-import { defaultProps, WillRotate, WillRotateProps } from '..'
+import { WillRotate } from '..'
 import { commmonArgTypes } from '../../common/argTypes'
 import { FillBox } from '../../mock/TestBox'
 import { styleArgTypes } from '../css-props/argTypes'
-import type { FC } from 'react'
-import { rotateOptions } from '../model/props'
+import { defaultProps, rotateOptions } from '../model/props'
 
 export default {
   title: 'will appear/WillRotate',
@@ -49,10 +48,7 @@ export default {
   },
 }
 
-const Template: ComponentStory<FC<WillRotateProps>> = ({
-  children,
-  ...args
-}) => (
+const Template: ComponentStory<typeof WillRotate> = ({ children, ...args }) => (
   <WillRotate {...args} as={FillBox}>
     {children}
   </WillRotate>
