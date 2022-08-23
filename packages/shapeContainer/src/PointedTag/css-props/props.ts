@@ -3,6 +3,7 @@ import * as CSST from 'csstype'
 
 const conf = {
   width: Required<CSST.Property.Width>('auto'),
+  height: Required<CSST.Property.Height>('38px'),
 }
 type Conf = typeof conf
 

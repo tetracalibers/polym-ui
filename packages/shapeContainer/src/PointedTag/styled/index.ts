@@ -5,16 +5,16 @@ import React from 'react'
 const thisCss = css<CharacterProps>`
   display: inline-block;
   width: ${({ width }) => width};
-  height: 38px;
+  height: ${({ height }) => height};
   background-color: #69e3eb;
   border-radius: 2.5px 4px 4px 2.5px;
   border-left: 1.55px solid #69e3eb;
 
   /* This makes room for the triangle */
-  margin-left: 19px;
+  margin-left: calc(${({ height }) => height} / 2);
   position: relative;
   color: white;
-  line-height: 38px;
+  line-height: ${({ height }) => height};
   padding: 0 10px 0 10px;
 
   /* Makes the triangle */
@@ -22,12 +22,12 @@ const thisCss = css<CharacterProps>`
     content: '';
     position: absolute;
     display: block;
-    left: -19px;
+    left: calc(-1 * ${({ height }) => height} / 2);
     width: 0;
     height: 0;
-    border-top: 19px solid transparent;
-    border-bottom: 19px solid transparent;
-    border-right: 19px solid #69e3eb;
+    border-top: calc(${({ height }) => height} / 2) solid transparent;
+    border-bottom: calc(${({ height }) => height} / 2) solid transparent;
+    border-right: calc(${({ height }) => height} / 2) solid #69e3eb;
   }
 
   /* Makes the circle */
@@ -35,12 +35,12 @@ const thisCss = css<CharacterProps>`
     content: '';
     background-color: white;
     border-radius: 50%;
-    width: 4px;
-    height: 4px;
+    width: calc(${({ height }) => height} / 9.5);
+    height: calc(${({ height }) => height} / 9.5);
     display: block;
     position: absolute;
-    left: -9px;
-    top: 17px;
+    left: calc(-1 * ${({ height }) => height} / 9.5 * 2);
+    top: calc(${({ height }) => height} / 2.2);
   }
 `
 

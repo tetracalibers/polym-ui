@@ -7,4 +7,7 @@ export const styleArgTypes = {
   width: {
     ...withDefaultAs('width'),
   },
+  height: {
+    ...withDefaultAs('height'),
+  },
 }
