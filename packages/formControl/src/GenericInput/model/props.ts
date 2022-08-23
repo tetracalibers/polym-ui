@@ -2,8 +2,21 @@ import { getDefaultProps, getPropType, Required } from 'react-tsx-props'
 import { commonDefaultProps, CommonProps } from '../../common/props'
 import { styleDefaultProps, StyleProps } from '../css-props/props'
 
+export const typeOptions = [
+  'text',
+  'url',
+  'email',
+  'search',
+  'tel',
+  'number',
+  'password',
+  'date',
+  'time',
+] as const
+export type TypeOptions = typeof typeOptions[number]
+
 const conf = {
-  type: Required<HTMLInputElement['type']>('text'),
+  type: Required<TypeOptions>('text'),
 }
 type Conf = typeof conf
 

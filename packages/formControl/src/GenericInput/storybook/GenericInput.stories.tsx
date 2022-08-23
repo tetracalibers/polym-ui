@@ -2,31 +2,32 @@ import { ComponentStory } from '@storybook/react'
 import { GenericInput } from '..'
 import { commmonArgTypes } from '../../common/argTypes'
 import { styleArgTypes } from '../css-props/argTypes'
-import { defaultProps } from '../model/props'
+import { defaultProps, typeOptions } from '../model/props'
 
 export default {
   title: 'form control/GenericInput',
   component: GenericInput,
   argTypes: {
-    //fadeFrom: {
-    //  control: {
-    //    type: null,
-    //  },
-    //  description: 'Which direction the elements appear from',
-    //  table: {
-    //    type: {
-    //      summary: null,
-    //    },
-    //    category: 'character',
-    //    defaultValue: {
-    //      summary: '', // TODO
-    //      details: null,
-    //    },
-    //  },
-    //  type: {
-    //    required: true,
-    //  },
-    //},
+    type: {
+      control: {
+        type: 'select',
+      },
+      options: typeOptions,
+      description: 'HTML input element type attribute',
+      table: {
+        type: {
+          summary: null,
+        },
+        category: 'character',
+        defaultValue: {
+          summary: defaultProps.type,
+          details: null,
+        },
+      },
+      type: {
+        required: true,
+      },
+    },
     ...commmonArgTypes,
     ...styleArgTypes,
   },
