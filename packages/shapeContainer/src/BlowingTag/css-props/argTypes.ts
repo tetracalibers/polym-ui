@@ -10,4 +10,7 @@ export const styleArgTypes = {
   backgroundColor: {
     ...withDefaultAs('backgroundColor'),
   },
+  width: {
+    ...withDefaultAs('width'),
+  },
 }

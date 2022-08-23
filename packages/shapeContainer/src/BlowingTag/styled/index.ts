@@ -75,30 +75,33 @@ const tailVisibleBorder = (
     .exhaustive()
 }
 
-const tailMargin = (tailPos: CharacterProps['tailPos']) => {
+const tailMargin = (
+  tailPos: CharacterProps['tailPos'],
+  width: CharacterProps['width']
+) => {
   return match(tailPos)
     .with('bottom', () => {
       return css`
-        margin-left: calc(50px * 0.13 * -1);
-        margin-bottom: calc(50px * 0.13 * -1);
+        margin-left: calc(${width} * 0.13 * -1);
+        margin-bottom: calc(${width} * 0.13 * -1);
       `
     })
     .with('top', () => {
       return css`
-        margin-left: calc(50px * 0.13 * -1);
-        margin-top: calc(50px * 0.13 * -1);
+        margin-left: calc(${width} * 0.13 * -1);
+        margin-top: calc(${width} * 0.13 * -1);
       `
     })
     .with('left', () => {
       return css`
-        margin-top: calc(50px * 0.13 * -1);
-        margin-left: calc(50px * 0.13 * -1);
+        margin-top: calc(${width} * 0.13 * -1);
+        margin-left: calc(${width} * 0.13 * -1);
       `
     })
     .with('right', () => {
       return css`
-        margin-top: calc(50px * 0.13 * -1);
-        margin-right: calc(50px * 0.13 * -1);
+        margin-top: calc(${width} * 0.13 * -1);
+        margin-right: calc(${width} * 0.13 * -1);
       `
     })
     .exhaustive()
@@ -106,12 +109,12 @@ const tailMargin = (tailPos: CharacterProps['tailPos']) => {
 
 const thisCss = css<CharacterProps>`
   position: relative;
-  width: 50px;
-  height: calc(50px * 0.66);
+  width: ${({ width }) => width};
+  height: calc(${({ width }) => width} * 0.66);
   background: ${({ backgroundColor }) => backgroundColor};
   border-radius: ${({ borderRadius }) => borderRadius};
 
-  ${({ tailPos, backgroundColor }) => {
+  ${({ tailPos, backgroundColor, width }) => {
     return css`
       ${tailSelector(tailPos)} {
         content: '';
@@ -119,9 +122,9 @@ const thisCss = css<CharacterProps>`
         ${tailPosition(tailPos)}
         width: 0;
         height: 0;
-        border: calc(50px * 0.13) solid transparent;
+        border: calc(${width} * 0.13) solid transparent;
         ${tailVisibleBorder(tailPos, backgroundColor)}
-        ${tailMargin(tailPos)}
+        ${tailMargin(tailPos, width)}
       }
     `
   }}

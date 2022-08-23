@@ -7,6 +7,7 @@ const conf = {
   backgroundColor: Required<CSST.Property.BackgroundColor>(
     ColorPalette.grayScale.dark
   ),
+  width: Required<CSST.Property.Width>('50px'),
 }
 type Conf = typeof conf
 
