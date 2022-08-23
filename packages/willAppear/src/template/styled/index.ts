@@ -1,8 +1,5 @@
-import styled, { css } from 'styled-components'
-import { CharacterProps } from '../model/props'
+import styled from 'styled-components'
 import * as $ from './keyframes'
-import { ElementType } from 'react'
-import { match } from 'ts-pattern'
 
 const animation = {
   fadeFrom: {
@@ -14,10 +11,4 @@ const animation = {
   },
 }
 
-const thisCss = css<CharacterProps>``
-
-export const getStyledElement = <As extends ElementType>(baseAs: As) => styled(
-  baseAs
-)`
-  ${thisCss}
-`
+export const StyledElement = styled.div``
