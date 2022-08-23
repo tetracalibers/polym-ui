@@ -1,7 +1,7 @@
-import styled, { StyledComponent } from 'styled-components'
+import { ElementType } from 'react'
+import styled from 'styled-components'
 import { CharacterProps } from '../model/props'
 import * as $ from './keyframes'
-import { TagType } from '../../common/props'
 
 const slideAnimation = {
   from: {
@@ -12,10 +12,7 @@ const slideAnimation = {
   },
 }
 
-export const SlideBackground: StyledComponent<
-  TagType,
-  {}
-> = styled.div<CharacterProps>`
+export const SlideBackground = styled.div<CharacterProps>`
   /* 子要素のwidthに合わせる */
   display: inline-block;
   animation-name: ${$.bgDelayKeyframes};
@@ -39,10 +36,9 @@ export const SlideBackground: StyledComponent<
   }
 `
 
-export const ChildrenWrapper: StyledComponent<
-  TagType,
-  {}
-> = styled.div<CharacterProps>`
+export const getChildrenWrapper = <As extends ElementType>(
+  baseAs: As
+) => styled(baseAs)<Omit<CharacterProps, 'slideFrom'>>`
   animation-name: ${$.childrenDelayKeyframes};
   animation-duration: ${({ animationDuration }) => animationDuration}s;
   animation-delay: 0.6s;

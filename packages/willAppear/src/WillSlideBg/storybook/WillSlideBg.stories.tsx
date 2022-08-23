@@ -1,10 +1,9 @@
 import { ComponentStory } from '@storybook/react'
-import { defaultProps, WillSlideBg, WillSlideBgProps } from '..'
+import { WillSlideBg } from '..'
 import { commmonArgTypes } from '../../common/argTypes'
 import { DarkTextBox } from '../../mock/TestBox'
 import { styleArgTypes } from '../css-props/argTypes'
-import type { FC } from 'react'
-import { slideFromOptions } from '../model/props'
+import { defaultProps, slideFromOptions } from '../model/props'
 
 export default {
   title: 'will appear/WillSlideBg',
@@ -49,7 +48,7 @@ export default {
   },
 }
 
-const Template: ComponentStory<FC<WillSlideBgProps>> = ({
+const Template: ComponentStory<typeof WillSlideBg> = ({
   children,
   ...args
 }) => (

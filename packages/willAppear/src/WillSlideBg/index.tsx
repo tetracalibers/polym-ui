@@ -1,29 +1,30 @@
-import { ComponentPropsWithoutRef, ReactNode } from 'react'
-import { TagType } from '../common/props'
-import { CharacterProps, _defaultProps } from './model/props'
-import { ChildrenWrapper, SlideBackground } from './styled'
+import _ from 'lodash'
+import { ElementType, ReactElement } from 'react'
+import { AnyStyledComponent } from 'styled-components'
+import { PolymorphicComponentProp } from '../common/polymorphic'
+import { CharacterProps, defaultProps } from './model/props'
+import { getChildrenWrapper, SlideBackground } from './styled'
 
-export type WillSlideBgProps = {
-  children: ReactNode
-} & CharacterProps
+export type WillSlideBgProps<As extends ElementType> = PolymorphicComponentProp<
+  As,
+  CharacterProps
+>
 
-export const defaultProps = {
-  ..._defaultProps,
-  children: '',
-}
+export type WillSlideBgComponent = <As extends ElementType>(
+  props: WillSlideBgProps<As>
+) => ReactElement
 
-export const WillSlideBg = <As extends TagType>(
-  {
-    as,
-    slideFrom,
-    animationDuration,
-    backgroundColor,
-    ...props
-  }: WillSlideBgProps = {
-    ...defaultProps,
-  },
-  { ...attrs }: ComponentPropsWithoutRef<As>
-) => {
+export const WillSlideBg: WillSlideBgComponent = <As extends ElementType>({
+  as,
+  children,
+  ..._props
+}: WillSlideBgProps<As>) => {
+  const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
+    _.isUndefined(input) ? defaul : input
+  )
+  const { slideFrom, animationDuration, backgroundColor } = props
+  const ChildrenWrapper = getChildrenWrapper<As>(as) as AnyStyledComponent
+
   return (
     <SlideBackground
       slideFrom={slideFrom}
@@ -31,13 +32,10 @@ export const WillSlideBg = <As extends TagType>(
       backgroundColor={backgroundColor}
     >
       <ChildrenWrapper
-        as={as}
         animationDuration={animationDuration}
         backgroundColor={backgroundColor}
-        {...props}
-        {...attrs}
       >
-        {props.children}
+        {children}
       </ChildrenWrapper>
     </SlideBackground>
   )
