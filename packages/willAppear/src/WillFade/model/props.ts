@@ -17,7 +17,7 @@ const conf = {
 type Conf = typeof conf
 
 export type CharacterProps = getPropType<Conf> & CommonProps & StyleProps
-export const _defaultProps = {
+export const defaultProps = {
   ...getDefaultProps<CharacterProps>(conf),
   ...commonDefaultProps,
   ...styleDefaultProps,
