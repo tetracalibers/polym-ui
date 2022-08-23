@@ -11,7 +11,7 @@ export const commmonArgTypes = {
         summary: null,
       },
       defaultValue: {
-        summary: 'span',
+        summary: null,
       },
     },
     type: {
