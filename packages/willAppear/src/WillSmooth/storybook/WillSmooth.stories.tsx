@@ -1,9 +1,9 @@
 import { ComponentStory } from '@storybook/react'
-import { defaultProps, WillSmooth, WillSmoothProps } from '..'
+import { WillSmooth } from '..'
 import { commmonArgTypes } from '../../common/argTypes'
 import { FillBox } from '../../mock/TestBox'
 import { styleArgTypes } from '../css-props/argTypes'
-import type { FC } from 'react'
+import { defaultProps } from '../model/props'
 
 export default {
   title: 'will appear/WillSmooth',
@@ -29,10 +29,7 @@ export default {
   },
 }
 
-const Template: ComponentStory<FC<WillSmoothProps>> = ({
-  children,
-  ...args
-}) => (
+const Template: ComponentStory<typeof WillSmooth> = ({ children, ...args }) => (
   <WillSmooth {...args} as={FillBox}>
     {children}
   </WillSmooth>
