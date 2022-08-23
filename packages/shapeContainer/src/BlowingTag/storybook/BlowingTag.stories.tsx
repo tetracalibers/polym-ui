@@ -1,7 +1,7 @@
 import { ComponentStory } from '@storybook/react'
 import { BlowingTag } from '..'
 import { commmonArgTypes } from '../../common/argTypes'
-import { LightTextBox } from '../../mock/TestBox'
+import { LightTextBox, LightTextLink } from '../../mock/TestBox'
 import { styleArgTypes } from '../css-props/argTypes'
 import { defaultProps, tailPosOptions } from '../model/props'
 

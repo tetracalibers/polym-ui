@@ -1,4 +1,8 @@
 import _ from 'lodash'
+import { ComponentPropsWithRef, ElementType } from 'react'
+
+export type PolymorphicRef<C extends ElementType> =
+  ComponentPropsWithRef<C>['ref']
 
 type AsProp<C extends import('react').ElementType> = {
   as: C
@@ -20,3 +24,8 @@ export type PolymorphicComponentProp<
     >,
     PropsToOmit<C, Props>
   >
+
+export type PolymorphicComponentPropWithRef<
+  C extends ElementType,
+  Props = {}
+> = PolymorphicComponentProp<C, Props> & { ref?: PolymorphicRef<C> }

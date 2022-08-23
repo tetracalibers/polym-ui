@@ -42,6 +42,7 @@
     "yield-star-spacing": "off",
     "indent": "off",
     "comma-spacing": "off",
-    "multiline-ternary": "off"
+    "multiline-ternary": "off",
+    "react/display-name": "off"
   }
 }

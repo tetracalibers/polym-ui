@@ -1,6 +1,11 @@
-import styled, { css } from 'styled-components'
+import styled, {
+  AnyStyledComponent,
+  css,
+  IntrinsicElementsKeys,
+  StyledComponentProps,
+} from 'styled-components'
 import { CharacterProps } from '../model/props'
-import { ElementType } from 'react'
+import { ComponentType, ElementType } from 'react'
 import { match } from 'ts-pattern'
 
 const tailSelector = (tailPos: CharacterProps['tailPos']) => {
@@ -130,12 +135,13 @@ const tailMargin = (
     .exhaustive()
 }
 
-const thisCss = css<CharacterProps>`
+export const StyledElement = styled.div<CharacterProps>`
   position: relative;
   width: ${({ width }) => width}px;
   height: ${({ height }) => height}px;
   background: ${({ backgroundColor }) => backgroundColor};
   border-radius: ${({ borderRadius }) => borderRadius};
+  display: block;
 
   ${({ tailPos, backgroundColor, width, height }) => {
     return css`
@@ -150,10 +156,4 @@ const thisCss = css<CharacterProps>`
       }
     `
   }}
-`
-
-export const getStyledElement = <As extends ElementType>(baseAs: As) => styled(
-  baseAs
-)`
-  ${thisCss}
 `
