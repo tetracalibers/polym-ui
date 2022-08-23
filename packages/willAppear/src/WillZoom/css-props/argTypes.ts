@@ -1,5 +1,5 @@
-import { defaultProps } from './../index'
 import { useSetDefaultAs } from 'story-builder'
+import { defaultProps } from '../model/props'
 import { scaleFactorRange, styleDefaultProps } from './props'
 
 const withDefaultAs = useSetDefaultAs(styleDefaultProps)

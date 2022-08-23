@@ -1,10 +1,9 @@
 import { ComponentStory } from '@storybook/react'
-import { defaultProps, WillZoom, WillZoomProps } from '..'
+import { WillZoom } from '..'
 import { commmonArgTypes } from '../../common/argTypes'
 import { FillBox } from '../../mock/TestBox'
 import { styleArgTypes } from '../css-props/argTypes'
-import type { FC } from 'react'
-import { zoomOptions } from '../model/props'
+import { defaultProps, zoomOptions } from '../model/props'
 
 export default {
   title: 'will appear/WillZoom',
@@ -49,7 +48,7 @@ export default {
   },
 }
 
-const Template: ComponentStory<FC<WillZoomProps>> = ({ children, ...args }) => (
+const Template: ComponentStory<typeof WillZoom> = ({ children, ...args }) => (
   <WillZoom {...args} as={FillBox}>
     {children}
   </WillZoom>
