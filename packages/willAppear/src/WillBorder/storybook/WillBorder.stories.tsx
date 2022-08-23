@@ -1,9 +1,9 @@
 import { ComponentStory } from '@storybook/react'
-import { defaultProps, WillBorder, WillBorderProps } from '..'
+import { WillBorder } from '..'
 import { commmonArgTypes } from '../../common/argTypes'
 import { DarkTextBox } from '../../mock/TestBox'
 import { styleArgTypes } from '../css-props/argTypes'
-import type { FC } from 'react'
+import { defaultProps } from '../model/props'
 
 export default {
   title: 'will appear/WillBorder',
@@ -29,10 +29,7 @@ export default {
   },
 }
 
-const Template: ComponentStory<FC<WillBorderProps>> = ({
-  children,
-  ...args
-}) => (
+const Template: ComponentStory<typeof WillBorder> = ({ children, ...args }) => (
   <WillBorder {...args} as={DarkTextBox}>
     {children}
   </WillBorder>

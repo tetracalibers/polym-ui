@@ -1,7 +1,7 @@
+import { ElementType } from 'react'
 import styled, { StyledComponent } from 'styled-components'
 import { CharacterProps } from '../model/props'
 import * as $ from './keyframes'
-import { TagType } from '../../common/props'
 
 const eachAnimationDuration = (
   duration: CharacterProps['animationDuration']
@@ -10,10 +10,7 @@ const eachAnimationDuration = (
 }
 
 // 上下線が伸びる設定
-export const WillHorizontalLine: StyledComponent<
-  TagType,
-  {}
-> = styled.div<CharacterProps>`
+export const WillHorizontalLine = styled.div<CharacterProps>`
   position: relative; /* 枠線が書かれる基点*/
   /* 子要素のwidthに合わせる */
   display: inline-block;
@@ -56,10 +53,7 @@ export const WillHorizontalLine: StyledComponent<
 `
 
 // 左右線が伸びる設定
-export const WillVerticalLine: StyledComponent<
-  TagType,
-  {}
-> = styled.div<CharacterProps>`
+export const WillVerticalLine = styled.div<CharacterProps>`
   /*左右線*/
   &::before,
   &::after {
@@ -99,10 +93,9 @@ export const WillVerticalLine: StyledComponent<
   }
 `
 
-export const ChildrenWrapper: StyledComponent<
-  TagType,
-  {}
-> = styled.div<CharacterProps>`
+export const getChildrenWrapper = <As extends ElementType>(
+  baseAs: As
+) => styled(baseAs)<CharacterProps>`
   /*1.5秒後に中央のエリアが0.5秒かけて表示*/
   animation-name: ${$.childrenDelayKeyframes};
   animation-duration: ${({ animationDuration }) =>

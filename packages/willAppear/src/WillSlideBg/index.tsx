@@ -19,8 +19,10 @@ export const WillSlideBg: WillSlideBgComponent = <As extends ElementType>({
   children,
   ..._props
 }: WillSlideBgProps<As>) => {
-  const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
-    _.isUndefined(input) ? defaul : input
+  const props = _.mergeWith(
+    _props,
+    defaultProps,
+    (input: unknown, defaul: unknown) => (_.isUndefined(input) ? defaul : input)
   )
   const { slideFrom, animationDuration, backgroundColor } = props
   const ChildrenWrapper = getChildrenWrapper<As>(as) as AnyStyledComponent
@@ -32,6 +34,7 @@ export const WillSlideBg: WillSlideBgComponent = <As extends ElementType>({
       backgroundColor={backgroundColor}
     >
       <ChildrenWrapper
+        {...props}
         animationDuration={animationDuration}
         backgroundColor={backgroundColor}
       >

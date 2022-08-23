@@ -1,23 +1,34 @@
-import { ComponentPropsWithoutRef, ReactNode } from 'react'
-import { TagType } from '../common/props'
-import { CharacterProps, _defaultProps } from './model/props'
-import { ChildrenWrapper, WillHorizontalLine, WillVerticalLine } from './styled'
+import _ from 'lodash'
+import { ElementType, ReactElement } from 'react'
+import { AnyStyledComponent } from 'styled-components'
+import { PolymorphicComponentProp } from '../common/polymorphic'
+import { CharacterProps, defaultProps } from './model/props'
+import {
+  getChildrenWrapper,
+  WillHorizontalLine,
+  WillVerticalLine,
+} from './styled'
 
-export type WillBorderProps = {
-  children: ReactNode
-} & CharacterProps
+export type WillBorderProps<As extends ElementType> = PolymorphicComponentProp<
+  As,
+  CharacterProps
+>
 
-export const defaultProps = {
-  ..._defaultProps,
-  children: '',
-}
+export type WillBorderComponent = <As extends ElementType>(
+  props: WillBorderProps<As>
+) => ReactElement
 
-export const WillBorder = <As extends TagType>(
-  { as, borderColor, animationDuration, ...props }: WillBorderProps = {
-    ...defaultProps,
-  },
-  { ...attrs }: ComponentPropsWithoutRef<As>
-) => {
+export const WillBorder: WillBorderComponent = <As extends ElementType>({
+  as,
+  children,
+  ..._props
+}: WillBorderProps<As>) => {
+  const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
+    _.isUndefined(input) ? defaul : input
+  )
+  const { borderColor, animationDuration } = props
+  const ChildrenWrapper = getChildrenWrapper<As>(as) as AnyStyledComponent
+
   return (
     <WillHorizontalLine
       borderColor={borderColor}
@@ -27,13 +38,8 @@ export const WillBorder = <As extends TagType>(
         borderColor={borderColor}
         animationDuration={animationDuration}
       >
-        <ChildrenWrapper
-          as={as}
-          animationDuration={animationDuration}
-          {...props}
-          {...attrs}
-        >
-          {props.children}
+        <ChildrenWrapper {...props} animationDuration={animationDuration}>
+          {children}
         </ChildrenWrapper>
       </WillVerticalLine>
     </WillHorizontalLine>
