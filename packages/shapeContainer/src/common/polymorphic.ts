@@ -1,3 +1,5 @@
+import _ from 'lodash'
+
 type AsProp<C extends import('react').ElementType> = {
   as: C
 }
@@ -18,3 +20,10 @@ export type PolymorphicComponentProp<
     >,
     PropsToOmit<C, Props>
   >
+
+export const mergeDefault = <ComponentProp>(
+  props: Omit<ComponentProp, 'as' | 'children'>,
+  defaultProps: Record<string, unknown>
+) => {
+  return _.mapValues(props, (v, k) => _.defaultTo(v, defaultProps[k]))
+}

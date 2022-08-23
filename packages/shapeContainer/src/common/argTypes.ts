@@ -1,5 +1,3 @@
-import { commonDefaultProps } from './props'
-
 export const commmonArgTypes = {
   as: {
     control: {
@@ -13,7 +11,7 @@ export const commmonArgTypes = {
         summary: null,
       },
       defaultValue: {
-        summary: commonDefaultProps.as,
+        summary: 'span',
       },
     },
     type: {

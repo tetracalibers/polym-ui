@@ -1,8 +1,9 @@
 import { ComponentStory } from '@storybook/react'
-import { defaultProps, PointedTag } from '..'
+import { PointedTag } from '..'
 import { commmonArgTypes } from '../../common/argTypes'
 import { DarkTextLink } from '../../mock/TestBox'
 import { styleArgTypes } from '../css-props/argTypes'
+import { defaultProps } from '../model/props'
 
 export default {
   title: 'shape container/PointedTag',

@@ -1,6 +1,6 @@
-import styled, { css, StyledComponent } from 'styled-components'
+import styled, { css } from 'styled-components'
 import { CharacterProps } from '../model/props'
-import { TagType } from '../../common/props'
+import React from 'react'
 
 const thisCss = css<CharacterProps>`
   display: inline-block;
@@ -44,8 +44,8 @@ const thisCss = css<CharacterProps>`
   }
 `
 
-export const getStyledElement = <As extends TagType>(baseAs: As) => styled(
-  baseAs
-)`
+export const getStyledElement = <As extends React.ElementType>(
+  baseAs: As
+) => styled(baseAs)`
   ${thisCss}
 `
