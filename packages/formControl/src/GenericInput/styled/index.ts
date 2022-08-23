@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components'
 import { CharacterProps } from '../model/props'
 import { ElementType } from 'react'
 import { match } from 'ts-pattern'
+import { ColorPalette } from 'styled-utility-first'
 
 export const StyledElement = styled.input`
   appearance: none;
@@ -12,7 +13,7 @@ export const StyledElement = styled.input`
   outline: none;
   height: 38px;
   border-radius: 4px;
-  border: 1px solid #ccc;
+  border: 1px solid ${ColorPalette.pastel.purple};
   /* 16px以上を推奨 */
   font-size: 16px;
   line-height: 19px;
