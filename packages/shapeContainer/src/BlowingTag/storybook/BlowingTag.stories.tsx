@@ -1,13 +1,13 @@
 import { ComponentStory } from '@storybook/react'
-import { WillFade } from '..'
+import { BlowingTag } from '..'
 import { commmonArgTypes } from '../../common/argTypes'
 import { DarkTextBox } from '../../mock/TestBox'
 import { styleArgTypes } from '../css-props/argTypes'
 import { defaultProps } from '../model/props'
 
 export default {
-  title: 'shape container/WillFade',
-  component: WillFade,
+  title: 'will appear/BlowingTag',
+  component: BlowingTag,
   argTypes: {
     children: {
       control: {
@@ -48,10 +48,10 @@ export default {
   },
 }
 
-const Template: ComponentStory<typeof WillFade> = ({ children, ...args }) => (
-  <WillFade {...args} as={DarkTextBox}>
+const Template: ComponentStory<typeof BlowingTag> = ({ children, ...args }) => (
+  <BlowingTag {...args} as={DarkTextBox}>
     {children}
-  </WillFade>
+  </BlowingTag>
 )
 
 export const playground = Template.bind({})
