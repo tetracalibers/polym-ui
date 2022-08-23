@@ -1,7 +1,7 @@
 import React from 'react'
 import { AnyStyledComponent } from 'styled-components'
 import { CharacterProps, defaultProps } from './model/props'
-import { mergeDefault, PolymorphicComponentProp } from '../common/polymorphic'
+import { PolymorphicComponentProp } from '../common/polymorphic'
 import { getStyledElement } from './styled'
 import _ from 'lodash'
 
@@ -17,7 +17,9 @@ export const PointedTag: PointedTagComponent = <As extends React.ElementType>({
   children,
   ..._props
 }: PointedTagProps<As>) => {
-  const props = mergeDefault(_props, defaultProps)
+  const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
+    _.isUndefined(input) ? defaul : input
+  )
   const StyledElement = getStyledElement<As>(as) as AnyStyledComponent
   return <StyledElement {...props}>{children}</StyledElement>
 }
