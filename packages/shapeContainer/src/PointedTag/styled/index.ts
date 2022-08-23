@@ -13,7 +13,7 @@ const thisCss = css<CharacterProps>`
   /* This makes room for the triangle */
   margin-left: calc(${({ height }) => height} / 2);
   position: relative;
-  color: white;
+  color: ${({ color }) => color};
   line-height: ${({ height }) => height};
 
   /* Makes the triangle */
@@ -33,7 +33,7 @@ const thisCss = css<CharacterProps>`
   /* Makes the circle */
   &::after {
     content: '';
-    background-color: white;
+    background-color: ${({ color }) => color};
     border-radius: 50%;
     width: calc(${({ height }) => height} / 9.5);
     height: calc(${({ height }) => height} / 9.5);

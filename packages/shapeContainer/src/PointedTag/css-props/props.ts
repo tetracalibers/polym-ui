@@ -8,6 +8,7 @@ const conf = {
   backgroundColor: Required<CSST.Property.BackgroundColor>(
     ColorPalette.pastel.water
   ),
+  color: Required<CSST.Property.Color>('#fff'),
 }
 type Conf = typeof conf
 

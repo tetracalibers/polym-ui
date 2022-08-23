@@ -13,4 +13,7 @@ export const styleArgTypes = {
   backgroundColor: {
     ...withDefaultAs('backgroundColor'),
   },
+  color: {
+    ...withDefaultAs('color'),
+  },
 }
