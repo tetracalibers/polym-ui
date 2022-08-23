@@ -18,8 +18,6 @@ const thisCss = css<CharacterProps>`
   animation-fill-mode: forwards;
 `
 
-export const getStyledElement = <As extends ElementType>(baseAs: As) => styled(
-  baseAs
-)`
+export const StyledElement = styled.div`
   ${thisCss}
 `
