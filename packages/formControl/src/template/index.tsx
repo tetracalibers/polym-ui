@@ -3,7 +3,7 @@ import { ElementType, forwardRef, ReactElement } from 'react'
 import {
   PolymorphicComponentPropWithRef,
   PolymorphicRef,
-} from '../common/polymorphic'
+} from '../common/polymorphic/standard'
 import { CharacterProps, defaultProps } from './model/props'
 import { StyledElement } from './styled'
 

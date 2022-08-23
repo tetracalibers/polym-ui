@@ -6,7 +6,7 @@ import { styleArgTypes } from '../css-props/argTypes'
 import { defaultProps } from '../model/props'
 
 export default {
-  title: 'shape container/WillFade',
+  title: 'form control/WillFade',
   component: WillFade,
   argTypes: {
     children: {
