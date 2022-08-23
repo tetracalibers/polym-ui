@@ -12,5 +12,16 @@ export const styleArgTypes = {
   },
   width: {
     ...withDefaultAs('width'),
+    description: 'Width of the element (px)',
+    control: {
+      type: 'number',
+    },
+  },
+  height: {
+    ...withDefaultAs('height'),
+    description: 'Height of the element (px)',
+    control: {
+      type: 'number',
+    },
   },
 }

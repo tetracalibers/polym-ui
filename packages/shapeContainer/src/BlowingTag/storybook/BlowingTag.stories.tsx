@@ -6,7 +6,7 @@ import { styleArgTypes } from '../css-props/argTypes'
 import { defaultProps, tailPosOptions } from '../model/props'
 
 export default {
-  title: 'will appear/BlowingTag',
+  title: 'shape container/BlowingTag',
   component: BlowingTag,
   argTypes: {
     children: {
