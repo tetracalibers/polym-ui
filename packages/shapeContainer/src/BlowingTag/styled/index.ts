@@ -3,7 +3,18 @@ import { CharacterProps } from '../model/props'
 import { ElementType } from 'react'
 import { match } from 'ts-pattern'
 
-const afterPosition = (tailPos: CharacterProps['tailPos']) => {
+const tailSelector = (tailPos: CharacterProps['tailPos']) => {
+  return match(tailPos)
+    .with('bottom', 'top', () => {
+      return '&::after'
+    })
+    .with('left', () => {
+      return '&::before'
+    })
+    .otherwise(() => '')
+}
+
+const tailPosition = (tailPos: CharacterProps['tailPos']) => {
   return match(tailPos)
     .with('bottom', () => {
       return css`
@@ -17,10 +28,16 @@ const afterPosition = (tailPos: CharacterProps['tailPos']) => {
         left: 50%;
       `
     })
+    .with('left', () => {
+      return css`
+        left: 0;
+        top: 50%;
+      `
+    })
     .otherwise(() => '')
 }
 
-const afterVisibleBorder = (tailPos: CharacterProps['tailPos']) => {
+const tailVisibleBorder = (tailPos: CharacterProps['tailPos']) => {
   return match(tailPos)
     .with('bottom', () => {
       return css`
@@ -34,10 +51,16 @@ const afterVisibleBorder = (tailPos: CharacterProps['tailPos']) => {
         border-top: 0;
       `
     })
+    .with('left', () => {
+      return css`
+        border-right-color: #333;
+        border-left: 0;
+      `
+    })
     .otherwise(() => '')
 }
 
-const afterMargin = (tailPos: CharacterProps['tailPos']) => {
+const tailMargin = (tailPos: CharacterProps['tailPos']) => {
   return match(tailPos)
     .with('bottom', () => {
       return css`
@@ -51,6 +74,12 @@ const afterMargin = (tailPos: CharacterProps['tailPos']) => {
         margin-top: calc(50px * 0.13 * -1);
       `
     })
+    .with('left', () => {
+      return css`
+        margin-top: calc(50px * 0.13 * -1);
+        margin-left: calc(50px * 0.13 * -1);
+      `
+    })
     .otherwise(() => '')
 }
 
@@ -61,16 +90,20 @@ const thisCss = css<CharacterProps>`
   background: #333;
   border-radius: 10px;
 
-  &::after {
-    content: '';
-    position: absolute;
-    ${({ tailPos }) => afterPosition(tailPos)}
-    width: 0;
-    height: 0;
-    border: calc(50px * 0.13) solid transparent;
-    ${({ tailPos }) => afterVisibleBorder(tailPos)}
-    ${({ tailPos }) => afterMargin(tailPos)}
-  }
+  ${({ tailPos }) => {
+    return css`
+      ${tailSelector(tailPos)} {
+        content: '';
+        position: absolute;
+        ${tailPosition(tailPos)}
+        width: 0;
+        height: 0;
+        border: calc(50px * 0.13) solid transparent;
+        ${tailVisibleBorder(tailPos)}
+        ${tailMargin(tailPos)}
+      }
+    `
+  }}
 `
 
 export const getStyledElement = <As extends ElementType>(baseAs: As) => styled(
