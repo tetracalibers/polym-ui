@@ -1,38 +1,15 @@
-import React, { ComponentPropsWithoutRef, ReactNode } from 'react'
-import {
-  AnyStyledComponent,
-  StyledComponent,
-  StyledComponentInnerComponent,
-  StyledComponentProps,
-} from 'styled-components'
-import { TagType } from '../common/props'
+import React, { ReactNode } from 'react'
+import { AnyStyledComponent } from 'styled-components'
 import { CharacterProps, _defaultProps } from './model/props'
+import { PolymorphicComponentProp } from '../common/polymorphic'
 import { getStyledElement } from './styled'
-
-type AsProp<C extends React.ElementType> = {
-  as: C
-}
-
-type PropsToOmit<C extends React.ElementType, P> = keyof (AsProp<C> & P)
-
-// This is the first reusable type utility we built
-type PolymorphicComponentProp<
-  C extends React.ElementType,
-  Props = {}
-> = React.PropsWithChildren<Props & AsProp<C>> &
-  Omit<
-    React.ComponentPropsWithoutRef<
-      C extends AnyStyledComponent ? StyledComponentInnerComponent<C> : C
-    >,
-    PropsToOmit<C, Props>
-  >
 
 export type PointedTagProps<As extends React.ElementType> =
   PolymorphicComponentProp<As, CharacterProps>
 
 export type PointedTagComponent = <As extends React.ElementType = 'span'>(
   props: PointedTagProps<As>
-) => React.ReactElement | null
+) => React.ReactElement
 
 export const defaultProps = {
   ..._defaultProps,
@@ -40,9 +17,7 @@ export const defaultProps = {
   children: '' as ReactNode,
 }
 
-export const PointedTag: PointedTagComponent = <
-  As extends React.ElementType = 'span'
->({
+export const PointedTag: PointedTagComponent = <As extends React.ElementType>({
   as,
   children,
   ...props
