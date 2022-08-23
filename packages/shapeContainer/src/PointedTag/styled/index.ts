@@ -6,9 +6,9 @@ const thisCss = css<CharacterProps>`
   display: inline-block;
   width: ${({ width }) => width};
   height: ${({ height }) => height};
-  background-color: #69e3eb;
+  background-color: ${({ backgroundColor }) => backgroundColor};
   border-radius: 2.5px 4px 4px 2.5px;
-  border-left: 1.55px solid #69e3eb;
+  border-left: 1.55px solid ${({ backgroundColor }) => backgroundColor};
 
   /* This makes room for the triangle */
   margin-left: calc(${({ height }) => height} / 2);
@@ -27,7 +27,8 @@ const thisCss = css<CharacterProps>`
     height: 0;
     border-top: calc(${({ height }) => height} / 2) solid transparent;
     border-bottom: calc(${({ height }) => height} / 2) solid transparent;
-    border-right: calc(${({ height }) => height} / 2) solid #69e3eb;
+    border-right: calc(${({ height }) => height} / 2) solid
+      ${({ backgroundColor }) => backgroundColor};
   }
 
   /* Makes the circle */

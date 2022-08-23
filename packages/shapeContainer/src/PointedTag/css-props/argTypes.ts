@@ -10,4 +10,7 @@ export const styleArgTypes = {
   height: {
     ...withDefaultAs('height'),
   },
+  backgroundColor: {
+    ...withDefaultAs('backgroundColor'),
+  },
 }
