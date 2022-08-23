@@ -1,5 +1,5 @@
 import { ElementType } from 'react'
-import styled, { css, StyledComponent } from 'styled-components'
+import styled, { css } from 'styled-components'
 import { CharacterProps } from '../model/props'
 import * as $ from './keyframes'
 

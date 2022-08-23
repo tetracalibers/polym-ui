@@ -1,5 +1,5 @@
 import { useSetDefaultAs } from 'story-builder'
-import { defaultProps } from '..'
+import { defaultProps } from '../model/props'
 import { blurRadiusRange, styleDefaultProps } from './props'
 
 const withDefaultAs = useSetDefaultAs(styleDefaultProps)

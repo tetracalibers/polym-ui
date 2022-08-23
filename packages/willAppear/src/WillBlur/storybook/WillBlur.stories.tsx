@@ -1,9 +1,9 @@
 import { ComponentStory } from '@storybook/react'
-import { defaultProps, WillBlur, WillBlurProps } from '..'
+import { WillBlur } from '..'
 import { commmonArgTypes } from '../../common/argTypes'
 import { FillBox } from '../../mock/TestBox'
 import { styleArgTypes } from '../css-props/argTypes'
-import type { FC } from 'react'
+import { defaultProps } from '../model/props'
 
 export default {
   title: 'will appear/WillBlur',
@@ -29,7 +29,7 @@ export default {
   },
 }
 
-const Template: ComponentStory<FC<WillBlurProps>> = ({ children, ...args }) => (
+const Template: ComponentStory<typeof WillBlur> = ({ children, ...args }) => (
   <WillBlur {...args} as={FillBox}>
     {children}
   </WillBlur>

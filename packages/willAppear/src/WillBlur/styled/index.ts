@@ -1,7 +1,7 @@
-import styled, { css, StyledComponent } from 'styled-components'
+import { ElementType } from 'react'
+import styled, { css } from 'styled-components'
 import { CharacterProps } from '../model/props'
 import { computeBlurKeyframes } from './keyframes'
-import { TagType } from '../../common/props'
 
 const thisCss = css<CharacterProps>`
   animation-name: ${({ blurRadius }) => computeBlurKeyframes(blurRadius)};
@@ -9,6 +9,8 @@ const thisCss = css<CharacterProps>`
   animation-fill-mode: forwards;
 `
 
-export const StyledElement: StyledComponent<TagType, {}> = styled.div`
+export const getStyledElement = <As extends ElementType>(baseAs: As) => styled(
+  baseAs
+)`
   ${thisCss}
 `
