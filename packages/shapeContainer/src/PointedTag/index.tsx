@@ -1,25 +1,31 @@
-import React from 'react'
-import { AnyStyledComponent } from 'styled-components'
+import React, { forwardRef } from 'react'
 import { CharacterProps, defaultProps } from './model/props'
-import { PolymorphicComponentProp } from '../common/polymorphic'
-import { getStyledElement } from './styled'
+import {
+  PolymorphicComponentPropWithRef,
+  PolymorphicRef,
+} from '../common/polymorphic'
+import { StyledElement } from './styled'
 import _ from 'lodash'
 
 export type PointedTagProps<As extends React.ElementType> =
-  PolymorphicComponentProp<As, CharacterProps>
+  PolymorphicComponentPropWithRef<As, CharacterProps>
 
 export type PointedTagComponent = <As extends React.ElementType>(
   props: PointedTagProps<As>
-) => React.ReactElement
+) => React.ReactElement | null
 
-export const PointedTag: PointedTagComponent = <As extends React.ElementType>({
-  as,
-  children,
-  ..._props
-}: PointedTagProps<As>) => {
-  const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
-    _.isUndefined(input) ? defaul : input
-  )
-  const StyledElement = getStyledElement<As>(as) as AnyStyledComponent
-  return <StyledElement {...props}>{children}</StyledElement>
-}
+export const PointedTag: PointedTagComponent = forwardRef(
+  <As extends React.ElementType>(
+    { as, children, ..._props }: PointedTagProps<As>,
+    ref?: PolymorphicRef<As>
+  ) => {
+    const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
+      _.isUndefined(input) ? defaul : input
+    )
+    return (
+      <StyledElement {...props} as={as as unknown as undefined} ref={ref}>
+        {children}
+      </StyledElement>
+    )
+  }
+)

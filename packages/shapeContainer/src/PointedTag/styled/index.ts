@@ -1,6 +1,5 @@
 import styled, { css } from 'styled-components'
 import { CharacterProps } from '../model/props'
-import React from 'react'
 
 const thisCss = css<CharacterProps>`
   display: inline-block;
@@ -44,8 +43,6 @@ const thisCss = css<CharacterProps>`
   }
 `
 
-export const getStyledElement = <As extends React.ElementType>(
-  baseAs: As
-) => styled(baseAs)`
+export const StyledElement = styled.div`
   ${thisCss}
 `
