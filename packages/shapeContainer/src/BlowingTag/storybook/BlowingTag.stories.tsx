@@ -3,7 +3,7 @@ import { BlowingTag } from '..'
 import { commmonArgTypes } from '../../common/argTypes'
 import { LightTextBox } from '../../mock/TestBox'
 import { styleArgTypes } from '../css-props/argTypes'
-import { defaultProps } from '../model/props'
+import { defaultProps, tailPosOptions } from '../model/props'
 
 export default {
   title: 'will appear/BlowingTag',
@@ -19,6 +19,25 @@ export default {
           summary: null,
         },
         category: 'character',
+      },
+      type: {
+        required: true,
+      },
+    },
+    tailPos: {
+      control: {
+        type: null,
+      },
+      description: 'Which side is attached to the arrow part of the balloon',
+      table: {
+        type: {
+          summary: null,
+        },
+        category: 'character',
+        defaultValue: {
+          summary: defaultProps.tailPos,
+          details: null,
+        },
       },
       type: {
         required: true,
@@ -40,4 +59,11 @@ playground.args = {
   ...defaultProps,
   children: 'Example Text',
 }
-playground.argTypes = {}
+playground.argTypes = {
+  tailPos: {
+    control: {
+      type: 'radio',
+    },
+    options: tailPosOptions,
+  },
+}
