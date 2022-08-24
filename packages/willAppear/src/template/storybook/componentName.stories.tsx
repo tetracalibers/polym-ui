@@ -4,10 +4,16 @@ import { commmonArgTypes } from '../../common/argTypes'
 import { DarkTextBox } from '../../mock/TestBox'
 import { styleArgTypes } from '../css-props/argTypes'
 import { defaultProps } from '../model/props'
+import { DocsPage } from './docsPage'
 
 export default {
   title: 'will appear/WillFade',
   component: WillFade,
+  parameters: {
+    docs: {
+      page: () => <DocsPage />,
+    },
+  },
   argTypes: {
     children: {
       control: {

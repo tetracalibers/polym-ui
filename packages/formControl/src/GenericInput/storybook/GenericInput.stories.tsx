@@ -3,10 +3,16 @@ import { GenericInput } from '..'
 import { commmonArgTypes } from '../../common/argTypes'
 import { styleArgTypes } from '../css-props/argTypes'
 import { defaultProps, typeOptions } from '../model/props'
+import { DocsPage } from './docsPage'
 
 export default {
   title: 'form control/GenericInput',
   component: GenericInput,
+  parameters: {
+    docs: {
+      page: () => <DocsPage />,
+    },
+  },
   argTypes: {
     type: {
       control: {
