@@ -1,18 +1,34 @@
 import { defaultProps } from './props'
 
 export const logicArgTypes = {
-  recursive: {
+  ratioX: {
     control: {
-      type: 'boolean',
+      type: 'number',
     },
-    description: 'Whether to apply layout to nested elements',
+    description: 'Width as denominator of aspect ratio',
     table: {
       type: {
         summary: null,
       },
       category: 'style control',
       defaultValue: {
-        summary: '',
+        summary: defaultProps.ratioX,
+        details: null,
+      },
+    },
+  },
+  ratioY: {
+    control: {
+      type: 'number',
+    },
+    description: 'Height as the numerator of the aspect ratio',
+    table: {
+      type: {
+        summary: null,
+      },
+      category: 'style control',
+      defaultValue: {
+        summary: defaultProps.ratioY,
         details: null,
       },
     },
