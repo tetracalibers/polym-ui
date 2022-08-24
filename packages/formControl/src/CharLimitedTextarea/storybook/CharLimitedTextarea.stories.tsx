@@ -2,6 +2,7 @@ import { ComponentStory } from '@storybook/react'
 import { CharLimitedTextarea, defaultProps } from '..'
 import { commmonArgTypes } from '../../common/argTypes'
 import { styleArgTypes } from '../css-props/argTypes'
+import { characterArgTypes as textareaArgTypes } from '../../TextArea/model/argTypes'
 import { DocsPage } from './docsPage'
 
 export default {
@@ -68,6 +69,23 @@ export default {
         required: true,
       },
     },
+    renderCharCountLabel: {
+      control: {
+        type: null,
+      },
+      description: 'Component that draws character count results',
+      table: {
+        type: {
+          summary:
+            '(currCharCount: number, maxChars: number, minChars: number) => ReactNode',
+        },
+        category: 'application',
+      },
+      type: {
+        required: true,
+      },
+    },
+    ...textareaArgTypes,
     ...commmonArgTypes,
     ...styleArgTypes,
   },
@@ -80,5 +98,6 @@ const Template: ComponentStory<typeof CharLimitedTextarea> = ({ ...args }) => (
 export const playground = Template.bind({})
 playground.args = {
   ...defaultProps,
+  children: '',
 }
 playground.argTypes = {}
