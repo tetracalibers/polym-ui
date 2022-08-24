@@ -9,7 +9,7 @@ import pkg from './package.json'
 const production = process.env.NODE_ENV === 'production'
 
 // Scopeを除去する
-const moduleName = Case.pascal(pkg.name.replace(/^\@.*\//, ''))
+const moduleName = Case.pascal(pkg.name.replace(/^@.*\//, ''))
 
 // ライブラリに埋め込むcopyright
 const banner = `/*!
@@ -69,7 +69,6 @@ const config = [
           'shelljs',
           'alasql',
         ], // default
-        sourceMap: false, // by default inferred from rollup's `output.sourcemap` option
         sourceMap: !production,
         minify: production,
         target: 'esnext', // default, or 'es20XX', 'esnext'

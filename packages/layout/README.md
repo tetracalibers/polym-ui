@@ -1,3 +1,6 @@
-# @React-polyhexUI/base
+# @React-polyhexUI/clickable-trigger
 
-Typography Components for React
+Provided Components
+
+- Button
+- Link
