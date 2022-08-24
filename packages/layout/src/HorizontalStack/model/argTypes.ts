@@ -1,18 +1,19 @@
 import { defaultProps } from './props'
 
 export const logicArgTypes = {
-  recursive: {
+  limit: {
     control: {
-      type: 'boolean',
+      type: 'number',
     },
-    description: 'Whether to apply layout to nested elements',
+    description:
+      'Maximum number of items that can be lined up in a horizontal layout',
     table: {
       type: {
         summary: null,
       },
       category: 'style control',
       defaultValue: {
-        summary: '',
+        summary: defaultProps.limit,
         details: null,
       },
     },
