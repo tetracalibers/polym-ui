@@ -13,8 +13,8 @@ export const StyledElement = styled.div<CharacterProps>`
   padding-left: ${({ paddingX }) => paddingX};
   padding-right: ${({ paddingX }) => paddingX};
 
-  ${({ intrinsic }) => {
-    return Truthy(intrinsic).when(css`
+  ${({ byContentWidth }) => {
+    return Truthy(byContentWidth).when(css`
       display: flex;
       flex-direction: column;
       align-items: center;

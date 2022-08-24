@@ -46,7 +46,7 @@ export default {
         },
       },
     },
-    intrinsic: {
+    byContentWidth: {
       control: {
         type: 'boolean',
       },
@@ -58,7 +58,7 @@ export default {
         },
         category: 'style control',
         defaultValue: {
-          summary: defaultProps.intrinsic,
+          summary: defaultProps.byContentWidth,
           details: null,
         },
       },

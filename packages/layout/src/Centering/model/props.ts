@@ -6,7 +6,7 @@ const conf = {
   // テキストも中央揃えにするか
   textCenter: Required<boolean>(false),
   // 子要素をそのコンテンツ幅に基づいて中央揃えにさせるか
-  intrinsic: Required<boolean>(false),
+  byContentWidth: Required<boolean>(false),
 }
 type Conf = typeof conf
 
