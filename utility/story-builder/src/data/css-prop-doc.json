@@ -3265,10 +3265,9 @@
   },
   "gap": {
     "control": {
-      "type": "select"
+      "type": "text"
     },
-    "options": ["<'row-gap'> <'column-gap'>?"],
-    "description": "",
+    "description": "Gaps between rows and columns",
     "table": {
       "category": "CSS",
       "subcategory": "Box Alignment",
