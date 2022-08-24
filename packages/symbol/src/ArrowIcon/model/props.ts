@@ -2,7 +2,7 @@ import { getDefaultProps, getPropType, Required } from 'react-tsx-props'
 import { commonDefaultProps, CommonProps } from '../../common/props'
 import { styleDefaultProps, StyleProps } from '../css-props/props'
 
-export const directionOptions = ['top', 'bottom', 'left', 'right'] as const
+export const directionOptions = ['up', 'down', 'left', 'right'] as const
 export type DirectionOptions = typeof directionOptions[number]
 
 const conf = {
