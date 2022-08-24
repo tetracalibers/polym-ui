@@ -7,16 +7,16 @@ import {
 import { CharacterProps, defaultProps } from './model/props'
 import { StyledElement } from './styled'
 
-export type WillFadeProps<As extends ElementType> =
+export type CenteringProps<As extends ElementType> =
   PolymorphicComponentPropWithRef<As, CharacterProps>
 
-export type WillFadeComponent = <As extends ElementType>(
-  props: WillFadeProps<As>
+export type CenteringComponent = <As extends ElementType>(
+  props: CenteringProps<As>
 ) => ReactElement | null
 
-export const WillFade: WillFadeComponent = forwardRef(
+export const Centering: CenteringComponent = forwardRef(
   <As extends ElementType>(
-    { as, children, ..._props }: WillFadeProps<As>,
+    { as, children, ..._props }: CenteringProps<As>,
     ref?: PolymorphicRef<As>
   ) => {
     const props = _.mergeWith(_props, defaultProps, (input, defaul) =>

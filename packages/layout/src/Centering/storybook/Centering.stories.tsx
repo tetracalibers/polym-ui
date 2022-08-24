@@ -1,5 +1,5 @@
 import { ComponentStory } from '@storybook/react'
-import { WillFade } from '..'
+import { Centering } from '..'
 import { commmonArgTypes } from '../../common/argTypes'
 import { DarkTextBox } from '../../mock/TestBox'
 import { styleArgTypes } from '../css-props/argTypes'
@@ -7,8 +7,8 @@ import { defaultProps } from '../model/props'
 import { DocsPage } from './docsPage'
 
 export default {
-  title: 'form control/WillFade',
-  component: WillFade,
+  title: 'form control/Centering',
+  component: Centering,
   parameters: {
     docs: {
       page: () => <DocsPage />,
@@ -54,10 +54,10 @@ export default {
   },
 }
 
-const Template: ComponentStory<typeof WillFade> = ({ children, ...args }) => (
-  <WillFade {...args} as={DarkTextBox}>
+const Template: ComponentStory<typeof Centering> = ({ children, ...args }) => (
+  <Centering {...args} as={DarkTextBox}>
     {children}
-  </WillFade>
+  </Centering>
 )
 
 export const playground = Template.bind({})
