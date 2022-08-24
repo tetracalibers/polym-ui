@@ -1,7 +1,7 @@
 import { ComponentStory } from '@storybook/react'
 import { HorizontalCenter } from '..'
 import { commmonArgTypes } from '../../common/argTypes'
-import { DarkTextBox } from '../../mock/TestBox'
+import { DarkTextBox, FillBox } from '../../mock/TestBox'
 import { styleArgTypes } from '../css-props/argTypes'
 import { defaultProps } from '../model/props'
 import { DocsPage } from './docsPage'
@@ -17,9 +17,9 @@ export default {
   argTypes: {
     children: {
       control: {
-        type: 'text',
+        type: null,
       },
-      description: 'Child elements of the element specified by as props',
+      description: 'Elements to be placed in the center',
       table: {
         type: {
           summary: null,
@@ -72,14 +72,13 @@ const Template: ComponentStory<typeof HorizontalCenter> = ({
   children,
   ...args
 }) => (
-  <HorizontalCenter {...args} as={DarkTextBox}>
-    {children}
+  <HorizontalCenter {...args}>
+    <FillBox>Center!!</FillBox>
   </HorizontalCenter>
 )
 
 export const playground = Template.bind({})
 playground.args = {
   ...defaultProps,
-  children: 'Fade!!',
 }
 playground.argTypes = {}

@@ -20,3 +20,13 @@ export type TextAreaComponentProp<Props = {}> = PropsWithChildren<Props> &
 
 export type TextAreaComponentPropWithRef<Props = {}> =
   TextAreaComponentProp<Props> & PolymorphicRef<'textarea'>
+
+/* -------------------------------------------- */
+/* DIV                                          */
+/* -------------------------------------------- */
+
+export type DivComponentProp<Props = {}> = PropsWithChildren<Props> &
+  ComponentPropsWithoutRef<'div'>
+
+export type DivComponentPropWithRef<Props = {}> = DivComponentProp<Props> &
+  PolymorphicRef<'div'>
