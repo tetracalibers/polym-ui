@@ -36,6 +36,7 @@ export const Sidebar = styled(BorderBox)`
 
 export const MainContents = styled(BorderBox)`
   height: 300px;
+  background-color: ${$.pastel.pink}66;
 `
 
 export const DarkTextBox = styled.div`

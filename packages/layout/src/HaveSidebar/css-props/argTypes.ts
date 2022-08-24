@@ -18,16 +18,16 @@ export const styleArgTypes = {
       },
     },
   },
-  sideMaxWidth: {
+  sideWidth: {
     ...withDefaultAs('maxWidth'),
-    description: 'Maximum width of sidebar in vertical placement',
+    description: 'Width of sidebar when side-by-side',
     table: {
       type: {
         summary: null,
       },
       category: 'style control',
       defaultValue: {
-        summary: styleDefaultProps.sideMaxWidth,
+        summary: styleDefaultProps.sideWidth,
         details: null,
       },
     },

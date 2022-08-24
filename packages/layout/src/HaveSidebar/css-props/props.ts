@@ -6,7 +6,7 @@ const conf = {
   // サイドバーとメインコンテンツとの間の隙間
   spaceBetween: Required<CSST.Property.MarginLeft>('1.7rem'),
   // 垂直方向配置におけるサイドバーの最大幅
-  sideMaxWidth: Required<CSST.Property.MaxWidth>('100%'),
+  sideWidth: Required<CSST.Property.FlexBasis>('15rem'),
 }
 type Conf = typeof conf
 

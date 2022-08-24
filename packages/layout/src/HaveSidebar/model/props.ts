@@ -9,7 +9,7 @@ const conf = {
   // 2つの子要素のうち、どちらをサイドバーとみなすか
   sidebarChild: Required<SidebarChildOptions>('first'),
   // 水平方向配置におけるメインコンテンツの最小幅[%]
-  mainMinWidth: Required<number>(50),
+  mainMinWidth: Required<number>(60),
   // 垂直方向配置において、要素を本来の高さになるようにするか
   noStretch: Required<boolean>(false),
 }

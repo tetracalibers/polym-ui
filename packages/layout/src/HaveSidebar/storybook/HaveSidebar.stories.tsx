@@ -42,8 +42,8 @@ const Template: ComponentStory<typeof HaveSidebar> = ({
   ...args
 }) => (
   <HaveSidebar {...args} as={Container}>
-    <Sidebar>Sidebar!!</Sidebar>
-    <MainContents>Main!!</MainContents>
+    <Sidebar />
+    <MainContents />
   </HaveSidebar>
 )
 
