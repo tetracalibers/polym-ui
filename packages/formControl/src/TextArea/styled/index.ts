@@ -4,9 +4,19 @@ import { ElementType } from 'react'
 import { match } from 'ts-pattern'
 import { ColorPalette } from 'styled-utility-first'
 
+const border = (dangerOn: CharacterProps['hasError']) => {
+  return dangerOn
+    ? css`
+        border: 2px solid ${ColorPalette.vivid.red};
+      `
+    : css`
+        border: 1px solid ${ColorPalette.pastel.purple};
+      `
+}
+
 export const StyledElement = styled.textarea<CharacterProps>`
   color: ${ColorPalette.grayScale.dark};
-  border: 1px solid ${ColorPalette.pastel.purple};
+  ${({ hasError }) => border(hasError)}
   border-radius: 5px;
   box-sizing: border-box;
   outline: none;
