@@ -4,4 +4,6 @@ import { ElementType } from 'react'
 import { match } from 'ts-pattern'
 import { ColorPalette } from 'styled-utility-first'
 
-export const StyledElement = styled.div<CharacterProps>``
+export const StyledContainer = styled.div<CharacterProps>``
+
+export const OverlayWrapper = styled.div``

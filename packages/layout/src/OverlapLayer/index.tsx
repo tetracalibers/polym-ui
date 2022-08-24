@@ -1,14 +1,16 @@
 import _ from 'lodash'
-import { ElementType, forwardRef, ReactElement } from 'react'
+import { ElementType, forwardRef, ReactElement, ReactNode } from 'react'
 import {
   PolymorphicComponentPropWithRef,
   PolymorphicRef,
 } from '../common/polymorphic/standard'
 import { CharacterProps, defaultProps } from './model/props'
-import { StyledElement } from './styled'
+import { StyledContainer, OverlayWrapper } from './styled'
 
 export type OverlapLayerProps<As extends ElementType> =
-  PolymorphicComponentPropWithRef<As, CharacterProps>
+  PolymorphicComponentPropWithRef<As, CharacterProps> & {
+    renderOverlay: () => ReactNode
+  }
 
 export type OverlapLayerComponent = <As extends ElementType>(
   props: OverlapLayerProps<As>
@@ -16,16 +18,17 @@ export type OverlapLayerComponent = <As extends ElementType>(
 
 export const OverlapLayer: OverlapLayerComponent = forwardRef(
   <As extends ElementType>(
-    { as, children, ..._props }: OverlapLayerProps<As>,
+    { as, children, renderOverlay, ..._props }: OverlapLayerProps<As>,
     ref?: PolymorphicRef<As>
   ) => {
     const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
       _.isUndefined(input) ? defaul : input
     )
     return (
-      <StyledElement {...props} ref={ref} as={as as unknown as undefined}>
+      <StyledContainer {...props} ref={ref} as={as as unknown as undefined}>
         {children}
-      </StyledElement>
+        <OverlayWrapper>{renderOverlay()}</OverlayWrapper>
+      </StyledContainer>
     )
   }
 )
