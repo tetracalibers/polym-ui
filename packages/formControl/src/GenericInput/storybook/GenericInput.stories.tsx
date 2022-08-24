@@ -30,7 +30,7 @@ export default {
     },
     label: {
       control: {
-        type: 'string',
+        type: 'text',
       },
       description:
         'A string of text that appears near the input field as a label indicating what should be entered',
