@@ -24,6 +24,12 @@ export const VerticalStackChild = styled(BorderBox)`
   height: auto;
 `
 
+export const HStackContainer = styled(Container)``
+
+export const HStackChild = styled(BorderBox)`
+  width: 150px;
+`
+
 export const DarkTextBox = styled.div`
   padding: 1rem 2rem;
   text-align: center;

@@ -1,7 +1,7 @@
 import { ComponentStory } from '@storybook/react'
 import { HorizontalStack } from '..'
 import { commmonArgTypes } from '../../common/argTypes'
-import { DarkTextBox } from '../../mock/TestBox'
+import { HStackChild, HStackContainer } from '../../mock/TestBox'
 import { styleArgTypes } from '../css-props/argTypes'
 import { logicArgTypes } from '../model/argTypes'
 import { defaultProps } from '../model/props'
@@ -18,9 +18,9 @@ export default {
   argTypes: {
     children: {
       control: {
-        type: 'text',
+        type: null,
       },
-      description: 'Child elements of the element specified by as props',
+      description: 'Elements to be equally spaced horizontally',
       table: {
         type: {
           summary: null,
@@ -41,14 +41,22 @@ const Template: ComponentStory<typeof HorizontalStack> = ({
   children,
   ...args
 }) => (
-  <HorizontalStack {...args} as={DarkTextBox}>
-    {children}
+  <HorizontalStack {...args} as={HStackContainer}>
+    <HStackChild>one!!</HStackChild>
+    <HStackChild>two!!</HStackChild>
+    <HStackChild>three!!</HStackChild>
+    <HStackChild>four!!</HStackChild>
+    <HStackChild>five!!</HStackChild>
+    <HStackChild>six!!</HStackChild>
+    <HStackChild>seven!!</HStackChild>
+    <HStackChild>eight!!</HStackChild>
+    <HStackChild>nine!!</HStackChild>
+    <HStackChild>ten!!</HStackChild>
   </HorizontalStack>
 )
 
 export const playground = Template.bind({})
 playground.args = {
   ...defaultProps,
-  children: 'Fade!!',
 }
 playground.argTypes = {}
