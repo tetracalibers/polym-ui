@@ -1,5 +1,5 @@
 import { ComponentStory } from '@storybook/react'
-import { Centering } from '..'
+import { HorizontalCenter } from '..'
 import { commmonArgTypes } from '../../common/argTypes'
 import { DarkTextBox } from '../../mock/TestBox'
 import { styleArgTypes } from '../css-props/argTypes'
@@ -7,8 +7,8 @@ import { defaultProps } from '../model/props'
 import { DocsPage } from './docsPage'
 
 export default {
-  title: 'form control/Centering',
-  component: Centering,
+  title: 'form control/HorizontalCenter',
+  component: HorizontalCenter,
   parameters: {
     docs: {
       page: () => <DocsPage />,
@@ -68,10 +68,13 @@ export default {
   },
 }
 
-const Template: ComponentStory<typeof Centering> = ({ children, ...args }) => (
-  <Centering {...args} as={DarkTextBox}>
+const Template: ComponentStory<typeof HorizontalCenter> = ({
+  children,
+  ...args
+}) => (
+  <HorizontalCenter {...args} as={DarkTextBox}>
     {children}
-  </Centering>
+  </HorizontalCenter>
 )
 
 export const playground = Template.bind({})

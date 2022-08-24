@@ -7,16 +7,16 @@ import {
 import { CharacterProps, defaultProps } from './model/props'
 import { StyledElement } from './styled'
 
-export type CenteringProps<As extends ElementType> =
+export type HorizontalCenterProps<As extends ElementType> =
   PolymorphicComponentPropWithRef<As, CharacterProps>
 
-export type CenteringComponent = <As extends ElementType>(
-  props: CenteringProps<As>
+export type HorizontalCenterComponent = <As extends ElementType>(
+  props: HorizontalCenterProps<As>
 ) => ReactElement | null
 
-export const Centering: CenteringComponent = forwardRef(
+export const HorizontalCenter: HorizontalCenterComponent = forwardRef(
   <As extends ElementType>(
-    { as, children, ..._props }: CenteringProps<As>,
+    { as, children, ..._props }: HorizontalCenterProps<As>,
     ref?: PolymorphicRef<As>
   ) => {
     const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
