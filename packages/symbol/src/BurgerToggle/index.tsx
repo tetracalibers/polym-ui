@@ -5,7 +5,7 @@ import {
   PolymorphicRef,
 } from '../common/polymorphic/standard'
 import { CharacterProps, defaultProps } from './model/props'
-import { StyledElement } from './styled'
+import { StyledButton, SymbolWrapper, Line1, Line2, Line3 } from './styled'
 
 export type BurgerToggleProps<As extends ElementType> = Omit<
   PolymorphicComponentPropWithRef<As, CharacterProps>,
@@ -25,7 +25,13 @@ export const BurgerToggle: BurgerToggleComponent = forwardRef(
       _.isUndefined(input) ? defaul : input
     )
     return (
-      <StyledElement {...props} ref={ref} as={as as unknown as undefined} />
+      <StyledButton {...props} ref={ref} as={as as unknown as undefined}>
+        <SymbolWrapper {...props}>
+          <Line1 {...props} />
+          <Line2 {...props} />
+          <Line3 {...props} />
+        </SymbolWrapper>
+      </StyledButton>
     )
   }
 )
