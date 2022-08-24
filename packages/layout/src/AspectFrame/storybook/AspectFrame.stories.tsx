@@ -14,7 +14,8 @@ export default {
     docs: {
       page: () => <DocsPage />,
       description: {
-        component: '',
+        component:
+          'Suitable solution to crop the media to the specified aspect ratio',
       },
     },
   },
