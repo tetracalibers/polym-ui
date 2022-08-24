@@ -7,7 +7,7 @@ import { defaultProps } from '../model/props'
 import { DocsPage } from './docsPage'
 
 export default {
-  title: 'layout/HeartIcon',
+  title: 'symbols/HeartIcon',
   component: HeartIcon,
   parameters: {
     docs: {
