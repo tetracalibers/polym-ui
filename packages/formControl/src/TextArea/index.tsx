@@ -17,9 +17,9 @@ export type TextAreaProps = TextAreaComponentPropWithRef<CharacterProps>
 export type TextAreaComponent = (props: TextAreaProps) => ReactElement | null
 
 export const TextArea: TextAreaComponent = forwardRef(
-  <As extends ElementType>(
+  (
     { children, ..._props }: TextAreaProps,
-    ref?: PolymorphicRef<As>
+    ref?: PolymorphicRef<'textarea'>
   ) => {
     const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
       _.isUndefined(input) ? defaul : input

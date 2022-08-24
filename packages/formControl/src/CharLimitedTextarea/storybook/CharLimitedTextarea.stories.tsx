@@ -1,9 +1,7 @@
 import { ComponentStory } from '@storybook/react'
-import { CharLimitedTextarea } from '..'
+import { CharLimitedTextarea, defaultProps } from '..'
 import { commmonArgTypes } from '../../common/argTypes'
-import { DarkTextBox } from '../../mock/TestBox'
 import { styleArgTypes } from '../css-props/argTypes'
-import { defaultProps } from '../model/props'
 import { DocsPage } from './docsPage'
 
 export default {
@@ -75,18 +73,12 @@ export default {
   },
 }
 
-const Template: ComponentStory<typeof CharLimitedTextarea> = ({
-  children,
-  ...args
-}) => (
-  <CharLimitedTextarea {...args} as={DarkTextBox}>
-    {children}
-  </CharLimitedTextarea>
+const Template: ComponentStory<typeof CharLimitedTextarea> = ({ ...args }) => (
+  <CharLimitedTextarea {...args} />
 )
 
 export const playground = Template.bind({})
 playground.args = {
   ...defaultProps,
-  children: 'Fade!!',
 }
 playground.argTypes = {}
