@@ -1,11 +1,13 @@
 import { ComponentStory } from '@storybook/react'
 import { AspectFrame } from '..'
 import { commmonArgTypes } from '../../common/argTypes'
-import { DarkTextBox } from '../../mock/TestBox'
+import { AFrameContainer } from '../../mock/TestBox'
 import { styleArgTypes } from '../css-props/argTypes'
 import { logicArgTypes } from '../model/argTypes'
 import { defaultProps } from '../model/props'
 import { DocsPage } from './docsPage'
+// @ts-ignore
+import sampleImage01 from './image/sample01.jpg'
 
 export default {
   title: 'layout/AspectFrame',
@@ -45,8 +47,8 @@ const Template: ComponentStory<typeof AspectFrame> = ({
   children,
   ...args
 }) => (
-  <AspectFrame {...args} as={DarkTextBox}>
-    {children}
+  <AspectFrame {...args} as={AFrameContainer}>
+    <img src={sampleImage01} />
   </AspectFrame>
 )
 

@@ -13,6 +13,14 @@ export const BorderBox = styled.div`
   color: ${$.vivid.green};
   height: 100px;
 `
+
+export const AFrameContainer = styled(BorderBox)`
+  box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
+  height: 100%;
+  width: 100%;
+  box-sizing: padding-box;
+`
+
 export const DStackContainer = styled(Container)``
 
 export const DStackChild = styled(BorderBox)`
