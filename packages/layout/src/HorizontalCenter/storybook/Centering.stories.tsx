@@ -1,7 +1,7 @@
 import { ComponentStory } from '@storybook/react'
 import { HorizontalCenter } from '..'
 import { commmonArgTypes } from '../../common/argTypes'
-import { DarkTextBox, FillBox } from '../../mock/TestBox'
+import { DarkTextBox, BorderBox, Container } from '../../mock/TestBox'
 import { styleArgTypes } from '../css-props/argTypes'
 import { defaultProps } from '../model/props'
 import { DocsPage } from './docsPage'
@@ -72,8 +72,8 @@ const Template: ComponentStory<typeof HorizontalCenter> = ({
   children,
   ...args
 }) => (
-  <HorizontalCenter {...args}>
-    <FillBox>Center!!</FillBox>
+  <HorizontalCenter {...args} as={Container}>
+    <BorderBox>Let&#39;s operate Controls!</BorderBox>
   </HorizontalCenter>
 )
 

@@ -1,26 +1,29 @@
 import _ from 'lodash'
 import { ElementType, forwardRef, ReactElement } from 'react'
-import { DivComponentPropWithRef } from '../common/polymorphic/fixedAs'
-import { PolymorphicRef } from '../common/polymorphic/standard'
+import {
+  PolymorphicComponentPropWithRef,
+  PolymorphicRef,
+} from '../common/polymorphic/standard'
 import { CharacterProps, defaultProps } from './model/props'
 import { StyledElement } from './styled'
 
-export type HorizontalCenterProps = DivComponentPropWithRef<CharacterProps>
+export type HorizontalCenterProps<As extends ElementType> =
+  PolymorphicComponentPropWithRef<As, CharacterProps>
 
-export type HorizontalCenterComponent = (
-  props: HorizontalCenterProps
+export type HorizontalCenterComponent = <As extends ElementType>(
+  props: HorizontalCenterProps<As>
 ) => ReactElement | null
 
 export const HorizontalCenter: HorizontalCenterComponent = forwardRef(
   <As extends ElementType>(
-    { children, ..._props }: HorizontalCenterProps,
+    { as, children, ..._props }: HorizontalCenterProps<As>,
     ref?: PolymorphicRef<As>
   ) => {
     const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
       _.isUndefined(input) ? defaul : input
     )
     return (
-      <StyledElement {...props} ref={ref}>
+      <StyledElement {...props} ref={ref} as={as as unknown as undefined}>
         {children}
       </StyledElement>
     )
