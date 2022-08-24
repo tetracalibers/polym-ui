@@ -6,7 +6,7 @@ import { defaultProps, typeOptions } from '../model/props'
 import { DocsPage } from './docsPage'
 
 export default {
-  title: 'form control/GenericInput',
+  title: 'form control/atom/GenericInput',
   component: GenericInput,
   parameters: {
     docs: {

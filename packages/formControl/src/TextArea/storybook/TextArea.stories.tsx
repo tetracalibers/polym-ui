@@ -5,7 +5,7 @@ import { styleArgTypes } from '../css-props/argTypes'
 import { defaultProps } from '../model/props'
 
 export default {
-  title: 'form control/TextArea',
+  title: 'form control/atom/TextArea',
   component: TextArea,
   argTypes: {
     children: {
