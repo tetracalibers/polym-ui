@@ -30,3 +30,13 @@ export type DivComponentProp<Props = {}> = PropsWithChildren<Props> &
 
 export type DivComponentPropWithRef<Props = {}> = DivComponentProp<Props> &
   PolymorphicRef<'div'>
+
+/* -------------------------------------------- */
+/* SPAN                                         */
+/* -------------------------------------------- */
+
+export type SpanComponentProp<Props = {}> = PropsWithChildren<Props> &
+  ComponentPropsWithoutRef<'span'>
+
+export type SpanComponentPropWithRef<Props = {}> = SpanComponentProp<Props> &
+  PolymorphicRef<'span'>
