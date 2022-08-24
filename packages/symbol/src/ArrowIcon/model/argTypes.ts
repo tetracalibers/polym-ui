@@ -18,4 +18,20 @@ export const logicArgTypes = {
       },
     },
   },
+  thickness: {
+    control: {
+      type: 'number',
+    },
+    description: 'Thickness of arrow',
+    table: {
+      type: {
+        summary: null,
+      },
+      category: 'style control',
+      defaultValue: {
+        summary: defaultProps.thickness,
+        details: null,
+      },
+    },
+  },
 }

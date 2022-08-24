@@ -4,12 +4,12 @@ import { ElementType } from 'react'
 import { match } from 'ts-pattern'
 import { ColorPalette } from 'styled-utility-first'
 
-// このスタイルだと矢印の辺の長さは49.5px
-// width + border-width = 35px
 export const StyledElement = styled.span<CharacterProps>`
-  width: 33px;
-  height: 33px;
-  border: 2px solid #333;
+  width: ${({ size, thickness }) => css`calc(${size} * 0.7 - ${thickness}px)`};
+  height: ${({ size, thickness }) => css`calc(${size} * 0.7 - ${thickness}px)`};
+  border-color: ${({ color }) => color};
+  border-width: ${({ thickness }) => thickness}px;
+  border-style: solid;
   border-left: 0;
   border-top: 0;
   display: inline-block;
