@@ -2,7 +2,21 @@
 /* FONT                                         */
 /* -------------------------------------------- */
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Zen+Kurenaido&display=swap');
 
 * {
-  font-family: 'Inconsolata', monospace !important;
+  font-family: 'Inconsolata', 'Zen Kurenaido' !important;
+}
+
+.bytomixy :lang(ja) {
+  font-size: 0.8em;
+  color: #68768a;
+}
+
+.bytomixy h2 {
+  font-size: 1.3rem;
+}
+
+.bytomixy ul {
+  list-style-type: '-> ';
 }
