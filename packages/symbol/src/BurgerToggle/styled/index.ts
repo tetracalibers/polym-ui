@@ -21,7 +21,19 @@ export const StyledButton = styled.div<CharacterProps>`
 
 export const SymbolWrapper = styled.div<CharacterProps>``
 
-const Line = styled.span<CharacterProps>``
+const Line = styled.span<CharacterProps>`
+  --transition-duration: ${({ transitionDuration }) => transitionDuration};
+  --color: ${({ color }) => color};
+
+  display: inline-block;
+  transition: all var(--transition-duration); /*アニメーションの設定*/
+  position: absolute;
+  left: 14px;
+  height: 3px;
+  border-radius: 2px;
+  background-color: var(--color);
+  width: 45%;
+`
 
 export const Line1 = styled(Line)<CharacterProps>``
 

@@ -8,6 +8,8 @@ const conf = {
   ),
   width: Required<CSST.Property.Width>('50px'),
   borderRadius: Required<CSST.Property.BorderRadius>('5px'),
+  transitionDuration: Required<CSST.Property.TransitionDuration>('0.5s'),
+  color: Required<CSST.Property.Color>('#fff'),
 }
 type Conf = typeof conf
 

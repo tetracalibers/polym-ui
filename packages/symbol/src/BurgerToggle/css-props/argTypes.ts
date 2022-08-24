@@ -27,4 +27,10 @@ export const styleArgTypes = {
   borderRadius: {
     ...withDefaultAs('borderRadius'),
   },
+  transitionDuration: {
+    ...withDefaultAs('transitionDuration'),
+  },
+  color: {
+    ...withDefaultAs('color'),
+  },
 }
