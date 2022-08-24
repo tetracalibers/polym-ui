@@ -34,6 +34,25 @@ export default {
         required: true,
       },
     },
+    id: {
+      control: {
+        type: 'text',
+      },
+      description: 'HTML input element id attribute',
+      table: {
+        type: {
+          summary: null,
+        },
+        category: 'application',
+        defaultValue: {
+          summary: defaultProps.id,
+          details: null,
+        },
+      },
+      type: {
+        required: true,
+      },
+    },
     label: {
       control: {
         type: 'text',

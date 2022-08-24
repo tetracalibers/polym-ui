@@ -23,11 +23,11 @@ export const GenericInput: GenericInputComponent = forwardRef(
     const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
       _.isUndefined(input) ? defaul : input
     )
-    const { label } = props
+    const { label, id } = props
     return (
       <label>
         {label}
-        <StyledInput {...props} ref={ref} />
+        <StyledInput {...props} ref={ref} id={id} />
       </label>
     )
   }

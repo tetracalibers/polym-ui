@@ -18,6 +18,7 @@ export type TypeOptions = typeof typeOptions[number]
 const conf = {
   type: Required<TypeOptions>('text'),
   label: Required<string>(''),
+  id: Required<string>('text'),
 }
 type Conf = typeof conf
 
