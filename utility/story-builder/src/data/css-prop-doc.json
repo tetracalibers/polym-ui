@@ -4397,10 +4397,9 @@
   },
   "marginTop": {
     "control": {
-      "type": "select"
+      "type": "text"
     },
-    "options": ["<length>", "<percentage>", "auto"],
-    "description": "",
+    "description": "The top margin of the outside of the element",
     "table": {
       "category": "CSS",
       "subcategory": "Box Model",
