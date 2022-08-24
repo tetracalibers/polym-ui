@@ -30,23 +30,37 @@ export default {
         required: true,
       },
     },
-    fadeFrom: {
+    textCenter: {
       control: {
-        type: null,
+        type: 'boolean',
       },
-      description: 'Which direction the elements appear from',
+      description: 'Whether text is also centered or not',
       table: {
         type: {
           summary: null,
         },
-        category: 'character',
+        category: 'style control',
         defaultValue: {
-          summary: '', // TODO
+          summary: defaultProps.textCenter,
           details: null,
         },
       },
-      type: {
-        required: true,
+    },
+    intrinsic: {
+      control: {
+        type: 'boolean',
+      },
+      description:
+        'Whether to center child elements based on their content width',
+      table: {
+        type: {
+          summary: null,
+        },
+        category: 'style control',
+        defaultValue: {
+          summary: defaultProps.intrinsic,
+          details: null,
+        },
       },
     },
     ...commmonArgTypes,
