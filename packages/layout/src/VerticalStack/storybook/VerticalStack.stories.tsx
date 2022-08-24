@@ -13,6 +13,10 @@ export default {
   parameters: {
     docs: {
       page: () => <DocsPage />,
+      description: {
+        component:
+          'Suitable solution to align elements of the same shape vertically with equal spacing',
+      },
     },
   },
   argTypes: {

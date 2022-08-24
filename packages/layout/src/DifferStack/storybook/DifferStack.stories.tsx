@@ -13,6 +13,10 @@ export default {
   parameters: {
     docs: {
       page: () => <DocsPage />,
+      description: {
+        component:
+          'Suitable solution to arrange elements of different shapes respectively',
+      },
     },
   },
   argTypes: {

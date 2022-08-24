@@ -13,6 +13,10 @@ export default {
   parameters: {
     docs: {
       page: () => <DocsPage />,
+      description: {
+        component:
+          'Suitable solution to place elements of the same shape side by side with equal spacing',
+      },
     },
   },
   argTypes: {

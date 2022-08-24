@@ -13,6 +13,10 @@ export default {
   parameters: {
     docs: {
       page: () => <DocsPage />,
+      description: {
+        component:
+          'Suitable solution to achieve a responsive layout with a sidebar on one side',
+      },
     },
   },
   argTypes: {
