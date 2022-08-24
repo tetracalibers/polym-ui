@@ -1,7 +1,7 @@
 import { ComponentStory } from '@storybook/react'
 import { VerticalStack } from '..'
 import { commmonArgTypes } from '../../common/argTypes'
-import { DarkTextBox } from '../../mock/TestBox'
+import { VerticalStackChild, VerticalStackContainer } from '../../mock/TestBox'
 import { styleArgTypes } from '../css-props/argTypes'
 import { logicArgTypes } from '../model/argTypes'
 import { defaultProps } from '../model/props'
@@ -18,9 +18,9 @@ export default {
   argTypes: {
     children: {
       control: {
-        type: 'text',
+        type: null,
       },
-      description: 'Child elements of the element specified by as props',
+      description: 'Elements to be spaced equally vertically',
       table: {
         type: {
           summary: null,
@@ -41,14 +41,20 @@ const Template: ComponentStory<typeof VerticalStack> = ({
   children,
   ...args
 }) => (
-  <VerticalStack {...args} as={DarkTextBox}>
-    {children}
+  <VerticalStack {...args} as={VerticalStackContainer}>
+    <VerticalStackChild>Top!!</VerticalStackChild>
+    <VerticalStackChild>Middle!!</VerticalStackChild>
+    <VerticalStackChild>Bottom!!</VerticalStackChild>
+    <VerticalStackChild>
+      <VerticalStackChild>Inner Top!!</VerticalStackChild>
+      <VerticalStackChild>Inner Middle!!</VerticalStackChild>
+      <VerticalStackChild>Inner Bottom!!</VerticalStackChild>
+    </VerticalStackChild>
   </VerticalStack>
 )
 
 export const playground = Template.bind({})
 playground.args = {
   ...defaultProps,
-  children: 'Fade!!',
 }
 playground.argTypes = {}
