@@ -11,21 +11,22 @@ export const StyledElement = styled.div<CharacterProps>`
     justify-content: flex-start;
   }
 
-  & > * {
+  && > * {
     /* 既存の垂直marginを削除 */
     margin-top: 0;
     margin-bottom: 0;
   }
 
+  /* 連続する要素にだけmargin適用 */
   ${({ recursive, space }) => {
     return recursive
       ? css`
-          & * + * {
+          && * + * {
             margin-top: ${space};
           }
         `
       : css`
-          & > * + * {
+          && > * + * {
             margin-top: ${space};
           }
         `
@@ -33,7 +34,7 @@ export const StyledElement = styled.div<CharacterProps>`
 
   ${({ separateFrom }) => {
     return Truthy(separateFrom).when(css`
-      & > :nth-child(${separateFrom}) {
+      && > :nth-child(${separateFrom}) {
         margin-bottom: auto;
       }
     `)
