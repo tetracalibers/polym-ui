@@ -4,16 +4,30 @@ import { styleDefaultProps } from './props'
 const withDefaultAs = useSetDefaultAs(styleDefaultProps)
 
 export const styleArgTypes = {
-  space: {
-    ...withDefaultAs('gap'),
-    description: 'Spacing of elements horizontally aligned',
+  size: {
+    ...withDefaultAs('width'),
+    description: 'Size of heart',
     table: {
       type: {
         summary: null,
       },
       category: 'style control',
       defaultValue: {
-        summary: '',
+        summary: styleDefaultProps.size,
+        details: null,
+      },
+    },
+  },
+  color: {
+    ...withDefaultAs('color'),
+    description: 'Color of heart',
+    table: {
+      type: {
+        summary: null,
+      },
+      category: 'style control',
+      defaultValue: {
+        summary: styleDefaultProps.color,
         details: null,
       },
     },
