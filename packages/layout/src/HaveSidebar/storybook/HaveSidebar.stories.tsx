@@ -1,7 +1,7 @@
 import { ComponentStory } from '@storybook/react'
 import { HaveSidebar } from '..'
 import { commmonArgTypes } from '../../common/argTypes'
-import { DarkTextBox } from '../../mock/TestBox'
+import { Container, Sidebar, MainContents } from '../../mock/TestBox'
 import { styleArgTypes } from '../css-props/argTypes'
 import { logicArgTypes } from '../model/argTypes'
 import { defaultProps } from '../model/props'
@@ -18,7 +18,7 @@ export default {
   argTypes: {
     children: {
       control: {
-        type: 'text',
+        type: null,
       },
       description: 'Child elements of the element specified by as props',
       table: {
@@ -41,14 +41,14 @@ const Template: ComponentStory<typeof HaveSidebar> = ({
   children,
   ...args
 }) => (
-  <HaveSidebar {...args} as={DarkTextBox}>
-    {children}
+  <HaveSidebar {...args} as={Container}>
+    <Sidebar>Sidebar!!</Sidebar>
+    <MainContents>Main!!</MainContents>
   </HaveSidebar>
 )
 
 export const playground = Template.bind({})
 playground.args = {
   ...defaultProps,
-  children: 'Fade!!',
 }
 playground.argTypes = {}

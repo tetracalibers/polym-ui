@@ -4,12 +4,11 @@ import { ElementType } from 'react'
 import { match } from 'ts-pattern'
 import { ColorPalette, Truthy } from 'styled-utility-first'
 
-const sidebarStyle = (sideMaxWidth: CharacterProps['sideMaxWidth']) => {
+const sidebarStyle = () => {
   return css`
     /* サイドバーらしい幅 */
     flex-basis: 20rem;
     flex-grow: 1;
-    max-width: ${sideMaxWidth};
   `
 }
 
@@ -36,12 +35,12 @@ export const StyledElement = styled.div<CharacterProps>`
     `)
   }}
 
-  ${({ sidebarChild, sideMaxWidth, mainMinWidth }) => {
+  ${({ sidebarChild, mainMinWidth }) => {
     return match(sidebarChild)
       .with('first', () => {
         return css`
           & > :first-child {
-            ${sidebarStyle(sideMaxWidth)}
+            ${sidebarStyle()}
           }
           & > :last-child {
             ${mainStyle(mainMinWidth)}
@@ -54,7 +53,7 @@ export const StyledElement = styled.div<CharacterProps>`
             ${mainStyle(mainMinWidth)}
           }
           & > :last-child {
-            ${sidebarStyle(sideMaxWidth)}
+            ${sidebarStyle()}
           }
         `
       })

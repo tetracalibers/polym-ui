@@ -30,6 +30,14 @@ export const HStackChild = styled(BorderBox)`
   width: 150px;
 `
 
+export const Sidebar = styled(BorderBox)`
+  height: 300px;
+`
+
+export const MainContents = styled(BorderBox)`
+  height: 300px;
+`
+
 export const DarkTextBox = styled.div`
   padding: 1rem 2rem;
   text-align: center;
