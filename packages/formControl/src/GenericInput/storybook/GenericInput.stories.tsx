@@ -18,9 +18,29 @@ export default {
         type: {
           summary: null,
         },
-        category: 'character',
+        category: 'application',
         defaultValue: {
           summary: defaultProps.type,
+          details: null,
+        },
+      },
+      type: {
+        required: true,
+      },
+    },
+    label: {
+      control: {
+        type: 'string',
+      },
+      description:
+        'A string of text that appears near the input field as a label indicating what should be entered',
+      table: {
+        type: {
+          summary: null,
+        },
+        category: 'application',
+        defaultValue: {
+          summary: defaultProps.label,
           details: null,
         },
       },
