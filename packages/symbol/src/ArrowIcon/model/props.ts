@@ -2,7 +2,12 @@ import { getDefaultProps, getPropType, Required } from 'react-tsx-props'
 import { commonDefaultProps, CommonProps } from '../../common/props'
 import { styleDefaultProps, StyleProps } from '../css-props/props'
 
-const conf = {}
+export const directionOptions = ['top', 'bottom', 'left', 'right'] as const
+export type DirectionOptions = typeof directionOptions[number]
+
+const conf = {
+  direction: Required<DirectionOptions>('right'),
+}
 type Conf = typeof conf
 
 export type CharacterProps = getPropType<Conf> & CommonProps & StyleProps

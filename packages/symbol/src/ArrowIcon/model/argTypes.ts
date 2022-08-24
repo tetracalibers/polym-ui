@@ -1,18 +1,19 @@
-import { defaultProps } from './props'
+import { defaultProps, directionOptions } from './props'
 
 export const logicArgTypes = {
-  recursive: {
+  direction: {
     control: {
-      type: 'boolean',
+      type: 'select',
     },
-    description: 'Whether to apply layout to nested elements',
+    options: directionOptions,
+    description: 'Direction of arrow',
     table: {
       type: {
         summary: null,
       },
       category: 'style control',
       defaultValue: {
-        summary: '',
+        summary: defaultProps.direction,
         details: null,
       },
     },
