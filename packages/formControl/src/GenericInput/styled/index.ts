@@ -4,7 +4,7 @@ import { ElementType } from 'react'
 import { match } from 'ts-pattern'
 import { ColorPalette } from 'styled-utility-first'
 
-export const StyledElement = styled.input`
+export const StyledInput = styled.input`
   appearance: none;
   width: 100%;
   max-width: 300px;
