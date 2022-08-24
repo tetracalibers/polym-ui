@@ -19,6 +19,10 @@ export const StyledElement = styled.div<CharacterProps>`
         text-align: center;
       `)
     }}
+    
+    box-sizing: border-box;
+    padding-left: ${({ paddingX }) => paddingX};
+    padding-right: ${({ paddingX }) => paddingX};
   }
 
   && > * {
@@ -27,7 +31,5 @@ export const StyledElement = styled.div<CharacterProps>`
     max-width: ${({ maxWidth }) => maxWidth};
     margin-left: auto;
     margin-right: auto;
-    padding-left: ${({ paddingX }) => paddingX};
-    padding-right: ${({ paddingX }) => paddingX};
   }
 `
