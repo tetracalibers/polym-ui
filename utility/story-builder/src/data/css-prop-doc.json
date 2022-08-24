@@ -4364,10 +4364,9 @@
   },
   "marginLeft": {
     "control": {
-      "type": "select"
+      "type": "text"
     },
-    "options": ["<length>", "<percentage>", "auto"],
-    "description": "",
+    "description": "The left margin of the outside of the element",
     "table": {
       "category": "CSS",
       "subcategory": "Box Model",
@@ -4838,17 +4837,9 @@
   },
   "maxWidth": {
     "control": {
-      "type": "select"
+      "type": "text"
     },
-    "options": [
-      "none",
-      "<length-percentage>",
-      "min-content",
-      "max-content",
-      "fit-content",
-      "fit-content(<length-percentage>)"
-    ],
-    "description": "",
+    "description": "Maximum width of element",
     "table": {
       "category": "CSS",
       "subcategory": "Box Model",
@@ -5621,10 +5612,9 @@
   },
   "paddingLeft": {
     "control": {
-      "type": "select"
+      "type": "text"
     },
-    "options": ["<length>", "<percentage>"],
-    "description": "",
+    "description": "Width of the left margin within the element's interior",
     "table": {
       "category": "CSS",
       "subcategory": "Box Model",
