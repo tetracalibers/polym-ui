@@ -52,7 +52,7 @@
       "flex-end",
       "baseline"
     ],
-    "description": "",
+    "description": "Placement of child elements in a direction not specified by flex-direction",
     "table": {
       "category": "CSS",
       "subcategory": "Box Alignment",
@@ -3968,7 +3968,7 @@
       "space-evenly",
       "stretch"
     ],
-    "description": "",
+    "description": "Alignment of child elements in the direction specified by flex-direction",
     "table": {
       "category": "CSS",
       "subcategory": "Box Alignment",
