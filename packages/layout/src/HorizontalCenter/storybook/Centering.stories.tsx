@@ -7,7 +7,7 @@ import { defaultProps } from '../model/props'
 import { DocsPage } from './docsPage'
 
 export default {
-  title: 'form control/HorizontalCenter',
+  title: 'layout/HorizontalCenter',
   component: HorizontalCenter,
   parameters: {
     docs: {

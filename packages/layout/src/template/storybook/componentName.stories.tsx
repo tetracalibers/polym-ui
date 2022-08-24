@@ -7,7 +7,7 @@ import { defaultProps } from '../model/props'
 import { DocsPage } from './docsPage'
 
 export default {
-  title: 'form control/WillFade',
+  title: 'layout/WillFade',
   component: WillFade,
   parameters: {
     docs: {
