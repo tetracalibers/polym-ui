@@ -7,7 +7,7 @@ import { defaultProps } from '../model/props'
 import { DocsPage } from './docsPage'
 
 export default {
-  title: 'layout/ArrowIcon',
+  title: 'symbols/ArrowIcon',
   component: ArrowIcon,
   parameters: {
     docs: {
