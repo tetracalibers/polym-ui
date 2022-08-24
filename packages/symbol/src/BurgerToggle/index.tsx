@@ -6,6 +6,7 @@ import {
 } from '../common/polymorphic/standard'
 import { CharacterProps, defaultProps } from './model/props'
 import { StyledButton, SymbolWrapper, Line1, Line2, Line3 } from './styled'
+import { VerticalStack } from '@polym-ui/layout'
 
 export type BurgerToggleProps<As extends ElementType> = Omit<
   PolymorphicComponentPropWithRef<As, CharacterProps>,
@@ -26,11 +27,11 @@ export const BurgerToggle: BurgerToggleComponent = forwardRef(
     )
     return (
       <StyledButton {...props} ref={ref} as={as as unknown as undefined}>
-        <SymbolWrapper {...props}>
+        <VerticalStack {...props} as={SymbolWrapper} space={'8px'}>
           <Line1 {...props} />
           <Line2 {...props} />
           <Line3 {...props} />
-        </SymbolWrapper>
+        </VerticalStack>
       </StyledButton>
     )
   }

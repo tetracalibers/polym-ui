@@ -35,7 +35,9 @@ const Line = styled.span<CharacterProps>`
   width: 45%;
 `
 
-export const Line1 = styled(Line)<CharacterProps>``
+export const Line1 = styled(Line)<CharacterProps>`
+  top: 15px;
+`
 
 export const Line2 = styled(Line)<CharacterProps>``
 

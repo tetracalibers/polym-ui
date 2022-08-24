@@ -16,6 +16,9 @@ export const logicArgTypes = {
         details: null,
       },
     },
+    type: {
+      required: false,
+    },
   },
   separateFrom: {
     control: {
@@ -31,6 +34,9 @@ export const logicArgTypes = {
         summary: defaultProps.separateFrom,
         details: null,
       },
+    },
+    type: {
+      required: false,
     },
   },
 }
