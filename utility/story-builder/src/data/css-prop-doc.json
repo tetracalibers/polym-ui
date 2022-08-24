@@ -4127,10 +4127,9 @@
   },
   "lineHeight": {
     "control": {
-      "type": "select"
+      "type": "text"
     },
-    "options": ["normal", "<number>", "<length>", "<percentage>"],
-    "description": "",
+    "description": "line height",
     "table": {
       "category": "CSS",
       "subcategory": "Fonts",
