@@ -1,7 +1,7 @@
 import { ComponentStory } from '@storybook/react'
 import { DifferStack } from '..'
 import { commmonArgTypes } from '../../common/argTypes'
-import { DarkTextBox } from '../../mock/TestBox'
+import { DStackContainer, DStackChild } from '../../mock/TestBox'
 import { styleArgTypes } from '../css-props/argTypes'
 import { logicArgTypes } from '../model/argTypes'
 import { defaultProps } from '../model/props'
@@ -22,9 +22,9 @@ export default {
   argTypes: {
     children: {
       control: {
-        type: 'text',
+        type: null,
       },
-      description: 'Child elements of the element specified by as props',
+      description: 'Elements to be aligned',
       table: {
         type: {
           summary: null,
@@ -45,14 +45,18 @@ const Template: ComponentStory<typeof DifferStack> = ({
   children,
   ...args
 }) => (
-  <DifferStack {...args} as={DarkTextBox}>
-    {children}
+  <DifferStack {...args} as={DStackContainer}>
+    <DStackChild>My Website</DStackChild>
+    <DStackChild>About</DStackChild>
+    <DStackChild>Blog</DStackChild>
+    <DStackChild>Shop</DStackChild>
+    <DStackChild>Contact</DStackChild>
+    <DStackChild>Accessibility</DStackChild>
   </DifferStack>
 )
 
 export const playground = Template.bind({})
 playground.args = {
   ...defaultProps,
-  children: 'Fade!!',
 }
 playground.argTypes = {}

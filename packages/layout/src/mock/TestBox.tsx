@@ -13,6 +13,13 @@ export const BorderBox = styled.div`
   color: ${$.vivid.green};
   height: 100px;
 `
+export const DStackContainer = styled(Container)``
+
+export const DStackChild = styled(BorderBox)`
+  width: fit-content;
+  padding: 1rem;
+  height: auto;
+`
 
 export const VerticalStackContainer = styled(Container)`
   height: 200vh;

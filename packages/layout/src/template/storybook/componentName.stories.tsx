@@ -21,7 +21,7 @@ export default {
   argTypes: {
     children: {
       control: {
-        type: 'text',
+        type: null,
       },
       description: 'Child elements of the element specified by as props',
       table: {
@@ -49,6 +49,5 @@ const Template: ComponentStory<typeof WillFade> = ({ children, ...args }) => (
 export const playground = Template.bind({})
 playground.args = {
   ...defaultProps,
-  children: 'Fade!!',
 }
 playground.argTypes = {}
