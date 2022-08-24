@@ -6,7 +6,7 @@ const withDefaultAs = useSetDefaultAs(styleDefaultProps)
 export const styleArgTypes = {
   space: {
     ...withDefaultAs('gap'),
-    description: 'Spacing of elements horizontally aligned',
+    description: 'Minimum space to be reserved between child elements',
     table: {
       type: {
         summary: null,
@@ -17,5 +17,11 @@ export const styleArgTypes = {
         details: null,
       },
     },
+  },
+  justifyContent: {
+    ...withDefaultAs('justifyContent'),
+  },
+  alignItems: {
+    ...withDefaultAs('alignItems'),
   },
 }
