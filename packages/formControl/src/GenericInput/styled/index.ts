@@ -24,6 +24,10 @@ export const StyledInput = styled.input`
     margin: 0;
   }
 
+  &:focus {
+    outline: 2px solid ${ColorPalette.pastel.water};
+  }
+
   &[type='number'] {
     -moz-appearance: textfield;
   }
