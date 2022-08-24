@@ -10,10 +10,8 @@ const dirname = `src/${componentName}`
 await fs.copy('src/template', dirname)
 
 await within(async () => {
-  cd(dirname)
-
   /* storiesファイルの改名 ----------------------------- */
-  cd('storybook')
+  cd(`${dirname}/storybook`)
   await fs.move('componentName.stories.tsx', `${componentName}.stories.tsx`, {
     overwrite: true,
   })
