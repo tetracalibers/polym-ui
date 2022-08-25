@@ -10,7 +10,7 @@ export const logicArgTypes = {
       'A number indicating how many of the child elements the element to be vertically centered is, or the tag name or component name of the element',
     table: {
       type: {
-        summary: 'number | HTMLtagName(string) | Component',
+        summary: 'number | HTMLtagName(string) | StyledComponent',
       },
       category: 'character',
       defaultValue: {

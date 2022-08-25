@@ -8,6 +8,7 @@ import { commonDefaultProps, CommonProps } from '../../common/props'
 import { styleDefaultProps, StyleProps } from '../css-props/props'
 import { CssStyle } from 'ts-typedef-helper'
 import { ElementType } from 'react'
+import { AnyStyledComponent } from 'styled-components'
 
 const conf = {
   spaceV: NotRequired<number>(1),
@@ -22,7 +23,7 @@ type Conf = typeof conf
 export type CharacterProps = getPropType<Conf> &
   CommonProps &
   StyleProps & {
-    central?: number | ElementType
+    central?: number | AnyStyledComponent | keyof HTMLElement
   }
 export const defaultProps = {
   ...getDefaultProps<CharacterProps>(conf),
