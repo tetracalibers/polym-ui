@@ -2,7 +2,7 @@ import { defaultProps } from './props'
 import { CssStyle } from 'ts-typedef-helper'
 
 export const logicArgTypes = {
-  target: {
+  central: {
     control: {
       type: 'number',
     },
@@ -14,7 +14,7 @@ export const logicArgTypes = {
       },
       category: 'character',
       defaultValue: {
-        summary: defaultProps.target,
+        summary: defaultProps.central,
         details: null,
       },
     },

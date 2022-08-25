@@ -22,11 +22,11 @@ type Conf = typeof conf
 export type CharacterProps = getPropType<Conf> &
   CommonProps &
   StyleProps & {
-    target?: number | ElementType
+    central?: number | ElementType
   }
 export const defaultProps = {
   ...getDefaultProps<CharacterProps>(conf),
   ...commonDefaultProps,
   ...styleDefaultProps,
-  target: 1,
+  central: 1,
 }
