@@ -20,7 +20,6 @@ export namespace CssStyle {
       'lvh',
       'dvw',
       'dvh',
-      '%',
     ] as const
     export type Length = typeof length[number]
   }
