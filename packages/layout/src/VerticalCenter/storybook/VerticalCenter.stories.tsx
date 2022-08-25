@@ -14,14 +14,14 @@ export default {
     docs: {
       page: () => <DocsPage />,
       description: {
-        component: 'Suitable solution for centering elements vertically',
+        component: '',
       },
     },
   },
   argTypes: {
     children: {
       control: {
-        type: 'text',
+        type: null,
       },
       description: 'Child elements of the element specified by as props',
       table: {
@@ -52,6 +52,5 @@ const Template: ComponentStory<typeof VerticalCenter> = ({
 export const playground = Template.bind({})
 playground.args = {
   ...defaultProps,
-  children: 'Fade!!',
 }
 playground.argTypes = {}
