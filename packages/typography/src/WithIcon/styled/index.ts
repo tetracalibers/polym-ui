@@ -25,11 +25,12 @@ const spaceBetween = (iconChild: CharacterProps['iconChild']) => {
 
 export const Wrapper = styled.span<CharacterProps>`
   --space: ${({ spaceV, spaceU }) => `${spaceV}${spaceU}`};
+  --align-items: ${({ alignItems }) => alignItems};
 
   && {
     /* スペース文字を削除 */
     display: inline-flex;
-    align-items: baseline;
+    align-items: var(--align-items);
   }
 
   ${({ iconChild }) => spaceBetween(iconChild)}

@@ -68,4 +68,5 @@ suffixIcon.args = {
     </>
   ),
   iconChild: 'last',
+  alignItems: 'center',
 }

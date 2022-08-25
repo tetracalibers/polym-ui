@@ -18,4 +18,7 @@ export const styleArgTypes = {
   //     },
   //   },
   // },
+  alignItems: {
+    ...withDefaultAs('alignItems'),
+  },
 }
