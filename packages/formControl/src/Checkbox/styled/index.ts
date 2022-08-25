@@ -9,8 +9,6 @@ export const StyledInput = styled.input<CharacterProps>`
   opacity: 0;
   /* 本来の配置から切り離す */
   position: absolute;
-
-  /* focus時 */
 `
 
 export const StyledLabel = styled.label`
@@ -19,15 +17,7 @@ export const StyledLabel = styled.label`
   user-select: none;
 `
 
-export const WithIcon = styled.span`
-  && {
-    /* スペース文字を削除 */
-    display: inline-flex;
-    align-items: baseline;
-  }
-
-  /* icon */
-  & :first-child {
-    margin-inline-end: 0.75em;
-  }
+export const ClickArea = styled.span`
+  border: 1px solid ${ColorPalette.grayScale.dark};
+  background-color: ${ColorPalette.grayScale.light};
 `

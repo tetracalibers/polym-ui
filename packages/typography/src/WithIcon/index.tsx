@@ -23,7 +23,7 @@ export const WithIcon: WithIconComponent = forwardRef(
       _.isUndefined(input) ? defaul : input
     )
     return (
-      <Wrapper {...props} ref={ref} as={as as unknown as undefined}>
+      <Wrapper {...props} ref={ref} as={as || 'span'}>
         {children}
       </Wrapper>
     )

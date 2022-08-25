@@ -3,8 +3,9 @@ import { forwardRef, ReactElement } from 'react'
 import { InputComponentPropWithRef } from '../common/polymorphic/fixedAs'
 import { PolymorphicRef } from '../common/polymorphic/standard'
 import { CharacterProps, defaultProps } from './model/props'
-import { WithIcon, StyledInput, StyledLabel } from './styled'
+import { StyledInput, StyledLabel, ClickArea } from './styled'
 import { CheckIcon } from '@polym-ui/symbol'
+import { WithIcon } from '@polym-ui/typography'
 
 export type CheckboxProps = Omit<
   InputComponentPropWithRef<CharacterProps>,
