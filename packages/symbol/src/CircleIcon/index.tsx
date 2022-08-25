@@ -1,12 +1,12 @@
 import _ from 'lodash'
 import { ElementType, forwardRef, ReactElement } from 'react'
-import { DivComponentPropWithRef } from '../common/polymorphic/fixedAs'
+import { SpanComponentPropWithRef } from '../common/polymorphic/fixedAs'
 import { PolymorphicRef } from '../common/polymorphic/standard'
 import { CharacterProps, defaultProps } from './model/props'
 import { StyledElement } from './styled'
 
 export type CircleIconProps = Omit<
-  DivComponentPropWithRef<CharacterProps>,
+  SpanComponentPropWithRef<CharacterProps>,
   'children'
 >
 
