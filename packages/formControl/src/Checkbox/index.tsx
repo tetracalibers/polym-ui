@@ -13,13 +13,22 @@ export type CheckboxProps = Omit<
 export type CheckboxComponent = (props: CheckboxProps) => ReactElement | null
 
 export const Checkbox: CheckboxComponent = forwardRef(
-  ({ children, ..._props }: CheckboxProps, ref?: PolymorphicRef<'input'>) => {
+  (
+    { children, name, value, ..._props }: CheckboxProps,
+    ref?: PolymorphicRef<'input'>
+  ) => {
     const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
       _.isUndefined(input) ? defaul : input
     )
     return (
       <label>
-        <StyledInput {...props} ref={ref} type='checkbox' />
+        <StyledInput
+          {...props}
+          ref={ref}
+          type='checkbox'
+          name={name}
+          value={value}
+        />
         <StyledSpan>{children}</StyledSpan>
       </label>
     )
