@@ -29,7 +29,7 @@ export const styleArgTypes = {
       type: {
         summary: null,
       },
-      category: 'scrollbar style',
+      category: 'scrollbar',
       defaultValue: {
         summary: styleDefaultProps.barBgColor,
         details: null,
@@ -43,7 +43,7 @@ export const styleArgTypes = {
       type: {
         summary: null,
       },
-      category: 'scrollbar style',
+      category: 'scrollbar',
       defaultValue: {
         summary: styleDefaultProps.barColor,
         details: null,

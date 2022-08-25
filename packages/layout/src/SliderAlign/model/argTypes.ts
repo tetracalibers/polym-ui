@@ -45,7 +45,7 @@ export const logicArgTypes = {
       type: {
         summary: null,
       },
-      category: 'scrollbar style',
+      category: 'scrollbar',
       defaultValue: {
         summary: defaultProps.hideScrollBar,
         details: null,
@@ -61,7 +61,7 @@ export const logicArgTypes = {
       type: {
         summary: null,
       },
-      category: 'scrollbar style',
+      category: 'scrollbar',
       defaultValue: {
         summary: defaultProps.barHeightV,
         details: null,
@@ -78,7 +78,7 @@ export const logicArgTypes = {
       type: {
         summary: null,
       },
-      category: 'scrollbar style',
+      category: 'scrollbar',
       defaultValue: {
         summary: defaultProps.barHeightU,
         details: null,
