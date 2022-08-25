@@ -1,11 +1,5 @@
-import styled, {
-  AnyStyledComponent,
-  css,
-  IntrinsicElementsKeys,
-  StyledComponentProps,
-} from 'styled-components'
+import styled, { css } from 'styled-components'
 import { CharacterProps } from '../model/props'
-import { ComponentType, ElementType } from 'react'
 import { match } from 'ts-pattern'
 
 const tailSelector = (tailPos: CharacterProps['tailPos']) => {
@@ -136,24 +130,26 @@ const tailMargin = (
 }
 
 export const StyledElement = styled.div<CharacterProps>`
-  position: relative;
-  width: ${({ width }) => width}px;
-  height: ${({ height }) => height}px;
-  background: ${({ backgroundColor }) => backgroundColor};
-  border-radius: ${({ borderRadius }) => borderRadius};
-  display: block;
+  && {
+    position: relative;
+    width: ${({ width }) => width}px;
+    height: ${({ height }) => height}px;
+    background: ${({ backgroundColor }) => backgroundColor};
+    border-radius: ${({ borderRadius }) => borderRadius};
+    display: block;
 
-  ${({ tailPos, backgroundColor, width, height }) => {
-    return css`
-      ${tailSelector(tailPos)} {
-        content: '';
-        position: absolute;
-        ${tailPosition(tailPos)}
-        width: 0;
-        height: 0;
-        ${tailBorder(tailPos, backgroundColor, width, height)}
-        ${tailMargin(tailPos, width, height)}
-      }
-    `
-  }}
+    ${({ tailPos, backgroundColor, width, height }) => {
+      return css`
+        ${tailSelector(tailPos)} {
+          content: '';
+          position: absolute;
+          ${tailPosition(tailPos)}
+          width: 0;
+          height: 0;
+          ${tailBorder(tailPos, backgroundColor, width, height)}
+          ${tailMargin(tailPos, width, height)}
+        }
+      `
+    }}
+  }
 `

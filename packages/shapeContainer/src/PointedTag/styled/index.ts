@@ -2,18 +2,20 @@ import styled, { css } from 'styled-components'
 import { CharacterProps } from '../model/props'
 
 const thisCss = css<CharacterProps>`
-  display: inline-block;
-  width: ${({ width }) => width};
-  height: ${({ height }) => height};
-  background-color: ${({ backgroundColor }) => backgroundColor};
-  border-radius: 2.5px 4px 4px 2.5px;
-  border-left: 1.55px solid ${({ backgroundColor }) => backgroundColor};
+  && {
+    display: inline-block;
+    width: ${({ width }) => width};
+    height: ${({ height }) => height};
+    background-color: ${({ backgroundColor }) => backgroundColor};
+    border-radius: 2.5px 4px 4px 2.5px;
+    border-left: 1.55px solid ${({ backgroundColor }) => backgroundColor};
 
-  /* This makes room for the triangle */
-  margin-left: calc(${({ height }) => height} / 2);
-  position: relative;
-  color: ${({ color }) => color};
-  line-height: ${({ height }) => height};
+    /* This makes room for the triangle */
+    margin-left: calc(${({ height }) => height} / 2);
+    position: relative;
+    color: ${({ color }) => color};
+    line-height: ${({ height }) => height};
+  }
 
   /* Makes the triangle */
   &::before {
