@@ -13,7 +13,7 @@ export const logicArgTypes = {
       },
       category: 'style control',
       defaultValue: {
-        summary: '',
+        summary: defaultProps.widthV,
         details: null,
       },
     },
@@ -30,7 +30,7 @@ export const logicArgTypes = {
       },
       category: 'style control',
       defaultValue: {
-        summary: '',
+        summary: defaultProps.widthU,
         details: null,
       },
     },

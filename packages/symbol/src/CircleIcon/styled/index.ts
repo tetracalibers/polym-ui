@@ -5,7 +5,7 @@ import { ColorPalette, Truthy } from 'styled-utility-first'
 
 export const StyledElement = styled.span<CharacterProps>`
   --width: ${({ widthV, widthU }) => `${widthV}${widthU}`};
-  --background-color: ${ColorPalette.grayScale.dark};
+  --background-color: ${({ color }) => color};
 
   display: inline-block;
   width: var(--width);

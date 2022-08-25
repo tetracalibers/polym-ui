@@ -4,18 +4,18 @@ import { styleDefaultProps } from './props'
 const withDefaultAs = useSetDefaultAs(styleDefaultProps)
 
 export const styleArgTypes = {
-  // space: {
-  //   ...withDefaultAs('gap'),
-  //   description: 'Spacing of elements horizontally aligned',
-  //   table: {
-  //     type: {
-  //       summary: null,
-  //     },
-  //     category: 'style control',
-  //     defaultValue: {
-  //       summary: '',
-  //       details: null,
-  //     },
-  //   },
-  // },
+  color: {
+    ...withDefaultAs('backgroundColor'),
+    description: 'Color of circle',
+    table: {
+      type: {
+        summary: null,
+      },
+      category: 'style control',
+      defaultValue: {
+        summary: styleDefaultProps.color,
+        details: null,
+      },
+    },
+  },
 }
