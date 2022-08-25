@@ -37,7 +37,12 @@ export const Checkbox: CheckboxComponent = forwardRef(
           <OverlapLayer
             renderOverlay={() => (
               <IconWrapper>
-                <CheckIcon sizeV={1.5} sizeU={'em'} thickness={2.5} />
+                <CheckIcon
+                  sizeV={1.5}
+                  sizeU={'em'}
+                  thickness={3}
+                  color={'#EC407A'}
+                />
               </IconWrapper>
             )}
             contain={false}

@@ -31,7 +31,7 @@ export const Square = styled.span`
   border-radius: 2px;
 
   ${StyledInput}:focus + * & {
-    outline: 2px solid ${ColorPalette.pastel.water};
+    outline: 1.5px solid ${ColorPalette.pastel.water};
   }
 
   ${StyledInput}:disabled + * & {
