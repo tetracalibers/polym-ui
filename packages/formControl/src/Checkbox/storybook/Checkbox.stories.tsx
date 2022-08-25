@@ -21,9 +21,9 @@ export default {
   argTypes: {
     children: {
       control: {
-        type: null,
+        type: 'text',
       },
-      description: 'Child elements of the element specified by as props',
+      description: 'Label to be displayed next to the checkbox',
       table: {
         type: {
           summary: null,
@@ -47,5 +47,6 @@ const Template: ComponentStory<typeof Checkbox> = ({ children, ...args }) => (
 export const playground = Template.bind({})
 playground.args = {
   ...defaultProps,
+  children: 'I agree.',
 }
 playground.argTypes = {}

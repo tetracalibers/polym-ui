@@ -5,3 +5,5 @@ import { match } from 'ts-pattern'
 import { ColorPalette, Truthy } from 'styled-utility-first'
 
 export const StyledInput = styled.input<CharacterProps>``
+
+export const StyledSpan = styled.span``

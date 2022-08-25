@@ -3,7 +3,7 @@ import { forwardRef, ReactElement } from 'react'
 import { InputComponentPropWithRef } from '../common/polymorphic/fixedAs'
 import { PolymorphicRef } from '../common/polymorphic/standard'
 import { CharacterProps, defaultProps } from './model/props'
-import { StyledInput } from './styled'
+import { StyledInput, StyledSpan } from './styled'
 
 export type CheckboxProps = Omit<
   InputComponentPropWithRef<CharacterProps>,
@@ -17,6 +17,11 @@ export const Checkbox: CheckboxComponent = forwardRef(
     const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
       _.isUndefined(input) ? defaul : input
     )
-    return <StyledInput {...props} ref={ref} type='checkbox' />
+    return (
+      <label>
+        <StyledInput {...props} ref={ref} type='checkbox' />
+        <StyledSpan>{children}</StyledSpan>
+      </label>
+    )
   }
 )
