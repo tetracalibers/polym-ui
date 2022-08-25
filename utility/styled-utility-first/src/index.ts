@@ -211,6 +211,10 @@ export namespace ColorPalette {
     red: '#ff0f6d',
   }
 
+  export const material = {
+    pink400: '#EC407A',
+  }
+
   export const all = Object.values({
     ...grayScale,
     ...pastel,
