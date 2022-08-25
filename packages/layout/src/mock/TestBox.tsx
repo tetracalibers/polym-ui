@@ -60,8 +60,7 @@ export const VerticalStackChild = styled(BorderBox)`
 export const VCenterContainer = styled(VerticalStackContainer)``
 
 export const VCenterChild = styled(BorderBox)`
-  width: 90%;
-  margin: 0 auto;
+  width: 100%;
 `
 
 export const HStackContainer = styled(Container)``

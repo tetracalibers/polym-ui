@@ -43,10 +43,13 @@ export const StyledElement = styled.div<CharacterProps>`
   --padding: ${({ paddingV, paddingU }) => `${paddingV}${paddingU}`};
   --min-height: ${({ minHeightV, minHeightU }) => `${minHeightV}${minHeightU}`};
 
-  display: flex;
-  flex-direction: column;
-  min-height: var(--min-height);
-  padding: var(--padding);
+  && {
+    display: flex;
+    flex-direction: column;
+    min-height: var(--min-height);
+    padding: var(--padding);
+    box-sizing: border-box;
+  }
 
   & > * {
     /* 各子要素に上下のmarginを設定 */
