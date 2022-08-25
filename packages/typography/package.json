@@ -8,15 +8,10 @@
   },
   "homepage": "https://github.com/tetracalibers/React-polyhexUI/tree/main/packages/core#readme",
   "license": "MIT",
-  "main": "src/index.ts",
   "type": "module",
   "types": "lib/@types/index.d.ts",
-  "exports": {
-    "import": "./lib/bundle.es.js",
-    "require": "./lib/bundle.cjs",
-    "node": "./lib/bundle.es.js",
-    "default": "./lib/bundle.cjs"
-  },
+  "main": "./lib/bundle.cjs",
+  "module": "./lib/bundle.es.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tetracalibers/React-polyhexUI.git"
