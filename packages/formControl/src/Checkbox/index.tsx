@@ -16,13 +16,11 @@ export type CheckboxProps = Omit<
 export type CheckboxComponent = (props: CheckboxProps) => ReactElement | null
 
 export const Checkbox: CheckboxComponent = forwardRef(
-  (
-    { children, name, value, disabled, ..._props }: CheckboxProps,
-    ref?: PolymorphicRef<'input'>
-  ) => {
+  ({ children, ..._props }: CheckboxProps, ref?: PolymorphicRef<'input'>) => {
     const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
       _.isUndefined(input) ? defaul : input
     )
+    const { name, value, disabled, checkIconColor } = props
     return (
       <StyledLabel disabled={disabled}>
         <StyledInput
@@ -41,7 +39,7 @@ export const Checkbox: CheckboxComponent = forwardRef(
                   sizeV={1.5}
                   sizeU={'em'}
                   thickness={3}
-                  color={'#EC407A'}
+                  color={checkIconColor}
                 />
               </IconWrapper>
             )}

@@ -88,4 +88,19 @@ export const styleArgTypes = {
       },
     },
   },
+  checkIconColor: {
+    ...withDefaultAs('color'),
+    description: 'Color of check icon',
+    table: {
+      type: {
+        summary: null,
+      },
+      category: 'style control',
+      subcategory: 'check icon',
+      defaultValue: {
+        summary: styleDefaultProps.checkIconColor,
+        details: null,
+      },
+    },
+  },
 }
