@@ -25,7 +25,7 @@ export const OverlapLayer: OverlapLayerComponent = forwardRef(
       _.isUndefined(input) ? defaul : input
     )
     return (
-      <StyledContainer ref={ref} as={as as unknown as undefined}>
+      <StyledContainer ref={ref} as={as || 'div'}>
         {children}
         <OverlayWrapper {...props}>{renderOverlay()}</OverlayWrapper>
       </StyledContainer>

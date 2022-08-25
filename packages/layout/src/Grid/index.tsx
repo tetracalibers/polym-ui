@@ -25,7 +25,7 @@ export const Grid: GridComponent = forwardRef(
       _.isUndefined(input) ? defaul : input
     )
     return (
-      <StyledElement {...props} ref={ref} as={as as unknown as undefined}>
+      <StyledElement {...props} ref={ref} as={as || 'div'}>
         {children}
       </StyledElement>
     )

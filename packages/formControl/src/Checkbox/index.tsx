@@ -6,6 +6,7 @@ import { CharacterProps, defaultProps } from './model/props'
 import { StyledInput, StyledLabel, ClickArea } from './styled'
 import { CheckIcon } from '@polym-ui/symbol'
 import { WithIcon } from '@polym-ui/typography'
+import { OverlapLayer } from '@polym-ui/layout'
 
 export type CheckboxProps = Omit<
   InputComponentPropWithRef<CharacterProps>,
@@ -32,7 +33,9 @@ export const Checkbox: CheckboxComponent = forwardRef(
           value={value}
         />
         <WithIcon>
-          <CheckIcon sizeV={1.5} sizeU={'em'} />
+          <OverlapLayer
+            renderOverlay={() => <CheckIcon sizeV={1.5} sizeU={'em'} />}
+          ></OverlapLayer>
           {children}
         </WithIcon>
       </StyledLabel>

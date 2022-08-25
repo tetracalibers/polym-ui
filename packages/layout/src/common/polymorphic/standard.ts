@@ -5,7 +5,7 @@ export type PolymorphicRef<C extends ElementType> =
   ComponentPropsWithRef<C>['ref']
 
 type AsProp<C extends import('react').ElementType> = {
-  as: C
+  as?: C
 }
 
 type PropsToOmit<C extends import('react').ElementType, P> = keyof (AsProp<C> &

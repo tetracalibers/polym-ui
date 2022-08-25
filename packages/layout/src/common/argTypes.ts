@@ -11,11 +11,8 @@ export const commmonArgTypes = {
         summary: null,
       },
       defaultValue: {
-        summary: null,
+        summary: 'div',
       },
-    },
-    type: {
-      required: true,
     },
   },
   ref: {
