@@ -4,23 +4,19 @@ import { styleDefaultProps } from './props'
 const withDefaultAs = useSetDefaultAs(styleDefaultProps)
 
 export const styleArgTypes = {
-  // space: {
-  //   ...withDefaultAs('gap'),
-  //   description: 'Spacing of elements horizontally aligned',
-  //   table: {
-  //     type: {
-  //       summary: null,
-  //     },
-  //     category: 'style control',
-  //     defaultValue: {
-  //       summary: '',
-  //       details: null,
-  //     },
-  //   },
-  // },
   itemWidth: {
     ...withDefaultAs('width'),
     description: 'Width of each item',
+    table: {
+      type: {
+        summary: null,
+      },
+      category: 'style control',
+      defaultValue: {
+        summary: '',
+        details: null,
+      },
+    },
   },
   height: {
     ...withDefaultAs('height'),
