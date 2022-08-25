@@ -219,5 +219,6 @@ export namespace ColorPalette {
     ...grayScale,
     ...pastel,
     ...vivid,
+    ...material,
   })
 }
