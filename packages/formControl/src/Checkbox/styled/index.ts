@@ -34,4 +34,8 @@ export const IconWrapper = styled.span`
   display: inline-block;
   padding-bottom: 50%;
   padding-left: 15%;
+
+  ${StyledInput}:not(:checked) + * & {
+    display: none;
+  }
 `
