@@ -13,6 +13,9 @@ export type RadioProps = Omit<InputComponentPropWithRef<CharacterProps>, 'type'>
 
 export type RadioComponent = (props: RadioProps) => ReactElement | null
 
+// #FF7043 ... DeepOrange400
+// #B0BEC5 ... BlueGrey200
+
 export const Radio: RadioComponent = forwardRef(
   ({ children, ..._props }: RadioProps, ref?: PolymorphicRef<'input'>) => {
     const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
@@ -24,9 +27,17 @@ export const Radio: RadioComponent = forwardRef(
         <Input {...rest} ref={ref} type='radio' />
         <WithIcon>
           <OverlapLayer
-            renderOverlay={() => <CircleIcon sizeV={0.9} sizeU={'em'} />}
+            renderOverlay={() => (
+              <CircleIcon sizeV={0.8} sizeU={'em'} color={'#FF7043'} />
+            )}
           >
-            <CircleIcon sizeV={1.5} sizeU={'em'} color='#fff' />
+            <CircleIcon
+              sizeV={1.25}
+              sizeU={'em'}
+              color='#fff'
+              borderWidth={1}
+              borderColor={'#B0BEC5'}
+            />
           </OverlapLayer>
           {children}
         </WithIcon>
