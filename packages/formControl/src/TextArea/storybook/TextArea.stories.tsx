@@ -6,7 +6,7 @@ import { characterArgTypes } from '../model/argTypes'
 import { defaultProps } from '../model/props'
 
 export default {
-  title: 'form control/atom/TextArea',
+  title: 'form control/TextArea',
   component: TextArea,
   argTypes: {
     children: {
