@@ -75,6 +75,7 @@
     "typescript": "^4.7.4",
     "zx": "^7.0.8",
     "@polym-ui/symbol": "*",
-    "@polym-ui/typography": "*"
+    "@polym-ui/typography": "*",
+    "@polym-ui/layout": "*"
   }
 }
