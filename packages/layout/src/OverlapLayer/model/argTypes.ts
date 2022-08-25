@@ -19,18 +19,19 @@ export const logicArgTypes = {
       },
     },
   },
-  canOverflow: {
+  contain: {
     control: {
       type: 'boolean',
     },
-    description: 'Whether to allow elements to protrude from containers',
+    description:
+      'Whether to guarantee that the layer above will not extend beyond the area of the layer below',
     table: {
       type: {
         summary: null,
       },
       category: 'style control',
       defaultValue: {
-        summary: defaultProps.canOverflow,
+        summary: defaultProps.contain,
         details: null,
       },
     },
