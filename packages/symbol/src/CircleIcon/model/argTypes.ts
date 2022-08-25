@@ -2,7 +2,7 @@ import { defaultProps } from './props'
 import { CssStyle } from 'ts-typedef-helper'
 
 export const logicArgTypes = {
-  widthV: {
+  sizeV: {
     control: {
       type: 'number',
     },
@@ -13,24 +13,24 @@ export const logicArgTypes = {
       },
       category: 'style control',
       defaultValue: {
-        summary: defaultProps.widthV,
+        summary: defaultProps.sizeV,
         details: null,
       },
     },
   },
-  widthU: {
+  sizeU: {
     control: {
       type: 'select',
     },
     options: CssStyle.Unit.length,
-    description: 'Units of widthV',
+    description: 'Units of sizeV',
     table: {
       type: {
         summary: null,
       },
       category: 'style control',
       defaultValue: {
-        summary: defaultProps.widthU,
+        summary: defaultProps.sizeU,
         details: null,
       },
     },
