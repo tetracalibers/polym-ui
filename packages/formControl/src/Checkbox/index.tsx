@@ -41,7 +41,6 @@ export const Checkbox: CheckboxComponent = forwardRef(
             )}
             contain={false}
             fixed={false}
-            as={'span'}
           >
             <Square />
           </OverlapLayer>

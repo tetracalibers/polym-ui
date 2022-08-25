@@ -24,6 +24,10 @@ export const Square = styled.span`
   border: 1px solid ${ColorPalette.pastel.purple};
   background-color: #fff;
   border-radius: 2px;
+
+  ${StyledInput}:focus + * & {
+    outline: 2px solid ${ColorPalette.pastel.water};
+  }
 `
 
 export const IconWrapper = styled.span`
