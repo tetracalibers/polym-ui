@@ -17,7 +17,7 @@ export const StyledLabel = styled.label`
   user-select: none;
 `
 
-export const ClickArea = styled.span`
+export const Square = styled.span`
   display: inline-block;
   width: 1.25rem;
   height: 1.25rem;
