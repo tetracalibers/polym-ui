@@ -1,7 +1,7 @@
 import { ComponentStory } from '@storybook/react'
 import { WithIcon } from '..'
 import { commmonArgTypes } from '../../common/argTypes'
-import { DarkTextBox } from '../../mock/TestBox'
+import { DarkTextBox, DarkTextLink } from '../../mock/TestBox'
 import { styleArgTypes } from '../css-props/argTypes'
 import { logicArgTypes } from '../model/argTypes'
 import { defaultProps } from '../model/props'
@@ -42,7 +42,7 @@ export default {
 }
 
 const Template: ComponentStory<typeof WithIcon> = ({ children, ...args }) => (
-  <WithIcon {...args} as={DarkTextBox}>
+  <WithIcon {...args} as={DarkTextLink} href='#'>
     {children}
   </WithIcon>
 )
@@ -55,6 +55,7 @@ prefixIcon.args = {
       <CheckIcon />I agree.
     </>
   ),
+  iconChild: 'first',
 }
 
 export const suffixIcon = Template.bind({})
@@ -63,7 +64,8 @@ suffixIcon.args = {
   children: (
     <>
       I Love You
-      <HeartIcon />
+      <HeartIcon sizeV={1.5} sizeU={'em'} />
     </>
   ),
+  iconChild: 'last',
 }

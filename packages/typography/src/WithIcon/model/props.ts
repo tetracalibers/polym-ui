@@ -13,7 +13,7 @@ export type IconChildOptions = typeof iconChildOptions[number]
 
 const conf = {
   iconChild: NotRequired<IconChildOptions>('first'),
-  spaceV: NotRequired<number>(0.75),
+  spaceV: NotRequired<number>(0.5),
   spaceU: NotRequired<CssStyle.Unit.Length>('em'),
 }
 type Conf = typeof conf
