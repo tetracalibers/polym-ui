@@ -93,13 +93,15 @@ export const WillVerticalLine = styled.div<CharacterProps>`
 `
 
 export const ChildrenWrapper = styled.div<CharacterProps>`
-  /*1.5秒後に中央のエリアが0.5秒かけて表示*/
-  animation-name: ${$.childrenDelayKeyframes};
-  animation-duration: ${({ animationDuration }) =>
-    eachAnimationDuration(animationDuration)}s;
-  animation-timing-function: linear;
-  animation-delay: ${({ animationDuration }) =>
-    eachAnimationDuration(animationDuration) * 3}s;
-  animation-fill-mode: forwards;
-  opacity: 0; /*初期値を透過0にする*/
+  && {
+    /*1.5秒後に中央のエリアが0.5秒かけて表示*/
+    animation-name: ${$.childrenDelayKeyframes};
+    animation-duration: ${({ animationDuration }) =>
+      eachAnimationDuration(animationDuration)}s;
+    animation-timing-function: linear;
+    animation-delay: ${({ animationDuration }) =>
+      eachAnimationDuration(animationDuration) * 3}s;
+    animation-fill-mode: forwards;
+    opacity: 0; /*初期値を透過0にする*/
+  }
 `

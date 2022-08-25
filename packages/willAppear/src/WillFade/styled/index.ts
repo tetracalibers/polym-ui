@@ -13,10 +13,12 @@ const animation = {
 }
 
 const thisCss = css<CharacterProps>`
-  animation-name: ${({ fadeFrom }) => animation.fadeFrom[fadeFrom]};
-  animation-duration: ${({ animationDuration }) => animationDuration}s;
-  animation-fill-mode: forwards;
-  opacity: 0;
+  && {
+    animation-name: ${({ fadeFrom }) => animation.fadeFrom[fadeFrom]};
+    animation-duration: ${({ animationDuration }) => animationDuration}s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+  }
 `
 
 export const StyledElement = styled.div`

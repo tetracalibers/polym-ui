@@ -26,11 +26,13 @@ const perspectiveOrigin = (flipTo: CharacterProps['flipTo']) => {
 }
 
 const thisCss = css<CharacterProps>`
-  animation-name: ${({ flipTo }) => animation.flipTo[_.camelCase(flipTo)]};
-  animation-duration: ${({ animationDuration }) => animationDuration}s;
-  animation-fill-mode: forwards;
-  ${({ flipTo }) => perspectiveOrigin(flipTo)}
-  opacity: 0;
+  && {
+    animation-name: ${({ flipTo }) => animation.flipTo[_.camelCase(flipTo)]};
+    animation-duration: ${({ animationDuration }) => animationDuration}s;
+    animation-fill-mode: forwards;
+    ${({ flipTo }) => perspectiveOrigin(flipTo)}
+    opacity: 0;
+  }
 `
 
 export const StyledElement = styled.div`

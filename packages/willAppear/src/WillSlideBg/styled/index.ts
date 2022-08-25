@@ -13,14 +13,16 @@ const slideAnimation = {
 }
 
 export const SlideBackground = styled.div<CharacterProps>`
-  /* 子要素のwidthに合わせる */
-  display: inline-block;
-  animation-name: ${$.bgDelayKeyframes};
-  animation-duration: ${({ animationDuration }) => animationDuration}s;
-  animation-fill-mode: forwards;
-  position: relative;
-  overflow: hidden; /*はみ出た色要素を隠す*/
-  opacity: 0;
+  && {
+    /* 子要素のwidthに合わせる */
+    display: inline-block;
+    animation-name: ${$.bgDelayKeyframes};
+    animation-duration: ${({ animationDuration }) => animationDuration}s;
+    animation-fill-mode: forwards;
+    position: relative;
+    overflow: hidden; /*はみ出た色要素を隠す*/
+    opacity: 0;
+  }
 
   /* スライドする背景 */
   &::before {
