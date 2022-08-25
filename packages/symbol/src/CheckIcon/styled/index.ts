@@ -1,14 +1,17 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { CharacterProps } from '../model/props'
-import { match } from 'ts-pattern'
-import { ColorPalette, Truthy } from 'styled-utility-first'
 
-// widthはheightの0.5倍
 export const StyledElement = styled.div<CharacterProps>`
+  --height: ${({ sizeV, sizeU }) => `${sizeV}${sizeU}`};
+  --border-color: ${({ color }) => color};
+  --border-width: ${({ thickness }) => thickness}px;
+
   && {
-    width: 19px;
-    height: 33px;
-    border: 2px solid #333;
+    width: calc(var(--height) * 0.575);
+    height: var(--height);
+    border-width: var(--border-width);
+    border-style: solid;
+    border-color: var(--border-color);
     border-left: 0;
     border-top: 0;
 
