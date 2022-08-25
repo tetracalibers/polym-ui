@@ -11,15 +11,17 @@ export const StyledElement = styled.div<CharacterProps>`
   --height: ${({ height }) => height};
   --item-width: ${({ itemWidth }) => itemWidth};
 
-  display: flex;
-  height: var(--height);
-  overflow-x: auto;
-  overflow-y: hidden;
-  box-sizing: border-box;
-  padding: var(--padding);
+  && {
+    display: flex;
+    height: var(--height);
+    overflow-x: auto;
+    overflow-y: hidden;
+    box-sizing: border-box;
+    padding: var(--padding);
 
-  /* for Firefox */
-  scrollbar-color: var(--bar-color) var(--bar-bgcolor);
+    /* for Firefox */
+    scrollbar-color: var(--bar-color) var(--bar-bgcolor);
+  }
 
   &::-webkit-scrollbar {
     height: var(--bar-height);

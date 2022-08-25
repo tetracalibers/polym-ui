@@ -1,8 +1,7 @@
 import styled, { css } from 'styled-components'
 import { CharacterProps } from '../model/props'
-import { ElementType } from 'react'
 import { match } from 'ts-pattern'
-import { ColorPalette, Truthy } from 'styled-utility-first'
+import { Truthy } from 'styled-utility-first'
 
 const sidebarStyle = (sideWidth: CharacterProps['sideWidth']) => {
   return css`

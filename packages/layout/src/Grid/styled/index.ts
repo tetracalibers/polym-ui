@@ -6,7 +6,9 @@ export const StyledElement = styled.div<CharacterProps>`
   --min: ${({ columnMinWidthV, columnMinWidthU }) =>
     `${columnMinWidthV}${columnMinWidthU}`};
 
-  display: grid;
-  grid-gap: var(--gap);
-  grid-template-columns: repeat(auto-fit, minmax(min(var(--min), 100%), 1fr));
+  && {
+    display: grid;
+    grid-gap: var(--gap);
+    grid-template-columns: repeat(auto-fit, minmax(min(var(--min), 100%), 1fr));
+  }
 `
