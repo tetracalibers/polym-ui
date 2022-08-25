@@ -5,6 +5,7 @@ export const Container = styled.div`
   width: 100%;
   height: 100%;
   background-color: white;
+  color: ${$.grayScale.dark}66;
 `
 
 export const BorderBox = styled.div`
@@ -12,6 +13,13 @@ export const BorderBox = styled.div`
   background-color: ${$.pastel.purple}66;
   color: ${$.vivid.green};
   height: 100px;
+`
+
+export const OverlayBox = styled(BorderBox)`
+  background-color: ${$.grayScale.dark};
+  height: auto;
+  width: auto;
+  color: ${$.grayScale.light};
 `
 
 export const AFrameContainer = styled(BorderBox)`

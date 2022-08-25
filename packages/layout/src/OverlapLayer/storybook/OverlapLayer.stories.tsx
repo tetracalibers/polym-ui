@@ -1,7 +1,8 @@
 import { ComponentStory } from '@storybook/react'
 import { OverlapLayer } from '..'
 import { commmonArgTypes } from '../../common/argTypes'
-import { DarkTextBox } from '../../mock/TestBox'
+import { DummyText500W, DummyText50W } from '../../mock/DummyText'
+import { OverlayBox, Container } from '../../mock/TestBox'
 import { styleArgTypes } from '../css-props/argTypes'
 import { logicArgTypes } from '../model/argTypes'
 import { defaultProps } from '../model/props'
@@ -44,8 +45,16 @@ const Template: ComponentStory<typeof OverlapLayer> = ({
   children,
   ...args
 }) => (
-  <OverlapLayer {...args} as={DarkTextBox}>
-    {children}
+  <OverlapLayer
+    {...args}
+    as={Container}
+    renderOverlay={() => (
+      <OverlayBox>
+        <DummyText50W />
+      </OverlayBox>
+    )}
+  >
+    <DummyText500W />
   </OverlapLayer>
 )
 
