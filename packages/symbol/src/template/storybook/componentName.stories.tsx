@@ -12,6 +12,9 @@ export default {
   parameters: {
     docs: {
       page: () => <DocsPage />,
+      description: {
+        component: '',
+      },
     },
   },
   argTypes: {
