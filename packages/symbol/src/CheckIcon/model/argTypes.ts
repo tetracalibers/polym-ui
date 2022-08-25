@@ -40,7 +40,7 @@ export const logicArgTypes = {
     control: {
       type: 'number',
     },
-    description: 'line thickness',
+    description: 'line thickness (px)',
     table: {
       type: {
         summary: null,
