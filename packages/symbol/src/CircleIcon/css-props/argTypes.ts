@@ -18,4 +18,35 @@ export const styleArgTypes = {
       },
     },
   },
+  borderColor: {
+    ...withDefaultAs('borderColor'),
+    description: 'Color of circle border',
+    table: {
+      type: {
+        summary: null,
+      },
+      category: 'style control',
+      defaultValue: {
+        summary: styleDefaultProps.borderColor,
+        details: null,
+      },
+    },
+  },
+  borderWidth: {
+    ...withDefaultAs('borderWidth'),
+    description: 'Circle Border Thickness (px)',
+    control: {
+      type: 'number',
+    },
+    table: {
+      type: {
+        summary: null,
+      },
+      category: 'style control',
+      defaultValue: {
+        summary: styleDefaultProps.borderWidth,
+        details: null,
+      },
+    },
+  },
 }

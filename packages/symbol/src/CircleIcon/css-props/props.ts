@@ -6,6 +6,10 @@ const conf = {
   color: NotRequired<CSST.Property.BackgroundColor>(
     ColorPalette.grayScale.dark
   ),
+  borderWidth: NotRequired<number>(0),
+  borderColor: NotRequired<CSST.Property.BorderColor>(
+    ColorPalette.pastel.purple
+  ),
 }
 type Conf = typeof conf
 
