@@ -41,9 +41,7 @@ export default {
 }
 
 const Template: ComponentStory<typeof Checkbox> = ({ children, ...args }) => (
-  <Checkbox {...args} as={DarkTextBox}>
-    {children}
-  </Checkbox>
+  <Checkbox {...args}>{children}</Checkbox>
 )
 
 export const playground = Template.bind({})
