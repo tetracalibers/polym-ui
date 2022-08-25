@@ -1,9 +1,9 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { CharacterProps } from '../model/props'
-import { match } from 'ts-pattern'
-import { ColorPalette, Truthy } from 'styled-utility-first'
 
 export const Wrapper = styled.span<CharacterProps>`
+  --space: ${({ spaceV, spaceU }) => `${spaceV}${spaceU}`};
+
   && {
     /* スペース文字を削除 */
     display: inline-flex;
@@ -12,6 +12,6 @@ export const Wrapper = styled.span<CharacterProps>`
 
   /* icon */
   & :first-child {
-    margin-inline-end: 0.75em;
+    margin-inline-end: var(--space);
   }
 `
