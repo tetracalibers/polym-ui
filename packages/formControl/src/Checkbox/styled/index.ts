@@ -18,6 +18,16 @@ export const StyledLabel = styled.label`
 `
 
 export const ClickArea = styled.span`
-  border: 1px solid ${ColorPalette.grayScale.dark};
-  background-color: ${ColorPalette.grayScale.light};
+  display: inline-block;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 1px solid ${ColorPalette.pastel.purple};
+  background-color: #fff;
+  border-radius: 2px;
+`
+
+export const IconWrapper = styled.span`
+  display: inline-block;
+  padding-bottom: 50%;
+  padding-left: 15%;
 `

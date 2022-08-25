@@ -3,7 +3,7 @@ import { forwardRef, ReactElement } from 'react'
 import { InputComponentPropWithRef } from '../common/polymorphic/fixedAs'
 import { PolymorphicRef } from '../common/polymorphic/standard'
 import { CharacterProps, defaultProps } from './model/props'
-import { StyledInput, StyledLabel, ClickArea } from './styled'
+import { StyledInput, StyledLabel, ClickArea, IconWrapper } from './styled'
 import { CheckIcon } from '@polym-ui/symbol'
 import { WithIcon } from '@polym-ui/typography'
 import { OverlapLayer } from '@polym-ui/layout'
@@ -32,10 +32,19 @@ export const Checkbox: CheckboxComponent = forwardRef(
           name={name}
           value={value}
         />
-        <WithIcon>
+        <WithIcon alignItems={'center'}>
           <OverlapLayer
-            renderOverlay={() => <CheckIcon sizeV={1.5} sizeU={'em'} />}
-          ></OverlapLayer>
+            renderOverlay={() => (
+              <IconWrapper>
+                <CheckIcon sizeV={1.5} sizeU={'em'} thickness={2.5} />
+              </IconWrapper>
+            )}
+            contain={false}
+            fixed={false}
+            as={'span'}
+          >
+            <ClickArea />
+          </OverlapLayer>
           {children}
         </WithIcon>
       </StyledLabel>
