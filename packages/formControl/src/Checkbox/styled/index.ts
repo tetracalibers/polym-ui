@@ -22,20 +22,31 @@ export const StyledLabel = styled.label<{ disabled: boolean | undefined }>`
   }}
 `
 
-export const Square = styled.span`
+export const Square = styled.span<CharacterProps>`
+  --border-width: ${({ borderWidth }) => borderWidth}px;
+  --border-color: ${({ borderColor }) => borderColor};
+  --border-radius: ${({ borderRadius }) => borderRadius}px;
+  --outline-width: ${({ focusOutlineWidth }) => focusOutlineWidth}px;
+  --outline-color: ${({ focusOutlineColor }) => focusOutlineColor};
+
   display: inline-block;
   width: 1.25rem;
   height: 1.25rem;
-  border: 1px solid ${ColorPalette.pastel.purple};
+  border-width: var(--border-width);
+  border-style: solid;
+  border-color: var(--border-color);
   background-color: #fff;
-  border-radius: 2px;
+  border-radius: var(--border-radius);
 
   ${StyledInput}:focus + * & {
-    outline: 1.5px solid ${ColorPalette.pastel.water};
+    outline-width: var(--outline-width);
+    outline-style: solid;
+    outline-color: var(--outline-color);
   }
 
   ${StyledInput}:disabled + * & {
-    border: 1px solid rgba(255, 255, 255, 0);
+    border: none;
+    padding: 1px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
       rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
   }

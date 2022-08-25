@@ -5168,10 +5168,9 @@
   },
   "outlineColor": {
     "control": {
-      "type": "select"
+      "type": "color"
     },
-    "options": ["<color>", "invert"],
-    "description": "",
+    "description": "Color of outline",
     "table": {
       "category": "CSS",
       "subcategory": "Basic User Interface",

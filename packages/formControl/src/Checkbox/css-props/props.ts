@@ -7,7 +7,17 @@ import {
 import * as CSST from 'csstype'
 import { ColorPalette } from 'styled-utility-first'
 
-const conf = {}
+const conf = {
+  borderWidth: NotRequired<number>(1),
+  borderColor: NotRequired<CSST.Property.BorderColor>(
+    ColorPalette.pastel.purple
+  ),
+  borderRadius: NotRequired<number>(2),
+  focusOutlineWidth: NotRequired<number>(1.5),
+  focusOutlineColor: NotRequired<CSST.Property.OutlineColor>(
+    ColorPalette.pastel.water
+  ),
+}
 type Conf = typeof conf
 
 export type StyleProps = getPropType<Conf>
