@@ -74,6 +74,7 @@
     "ts-typedef-helper": "*",
     "typescript": "^4.7.4",
     "zx": "^7.0.8",
-    "@polym-ui/symbol": "*"
+    "@polym-ui/symbol": "*",
+    "@polym-ui/typography": "*"
   }
 }
