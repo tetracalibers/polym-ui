@@ -5,6 +5,7 @@ import { PolymorphicRef } from '../common/polymorphic/standard'
 import { CharacterProps, defaultProps } from './model/props'
 import { Label, Input, Circle } from './styled'
 import { WithIcon } from '@polym-ui/typography'
+import { CircleIcon } from '@polym-ui/symbol'
 
 export type RadioProps = Omit<InputComponentPropWithRef<CharacterProps>, 'type'>
 
@@ -20,7 +21,7 @@ export const Radio: RadioComponent = forwardRef(
       <Label disabled={disabled}>
         <Input {...rest} ref={ref} type='radio' />
         <WithIcon>
-          <Circle />
+          <CircleIcon />
           {children}
         </WithIcon>
       </Label>
