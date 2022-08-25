@@ -23,7 +23,8 @@ export default {
       control: {
         type: null,
       },
-      description: 'Child elements of the element specified by as props',
+      description:
+        'Elements to be vertically centered within a specific area and the elements contained in that area',
       table: {
         type: {
           summary: null,
