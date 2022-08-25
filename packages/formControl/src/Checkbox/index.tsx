@@ -3,7 +3,8 @@ import { forwardRef, ReactElement } from 'react'
 import { InputComponentPropWithRef } from '../common/polymorphic/fixedAs'
 import { PolymorphicRef } from '../common/polymorphic/standard'
 import { CharacterProps, defaultProps } from './model/props'
-import { StyledInput, StyledSpan } from './styled'
+import { StyledInput, StyledLabel } from './styled'
+import { CheckIcon } from '@polym-ui/symbol'
 
 export type CheckboxProps = Omit<
   InputComponentPropWithRef<CharacterProps>,
@@ -21,7 +22,7 @@ export const Checkbox: CheckboxComponent = forwardRef(
       _.isUndefined(input) ? defaul : input
     )
     return (
-      <label>
+      <StyledLabel>
         <StyledInput
           {...props}
           ref={ref}
@@ -29,8 +30,9 @@ export const Checkbox: CheckboxComponent = forwardRef(
           name={name}
           value={value}
         />
-        <StyledSpan>{children}</StyledSpan>
-      </label>
+        <CheckIcon />
+        <span>{children}</span>
+      </StyledLabel>
     )
   }
 )
