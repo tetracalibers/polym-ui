@@ -28,7 +28,23 @@ export default {
       control: {
         type: null,
       },
-      description: 'Child elements of the element specified by as props',
+      description: 'Main content in the back',
+      table: {
+        type: {
+          summary: null,
+        },
+        category: 'character',
+      },
+      type: {
+        required: true,
+      },
+    },
+    renderOverlay: {
+      control: {
+        type: null,
+      },
+      description:
+        'Elements to be overlaid on top of the children in a centered arrangement',
       table: {
         type: {
           summary: null,
@@ -62,14 +78,14 @@ const Template: ComponentStory<typeof OverlapLayer> = ({
   </OverlapLayer>
 )
 
-export const scrollTrackingSample = Template.bind({})
-scrollTrackingSample.args = {
-  ...defaultProps,
-  children: <DummyText1000W />,
-}
-
 export const overflowSample = Template.bind({})
 overflowSample.args = {
   ...defaultProps,
   children: <DummyText25W />,
+}
+
+export const scrollTrackingSample = Template.bind({})
+scrollTrackingSample.args = {
+  ...defaultProps,
+  children: <DummyText1000W />,
 }
