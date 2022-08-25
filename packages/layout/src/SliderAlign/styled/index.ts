@@ -6,9 +6,9 @@ import { ColorPalette, Truthy } from 'styled-utility-first'
 
 export const StyledElement = styled.div<CharacterProps>`
   --space: ${({ spaceV, spaceU }) => `${spaceV}${spaceU}`};
-  --bar-bgcolor: ${ColorPalette.grayScale.dark};
-  --bar-color: ${ColorPalette.grayScale.light};
-  --bar-height: 1rem;
+  --bar-bgcolor: ${({ barBgColor }) => barBgColor};
+  --bar-color: ${({ barColor }) => barColor};
+  --bar-height: ${({ barHeightV, barHeightU }) => `${barHeightV}${barHeightU}`};
   --height: ${({ height }) => height};
   --item-width: ${({ itemWidth }) => itemWidth};
 
@@ -34,10 +34,10 @@ export const StyledElement = styled.div<CharacterProps>`
     /* 線形グラデーションによって背景の中につまみを描画 */
     background-image: linear-gradient(
       var(--bar-bgcolor) 0,
-      var(--bar-bgcolor) calc(var(--bar-height) * 0.25),
-      var(--bar-color) calc(var(--bar-height) * 0.25),
-      var(--bar-color) calc(var(--bar-height) * 0.75),
-      var(--bar-bgcolor) calc(var(--bar-height) * 0.75)
+      var(--bar-bgcolor) calc(var(--bar-height) * 0.3),
+      var(--bar-color) calc(var(--bar-height) * 0.3),
+      var(--bar-color) calc(var(--bar-height) * 0.7),
+      var(--bar-bgcolor) calc(var(--bar-height) * 0.7)
     );
   }
 

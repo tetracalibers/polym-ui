@@ -45,9 +45,42 @@ export const logicArgTypes = {
       type: {
         summary: null,
       },
-      category: 'style control',
+      category: 'scrollbar style',
       defaultValue: {
         summary: defaultProps.hideScrollBar,
+        details: null,
+      },
+    },
+  },
+  barHeightV: {
+    control: {
+      type: 'number',
+    },
+    description: 'Numeric value representing the height of the scrollbar area',
+    table: {
+      type: {
+        summary: null,
+      },
+      category: 'scrollbar style',
+      defaultValue: {
+        summary: defaultProps.barHeightV,
+        details: null,
+      },
+    },
+  },
+  barHeightU: {
+    control: {
+      type: 'select',
+    },
+    options: CssStyle.Unit.length,
+    description: 'Units of barHeightV',
+    table: {
+      type: {
+        summary: null,
+      },
+      category: 'scrollbar style',
+      defaultValue: {
+        summary: defaultProps.barHeightU,
         details: null,
       },
     },

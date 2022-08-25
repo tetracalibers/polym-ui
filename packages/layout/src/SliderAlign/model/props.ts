@@ -11,6 +11,8 @@ import { CssStyle } from 'ts-typedef-helper'
 const conf = {
   spaceV: NotRequired<number>(1),
   spaceU: NotRequired<CssStyle.Unit.Length>('rem'),
+  barHeightV: NotRequired<number>(1),
+  barHeightU: NotRequired<CssStyle.Unit.Length>('rem'),
   hideScrollBar: NotRequired<boolean>(false),
 }
 type Conf = typeof conf

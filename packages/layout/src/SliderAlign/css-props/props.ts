@@ -11,6 +11,10 @@ const conf = {
   // 各項目（子要素）の幅
   itemWidth: NotRequired<CSST.Property.Width>('auto'),
   height: NotRequired<CSST.Property.Height>('auto'),
+  barBgColor: NotRequired<CSST.Property.BackgroundColor>(
+    ColorPalette.grayScale.dark
+  ),
+  barColor: NotRequired<CSST.Property.Color>(ColorPalette.grayScale.light),
 }
 type Conf = typeof conf
 
