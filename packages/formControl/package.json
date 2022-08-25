@@ -1,5 +1,5 @@
 {
-  "name": "@syrm-ui/form-control",
+  "name": "@polym-ui/form-control",
   "version": "0.0.0",
   "description": "Collection of React components for form components",
   "author": {
@@ -73,6 +73,7 @@
     "ts-pattern": "^4.0.5",
     "ts-typedef-helper": "*",
     "typescript": "^4.7.4",
-    "zx": "^7.0.8"
+    "zx": "^7.0.8",
+    "@polym-ui/symbol": "*"
   }
 }
