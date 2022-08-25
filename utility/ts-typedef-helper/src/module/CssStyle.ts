@@ -1,16 +1,28 @@
 export namespace CssStyle {
   export namespace Unit {
-    export type Length =
-      | 'px'
-      | 'em'
-      | 'ex'
-      | 'ch'
-      | 'rem'
-      | 'vw'
-      | 'vh'
-      | 'vmin'
-      | 'vmax'
-      | '%'
+    export const length = [
+      'px',
+      'em',
+      'ex',
+      'ch',
+      'rem',
+      'lh',
+      'rlh',
+      'vw',
+      'vh',
+      'vmin',
+      'vmax',
+      'vb',
+      'vi',
+      'svw',
+      'svh',
+      'lvw',
+      'lvh',
+      'dvw',
+      'dvh',
+      '%',
+    ] as const
+    export type Length = typeof length[number]
   }
 
   export namespace Prop {
