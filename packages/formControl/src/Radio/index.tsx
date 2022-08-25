@@ -3,7 +3,8 @@ import { forwardRef, ReactElement } from 'react'
 import { InputComponentPropWithRef } from '../common/polymorphic/fixedAs'
 import { PolymorphicRef } from '../common/polymorphic/standard'
 import { CharacterProps, defaultProps } from './model/props'
-import { StyledInput } from './styled'
+import { Label, Input, Circle } from './styled'
+import { WithIcon } from '@polym-ui/typography'
 
 export type RadioProps = Omit<InputComponentPropWithRef<CharacterProps>, 'type'>
 
@@ -15,9 +16,13 @@ export const Radio: RadioComponent = forwardRef(
       _.isUndefined(input) ? defaul : input
     )
     return (
-      <StyledInput {...props} ref={ref} type='radio'>
-        {children}
-      </StyledInput>
+      <Label>
+        <Input {...props} ref={ref} type='radio' />
+        <WithIcon>
+          <Circle />
+          {children}
+        </WithIcon>
+      </Label>
     )
   }
 )
