@@ -9,8 +9,8 @@ import { styleDefaultProps, StyleProps } from '../css-props/props'
 import { CssStyle } from 'ts-typedef-helper'
 
 const conf = {
-  //spaceV: NotRequired<number>(1),
-  //spaceU: NotRequired<CssStyle.Unit.Length>('rem'),
+  widthV: NotRequired<number>(100),
+  widthU: NotRequired<CssStyle.Unit.Length>('px'),
 }
 type Conf = typeof conf
 

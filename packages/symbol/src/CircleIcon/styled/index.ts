@@ -4,7 +4,7 @@ import { match } from 'ts-pattern'
 import { ColorPalette, Truthy } from 'styled-utility-first'
 
 export const StyledElement = styled.span<CharacterProps>`
-  --width: 100px;
+  --width: ${({ widthV, widthU }) => `${widthV}${widthU}`};
   --background-color: ${ColorPalette.grayScale.dark};
 
   display: inline-block;
