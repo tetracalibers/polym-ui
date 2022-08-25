@@ -15,6 +15,10 @@ export const BorderBox = styled.div`
   height: 100px;
 `
 
+export const SliderContainer = styled(Container)`
+  padding: 1rem;
+`
+
 export const SliderChild = styled(BorderBox)`
   width: 200px;
 `

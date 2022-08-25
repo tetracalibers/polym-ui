@@ -1,7 +1,7 @@
 import { ComponentStory } from '@storybook/react'
 import { SliderAlign } from '..'
 import { commmonArgTypes } from '../../common/argTypes'
-import { Container, SliderChild } from '../../mock/TestBox'
+import { SliderContainer, SliderChild } from '../../mock/TestBox'
 import { styleArgTypes } from '../css-props/argTypes'
 import { logicArgTypes } from '../model/argTypes'
 import { defaultProps } from '../model/props'
@@ -44,7 +44,7 @@ const Template: ComponentStory<typeof SliderAlign> = ({
   children,
   ...args
 }) => (
-  <SliderAlign {...args} as={Container}>
+  <SliderAlign {...args} as={SliderContainer}>
     {[...new Array(10)].map((_, idx) => {
       return <SliderChild key={idx}>{idx + 1}th Item!!</SliderChild>
     })}
