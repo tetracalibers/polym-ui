@@ -15,6 +15,10 @@ export const BorderBox = styled.div`
   height: 100px;
 `
 
+export const SliderChild = styled(BorderBox)`
+  width: 200px;
+`
+
 export const GridChild = styled(BorderBox)`
   height: 200px;
 `
