@@ -15,9 +15,10 @@ export const Radio: RadioComponent = forwardRef(
     const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
       _.isUndefined(input) ? defaul : input
     )
+    const { disabled, ...rest } = props
     return (
-      <Label>
-        <Input {...props} ref={ref} type='radio' />
+      <Label disabled={disabled}>
+        <Input {...rest} ref={ref} type='radio' />
         <WithIcon>
           <Circle />
           {children}
