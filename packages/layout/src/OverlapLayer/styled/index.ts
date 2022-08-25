@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components'
 import { CharacterProps } from '../model/props'
 import { Truthy } from 'styled-utility-first'
 
-export const StyledContainer = styled.div<CharacterProps>`
+export const StyledContainer = styled.div`
   position: relative;
 `
 
@@ -14,7 +14,7 @@ export const OverlayWrapper = styled.div<CharacterProps>`
   top: 50%;
   left: 50%;
   /* 要素の中央がコンテナの中央になるよう修正 */
-  transform: translate(50%, 50%);
+  transform: translate(-50%, -50%);
 
   /* はみ出し対策 */
   ${({ contain, marginValue, marginUnit }) => {
