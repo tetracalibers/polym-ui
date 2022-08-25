@@ -4,6 +4,7 @@ import { Truthy } from 'styled-utility-first'
 
 export const StyledElement = styled.div<CharacterProps>`
   --space: ${({ spaceV, spaceU }) => `${spaceV}${spaceU}`};
+  --padding: ${({ paddingV, paddingU }) => `${paddingV}${paddingU}`};
   --bar-bgcolor: ${({ barBgColor }) => barBgColor};
   --bar-color: ${({ barColor }) => barColor};
   --bar-height: ${({ barHeightV, barHeightU }) => `${barHeightV}${barHeightU}`};
@@ -14,6 +15,8 @@ export const StyledElement = styled.div<CharacterProps>`
   height: var(--height);
   overflow-x: auto;
   overflow-y: hidden;
+  box-sizing: border-box;
+  padding: var(--padding);
 
   /* for Firefox */
   scrollbar-color: var(--bar-color) var(--bar-bgcolor);

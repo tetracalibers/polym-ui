@@ -85,4 +85,38 @@ export const logicArgTypes = {
       },
     },
   },
+  paddingV: {
+    control: {
+      type: 'number',
+    },
+    description:
+      'Numeric value representing the size of the space between the four sides of the Slider and the child elements.',
+    table: {
+      type: {
+        summary: null,
+      },
+      category: 'style control',
+      defaultValue: {
+        summary: defaultProps.paddingV,
+        details: null,
+      },
+    },
+  },
+  paddingU: {
+    control: {
+      type: 'select',
+    },
+    options: CssStyle.Unit.length,
+    description: 'Units of paddingV',
+    table: {
+      type: {
+        summary: null,
+      },
+      category: 'style control',
+      defaultValue: {
+        summary: defaultProps.paddingU,
+        details: null,
+      },
+    },
+  },
 }
