@@ -1,7 +1,7 @@
 import { ComponentStory } from '@storybook/react'
 import { VerticalCenter } from '..'
 import { commmonArgTypes } from '../../common/argTypes'
-import { DarkTextBox } from '../../mock/TestBox'
+import { VCenterContainer, VCenterChild } from '../../mock/TestBox'
 import { styleArgTypes } from '../css-props/argTypes'
 import { logicArgTypes } from '../model/argTypes'
 import { defaultProps } from '../model/props'
@@ -45,8 +45,10 @@ const Template: ComponentStory<typeof VerticalCenter> = ({
   children,
   ...args
 }) => (
-  <VerticalCenter {...args} as={DarkTextBox}>
-    {children}
+  <VerticalCenter {...args} as={VCenterContainer}>
+    {[...new Array(5)].map((_, idx) => {
+      return <VCenterChild key={idx}>{idx + 1}th Item!!</VCenterChild>
+    })}
   </VerticalCenter>
 )
 

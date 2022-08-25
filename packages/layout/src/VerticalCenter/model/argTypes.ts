@@ -12,7 +12,7 @@ export const logicArgTypes = {
       type: {
         summary: 'number | HTMLtagName(string) | Component',
       },
-      category: 'style control',
+      category: 'character',
       defaultValue: {
         summary: defaultProps.target,
         details: null,
