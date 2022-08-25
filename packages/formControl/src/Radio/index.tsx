@@ -6,6 +6,8 @@ import { CharacterProps, defaultProps } from './model/props'
 import { Label, Input } from './styled'
 import { WithIcon } from '@polym-ui/typography'
 import { CircleIcon } from '@polym-ui/symbol'
+import { OverlapLayer } from '@polym-ui/layout'
+import { ColorPalette } from 'styled-utility-first'
 
 export type RadioProps = Omit<InputComponentPropWithRef<CharacterProps>, 'type'>
 
@@ -21,7 +23,11 @@ export const Radio: RadioComponent = forwardRef(
       <Label disabled={disabled}>
         <Input {...rest} ref={ref} type='radio' />
         <WithIcon>
-          <CircleIcon />
+          <OverlapLayer
+            renderOverlay={() => <CircleIcon sizeV={0.9} sizeU={'em'} />}
+          >
+            <CircleIcon sizeV={1.5} sizeU={'em'} color='#fff' />
+          </OverlapLayer>
           {children}
         </WithIcon>
       </Label>
