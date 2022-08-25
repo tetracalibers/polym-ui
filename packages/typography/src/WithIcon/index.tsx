@@ -5,7 +5,7 @@ import {
   PolymorphicRef,
 } from '../common/polymorphic/standard'
 import { CharacterProps, defaultProps } from './model/props'
-import { StyledElement } from './styled'
+import { Wrapper } from './styled'
 
 export type WithIconProps<As extends ElementType> =
   PolymorphicComponentPropWithRef<As, CharacterProps>
@@ -23,9 +23,9 @@ export const WithIcon: WithIconComponent = forwardRef(
       _.isUndefined(input) ? defaul : input
     )
     return (
-      <StyledElement {...props} ref={ref} as={as as unknown as undefined}>
+      <Wrapper {...props} ref={ref} as={as as unknown as undefined}>
         {children}
-      </StyledElement>
+      </Wrapper>
     )
   }
 )
