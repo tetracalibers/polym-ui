@@ -15,6 +15,10 @@ export const BorderBox = styled.div`
   height: 100px;
 `
 
+export const GridChild = styled(BorderBox)`
+  height: 200px;
+`
+
 export const OverlayBox = styled(BorderBox)`
   background-color: ${$.grayScale.dark};
   height: auto;

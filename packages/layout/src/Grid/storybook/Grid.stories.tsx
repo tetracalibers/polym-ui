@@ -1,7 +1,7 @@
 import { ComponentStory } from '@storybook/react'
 import { Grid } from '..'
 import { commmonArgTypes } from '../../common/argTypes'
-import { DarkTextBox } from '../../mock/TestBox'
+import { Container, GridChild } from '../../mock/TestBox'
 import { styleArgTypes } from '../css-props/argTypes'
 import { logicArgTypes } from '../model/argTypes'
 import { defaultProps } from '../model/props'
@@ -23,7 +23,7 @@ export default {
       control: {
         type: null,
       },
-      description: 'Child elements of the element specified by as props',
+      description: 'Elements to be placed in a grid',
       table: {
         type: {
           summary: null,
@@ -41,8 +41,10 @@ export default {
 }
 
 const Template: ComponentStory<typeof Grid> = ({ children, ...args }) => (
-  <Grid {...args} as={DarkTextBox}>
-    {children}
+  <Grid {...args} as={Container}>
+    {[...new Array(10)].map((_, idx) => {
+      return <GridChild key={idx}>{idx + 1}th Card!!</GridChild>
+    })}
   </Grid>
 )
 

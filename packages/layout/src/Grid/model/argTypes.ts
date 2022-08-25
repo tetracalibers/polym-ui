@@ -57,6 +57,7 @@ export const logicArgTypes = {
       type: 'select',
     },
     options: CssStyle.Unit.length,
+    description: 'Units of spaceV',
     table: {
       type: {
         summary: null,
