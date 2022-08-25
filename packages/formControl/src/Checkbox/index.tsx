@@ -1,31 +1,22 @@
 import _ from 'lodash'
-import { ElementType, forwardRef, ReactElement } from 'react'
-import {
-  PolymorphicComponentPropWithRef,
-  PolymorphicRef,
-} from '../common/polymorphic/standard'
+import { forwardRef, ReactElement } from 'react'
+import { InputComponentPropWithRef } from '../common/polymorphic/fixedAs'
+import { PolymorphicRef } from '../common/polymorphic/standard'
 import { CharacterProps, defaultProps } from './model/props'
-import { StyledElement } from './styled'
+import { StyledInput } from './styled'
 
-export type CheckboxProps<As extends ElementType> =
-  PolymorphicComponentPropWithRef<As, CharacterProps>
+export type CheckboxProps = Omit<
+  InputComponentPropWithRef<CharacterProps>,
+  'type'
+>
 
-export type CheckboxComponent = <As extends ElementType>(
-  props: CheckboxProps<As>
-) => ReactElement | null
+export type CheckboxComponent = (props: CheckboxProps) => ReactElement | null
 
 export const Checkbox: CheckboxComponent = forwardRef(
-  <As extends ElementType>(
-    { as, children, ..._props }: CheckboxProps<As>,
-    ref?: PolymorphicRef<As>
-  ) => {
+  ({ children, ..._props }: CheckboxProps, ref?: PolymorphicRef<'input'>) => {
     const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
       _.isUndefined(input) ? defaul : input
     )
-    return (
-      <StyledElement {...props} ref={ref} as={as as unknown as undefined}>
-        {children}
-      </StyledElement>
-    )
+    return <StyledInput {...props} ref={ref} type='checkbox' />
   }
 )

@@ -4,4 +4,4 @@ import { ElementType } from 'react'
 import { match } from 'ts-pattern'
 import { ColorPalette, Truthy } from 'styled-utility-first'
 
-export const StyledElement = styled.div<CharacterProps>``
+export const StyledInput = styled.input<CharacterProps>``
