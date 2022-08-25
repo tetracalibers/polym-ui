@@ -11,10 +11,15 @@ export const StyledInput = styled.input<CharacterProps>`
   position: absolute;
 `
 
-export const StyledLabel = styled.label`
+export const StyledLabel = styled.label<{ disabled: boolean | undefined }>`
   cursor: pointer;
-  margin-left: 6px;
   user-select: none;
+
+  ${({ disabled }) => {
+    return Truthy(disabled).when(css`
+      cursor: default;
+    `)
+  }}
 `
 
 export const Square = styled.span`
@@ -27,6 +32,12 @@ export const Square = styled.span`
 
   ${StyledInput}:focus + * & {
     outline: 2px solid ${ColorPalette.pastel.water};
+  }
+
+  ${StyledInput}:disabled + * & {
+    border: 1px solid rgba(255, 255, 255, 0);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+      rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
   }
 `
 

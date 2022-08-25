@@ -8,7 +8,9 @@ import { commonDefaultProps, CommonProps } from '../../common/props'
 import { styleDefaultProps, StyleProps } from '../css-props/props'
 import { CssStyle } from 'ts-typedef-helper'
 
-const conf = {}
+const conf = {
+  disabled: NotRequired<boolean>(false),
+}
 type Conf = typeof conf
 
 export type CharacterProps = getPropType<Conf> & CommonProps & StyleProps
