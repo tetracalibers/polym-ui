@@ -19,5 +19,3 @@ export const Input = styled.input<CharacterProps>`
   /* 本来の配置から切り離す */
   position: absolute;
 `
-
-export const Circle = styled.span``

@@ -3,7 +3,7 @@ import { forwardRef, ReactElement } from 'react'
 import { InputComponentPropWithRef } from '../common/polymorphic/fixedAs'
 import { PolymorphicRef } from '../common/polymorphic/standard'
 import { CharacterProps, defaultProps } from './model/props'
-import { Label, Input, Circle } from './styled'
+import { Label, Input } from './styled'
 import { WithIcon } from '@polym-ui/typography'
 import { CircleIcon } from '@polym-ui/symbol'
 
