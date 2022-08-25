@@ -23,7 +23,7 @@ export default {
       control: {
         type: null,
       },
-      description: 'Child elements of the element specified by as props',
+      description: 'Elements you want to put side by side in a slider format',
       table: {
         type: {
           summary: null,

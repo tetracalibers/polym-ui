@@ -18,4 +18,12 @@ export const styleArgTypes = {
   //     },
   //   },
   // },
+  itemWidth: {
+    ...withDefaultAs('width'),
+    description: 'Width of each item',
+  },
+  height: {
+    ...withDefaultAs('height'),
+    description: 'Height of the SliderAlign component itself',
+  },
 }

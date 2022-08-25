@@ -1,4 +1,9 @@
-import { getDefaultProps, getPropType, Required } from 'react-tsx-props'
+import {
+  getDefaultProps,
+  getPropType,
+  Required,
+  NotRequired,
+} from 'react-tsx-props'
 import * as CSST from 'csstype'
 import { ColorPalette } from 'styled-utility-first'
 
