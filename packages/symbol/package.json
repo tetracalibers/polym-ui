@@ -20,7 +20,7 @@
     "test": "echo \"Error: run tests from root\" && exit 1",
     "type:check": "tsc --noEmit",
     "prebuild": " yarn type:check && rimraf lib",
-    "build": "rollup -c",
+    "build": "rollup -c --watch",
     "template": "node --loader ts-node/esm scripts/initComponentSrc.zx.ts"
   },
   "bugs": {

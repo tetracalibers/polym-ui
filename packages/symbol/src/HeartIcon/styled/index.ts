@@ -8,6 +8,10 @@ export const StyledElement = styled.span<CharacterProps>`
   position: relative;
   width: var(--size);
   height: calc(var(--size) * 0.3);
+  /* 擬似要素で描画している分の高さを持たせる */
+  padding-top: calc((var(--size) * 0.85 - var(--size) * 0.3) * 0.5);
+  padding-bottom: calc((var(--size) * 0.85 - var(--size) * 0.3) * 0.5);
+  display: inline-block;
 
   &::before,
   &::after {

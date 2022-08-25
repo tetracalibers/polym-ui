@@ -6,6 +6,7 @@ import { styleArgTypes } from '../css-props/argTypes'
 import { logicArgTypes } from '../model/argTypes'
 import { defaultProps } from '../model/props'
 import { DocsPage } from './docsPage'
+import { CheckIcon, HeartIcon } from '@polym-ui/symbol'
 
 export default {
   title: 'typography/WithIcon',
@@ -46,8 +47,23 @@ const Template: ComponentStory<typeof WithIcon> = ({ children, ...args }) => (
   </WithIcon>
 )
 
-export const playground = Template.bind({})
-playground.args = {
+export const prefixIcon = Template.bind({})
+prefixIcon.args = {
   ...defaultProps,
+  children: (
+    <>
+      <CheckIcon />I agree.
+    </>
+  ),
 }
-playground.argTypes = {}
+
+export const suffixIcon = Template.bind({})
+suffixIcon.args = {
+  ...defaultProps,
+  children: (
+    <>
+      I Love You
+      <HeartIcon />
+    </>
+  ),
+}

@@ -1,12 +1,12 @@
-import { getDefaultProps, getPropType, Required } from 'react-tsx-props'
+import { getDefaultProps, getPropType, NotRequired } from 'react-tsx-props'
 import * as CSST from 'csstype'
 import { ColorPalette } from 'styled-utility-first'
 
 const conf = {
   // ハートの大きさ
-  size: Required<CSST.Property.Width>('50px'),
+  size: NotRequired<CSST.Property.Width>('50px'),
   // ハートの色
-  color: Required<CSST.Property.Color>(ColorPalette.pastel.pink),
+  color: NotRequired<CSST.Property.Color>(ColorPalette.vivid.red),
 }
 type Conf = typeof conf
 
