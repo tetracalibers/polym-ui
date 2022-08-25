@@ -3,8 +3,6 @@ import * as CSST from 'csstype'
 import { ColorPalette } from 'styled-utility-first'
 
 const conf = {
-  // ハートの大きさ
-  size: NotRequired<CSST.Property.Width>('50px'),
   // ハートの色
   color: NotRequired<CSST.Property.Color>(ColorPalette.vivid.red),
 }

@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { CharacterProps } from '../model/props'
 
 export const StyledElement = styled.span<CharacterProps>`
-  --size: ${({ size }) => size};
+  --size: ${({ sizeV, sizeU }) => `${sizeV}${sizeU}`};
   --color: ${({ color }) => color};
 
   position: relative;
