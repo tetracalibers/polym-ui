@@ -8,7 +8,13 @@ import { commonDefaultProps, CommonProps } from '../../common/props'
 import { styleDefaultProps, StyleProps } from '../css-props/props'
 import { CssStyle } from 'ts-typedef-helper'
 
-const conf = {}
+const conf = {
+  // 長辺の長さ
+  sizeV: NotRequired<number>(33),
+  sizeU: NotRequired<CssStyle.Unit.Length>('px'),
+  // 太さ(px)
+  thickness: NotRequired<number>(2),
+}
 type Conf = typeof conf
 
 export type CharacterProps = getPropType<Conf> & CommonProps & StyleProps

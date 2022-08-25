@@ -2,20 +2,54 @@ import { defaultProps } from './props'
 import { CssStyle } from 'ts-typedef-helper'
 
 export const logicArgTypes = {
-  // recursive: {
-  //   control: {
-  //     type: 'boolean',
-  //   },
-  //   description: 'Whether to apply layout to nested elements',
-  //   table: {
-  //     type: {
-  //       summary: null,
-  //     },
-  //     category: 'style control',
-  //     defaultValue: {
-  //       summary: '',
-  //       details: null,
-  //     },
-  //   },
-  // },
+  sizeV: {
+    control: {
+      type: 'number',
+    },
+    description:
+      'Numeric value representing the length of the long side of the check mark',
+    table: {
+      type: {
+        summary: null,
+      },
+      category: 'style control',
+      defaultValue: {
+        summary: defaultProps.sizeV,
+        details: null,
+      },
+    },
+  },
+  sizeU: {
+    control: {
+      type: 'select',
+    },
+    options: CssStyle.Unit.length,
+    description: 'Units of sizeV',
+    table: {
+      type: {
+        summary: null,
+      },
+      category: 'style control',
+      defaultValue: {
+        summary: defaultProps.sizeU,
+        details: null,
+      },
+    },
+  },
+  thickness: {
+    control: {
+      type: 'number',
+    },
+    description: 'line thickness',
+    table: {
+      type: {
+        summary: null,
+      },
+      category: 'style control',
+      defaultValue: {
+        summary: defaultProps.thickness,
+        details: null,
+      },
+    },
+  },
 }
