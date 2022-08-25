@@ -18,3 +18,16 @@ export const StyledLabel = styled.label`
   margin-left: 6px;
   user-select: none;
 `
+
+export const WithIcon = styled.span`
+  && {
+    /* スペース文字を削除 */
+    display: inline-flex;
+    align-items: baseline;
+  }
+
+  /* icon */
+  & :first-child {
+    margin-inline-end: 0.75em;
+  }
+`

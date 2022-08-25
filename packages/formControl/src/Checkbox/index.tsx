@@ -3,7 +3,7 @@ import { forwardRef, ReactElement } from 'react'
 import { InputComponentPropWithRef } from '../common/polymorphic/fixedAs'
 import { PolymorphicRef } from '../common/polymorphic/standard'
 import { CharacterProps, defaultProps } from './model/props'
-import { StyledInput, StyledLabel } from './styled'
+import { WithIcon, StyledInput, StyledLabel } from './styled'
 import { CheckIcon } from '@polym-ui/symbol'
 
 export type CheckboxProps = Omit<
@@ -30,8 +30,10 @@ export const Checkbox: CheckboxComponent = forwardRef(
           name={name}
           value={value}
         />
-        <CheckIcon />
-        <span>{children}</span>
+        <WithIcon>
+          <CheckIcon sizeV={1.5} sizeU={'em'} />
+          {children}
+        </WithIcon>
       </StyledLabel>
     )
   }
