@@ -3,7 +3,7 @@ import { forwardRef, ReactElement } from 'react'
 import { SelectComponentPropWithRef } from '../common/polymorphic/fixedAs'
 import { PolymorphicRef } from '../common/polymorphic/standard'
 import { CharacterProps, defaultProps } from './model/props'
-import { StyledSelect } from './styled'
+import { Root, Select } from './styled'
 
 export type DropdownSelectProps = SelectComponentPropWithRef<CharacterProps>
 
@@ -20,9 +20,16 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
       _.isUndefined(input) ? defaul : input
     )
     return (
-      <StyledSelect {...props} ref={ref}>
-        {children}
-      </StyledSelect>
+      <Root>
+        <Select {...props} ref={ref}>
+          <option value=''>Please choose</option>
+          {[...new Array(5)].map((_, idx) => (
+            <option key={idx} value={idx + 1}>
+              choices{idx + 1}
+            </option>
+          ))}
+        </Select>
+      </Root>
     )
   }
 )
