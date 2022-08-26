@@ -5,6 +5,7 @@ import { PolymorphicRef } from '../common/polymorphic/standard'
 import { CharacterProps, defaultProps } from './model/props'
 import { Root, AutoComplete } from './styled'
 import { ArrowIcon } from '@polym-ui/symbol'
+import { Hidden, VisuallyHidden } from '@polym-ui/a11y-helper'
 
 export type DropdownSelectProps = SelectComponentPropWithRef<CharacterProps>
 
@@ -25,15 +26,20 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
       <Root>
         <label>
           label
-          {/* class='visually-hidden' */}
-          <select name={name} aria-hidden='true' tabIndex={-1} ref={ref}>
+          <VisuallyHidden
+            as='select'
+            name={name}
+            aria-hidden='true'
+            tabIndex={-1}
+            ref={ref}
+          >
             <option value=''>Please choose</option>
             <option value='1'>choices 01</option>
             <option value='2'>choices 02</option>
             <option value='3'>choices 03</option>
             <option value='4'>choices 04</option>
             <option value='5'>choices 05</option>
-          </select>
+          </VisuallyHidden>
         </label>
         <AutoComplete>
           <input
@@ -47,8 +53,7 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
             aria-expanded={false}
           />
           <ArrowIcon direction='down' />
-          {/* class='hidden' */}
-          <ul id={`autocomplete-options--${name}`} role='listbox'>
+          <Hidden as='ul' id={`autocomplete-options--${name}`} role='listbox'>
             <li
               data-option-value='1'
               role='option'
@@ -94,11 +99,10 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
             >
               choices 05
             </li>
-          </ul>
-          {/* class='visually-hidden' */}
-          <div aria-live='polite' role='status'>
+          </Hidden>
+          <VisuallyHidden aria-live='polite' role='status'>
             candidate
-          </div>
+          </VisuallyHidden>
         </AutoComplete>
       </Root>
     )
