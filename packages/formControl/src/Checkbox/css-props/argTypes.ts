@@ -96,7 +96,7 @@ export const styleArgTypes = {
         summary: null,
       },
       category: 'style control',
-      subcategory: 'check icon',
+      subcategory: 'icon',
       defaultValue: {
         summary: styleDefaultProps.checkIconColor,
         details: null,

@@ -15,9 +15,7 @@ const conf = {
   focusOutlineColor: NotRequired<CSST.Property.OutlineColor>(
     ColorPalette.pastel.water
   ),
-  checkIconColor: NotRequired<CSST.Property.Color>(
-    ColorPalette.material.pink400
-  ),
+  checkIconColor: NotRequired<CSST.Property.Color>(ColorPalette.pastel.pink),
 }
 type Conf = typeof conf
 

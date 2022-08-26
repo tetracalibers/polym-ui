@@ -72,13 +72,13 @@ export const styleArgTypes = {
   },
   checkIconColor: {
     ...withDefaultAs('color'),
-    description: 'Color of check icon',
+    description: 'Color of circle mark when checked',
     table: {
       type: {
         summary: null,
       },
       category: 'style control',
-      subcategory: 'check icon',
+      subcategory: 'icon',
       defaultValue: {
         summary: styleDefaultProps.checkIconColor,
         details: null,

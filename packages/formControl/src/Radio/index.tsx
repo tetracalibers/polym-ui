@@ -18,18 +18,14 @@ export const Radio: RadioComponent = forwardRef(
     const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
       _.isUndefined(input) ? defaul : input
     )
-    const { disabled, ...rest } = props
+    const { disabled, checkIconColor, ...rest } = props
     return (
       <Label disabled={disabled}>
         <Input {...rest} ref={ref} type='radio' disabled={disabled} />
         <WithIcon alignItems={'center'} spaceV={0.25} spaceU={'em'}>
           <OverlapLayer
             renderOverlay={() => (
-              <CircleIcon
-                sizeV={0.8}
-                sizeU={'em'}
-                color={ColorPalette.pastel.pink}
-              />
+              <CircleIcon sizeV={0.8} sizeU={'em'} color={checkIconColor} />
             )}
             as={RadioButton}
           >
