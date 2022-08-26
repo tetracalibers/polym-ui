@@ -84,7 +84,7 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
               role='combobox'
               id={name}
               aria-expanded={false}
-              value={selectedItem?.label ?? placeholder}
+              placeholder={selectedItem?.label ?? placeholder}
             />
             <ArrowIcon direction={isOpen ? 'up' : 'down'} />
           </InputControl>
