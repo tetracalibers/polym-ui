@@ -9,4 +9,8 @@ export const AutoComplete = styled.div``
 
 export const InputControl = styled.div``
 
-export const SelectList = styled.ul``
+export const SelectList = styled.ul`
+  max-height: 12em;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+`

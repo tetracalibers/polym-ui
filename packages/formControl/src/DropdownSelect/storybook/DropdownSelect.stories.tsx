@@ -49,7 +49,7 @@ export const playground = Template.bind({})
 playground.args = {
   ...defaultProps,
   name: 'number',
-  choices: [...new Array(5)].map((_, idx) => ({
+  choices: [...new Array(50)].map((_, idx) => ({
     value: idx + 1,
     label: `choice${`${idx + 1}`.padStart(2, '0')}`,
   })),
