@@ -18,6 +18,7 @@ import { Root, AutoComplete, InputControl, SelectList } from './styled'
 import { ArrowIcon } from '@polym-ui/symbol'
 import { Hidden, VisuallyHidden } from '@polym-ui/a11y-helper'
 import { match } from 'ts-pattern'
+import { isTemplateHead } from 'typescript'
 
 export type DropdownSelectProps = SelectComponentPropWithRef<CharacterProps>
 
@@ -166,13 +167,9 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
       e.stopPropagation()
       if (e.target === listEref.current) return
       const list = e.target as Element
-      const value = list.attributes.getNamedItem('data-option-value')?.value
-      const label = list.attributes.getNamedItem('data-option-label')?.value
-      if (!_.isUndefined(value)) {
-        const item = {
-          value,
-          label,
-        }
+      const idx = list.attributes.getNamedItem('data-idx')?.value
+      if (idx !== undefined) {
+        const item = choices[+idx]
         setSelectedItem(item)
         setIsOpen(false)
         inputEref.current?.focus()
@@ -220,10 +217,15 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
             nextElement?.focus()
           })
           .with('Enter', ' ', () => {
+            const item = choices[activeItemIdx]
             // 現在フォーカスが当たっているオプションが選択される
-            setSelectedItem(choices[activeItemIdx])
+            setSelectedItem(item)
+            // メニューを隠す
+            setIsOpen(false)
             // テキストボックスにfocus
             inputEref.current?.focus()
+            // propsで指定された処理を実行
+            onSelect && onSelect(item)
           })
           .with('Escape', () => {
             setIsOpen(false)
@@ -295,8 +297,6 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
             >
               {choices.map((item, idx) => (
                 <li
-                  data-option-value={item.value}
-                  data-option-label={item.label ?? ''}
                   data-idx={idx}
                   key={`${name}_choice${idx + 1}`}
                   role='option'
