@@ -5,6 +5,8 @@ import {
   KeyboardEvent,
   ReactElement,
   SyntheticEvent,
+  useCallback,
+  useEffect,
   useReducer,
   useRef,
   useState,
@@ -38,6 +40,7 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
     const [isOpen, setIsOpen] = useState(false)
     const [selectedItem, setSelectedItem] = useState(initialItem)
     const inputEref = useRef<HTMLInputElement>(null)
+    const thisComponentEref = useRef<HTMLDivElement>(null)
 
     // クリックした時にドロップダウンを開閉
     const toggleOpenByClick = (e: SyntheticEvent) => {
@@ -98,8 +101,32 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
       }
     }
 
+    // 範囲外クリックによってフォーカスを外した時にメニュー非表示
+    const unfocusByClickDocument = useCallback(
+      (e: MouseEvent | TouchEvent) => {
+        if (thisComponentEref.current) {
+          const innerElements = thisComponentEref.current.querySelectorAll('*')
+          // クリックした要素がこのコンポーネント内にあったら、非表示処理には進まない
+          if (_.some(innerElements, el => el === e.target)) {
+            return
+          }
+        }
+        setIsOpen(false)
+      },
+      [thisComponentEref]
+    )
+    // documentにイベント設定
+    useEffect(() => {
+      document.addEventListener('click', unfocusByClickDocument, false)
+      document.addEventListener('touchend', unfocusByClickDocument, false)
+      return function cleanup() {
+        document.removeEventListener('click', unfocusByClickDocument, false)
+        document.removeEventListener('touchend', unfocusByClickDocument, false)
+      }
+    }, [])
+
     return (
-      <Root>
+      <Root ref={thisComponentEref}>
         {/* id={name}であるテキストボックスと関連づけ（SRで読み上げ） */}
         <label htmlFor={name}>label</label>
         {/* 値をサーバに送るためのname属性 */}
