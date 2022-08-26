@@ -1,4 +1,4 @@
-# React-polyhexUI
+# polym-ui
 
 This is
 
