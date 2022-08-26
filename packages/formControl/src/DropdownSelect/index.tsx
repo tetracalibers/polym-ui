@@ -40,7 +40,7 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
     const [selectedItem, setSelectedItem] = useState(initialItem)
     const [activeItemIdx, setActiveItemIdx] = useState(-1)
     const [visibleItems, setVisibleItems] = useState(choices as ChoiceItem[])
-    // TODO 選択時にinputBoxに選択した値のラベルが入力されるようにする（state定義が必要）
+    const [typedText, setTypedText] = useState(initialItem?.label ?? '')
 
     const inputEref = useRef<HTMLInputElement>(null)
     const thisComponentEref = useRef<HTMLDivElement>(null)
@@ -89,9 +89,9 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
     const onTextBoxType = () => {
       const inputString = inputEref?.current?.value.trim()
       if (inputString !== undefined) {
+        setTypedText(inputString)
         const filterd = filtering(inputString)
         setVisibleItems(filterd)
-        // メニューを表示
         setIsOpen(true)
       }
     }
@@ -182,6 +182,15 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
     /* CLICK LIST                                   */
     /* -------------------------------------------- */
 
+    const runSelectiveProcess = (item: ChoiceItem) => {
+      setTypedText(item.label!)
+      inputEref.current?.focus()
+      setSelectedItem(item)
+      setIsOpen(false)
+      // propsで指定された処理を実行
+      onSelect && onSelect(item)
+    }
+
     // 選択時
     const onSelectInList = (e: FormEvent<HTMLUListElement>) => {
       e.stopPropagation()
@@ -190,11 +199,7 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
       const idx = list.attributes.getNamedItem('data-idx')?.value
       if (idx !== undefined) {
         const item = visibleItems[+idx]
-        setSelectedItem(item)
-        setIsOpen(false)
-        inputEref.current?.focus()
-        // propsで指定された処理を実行
-        onSelect && onSelect(item)
+        runSelectiveProcess(item)
       }
     }
 
@@ -237,14 +242,7 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
           })
           .with('Enter', ' ', () => {
             const item = visibleItems[activeItemIdx]
-            // 現在フォーカスが当たっているオプションが選択される
-            setSelectedItem(item)
-            // メニューを隠す
-            setIsOpen(false)
-            // テキストボックスにfocus
-            inputEref.current?.focus()
-            // propsで指定された処理を実行
-            onSelect && onSelect(item)
+            runSelectiveProcess(item)
           })
           .with('Escape', () => {
             setIsOpen(false)
@@ -291,7 +289,7 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
             aria-autocomplete='list'
             role='combobox'
             id={name}
-            aria-expanded={false}
+            aria-expanded={isOpen}
             placeholder={placeholder}
             onKeyUp={onTextBoxKeyup}
             onKeyDown={unfocusByTab}
@@ -299,6 +297,7 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
             onTouchEnd={openByClick}
             onChange={onTextBoxType}
             ref={inputEref}
+            value={typedText}
           />
           <ArrowIcon
             direction={isOpen ? 'up' : 'down'}
