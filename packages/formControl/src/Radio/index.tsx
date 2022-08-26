@@ -25,7 +25,7 @@ export const Radio: RadioComponent = forwardRef(
     return (
       <Label disabled={disabled}>
         <Input {...rest} ref={ref} type='radio' />
-        <WithIcon>
+        <WithIcon alignItems={'center'} spaceV={0.25} spaceU={'em'}>
           <OverlapLayer
             renderOverlay={() => (
               <CircleIcon sizeV={0.8} sizeU={'em'} color={'#FF7043'} />

@@ -21,9 +21,9 @@ export default {
   argTypes: {
     children: {
       control: {
-        type: null,
+        type: 'text',
       },
-      description: 'Child elements of the element specified by as props',
+      description: 'Label string displayed to the right of the radio button',
       table: {
         type: {
           summary: null,
@@ -41,13 +41,12 @@ export default {
 }
 
 const Template: ComponentStory<typeof Radio> = ({ children, ...args }) => (
-  <Radio {...args} as={DarkTextBox}>
-    {children}
-  </Radio>
+  <Radio {...args}>{children}</Radio>
 )
 
 export const playground = Template.bind({})
 playground.args = {
   ...defaultProps,
+  children: 'female',
 }
 playground.argTypes = {}
