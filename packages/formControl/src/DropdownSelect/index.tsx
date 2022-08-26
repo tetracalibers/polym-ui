@@ -178,6 +178,20 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
       }
     }
 
+    const isHidden = (el: HTMLElement) => el.offsetParent === null
+
+    const highlightOption = (newOptionE: HTMLElement) => {
+      // オプションがメニュー内に表示されていない場合
+      if (isHidden(newOptionE)) {
+        if (newOptionE.parentElement) {
+          // その位置をメニュー内に設定して表示されるようにする
+          newOptionE.parentElement.scrollTop =
+            newOptionE.parentElement.scrollTop + newOptionE.offsetTop
+        }
+      }
+      newOptionE.focus()
+    }
+
     // フォーカス時
     const onFocusInList = (e: FormEvent<HTMLUListElement>) => {
       e.stopPropagation()
@@ -208,13 +222,13 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
             const previousElement = optionElements[
               activeItemIdx - 1
             ] as HTMLElement
-            previousElement?.focus()
+            previousElement && highlightOption(previousElement)
           })
           .with('ArrowDown', () => {
             // 次のメニューオプションにフォーカス
             // 最後のメニューオプションがフォーカスされている場合は何も起こらない
             const nextElement = optionElements[activeItemIdx + 1] as HTMLElement
-            nextElement?.focus()
+            nextElement && highlightOption(nextElement)
           })
           .with('Enter', ' ', () => {
             const item = choices[activeItemIdx]
@@ -301,7 +315,7 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
                   key={`${name}_choice${idx + 1}`}
                   role='option'
                   tabIndex={-1}
-                  aria-selected={false}
+                  aria-selected={idx === activeItemIdx}
                   id={`autocomplete_${item.value}`}
                 >
                   {item.label ?? item.value}
