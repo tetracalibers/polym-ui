@@ -75,6 +75,35 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
       // TODO セレクトボックスの値を更新
     }
 
+    const isEmptyValue = (value: ChoiceItem['value']) => {
+      return `${value}`.trim().length === 0
+    }
+
+    const isExactMatch = (value: ChoiceItem['value']) => {
+      return !!_.find(choices, (choice: ChoiceItem) => choice.value === value)
+    }
+
+    // 下矢印キーを押すとメニューに移動
+    const onTextBoxArrowDownPress = (_e: KeyboardEvent<HTMLInputElement>) => {
+      if (inputEref.current) {
+        const inputValue = inputEref.current.value.trim()
+        // 値が空orオプションの一つと完全にマッチする場合は、メニュー全体を表示
+        if (isEmptyValue(inputValue) || isExactMatch(inputValue)) {
+          // TODO 値に基づいてオプション取得
+          // TODO オプションをもとにメニューを構築
+          // メニューを表示
+          setIsOpen(true)
+          // TODO メニューの最初のオプションを取得
+          // TODO 最初のオプションをハイライト
+
+          // 値が部分的にマッチする場合、マッチするオプションを表示
+        } else {
+          // TODO 値に基づいてオプション取得
+          // TODO オプションがある場合、以下同様
+        }
+      }
+    }
+
     const onTextBoxKeyup = (e: KeyboardEvent<HTMLInputElement>) => {
       const key = e.key
       match(key)
@@ -92,8 +121,7 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
           }
         )
         .with('ArrowDown', () => {
-          setIsOpen(true)
-          e.stopPropagation()
+          onTextBoxArrowDownPress(e)
         })
         .otherwise(() => {
           onTextBoxType()
