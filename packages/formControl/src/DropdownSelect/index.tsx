@@ -34,12 +34,11 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
           tabIndex={-1}
           ref={ref}
         >
-          <option value=''>Please choose</option>
-          <option value='1'>choices 01</option>
-          <option value='2'>choices 02</option>
-          <option value='3'>choices 03</option>
-          <option value='4'>choices 04</option>
-          <option value='5'>choices 05</option>
+          {choices.map((item, idx) => (
+            <option value={item.value} key={`${name}_choice${idx + 1}`}>
+              {item.label ?? item.value}
+            </option>
+          ))}
         </VisuallyHidden>
         <AutoComplete>
           {/* このinputBoxの値はサーバには送らないため、name属性は不要 */}
@@ -55,55 +54,22 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
           />
           <ArrowIcon direction='down' />
           <Hidden as='ul' id={`autocomplete-options--${name}`} role='listbox'>
-            <li
-              data-option-value='1'
-              role='option'
-              tabIndex={-1}
-              aria-selected={false}
-              id={'autocomplete_1'}
-            >
-              choices 01
-            </li>
-            <li
-              data-option-value='2'
-              role='option'
-              tabIndex={-1}
-              aria-selected={false}
-              id={'autocomplete_2'}
-            >
-              choices 02
-            </li>
-            <li
-              data-option-value='3'
-              role='option'
-              tabIndex={-1}
-              aria-selected={false}
-              id={'autocomplete_3'}
-            >
-              choices 03
-            </li>
-            <li
-              data-option-value='4'
-              role='option'
-              tabIndex={-1}
-              aria-selected={false}
-              id={'autocomplete_4'}
-            >
-              choices 04
-            </li>
-            <li
-              data-option-value='5'
-              role='option'
-              tabIndex={-1}
-              aria-selected={false}
-              id={'autocomplete_5'}
-            >
-              choices 05
-            </li>
+            {choices.map((item, idx) => (
+              <li
+                data-option-value={item.value}
+                key={`${name}_choice${idx + 1}`}
+                role='option'
+                tabIndex={-1}
+                aria-selected={false}
+                id={`autocomplete_${item.value}`}
+              >
+                {item.label ?? item.value}
+              </li>
+            ))}
           </Hidden>
           {/* メニューに候補が表示されたら、その候補数を通知する */}
           <VisuallyHidden aria-live='polite' role='status'>
-            5 candidates
+            {choices.length} candidates
           </VisuallyHidden>
         </AutoComplete>
       </Root>

@@ -43,14 +43,14 @@ export default {
 const Template: ComponentStory<typeof DropdownSelect> = ({
   children,
   ...args
-}) => (
-  <DropdownSelect {...args} as={DarkTextBox}>
-    {children}
-  </DropdownSelect>
-)
+}) => <DropdownSelect {...args}>{children}</DropdownSelect>
 
 export const playground = Template.bind({})
 playground.args = {
   ...defaultProps,
+  choices: [...new Array(5)].map((_, idx) => ({
+    value: idx + 1,
+    label: `choice${`${idx + 1}`.padStart(2, '0')}`,
+  })),
 }
 playground.argTypes = {}
