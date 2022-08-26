@@ -214,7 +214,6 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
     /* FOCUS ON LIST                                */
     /* -------------------------------------------- */
 
-    // TODO onSelectInListと同時指定すると潰されるよ…
     const onMenuKeyDown = (e: KeyboardEvent<HTMLUListElement>) => {
       if (listEref.current) {
         const optionElements = listEref.current?.childNodes
@@ -314,8 +313,8 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
                 role='listbox'
                 onKeyDown={onMenuKeyDown}
                 ref={listEref}
-                //onClick={onSelectInList}
-                //onMouseDown={onSelectInList}
+                onClick={onSelectInList}
+                onMouseDown={onSelectInList}
                 onFocus={onFocusInList}
               >
                 {visibleItems.map((item, idx) => (
