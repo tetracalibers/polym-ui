@@ -6,6 +6,7 @@ import {
   ReactElement,
   SyntheticEvent,
   useReducer,
+  useRef,
   useState,
 } from 'react'
 import { SelectComponentPropWithRef } from '../common/polymorphic/fixedAs'
@@ -30,12 +31,13 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
     const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
       _.isUndefined(input) ? defaul : input
     )
-    const { name, choices, initialValue, onSelect, placeholder, ...other } =
-      props
+    // prettier-ignore
+    const { name, choices, initialValue, onSelect, placeholder, ...other } = props
     const initialItem = choices.find(item => item.value === initialValue)
 
     const [isOpen, setIsOpen] = useState(false)
     const [selectedItem, setSelectedItem] = useState(initialItem)
+    const inputEref = useRef<HTMLInputElement>(null)
 
     // クリックした時にドロップダウンを開閉
     const toggleOpenByClick = (e: SyntheticEvent) => {
@@ -52,7 +54,19 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
       onSelect && onSelect(item)
     }
 
-    const textBoxKeyup = (e: KeyboardEvent<HTMLInputElement>) => {
+    const onTextBoxType = () => {
+      const inputStringLength = inputEref?.current?.value.trim().length
+      // ユーザが何かを入力した時のみ
+      if (typeof inputStringLength === 'number' && inputStringLength > 0) {
+        // TODO フィルタリング
+        // メニューを表示
+        setIsOpen(true)
+        // TODO ライブリージョンを更新
+      }
+      // TODO セレクトボックスの値を更新
+    }
+
+    const onTextBoxKeyup = (e: KeyboardEvent<HTMLInputElement>) => {
       const key = e.key
       match(key)
         .with(
@@ -73,10 +87,7 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
           e.stopPropagation()
         })
         .otherwise(() => {
-          setIsOpen(true)
-          // TODO ライブリージョンを更新
-          // TODO セレクトボックスの値を更新
-          e.stopPropagation()
+          onTextBoxType()
         })
     }
 
@@ -115,7 +126,8 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
               id={name}
               aria-expanded={false}
               placeholder={selectedItem?.label ?? placeholder}
-              onKeyUp={textBoxKeyup}
+              onKeyUp={onTextBoxKeyup}
+              ref={inputEref}
             />
             <ArrowIcon direction={isOpen ? 'up' : 'down'} />
           </InputControl>
