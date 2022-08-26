@@ -42,6 +42,12 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
     const inputEref = useRef<HTMLInputElement>(null)
     const thisComponentEref = useRef<HTMLDivElement>(null)
 
+    // クリックした時にドロップダウンを開く
+    const openByClick = (e: SyntheticEvent) => {
+      setIsOpen(true)
+      e.stopPropagation()
+    }
+
     // クリックした時にドロップダウンを開閉
     const toggleOpenByClick = (e: SyntheticEvent) => {
       setIsOpen(!isOpen)
@@ -145,27 +151,28 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
           ))}
         </VisuallyHidden>
         <AutoComplete>
-          <InputControl
+          {/* このinputBoxの値はサーバには送らないため、name属性は不要 */}
+          <input
+            aria-owns={`autocomplete-options--${name}`}
+            autoCapitalize='none'
+            type='text'
+            autoComplete='off'
+            aria-autocomplete='list'
+            role='combobox'
+            id={name}
+            aria-expanded={false}
+            placeholder={selectedItem?.label ?? placeholder}
+            onKeyUp={onTextBoxKeyup}
+            onKeyDown={unfocusByTab}
+            onMouseDown={openByClick}
+            onTouchEnd={openByClick}
+            ref={inputEref}
+          />
+          <ArrowIcon
+            direction={isOpen ? 'up' : 'down'}
             onMouseDown={toggleOpenByClick}
             onTouchEnd={toggleOpenByClick}
-          >
-            {/* このinputBoxの値はサーバには送らないため、name属性は不要 */}
-            <input
-              aria-owns={`autocomplete-options--${name}`}
-              autoCapitalize='none'
-              type='text'
-              autoComplete='off'
-              aria-autocomplete='list'
-              role='combobox'
-              id={name}
-              aria-expanded={false}
-              placeholder={selectedItem?.label ?? placeholder}
-              onKeyUp={onTextBoxKeyup}
-              onKeyDown={unfocusByTab}
-              ref={inputEref}
-            />
-            <ArrowIcon direction={isOpen ? 'up' : 'down'} />
-          </InputControl>
+          />
           {isOpen && (
             <SelectList id={`autocomplete-options--${name}`} role='listbox'>
               {choices.map((item, idx) => (
