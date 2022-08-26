@@ -21,7 +21,7 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
     const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
       _.isUndefined(input) ? defaul : input
     )
-    const { name, ...other } = props
+    const { name, choices, ...other } = props
     return (
       <Root>
         {/* id={name}であるテキストボックスと関連づけ（SRで読み上げ） */}

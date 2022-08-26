@@ -2,20 +2,68 @@ import { defaultProps } from './props'
 import { CssStyle } from 'ts-typedef-helper'
 
 export const logicArgTypes = {
-  // recursive: {
-  //   control: {
-  //     type: 'boolean',
-  //   },
-  //   description: 'Whether to apply layout to nested elements',
-  //   table: {
-  //     type: {
-  //       summary: null,
-  //     },
-  //     category: 'style control',
-  //     defaultValue: {
-  //       summary: '',
-  //       details: null,
-  //     },
-  //   },
-  // },
+  choices: {
+    control: {
+      type: 'object',
+    },
+    description: 'Drop-down menu choices',
+    table: {
+      type: {
+        summary: '{ value: string | number, label?: string }',
+      },
+      category: 'application',
+      defaultValue: {
+        summary: '[]',
+        details: null,
+      },
+    },
+  },
+  hasError: {
+    control: {
+      type: 'boolean',
+    },
+    description: 'Set to true if there is a validation error',
+    table: {
+      type: {
+        summary: null,
+      },
+      category: 'application',
+      defaultValue: {
+        summary: defaultProps.hasError,
+        details: null,
+      },
+    },
+  },
+  onSelect: {
+    control: {
+      type: null,
+    },
+    description: 'Event handler when selected',
+    table: {
+      type: {
+        summary: '(selected?) => void',
+      },
+      category: 'application',
+      defaultValue: {
+        summary: '() => {}',
+        details: null,
+      },
+    },
+  },
+  name: {
+    control: {
+      type: 'text',
+    },
+    description: 'name attribute set to the HTML select element',
+    table: {
+      type: {
+        summary: null,
+      },
+      category: 'html',
+      defaultValue: {
+        summary: defaultProps.name,
+        details: null,
+      },
+    },
+  },
 }
