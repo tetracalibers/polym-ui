@@ -69,6 +69,20 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
       })
     }
 
+    const isHidden = (el: HTMLElement) => el.offsetParent === null
+
+    const highlightOption = (newOptionE: HTMLElement) => {
+      // オプションがメニュー内に表示されていない場合
+      if (isHidden(newOptionE)) {
+        if (newOptionE.parentElement) {
+          // その位置をメニュー内に設定して表示されるようにする
+          newOptionE.parentElement.scrollTop =
+            newOptionE.parentElement.scrollTop + newOptionE.offsetTop
+        }
+      }
+      newOptionE.focus()
+    }
+
     /* -------------------------------------------- */
     /* FOCUS ON INPUT                               */
     /* -------------------------------------------- */
@@ -178,27 +192,13 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
       const list = e.target as Element
       const idx = list.attributes.getNamedItem('data-idx')?.value
       if (idx !== undefined) {
-        const item = choices[+idx]
+        const item = visibleItems[+idx]
         setSelectedItem(item)
         setIsOpen(false)
         inputEref.current?.focus()
         // propsで指定された処理を実行
         onSelect && onSelect(item)
       }
-    }
-
-    const isHidden = (el: HTMLElement) => el.offsetParent === null
-
-    const highlightOption = (newOptionE: HTMLElement) => {
-      // オプションがメニュー内に表示されていない場合
-      if (isHidden(newOptionE)) {
-        if (newOptionE.parentElement) {
-          // その位置をメニュー内に設定して表示されるようにする
-          newOptionE.parentElement.scrollTop =
-            newOptionE.parentElement.scrollTop + newOptionE.offsetTop
-        }
-      }
-      newOptionE.focus()
     }
 
     // フォーカス時
@@ -240,7 +240,7 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
             nextElement && highlightOption(nextElement)
           })
           .with('Enter', ' ', () => {
-            const item = choices[activeItemIdx]
+            const item = visibleItems[activeItemIdx]
             // 現在フォーカスが当たっているオプションが選択される
             setSelectedItem(item)
             // メニューを隠す
@@ -279,8 +279,8 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
           ref={ref}
           value={selectedItem?.value}
         >
-          {choices.map((item, idx) => (
-            <option value={item.value} key={`${name}_choice${idx + 1}`}>
+          {choices.map(item => (
+            <option value={item.value} key={`${name}_choice__${item.value}`}>
               {item.label ?? item.value}
             </option>
           ))}
@@ -309,33 +309,35 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
             onTouchEnd={toggleOpenByClick}
           />
           {isOpen && (
-            <SelectList
-              id={`autocomplete-options--${name}`}
-              role='listbox'
-              onKeyDown={onMenuKeyDown}
-              ref={listEref}
-              //onClick={onSelectInList}
-              //onMouseDown={onSelectInList}
-              onFocus={onFocusInList}
-            >
-              {visibleItems.map((item, idx) => (
-                <li
-                  data-idx={idx}
-                  key={`${name}_choice${idx + 1}`}
-                  role='option'
-                  tabIndex={-1}
-                  aria-selected={idx === activeItemIdx}
-                  id={`autocomplete_${item.value}`}
-                >
-                  {item.label ?? item.value}
-                </li>
-              ))}
-            </SelectList>
+            <>
+              <SelectList
+                id={`autocomplete-options--${name}`}
+                role='listbox'
+                onKeyDown={onMenuKeyDown}
+                ref={listEref}
+                //onClick={onSelectInList}
+                //onMouseDown={onSelectInList}
+                onFocus={onFocusInList}
+              >
+                {visibleItems.map((item, idx) => (
+                  <li
+                    data-idx={idx}
+                    key={`${name}_choice${idx + 1}`}
+                    role='option'
+                    tabIndex={-1}
+                    aria-selected={idx === activeItemIdx}
+                    id={`autocomplete_${item.value}`}
+                  >
+                    {item.label ?? item.value}
+                  </li>
+                ))}
+              </SelectList>
+              {/* メニューに候補が表示されたら、その候補数を通知する */}
+              <VisuallyHidden aria-live='polite' role='status'>
+                {visibleItems.length} candidates
+              </VisuallyHidden>
+            </>
           )}
-          {/* メニューに候補が表示されたら、その候補数を通知する */}
-          <VisuallyHidden aria-live='polite' role='status'>
-            {choices.length} candidates
-          </VisuallyHidden>
         </AutoComplete>
       </Root>
     )
