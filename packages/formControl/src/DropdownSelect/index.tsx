@@ -332,7 +332,7 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
               </SelectList>
               {/* メニューに候補が表示されたら、その候補数を通知する */}
               <VisuallyHidden aria-live='polite' role='status'>
-                {visibleItems.length} candidates
+                {visibleItems.length} items displayed
               </VisuallyHidden>
             </>
           )}
