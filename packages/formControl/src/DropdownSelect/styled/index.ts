@@ -15,4 +15,11 @@ export const SelectList = styled.ul`
   overflow-y: scroll;
   /* iOSで慣性スクロールができるようにする */
   -webkit-overflow-scrolling: touch;
+
+  /* focus highlight */
+  & [role='option'][aria-selected='true'] {
+    background-color: #005ea5;
+    border-color: #005ea5;
+    color: #fff;
+  }
 `
