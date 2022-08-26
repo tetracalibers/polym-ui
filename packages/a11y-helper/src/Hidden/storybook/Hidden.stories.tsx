@@ -14,7 +14,7 @@ export default {
     docs: {
       page: () => <DocsPage />,
       description: {
-        component: '',
+        component: 'Complete concealment for all users',
       },
     },
   },
@@ -23,7 +23,7 @@ export default {
       control: {
         type: null,
       },
-      description: 'Child elements of the element specified by as props',
+      description: 'Child elements of the element you want to hide',
       table: {
         type: {
           summary: null,
@@ -37,6 +37,10 @@ export default {
     ...logicArgTypes,
     ...commmonArgTypes,
     ...styleArgTypes,
+    as: {
+      ...commmonArgTypes.as,
+      description: 'Specify elements to be hidden',
+    },
   },
 }
 
