@@ -214,8 +214,10 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
             previousElement?.focus()
           })
           .with('ArrowDown', () => {
-            // TODO 次のメニューオプションにフォーカス
-            // TODO 最後のメニューオプションがフォーカスされている場合は何も起こらない
+            // 次のメニューオプションにフォーカス
+            // 最後のメニューオプションがフォーカスされている場合は何も起こらない
+            const nextElement = optionElements[activeItemIdx + 1] as HTMLElement
+            nextElement?.focus()
           })
           .with('Enter', ' ', () => {
             // TODO 現在フォーカスが当たっているオプションが選択される
