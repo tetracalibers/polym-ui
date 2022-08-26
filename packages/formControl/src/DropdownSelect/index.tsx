@@ -86,7 +86,7 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
               aria-expanded={false}
               value={selectedItem?.label ?? placeholder}
             />
-            <ArrowIcon direction='down' />
+            <ArrowIcon direction={isOpen ? 'up' : 'down'} />
           </InputControl>
           {isOpen && (
             <SelectList id={`autocomplete-options--${name}`} role='listbox'>
