@@ -25,6 +25,7 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
       <Root>
         <label>
           label
+          {/* class='visually-hidden' */}
           <select name={name} aria-hidden='true' tabIndex={-1} ref={ref}>
             <option value=''>Please choose</option>
             <option value='1'>choices 01</option>
@@ -45,7 +46,59 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
             id={name}
             aria-expanded={false}
           />
-          <ArrowIcon />
+          <ArrowIcon direction='down' />
+          {/* class='hidden' */}
+          <ul id={`autocomplete-options--${name}`} role='listbox'>
+            <li
+              data-option-value='1'
+              role='option'
+              tabIndex={-1}
+              aria-selected={false}
+              id={'autocomplete_1'}
+            >
+              choices 01
+            </li>
+            <li
+              data-option-value='2'
+              role='option'
+              tabIndex={-1}
+              aria-selected={false}
+              id={'autocomplete_2'}
+            >
+              choices 02
+            </li>
+            <li
+              data-option-value='3'
+              role='option'
+              tabIndex={-1}
+              aria-selected={false}
+              id={'autocomplete_3'}
+            >
+              choices 03
+            </li>
+            <li
+              data-option-value='4'
+              role='option'
+              tabIndex={-1}
+              aria-selected={false}
+              id={'autocomplete_4'}
+            >
+              choices 04
+            </li>
+            <li
+              data-option-value='5'
+              role='option'
+              tabIndex={-1}
+              aria-selected={false}
+              id={'autocomplete_5'}
+            >
+              choices 05
+            </li>
+          </ul>
+          {/* class='visually-hidden' */}
+          <div aria-live='polite' role='status'>
+            candidate
+          </div>
         </AutoComplete>
       </Root>
     )
