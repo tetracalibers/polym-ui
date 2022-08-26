@@ -7,18 +7,16 @@ import {
   SyntheticEvent,
   useCallback,
   useEffect,
-  useReducer,
   useRef,
   useState,
 } from 'react'
 import { SelectComponentPropWithRef } from '../common/polymorphic/fixedAs'
 import { PolymorphicRef } from '../common/polymorphic/standard'
 import { CharacterProps, ChoiceItem, defaultProps } from './model/props'
-import { Root, AutoComplete, InputControl, SelectList } from './styled'
+import { Root, AutoComplete, SelectList } from './styled'
 import { ArrowIcon } from '@polym-ui/symbol'
-import { Hidden, VisuallyHidden } from '@polym-ui/a11y-helper'
+import { VisuallyHidden } from '@polym-ui/a11y-helper'
 import { match } from 'ts-pattern'
-import { isTemplateHead } from 'typescript'
 
 export type DropdownSelectProps = SelectComponentPropWithRef<CharacterProps>
 
@@ -42,6 +40,7 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
     const [selectedItem, setSelectedItem] = useState(initialItem)
     const [activeItemIdx, setActiveItemIdx] = useState(-1)
     const [visibleItems, setVisibleItems] = useState(choices as ChoiceItem[])
+    // TODO 選択時にinputBoxに選択した値のラベルが入力されるようにする（state定義が必要）
 
     const inputEref = useRef<HTMLInputElement>(null)
     const thisComponentEref = useRef<HTMLDivElement>(null)
@@ -293,7 +292,7 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
             role='combobox'
             id={name}
             aria-expanded={false}
-            placeholder={selectedItem?.label ?? placeholder}
+            placeholder={placeholder}
             onKeyUp={onTextBoxKeyup}
             onKeyDown={unfocusByTab}
             onMouseDown={openByClick}
