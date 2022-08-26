@@ -20,3 +20,13 @@ export type TextAreaComponentProp<Props = {}> = PropsWithChildren<Props> &
 
 export type TextAreaComponentPropWithRef<Props = {}> =
   TextAreaComponentProp<Props> & PolymorphicRef<'textarea'>
+
+/* -------------------------------------------- */
+/* SELECT                                       */
+/* -------------------------------------------- */
+
+export type SelectComponentProp<Props = {}> = PropsWithChildren<Props> &
+  ComponentPropsWithoutRef<'select'>
+
+export type SelectComponentPropWithRef<Props = {}> =
+  SelectComponentProp<Props> & PolymorphicRef<'select'>
