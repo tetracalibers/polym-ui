@@ -9,7 +9,9 @@
     "format": "prettier --write",
     "build": "rollup -c",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "predeploy": "build-storybook",
+    "deploy": "gh-pages -d storybook-static"
   },
   "repository": {
     "type": "git",
@@ -46,6 +48,7 @@
     "eslint-plugin-mdx": "^2.0.2",
     "lerna": "^5.1.6",
     "nx": "^14.3.6",
-    "prettier": "^2.7.1"
+    "prettier": "^2.7.1",
+    "gh-pages": "^4.0.0"
   }
 }
