@@ -24,24 +24,25 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
     const { name, ...other } = props
     return (
       <Root>
-        <label>
-          label
-          <VisuallyHidden
-            as='select'
-            name={name}
-            aria-hidden='true'
-            tabIndex={-1}
-            ref={ref}
-          >
-            <option value=''>Please choose</option>
-            <option value='1'>choices 01</option>
-            <option value='2'>choices 02</option>
-            <option value='3'>choices 03</option>
-            <option value='4'>choices 04</option>
-            <option value='5'>choices 05</option>
-          </VisuallyHidden>
-        </label>
+        {/* id={name}であるテキストボックスと関連づけ（SRで読み上げ） */}
+        <label htmlFor={name}>label</label>
+        {/* 値をサーバに送るためのname属性 */}
+        <VisuallyHidden
+          as='select'
+          name={name}
+          aria-hidden='true'
+          tabIndex={-1}
+          ref={ref}
+        >
+          <option value=''>Please choose</option>
+          <option value='1'>choices 01</option>
+          <option value='2'>choices 02</option>
+          <option value='3'>choices 03</option>
+          <option value='4'>choices 04</option>
+          <option value='5'>choices 05</option>
+        </VisuallyHidden>
         <AutoComplete>
+          {/* このinputBoxの値はサーバには送らないため、name属性は不要 */}
           <input
             aria-owns={`autocomplete-options--${name}`}
             autoCapitalize='none'
