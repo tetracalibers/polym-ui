@@ -95,9 +95,7 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
         setVisibleItems(filterd)
         // メニューを表示
         setIsOpen(true)
-        // TODO ライブリージョンを更新
       }
-      // TODO セレクトボックスの値を更新
     }
 
     const isEmptyValue = (value: ChoiceItem['value']) => {
