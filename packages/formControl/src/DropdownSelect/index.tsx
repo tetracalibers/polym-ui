@@ -2,6 +2,7 @@ import _ from 'lodash'
 import {
   FormEvent,
   forwardRef,
+  KeyboardEvent,
   ReactElement,
   SyntheticEvent,
   useReducer,
@@ -13,6 +14,7 @@ import { CharacterProps, ChoiceItem, defaultProps } from './model/props'
 import { Root, AutoComplete, InputControl, SelectList } from './styled'
 import { ArrowIcon } from '@polym-ui/symbol'
 import { Hidden, VisuallyHidden } from '@polym-ui/a11y-helper'
+import { match } from 'ts-pattern'
 
 export type DropdownSelectProps = SelectComponentPropWithRef<CharacterProps>
 
@@ -32,12 +34,12 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
       props
     const initialItem = choices.find(item => item.value === initialValue)
 
-    const [isOpen, toggleOpen] = useReducer((flag: boolean) => !flag, false)
+    const [isOpen, setIsOpen] = useState(false)
     const [selectedItem, setSelectedItem] = useState(initialItem)
 
     // クリックした時にドロップダウンを開閉
     const toggleOpenByClick = (e: SyntheticEvent) => {
-      toggleOpen()
+      setIsOpen(!isOpen)
       e.stopPropagation()
     }
 
@@ -45,9 +47,37 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
     const selectValue = (e: FormEvent<HTMLLIElement>, item: ChoiceItem) => {
       e.stopPropagation()
       setSelectedItem(item)
-      toggleOpen()
+      setIsOpen(false)
       // propsで指定された処理を実行
       onSelect && onSelect(item)
+    }
+
+    const textBoxKeyup = (e: KeyboardEvent<HTMLInputElement>) => {
+      const key = e.key
+      match(key)
+        .with(
+          'Escape',
+          'ArrowUp',
+          'ArrowLeft',
+          'ArrowRight',
+          ' ',
+          'Enter',
+          'Tab',
+          'Shift',
+          () => {
+            // メニューが短時間表示されてしまわないよう、これらのキーは無視
+          }
+        )
+        .with('ArrowDown', () => {
+          setIsOpen(true)
+          e.stopPropagation()
+        })
+        .otherwise(() => {
+          setIsOpen(true)
+          // TODO ライブリージョンを更新
+          // TODO セレクトボックスの値を更新
+          e.stopPropagation()
+        })
     }
 
     return (
@@ -85,6 +115,7 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
               id={name}
               aria-expanded={false}
               placeholder={selectedItem?.label ?? placeholder}
+              onKeyUp={textBoxKeyup}
             />
             <ArrowIcon direction={isOpen ? 'up' : 'down'} />
           </InputControl>
