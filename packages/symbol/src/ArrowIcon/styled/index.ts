@@ -24,14 +24,19 @@ const rotate = (direction: CharacterProps['direction']) => {
         transform: rotate(225deg);
       `
     })
-    .exhaustive()
+    .otherwise(() => '')
 }
 
 export const StyledElement = styled.span<CharacterProps>`
-  width: ${({ size, thickness }) => css`calc(${size} * 0.7 - ${thickness}px)`};
-  height: ${({ size, thickness }) => css`calc(${size} * 0.7 - ${thickness}px)`};
-  border-color: ${({ color }) => color};
-  border-width: ${({ thickness }) => thickness}px;
+  --size: ${({ sizeV, sizeU }) => `${sizeV}${sizeU}`};
+  --border-width: ${({ thickness }) => `${thickness}px`};
+  --width: calc(var(--size) * 0.7 - var(--border-width));
+  --border-color: ${({ color }) => color};
+
+  width: var(--width);
+  height: var(--width);
+  border-color: var(--border-color);
+  border-width: var(--border-width);
   border-style: solid;
   border-left: 0;
   border-top: 0;

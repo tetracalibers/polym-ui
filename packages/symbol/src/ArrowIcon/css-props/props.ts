@@ -1,12 +1,14 @@
-import { getDefaultProps, getPropType, Required } from 'react-tsx-props'
+import { getDefaultProps, getPropType, NotRequired } from 'react-tsx-props'
 import * as CSST from 'csstype'
 import { ColorPalette } from 'styled-utility-first'
+import { CssStyle } from 'ts-typedef-helper'
 
 const conf = {
   // 矢印の辺の長さ
-  size: Required<CSST.Property.Width>('50px'),
+  sizeV: NotRequired<number>(50),
+  sizeU: NotRequired<CssStyle.Unit.Length>('px'),
   // 矢印の色
-  color: Required<CSST.Property.Color>(ColorPalette.grayScale.dark),
+  color: NotRequired<CSST.Property.Color>(ColorPalette.grayScale.dark),
 }
 type Conf = typeof conf
 

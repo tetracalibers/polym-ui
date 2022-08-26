@@ -1,19 +1,39 @@
 import { useSetDefaultAs } from 'story-builder'
+import { CssStyle } from 'ts-typedef-helper'
 import { styleDefaultProps } from './props'
 
 const withDefaultAs = useSetDefaultAs(styleDefaultProps)
 
 export const styleArgTypes = {
-  size: {
-    ...withDefaultAs('width'),
-    description: 'Length of arrow side',
+  sizeV: {
+    control: {
+      type: 'number',
+    },
+    description: 'Numeric value for the length of the side of the arrow',
     table: {
       type: {
         summary: null,
       },
       category: 'style control',
       defaultValue: {
-        summary: styleDefaultProps.size,
+        summary: styleDefaultProps.sizeV,
+        details: null,
+      },
+    },
+  },
+  sizeU: {
+    control: {
+      type: 'select',
+    },
+    options: CssStyle.Unit.length,
+    description: 'Units of sizeV',
+    table: {
+      type: {
+        summary: null,
+      },
+      category: 'style control',
+      defaultValue: {
+        summary: styleDefaultProps.sizeU,
         details: null,
       },
     },
