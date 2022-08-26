@@ -59,6 +59,7 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
       e.stopPropagation()
       setSelectedItem(item)
       setIsOpen(false)
+      inputEref.current?.focus()
       // propsで指定された処理を実行
       onSelect && onSelect(item)
     }
