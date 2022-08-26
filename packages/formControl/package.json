@@ -76,6 +76,7 @@
     "zx": "^7.0.8",
     "@polym-ui/symbol": "*",
     "@polym-ui/typography": "*",
-    "@polym-ui/layout": "*"
+    "@polym-ui/layout": "*",
+    "@polym-ui/a11y-helper": "*"
   }
 }
