@@ -1,5 +1,11 @@
 import _ from 'lodash'
-import { forwardRef, ReactElement, SyntheticEvent, useReducer } from 'react'
+import {
+  forwardRef,
+  ReactElement,
+  SyntheticEvent,
+  useReducer,
+  useState,
+} from 'react'
 import { SelectComponentPropWithRef } from '../common/polymorphic/fixedAs'
 import { PolymorphicRef } from '../common/polymorphic/standard'
 import { CharacterProps, defaultProps } from './model/props'
@@ -21,9 +27,11 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
     const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
       _.isUndefined(input) ? defaul : input
     )
-    const { name, choices, ...other } = props
+    const { name, choices, initialValue, ...other } = props
+    const initialItem = choices.find(item => item.value === initialValue)
 
     const [isOpen, toggleOpen] = useReducer((flag: boolean) => !flag, false)
+    const [selectedItem, setSelectedItem] = useState(initialItem)
 
     // クリックした時にドロップダウンを開く
     const toggleOpenByClick = (e: SyntheticEvent) => {

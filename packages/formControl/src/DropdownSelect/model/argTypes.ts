@@ -66,4 +66,20 @@ export const logicArgTypes = {
       },
     },
   },
+  initialValue: {
+    control: {
+      type: 'text',
+    },
+    description: 'Value to be kept in the selected state from the beginning.',
+    table: {
+      type: {
+        summary: null,
+      },
+      category: 'html',
+      defaultValue: {
+        summary: defaultProps.initialValue,
+        details: null,
+      },
+    },
+  },
 }
