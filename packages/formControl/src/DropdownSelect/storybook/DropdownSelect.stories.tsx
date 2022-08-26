@@ -48,6 +48,7 @@ const Template: ComponentStory<typeof DropdownSelect> = ({
 export const playground = Template.bind({})
 playground.args = {
   ...defaultProps,
+  name: 'number',
   choices: [...new Array(5)].map((_, idx) => ({
     value: idx + 1,
     label: `choice${`${idx + 1}`.padStart(2, '0')}`,
