@@ -75,9 +75,9 @@ export const logicArgTypes = {
       type: {
         summary: null,
       },
-      category: 'html',
+      category: 'application',
       defaultValue: {
-        summary: defaultProps.initialValue,
+        summary: '',
         details: null,
       },
     },
