@@ -28,7 +28,8 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
     const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
       _.isUndefined(input) ? defaul : input
     )
-    const { name, choices, initialValue, onSelect, ...other } = props
+    const { name, choices, initialValue, onSelect, placeholder, ...other } =
+      props
     const initialItem = choices.find(item => item.value === initialValue)
 
     const [isOpen, toggleOpen] = useReducer((flag: boolean) => !flag, false)
@@ -83,7 +84,7 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
               role='combobox'
               id={name}
               aria-expanded={false}
-              value={selectedItem?.label ?? ''}
+              value={selectedItem?.label ?? placeholder}
             />
             <ArrowIcon direction='down' />
           </InputControl>

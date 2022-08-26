@@ -76,8 +76,20 @@ export const logicArgTypes = {
         summary: null,
       },
       category: 'application',
+    },
+  },
+  placeholder: {
+    control: {
+      type: 'text',
+    },
+    description: 'Instruction text displayed when nothing is selected',
+    table: {
+      type: {
+        summary: null,
+      },
+      category: 'style control',
       defaultValue: {
-        summary: '',
+        summary: defaultProps.placeholder,
         details: null,
       },
     },

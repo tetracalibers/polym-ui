@@ -17,6 +17,7 @@ const conf = {
   hasError: NotRequired<boolean>(false),
   name: Required<HTMLSelectElement['name']>(''),
   initialValue: NotRequired<ChoiceItem['value']>(),
+  placeholder: NotRequired<string>('Please select'),
 }
 type Conf = typeof conf
 
