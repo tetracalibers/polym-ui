@@ -35,6 +35,8 @@ export const Circle = styled.span<CharacterProps>`
   border-color: var(--border-color);
   background-color: #fff;
   border-radius: 50%;
+  box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset,
+    rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
 
   ${Input}:focus + * & {
     outline-width: var(--outline-width);
@@ -47,5 +49,12 @@ export const Circle = styled.span<CharacterProps>`
     padding: var(--border-width);
     box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
       rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+  }
+`
+
+export const RadioButton = styled.div`
+  ${Input}:disabled + * & :last-child,
+  ${Input}:not(:checked) + * & :last-child {
+    display: none;
   }
 `
