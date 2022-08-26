@@ -1,5 +1,6 @@
 import _ from 'lodash'
 import {
+  FormEvent,
   forwardRef,
   ReactElement,
   SyntheticEvent,
@@ -8,7 +9,7 @@ import {
 } from 'react'
 import { SelectComponentPropWithRef } from '../common/polymorphic/fixedAs'
 import { PolymorphicRef } from '../common/polymorphic/standard'
-import { CharacterProps, defaultProps } from './model/props'
+import { CharacterProps, ChoiceItem, defaultProps } from './model/props'
 import { Root, AutoComplete, InputControl, SelectList } from './styled'
 import { ArrowIcon } from '@polym-ui/symbol'
 import { Hidden, VisuallyHidden } from '@polym-ui/a11y-helper'
@@ -27,16 +28,25 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
     const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
       _.isUndefined(input) ? defaul : input
     )
-    const { name, choices, initialValue, ...other } = props
+    const { name, choices, initialValue, onSelect, ...other } = props
     const initialItem = choices.find(item => item.value === initialValue)
 
     const [isOpen, toggleOpen] = useReducer((flag: boolean) => !flag, false)
     const [selectedItem, setSelectedItem] = useState(initialItem)
 
-    // クリックした時にドロップダウンを開く
+    // クリックした時にドロップダウンを開閉
     const toggleOpenByClick = (e: SyntheticEvent) => {
       toggleOpen()
       e.stopPropagation()
+    }
+
+    // 選択時
+    const selectValue = (e: FormEvent<HTMLLIElement>, item: ChoiceItem) => {
+      e.stopPropagation()
+      setSelectedItem(item)
+      toggleOpen()
+      // propsで指定された処理を実行
+      onSelect && onSelect(item)
     }
 
     return (
@@ -50,6 +60,7 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
           aria-hidden='true'
           tabIndex={-1}
           ref={ref}
+          value={selectedItem?.value}
         >
           {choices.map((item, idx) => (
             <option value={item.value} key={`${name}_choice${idx + 1}`}>
@@ -72,6 +83,7 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
               role='combobox'
               id={name}
               aria-expanded={false}
+              value={selectedItem?.label ?? ''}
             />
             <ArrowIcon direction='down' />
           </InputControl>
@@ -85,6 +97,8 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
                   tabIndex={-1}
                   aria-selected={false}
                   id={`autocomplete_${item.value}`}
+                  onClick={e => selectValue(e, item)}
+                  onMouseDown={e => selectValue(e, item)}
                 >
                   {item.label ?? item.value}
                 </li>
