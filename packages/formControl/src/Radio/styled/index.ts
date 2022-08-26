@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components'
 import { CharacterProps } from '../model/props'
 import { match } from 'ts-pattern'
 import { ColorPalette, Truthy } from 'styled-utility-first'
+import { CircleIcon } from '@polym-ui/symbol'
 
 export const Label = styled.label<{ disabled: boolean | undefined }>`
   cursor: pointer;
@@ -43,7 +44,7 @@ export const Circle = styled.span<CharacterProps>`
 
   ${Input}:disabled + * & {
     border: none;
-    padding: 1px;
+    padding: var(--border-width);
     box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
       rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
   }

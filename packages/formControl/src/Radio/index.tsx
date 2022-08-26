@@ -24,7 +24,7 @@ export const Radio: RadioComponent = forwardRef(
     const { disabled, ...rest } = props
     return (
       <Label disabled={disabled}>
-        <Input {...rest} ref={ref} type='radio' />
+        <Input {...rest} ref={ref} type='radio' disabled={disabled} />
         <WithIcon alignItems={'center'} spaceV={0.25} spaceU={'em'}>
           <OverlapLayer
             renderOverlay={() => (
