@@ -41,6 +41,7 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
     const [isOpen, setIsOpen] = useState(false)
     const [selectedItem, setSelectedItem] = useState(initialItem)
     const [activeItemIdx, setActiveItemIdx] = useState(-1)
+    const [visibleItems, setVisibleItems] = useState(choices as ChoiceItem[])
 
     const inputEref = useRef<HTMLInputElement>(null)
     const thisComponentEref = useRef<HTMLDivElement>(null)
@@ -58,15 +59,26 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
       e.stopPropagation()
     }
 
+    // フィルタリング
+    const filtering = (inputStr: string) => {
+      return choices.filter(choice => {
+        return `${choice.label}`
+          .trim()
+          .toLowerCase()
+          .includes(inputStr.trim().toLowerCase())
+      })
+    }
+
     /* -------------------------------------------- */
     /* FOCUS ON INPUT                               */
     /* -------------------------------------------- */
 
     const onTextBoxType = () => {
-      const inputStringLength = inputEref?.current?.value.trim().length
+      const inputString = inputEref?.current?.value.trim()
       // ユーザが何かを入力した時のみ
-      if (typeof inputStringLength === 'number' && inputStringLength > 0) {
-        // TODO フィルタリング
+      if (inputString && inputString.length > 0) {
+        const filterd = filtering(inputString)
+        setVisibleItems(filterd)
         // メニューを表示
         setIsOpen(true)
         // TODO ライブリージョンを更新
@@ -86,20 +98,17 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
     const onTextBoxArrowDownPress = (_e: KeyboardEvent<HTMLInputElement>) => {
       if (inputEref.current) {
         const inputValue = inputEref.current.value.trim()
-        // 値が空orオプションの一つと完全にマッチする場合は、メニュー全体を表示
         if (isEmptyValue(inputValue) || isExactMatch(inputValue)) {
-          // TODO 値に基づいてオプション取得
-          // TODO オプションをもとにメニューを構築
-          // メニューを表示
-          setIsOpen(true)
-          // TODO メニューの最初のオプションを取得
-          // TODO 最初のオプションをハイライト
-
-          // 値が部分的にマッチする場合、マッチするオプションを表示
+          // 値が空orオプションの一つと完全にマッチする場合は、メニュー全体を表示
+          setVisibleItems(choices)
         } else {
-          // TODO 値に基づいてオプション取得
-          // TODO オプションがある場合、以下同様
+          // 値が部分的にマッチする場合、マッチするオプションを表示
+          const filterd = filtering(inputValue)
+          setVisibleItems(filterd)
         }
+        setIsOpen(true)
+        // TODO メニューの最初のオプションを取得
+        // TODO 最初のオプションをハイライト
       }
     }
 
@@ -309,7 +318,7 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
               //onMouseDown={onSelectInList}
               onFocus={onFocusInList}
             >
-              {choices.map((item, idx) => (
+              {visibleItems.map((item, idx) => (
                 <li
                   data-idx={idx}
                   key={`${name}_choice${idx + 1}`}
