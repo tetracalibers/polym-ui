@@ -14,7 +14,8 @@ export default {
     docs: {
       page: () => <DocsPage />,
       description: {
-        component: '',
+        component:
+          'Visually hide elements while allowing them to be read out loud to screen reader users upon focus',
       },
     },
   },
@@ -23,7 +24,7 @@ export default {
       control: {
         type: null,
       },
-      description: 'Child elements of the element specified by as props',
+      description: 'Child elements of the element specified in as props',
       table: {
         type: {
           summary: null,
@@ -37,6 +38,11 @@ export default {
     ...logicArgTypes,
     ...commmonArgTypes,
     ...styleArgTypes,
+    as: {
+      ...commmonArgTypes.as,
+      description:
+        'Specify which elements you want to hide for clear-eyed users',
+    },
   },
 }
 
