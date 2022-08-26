@@ -220,7 +220,9 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
             nextElement?.focus()
           })
           .with('Enter', ' ', () => {
-            // TODO 現在フォーカスが当たっているオプションが選択される
+            // 現在フォーカスが当たっているオプションが選択される
+            setSelectedItem(choices[activeItemIdx])
+            // テキストボックスにfocus
             inputEref.current?.focus()
           })
           .with('Escape', () => {
