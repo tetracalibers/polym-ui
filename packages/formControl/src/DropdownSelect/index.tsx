@@ -101,8 +101,9 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
               choices 05
             </li>
           </Hidden>
+          {/* メニューに候補が表示されたら、その候補数を通知する */}
           <VisuallyHidden aria-live='polite' role='status'>
-            candidate
+            5 candidates
           </VisuallyHidden>
         </AutoComplete>
       </Root>
