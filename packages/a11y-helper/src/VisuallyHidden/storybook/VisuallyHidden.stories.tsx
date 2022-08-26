@@ -1,5 +1,5 @@
 import { ComponentStory } from '@storybook/react'
-import { WillFade } from '..'
+import { VisuallyHidden } from '..'
 import { commmonArgTypes } from '../../common/argTypes'
 import { DarkTextBox } from '../../mock/TestBox'
 import { styleArgTypes } from '../css-props/argTypes'
@@ -8,8 +8,8 @@ import { defaultProps } from '../model/props'
 import { DocsPage } from './docsPage'
 
 export default {
-  title: 'a11y helper/WillFade',
-  component: WillFade,
+  title: 'a11y helper/VisuallyHidden',
+  component: VisuallyHidden,
   parameters: {
     docs: {
       page: () => <DocsPage />,
@@ -40,10 +40,13 @@ export default {
   },
 }
 
-const Template: ComponentStory<typeof WillFade> = ({ children, ...args }) => (
-  <WillFade {...args} as={DarkTextBox}>
+const Template: ComponentStory<typeof VisuallyHidden> = ({
+  children,
+  ...args
+}) => (
+  <VisuallyHidden {...args} as={DarkTextBox}>
     {children}
-  </WillFade>
+  </VisuallyHidden>
 )
 
 export const playground = Template.bind({})
