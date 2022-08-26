@@ -35,8 +35,6 @@ export const Circle = styled.span<CharacterProps>`
   border-color: var(--border-color);
   background-color: #fff;
   border-radius: 50%;
-  box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset,
-    rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
 
   ${Input}:focus + * & {
     outline-width: var(--outline-width);
