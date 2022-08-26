@@ -91,6 +91,13 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
         })
     }
 
+    // Tabによってフォーカスを外した時にメニュー非表示
+    const unfocusByTab = (e: KeyboardEvent<HTMLInputElement>) => {
+      if (e.key === 'Tab') {
+        setIsOpen(false)
+      }
+    }
+
     return (
       <Root>
         {/* id={name}であるテキストボックスと関連づけ（SRで読み上げ） */}
@@ -127,6 +134,7 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
               aria-expanded={false}
               placeholder={selectedItem?.label ?? placeholder}
               onKeyUp={onTextBoxKeyup}
+              onKeyDown={unfocusByTab}
               ref={inputEref}
             />
             <ArrowIcon direction={isOpen ? 'up' : 'down'} />
