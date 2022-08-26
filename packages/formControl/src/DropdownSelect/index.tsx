@@ -39,8 +39,11 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
 
     const [isOpen, setIsOpen] = useState(false)
     const [selectedItem, setSelectedItem] = useState(initialItem)
+    const [activeItemIdx, setActiveItemIdx] = useState(-1)
+
     const inputEref = useRef<HTMLInputElement>(null)
     const thisComponentEref = useRef<HTMLDivElement>(null)
+    const listEref = useRef<HTMLUListElement>(null)
 
     // クリックした時にドロップダウンを開く
     const openByClick = (e: SyntheticEvent) => {
@@ -52,16 +55,6 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
     const toggleOpenByClick = (e: SyntheticEvent) => {
       setIsOpen(!isOpen)
       e.stopPropagation()
-    }
-
-    // 選択時
-    const selectValue = (e: FormEvent<HTMLLIElement>, item: ChoiceItem) => {
-      e.stopPropagation()
-      setSelectedItem(item)
-      setIsOpen(false)
-      inputEref.current?.focus()
-      // propsで指定された処理を実行
-      onSelect && onSelect(item)
     }
 
     /* -------------------------------------------- */
@@ -165,34 +158,73 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
     }, [])
 
     /* -------------------------------------------- */
+    /* CLICK LIST                                   */
+    /* -------------------------------------------- */
+
+    // 選択時
+    const onSelectInList = (e: FormEvent<HTMLUListElement>) => {
+      e.stopPropagation()
+      if (e.target === listEref.current) return
+      const list = e.target as Element
+      const value = list.attributes.getNamedItem('data-option-value')?.value
+      const label = list.attributes.getNamedItem('data-option-label')?.value
+      if (!_.isUndefined(value)) {
+        const item = {
+          value,
+          label,
+        }
+        setSelectedItem(item)
+        setIsOpen(false)
+        inputEref.current?.focus()
+        // propsで指定された処理を実行
+        onSelect && onSelect(item)
+      }
+    }
+
+    // フォーカス時
+    const onFocusInList = (e: FormEvent<HTMLLIElement>, idx: number) => {
+      e.stopPropagation()
+      setActiveItemIdx(idx)
+    }
+
+    /* -------------------------------------------- */
     /* FOCUS ON LIST                                */
     /* -------------------------------------------- */
 
     const onMenuKeyDown = (e: KeyboardEvent<HTMLUListElement>) => {
-      match(e.key)
-        .with('ArrowUp', () => {
-          // TODO 最初のオプションがフォーカスされていればテキストボックスにフォーカス
-          // TODO それ以外の場合は前のオプションにフォーカス
-        })
-        .with('ArrowDown', () => {
-          // TODO 次のメニューオプションにフォーカス
-          // TODO 最後のメニューオプションがフォーカスされている場合は何も起こらない
-        })
-        .with('Enter', ' ', () => {
-          // TODO 現在フォーカスが当たっているオプションが選択される
-          inputEref.current?.focus()
-        })
-        .with('Escape', () => {
-          setIsOpen(false)
-          inputEref.current?.focus()
-        })
-        .with('Tab', () => {
-          setIsOpen(false)
-        })
-        .otherwise(() => {
-          // ユーザが入力を続けられるよう、テキストボックスにfocus
-          inputEref.current?.focus()
-        })
+      if (listEref.current) {
+        const activeOption = document.activeElement
+        const optionElements = listEref.current.children
+        match(e.key)
+          .with('ArrowUp', () => {
+            // 最初のオプションがフォーカスされていればテキストボックスにフォーカス
+            if (activeItemIdx === 0) {
+              inputEref.current?.focus()
+              //return
+            }
+            // それ以外の場合は前のオプションにフォーカス
+            //activeOption?.previousElementSibling?.nodeValue.f
+          })
+          .with('ArrowDown', () => {
+            // TODO 次のメニューオプションにフォーカス
+            // TODO 最後のメニューオプションがフォーカスされている場合は何も起こらない
+          })
+          .with('Enter', ' ', () => {
+            // TODO 現在フォーカスが当たっているオプションが選択される
+            inputEref.current?.focus()
+          })
+          .with('Escape', () => {
+            setIsOpen(false)
+            inputEref.current?.focus()
+          })
+          .with('Tab', () => {
+            setIsOpen(false)
+          })
+          .otherwise(() => {
+            // ユーザが入力を続けられるよう、テキストボックスにfocus
+            inputEref.current?.focus()
+          })
+      }
     }
 
     /* -------------------------------------------- */
@@ -244,17 +276,20 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
               id={`autocomplete-options--${name}`}
               role='listbox'
               onKeyDown={onMenuKeyDown}
+              ref={listEref}
+              onClick={onSelectInList}
+              onMouseDown={onSelectInList}
             >
               {choices.map((item, idx) => (
                 <li
                   data-option-value={item.value}
+                  data-option-label={item.label ?? ''}
                   key={`${name}_choice${idx + 1}`}
                   role='option'
                   tabIndex={-1}
                   aria-selected={false}
                   id={`autocomplete_${item.value}`}
-                  onClick={e => selectValue(e, item)}
-                  onMouseDown={e => selectValue(e, item)}
+                  //  onFocus={e => onFocusInList(e, idx)}
                 >
                   {item.label ?? item.value}
                 </li>
