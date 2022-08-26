@@ -89,8 +89,7 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
 
     const onTextBoxType = () => {
       const inputString = inputEref?.current?.value.trim()
-      // ユーザが何かを入力した時のみ
-      if (inputString && inputString.length > 0) {
+      if (inputString !== undefined) {
         const filterd = filtering(inputString)
         setVisibleItems(filterd)
         // メニューを表示
@@ -119,8 +118,9 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
           setVisibleItems(filterd)
         }
         setIsOpen(true)
-        // TODO メニューの最初のオプションを取得
-        // TODO 最初のオプションをハイライト
+        // 最初のオプションをハイライト
+        const firstOptionE = listEref.current?.childNodes[0] as HTMLElement
+        firstOptionE && highlightOption(firstOptionE)
       }
     }
 
@@ -299,6 +299,7 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
             onKeyDown={unfocusByTab}
             onMouseDown={openByClick}
             onTouchEnd={openByClick}
+            onChange={onTextBoxType}
             ref={inputEref}
           />
           <ArrowIcon
