@@ -64,6 +64,10 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
       onSelect && onSelect(item)
     }
 
+    /* -------------------------------------------- */
+    /* FOCUS ON INPUT                               */
+    /* -------------------------------------------- */
+
     const onTextBoxType = () => {
       const inputStringLength = inputEref?.current?.value.trim().length
       // ユーザが何かを入力した時のみ
@@ -160,6 +164,39 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
       }
     }, [])
 
+    /* -------------------------------------------- */
+    /* FOCUS ON LIST                                */
+    /* -------------------------------------------- */
+
+    const onMenuKeyDown = (e: KeyboardEvent<HTMLUListElement>) => {
+      match(e.key)
+        .with('ArrowUp', () => {
+          // TODO 最初のオプションがフォーカスされていればテキストボックスにフォーカス
+          // TODO それ以外の場合は前のオプションにフォーカス
+        })
+        .with('ArrowDown', () => {
+          // TODO 次のメニューオプションにフォーカス
+          // TODO 最後のメニューオプションがフォーカスされている場合は何も起こらない
+        })
+        .with('Enter', ' ', () => {
+          // TODO 現在フォーカスが当たっているオプションが選択される
+          inputEref.current?.focus()
+        })
+        .with('Escape', () => {
+          setIsOpen(false)
+          inputEref.current?.focus()
+        })
+        .with('Tab', () => {
+          setIsOpen(false)
+        })
+        .otherwise(() => {
+          // ユーザが入力を続けられるよう、テキストボックスにfocus
+          inputEref.current?.focus()
+        })
+    }
+
+    /* -------------------------------------------- */
+
     return (
       <Root ref={thisComponentEref}>
         {/* id={name}であるテキストボックスと関連づけ（SRで読み上げ） */}
@@ -203,7 +240,11 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
             onTouchEnd={toggleOpenByClick}
           />
           {isOpen && (
-            <SelectList id={`autocomplete-options--${name}`} role='listbox'>
+            <SelectList
+              id={`autocomplete-options--${name}`}
+              role='listbox'
+              onKeyDown={onMenuKeyDown}
+            >
               {choices.map((item, idx) => (
                 <li
                   data-option-value={item.value}
