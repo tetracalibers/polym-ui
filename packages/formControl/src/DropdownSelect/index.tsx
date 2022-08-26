@@ -182,28 +182,36 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
     }
 
     // フォーカス時
-    const onFocusInList = (e: FormEvent<HTMLLIElement>, idx: number) => {
+    const onFocusInList = (e: FormEvent<HTMLUListElement>) => {
       e.stopPropagation()
-      setActiveItemIdx(idx)
+      if (e.target === listEref.current) return
+      const list = e.target as Element
+      const idx = list.attributes.getNamedItem('data-idx')?.value
+      if (!_.isUndefined(idx)) {
+        setActiveItemIdx(+idx)
+      }
     }
 
     /* -------------------------------------------- */
     /* FOCUS ON LIST                                */
     /* -------------------------------------------- */
 
+    // TODO onSelectInListと同時指定すると潰されるよ…
     const onMenuKeyDown = (e: KeyboardEvent<HTMLUListElement>) => {
       if (listEref.current) {
-        const activeOption = document.activeElement
-        const optionElements = listEref.current.children
+        const optionElements = listEref.current?.childNodes
         match(e.key)
           .with('ArrowUp', () => {
             // 最初のオプションがフォーカスされていればテキストボックスにフォーカス
             if (activeItemIdx === 0) {
               inputEref.current?.focus()
-              //return
+              return
             }
             // それ以外の場合は前のオプションにフォーカス
-            //activeOption?.previousElementSibling?.nodeValue.f
+            const previousElement = optionElements[
+              activeItemIdx - 1
+            ] as HTMLElement
+            previousElement?.focus()
           })
           .with('ArrowDown', () => {
             // TODO 次のメニューオプションにフォーカス
@@ -277,19 +285,20 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
               role='listbox'
               onKeyDown={onMenuKeyDown}
               ref={listEref}
-              onClick={onSelectInList}
-              onMouseDown={onSelectInList}
+              //onClick={onSelectInList}
+              //onMouseDown={onSelectInList}
+              onFocus={onFocusInList}
             >
               {choices.map((item, idx) => (
                 <li
                   data-option-value={item.value}
                   data-option-label={item.label ?? ''}
+                  data-idx={idx}
                   key={`${name}_choice${idx + 1}`}
                   role='option'
                   tabIndex={-1}
                   aria-selected={false}
                   id={`autocomplete_${item.value}`}
-                  //  onFocus={e => onFocusInList(e, idx)}
                 >
                   {item.label ?? item.value}
                 </li>
