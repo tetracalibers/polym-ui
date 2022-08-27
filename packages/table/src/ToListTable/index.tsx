@@ -1,29 +1,26 @@
 import _ from 'lodash'
-import { ElementType, forwardRef, ReactElement } from 'react'
-import {
-  PolymorphicComponentPropWithRef,
-  PolymorphicRef,
-} from '../common/polymorphic/standard'
+import { forwardRef, ReactElement } from 'react'
+import { TableComponentPropWithRef } from '../common/polymorphic/fixedAs'
+import { PolymorphicRef } from '../common/polymorphic/standard'
 import { CharacterProps, defaultProps } from './model/props'
 import { StyledElement } from './styled'
 
-export type ToListTableProps<As extends ElementType> =
-  PolymorphicComponentPropWithRef<As, CharacterProps>
+export type ToListTableProps = TableComponentPropWithRef<CharacterProps>
 
-export type ToListTableComponent = <As extends ElementType>(
-  props: ToListTableProps<As>
+export type ToListTableComponent = (
+  props: ToListTableProps
 ) => ReactElement | null
 
 export const ToListTable: ToListTableComponent = forwardRef(
-  <As extends ElementType>(
-    { as, children, ..._props }: ToListTableProps<As>,
-    ref?: PolymorphicRef<As>
+  (
+    { children, ..._props }: ToListTableProps,
+    ref?: PolymorphicRef<'table'>
   ) => {
     const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
       _.isUndefined(input) ? defaul : input
     )
     return (
-      <StyledElement {...props} ref={ref} as={as as unknown as undefined}>
+      <StyledElement {...props} ref={ref}>
         {children}
       </StyledElement>
     )

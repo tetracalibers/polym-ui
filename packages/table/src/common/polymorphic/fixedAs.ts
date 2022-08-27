@@ -30,3 +30,13 @@ export type SelectComponentProp<Props = {}> = PropsWithChildren<Props> &
 
 export type SelectComponentPropWithRef<Props = {}> =
   SelectComponentProp<Props> & PolymorphicRef<'select'>
+
+/* -------------------------------------------- */
+/* TABLE                                        */
+/* -------------------------------------------- */
+
+export type TableComponentProps<Props = {}> = PropsWithChildren<Props> &
+  ComponentPropsWithoutRef<'table'>
+
+export type TableComponentPropWithRef<Props = {}> = TableComponentProps<Props> &
+  PolymorphicRef<'table'>

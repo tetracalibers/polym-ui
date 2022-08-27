@@ -43,11 +43,7 @@ export default {
 const Template: ComponentStory<typeof ToListTable> = ({
   children,
   ...args
-}) => (
-  <ToListTable {...args} as={DarkTextBox}>
-    {children}
-  </ToListTable>
-)
+}) => <ToListTable {...args}>{children}</ToListTable>
 
 export const playground = Template.bind({})
 playground.args = {
