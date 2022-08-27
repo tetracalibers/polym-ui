@@ -8,6 +8,7 @@ import { BiSearchAlt } from 'react-icons/bi'
 import { OverlapLayer } from '@polym-ui/layout'
 import { WithIcon } from '@polym-ui/typography'
 import { useInput } from '../hooks/useInput'
+import { useUnFocus } from '../hooks/useUnFocus'
 
 export type GrowingSearchProps = Omit<
   InputComponentPropWithRef<CharacterProps>,
@@ -27,14 +28,18 @@ export const GrowingSearch: GrowingSearchComponent = forwardRef(
       _.isUndefined(input) ? defaul : input
     )
 
-    const [searchQuery, setSearchQuery] = useState('')
-    const onTyping = (e: ChangeEvent<HTMLInputElement>) => {
-      setSearchQuery(e.target.value)
+    const [searchQuery, onTyping] = useInput('')
+
+    const rootEref = useRef<HTMLDivElement>(null)
+    const clickAreaEref = useRef<HTMLLabelElement>(null)
+
+    const onUnFocus = () => {
+      // 入力中はフォーカスアウトしても元の長さに戻らないようにする
+      if (searchQuery.length > 0) {
+        // 再度focus
+        clickAreaEref.current?.focus()
+      }
     }
-
-    const rootEref = useRef(null)
-    const clickAreaEref = useRef(null)
-
     return (
       <Root role='search' ref={rootEref}>
         <form>
@@ -42,8 +47,15 @@ export const GrowingSearch: GrowingSearchComponent = forwardRef(
             renderOverlay={() => <BiSearchAlt size={40} />}
             as={ClickArea}
             ref={clickAreaEref}
+            onBlur={onUnFocus}
           >
-            <SearchInput {...props} ref={ref} type='search' />
+            <SearchInput
+              {...props}
+              ref={ref}
+              type='search'
+              onChange={onTyping}
+              onBlur={onUnFocus}
+            />
           </OverlapLayer>
         </form>
       </Root>
