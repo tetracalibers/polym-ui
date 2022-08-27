@@ -1,9 +1,5 @@
-import {
-  getDefaultProps,
-  getPropType,
-  NotRequired,
-  Required,
-} from 'react-tsx-props'
+import { getDefaultProps, getPropType, NotRequired } from 'react-tsx-props'
+import { CssStyle } from 'ts-typedef-helper'
 import { commonDefaultProps, CommonProps } from '../../common/props'
 import { styleDefaultProps, StyleProps } from '../css-props/props'
 
@@ -12,6 +8,8 @@ const conf = {
   recursive: NotRequired<boolean>(false),
   // これより下のボックスをボックス下部にまとめるために隙間を開けるbreak point
   separateFrom: NotRequired<number>(0),
+  spaceV: NotRequired<number>(1.7),
+  spaceU: NotRequired<CssStyle.Unit.Length>('rem'),
 }
 type Conf = typeof conf
 
