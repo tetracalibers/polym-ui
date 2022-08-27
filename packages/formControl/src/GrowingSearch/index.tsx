@@ -50,7 +50,7 @@ export const GrowingSearch: GrowingSearchComponent = forwardRef(
     return (
       <Root role='search' ref={rootEref}>
         <form>
-          <DifferStack alignItems={'center'} spaceV={0} as={InputWrapper}>
+          <InputWrapper>
             <OverlapLayer
               renderOverlay={() => <BiSearchAlt size={40} />}
               as={ClickArea}
@@ -66,9 +66,9 @@ export const GrowingSearch: GrowingSearchComponent = forwardRef(
               />
             </OverlapLayer>
             <ResetButton type='reset'>
-              <RiCloseCircleLine size={30} />
+              <RiCloseCircleLine size={25} />
             </ResetButton>
-          </DifferStack>
+          </InputWrapper>
         </form>
       </Root>
     )

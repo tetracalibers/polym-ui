@@ -12,6 +12,17 @@ const caretColorKeyframes = keyframes`
   }
 `
 
+const showResetButton = keyframes`
+  0% {
+    color: transparent;
+    left: 0%;
+  }
+  100% {
+    color: #E74856;
+    left: 92.5%;
+  }
+`
+
 export const Root = styled.div`
   && {
     /* 最前面に設定 */
@@ -69,6 +80,23 @@ export const SearchInput = styled.input<CharacterProps>`
 
 export const ResetButton = styled.button`
   ${ResetCss.button}
+  position:absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  color: transparent;
+
+  ${ClickArea}:focus-within + & {
+    animation-name: ${showResetButton};
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+  }
 `
 
-export const InputWrapper = styled.div``
+export const InputWrapper = styled.div`
+  --after-width: 250px;
+  --before-width: 60px;
+
+  width: var(--after-width);
+  height: var(--before-height);
+  position: relative;
+`
