@@ -25,7 +25,7 @@ export const TextArea: TextAreaComponent = forwardRef(
     const [textareaRows, changeHeight] = useStretchableTextArea(minRows!, maxRows!, lineHeight!, onChange)
 
     return (
-      <VerticalStack>
+      <VerticalStack spaceV={0.5}>
         <StyledLabel htmlFor={id ?? name}>{children}</StyledLabel>
         <StyledTextarea
           {...props}
