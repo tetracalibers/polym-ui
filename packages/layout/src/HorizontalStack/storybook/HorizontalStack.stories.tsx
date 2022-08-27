@@ -2,7 +2,6 @@ import { ComponentStory } from '@storybook/react'
 import { HorizontalStack } from '..'
 import { commmonArgTypes } from '../../common/argTypes'
 import { HStackChild, HStackContainer } from '../../mock/TestBox'
-import { styleArgTypes } from '../css-props/argTypes'
 import { logicArgTypes } from '../model/argTypes'
 import { defaultProps } from '../model/props'
 import { DocsPage } from './docsPage'
@@ -37,7 +36,6 @@ export default {
     },
     ...logicArgTypes,
     ...commmonArgTypes,
-    ...styleArgTypes,
   },
 }
 
