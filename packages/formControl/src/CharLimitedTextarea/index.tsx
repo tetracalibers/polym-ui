@@ -6,10 +6,10 @@ import { useCharCount } from './hooks/useCharCount'
 import { CharacterProps, _defaultProps } from './model/props'
 
 export type CharLimitedTextareaProps = TextAreaComponentProp<CharacterProps> & {
-  renderCharCountLabel: (
+  renderCharCountLabel?: (
     currCharCount: number,
-    maxChars: number,
-    minChars: number
+    maxChars?: number,
+    minChars?: number
   ) => ReactNode
 }
 
@@ -21,12 +21,13 @@ export const defaultProps = {
   ..._defaultProps,
   renderCharCountLabel: (
     currCharCount: number,
-    _maxChars: number,
-    _minChars: number
+    _maxChars?: number,
+    _minChars?: number
   ) => <span>{currCharCount} characters now</span>,
 }
 
 export const CharLimitedTextarea: CharLimitedTextareaComponent = ({
+  children,
   ..._props
 }: CharLimitedTextareaProps) => {
   const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
@@ -39,7 +40,9 @@ export const CharLimitedTextarea: CharLimitedTextareaComponent = ({
 
   return (
     <>
-      <TextArea {...props} onChange={updateCount} />
+      <TextArea {...props} onChange={updateCount}>
+        {children}
+      </TextArea>
       <div role='status' aria-live='polite'>
         {renderCharCountLabel(count, maxChars, minChars)}
       </div>

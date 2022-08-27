@@ -1,13 +1,12 @@
-import React, { ReactNode } from 'react'
-import { getDefaultProps, getPropType, Required } from 'react-tsx-props'
+import { getDefaultProps, getPropType, NotRequired } from 'react-tsx-props'
 import { commonDefaultProps, CommonProps } from '../../common/props'
 import { styleDefaultProps, StyleProps } from '../css-props/props'
 import { defaultProps as textareaDefaultProps } from '../../TextArea/model/props'
 import { TextAreaProps } from '../../TextArea'
 
 const conf = {
-  maxChars: Required<number>(-1),
-  minChars: Required<number>(-1),
+  maxChars: NotRequired<number>(-1),
+  minChars: NotRequired<number>(-1),
 }
 type Conf = typeof conf
 

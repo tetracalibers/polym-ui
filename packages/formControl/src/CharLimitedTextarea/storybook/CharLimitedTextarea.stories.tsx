@@ -45,9 +45,6 @@ export default {
           details: null,
         },
       },
-      type: {
-        required: true,
-      },
     },
     minChars: {
       control: {
@@ -65,9 +62,6 @@ export default {
           details: null,
         },
       },
-      type: {
-        required: true,
-      },
     },
     renderCharCountLabel: {
       control: {
@@ -81,9 +75,6 @@ export default {
         },
         category: 'application',
       },
-      type: {
-        required: true,
-      },
     },
     ...textareaArgTypes,
     ...commmonArgTypes,
@@ -91,13 +82,15 @@ export default {
   },
 }
 
-const Template: ComponentStory<typeof CharLimitedTextarea> = ({ ...args }) => (
-  <CharLimitedTextarea {...args} />
-)
+const Template: ComponentStory<typeof CharLimitedTextarea> = ({
+  children,
+  ...args
+}) => <CharLimitedTextarea {...args}>{children}</CharLimitedTextarea>
 
 export const playground = Template.bind({})
 playground.args = {
   ...defaultProps,
-  children: '',
+  children: 'tweet',
+  name: 'content',
 }
 playground.argTypes = {}

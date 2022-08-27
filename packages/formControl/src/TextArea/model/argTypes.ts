@@ -58,7 +58,7 @@ export const characterArgTypes = {
       type: {
         summary: null,
       },
-      category: 'application',
+      category: 'html',
       defaultValue: {
         summary: defaultProps.name,
         details: null,
@@ -78,7 +78,7 @@ export const characterArgTypes = {
       type: {
         summary: null,
       },
-      category: 'application',
+      category: 'html',
     },
   },
 }
