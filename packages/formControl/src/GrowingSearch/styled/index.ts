@@ -45,6 +45,11 @@ export const SearchInput = styled.input<CharacterProps>`
   outline: none;
   cursor: pointer;
   border-radius: 1em;
+  position: relative;
+
+  &::-webkit-search-cancel-button {
+    -webkit-appearance: none; /* デフォルトのサーチキャンセルボタンを非表示にする場合 */
+  }
 
   &:focus {
     width: var(--after-width);
@@ -53,5 +58,6 @@ export const SearchInput = styled.input<CharacterProps>`
     box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset,
       rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
     animation: ${caretColorKeyframes} 0.5s;
+    cursor: text;
   }
 `
