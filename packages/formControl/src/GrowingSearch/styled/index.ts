@@ -20,7 +20,7 @@ export const Root = styled.div`
   }
 `
 
-export const ClickArea = styled.div`
+export const ClickArea = styled.label`
   --before-width: 60px;
 
   /* 入力エリアが伸びる前の横幅 */
@@ -28,6 +28,7 @@ export const ClickArea = styled.div`
   height: var(--before-height);
   padding: calc(var(--before-width) / 3);
   cursor: pointer;
+  display: inline-block;
 `
 
 export const SearchInput = styled.input<CharacterProps>`
