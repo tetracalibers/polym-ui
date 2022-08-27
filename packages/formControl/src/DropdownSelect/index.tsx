@@ -5,8 +5,6 @@ import {
   KeyboardEvent,
   ReactElement,
   SyntheticEvent,
-  useCallback,
-  useEffect,
   useRef,
   useState,
 } from 'react'
@@ -17,6 +15,7 @@ import { Root, AutoComplete, SelectList } from './styled'
 import { ArrowIcon } from '@polym-ui/symbol'
 import { VisuallyHidden } from '@polym-ui/a11y-helper'
 import { match } from 'ts-pattern'
+import { useUnFocus } from '../hooks/useUnFocus'
 
 export type DropdownSelectProps = SelectComponentPropWithRef<CharacterProps>
 
@@ -45,6 +44,9 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
     const inputEref = useRef<HTMLInputElement>(null)
     const thisComponentEref = useRef<HTMLDivElement>(null)
     const listEref = useRef<HTMLUListElement>(null)
+
+    // unfocus時に非表示
+    const unfocusByTab = useUnFocus(() => setIsOpen(false), thisComponentEref)
 
     // クリックした時にドロップダウンを開く
     const openByClick = (e: SyntheticEvent) => {
@@ -146,37 +148,6 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
           onTextBoxType()
         })
     }
-
-    // Tabによってフォーカスを外した時にメニュー非表示
-    const unfocusByTab = (e: KeyboardEvent<HTMLInputElement>) => {
-      if (e.key === 'Tab') {
-        setIsOpen(false)
-      }
-    }
-
-    // 範囲外クリックによってフォーカスを外した時にメニュー非表示
-    const unfocusByClickDocument = useCallback(
-      (e: MouseEvent | TouchEvent) => {
-        if (thisComponentEref.current) {
-          const innerElements = thisComponentEref.current.querySelectorAll('*')
-          // クリックした要素がこのコンポーネント内にあったら、非表示処理には進まない
-          if (_.some(innerElements, el => el === e.target)) {
-            return
-          }
-        }
-        setIsOpen(false)
-      },
-      [thisComponentEref]
-    )
-    // documentにイベント設定
-    useEffect(() => {
-      document.addEventListener('click', unfocusByClickDocument, false)
-      document.addEventListener('touchend', unfocusByClickDocument, false)
-      return function cleanup() {
-        document.removeEventListener('click', unfocusByClickDocument, false)
-        document.removeEventListener('touchend', unfocusByClickDocument, false)
-      }
-    }, [])
 
     /* -------------------------------------------- */
     /* CLICK LIST                                   */
