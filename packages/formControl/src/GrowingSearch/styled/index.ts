@@ -18,7 +18,7 @@ const showResetButton = keyframes`
     left: 0%;
   }
   100% {
-    color: #E74856;
+    color: #F8BBD0;
     left: 92.5%;
   }
 `
@@ -40,6 +40,7 @@ export const ClickArea = styled.label`
   padding: calc(var(--before-width) / 3);
   cursor: pointer;
   display: inline-block;
+  color: ${$.grayScale.dark};
 `
 
 export const SearchInput = styled.input<CharacterProps>`
@@ -57,6 +58,7 @@ export const SearchInput = styled.input<CharacterProps>`
   cursor: pointer;
   border-radius: 1em;
   position: relative;
+  color: ${$.grayScale.dark};
 
   &::-webkit-search-cancel-button {
     -webkit-appearance: none; /* デフォルトのサーチキャンセルボタンを非表示にする場合 */
