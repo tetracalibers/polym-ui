@@ -48,7 +48,7 @@ export type TableComponentPropWithRef<Props = {}> = TableComponentProp<Props> &
 export type ThComponentProp<Props = {}> = PropsWithChildren<Props> &
   ComponentPropsWithoutRef<'th'>
 
-export type ThComponentPropWithRef<Props = {}> = TableComponentProp<Props> &
+export type ThComponentPropWithRef<Props = {}> = ThComponentProp<Props> &
   PolymorphicRef<'th'>
 
 /* -------------------------------------------- */
@@ -58,7 +58,7 @@ export type ThComponentPropWithRef<Props = {}> = TableComponentProp<Props> &
 export type TdComponentProp<Props = {}> = PropsWithChildren<Props> &
   ComponentPropsWithoutRef<'td'>
 
-export type TdComponentPropWithRef<Props = {}> = TableComponentProp<Props> &
+export type TdComponentPropWithRef<Props = {}> = TdComponentProp<Props> &
   PolymorphicRef<'td'>
 
 /* -------------------------------------------- */
