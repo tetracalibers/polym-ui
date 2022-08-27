@@ -4,6 +4,7 @@ import { TextAreaComponentProp } from '../common/polymorphic/fixedAs'
 import { TextArea } from '../TextArea'
 import { useCharCount } from './hooks/useCharCount'
 import { CharacterProps, _defaultProps } from './model/props'
+import { VerticalStack } from '@polym-ui/layout'
 
 export type CharLimitedTextareaProps = TextAreaComponentProp<CharacterProps> & {
   renderCharCountLabel?: (
@@ -39,13 +40,13 @@ export const CharLimitedTextarea: CharLimitedTextareaComponent = ({
   const [count, updateCount] = useCharCount(minChars, maxChars, onChange)
 
   return (
-    <>
+    <VerticalStack spaceV={0.5}>
       <TextArea {...props} onChange={updateCount}>
         {children}
       </TextArea>
       <div role='status' aria-live='polite'>
         {renderCharCountLabel(count, maxChars, minChars)}
       </div>
-    </>
+    </VerticalStack>
   )
 }
