@@ -39,11 +39,17 @@ export const GrowingSearch: GrowingSearchComponent = forwardRef(
 
     const clickAreaEref = useRef<HTMLLabelElement>(null)
 
+    const [isOpen, setOpenStatus] = useState(false)
+
+    const open = () => setOpenStatus(true)
+
     const onUnFocus = () => {
       // 入力中はフォーカスアウトしても元の長さに戻らないようにする
       if (searchQuery.length > 0) {
         // 再度focus
         clickAreaEref.current?.focus()
+      } else {
+        setOpenStatus(false)
       }
     }
     return (
@@ -55,6 +61,9 @@ export const GrowingSearch: GrowingSearchComponent = forwardRef(
               as={ClickArea}
               ref={clickAreaEref}
               onBlur={onUnFocus}
+              aria-haspopup={!isOpen}
+              aria-expanded={isOpen}
+              onFocus={open}
             >
               <SearchInput
                 {...props}
@@ -62,11 +71,14 @@ export const GrowingSearch: GrowingSearchComponent = forwardRef(
                 type='search'
                 onChange={onTyping}
                 onBlur={onUnFocus}
+                onFocus={open}
               />
             </OverlapLayer>
-            <ResetButton type='reset'>
-              <RiCloseCircleLine size={25} />
-            </ResetButton>
+            {isOpen && (
+              <ResetButton type='reset'>
+                <RiCloseCircleLine size={25} />
+              </ResetButton>
+            )}
           </InputWrapper>
         </form>
       </Root>
