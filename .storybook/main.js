@@ -5,12 +5,17 @@ module.exports = {
     //'../examples/syntax/src/components/**/*.stories.@(tsx|ts|mdx)',
   ],
   addons: [
+    {
+      name: '@storybook/addon-essentials',
+      options: {
+        actions: false,
+      },
+    },
     '@storybook/addon-links',
-    '@storybook/addon-essentials',
-    '@storybook/addon-interactions',
+    //'@storybook/addon-interactions',
     '@storybook/addon-storysource',
-    '@storybook/addon-actions/register',
-    '@storybook/addon-console',
+    //'@storybook/addon-actions/register',
+    //'@storybook/addon-console',
     '@whitespace/storybook-addon-html',
     'storybook-addon-pseudo-states',
   ],
