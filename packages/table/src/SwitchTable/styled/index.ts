@@ -5,18 +5,20 @@ import { ColorPalette as $, Truthy } from 'styled-utility-first'
 import { BaseTable } from '../../mock/BaseTable'
 
 export const Table = styled(BaseTable)`
-  display: flex;
+  @media screen and (min-width: 48em) {
+    display: flex;
 
-  & tr {
-    display: block;
-    width: 20%;
-    box-sizing: border-box;
-  }
+    & tr {
+      display: block;
+      width: 20%;
+      box-sizing: border-box;
+    }
 
-  & th,
-  & td {
-    display: block;
-    width: 100%;
-    box-sizing: border-box;
+    & th,
+    & td {
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+    }
   }
 `
