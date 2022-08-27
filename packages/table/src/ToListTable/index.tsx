@@ -4,6 +4,7 @@ import { TableComponentPropWithRef } from '../common/polymorphic/fixedAs'
 import { PolymorphicRef } from '../common/polymorphic/standard'
 import { CharacterProps, defaultProps } from './model/props'
 import { Table } from './styled'
+import { HorizontalStack } from '@polym-ui/layout'
 
 export type ToListTableProps = TableComponentPropWithRef<CharacterProps>
 
@@ -21,11 +22,11 @@ export const ToListTable: ToListTableComponent = forwardRef(
     )
     return (
       <Table {...props} ref={ref}>
-        <tr>
+        <HorizontalStack>
           <th>Heading Cell 1</th>
           <td>Data Cell 1</td>
           <td>Data Cell 1</td>
-        </tr>
+        </HorizontalStack>
         <tr>
           <th>Heading Cell 2</th>
           <td>Data Cell 2</td>
