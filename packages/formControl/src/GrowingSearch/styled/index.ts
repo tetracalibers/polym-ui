@@ -64,7 +64,7 @@ export const SearchInput = styled.input<CharacterProps>`
     -webkit-appearance: none; /* デフォルトのサーチキャンセルボタンを非表示にする場合 */
   }
 
-  &:focus {
+  .open & {
     width: var(--after-width);
     padding-right: 0;
     padding-left: var(--before-width);
@@ -74,7 +74,7 @@ export const SearchInput = styled.input<CharacterProps>`
     cursor: text;
   }
 
-  &:focus + * {
+  .open & + * {
     cursor: default;
     pointer-events: none;
   }
@@ -87,7 +87,7 @@ export const ResetButton = styled.button`
   transform: translate(0, -50%);
   color: transparent;
 
-  ${ClickArea}:focus-within + & {
+  .open & {
     animation-name: ${showResetButton};
     animation-duration: 0.5s;
     animation-fill-mode: forwards;

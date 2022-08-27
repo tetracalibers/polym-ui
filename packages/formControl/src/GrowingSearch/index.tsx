@@ -46,16 +46,19 @@ export const GrowingSearch: GrowingSearchComponent = forwardRef(
     const onUnFocus = () => {
       // 入力中はフォーカスアウトしても元の長さに戻らないようにする
       if (searchQuery.length > 0) {
-        // 再度focus
-        clickAreaEref.current?.focus()
-      } else {
-        setOpenStatus(false)
+        return
       }
+      setOpenStatus(false)
     }
+
+    const clear = () => {
+      onTyping('')
+    }
+
     return (
       <Root role='search'>
         <form>
-          <InputWrapper>
+          <InputWrapper className={isOpen ? 'open' : ''}>
             <OverlapLayer
               renderOverlay={() => <BiSearchAlt size={40} />}
               as={ClickArea}
@@ -75,7 +78,7 @@ export const GrowingSearch: GrowingSearchComponent = forwardRef(
               />
             </OverlapLayer>
             {isOpen && (
-              <ResetButton type='reset'>
+              <ResetButton type='reset' onClick={clear}>
                 <RiCloseCircleLine size={25} />
               </ResetButton>
             )}
