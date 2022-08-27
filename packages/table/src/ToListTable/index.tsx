@@ -22,29 +22,29 @@ export const ToListTable: ToListTableComponent = forwardRef(
     return (
       <Table {...props} ref={ref}>
         <tr>
-          <th>見出しセル1</th>
-          <td>データセル1</td>
-          <td>データセル1</td>
+          <th>Heading Cell 1</th>
+          <td>Data Cell 1</td>
+          <td>Data Cell 1</td>
         </tr>
         <tr>
-          <th>見出しセル2</th>
-          <td>データセル2</td>
-          <td>データセル2</td>
+          <th>Heading Cell 2</th>
+          <td>Data Cell 2</td>
+          <td>Data Cell 2</td>
         </tr>
         <tr>
-          <th>見出しセル3</th>
-          <td>データセル3</td>
-          <td>データセル3</td>
+          <th>Heading Cell 3</th>
+          <td>Data Cell 3</td>
+          <td>Data Cell 3</td>
         </tr>
         <tr>
-          <th>見出しセル4</th>
-          <td>データセル4</td>
-          <td>データセル4</td>
+          <th>Heading Cell 4</th>
+          <td>Data Cell 4</td>
+          <td>Data Cell 4</td>
         </tr>
         <tr>
-          <th>見出しセル5</th>
-          <td>データセル5</td>
-          <td>データセル5</td>
+          <th>Heading Cell 5</th>
+          <td>Data Cell 5</td>
+          <td>Data Cell 5</td>
         </tr>
       </Table>
     )
