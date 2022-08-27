@@ -22,11 +22,11 @@ export const ToListTable: ToListTableComponent = forwardRef(
     )
     return (
       <Table {...props} ref={ref}>
-        <HorizontalStack>
+        <tr>
           <th>Heading Cell 1</th>
           <td>Data Cell 1</td>
           <td>Data Cell 1</td>
-        </HorizontalStack>
+        </tr>
         <tr>
           <th>Heading Cell 2</th>
           <td>Data Cell 2</td>

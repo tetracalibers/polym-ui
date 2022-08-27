@@ -3,7 +3,7 @@ import { CharacterProps } from '../model/props'
 import { match } from 'ts-pattern'
 import { ColorPalette as $, Truthy } from 'styled-utility-first'
 
-export const Table = styled.table<CharacterProps>`
+export const BaseTable = styled.table<CharacterProps>`
   & {
     width: 100%;
     border-collapse: collapse;
@@ -21,6 +21,20 @@ export const Table = styled.table<CharacterProps>`
   & th {
     background-color: ${$.grayScale.dark};
     color: ${$.grayScale.light};
-    padding: 1em 0;
+    padding-left: 1em;
+  }
+`
+
+export const Table = styled(BaseTable)`
+  tr {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+
+  tr td,
+  tr th {
+    flex-grow: 1;
+    flex-basis: calc((30em - 100%) * 999);
   }
 `
