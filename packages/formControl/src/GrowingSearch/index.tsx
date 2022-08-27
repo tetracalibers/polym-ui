@@ -25,6 +25,7 @@ export const GrowingSearch: GrowingSearchComponent = forwardRef(
     const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
       _.isUndefined(input) ? defaul : input
     )
+
     return (
       <Root role='search'>
         <form>
