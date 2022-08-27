@@ -1,13 +1,8 @@
 import _ from 'lodash'
-import {
-  ChangeEvent,
-  ReactElement,
-  ReactNode,
-  useCallback,
-  useState,
-} from 'react'
+import { ReactElement, ReactNode } from 'react'
 import { TextAreaComponentProp } from '../common/polymorphic/fixedAs'
 import { TextArea } from '../TextArea'
+import { useCharCount } from './hooks/useCharCount'
 import { CharacterProps, _defaultProps } from './model/props'
 
 export type CharLimitedTextareaProps = TextAreaComponentProp<CharacterProps> & {
@@ -37,17 +32,10 @@ export const CharLimitedTextarea: CharLimitedTextareaComponent = ({
   const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
     _.isUndefined(input) ? defaul : input
   )
+  // prettier-ignore
   const { onChange, minChars, maxChars, renderCharCountLabel } = props
-
-  const [count, setCount] = useState(0)
-
-  const updateCount = useCallback(
-    (e: ChangeEvent<HTMLTextAreaElement>) => {
-      setCount(e.target.value.length)
-      onChange && onChange(e)
-    },
-    [onChange, minChars, maxChars]
-  )
+  // prettier-ignore
+  const [count, updateCount] = useCharCount(minChars, maxChars, onChange)
 
   return (
     <>
