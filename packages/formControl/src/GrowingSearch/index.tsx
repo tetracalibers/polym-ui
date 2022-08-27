@@ -79,7 +79,11 @@ export const GrowingSearch: GrowingSearchComponent = forwardRef(
               />
             </OverlapLayer>
             {isOpen && (
-              <ResetButton type='reset' onClick={clear}>
+              <ResetButton
+                type='reset'
+                onClick={clear}
+                className={searchQuery.trim().length === 0 ? 'disabled' : ''}
+              >
                 <RiCloseCircleLine size={25} />
               </ResetButton>
             )}

@@ -18,7 +18,7 @@ const showResetButton = keyframes`
     left: 0%;
   }
   100% {
-    color: #F8BBD0;
+    color: #F48FB1;
     left: 92.5%;
   }
 `
@@ -91,6 +91,10 @@ export const ResetButton = styled.button`
     animation-name: ${showResetButton};
     animation-duration: 0.5s;
     animation-fill-mode: forwards;
+  }
+
+  &.disabled {
+    pointer-events: none;
   }
 `
 
