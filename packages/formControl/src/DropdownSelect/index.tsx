@@ -16,6 +16,7 @@ import { ArrowIcon } from '@polym-ui/symbol'
 import { VisuallyHidden } from '@polym-ui/a11y-helper'
 import { match } from 'ts-pattern'
 import { useUnFocus } from '../hooks/useUnFocus'
+import { useInput } from '../hooks/useInput'
 
 export type DropdownSelectProps = SelectComponentPropWithRef<CharacterProps>
 
@@ -39,7 +40,13 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
     const [selectedItem, setSelectedItem] = useState(initialItem)
     const [activeItemIdx, setActiveItemIdx] = useState(-1)
     const [visibleItems, setVisibleItems] = useState(choices as ChoiceItem[])
-    const [typedText, setTypedText] = useState(initialItem?.label ?? '')
+
+    const onInput = (value: string) => {
+      const filterd = filtering(value)
+      setVisibleItems(filterd)
+      setIsOpen(true)
+    }
+    const [typedText, onTyping] = useInput(initialItem?.label, onInput)
 
     const inputEref = useRef<HTMLInputElement>(null)
     const thisComponentEref = useRef<HTMLDivElement>(null)
@@ -88,16 +95,6 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
     /* FOCUS ON INPUT                               */
     /* -------------------------------------------- */
 
-    const onTextBoxType = () => {
-      const inputString = inputEref?.current?.value.trim()
-      if (inputString !== undefined) {
-        setTypedText(inputString)
-        const filterd = filtering(inputString)
-        setVisibleItems(filterd)
-        setIsOpen(true)
-      }
-    }
-
     const isEmptyValue = (value: ChoiceItem['value']) => {
       return `${value}`.trim().length === 0
     }
@@ -145,7 +142,7 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
           onTextBoxArrowDownPress(e)
         })
         .otherwise(() => {
-          onTextBoxType()
+          //onTyping()
         })
     }
 
@@ -154,7 +151,8 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
     /* -------------------------------------------- */
 
     const runSelectiveProcess = (item: ChoiceItem) => {
-      setTypedText(item.label!)
+      // フィルタリング処理を含むonInputは実行しないため、falseを設定
+      onTyping(item.label!, false)
       setSelectedItem(item)
       setIsOpen(false)
       // propsで指定された処理を実行
@@ -266,7 +264,7 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
             onKeyDown={unfocusByTab}
             onMouseDown={openByClick}
             onTouchEnd={openByClick}
-            onChange={onTextBoxType}
+            onChange={onTyping}
             ref={inputEref}
             value={typedText}
           />
