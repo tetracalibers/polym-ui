@@ -13,7 +13,7 @@ export default {
       control: {
         type: 'text',
       },
-      description: 'Child elements of the element specified by as props',
+      description: 'Labels to be displayed above the textarea',
       table: {
         type: {
           summary: null,
@@ -37,6 +37,7 @@ const Template: ComponentStory<typeof TextArea> = ({ children, ...args }) => (
 export const playground = Template.bind({})
 playground.args = {
   ...defaultProps,
-  children: '',
+  name: 'survey',
+  children: "Reader's Voice",
 }
 playground.argTypes = {}

@@ -12,7 +12,7 @@ const border = (dangerOn: CharacterProps['hasError']) => {
       `
 }
 
-export const StyledElement = styled.textarea<CharacterProps>`
+export const StyledTextarea = styled.textarea<CharacterProps>`
   && {
     color: ${ColorPalette.grayScale.dark};
     ${({ hasError }) => border(hasError)}

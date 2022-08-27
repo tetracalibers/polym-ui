@@ -1,11 +1,17 @@
-import { getDefaultProps, getPropType, Required } from 'react-tsx-props'
+import {
+  getDefaultProps,
+  getPropType,
+  NotRequired,
+  Required,
+} from 'react-tsx-props'
 import { commonDefaultProps, CommonProps } from '../../common/props'
 import { styleDefaultProps, StyleProps } from '../css-props/props'
 
 const conf = {
-  minRows: Required<number>(5),
-  maxRows: Required<number>(10),
-  hasError: Required<boolean>(false),
+  minRows: NotRequired<number>(5),
+  maxRows: NotRequired<number>(10),
+  hasError: NotRequired<boolean>(false),
+  name: Required<HTMLTextAreaElement['name']>(''),
 }
 type Conf = typeof conf
 

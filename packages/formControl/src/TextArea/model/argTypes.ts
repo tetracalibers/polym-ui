@@ -16,9 +16,6 @@ export const characterArgTypes = {
         details: null,
       },
     },
-    type: {
-      required: true,
-    },
   },
   maxRows: {
     control: {
@@ -34,9 +31,6 @@ export const characterArgTypes = {
         summary: defaultProps.maxRows,
         details: null,
       },
-    },
-    type: {
-      required: true,
     },
   },
   hasError: {
@@ -54,8 +48,37 @@ export const characterArgTypes = {
         details: null,
       },
     },
+  },
+  name: {
+    control: {
+      type: 'text',
+    },
+    description: 'name attribute set to the HTML select element',
+    table: {
+      type: {
+        summary: null,
+      },
+      category: 'application',
+      defaultValue: {
+        summary: defaultProps.name,
+        details: null,
+      },
+    },
     type: {
       required: true,
+    },
+  },
+  id: {
+    control: {
+      type: 'text',
+    },
+    description:
+      'The id attribute on the HTML textarea element and the for attribute on the label element (If not specified, the value of name props is used.)',
+    table: {
+      type: {
+        summary: null,
+      },
+      category: 'application',
     },
   },
 }
