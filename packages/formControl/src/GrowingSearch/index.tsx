@@ -3,7 +3,7 @@ import { forwardRef, ReactElement } from 'react'
 import { InputComponentPropWithRef } from '../common/polymorphic/fixedAs'
 import { PolymorphicRef } from '../common/polymorphic/standard'
 import { CharacterProps, defaultProps } from './model/props'
-import { StyledInput } from './styled'
+import { Root, SearchInput } from './styled'
 
 export type GrowingSearchProps = Omit<
   InputComponentPropWithRef<CharacterProps>,
@@ -23,9 +23,11 @@ export const GrowingSearch: GrowingSearchComponent = forwardRef(
       _.isUndefined(input) ? defaul : input
     )
     return (
-      <StyledInput {...props} ref={ref} type='search'>
-        {children}
-      </StyledInput>
+      <Root role='search'>
+        <form>
+          <SearchInput {...props} ref={ref} type='search' />
+        </form>
+      </Root>
     )
   }
 )
