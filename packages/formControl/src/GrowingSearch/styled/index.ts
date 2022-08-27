@@ -60,8 +60,15 @@ export const SearchInput = styled.input<CharacterProps>`
     animation: ${caretColorKeyframes} 0.5s;
     cursor: text;
   }
+
+  &:focus + * {
+    cursor: default;
+    pointer-events: none;
+  }
 `
 
 export const ResetButton = styled.button`
   ${ResetCss.button}
 `
+
+export const InputWrapper = styled.div``

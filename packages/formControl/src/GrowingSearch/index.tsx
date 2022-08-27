@@ -3,7 +3,13 @@ import { ChangeEvent, forwardRef, ReactElement, useRef, useState } from 'react'
 import { InputComponentPropWithRef } from '../common/polymorphic/fixedAs'
 import { PolymorphicRef } from '../common/polymorphic/standard'
 import { CharacterProps, defaultProps } from './model/props'
-import { ClickArea, ResetButton, Root, SearchInput } from './styled'
+import {
+  ClickArea,
+  ResetButton,
+  Root,
+  SearchInput,
+  InputWrapper,
+} from './styled'
 import { BiSearchAlt } from 'react-icons/bi'
 import { RiCloseCircleLine } from 'react-icons/ri'
 import { OverlapLayer, DifferStack } from '@polym-ui/layout'
@@ -44,7 +50,7 @@ export const GrowingSearch: GrowingSearchComponent = forwardRef(
     return (
       <Root role='search' ref={rootEref}>
         <form>
-          <DifferStack>
+          <DifferStack alignItems={'center'} spaceV={0} as={InputWrapper}>
             <OverlapLayer
               renderOverlay={() => <BiSearchAlt size={40} />}
               as={ClickArea}
