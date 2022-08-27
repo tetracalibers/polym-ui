@@ -1,11 +1,15 @@
-import { getDefaultProps, getPropType, Required } from 'react-tsx-props'
+import {
+  getDefaultProps,
+  getPropType,
+  NotRequired,
+  Required,
+} from 'react-tsx-props'
 import * as CSST from 'csstype'
 import { ColorPalette } from 'styled-utility-first'
 
 const conf = {
-  space: Required<CSST.Property.Gap>('1rem'),
-  justifyContent: Required<CSST.Property.JustifyContent>('flex-start'),
-  alignItems: Required<CSST.Property.AlignItems>('flex-start'),
+  justifyContent: NotRequired<CSST.Property.JustifyContent>('flex-start'),
+  alignItems: NotRequired<CSST.Property.AlignItems>('flex-start'),
 }
 type Conf = typeof conf
 

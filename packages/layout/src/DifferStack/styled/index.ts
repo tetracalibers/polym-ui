@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { CharacterProps } from '../model/props'
 
 export const StyledElement = styled.div<CharacterProps>`
-  --space: ${({ space }) => space};
+  --space: ${({ spaceV, spaceU }) => `${spaceV}${spaceU}`};
   --justify-content: ${({ justifyContent }) => justifyContent};
   --align-items: ${({ alignItems }) => alignItems};
 
