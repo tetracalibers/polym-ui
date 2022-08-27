@@ -53,6 +53,7 @@ export const GrowingSearch: GrowingSearchComponent = forwardRef(
 
     const clear = () => {
       onTyping('')
+      clickAreaEref.current?.focus()
     }
 
     return (
