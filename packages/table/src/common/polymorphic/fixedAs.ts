@@ -35,8 +35,43 @@ export type SelectComponentPropWithRef<Props = {}> =
 /* TABLE                                        */
 /* -------------------------------------------- */
 
-export type TableComponentProps<Props = {}> = PropsWithChildren<Props> &
+export type TableComponentProp<Props = {}> = PropsWithChildren<Props> &
   ComponentPropsWithoutRef<'table'>
 
-export type TableComponentPropWithRef<Props = {}> = TableComponentProps<Props> &
+export type TableComponentPropWithRef<Props = {}> = TableComponentProp<Props> &
   PolymorphicRef<'table'>
+
+/* -------------------------------------------- */
+/* TH                                           */
+/* -------------------------------------------- */
+
+export type ThComponentProp<Props = {}> = PropsWithChildren<Props> &
+  ComponentPropsWithoutRef<'th'>
+
+export type ThComponentPropWithRef<Props = {}> = TableComponentProp<Props> &
+  PolymorphicRef<'th'>
+
+/* -------------------------------------------- */
+/* TD                                           */
+/* -------------------------------------------- */
+
+export type TdComponentProp<Props = {}> = PropsWithChildren<Props> &
+  ComponentPropsWithoutRef<'td'>
+
+export type TdComponentPropWithRef<Props = {}> = TableComponentProp<Props> &
+  PolymorphicRef<'td'>
+
+/* -------------------------------------------- */
+/* TR                                           */
+/* -------------------------------------------- */
+
+export type TrComponentProp<Props = {}> = Props &
+  ComponentPropsWithoutRef<'tr'> & {
+    children: ThComponentProp | TdComponentProp
+  }
+
+export type TrComponentPropWithRef<Props = {}> = PolymorphicRef<'tr'> &
+  Props &
+  ComponentPropsWithoutRef<'tr'> & {
+    children: ThComponentPropWithRef | TdComponentPropWithRef
+  }
