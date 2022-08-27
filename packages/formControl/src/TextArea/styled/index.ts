@@ -30,3 +30,7 @@ export const StyledTextarea = styled.textarea<CharacterProps>`
     background-color: white;
   }
 `
+
+export const StyledLabel = styled.label`
+  display: block;
+`

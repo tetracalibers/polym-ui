@@ -4,7 +4,8 @@ import { TextAreaComponentPropWithRef } from '../common/polymorphic/fixedAs'
 import { PolymorphicRef } from '../common/polymorphic/standard'
 import { useStretchableTextArea } from './hooks/useStretchableTextArea'
 import { CharacterProps, defaultProps } from './model/props'
-import { StyledTextarea } from './styled'
+import { StyledLabel, StyledTextarea } from './styled'
+import { VerticalStack } from '@polym-ui/layout'
 
 export type TextAreaProps = TextAreaComponentPropWithRef<CharacterProps>
 
@@ -24,8 +25,8 @@ export const TextArea: TextAreaComponent = forwardRef(
     const [textareaRows, changeHeight] = useStretchableTextArea(minRows!, maxRows!, lineHeight!, onChange)
 
     return (
-      <>
-        <label htmlFor={id ?? name}> {children}</label>
+      <VerticalStack>
+        <StyledLabel htmlFor={id ?? name}>{children}</StyledLabel>
         <StyledTextarea
           {...props}
           ref={ref}
@@ -35,7 +36,7 @@ export const TextArea: TextAreaComponent = forwardRef(
           name={name}
           id={id ?? name}
         />
-      </>
+      </VerticalStack>
     )
   }
 )
