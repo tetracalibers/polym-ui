@@ -43,11 +43,7 @@ export default {
 const Template: ComponentStory<typeof GrowingSearch> = ({
   children,
   ...args
-}) => (
-  <GrowingSearch {...args} as={DarkTextBox}>
-    {children}
-  </GrowingSearch>
-)
+}) => <GrowingSearch {...args}>{children}</GrowingSearch>
 
 export const playground = Template.bind({})
 playground.args = {

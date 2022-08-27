@@ -3,7 +3,10 @@ import { forwardRef, ReactElement } from 'react'
 import { InputComponentPropWithRef } from '../common/polymorphic/fixedAs'
 import { PolymorphicRef } from '../common/polymorphic/standard'
 import { CharacterProps, defaultProps } from './model/props'
-import { Root, SearchInput } from './styled'
+import { ClickArea, Root, SearchInput } from './styled'
+import { BiSearchAlt } from 'react-icons/bi'
+import { OverlapLayer } from '@polym-ui/layout'
+import { WithIcon } from '@polym-ui/typography'
 
 export type GrowingSearchProps = Omit<
   InputComponentPropWithRef<CharacterProps>,
@@ -25,7 +28,12 @@ export const GrowingSearch: GrowingSearchComponent = forwardRef(
     return (
       <Root role='search'>
         <form>
-          <SearchInput {...props} ref={ref} type='search' />
+          <OverlapLayer
+            renderOverlay={() => <BiSearchAlt size={40} />}
+            as={ClickArea}
+          >
+            <SearchInput {...props} ref={ref} type='search' />
+          </OverlapLayer>
         </form>
       </Root>
     )
