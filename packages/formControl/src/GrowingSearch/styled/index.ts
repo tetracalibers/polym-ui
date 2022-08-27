@@ -1,7 +1,7 @@
 import styled, { css, keyframes } from 'styled-components'
 import { CharacterProps } from '../model/props'
 import { match } from 'ts-pattern'
-import { ColorPalette as $, Truthy } from 'styled-utility-first'
+import { ColorPalette as $, Truthy, ResetCss } from 'styled-utility-first'
 
 const caretColorKeyframes = keyframes`
   0% {
@@ -60,4 +60,8 @@ export const SearchInput = styled.input<CharacterProps>`
     animation: ${caretColorKeyframes} 0.5s;
     cursor: text;
   }
+`
+
+export const ResetButton = styled.button`
+  ${ResetCss.button}
 `

@@ -3,9 +3,10 @@ import { ChangeEvent, forwardRef, ReactElement, useRef, useState } from 'react'
 import { InputComponentPropWithRef } from '../common/polymorphic/fixedAs'
 import { PolymorphicRef } from '../common/polymorphic/standard'
 import { CharacterProps, defaultProps } from './model/props'
-import { ClickArea, Root, SearchInput } from './styled'
+import { ClickArea, ResetButton, Root, SearchInput } from './styled'
 import { BiSearchAlt } from 'react-icons/bi'
-import { OverlapLayer } from '@polym-ui/layout'
+import { RiCloseCircleLine } from 'react-icons/ri'
+import { OverlapLayer, DifferStack } from '@polym-ui/layout'
 import { WithIcon } from '@polym-ui/typography'
 import { useInput } from '../hooks/useInput'
 import { useUnFocus } from '../hooks/useUnFocus'
@@ -43,20 +44,25 @@ export const GrowingSearch: GrowingSearchComponent = forwardRef(
     return (
       <Root role='search' ref={rootEref}>
         <form>
-          <OverlapLayer
-            renderOverlay={() => <BiSearchAlt size={40} />}
-            as={ClickArea}
-            ref={clickAreaEref}
-            onBlur={onUnFocus}
-          >
-            <SearchInput
-              {...props}
-              ref={ref}
-              type='search'
-              onChange={onTyping}
+          <DifferStack>
+            <OverlapLayer
+              renderOverlay={() => <BiSearchAlt size={40} />}
+              as={ClickArea}
+              ref={clickAreaEref}
               onBlur={onUnFocus}
-            />
-          </OverlapLayer>
+            >
+              <SearchInput
+                {...props}
+                ref={ref}
+                type='search'
+                onChange={onTyping}
+                onBlur={onUnFocus}
+              />
+            </OverlapLayer>
+            <ResetButton type='reset'>
+              <RiCloseCircleLine size={30} />
+            </ResetButton>
+          </DifferStack>
         </form>
       </Root>
     )
