@@ -37,7 +37,6 @@ export const GrowingSearch: GrowingSearchComponent = forwardRef(
 
     const [searchQuery, onTyping] = useInput('')
 
-    const rootEref = useRef<HTMLDivElement>(null)
     const clickAreaEref = useRef<HTMLLabelElement>(null)
 
     const onUnFocus = () => {
@@ -48,7 +47,7 @@ export const GrowingSearch: GrowingSearchComponent = forwardRef(
       }
     }
     return (
-      <Root role='search' ref={rootEref}>
+      <Root role='search'>
         <form>
           <InputWrapper>
             <OverlapLayer
