@@ -43,11 +43,7 @@ export default {
 const Template: ComponentStory<typeof SwitchTable> = ({
   children,
   ...args
-}) => (
-  <SwitchTable {...args} as={DarkTextBox}>
-    {children}
-  </SwitchTable>
-)
+}) => <SwitchTable {...args}>{children}</SwitchTable>
 
 export const playground = Template.bind({})
 playground.args = {

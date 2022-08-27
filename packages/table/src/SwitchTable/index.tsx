@@ -1,31 +1,53 @@
 import _ from 'lodash'
-import { ElementType, forwardRef, ReactElement } from 'react'
-import {
-  PolymorphicComponentPropWithRef,
-  PolymorphicRef,
-} from '../common/polymorphic/standard'
+import { forwardRef, ReactElement } from 'react'
+import { TableComponentPropWithRef } from '../common/polymorphic/fixedAs'
+import { PolymorphicRef } from '../common/polymorphic/standard'
 import { CharacterProps, defaultProps } from './model/props'
-import { StyledElement } from './styled'
+import { Table } from './styled'
+import { HorizontalStack } from '@polym-ui/layout'
 
-export type SwitchTableProps<As extends ElementType> =
-  PolymorphicComponentPropWithRef<As, CharacterProps>
+export type SwitchTableProps = TableComponentPropWithRef<CharacterProps>
 
-export type SwitchTableComponent = <As extends ElementType>(
-  props: SwitchTableProps<As>
+export type SwitchTableComponent = (
+  props: SwitchTableProps
 ) => ReactElement | null
 
 export const SwitchTable: SwitchTableComponent = forwardRef(
-  <As extends ElementType>(
-    { as, children, ..._props }: SwitchTableProps<As>,
-    ref?: PolymorphicRef<As>
+  (
+    { children, ..._props }: SwitchTableProps,
+    ref?: PolymorphicRef<'table'>
   ) => {
     const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
       _.isUndefined(input) ? defaul : input
     )
     return (
-      <StyledElement {...props} ref={ref} as={as as unknown as undefined}>
-        {children}
-      </StyledElement>
+      <Table {...props} ref={ref}>
+        <tr>
+          <th>Heading Cell 1</th>
+          <td>Data Cell 1</td>
+          <td>Data Cell 1</td>
+        </tr>
+        <tr>
+          <th>Heading Cell 2</th>
+          <td>Data Cell 2</td>
+          <td>Data Cell 2</td>
+        </tr>
+        <tr>
+          <th>Heading Cell 3</th>
+          <td>Data Cell 3</td>
+          <td>Data Cell 3</td>
+        </tr>
+        <tr>
+          <th>Heading Cell 4</th>
+          <td>Data Cell 4</td>
+          <td>Data Cell 4</td>
+        </tr>
+        <tr>
+          <th>Heading Cell 5</th>
+          <td>Data Cell 5</td>
+          <td>Data Cell 5</td>
+        </tr>
+      </Table>
     )
   }
 )
