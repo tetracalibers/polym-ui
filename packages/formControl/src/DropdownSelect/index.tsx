@@ -184,7 +184,6 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
 
     const runSelectiveProcess = (item: ChoiceItem) => {
       setTypedText(item.label!)
-      inputEref.current?.focus()
       setSelectedItem(item)
       setIsOpen(false)
       // propsで指定された処理を実行
@@ -193,7 +192,7 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
 
     // 選択時
     const onSelectInList = (e: FormEvent<HTMLUListElement>) => {
-      e.stopPropagation()
+      e.preventDefault()
       if (e.target === listEref.current) return
       const list = e.target as Element
       const idx = list.attributes.getNamedItem('data-idx')?.value
@@ -242,6 +241,7 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
           })
           .with('Enter', ' ', () => {
             const item = visibleItems[activeItemIdx]
+            inputEref.current?.focus()
             runSelectiveProcess(item)
           })
           .with('Escape', () => {
