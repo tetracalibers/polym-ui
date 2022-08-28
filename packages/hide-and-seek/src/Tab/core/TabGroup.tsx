@@ -1,6 +1,5 @@
 import {
   createContext,
-  Fragment,
   ReactNode,
   SyntheticEvent,
   useCallback,
@@ -10,7 +9,6 @@ import {
   useState,
 } from 'react'
 import { nanoid } from 'nanoid'
-import { VisuallyHidden } from '@polym-ui/a11y-helper'
 import { Wrapper } from '../styled'
 
 type TabInfo = {
@@ -57,6 +55,12 @@ export const TabGroup = ({ children }: TabGroupProps) => {
     e.preventDefault()
     setActivePanelId(panelId)
   }
+
+  useLayoutEffect(() => {
+    if (tabs.length > 0) {
+      setActivePanelId(tabs[0].panelId)
+    }
+  }, [tabs])
 
   return (
     <TabGroupContext.Provider value={state}>
