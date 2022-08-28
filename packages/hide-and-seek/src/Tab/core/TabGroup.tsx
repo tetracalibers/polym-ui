@@ -51,7 +51,7 @@ export const TabGroup = ({ children }: TabGroupProps) => {
     [activePanelId, tabs]
   )
 
-  const onToggleTag = (e: SyntheticEvent, panelId: string) => {
+  const onToggleTab = (e: SyntheticEvent, panelId: string) => {
     e.preventDefault()
     setActivePanelId(panelId)
   }
@@ -74,7 +74,7 @@ export const TabGroup = ({ children }: TabGroupProps) => {
               aria-selected={activePanelId === panelId}
               aria-expanded={activePanelId === panelId}
               id={generateTabId(panelId)}
-              onClick={e => onToggleTag(e, panelId)}
+              onClick={e => onToggleTab(e, panelId)}
               tabIndex={activePanelId === panelId ? 0 : -1}
             >
               {title}
