@@ -75,6 +75,7 @@ export const TabGroup = ({ children }: TabGroupProps) => {
               aria-expanded={activePanelId === panelId}
               id={generateTabId(panelId)}
               onClick={e => onToggleTag(e, panelId)}
+              tabIndex={activePanelId === panelId ? 0 : -1}
             >
               {title}
             </a>
