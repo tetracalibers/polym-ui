@@ -1,29 +1,72 @@
 import {
-  ComponentPropsWithoutRef,
   createContext,
-  Dispatch,
   ReactNode,
-  SetStateAction,
+  useCallback,
   useContext,
+  useLayoutEffect,
+  useMemo,
   useState,
 } from 'react'
+import { nanoid } from 'nanoid'
 
-type TabGroupContextValue = {
-  activeTabId?: string
-  setActiveTabId?: Dispatch<SetStateAction<string>>
+type TabInfo = {
+  panelId: string
+  title: string
 }
 
-const TabGroupContext = createContext<TabGroupContextValue>({})
+type TabState = {
+  activePanelId: string
+  addItem: (title: string, key: string) => void
+}
+
+const TabGroupContext = createContext<TabState>({} as TabState)
 
 type TabGroupProps = {
   children: ReactNode
 }
 
+const generateTabId = (panelId: string) => `tab-for-${panelId}`
+
 export const TabGroup = ({ children }: TabGroupProps) => {
-  const [activeTabId, setActiveTabId] = useState('')
+  const [activePanelId, setActivePanelId] = useState('')
+  const [tabs, updateTabs] = useState<TabInfo[]>([])
+
+  const addTab = useCallback((title: string, panelId: string) => {
+    updateTabs(tabs => {
+      if (tabs.findIndex(item => item.panelId === panelId) > 0) {
+        return tabs
+      } else {
+        return [...tabs, { title, panelId }]
+      }
+    })
+  }, [])
+
+  const state = useMemo<TabState>(
+    () => ({
+      activePanelId,
+      addItem: addTab,
+    }),
+    [activePanelId, tabs]
+  )
 
   return (
-    <TabGroupContext.Provider value={{ activeTabId, setActiveTabId }}>
+    <TabGroupContext.Provider value={state}>
+      <ul role='tablist'>
+        {tabs.map(({ panelId, title }) => (
+          <li role='presentation' key={panelId}>
+            <a
+              href={'#' + panelId}
+              role='tab'
+              aria-controls={panelId}
+              aria-selected={activePanelId === panelId}
+              aria-expanded={activePanelId === panelId}
+              id={generateTabId(panelId)}
+            >
+              {title}
+            </a>
+          </li>
+        ))}
+      </ul>
       {children}
     </TabGroupContext.Provider>
   )
@@ -31,62 +74,27 @@ export const TabGroup = ({ children }: TabGroupProps) => {
 
 /* -------------------------------------------- */
 
-type TabProps = {
-  children: ReactNode
-  panelId: string
-  id: string
-} & ComponentPropsWithoutRef<'li'>
-
-const Tab = ({ children, panelId, id, ...attrs }: TabProps) => {
-  const { activeTabId } = useContext(TabGroupContext)
-
-  return (
-    <li role='presentation' {...attrs}>
-      <a
-        href={`#${panelId}`}
-        role='tab'
-        aria-controls={panelId}
-        aria-selected={activeTabId === panelId}
-        aria-expanded={activeTabId === panelId}
-        id={id}
-      >
-        {children}
-      </a>
-    </li>
-  )
-}
-
-/* -------------------------------------------- */
-
-type TabListProps = {
-  children: ReactNode
-} & ComponentPropsWithoutRef<'ul'>
-
-const TabList = ({ children, ...attrs }: TabListProps) => {
-  return (
-    <ul role='tablist' {...attrs}>
-      {children}
-    </ul>
-  )
-}
-
-/* -------------------------------------------- */
-
 type PanelProps = {
   children: ReactNode
-  id: string
-  tabId: string
+  tabTitle: string
 }
 
-const Panel = ({ children, id, tabId }: PanelProps) => {
-  const { activeTabId } = useContext(TabGroupContext)
+const Panel = ({ children, tabTitle }: PanelProps) => {
+  const { activePanelId, addItem } = useContext(TabGroupContext)
+
+  const thisId = nanoid()
+  const tabId = generateTabId(thisId)
+
+  useLayoutEffect(() => {
+    addItem(tabTitle, thisId)
+  }, [])
 
   return (
     <div
-      id={id}
+      id={thisId}
       aria-labelledby={tabId}
       role='tabpanel'
-      aria-hidden={activeTabId !== tabId}
+      aria-hidden={activePanelId !== tabId}
     >
       {children}
     </div>
@@ -95,6 +103,4 @@ const Panel = ({ children, id, tabId }: PanelProps) => {
 
 /* -------------------------------------------- */
 
-TabGroup.Tab = Tab
-TabGroup.TabList = TabList
 TabGroup.Panel = Panel

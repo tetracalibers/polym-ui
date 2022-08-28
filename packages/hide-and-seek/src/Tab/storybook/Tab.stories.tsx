@@ -9,14 +9,12 @@ import { nanoid } from 'nanoid'
 
 import { TabGroup } from '../core/TabGroup'
 import { DummyText50W } from '../../mock/DummyText'
-const { Tab, TabList, Panel } = TabGroup
+const { Panel } = TabGroup
 
 export default {
   title: 'hide-and-seek/Tab',
   component: TabGroup,
   subcomponent: {
-    Tab,
-    TabList,
     Panel,
   },
   parameters: {
@@ -50,22 +48,11 @@ export default {
 }
 
 const seed = [...new Array(3)].map(() => nanoid())
-const generateTabId = (panelId: string) => `tab-for-${panelId}`
 
 const Template: ComponentStory<typeof TabGroup> = () => (
   <TabGroup>
-    <TabList>
-      {seed.map((id, idx) => {
-        const thisId = generateTabId(id)
-        return (
-          <Tab id={thisId} key={thisId} panelId={id}>
-            Tab {idx + 1}
-          </Tab>
-        )
-      })}
-    </TabList>
     {seed.map((id, idx) => (
-      <Panel key={id} tabId={generateTabId(id)} id={id}>
+      <Panel tabTitle={`Tab ${idx + 1}`} key={id}>
         <h2>Panel {idx + 1}</h2>
         <DummyText50W />
       </Panel>
