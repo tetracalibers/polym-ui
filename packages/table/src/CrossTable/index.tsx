@@ -1,130 +1,46 @@
 import _ from 'lodash'
-import { forwardRef, ReactElement } from 'react'
-import { TableComponentPropWithRef } from '../common/polymorphic/fixedAs'
-import { PolymorphicRef } from '../common/polymorphic/standard'
+import { ReactElement, ReactNode } from 'react'
+import { TableComponentProp } from '../common/polymorphic/fixedAs'
 import { CharacterProps, defaultProps } from './model/props'
-import { Table, Wrapper } from './styled'
-import { VerticalStack } from '@polym-ui/layout'
+import { LayoutTable, Wrapper } from './styled'
+import { generateTableData } from '../mock/data'
+import { Table } from '../core/Table'
 
-export type CrossTableProps = TableComponentPropWithRef<CharacterProps>
+export type CrossTableProps = TableComponentProp<CharacterProps>
 
-export type CrossTableComponent = (
-  props: CrossTableProps
-) => ReactElement | null
+export type CrossTableComponent = (props: CrossTableProps) => ReactElement
 
-export const CrossTable: CrossTableComponent = forwardRef(
-  ({ children, ..._props }: CrossTableProps, ref?: PolymorphicRef<'table'>) => {
-    const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
-      _.isUndefined(input) ? defaul : input
-    )
-    return (
-      <Wrapper>
-        <Table {...props} ref={ref}>
+const testData = generateTableData(10, 6)
+
+export const CrossTable: CrossTableComponent = ({
+  children,
+  ..._props
+}: CrossTableProps) => {
+  const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
+    _.isUndefined(input) ? defaul : input
+  )
+  return (
+    <Wrapper>
+      <Table
+        {...props}
+        data={testData}
+        Thead={() => (
           <thead>
             <tr>
               <th>Title</th>
-              <th>Heading Row</th>
-              <th>Heading Row</th>
-              <th>Heading Row</th>
-              <th>Heading Row</th>
-              <th>Heading Row</th>
-              <th>Heading Row</th>
+              <th>Heading</th>
+              <th>Heading</th>
+              <th>Heading</th>
+              <th>Heading</th>
+              <th>Heading</th>
+              <th>Heading</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <th>Heading Column</th>
-              <td>Data Cell</td>
-              <td>Data Cell</td>
-              <td>Data Cell</td>
-              <td>Data Cell</td>
-              <td>Data Cell</td>
-              <td>Data Cell</td>
-            </tr>
-            <tr>
-              <th>Heading Column</th>
-              <td>Data Cell</td>
-              <td>Data Cell</td>
-              <td>Data Cell</td>
-              <td>Data Cell</td>
-              <td>Data Cell</td>
-              <td>Data Cell</td>
-            </tr>
-            <tr>
-              <th>Heading Column</th>
-              <td>Data Cell</td>
-              <td>Data Cell</td>
-              <td>Data Cell</td>
-              <td>Data Cell</td>
-              <td>Data Cell</td>
-              <td>Data Cell</td>
-            </tr>
-            <tr>
-              <th>Heading Column</th>
-              <td>Data Cell</td>
-              <td>Data Cell</td>
-              <td>Data Cell</td>
-              <td>Data Cell</td>
-              <td>Data Cell</td>
-              <td>Data Cell</td>
-            </tr>
-            <tr>
-              <th>Heading Column</th>
-              <td>Data Cell</td>
-              <td>Data Cell</td>
-              <td>Data Cell</td>
-              <td>Data Cell</td>
-              <td>Data Cell</td>
-              <td>Data Cell</td>
-            </tr>
-            <tr>
-              <th>Heading Column</th>
-              <td>Data Cell</td>
-              <td>Data Cell</td>
-              <td>Data Cell</td>
-              <td>Data Cell</td>
-              <td>Data Cell</td>
-              <td>Data Cell</td>
-            </tr>
-            <tr>
-              <th>Heading Column</th>
-              <td>Data Cell</td>
-              <td>Data Cell</td>
-              <td>Data Cell</td>
-              <td>Data Cell</td>
-              <td>Data Cell</td>
-              <td>Data Cell</td>
-            </tr>
-            <tr>
-              <th>Heading Column</th>
-              <td>Data Cell</td>
-              <td>Data Cell</td>
-              <td>Data Cell</td>
-              <td>Data Cell</td>
-              <td>Data Cell</td>
-              <td>Data Cell</td>
-            </tr>
-            <tr>
-              <th>Heading Column</th>
-              <td>Data Cell</td>
-              <td>Data Cell</td>
-              <td>Data Cell</td>
-              <td>Data Cell</td>
-              <td>Data Cell</td>
-              <td>Data Cell</td>
-            </tr>
-            <tr>
-              <th>Heading Column</th>
-              <td>Data Cell</td>
-              <td>Data Cell</td>
-              <td>Data Cell</td>
-              <td>Data Cell</td>
-              <td>Data Cell</td>
-              <td>Data Cell</td>
-            </tr>
-          </tbody>
-        </Table>
-      </Wrapper>
-    )
-  }
-)
+        )}
+        format={{
+          table: (children: ReactNode) => <LayoutTable>{children}</LayoutTable>,
+        }}
+      />
+    </Wrapper>
+  )
+}

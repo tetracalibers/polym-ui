@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
   overflow: auto;
 `
 
-export const Table = styled(BaseTable)`
+export const LayoutTable = styled(BaseTable)`
   & th,
   & td {
     white-space: nowrap;

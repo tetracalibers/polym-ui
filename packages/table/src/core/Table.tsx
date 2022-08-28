@@ -20,8 +20,6 @@ type TableProps = Omit<ComponentPropsWithoutRef<'table'>, 'children'> & {
     th?: FormatRender
     td?: FormatRenderWithKey<'td'>
     tr?: FormatRenderWithKey<'tr'>
-    thead?: FormatRender
-    tfoot?: FormatRender
     table?: FormatRender
   }
 }
