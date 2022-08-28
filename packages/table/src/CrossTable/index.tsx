@@ -77,6 +77,51 @@ export const CrossTable: CrossTableComponent = forwardRef(
               <td>Data Cell</td>
               <td>Data Cell</td>
             </tr>
+            <tr>
+              <th>Heading Column</th>
+              <td>Data Cell</td>
+              <td>Data Cell</td>
+              <td>Data Cell</td>
+              <td>Data Cell</td>
+              <td>Data Cell</td>
+              <td>Data Cell</td>
+            </tr>
+            <tr>
+              <th>Heading Column</th>
+              <td>Data Cell</td>
+              <td>Data Cell</td>
+              <td>Data Cell</td>
+              <td>Data Cell</td>
+              <td>Data Cell</td>
+              <td>Data Cell</td>
+            </tr>
+            <tr>
+              <th>Heading Column</th>
+              <td>Data Cell</td>
+              <td>Data Cell</td>
+              <td>Data Cell</td>
+              <td>Data Cell</td>
+              <td>Data Cell</td>
+              <td>Data Cell</td>
+            </tr>
+            <tr>
+              <th>Heading Column</th>
+              <td>Data Cell</td>
+              <td>Data Cell</td>
+              <td>Data Cell</td>
+              <td>Data Cell</td>
+              <td>Data Cell</td>
+              <td>Data Cell</td>
+            </tr>
+            <tr>
+              <th>Heading Column</th>
+              <td>Data Cell</td>
+              <td>Data Cell</td>
+              <td>Data Cell</td>
+              <td>Data Cell</td>
+              <td>Data Cell</td>
+              <td>Data Cell</td>
+            </tr>
           </tbody>
         </Table>
       </Wrapper>

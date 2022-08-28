@@ -6,7 +6,8 @@ import { BaseTable } from '../../mock/BaseTable'
 
 export const Wrapper = styled.div`
   width: 100%;
-  overflow-x: auto;
+  height: 300px;
+  overflow: auto;
 `
 
 export const Table = styled(BaseTable)`
