@@ -109,6 +109,7 @@ const Panel = ({ children, tabTitle }: PanelProps) => {
       aria-labelledby={tabId}
       role='tabpanel'
       aria-hidden={activePanelId !== thisId}
+      tabIndex={0}
     >
       {children}
     </Wrapper>
