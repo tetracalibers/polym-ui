@@ -15,8 +15,6 @@ export const Table = styled(BaseTable)`
 
   & tr {
     display: block;
-    /* TODO 100% / 要素数 で計算したい */
-    //width: 20%;
     box-sizing: border-box;
     flex: 1;
   }
@@ -26,5 +24,6 @@ export const Table = styled(BaseTable)`
     display: block;
     width: 100%;
     box-sizing: border-box;
+    white-space: nowrap;
   }
 `
