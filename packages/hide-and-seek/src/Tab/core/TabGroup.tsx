@@ -7,9 +7,13 @@ import {
   useLayoutEffect,
   useMemo,
   useState,
+  KeyboardEvent,
+  useRef,
 } from 'react'
 import { nanoid } from 'nanoid'
 import { Wrapper } from '../styled'
+import { match } from 'ts-pattern'
+import _ from 'lodash'
 
 type TabInfo = {
   panelId: string
@@ -32,6 +36,7 @@ const generateTabId = (panelId: string) => `tab-for-${panelId}`
 export const TabGroup = ({ children }: TabGroupProps) => {
   const [activePanelId, setActivePanelId] = useState('')
   const [tabs, updateTabs] = useState<TabInfo[]>([])
+  const tablistEref = useRef<HTMLUListElement>(null)
 
   const addTab = useCallback((title: string, panelId: string) => {
     updateTabs(tabs => {
@@ -56,6 +61,24 @@ export const TabGroup = ({ children }: TabGroupProps) => {
     setActivePanelId(panelId)
   }
 
+  const onKeyDownForMoveTab = (e: KeyboardEvent<HTMLAnchorElement>) => {
+    match(e.key)
+      .with('ArrowLeft', () => {
+        // prettier-ignore
+        const activeId = e.currentTarget.attributes.getNamedItem('aria-controls')?.value
+        // prettier-ignore
+        const leftPanelId = _.last(_.takeWhile(tabs, o => o.panelId !== activeId))?.panelId
+        if (leftPanelId) {
+          // prettier-ignore
+          const leftTab = tablistEref.current?.querySelector('#' + generateTabId(leftPanelId)) as HTMLElement
+          leftTab?.focus()
+          setActivePanelId(leftPanelId)
+        }
+      })
+      .with('ArrowRight', () => {})
+      .otherwise(() => {})
+  }
+
   useLayoutEffect(() => {
     if (tabs.length > 0) {
       setActivePanelId(tabs[0].panelId)
@@ -64,7 +87,7 @@ export const TabGroup = ({ children }: TabGroupProps) => {
 
   return (
     <TabGroupContext.Provider value={state}>
-      <ul role='tablist'>
+      <ul role='tablist' ref={tablistEref}>
         {tabs.map(({ panelId, title }) => (
           <li role='presentation' key={panelId}>
             <a
@@ -76,6 +99,7 @@ export const TabGroup = ({ children }: TabGroupProps) => {
               id={generateTabId(panelId)}
               onClick={e => onToggleTab(e, panelId)}
               tabIndex={activePanelId === panelId ? 0 : -1}
+              onKeyDown={onKeyDownForMoveTab}
             >
               {title}
             </a>
