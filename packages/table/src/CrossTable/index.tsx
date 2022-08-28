@@ -20,31 +20,64 @@ export const CrossTable: CrossTableComponent = forwardRef(
     return (
       <Wrapper>
         <Table {...props} ref={ref}>
-          <tr>
-            <th>Heading Cell 1</th>
-            <td>Data Cell 1</td>
-            <td>Data Cell 1</td>
-          </tr>
-          <tr>
-            <th>Heading Cell 2</th>
-            <td>Data Cell 2</td>
-            <td>Data Cell 2</td>
-          </tr>
-          <tr>
-            <th>Heading Cell 3</th>
-            <td>Data Cell 3</td>
-            <td>Data Cell 3</td>
-          </tr>
-          <tr>
-            <th>Heading Cell 4</th>
-            <td>Data Cell 4</td>
-            <td>Data Cell 4</td>
-          </tr>
-          <tr>
-            <th>Heading Cell 5</th>
-            <td>Data Cell 5</td>
-            <td>Data Cell 5</td>
-          </tr>
+          <thead>
+            <tr>
+              <th>Heading Row</th>
+              <th>Heading Row</th>
+              <th>Heading Row</th>
+              <th>Heading Row</th>
+              <th>Heading Row</th>
+              <th>Heading Row</th>
+              <th>Heading Row</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>Heading Column</th>
+              <td>Data Cell</td>
+              <td>Data Cell</td>
+              <td>Data Cell</td>
+              <td>Data Cell</td>
+              <td>Data Cell</td>
+              <td>Data Cell</td>
+            </tr>
+            <tr>
+              <th>Heading Column</th>
+              <td>Data Cell</td>
+              <td>Data Cell</td>
+              <td>Data Cell</td>
+              <td>Data Cell</td>
+              <td>Data Cell</td>
+              <td>Data Cell</td>
+            </tr>
+            <tr>
+              <th>Heading Column</th>
+              <td>Data Cell</td>
+              <td>Data Cell</td>
+              <td>Data Cell</td>
+              <td>Data Cell</td>
+              <td>Data Cell</td>
+              <td>Data Cell</td>
+            </tr>
+            <tr>
+              <th>Heading Column</th>
+              <td>Data Cell</td>
+              <td>Data Cell</td>
+              <td>Data Cell</td>
+              <td>Data Cell</td>
+              <td>Data Cell</td>
+              <td>Data Cell</td>
+            </tr>
+            <tr>
+              <th>Heading Column</th>
+              <td>Data Cell</td>
+              <td>Data Cell</td>
+              <td>Data Cell</td>
+              <td>Data Cell</td>
+              <td>Data Cell</td>
+              <td>Data Cell</td>
+            </tr>
+          </tbody>
         </Table>
       </Wrapper>
     )
