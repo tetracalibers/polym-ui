@@ -61,21 +61,36 @@ export const TabGroup = ({ children }: TabGroupProps) => {
     setActivePanelId(panelId)
   }
 
+  const getActiveId = (e: SyntheticEvent) =>
+    e.currentTarget.attributes.getNamedItem('aria-controls')?.value
+
+  const getTabElement = (panelId: string) =>
+    tablistEref.current?.querySelector(
+      '#' + generateTabId(panelId)
+    ) as HTMLElement
+
   const onKeyDownForMoveTab = (e: KeyboardEvent<HTMLAnchorElement>) => {
     match(e.key)
       .with('ArrowLeft', () => {
-        // prettier-ignore
-        const activeId = e.currentTarget.attributes.getNamedItem('aria-controls')?.value
+        const activeId = getActiveId(e)
         // prettier-ignore
         const leftPanelId = _.last(_.takeWhile(tabs, o => o.panelId !== activeId))?.panelId
         if (leftPanelId) {
-          // prettier-ignore
-          const leftTab = tablistEref.current?.querySelector('#' + generateTabId(leftPanelId)) as HTMLElement
+          const leftTab = getTabElement(leftPanelId)
           leftTab?.focus()
           setActivePanelId(leftPanelId)
         }
       })
-      .with('ArrowRight', () => {})
+      .with('ArrowRight', () => {
+        const activeId = getActiveId(e)
+        // prettier-ignore
+        const rightPanelId = _.first(_.takeRightWhile(tabs, o => o.panelId !== activeId))?.panelId
+        if (rightPanelId) {
+          const rightTab = getTabElement(rightPanelId)
+          rightTab?.focus()
+          setActivePanelId(rightPanelId)
+        }
+      })
       .otherwise(() => {})
   }
 
