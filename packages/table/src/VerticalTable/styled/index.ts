@@ -1,7 +1,4 @@
-import styled, { css } from 'styled-components'
-import { CharacterProps } from '../model/props'
-import { match } from 'ts-pattern'
-import { ColorPalette as $, Truthy } from 'styled-utility-first'
+import styled from 'styled-components'
 import { BaseTable } from '../../mock/BaseTable'
 
 export const Wrapper = styled.div`
@@ -9,18 +6,20 @@ export const Wrapper = styled.div`
   overflow-x: auto;
 `
 
-export const Table = styled(BaseTable)`
-  display: flex;
-  width: 100%;
+export const LayoutTable = styled(BaseTable)`
+  & tbody {
+    display: flex;
+    width: 100%;
+  }
 
-  & tr {
+  & tbody tr {
     display: block;
     box-sizing: border-box;
     flex: 1;
   }
 
-  & th,
-  & td {
+  & tbody th,
+  & tbody td {
     display: block;
     width: 100%;
     box-sizing: border-box;
