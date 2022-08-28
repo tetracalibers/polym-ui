@@ -44,13 +44,13 @@ export const Table: FC<TableProps> = ({
     <>
       {Thead && <Thead />}
       <tbody>
-        {data.map(({ header, cellData }, trIdx) =>
+        {data.map(({ header, cellData }) =>
           Tr(
             <>
               {Th(header)}
-              {cellData.map((d, tdIdx) => Td(d, tdIdx))}
+              {cellData.map(d => Td(d, `${header}_${d}`))}
             </>,
-            trIdx
+            header
           )
         )}
       </tbody>
