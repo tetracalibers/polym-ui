@@ -2,6 +2,7 @@ import {
   createContext,
   Fragment,
   ReactNode,
+  SyntheticEvent,
   useCallback,
   useContext,
   useLayoutEffect,
@@ -10,6 +11,7 @@ import {
 } from 'react'
 import { nanoid } from 'nanoid'
 import { VisuallyHidden } from '@polym-ui/a11y-helper'
+import { Wrapper } from '../styled'
 
 type TabInfo = {
   panelId: string
@@ -51,6 +53,11 @@ export const TabGroup = ({ children }: TabGroupProps) => {
     [activePanelId, tabs]
   )
 
+  const onToggleTag = (e: SyntheticEvent, panelId: string) => {
+    e.preventDefault()
+    setActivePanelId(panelId)
+  }
+
   return (
     <TabGroupContext.Provider value={state}>
       <ul role='tablist'>
@@ -63,6 +70,7 @@ export const TabGroup = ({ children }: TabGroupProps) => {
               aria-selected={activePanelId === panelId}
               aria-expanded={activePanelId === panelId}
               id={generateTabId(panelId)}
+              onClick={e => onToggleTag(e, panelId)}
             >
               {title}
             </a>
@@ -84,25 +92,21 @@ type PanelProps = {
 const Panel = ({ children, tabTitle }: PanelProps) => {
   const { activePanelId, addItem } = useContext(TabGroupContext)
 
-  const thisId = nanoid()
+  const thisId = useMemo(() => nanoid(), [])
   const tabId = generateTabId(thisId)
 
   useLayoutEffect(() => {
     addItem(tabTitle, thisId)
   }, [])
 
-  const Wrapper = activePanelId === thisId ? Fragment : VisuallyHidden
-
   return (
-    <Wrapper>
-      <div
-        id={thisId}
-        aria-labelledby={tabId}
-        role='tabpanel'
-        aria-hidden={activePanelId !== thisId}
-      >
-        {children}
-      </div>
+    <Wrapper
+      id={thisId}
+      aria-labelledby={tabId}
+      role='tabpanel'
+      aria-hidden={activePanelId !== thisId}
+    >
+      {children}
     </Wrapper>
   )
 }
