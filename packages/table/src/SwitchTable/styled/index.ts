@@ -1,21 +1,20 @@
-import styled, { css } from 'styled-components'
-import { CharacterProps } from '../model/props'
-import { match } from 'ts-pattern'
-import { ColorPalette as $, Truthy } from 'styled-utility-first'
+import styled from 'styled-components'
 import { BaseTable } from '../../mock/BaseTable'
 
-export const Table = styled(BaseTable)`
+export const LayoutTable = styled(BaseTable)`
   @media screen and (min-width: 48em) {
-    display: flex;
+    & tbody {
+      display: flex;
+    }
 
-    & tr {
+    & tbody tr {
       display: block;
       box-sizing: border-box;
       flex: 1;
     }
 
-    & th,
-    & td {
+    & tbody th,
+    & tbody td {
       display: block;
       width: 100%;
       box-sizing: border-box;

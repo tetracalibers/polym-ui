@@ -7,7 +7,7 @@ type FormatRenderWithKey<T extends 'td' | 'tr'> = (
   key: number | string
 ) => ReactElement
 
-type TBodyData = {
+export type TBodyData = {
   header: string
   cellData: string[]
 }[]
@@ -20,7 +20,6 @@ type TableProps = Omit<ComponentPropsWithoutRef<'table'>, 'children'> & {
     th?: FormatRender
     td?: FormatRenderWithKey<'td'>
     tr?: FormatRenderWithKey<'tr'>
-    tbody?: FormatRender
     thead?: FormatRender
     tfoot?: FormatRender
     table?: FormatRender
@@ -34,18 +33,18 @@ export const Table: FC<TableProps> = ({
   Tfoot,
 }: TableProps) => {
   const Th = format?.th ?? ((children: ReactNode) => <th>{children}</th>)
-  const Td = format?.td ?? ((children: ReactNode) => <td>{children}</td>)
-  const Tr = format?.tr ?? ((children: ReactNode) => <tr>{children}</tr>)
-  const Tbody =
-    format?.tbody ?? ((children: ReactNode) => <tbody>{children}</tbody>)
-  const Table =
-    format?.table ?? ((children: ReactNode) => <table>{children}</table>)
+  // prettier-ignore
+  const Td = format?.td ?? ((children: ReactNode, key: number | string) => <td key={key}>{children}</td>)
+  // prettier-ignore
+  const Tr = format?.tr ?? ((children: ReactNode, key: number | string) => <tr key={key}>{children}</tr>)
+  // prettier-ignore
+  const Table = format?.table ?? ((children: ReactNode) => <table>{children}</table>)
 
   return Table(
     <>
       {Thead && <Thead />}
-      {Tbody(
-        data.map(({ header, cellData }, trIdx) =>
+      <tbody>
+        {data.map(({ header, cellData }, trIdx) =>
           Tr(
             <>
               {Th(header)}
@@ -53,8 +52,8 @@ export const Table: FC<TableProps> = ({
             </>,
             trIdx
           )
-        )
-      )}
+        )}
+      </tbody>
       {Tfoot && <Tfoot />}
     </>
   )
