@@ -1,7 +1,8 @@
-import { createContext, ReactNode, useContext, useId } from 'react'
+import { createContext, ReactNode, useContext } from 'react'
 import { useAssociate } from '../../hooks/useAssociate'
 import { useComposite } from '../../hooks/useComposite'
 import { useShareState } from '../../hooks/useShareState'
+import { useId } from '../../hooks/useId'
 
 /* -------------------------------------------- */
 
