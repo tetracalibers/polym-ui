@@ -1,7 +1,7 @@
 import { nanoid } from 'nanoid'
 import { useMemo } from 'react'
 
-export const useId = () => {
+export const useNanoId = () => {
   const id = useMemo(() => nanoid(), [])
 
   return id

@@ -52,7 +52,7 @@ const seed = [...new Array(3)].map(() => nanoid())
 const Template: ComponentStory<typeof Accordion> = () => (
   <Accordion>
     {seed.map((id, idx) => (
-      <Panel title={`Accordion ${idx + 1}`} key={id}>
+      <Panel key={id}>
         <h2>Panel {idx + 1}</h2>
         <DummyText50W />
       </Panel>
