@@ -18,5 +18,5 @@ export const useIdRelation = () => {
     })
   }, [])
 
-  return [collection, addItem]
+  return [collection, addItem] as const
 }

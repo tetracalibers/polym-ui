@@ -2,7 +2,6 @@ import {
   createContext,
   ReactNode,
   SyntheticEvent,
-  useCallback,
   useContext,
   useLayoutEffect,
   useMemo,
@@ -14,15 +13,11 @@ import { nanoid } from 'nanoid'
 import { Wrapper } from '../styled'
 import { match } from 'ts-pattern'
 import _ from 'lodash'
-
-type TabInfo = {
-  panelId: string
-  title: string
-}
+import { useIdRelation } from '../../hooks/useIdRelation'
 
 type TabState = {
   activePanelId: string
-  addItem: (title: string, key: string) => void
+  addTab: (name: string, id: string) => void
 }
 
 const TabGroupContext = createContext<TabState>({} as TabState)
@@ -35,23 +30,13 @@ const generateTabId = (panelId: string) => `tab-for-${panelId}`
 
 export const TabGroup = ({ children }: TabGroupProps) => {
   const [activePanelId, setActivePanelId] = useState('')
-  const [tabs, updateTabs] = useState<TabInfo[]>([])
+  const [tabs, addTab] = useIdRelation()
   const tablistEref = useRef<HTMLUListElement>(null)
-
-  const addTab = useCallback((title: string, panelId: string) => {
-    updateTabs(tabs => {
-      if (tabs.findIndex(item => item.panelId === panelId) > 0) {
-        return tabs
-      } else {
-        return [...tabs, { title, panelId }]
-      }
-    })
-  }, [])
 
   const state = useMemo<TabState>(
     () => ({
       activePanelId,
-      addItem: addTab,
+      addTab,
     }),
     [activePanelId, tabs]
   )
@@ -73,7 +58,7 @@ export const TabGroup = ({ children }: TabGroupProps) => {
       .with('ArrowLeft', () => {
         const activeId = getActiveId(e)
         // prettier-ignore
-        const leftPanelId = _.last(_.takeWhile(tabs, o => o.panelId !== activeId))?.panelId
+        const leftPanelId = _.last(_.takeWhile(tabs, o => o.id !== activeId))?.id
         if (leftPanelId) {
           const leftTab = getTabElement(leftPanelId)
           leftTab?.focus()
@@ -83,7 +68,7 @@ export const TabGroup = ({ children }: TabGroupProps) => {
       .with('ArrowRight', () => {
         const activeId = getActiveId(e)
         // prettier-ignore
-        const rightPanelId = _.first(_.takeRightWhile(tabs, o => o.panelId !== activeId))?.panelId
+        const rightPanelId = _.first(_.takeRightWhile(tabs, o => o.id !== activeId))?.id
         if (rightPanelId) {
           const rightTab = getTabElement(rightPanelId)
           rightTab?.focus()
@@ -95,27 +80,27 @@ export const TabGroup = ({ children }: TabGroupProps) => {
 
   useLayoutEffect(() => {
     if (tabs.length > 0) {
-      setActivePanelId(tabs[0].panelId)
+      setActivePanelId(tabs[0].id)
     }
   }, [tabs])
 
   return (
     <TabGroupContext.Provider value={state}>
       <ul role='tablist' ref={tablistEref}>
-        {tabs.map(({ panelId, title }) => (
-          <li role='presentation' key={panelId}>
+        {tabs.map(({ id, name }) => (
+          <li role='presentation' key={id}>
             <a
-              href={'#' + panelId}
+              href={'#' + id}
               role='tab'
-              aria-controls={panelId}
-              aria-selected={activePanelId === panelId}
-              aria-expanded={activePanelId === panelId}
-              id={generateTabId(panelId)}
-              onClick={e => onToggleTab(e, panelId)}
-              tabIndex={activePanelId === panelId ? 0 : -1}
+              aria-controls={id}
+              aria-selected={activePanelId === id}
+              aria-expanded={activePanelId === id}
+              id={generateTabId(id)}
+              onClick={e => onToggleTab(e, id)}
+              tabIndex={activePanelId === id ? 0 : -1}
               onKeyDown={onKeyDownForMoveTab}
             >
-              {title}
+              {name}
             </a>
           </li>
         ))}
@@ -133,13 +118,13 @@ type PanelProps = {
 }
 
 const Panel = ({ children, tabTitle }: PanelProps) => {
-  const { activePanelId, addItem } = useContext(TabGroupContext)
+  const { activePanelId, addTab } = useContext(TabGroupContext)
 
   const thisId = useMemo(() => nanoid(), [])
   const tabId = generateTabId(thisId)
 
   useLayoutEffect(() => {
-    addItem(tabTitle, thisId)
+    addTab(tabTitle, thisId)
   }, [])
 
   return (
