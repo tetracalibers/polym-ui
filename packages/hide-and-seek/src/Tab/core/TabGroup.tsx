@@ -1,5 +1,6 @@
 import {
   createContext,
+  Fragment,
   ReactNode,
   useCallback,
   useContext,
@@ -8,6 +9,7 @@ import {
   useState,
 } from 'react'
 import { nanoid } from 'nanoid'
+import { VisuallyHidden } from '@polym-ui/a11y-helper'
 
 type TabInfo = {
   panelId: string
@@ -89,15 +91,19 @@ const Panel = ({ children, tabTitle }: PanelProps) => {
     addItem(tabTitle, thisId)
   }, [])
 
+  const Wrapper = activePanelId === thisId ? Fragment : VisuallyHidden
+
   return (
-    <div
-      id={thisId}
-      aria-labelledby={tabId}
-      role='tabpanel'
-      aria-hidden={activePanelId !== thisId}
-    >
-      {children}
-    </div>
+    <Wrapper>
+      <div
+        id={thisId}
+        aria-labelledby={tabId}
+        role='tabpanel'
+        aria-hidden={activePanelId !== thisId}
+      >
+        {children}
+      </div>
+    </Wrapper>
   )
 }
 
