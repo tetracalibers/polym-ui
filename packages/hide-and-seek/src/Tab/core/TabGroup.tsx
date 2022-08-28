@@ -94,7 +94,7 @@ const Panel = ({ children, tabTitle }: PanelProps) => {
       id={thisId}
       aria-labelledby={tabId}
       role='tabpanel'
-      aria-hidden={activePanelId !== tabId}
+      aria-hidden={activePanelId !== thisId}
     >
       {children}
     </div>
