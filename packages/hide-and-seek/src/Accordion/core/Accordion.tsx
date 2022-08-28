@@ -11,20 +11,15 @@ export const Accordion = ({ children }: AccordionProps) => {
   return <>{children}</>
 }
 
-const PanelContext = createContext({
-  detailId: '',
-  summaryId: '',
-})
-
 /* -------------------------------------------- */
 
-type SummaryProps = {
+type PanelInnerProps = {
   children: ReactNode
+  detailId: string
+  summaryId: string
 }
 
-const Summary = ({ children }: SummaryProps) => {
-  const { detailId, summaryId } = useContext(PanelContext)
-
+const Summary = ({ children, summaryId, detailId }: PanelInnerProps) => {
   return (
     <button
       type='button'
@@ -43,13 +38,7 @@ const Summary = ({ children }: SummaryProps) => {
 
 /* -------------------------------------------- */
 
-type DetailProps = {
-  children: ReactNode
-}
-
-const Detail = ({ children }: DetailProps) => {
-  const { detailId, summaryId } = useContext(PanelContext)
-
+const Detail = ({ children, detailId, summaryId }: PanelInnerProps) => {
   return (
     <div id={detailId} role='region' aria-labelledby={summaryId}>
       {children}
@@ -70,10 +59,14 @@ const Panel = ({ children }: PanelProps) => {
   const [summary, detail] = Children.toArray(children)
 
   return (
-    <PanelContext.Provider value={{ detailId, summaryId }}>
-      <Summary>{summary}</Summary>
-      <Detail>{detail}</Detail>
-    </PanelContext.Provider>
+    <>
+      <Summary detailId={detailId} summaryId={summaryId}>
+        {summary}
+      </Summary>
+      <Detail detailId={detailId} summaryId={summaryId}>
+        {detail}
+      </Detail>
+    </>
   )
 }
 
