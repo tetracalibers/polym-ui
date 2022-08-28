@@ -64,10 +64,9 @@ export const TabGroup = ({ children }: TabGroupProps) => {
   const getActiveId = (e: SyntheticEvent) =>
     e.currentTarget.attributes.getNamedItem('aria-controls')?.value
 
+  // prettier-ignore
   const getTabElement = (panelId: string) =>
-    tablistEref.current?.querySelector(
-      '#' + generateTabId(panelId)
-    ) as HTMLElement
+    tablistEref.current?.querySelector('#' + generateTabId(panelId)) as HTMLElement
 
   const onKeyDownForMoveTab = (e: KeyboardEvent<HTMLAnchorElement>) => {
     match(e.key)
