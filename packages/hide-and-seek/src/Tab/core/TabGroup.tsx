@@ -13,7 +13,7 @@ import { nanoid } from 'nanoid'
 import { Wrapper } from '../styled'
 import { match } from 'ts-pattern'
 import _ from 'lodash'
-import { useIdRelation } from '../../hooks/useIdRelation'
+import { useComposite } from '../../hooks/useComposite'
 
 type TabState = {
   activePanelId: string
@@ -30,7 +30,7 @@ const generateTabId = (panelId: string) => `tab-for-${panelId}`
 
 export const TabGroup = ({ children }: TabGroupProps) => {
   const [activePanelId, setActivePanelId] = useState('')
-  const [tabs, addTab] = useIdRelation()
+  const [tabs, addTab] = useComposite()
   const tablistEref = useRef<HTMLUListElement>(null)
 
   const state = useMemo<TabState>(

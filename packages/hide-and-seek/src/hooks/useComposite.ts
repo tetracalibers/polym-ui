@@ -5,7 +5,7 @@ type Item = {
   name: string
 }
 
-export const useIdRelation = () => {
+export const useComposite = () => {
   const [collection, updateCollection] = useState<Item[]>([])
 
   const addItem = useCallback((name: string, id: string) => {
