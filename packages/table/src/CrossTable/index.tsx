@@ -22,7 +22,7 @@ export const CrossTable: CrossTableComponent = forwardRef(
         <Table {...props} ref={ref}>
           <thead>
             <tr>
-              <th>Heading Row</th>
+              <th>Title</th>
               <th>Heading Row</th>
               <th>Heading Row</th>
               <th>Heading Row</th>
