@@ -1,5 +1,5 @@
 import { ComponentStory } from '@storybook/react'
-import { HorizontalTable } from '..'
+import { VerticalTable } from '..'
 import { commmonArgTypes } from '../../common/argTypes'
 import { DarkTextBox } from '../../mock/TestBox'
 import { styleArgTypes } from '../css-props/argTypes'
@@ -8,8 +8,8 @@ import { defaultProps } from '../model/props'
 import { DocsPage } from './docsPage'
 
 export default {
-  title: 'table/HorizontalTable',
-  component: HorizontalTable,
+  title: 'table/VerticalTable',
+  component: VerticalTable,
   parameters: {
     docs: {
       page: () => <DocsPage />,
@@ -40,10 +40,10 @@ export default {
   },
 }
 
-const Template: ComponentStory<typeof HorizontalTable> = ({
+const Template: ComponentStory<typeof VerticalTable> = ({
   children,
   ...args
-}) => <HorizontalTable {...args}>{children}</HorizontalTable>
+}) => <VerticalTable {...args}>{children}</VerticalTable>
 
 export const playground = Template.bind({})
 playground.args = {

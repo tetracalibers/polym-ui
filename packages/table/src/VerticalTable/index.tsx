@@ -4,17 +4,17 @@ import { TableComponentPropWithRef } from '../common/polymorphic/fixedAs'
 import { PolymorphicRef } from '../common/polymorphic/standard'
 import { CharacterProps, defaultProps } from './model/props'
 import { Table, Wrapper } from './styled'
-import { HorizontalStack } from '@polym-ui/layout'
+import { VerticalStack } from '@polym-ui/layout'
 
-export type HorizontalTableProps = TableComponentPropWithRef<CharacterProps>
+export type VerticalTableProps = TableComponentPropWithRef<CharacterProps>
 
-export type HorizontalTableComponent = (
-  props: HorizontalTableProps
+export type VerticalTableComponent = (
+  props: VerticalTableProps
 ) => ReactElement | null
 
-export const HorizontalTable: HorizontalTableComponent = forwardRef(
+export const VerticalTable: VerticalTableComponent = forwardRef(
   (
-    { children, ..._props }: HorizontalTableProps,
+    { children, ..._props }: VerticalTableProps,
     ref?: PolymorphicRef<'table'>
   ) => {
     const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
