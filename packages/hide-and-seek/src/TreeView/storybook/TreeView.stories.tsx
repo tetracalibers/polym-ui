@@ -7,6 +7,7 @@ import { DocsPage } from './docsPage'
 import { nanoid } from 'nanoid'
 import { LoremIpsum } from 'react-lorem-ipsum'
 import { Tree } from '../core/TreeView'
+import { ReactNode } from 'react'
 const { SubTree, Leaf } = Tree
 
 export default {

@@ -1,10 +1,22 @@
-import { Children, ComponentPropsWithoutRef, ReactNode } from 'react'
+import {
+  Children,
+  ComponentPropsWithoutRef,
+  ReactElement,
+  ReactNode,
+} from 'react'
 
 /* -------------------------------------------- */
+
+type FormatFunc = (children: ReactNode) => ReactElement
 
 type TreeProps = {
   children: [ReactNode, ReactNode]
   label: string
+  format?: {
+    topRoot?: FormatFunc
+    subRoot?: FormatFunc
+    leaf?: FormatFunc
+  }
 }
 
 export const Tree = ({ children, label }: TreeProps) => {
