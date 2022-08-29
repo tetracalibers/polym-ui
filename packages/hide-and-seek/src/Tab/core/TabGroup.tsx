@@ -8,16 +8,20 @@ import {
   useState,
   KeyboardEvent,
   useRef,
+  forwardRef,
+  Children,
+  ComponentPropsWithoutRef,
 } from 'react'
 import { Wrapper } from '../styled'
 import { match } from 'ts-pattern'
 import _ from 'lodash'
 import { useComposite } from '../../hooks/useComposite'
 import { useNanoId } from '../../hooks/useNanoId'
+import { PolymorphicRef } from '../../common/polymorphic/standard'
 
 type TabState = {
   activePanelId: string
-  addTab: (name: string, id: string) => void
+  addTab: (tabComponent: ReactNode, id: string) => void
 }
 
 const TabGroupContext = createContext<TabState>({} as TabState)
@@ -26,7 +30,25 @@ type TabGroupProps = {
   children: ReactNode
 }
 
-const generateTabId = (panelId: string) => `tab-for-${panelId}`
+const generateTabId = (panelId: string) => `for-${panelId}`
+
+/* -------------------------------------------- */
+
+type TitleTabListProps = {
+  children: ReactNode[]
+}
+
+const TitleTabList = forwardRef(
+  ({ children }: TitleTabListProps, ref?: PolymorphicRef<'ul'>) => {
+    return (
+      <ul role='tablist' ref={ref}>
+        {children}
+      </ul>
+    )
+  }
+)
+
+/* -------------------------------------------- */
 
 export const TabGroup = ({ children }: TabGroupProps) => {
   const [activePanelId, setActivePanelId] = useState('')
@@ -86,25 +108,19 @@ export const TabGroup = ({ children }: TabGroupProps) => {
 
   return (
     <TabGroupContext.Provider value={state}>
-      <ul role='tablist' ref={tablistEref}>
-        {tabs.map(({ id, name }) => (
-          <li role='presentation' key={id}>
-            <a
-              href={'#' + id}
-              role='tab'
-              aria-controls={id}
-              aria-selected={activePanelId === id}
-              aria-expanded={activePanelId === id}
-              id={generateTabId(id)}
-              onClick={e => onToggleTab(e, id)}
-              tabIndex={activePanelId === id ? 0 : -1}
-              onKeyDown={onKeyDownForMoveTab}
-            >
-              {name}
-            </a>
-          </li>
+      <TitleTabList ref={tablistEref}>
+        {tabs.map(({ id, node }) => (
+          <TitleTab
+            key={id}
+            tabId={generateTabId(id)}
+            panelId={id}
+            onClick={e => onToggleTab(e, id)}
+            onKeyDown={onKeyDownForMoveTab}
+          >
+            {node}
+          </TitleTab>
         ))}
-      </ul>
+      </TitleTabList>
       {children}
     </TabGroupContext.Provider>
   )
@@ -112,27 +128,50 @@ export const TabGroup = ({ children }: TabGroupProps) => {
 
 /* -------------------------------------------- */
 
-type PanelProps = {
+type InnerAtomicComponentProps = {
   children: ReactNode
-  tabTitle: string
+  tabId: string
+  panelId: string
 }
 
-const Panel = ({ children, tabTitle }: PanelProps) => {
-  const { activePanelId, addTab } = useContext(TabGroupContext)
-
-  const thisId = useNanoId()
-  const tabId = generateTabId(thisId)
-
-  useLayoutEffect(() => {
-    addTab(tabTitle, thisId)
-  }, [])
+const TitleTab = ({
+  children,
+  tabId,
+  panelId,
+  ...anchorAttrs
+}: InnerAtomicComponentProps & ComponentPropsWithoutRef<'a'>) => {
+  const { activePanelId } = useContext(TabGroupContext)
 
   return (
+    <li role='presentation' key={panelId}>
+      <a
+        href={'#' + panelId}
+        role='tab'
+        aria-controls={panelId}
+        aria-selected={activePanelId === panelId}
+        aria-expanded={activePanelId === panelId}
+        id={tabId}
+        tabIndex={activePanelId === panelId ? 0 : -1}
+        {...anchorAttrs}
+      >
+        {children}
+      </a>
+    </li>
+  )
+}
+
+const ContentsPanel = ({
+  children,
+  tabId,
+  panelId,
+}: InnerAtomicComponentProps) => {
+  const { activePanelId } = useContext(TabGroupContext)
+  return (
     <Wrapper
-      id={thisId}
+      id={panelId}
       aria-labelledby={tabId}
       role='tabpanel'
-      aria-hidden={activePanelId !== thisId}
+      aria-hidden={activePanelId !== panelId}
       tabIndex={0}
     >
       {children}
@@ -142,4 +181,30 @@ const Panel = ({ children, tabTitle }: PanelProps) => {
 
 /* -------------------------------------------- */
 
-TabGroup.Panel = Panel
+type TabProps = {
+  children: [ReactNode, ReactNode]
+}
+
+const Tab = ({ children }: TabProps) => {
+  const { addTab } = useContext(TabGroupContext)
+
+  const panelId = useNanoId()
+  const tabId = generateTabId(panelId)
+
+  const [title, contents] = Children.toArray(children)
+
+  useLayoutEffect(() => {
+    addTab(title, panelId)
+  }, [])
+
+  const injectProps = {
+    panelId,
+    tabId,
+  }
+
+  return <ContentsPanel {...injectProps}>{contents}</ContentsPanel>
+}
+
+/* -------------------------------------------- */
+
+TabGroup.Tab = Tab

@@ -7,13 +7,13 @@ import { DocsPage } from './docsPage'
 import { nanoid } from 'nanoid'
 import { LoremIpsum } from 'react-lorem-ipsum'
 import { TabGroup } from '../core/TabGroup'
-const { Panel } = TabGroup
+const { Tab } = TabGroup
 
 export default {
   title: 'hide-and-seek/Tab',
   component: TabGroup,
   subcomponent: {
-    Panel,
+    Tab,
   },
   parameters: {
     docs: {
@@ -50,10 +50,13 @@ const seed = [...new Array(3)].map(() => nanoid())
 const Template: ComponentStory<typeof TabGroup> = () => (
   <TabGroup>
     {seed.map((id, idx) => (
-      <Panel tabTitle={`Tab ${idx + 1}`} key={id}>
-        <h2>Panel {idx + 1}</h2>
-        <LoremIpsum />
-      </Panel>
+      <Tab key={id}>
+        <h2>Tab {idx + 1}</h2>
+        <>
+          <h3>Panel {idx + 1}</h3>
+          <LoremIpsum />
+        </>
+      </Tab>
     ))}
   </TabGroup>
 )
