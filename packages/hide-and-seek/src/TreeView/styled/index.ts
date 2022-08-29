@@ -3,17 +3,8 @@ import { CharacterProps } from '../model/props'
 import { match } from 'ts-pattern'
 import { ColorPalette as $, ResetCss, Truthy } from 'styled-utility-first'
 
-export const DetailWrapper = styled.div<CharacterProps>`
-  &[aria-hidden='true'] {
-    display: none;
-  }
-`
-
-export const SummaryButton = styled.button`
-  ${ResetCss.button}
-  display: block;
-
-  &:focus {
+export const Wrapper = styled.div`
+  && *:focus {
     outline: 2px solid ${$.pastel.water};
   }
 `

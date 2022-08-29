@@ -8,6 +8,7 @@ import {
   useState,
 } from 'react'
 import { useShareState } from '../../hooks/useShareState'
+import { Wrapper } from '../styled'
 
 /* -------------------------------------------- */
 
@@ -39,10 +40,12 @@ export const Tree = ({ children, label, format }: TreeProps) => {
 
   return (
     <TreeContext.Provider value={shareState}>
-      <div id={label}>{topRoot}</div>
-      <ul role='tree' aria-labelledby={label}>
-        {child}
-      </ul>
+      <Wrapper>
+        <div id={label}>{topRoot}</div>
+        <ul role='tree' aria-labelledby={label}>
+          {child}
+        </ul>
+      </Wrapper>
     </TreeContext.Provider>
   )
 }
