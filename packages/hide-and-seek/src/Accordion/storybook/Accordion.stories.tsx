@@ -1,14 +1,12 @@
 import { ComponentStory } from '@storybook/react'
 import { commmonArgTypes } from '../../common/argTypes'
-import { DarkTextBox } from '../../mock/TestBox'
 import { styleArgTypes } from '../css-props/argTypes'
 import { logicArgTypes } from '../model/argTypes'
 import { defaultProps } from '../model/props'
 import { DocsPage } from './docsPage'
 import { nanoid } from 'nanoid'
-
+import { LoremIpsum } from 'react-lorem-ipsum'
 import { Accordion } from '../core/Accordion'
-import { DummyText50W } from '../../mock/DummyText'
 const { Panel } = Accordion
 
 export default {
@@ -54,7 +52,7 @@ const Template: ComponentStory<typeof Accordion> = () => (
     {seed.map((id, idx) => (
       <Panel key={id}>
         <h2>Panel {idx + 1}</h2>
-        <DummyText50W />
+        <LoremIpsum />
       </Panel>
     ))}
   </Accordion>

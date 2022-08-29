@@ -63,6 +63,7 @@
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.34.2",
     "react-icons": "^4.4.0",
+    "react-lorem-ipsum": "^1.4.10",
     "react-tsx-props": "*",
     "rimraf": "^3.0.2",
     "rollup": "^2.75.7",

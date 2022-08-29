@@ -1,14 +1,12 @@
 import { ComponentStory } from '@storybook/react'
 import { commmonArgTypes } from '../../common/argTypes'
-import { DarkTextBox } from '../../mock/TestBox'
 import { styleArgTypes } from '../css-props/argTypes'
 import { logicArgTypes } from '../model/argTypes'
 import { defaultProps } from '../model/props'
 import { DocsPage } from './docsPage'
 import { nanoid } from 'nanoid'
-
+import { LoremIpsum } from 'react-lorem-ipsum'
 import { TabGroup } from '../core/TabGroup'
-import { DummyText50W } from '../../mock/DummyText'
 const { Panel } = TabGroup
 
 export default {
@@ -54,7 +52,7 @@ const Template: ComponentStory<typeof TabGroup> = () => (
     {seed.map((id, idx) => (
       <Panel tabTitle={`Tab ${idx + 1}`} key={id}>
         <h2>Panel {idx + 1}</h2>
-        <DummyText50W />
+        <LoremIpsum />
       </Panel>
     ))}
   </TabGroup>
