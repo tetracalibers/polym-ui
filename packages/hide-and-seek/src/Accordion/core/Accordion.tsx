@@ -1,5 +1,6 @@
-import { Children, createContext, ReactNode, useContext } from 'react'
+import { Children, createContext, ReactNode, useContext, useState } from 'react'
 import { useNanoId } from '../../hooks/useNanoId'
+import { DetailWrapper } from '../styled'
 
 /* -------------------------------------------- */
 
@@ -17,13 +18,19 @@ type PanelInnerProps = {
   children: ReactNode
   detailId: string
   summaryId: string
+  isOpen: boolean
 }
 
-const Summary = ({ children, summaryId, detailId }: PanelInnerProps) => {
+const Summary = ({
+  children,
+  summaryId,
+  detailId,
+  isOpen,
+}: PanelInnerProps) => {
   return (
     <button
       type='button'
-      aria-expanded='true'
+      aria-expanded={isOpen}
       aria-controls={detailId}
       id={summaryId}
       key={detailId}
@@ -38,11 +45,16 @@ const Summary = ({ children, summaryId, detailId }: PanelInnerProps) => {
 
 /* -------------------------------------------- */
 
-const Detail = ({ children, detailId, summaryId }: PanelInnerProps) => {
+const Detail = ({ children, detailId, summaryId, isOpen }: PanelInnerProps) => {
   return (
-    <div id={detailId} role='region' aria-labelledby={summaryId}>
+    <DetailWrapper
+      id={detailId}
+      role='region'
+      aria-labelledby={summaryId}
+      aria-hidden={!isOpen}
+    >
       {children}
-    </div>
+    </DetailWrapper>
   )
 }
 
@@ -58,9 +70,12 @@ const Panel = ({ children }: PanelProps) => {
 
   const [summary, detail] = Children.toArray(children)
 
+  const [isOpen, setOpenStatus] = useState(false)
+
   const injectProps = {
     detailId,
     summaryId,
+    isOpen,
   }
 
   return (
