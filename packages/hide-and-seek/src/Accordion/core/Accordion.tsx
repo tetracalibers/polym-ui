@@ -1,6 +1,6 @@
 import { Children, createContext, ReactNode, useContext, useState } from 'react'
 import { useNanoId } from '../../hooks/useNanoId'
-import { DetailWrapper } from '../styled'
+import { DetailWrapper, SummaryButton } from '../styled'
 
 /* -------------------------------------------- */
 
@@ -28,18 +28,15 @@ const Summary = ({
   isOpen,
 }: PanelInnerProps) => {
   return (
-    <button
+    <SummaryButton
       type='button'
       aria-expanded={isOpen}
       aria-controls={detailId}
       id={summaryId}
       key={detailId}
     >
-      <div className='accordion-title'>
-        {children}
-        <span className='accordion-icon'></span>
-      </div>
-    </button>
+      {children}
+    </SummaryButton>
   )
 }
 
