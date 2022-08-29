@@ -1,4 +1,4 @@
-import { Children, createContext, ReactNode, useContext, useState } from 'react'
+import { Children, ComponentPropsWithoutRef, ReactNode, useState } from 'react'
 import { useNanoId } from '../../hooks/useNanoId'
 import { DetailWrapper, SummaryButton } from '../styled'
 
@@ -26,7 +26,8 @@ const Summary = ({
   summaryId,
   detailId,
   isOpen,
-}: PanelInnerProps) => {
+  ...attrs
+}: PanelInnerProps & ComponentPropsWithoutRef<'button'>) => {
   return (
     <SummaryButton
       type='button'
@@ -34,6 +35,7 @@ const Summary = ({
       aria-controls={detailId}
       id={summaryId}
       key={detailId}
+      {...attrs}
     >
       {children}
     </SummaryButton>
@@ -68,6 +70,7 @@ const Panel = ({ children }: PanelProps) => {
   const [summary, detail] = Children.toArray(children)
 
   const [isOpen, setOpenStatus] = useState(false)
+  const toggleOpen = () => setOpenStatus(!isOpen)
 
   const injectProps = {
     detailId,
@@ -77,7 +80,9 @@ const Panel = ({ children }: PanelProps) => {
 
   return (
     <>
-      <Summary {...injectProps}>{summary}</Summary>
+      <Summary {...injectProps} onClick={toggleOpen}>
+        {summary}
+      </Summary>
       <Detail {...injectProps}>{detail}</Detail>
     </>
   )
