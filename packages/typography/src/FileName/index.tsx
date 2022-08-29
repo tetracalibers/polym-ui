@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import { ComponentPropsWithoutRef, forwardRef, ReactElement } from 'react'
+import { ComponentPropsWithoutRef, ReactElement } from 'react'
 import { CharacterProps, defaultProps } from './model/props'
 import { WithIcon } from '../WithIcon'
 import { IconButton } from './styled'
@@ -9,17 +9,18 @@ export type FileNameProps = CharacterProps & ComponentPropsWithoutRef<'div'>
 
 export type FileNameComponent = (props: FileNameProps) => ReactElement | null
 
-export const FileName: FileNameComponent = forwardRef(
-  ({ children, ..._props }: FileNameProps) => {
-    const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
-      _.isUndefined(input) ? defaul : input
-    )
+export const FileName: FileNameComponent = ({
+  children,
+  ..._props
+}: FileNameProps) => {
+  const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
+    _.isUndefined(input) ? defaul : input
+  )
 
-    return (
-      <WithIcon as={IconButton} type='button' alignItems={'center'}>
-        <BsFileEarmarkMedical />
-        {children}
-      </WithIcon>
-    )
-  }
-)
+  return (
+    <WithIcon as={IconButton} type='button' alignItems={'center'}>
+      <BsFileEarmarkMedical />
+      {children}
+    </WithIcon>
+  )
+}
