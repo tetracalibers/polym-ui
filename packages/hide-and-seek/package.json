@@ -36,6 +36,7 @@
     "@babel/core": "^7.18.5",
     "@polym-ui/a11y-helper": "*",
     "@polym-ui/layout": "*",
+    "@polym-ui/typography": "*",
     "@rollup/plugin-commonjs": "^22.0.1",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^13.3.0",

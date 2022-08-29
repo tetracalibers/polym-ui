@@ -9,6 +9,7 @@ import { LoremIpsum } from 'react-lorem-ipsum'
 import { Tree } from '../core/TreeView'
 import { ReactNode } from 'react'
 const { SubTree, Leaf } = Tree
+import { FileName, FolderName } from '@polym-ui/typography'
 
 export default {
   title: 'hide-and-seek/TreeView',
@@ -50,7 +51,13 @@ export default {
 const seed = [...new Array(3)].map(() => nanoid())
 
 const Template: ComponentStory<typeof Tree> = () => (
-  <Tree label={'project_tree'}>
+  <Tree
+    label={'project_tree'}
+    format={{
+      leaf: (children: ReactNode) => <FileName>{children}</FileName>,
+      subRoot: (children: ReactNode) => <FolderName>{children}</FolderName>,
+    }}
+  >
     <h2>My Projects</h2>
     <>
       <SubTree>
