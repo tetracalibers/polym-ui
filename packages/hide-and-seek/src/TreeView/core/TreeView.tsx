@@ -45,7 +45,9 @@ export const Tree = ({ children, label, format }: TreeProps) => {
   return (
     <TreeContext.Provider value={shareState}>
       <Wrapper>
-        <div id={label}>{topRoot}</div>
+        <div id={label} tabIndex={0}>
+          {topRoot}
+        </div>
         <ul role='tree' aria-labelledby={label}>
           {child}
         </ul>
@@ -94,18 +96,6 @@ const SubTree = ({ children }: SubTreeProps) => {
       })
       .with('ArrowDown', () => {
         // TODO ノードを開いたり閉じたりせずに、フォーカス可能な次のノードにフォーカスを移動
-        if (isOpen) {
-          // prettier-ignore
-          const nextFocusable = childWrapEref.current?.querySelector('button:first-child') as HTMLElement
-          if (nextFocusable) {
-            return nextFocusable.focus()
-          }
-        }
-        // prettier-ignore
-        const nextSubTree = subTreeRootEref.current?.nextElementSibling as HTMLElement
-        // prettier-ignore
-        const nextFocusable = nextSubTree?.querySelector('button:first-child') as HTMLElement
-        nextFocusable && nextFocusable.focus()
       })
       .with('ArrowUp', () => {
         // TODO ノードを開いたり閉じたりせずに、フォーカス可能な前のノードにフォーカスを移動
@@ -115,6 +105,9 @@ const SubTree = ({ children }: SubTreeProps) => {
       })
       .with('End', () => {
         // TODO ノードを開かずにフォーカス可能なツリー内の最後のノードにフォーカスを移動
+      })
+      .with('Enter', () => {
+        // TODO ノードを開く
       })
       .otherwise(() => {})
   }
@@ -126,7 +119,7 @@ const SubTree = ({ children }: SubTreeProps) => {
       aria-selected={isOpen}
       ref={subTreeRootEref}
     >
-      <div onClick={toggleOpen} onKeyDown={moveByKey}>
+      <div onClick={toggleOpen} onKeyDown={moveByKey} tabIndex={0}>
         {subRoot}
       </div>
       {isOpen && (
@@ -149,7 +142,7 @@ const Leaf = ({ children, ...attrs }: LeafProps) => {
   const leaf = leafFormatter ? leafFormatter(children) : children
 
   return (
-    <li role='treeitem' {...attrs}>
+    <li role='treeitem' {...attrs} tabIndex={0}>
       {leaf}
     </li>
   )
