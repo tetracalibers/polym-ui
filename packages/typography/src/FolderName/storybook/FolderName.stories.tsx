@@ -1,5 +1,5 @@
 import { ComponentStory } from '@storybook/react'
-import { Folder } from '..'
+import { FolderName } from '..'
 import { commmonArgTypes } from '../../common/argTypes'
 import { styleArgTypes } from '../css-props/argTypes'
 import { logicArgTypes } from '../model/argTypes'
@@ -7,8 +7,8 @@ import { defaultProps } from '../model/props'
 import { DocsPage } from './docsPage'
 
 export default {
-  title: 'typography/Folder',
-  component: Folder,
+  title: 'typography/FolderName',
+  component: FolderName,
   parameters: {
     docs: {
       page: () => <DocsPage />,
@@ -40,8 +40,8 @@ export default {
   },
 }
 
-const Template: ComponentStory<typeof Folder> = ({ children, ...args }) => (
-  <Folder {...args}>{children}</Folder>
+const Template: ComponentStory<typeof FolderName> = ({ children, ...args }) => (
+  <FolderName {...args}>{children}</FolderName>
 )
 
 export const playground = Template.bind({})
