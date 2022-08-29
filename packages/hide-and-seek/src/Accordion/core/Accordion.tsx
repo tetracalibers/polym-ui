@@ -34,7 +34,6 @@ const Summary = ({
       aria-expanded={isOpen}
       aria-controls={detailId}
       id={summaryId}
-      key={detailId}
       {...attrs}
     >
       {children}
