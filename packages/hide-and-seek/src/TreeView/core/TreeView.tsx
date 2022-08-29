@@ -74,12 +74,14 @@ const SubTree = ({ children }: SubTreeProps) => {
   const moveByKey = (e: KeyboardEvent<HTMLDivElement>) => {
     match(e.key)
       .with('ArrowRight', () => {
-        // TODO 閉じたノードにフォーカスがある場合、ノードを開く
+        // 閉じたノードにフォーカスがある場合、ノードを開く
+        !isOpen && setOpenStatus(true)
         // TODO フォーカスが開いているノードにある場合、フォーカスを最初の子ノードに移動
         // TODO フォーカスが終了ノードにある場合、何もしません。
       })
       .with('ArrowLeft', () => {
-        // TODO 開いているノードにフォーカスがある場合、ノードを閉じます。
+        // 開いているノードにフォーカスがある場合、ノードを閉じます。
+        isOpen && setOpenStatus(false)
         // TODO エンド ノードまたは閉じたノードでもある子ノードにフォーカスがある場合、フォーカスをその親ノードに移動
         // TODO エンド ノードまたは閉じたノードでもあるルート ノードにフォーカスがある場合、 は何もしません
       })
@@ -100,7 +102,9 @@ const SubTree = ({ children }: SubTreeProps) => {
 
   return (
     <li role='treeitem' aria-expanded={isOpen} aria-selected={isOpen}>
-      <div onClick={toggleOpen}>{subRoot}</div>
+      <div onClick={toggleOpen} onKeyDown={moveByKey}>
+        {subRoot}
+      </div>
       {isOpen && <ul role='group'>{child}</ul>}
     </li>
   )
