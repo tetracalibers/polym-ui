@@ -6,14 +6,15 @@ import { defaultProps } from '../model/props'
 import { DocsPage } from './docsPage'
 import { nanoid } from 'nanoid'
 import { LoremIpsum } from 'react-lorem-ipsum'
-import { Accordion } from '../core/TreeView'
-const { Panel } = Accordion
+import { Tree } from '../core/TreeView'
+const { SubTree, Leaf } = Tree
 
 export default {
   title: 'hide-and-seek/TreeView',
-  component: Accordion,
+  component: Tree,
   subcomponent: {
-    Panel,
+    SubTree,
+    Leaf,
   },
   parameters: {
     docs: {
@@ -39,25 +40,6 @@ export default {
         required: true,
       },
     },
-    openOneOnly: {
-      control: {
-        type: null,
-      },
-      description: 'Whether other menus close automatically when opened',
-      table: {
-        type: {
-          summary: 'true | false',
-        },
-        category: 'application',
-        defaultValue: {
-          summary: false,
-          detail: null,
-        },
-      },
-      type: {
-        required: true,
-      },
-    },
     ...logicArgTypes,
     ...commmonArgTypes,
     ...styleArgTypes,
@@ -66,25 +48,73 @@ export default {
 
 const seed = [...new Array(3)].map(() => nanoid())
 
-const Template: ComponentStory<typeof Accordion> = ({ ...args }) => (
-  <Accordion openOneOnly={args.openOneOnly}>
-    {seed.map((id, idx) => (
-      <Panel key={id}>
-        <h2>Panel {idx + 1}</h2>
-        <LoremIpsum />
-      </Panel>
-    ))}
-  </Accordion>
+const Template: ComponentStory<typeof Tree> = () => (
+  <Tree label={'project_tree'}>
+    <h2>My Projects</h2>
+    <>
+      <SubTree>
+        <h3>Projects</h3>
+        <>
+          <Leaf>project-1.docx</Leaf>
+          <Leaf>project-2.docx</Leaf>
+          <SubTree>
+            <h3>Project 3</h3>
+            <>
+              <Leaf>project-3A.docx</Leaf>
+              <Leaf>project-3B.docx</Leaf>
+              <Leaf>project-3C.docx</Leaf>
+              <Leaf>project-4.docx</Leaf>
+            </>
+          </SubTree>
+          <SubTree>
+            <h3>Project 5</h3>
+            <>
+              <Leaf>project-5A.docx</Leaf>
+              <Leaf>project-5B.docx</Leaf>
+              <Leaf>project-5C.docx</Leaf>
+              <Leaf>project-5D.docx</Leaf>
+              <Leaf>project-5E.docx</Leaf>
+              <Leaf>project-5F.docx</Leaf>
+            </>
+          </SubTree>
+        </>
+      </SubTree>
+      <SubTree>
+        <h3>Reports</h3>
+        <>
+          <SubTree>
+            <h3>report-1</h3>
+            <>
+              <Leaf>project-1A.docx</Leaf>
+              <Leaf>project-1B.docx</Leaf>
+              <Leaf>project-1C.docx</Leaf>
+            </>
+          </SubTree>
+          <SubTree>
+            <h3>report-2</h3>
+            <>
+              <Leaf>project-2A.docx</Leaf>
+              <Leaf>project-2B.docx</Leaf>
+              <Leaf>project-2C.docx</Leaf>
+              <Leaf>project-2D.docx</Leaf>
+            </>
+          </SubTree>
+          <SubTree>
+            <h3>report-3</h3>
+            <>
+              <Leaf>project-3A.docx</Leaf>
+              <Leaf>project-3B.docx</Leaf>
+              <Leaf>project-3C.docx</Leaf>
+              <Leaf>project-3D.docx</Leaf>
+            </>
+          </SubTree>
+        </>
+      </SubTree>
+    </>
+  </Tree>
 )
 
-export const normal = Template.bind({})
-normal.args = {
+export const sample = Template.bind({})
+sample.args = {
   ...defaultProps,
-  openOneOnly: false,
-}
-
-export const openOneOnly = Template.bind({})
-openOneOnly.args = {
-  ...defaultProps,
-  openOneOnly: true,
 }
