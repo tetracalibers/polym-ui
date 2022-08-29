@@ -5,12 +5,12 @@ import { WithIcon } from '../WithIcon'
 import { IconButton } from './styled'
 import { BsFileEarmarkMedical } from 'react-icons/bs'
 
-export type FileProps = CharacterProps & ComponentPropsWithoutRef<'div'>
+export type FileNameProps = CharacterProps & ComponentPropsWithoutRef<'div'>
 
-export type FileComponent = (props: FileProps) => ReactElement | null
+export type FileNameComponent = (props: FileNameProps) => ReactElement | null
 
-export const File: FileComponent = forwardRef(
-  ({ children, ..._props }: FileProps) => {
+export const FileName: FileNameComponent = forwardRef(
+  ({ children, ..._props }: FileNameProps) => {
     const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
       _.isUndefined(input) ? defaul : input
     )

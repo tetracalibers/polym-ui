@@ -1,5 +1,5 @@
 import { ComponentStory } from '@storybook/react'
-import { File } from '..'
+import { FileName } from '..'
 import { commmonArgTypes } from '../../common/argTypes'
 import { styleArgTypes } from '../css-props/argTypes'
 import { logicArgTypes } from '../model/argTypes'
@@ -7,8 +7,8 @@ import { defaultProps } from '../model/props'
 import { DocsPage } from './docsPage'
 
 export default {
-  title: 'typography/File',
-  component: File,
+  title: 'typography/FileName',
+  component: FileName,
   parameters: {
     docs: {
       page: () => <DocsPage />,
@@ -40,8 +40,8 @@ export default {
   },
 }
 
-const Template: ComponentStory<typeof File> = ({ children, ...args }) => (
-  <File {...args}>{children}</File>
+const Template: ComponentStory<typeof FileName> = ({ children, ...args }) => (
+  <FileName {...args}>{children}</FileName>
 )
 
 export const playground = Template.bind({})
