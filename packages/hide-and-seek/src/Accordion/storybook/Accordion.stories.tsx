@@ -39,6 +39,25 @@ export default {
         required: true,
       },
     },
+    openOneOnly: {
+      control: {
+        type: null,
+      },
+      description: 'Whether other menus close automatically when opened',
+      table: {
+        type: {
+          summary: 'true | false',
+        },
+        category: 'application',
+        defaultValue: {
+          summary: false,
+          detail: null,
+        },
+      },
+      type: {
+        required: true,
+      },
+    },
     ...logicArgTypes,
     ...commmonArgTypes,
     ...styleArgTypes,
@@ -47,8 +66,8 @@ export default {
 
 const seed = [...new Array(3)].map(() => nanoid())
 
-const Template: ComponentStory<typeof Accordion> = () => (
-  <Accordion>
+const Template: ComponentStory<typeof Accordion> = ({ ...args }) => (
+  <Accordion openOneOnly={args.openOneOnly}>
     {seed.map((id, idx) => (
       <Panel key={id}>
         <h2>Panel {idx + 1}</h2>
@@ -58,8 +77,14 @@ const Template: ComponentStory<typeof Accordion> = () => (
   </Accordion>
 )
 
-export const playground = Template.bind({})
-playground.args = {
+export const normal = Template.bind({})
+normal.args = {
   ...defaultProps,
+  openOneOnly: false,
 }
-playground.argTypes = {}
+
+export const openOneOnly = Template.bind({})
+openOneOnly.args = {
+  ...defaultProps,
+  openOneOnly: true,
+}

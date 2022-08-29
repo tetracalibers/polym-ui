@@ -1,11 +1,17 @@
+import _ from 'lodash'
 import {
   Children,
   ComponentPropsWithoutRef,
   createContext,
+  Dispatch,
   ReactNode,
+  SetStateAction,
+  useContext,
+  useEffect,
   useState,
 } from 'react'
 import { useNanoId } from '../../hooks/useNanoId'
+import { useShareState } from '../../hooks/useShareState'
 import { DetailWrapper, SummaryButton } from '../styled'
 
 /* -------------------------------------------- */
@@ -15,19 +21,27 @@ type AccordionProps = {
   openOneOnly?: boolean
 }
 
-const AccordionContext = createContext({
-  openOneOnly: false,
-  activePanelId: '',
-})
+type AccordionState = {
+  openOneOnly: boolean
+  activePanelId: string[]
+  updateActivePanelId: Dispatch<SetStateAction<string[]>>
+}
+
+const AccordionContext = createContext({} as AccordionState)
 
 export const Accordion = ({
   children,
   openOneOnly = false,
 }: AccordionProps) => {
-  const [activePanelId, setActivePanelId] = useState('')
+  const [activePanelId, updateActivePanelId] = useState<string[]>([])
+
+  const state = useShareState(
+    { openOneOnly, activePanelId, updateActivePanelId },
+    [openOneOnly, activePanelId]
+  )
 
   return (
-    <AccordionContext.Provider value={{ openOneOnly, activePanelId }}>
+    <AccordionContext.Provider value={state}>
       {children}
     </AccordionContext.Provider>
   )
@@ -71,6 +85,7 @@ const Detail = ({ children, detailId, summaryId, isOpen }: PanelInnerProps) => {
       role='region'
       aria-labelledby={summaryId}
       aria-hidden={!isOpen}
+      tabIndex={0}
     >
       {children}
     </DetailWrapper>
@@ -84,13 +99,33 @@ type PanelProps = {
 }
 
 const Panel = ({ children }: PanelProps) => {
+  const { openOneOnly, updateActivePanelId, activePanelId } =
+    useContext(AccordionContext)
+
   const detailId = useNanoId()
   const summaryId = 'for-' + detailId
 
   const [summary, detail] = Children.toArray(children)
 
   const [isOpen, setOpenStatus] = useState(false)
-  const toggleOpen = () => setOpenStatus(!isOpen)
+
+  useEffect(() => {
+    setOpenStatus(activePanelId.includes(detailId))
+  }, [activePanelId])
+
+  const open = () => {
+    if (openOneOnly) {
+      updateActivePanelId([detailId])
+    } else {
+      updateActivePanelId([...activePanelId, detailId])
+    }
+  }
+
+  const close = () => {
+    updateActivePanelId(_.without(activePanelId, detailId))
+  }
+
+  const toggleOpen = () => (isOpen ? close() : open())
 
   const injectProps = {
     detailId,
