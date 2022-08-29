@@ -6,7 +6,9 @@ import {
   ReactNode,
   useContext,
   useState,
+  KeyboardEvent,
 } from 'react'
+import { match } from 'ts-pattern'
 import { useShareState } from '../../hooks/useShareState'
 import { Wrapper } from '../styled'
 
@@ -59,12 +61,42 @@ type SubTreeProps = {
 const SubTree = ({ children }: SubTreeProps) => {
   const [root, child] = Children.toArray(children)
 
+  // カスタムコンポーネントが指定されていれば置き換え
   const { format } = useContext(TreeContext)
   const subRootFormatter = format?.subRoot
   const subRoot = subRootFormatter ? subRootFormatter(root) : root
 
+  // 開閉管理
   const [isOpen, setOpenStatus] = useState(false)
   const toggleOpen = () => setOpenStatus(!isOpen)
+
+  // キーボード操作
+  const moveByKey = (e: KeyboardEvent<HTMLDivElement>) => {
+    match(e.key)
+      .with('ArrowRight', () => {
+        // TODO 閉じたノードにフォーカスがある場合、ノードを開く
+        // TODO フォーカスが開いているノードにある場合、フォーカスを最初の子ノードに移動
+        // TODO フォーカスが終了ノードにある場合、何もしません。
+      })
+      .with('ArrowLeft', () => {
+        // TODO 開いているノードにフォーカスがある場合、ノードを閉じます。
+        // TODO エンド ノードまたは閉じたノードでもある子ノードにフォーカスがある場合、フォーカスをその親ノードに移動
+        // TODO エンド ノードまたは閉じたノードでもあるルート ノードにフォーカスがある場合、 は何もしません
+      })
+      .with('ArrowDown', () => {
+        // TODO ノードを開いたり閉じたりせずに、フォーカス可能な次のノードにフォーカスを移動
+      })
+      .with('ArrowUp', () => {
+        // TODO ノードを開いたり閉じたりせずに、フォーカス可能な前のノードにフォーカスを移動
+      })
+      .with('Home', () => {
+        // TODO ノードを開いたり閉じたりせずに、ツリーの最初のノードにフォーカスを移動
+      })
+      .with('End', () => {
+        // TODO ノードを開かずにフォーカス可能なツリー内の最後のノードにフォーカスを移動
+      })
+      .otherwise(() => {})
+  }
 
   return (
     <li role='treeitem' aria-expanded={isOpen} aria-selected={isOpen}>
