@@ -4,7 +4,6 @@ import {
   SyntheticEvent,
   useContext,
   useLayoutEffect,
-  useMemo,
   useState,
   KeyboardEvent,
   useRef,
@@ -18,6 +17,7 @@ import _ from 'lodash'
 import { useComposite } from '../../hooks/useComposite'
 import { useNanoId } from '../../hooks/useNanoId'
 import { PolymorphicRef } from '../../common/polymorphic/standard'
+import { useShareState } from '../../hooks/useShareState'
 
 type TabState = {
   activePanelId: string
@@ -55,13 +55,7 @@ export const TabGroup = ({ children }: TabGroupProps) => {
   const [tabs, addTab] = useComposite()
   const tablistEref = useRef<HTMLUListElement>(null)
 
-  const state = useMemo<TabState>(
-    () => ({
-      activePanelId,
-      addTab,
-    }),
-    [activePanelId, tabs]
-  )
+  const state = useShareState({ activePanelId, addTab }, [activePanelId, tabs])
 
   const onToggleTab = (e: SyntheticEvent, panelId: string) => {
     e.preventDefault()
