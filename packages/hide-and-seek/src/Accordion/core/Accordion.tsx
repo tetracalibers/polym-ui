@@ -1,4 +1,10 @@
-import { Children, ComponentPropsWithoutRef, ReactNode, useState } from 'react'
+import {
+  Children,
+  ComponentPropsWithoutRef,
+  createContext,
+  ReactNode,
+  useState,
+} from 'react'
 import { useNanoId } from '../../hooks/useNanoId'
 import { DetailWrapper, SummaryButton } from '../styled'
 
@@ -6,10 +12,25 @@ import { DetailWrapper, SummaryButton } from '../styled'
 
 type AccordionProps = {
   children: ReactNode
+  openOneOnly?: boolean
 }
 
-export const Accordion = ({ children }: AccordionProps) => {
-  return <>{children}</>
+const AccordionContext = createContext({
+  openOneOnly: false,
+  activePanelId: '',
+})
+
+export const Accordion = ({
+  children,
+  openOneOnly = false,
+}: AccordionProps) => {
+  const [activePanelId, setActivePanelId] = useState('')
+
+  return (
+    <AccordionContext.Provider value={{ openOneOnly, activePanelId }}>
+      {children}
+    </AccordionContext.Provider>
+  )
 }
 
 /* -------------------------------------------- */
