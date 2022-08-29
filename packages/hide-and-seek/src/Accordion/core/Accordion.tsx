@@ -50,7 +50,6 @@ const Detail = ({ children, detailId, summaryId, isOpen }: PanelInnerProps) => {
       role='region'
       aria-labelledby={summaryId}
       aria-hidden={!isOpen}
-      tabIndex={0}
     >
       {children}
     </DetailWrapper>
