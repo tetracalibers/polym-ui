@@ -10,7 +10,7 @@ import { Accordion } from '../core/TreeView'
 const { Panel } = Accordion
 
 export default {
-  title: 'hide-and-seek/Accordion',
+  title: 'hide-and-seek/TreeView',
   component: Accordion,
   subcomponent: {
     Panel,
