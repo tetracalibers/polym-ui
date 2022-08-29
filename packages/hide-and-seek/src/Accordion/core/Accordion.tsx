@@ -58,14 +58,15 @@ const Panel = ({ children }: PanelProps) => {
 
   const [summary, detail] = Children.toArray(children)
 
+  const injectProps = {
+    detailId,
+    summaryId,
+  }
+
   return (
     <>
-      <Summary detailId={detailId} summaryId={summaryId}>
-        {summary}
-      </Summary>
-      <Detail detailId={detailId} summaryId={summaryId}>
-        {detail}
-      </Detail>
+      <Summary {...injectProps}>{summary}</Summary>
+      <Detail {...injectProps}>{detail}</Detail>
     </>
   )
 }
