@@ -2,7 +2,6 @@ import _ from 'lodash'
 import { ComponentPropsWithoutRef, ReactElement } from 'react'
 import { CharacterProps, defaultProps } from './model/props'
 import { WithIcon } from '../WithIcon'
-import { IconButton } from './styled'
 import { BsFileEarmarkMedical } from 'react-icons/bs'
 
 export type FileNameProps = CharacterProps & ComponentPropsWithoutRef<'div'>
@@ -18,7 +17,7 @@ export const FileName: FileNameComponent = ({
   )
 
   return (
-    <WithIcon as={IconButton} type='button' alignItems={'center'}>
+    <WithIcon alignItems={'center'}>
       <BsFileEarmarkMedical />
       {children}
     </WithIcon>

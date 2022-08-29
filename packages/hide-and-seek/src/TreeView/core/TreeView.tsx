@@ -8,6 +8,7 @@ import {
   useState,
   KeyboardEvent,
   useRef,
+  cloneElement,
 } from 'react'
 import { match } from 'ts-pattern'
 import { useShareState } from '../../hooks/useShareState'
@@ -68,7 +69,9 @@ const SubTree = ({ children }: SubTreeProps) => {
   // カスタムコンポーネントが指定されていれば置き換え
   const { format } = useContext(TreeContext)
   const subRootFormatter = format?.subRoot
-  const subRoot = subRootFormatter ? subRootFormatter(root) : root
+  const subRoot = subRootFormatter
+    ? cloneElement(subRootFormatter(root), { role: 'presentation' })
+    : root
 
   // 開閉管理
   const [isOpen, setOpenStatus] = useState(false)

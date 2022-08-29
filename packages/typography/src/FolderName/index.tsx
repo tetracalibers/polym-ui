@@ -3,7 +3,7 @@ import { ComponentPropsWithoutRef, ReactElement, useState } from 'react'
 import { CharacterProps, defaultProps } from './model/props'
 import { WithIcon } from '../WithIcon'
 import { ImFolder, ImFolderOpen } from 'react-icons/im'
-import { IconButton } from './styled'
+import { Wrapper } from './styled'
 
 export type FolderNameProps = CharacterProps & ComponentPropsWithoutRef<'div'>
 
@@ -24,12 +24,7 @@ export const FolderName: FolderNameComponent = ({
   const toggleOpen = () => setOpenStatus(!isOpen)
 
   return (
-    <WithIcon
-      as={IconButton}
-      type='button'
-      onClick={toggleOpen}
-      alignItems={'center'}
-    >
+    <WithIcon onClick={toggleOpen} alignItems={'center'} as={Wrapper}>
       {isOpen ? <ImFolderOpen /> : <ImFolder />}
       {children}
     </WithIcon>
