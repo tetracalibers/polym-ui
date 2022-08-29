@@ -5,6 +5,7 @@ import {
   ReactElement,
   ReactNode,
   useContext,
+  useState,
 } from 'react'
 import { useShareState } from '../../hooks/useShareState'
 
@@ -59,10 +60,13 @@ const SubTree = ({ children }: SubTreeProps) => {
   const subRootFormatter = format?.subRoot
   const subRoot = subRootFormatter ? subRootFormatter(root) : root
 
+  const [isOpen, setOpenStatus] = useState(false)
+  const toggleOpen = () => setOpenStatus(!isOpen)
+
   return (
-    <li role='treeitem' aria-expanded={false} aria-selected={false}>
-      <div>{subRoot}</div>
-      <ul role='group'>{child}</ul>
+    <li role='treeitem' aria-expanded={isOpen} aria-selected={isOpen}>
+      <div onClick={toggleOpen}>{subRoot}</div>
+      {isOpen && <ul role='group'>{child}</ul>}
     </li>
   )
 }
