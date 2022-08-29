@@ -84,9 +84,13 @@ const SubTree = ({ children }: SubTreeProps) => {
     match(e.key)
       .with('ArrowRight', () => {
         // 閉じたノードにフォーカスがある場合、ノードを開く
-        !isOpen && setOpenStatus(true)
-        // TODO フォーカスが開いているノードにある場合、フォーカスを最初の子ノードに移動
-        // TODO フォーカスが終了ノードにある場合、何もしません。
+        if (!isOpen) {
+          return setOpenStatus(true)
+        }
+        // フォーカスが開いているノードにある場合、フォーカスを最初の子ノードに移動
+        // prettier-ignore
+        const firstChild = childWrapEref.current?.firstElementChild as HTMLElement
+        firstChild && firstChild.focus()
       })
       .with('ArrowLeft', () => {
         // 開いているノードにフォーカスがある場合、ノードを閉じます。
@@ -142,8 +146,23 @@ const Leaf = ({ children, ...attrs }: LeafProps) => {
   const leafFormatter = format?.leaf
   const leaf = leafFormatter ? leafFormatter(children) : children
 
+  const moveFocusByKey = (e: KeyboardEvent<HTMLLIElement>) => {
+    match(e.key)
+      .with('ArrowRight', () => {
+        //let next =
+        //  (e.currentTarget.nextElementSibling as HTMLElement) ??
+        //  (e.currentTarget.parentElement?.parentElement
+        //    ?.nextElementSibling as HTMLElement)
+        //if (next?.hasAttribute('aria-expanded')) {
+        //  next = next?.firstChild as HTMLElement
+        //}
+        //next?.focus()
+      })
+      .otherwise(() => {})
+  }
+
   return (
-    <li role='treeitem' {...attrs} tabIndex={0}>
+    <li role='treeitem' {...attrs} tabIndex={0} onKeyDown={moveFocusByKey}>
       {leaf}
     </li>
   )
