@@ -9,11 +9,11 @@ import {
   KeyboardEvent,
   useRef,
 } from 'react'
-import { nanoid } from 'nanoid'
 import { Wrapper } from '../styled'
 import { match } from 'ts-pattern'
 import _ from 'lodash'
 import { useComposite } from '../../hooks/useComposite'
+import { useNanoId } from '../../hooks/useNanoId'
 
 type TabState = {
   activePanelId: string
@@ -120,7 +120,7 @@ type PanelProps = {
 const Panel = ({ children, tabTitle }: PanelProps) => {
   const { activePanelId, addTab } = useContext(TabGroupContext)
 
-  const thisId = useMemo(() => nanoid(), [])
+  const thisId = useNanoId()
   const tabId = generateTabId(thisId)
 
   useLayoutEffect(() => {
