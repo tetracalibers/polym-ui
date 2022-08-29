@@ -7,6 +7,7 @@ import {
   useContext,
   useState,
   KeyboardEvent,
+  useRef,
 } from 'react'
 import { match } from 'ts-pattern'
 import { useShareState } from '../../hooks/useShareState'
@@ -61,6 +62,9 @@ type SubTreeProps = {
 const SubTree = ({ children }: SubTreeProps) => {
   const [root, child] = Children.toArray(children)
 
+  const childWrapEref = useRef<HTMLUListElement>(null)
+  const subTreeRootEref = useRef<HTMLLIElement>(null)
+
   // カスタムコンポーネントが指定されていれば置き換え
   const { format } = useContext(TreeContext)
   const subRootFormatter = format?.subRoot
@@ -87,6 +91,18 @@ const SubTree = ({ children }: SubTreeProps) => {
       })
       .with('ArrowDown', () => {
         // TODO ノードを開いたり閉じたりせずに、フォーカス可能な次のノードにフォーカスを移動
+        if (isOpen) {
+          // prettier-ignore
+          const nextFocusable = childWrapEref.current?.querySelector('button:first-child') as HTMLElement
+          if (nextFocusable) {
+            return nextFocusable.focus()
+          }
+        }
+        // prettier-ignore
+        const nextSubTree = subTreeRootEref.current?.nextElementSibling as HTMLElement
+        // prettier-ignore
+        const nextFocusable = nextSubTree?.querySelector('button:first-child') as HTMLElement
+        nextFocusable && nextFocusable.focus()
       })
       .with('ArrowUp', () => {
         // TODO ノードを開いたり閉じたりせずに、フォーカス可能な前のノードにフォーカスを移動
@@ -101,11 +117,20 @@ const SubTree = ({ children }: SubTreeProps) => {
   }
 
   return (
-    <li role='treeitem' aria-expanded={isOpen} aria-selected={isOpen}>
+    <li
+      role='treeitem'
+      aria-expanded={isOpen}
+      aria-selected={isOpen}
+      ref={subTreeRootEref}
+    >
       <div onClick={toggleOpen} onKeyDown={moveByKey}>
         {subRoot}
       </div>
-      {isOpen && <ul role='group'>{child}</ul>}
+      {isOpen && (
+        <ul role='group' ref={childWrapEref}>
+          {child}
+        </ul>
+      )}
     </li>
   )
 }
