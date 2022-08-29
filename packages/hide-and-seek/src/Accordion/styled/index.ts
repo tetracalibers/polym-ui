@@ -12,4 +12,8 @@ export const DetailWrapper = styled.div<CharacterProps>`
 export const SummaryButton = styled.button`
   ${ResetCss.button}
   display: block;
+
+  &:focus {
+    outline: 2px solid ${$.pastel.water};
+  }
 `
