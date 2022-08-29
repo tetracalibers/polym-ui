@@ -99,6 +99,12 @@ const SubTree = ({ children }: SubTreeProps) => {
         // 開いているノードにフォーカスがある場合、ノードを閉じます。
         isOpen && setOpenStatus(false)
         // TODO エンド ノードまたは閉じたノードでもある子ノードにフォーカスがある場合、フォーカスをその親ノードに移動
+        //const parentRoot =
+        //  e.currentTarget.parentElement?.previousElementSibling?.querySelector(
+        //    'div[tabindex="0"]'
+        //  ) as HTMLElement
+        //console.log(parentRoot)
+        //parentRoot && parentRoot.focus()
         // TODO エンド ノードまたは閉じたノードでもあるルート ノードにフォーカスがある場合、 は何もしません
       })
       .with('ArrowDown', () => {
@@ -158,6 +164,11 @@ const Leaf = ({ children, ...attrs }: LeafProps) => {
           next = next?.firstChild as HTMLElement
         }
         next?.focus()
+      })
+      .with('ArrowLeft', () => {
+        const parentRoot = e.currentTarget.parentElement
+          ?.previousElementSibling as HTMLElement
+        parentRoot && parentRoot.focus()
       })
       .otherwise(() => {})
   }
