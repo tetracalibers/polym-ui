@@ -7,4 +7,8 @@ export const Wrapper = styled.div`
   && *:focus {
     outline: 2px solid ${$.pastel.water};
   }
+
+  && [aria-hidden='true'] {
+    display: none;
+  }
 `

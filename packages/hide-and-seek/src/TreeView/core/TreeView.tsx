@@ -89,8 +89,11 @@ const SubTree = ({ children }: SubTreeProps) => {
         }
         // フォーカスが開いているノードにある場合、フォーカスを最初の子ノードに移動
         // prettier-ignore
-        const firstChild = childWrapEref.current?.firstElementChild as HTMLElement
-        firstChild && firstChild.focus()
+        let firstChild = childWrapEref.current?.firstElementChild as HTMLElement
+        if (firstChild?.hasAttribute('aria-expanded')) {
+          firstChild = firstChild?.firstElementChild as HTMLElement
+        }
+        firstChild?.focus()
       })
       .with('ArrowLeft', () => {
         // 開いているノードにフォーカスがある場合、ノードを閉じます。
@@ -127,11 +130,9 @@ const SubTree = ({ children }: SubTreeProps) => {
       <div onClick={toggleOpen} onKeyDown={moveByKey} tabIndex={0}>
         {subRoot}
       </div>
-      {isOpen && (
-        <ul role='group' ref={childWrapEref}>
-          {child}
-        </ul>
-      )}
+      <ul role='group' ref={childWrapEref} aria-hidden={!isOpen}>
+        {child}
+      </ul>
     </li>
   )
 }
@@ -149,14 +150,14 @@ const Leaf = ({ children, ...attrs }: LeafProps) => {
   const moveFocusByKey = (e: KeyboardEvent<HTMLLIElement>) => {
     match(e.key)
       .with('ArrowRight', () => {
-        //let next =
-        //  (e.currentTarget.nextElementSibling as HTMLElement) ??
-        //  (e.currentTarget.parentElement?.parentElement
-        //    ?.nextElementSibling as HTMLElement)
-        //if (next?.hasAttribute('aria-expanded')) {
-        //  next = next?.firstChild as HTMLElement
-        //}
-        //next?.focus()
+        // prettier-ignore
+        let next =
+          (e.currentTarget.nextElementSibling as HTMLElement) ??
+          (e.currentTarget.closest('[aria-expanded]:not(:last-child)')?.nextElementSibling as HTMLElement)
+        if (next?.hasAttribute('aria-expanded')) {
+          next = next?.firstChild as HTMLElement
+        }
+        next?.focus()
       })
       .otherwise(() => {})
   }
