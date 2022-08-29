@@ -1,4 +1,4 @@
-import { Children, ReactNode } from 'react'
+import { Children, ComponentPropsWithoutRef, ReactNode } from 'react'
 
 /* -------------------------------------------- */
 
@@ -36,17 +36,21 @@ const SubTree = ({ children }: SubTreeProps) => {
     </li>
   )
 }
+/* -------------------------------------------- */
+
+type LeafProps = {
+  children: ReactNode
+} & ComponentPropsWithoutRef<'li'>
+
+const Leaf = ({ children, ...attrs }: LeafProps) => {
+  return (
+    <li role='treeitem' {...attrs}>
+      {children}
+    </li>
+  )
+}
 
 /* -------------------------------------------- */
 
-const Root = () => {}
-
-/* -------------------------------------------- */
-
-const Leaf = () => {}
-
-/* -------------------------------------------- */
-
-Tree.Root = Root
 Tree.SubTree = SubTree
 Tree.Leaf = Leaf
