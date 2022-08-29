@@ -1,37 +1,8 @@
 import styled, { css } from 'styled-components'
 import { match } from 'ts-pattern'
 import { CharacterProps } from '../model/props'
+import { ResetCss } from 'styled-utility-first'
 
-const spaceBetween = (iconChild: CharacterProps['iconChild']) => {
-  return match(iconChild)
-    .with('first', () => {
-      return css`
-        /* icon */
-        & :first-child {
-          margin-inline-end: var(--space);
-        }
-      `
-    })
-    .with('last', () => {
-      return css`
-        /* icon */
-        & :last-child {
-          margin-inline-start: var(--space);
-        }
-      `
-    })
-    .otherwise(() => '')
-}
-
-export const Wrapper = styled.span<CharacterProps>`
-  --space: ${({ spaceV, spaceU }) => `${spaceV}${spaceU}`};
-  --align-items: ${({ alignItems }) => alignItems};
-
-  && {
-    /* スペース文字を削除 */
-    display: inline-flex;
-    align-items: var(--align-items);
-  }
-
-  ${({ iconChild }) => spaceBetween(iconChild)}
+export const IconButton = styled.button`
+  ${ResetCss.button}
 `
