@@ -107,7 +107,8 @@ const SubTree = ({ children }: SubTreeProps) => {
         // TODO ノードを開かずにフォーカス可能なツリー内の最後のノードにフォーカスを移動
       })
       .with('Enter', () => {
-        // TODO ノードを開く
+        // ノードを開閉
+        toggleOpen()
       })
       .otherwise(() => {})
   }
