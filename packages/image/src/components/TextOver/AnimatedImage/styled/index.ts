@@ -36,7 +36,7 @@ const injectStartState = (motionType: CharacterProps['motionType']) => {
     })
     .with('spreadHorizontal', () => {
       return css`
-        transition: transform 0.3s cubic-bezier(0.8, 0, 0.2, 1) 0s; /*移り変わる速さを変更したい場合はこの数値を変更*/
+        transition: transform 0.3s cubic-bezier(0.8, 0, 0.2, 1) 0s;
         transform: scale(0, 1);
         transform-origin: center;
       `
