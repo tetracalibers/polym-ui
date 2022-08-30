@@ -1,3 +1,5 @@
+import { commonDefaultProps } from './props'
+
 export const commmonArgTypes = {
   as: {
     control: {
@@ -38,6 +40,36 @@ export const commmonArgTypes = {
         summary: null,
       },
       category: 'html',
+    },
+  },
+  width: {
+    control: {
+      type: 'text',
+    },
+    description: 'CSS width value to be applied to the img tag',
+    table: {
+      type: {
+        summary: null,
+      },
+      category: 'css',
+      defaultValue: {
+        summary: commonDefaultProps.width,
+      },
+    },
+  },
+  height: {
+    control: {
+      type: 'text',
+    },
+    description: 'CSS height value to be applied to the img tag',
+    table: {
+      type: {
+        summary: null,
+      },
+      category: 'css',
+      defaultValue: {
+        summary: commonDefaultProps.height,
+      },
     },
   },
 }

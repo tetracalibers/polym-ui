@@ -17,7 +17,7 @@ export type ImageProps<As extends AllowElement> = {
   ref?: Ref<HTMLImageElement>
   as?: As
 } & CharacterProps &
-  ComponentPropsWithoutRef<'img'>
+  Omit<ComponentPropsWithoutRef<'img'>, 'children' | 'width' | 'height'>
 
 const ImageInner = <As extends AllowElement>(
   { as, ..._props }: ImageProps<As>,
