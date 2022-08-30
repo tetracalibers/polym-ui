@@ -4,7 +4,9 @@ import { match } from 'ts-pattern'
 import { ColorPalette as $, Truthy } from 'styled-utility-first'
 
 const insertEffect = css<CharacterProps>`
-  filter: blur(3px);
+  --blur-radius: ${({ blurRadius }) => blurRadius}px;
+
+  filter: blur(var(--blur-radius));
 `
 
 export const Mask = styled.span<CharacterProps>`

@@ -2,22 +2,21 @@ import { defaultProps } from './props'
 import { CssStyle } from 'ts-typedef-helper'
 
 export const logicArgTypes = {
-  // zoom: {
-  //   control: {
-  //     type: 'radio',
-  //   },
-  //   options: modeOptions,
-  //   description: '"in" means shrinking, "out" means expanding.',
-  //   table: {
-  //     type: {
-  //       summary: null,
-  //     },
-  //     category: 'effect',
-  //     subcategory: 'scale',
-  //     defaultValue: {
-  //       summary: defaultProps.zoom,
-  //       details: null,
-  //     },
-  //   },
-  // },
+  blurRadius: {
+    control: {
+      type: 'number',
+    },
+    description: 'radius of blur (px)',
+    table: {
+      type: {
+        summary: null,
+      },
+      category: 'effect',
+      subcategory: 'blur',
+      defaultValue: {
+        summary: defaultProps.blurRadius,
+        details: null,
+      },
+    },
+  },
 }
