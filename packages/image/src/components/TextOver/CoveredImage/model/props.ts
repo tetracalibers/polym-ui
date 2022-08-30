@@ -26,6 +26,7 @@ const conf = {
   motionType: NotRequired<MotionTypeOptions>('fade'),
   bgDuration: NotRequired<number>(0.3),
   txtDuration: NotRequired<number>(0.5),
+  bgOpacity: NotRequired<number>(0.7),
 }
 type Conf = typeof conf
 

@@ -32,7 +32,6 @@ const TextOverFlipImageInner: TextOverFlipImageComponent = (
     width,
     height,
     bgColor,
-    bgOpacity,
     flipAxis,
     ...attrs
   } = props
@@ -46,7 +45,7 @@ const TextOverFlipImageInner: TextOverFlipImageComponent = (
         flipAxis={flipAxis}
       >
         <Image {...attrs} ref={ref} />
-        <TextWrap flipAxis={flipAxis} bgOpacity={bgOpacity} bgColor={bgColor}>
+        <TextWrap flipAxis={flipAxis} bgColor={bgColor}>
           {aboveText}
         </TextWrap>
       </Mask>

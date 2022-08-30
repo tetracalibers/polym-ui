@@ -79,17 +79,4 @@ export const textOverImageArgTypes = {
       },
     },
   },
-  bgOpacity: {
-    control: {
-      type: 'number',
-    },
-    description: 'Transparency of the color covering the image',
-    table: {
-      ...withDefaultAs('opacity').table,
-      defaultValue: {
-        summary: defaultTextOverImageProps.bgOpacity,
-        details: null,
-      },
-    },
-  },
 }

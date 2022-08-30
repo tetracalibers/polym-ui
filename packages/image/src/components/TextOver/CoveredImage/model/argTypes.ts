@@ -49,4 +49,17 @@ export const logicArgTypes = {
       subcategory: 'animation',
     },
   },
+  bgOpacity: {
+    control: {
+      type: 'number',
+    },
+    description: 'Transparency of the color covering the image',
+    table: {
+      ...withDefaultAs('opacity').table,
+      defaultValue: {
+        summary: defaultProps.bgOpacity,
+        details: null,
+      },
+    },
+  },
 }

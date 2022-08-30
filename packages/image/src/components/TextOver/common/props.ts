@@ -17,7 +17,6 @@ const conf = {
   imgPaddingV: NotRequired<number>(1.5),
   imgPaddingU: NotRequired<CssStyle.Unit.Length>('rem'),
   bgColor: NotRequired<CSST.Property.BackgroundColor>($.grayScale.dark),
-  bgOpacity: NotRequired<number>(0.7),
 }
 type Conf = typeof conf
 

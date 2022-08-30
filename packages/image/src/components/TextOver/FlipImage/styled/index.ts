@@ -102,8 +102,7 @@ export const Mask = styled.span<Pick<CharacterProps, 'duration' | 'imgPaddingU' 
 `
 
 // prettier-ignore
-export const TextWrap = styled.span<Pick<CharacterProps, 'flipAxis' | 'bgOpacity' | 'bgColor'>>`
-  --bg-opacity: ${({ bgOpacity }) => bgOpacity};
+export const TextWrap = styled.span<Pick<CharacterProps, 'flipAxis' | 'bgColor'>>`
   --bg-color: ${({ bgColor }) => bgColor};
 
   && {
@@ -126,7 +125,7 @@ export const TextWrap = styled.span<Pick<CharacterProps, 'flipAxis' | 'bgOpacity
   }
 
   ${Root}:hover && {
-    opacity: var(--bg-opacity);
+    opacity: 1;
     transition-delay: calc(var(--duration) / 2);
     ${({ flipAxis }) => injectTxtEndState(flipAxis)}
   }
