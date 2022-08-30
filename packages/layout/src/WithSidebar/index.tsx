@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import { ElementType, forwardRef, ReactElement } from 'react'
+import { ElementType, forwardRef, ReactElement, ReactNode } from 'react'
 import {
   PolymorphicComponentPropWithRef,
   PolymorphicRef,
@@ -7,8 +7,12 @@ import {
 import { CharacterProps, defaultProps } from './model/props'
 import { StyledElement } from './styled'
 
-export type WithSidebarProps<As extends ElementType> =
-  PolymorphicComponentPropWithRef<As, CharacterProps>
+export type WithSidebarProps<As extends ElementType> = Omit<
+  PolymorphicComponentPropWithRef<As, CharacterProps>,
+  'children'
+> & {
+  children: [ReactNode, ReactNode]
+}
 
 export type WithSidebarComponent = <As extends ElementType>(
   props: WithSidebarProps<As>
