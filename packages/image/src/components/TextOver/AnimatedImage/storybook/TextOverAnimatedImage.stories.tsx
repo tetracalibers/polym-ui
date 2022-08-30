@@ -7,6 +7,7 @@ import { DocsPage } from './docsPage'
 // @ts-ignore
 import sample01 from '../../../../assets/myproduct.jpg'
 import { textOverImageArgTypes } from '../../common/argTypes'
+import { LightTextBox } from '../../../../mock/TestBox'
 
 export default {
   title: 'image effect/TextOverAnimatedImage',
@@ -28,11 +29,19 @@ export default {
 
 const Template: ComponentStory<typeof TextOverAnimatedImage> = ({
   src,
+  aboveText,
   ...args
-}) => <TextOverAnimatedImage {...args} src={sample01} />
+}) => (
+  <TextOverAnimatedImage
+    {...args}
+    aboveText={<LightTextBox>{aboveText}</LightTextBox>}
+    src={sample01}
+  />
+)
 
 export const playground = Template.bind({})
 playground.args = {
   ...defaultProps,
+  aboveText: 'Sample Text',
 }
 playground.argTypes = {}
