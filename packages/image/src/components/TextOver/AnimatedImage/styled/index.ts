@@ -5,6 +5,11 @@ import { ColorPalette as $, Truthy } from 'styled-utility-first'
 
 const injectStartState = (motionType: CharacterProps['motionType']) => {
   return match(motionType)
+    .with('fade', () => {
+      return css`
+        transition: var(--bg-duration) ease-in-out;
+      `
+    })
     .with('slideUp', () => {
       return css`
         transition: var(--bg-duration) ease-in-out;
