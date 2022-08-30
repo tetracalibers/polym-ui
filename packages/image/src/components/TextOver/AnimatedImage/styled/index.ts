@@ -3,6 +3,28 @@ import { CharacterProps } from '../model/props'
 import { match } from 'ts-pattern'
 import { ColorPalette as $, Truthy } from 'styled-utility-first'
 
+const injectStartState = (motionType: CharacterProps['motionType']) => {
+  return match(motionType)
+    .with('slideUp', () => {
+      return css`
+        left: 0;
+        top: 0;
+        transform: translateY(100%);
+      `
+    })
+    .otherwise(() => '')
+}
+
+const injectEndState = (motionType: CharacterProps['motionType']) => {
+  return match(motionType)
+    .with('slideUp', () => {
+      return css`
+        transform: translateY(0);
+      `
+    })
+    .otherwise(() => '')
+}
+
 export const Root = styled.span`
   display: block;
   position: relative; /*テキストの基点となる位置を定義*/
@@ -32,10 +54,12 @@ export const Mask = styled.span<CharacterProps>`
     background-color: var(--bg-color);
     width: 100%;
     height: 100%;
+    ${({ motionType }) => injectStartState(motionType)}
   }
 
   ${Root}:hover &::before {
     opacity: var(--bg-opacity); /*透過なしに変化*/
+    ${({ motionType }) => injectEndState(motionType)}
   }
 `
 
