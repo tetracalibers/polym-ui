@@ -19,10 +19,6 @@ export const motionTypeOptions = [
   'slideRtoL',
   'spreadHorizontal',
   'spreadVertical',
-  'flipX',
-  'flipY',
-  'flipZtoLeftTop',
-  'flipZtoRightTop',
 ] as const
 type MotionTypeOptions = typeof motionTypeOptions[number]
 
