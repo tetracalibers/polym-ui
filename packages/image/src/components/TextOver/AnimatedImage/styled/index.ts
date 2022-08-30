@@ -7,22 +7,33 @@ const injectStartState = (motionType: CharacterProps['motionType']) => {
   return match(motionType)
     .with('slideUp', () => {
       return css`
+        transition: var(--bg-duration) ease-in-out;
         transform: translateY(100%);
       `
     })
     .with('slideDown', () => {
       return css`
+        transition: var(--bg-duration) ease-in-out;
         transform: translateY(-100%);
       `
     })
     .with('slideLtoR', () => {
       return css`
+        transition: var(--bg-duration) ease-in-out;
         transform: translateX(-100%);
       `
     })
     .with('slideRtoL', () => {
       return css`
+        transition: var(--bg-duration) ease-in-out;
         transform: translateX(100%);
+      `
+    })
+    .with('spreadHorizontal', () => {
+      return css`
+        transition: transform 0.3s cubic-bezier(0.8, 0, 0.2, 1) 0s; /*移り変わる速さを変更したい場合はこの数値を変更*/
+        transform: scale(0, 1);
+        transform-origin: center;
       `
     })
     .otherwise(() => '')
@@ -38,6 +49,11 @@ const injectEndState = (motionType: CharacterProps['motionType']) => {
     .with('slideLtoR', 'slideRtoL', () => {
       return css`
         transform: translateX(0);
+      `
+    })
+    .with('spreadHorizontal', () => {
+      return css`
+        transform: scale(1, 1);
       `
     })
     .otherwise(() => '')
@@ -70,7 +86,6 @@ export const Mask = styled.span<CharacterProps>`
     top: 0;
     z-index: 2;
     opacity: 0; /*透過0*/
-    transition: var(--bg-duration) ease-in-out;
     background-color: var(--bg-color);
     width: 100%;
     height: 100%;
