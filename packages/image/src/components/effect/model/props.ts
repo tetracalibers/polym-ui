@@ -6,11 +6,11 @@ import {
 } from 'react-tsx-props'
 import { CssStyle } from 'ts-typedef-helper'
 
-export const triggerOptions = ['hover', 'none'] as const
-export type TriggerOptions = typeof triggerOptions[number]
+//export const triggerOptions = ['hover', 'none'] as const
+//export type TriggerOptions = typeof triggerOptions[number]
 
 const conf = {
-  trigger: NotRequired<TriggerOptions>('hover'),
+  //trigger: NotRequired<TriggerOptions>('hover'),
 }
 type Conf = typeof conf
 
