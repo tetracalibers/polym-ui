@@ -84,7 +84,7 @@ export const Root = styled.span<CharacterProps>`
 export const Mask = styled.span<CharacterProps>`
   --bg-duration: ${({ bgDuration }) => bgDuration}s;
   --bg-color: ${({ bgColor }) => bgColor};
-  --bg-opacity: 0.7;
+  --bg-opacity: ${({ bgOpacity }) => bgOpacity};
 
   position: relative; /*背景色の基点となる位置を定義*/
   display: block;
