@@ -31,15 +31,11 @@ const TextOverFlipImageInner: TextOverFlipImageComponent = (
         bgDuration={bgDuration}
         bgOpacity={bgOpacity}
         bgColor={bgColor}
-        motionType={motionType}
-        trigger={trigger}
         imgPaddingV={imgPaddingV}
         imgPaddingU={imgPaddingU}
       >
         <Image {...attrs} ref={ref} />
-        <TextWrap txtDuration={txtDuration} trigger={trigger}>
-          {aboveText}
-        </TextWrap>
+        <TextWrap>{aboveText}</TextWrap>
       </Mask>
     </Root>
   )

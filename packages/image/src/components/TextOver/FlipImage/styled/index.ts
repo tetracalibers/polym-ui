@@ -3,74 +3,6 @@ import { CharacterProps } from '../model/props'
 import { match } from 'ts-pattern'
 import { ColorPalette as $, Truthy } from 'styled-utility-first'
 
-const injectStartState = (motionType: CharacterProps['motionType']) => {
-  return match(motionType)
-    .with('slideUp', () => {
-      return css`
-        transform: translateY(100%);
-      `
-    })
-    .with('slideDown', () => {
-      return css`
-        transform: translateY(-100%);
-      `
-    })
-    .with('slideLtoR', () => {
-      return css`
-        transform: translateX(-100%);
-      `
-    })
-    .with('slideRtoL', () => {
-      return css`
-        transform: translateX(100%);
-      `
-    })
-    .with('spreadHorizontal', () => {
-      return css`
-        transition: transform var(--bg-duration) cubic-bezier(0.8, 0, 0.2, 1) 0s;
-        transform: scale(0, 1);
-        transform-origin: center;
-      `
-    })
-    .with('spreadVertical', () => {
-      return css`
-        transition: transform var(--bg-duration) cubic-bezier(0.8, 0, 0.2, 1) 0s;
-        transform: scale(1, 0);
-        transform-origin: center;
-      `
-    })
-    .otherwise(() => '')
-}
-
-const injectEndState = (motionType: CharacterProps['motionType']) => {
-  return match(motionType)
-    .with('slideUp', 'slideDown', () => {
-      return css`
-        transform: translateY(0);
-      `
-    })
-    .with('slideLtoR', 'slideRtoL', () => {
-      return css`
-        transform: translateX(0);
-      `
-    })
-    .with('spreadHorizontal', 'spreadVertical', () => {
-      return css`
-        transform: scale(1, 1);
-      `
-    })
-    .otherwise(() => '')
-}
-
-const insertBgEffect = css<Pick<CharacterProps, 'motionType'>>`
-  opacity: var(--bg-opacity); /*透過なしに変化*/
-  ${({ motionType }) => injectEndState(motionType)}
-`
-
-const insertTxtEffect = css`
-  opacity: 1;
-`
-
 export const Root = styled.span<Pick<CharacterProps, 'width' | 'height'>>`
   --width: ${({ width }) => width};
   --height: ${({ height }) => height};
@@ -82,58 +14,49 @@ export const Root = styled.span<Pick<CharacterProps, 'width' | 'height'>>`
 `
 
 // prettier-ignore
-export const Mask = styled.span<Pick<CharacterProps, 'bgDuration' | 'bgColor' | 'bgOpacity' | 'motionType' | 'trigger' | 'imgPaddingU' | 'imgPaddingV'>>`
+export const Mask = styled.span<Pick<CharacterProps, 'bgDuration' | 'bgColor' | 'bgOpacity' | 'imgPaddingU' | 'imgPaddingV'>>`
   --bg-duration: ${({ bgDuration }) => bgDuration}s;
   --bg-color: ${({ bgColor }) => bgColor};
   --bg-opacity: ${({ bgOpacity }) => bgOpacity};
   --img-padding: ${({ imgPaddingV, imgPaddingU }) => imgPaddingV! + imgPaddingU!};
 
-  position: relative; /*背景色の基点となる位置を定義*/
-  display: block;
-  line-height: 0;
-  /* はみ出す画像を隠す */
-  overflow: hidden;
-
-  &::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: 2;
-    opacity: 0; /*透過0*/
-    background-color: var(--bg-color);
-    width: calc(100% - var(--img-padding) * 2);
-    height: calc(100% - var(--img-padding) * 2);
-    margin: var(--img-padding);
-    box-sizing: content-box;
-    transition: var(--bg-duration) ease-in-out;
-    ${({ motionType }) => injectStartState(motionType)}
-    ${({ trigger }) => trigger === 'none' && insertBgEffect}
+  & img {
+    transition: all var(--bg-duration) ease;
+    backface-visibility: hidden;/*三次元になった際に裏面を可視化させない*/
   }
-
-  ${Root}:hover &::before {
-    ${({ trigger }) => trigger !== 'none' && insertBgEffect}
+  
+  ${Root}:hover & img {
+    transform: rotateX(-180deg);/*縦軸に回転*/
+    opacity: 0;
   }
 `
 
 // prettier-ignore
-export const TextWrap = styled.span<Pick<CharacterProps, 'txtDuration' | 'trigger'>>`
-  --txt-duration: ${({ txtDuration }) => txtDuration}s;
-
+export const TextWrap = styled.span`
   && {
+    /*ここからエリアの絶対配置の指定*/
     position: absolute;
-    opacity: 0; /*透過0*/
-    transition: var(--txt-duration) ease-in-out;
-    z-index: 3; /*テキストを前面に出す*/
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); /*テキストの位置中央指定*/
-    width: 100%;
-    text-align: center;
-    ${({ trigger }) => trigger === 'none' && insertTxtEffect}
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    /*ここまでエリアの絶対配置の指定*/
+    transition: all 0.35s ease;/*移り変わる速さを変更したい場合はこの数値を変更*/
+    transform: rotateX(90deg);/*縦軸に回転*/
+    transform-origin: 0% 50%;/*回転する基点*/
+    opacity: 0;
+    background:#333;/*背景色*/
+    color: #fff;/*テキストの色を変えたい場合はここを修正*/
+    /*ここからテキスト中央寄せの指定*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*ここまでテキスト中央寄せの指定*/
   }
 
   ${Root}:hover && {
-    ${({ trigger }) => trigger !== 'none' && insertTxtEffect}
+    transform: rotateX(0);
+    opacity: 1;
+    transition-delay: calc(var(--bg-duration) / 2);
   }
 `
