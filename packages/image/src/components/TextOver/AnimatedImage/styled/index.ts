@@ -7,9 +7,12 @@ const injectStartState = (motionType: CharacterProps['motionType']) => {
   return match(motionType)
     .with('slideUp', () => {
       return css`
-        left: 0;
-        top: 0;
         transform: translateY(100%);
+      `
+    })
+    .with('slideDown', () => {
+      return css`
+        transform: translateY(-100%);
       `
     })
     .otherwise(() => '')
@@ -17,7 +20,7 @@ const injectStartState = (motionType: CharacterProps['motionType']) => {
 
 const injectEndState = (motionType: CharacterProps['motionType']) => {
   return match(motionType)
-    .with('slideUp', () => {
+    .with('slideUp', 'slideDown', () => {
       return css`
         transform: translateY(0);
       `
@@ -48,6 +51,8 @@ export const Mask = styled.span<CharacterProps>`
   &::before {
     content: '';
     position: absolute;
+    left: 0;
+    top: 0;
     z-index: 2;
     opacity: 0; /*透過0*/
     transition: var(--bg-duration) ease-in-out;
