@@ -23,7 +23,7 @@ const TranslucentImageInner: TranslucentImageComponent = (
   const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
     _.isUndefined(input) ? defaul : input
   )
-  const { trigger, duration, blurRadius, ...attrs } = props
+  const { trigger, duration, ...attrs } = props
   return (
     <Mask {...props}>
       <Image {...attrs} ref={ref} />
