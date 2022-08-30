@@ -3,7 +3,7 @@ import { CharacterProps } from '../model/props'
 import { match } from 'ts-pattern'
 import { ColorPalette as $, Truthy } from 'styled-utility-first'
 
-const injectBgEndState = (flipAxis: CharacterProps['flipAxis']) => {
+const injectImgEndState = (flipAxis: CharacterProps['flipAxis']) => {
   return match(flipAxis)
     .with('flipX', () => {
       return css`
@@ -13,6 +13,11 @@ const injectBgEndState = (flipAxis: CharacterProps['flipAxis']) => {
     .with('flipY', () => {
       return css`
         transform: rotateY(-180deg);
+      `
+    })
+    .with('flipZtoLeftTop', () => {
+      return css`
+        transform: rotate3d(-1, 1, 0, 100deg); /*奥行きをもたせて回転*/
       `
     })
     .otherwise(() => '')
@@ -32,6 +37,11 @@ const injectTxtStartState = (flipAxis: CharacterProps['flipAxis']) => {
         transform-origin: 50% 0%; /*回転する基点*/
       `
     })
+    .with('flipZtoLeftTop', () => {
+      return css`
+        transform: rotate3d(1, -1, 0, 100deg); /*奥行きをもたせて回転*/
+      `
+    })
     .otherwise(() => '')
 }
 
@@ -45,6 +55,11 @@ const injectTxtEndState = (flipAxis: CharacterProps['flipAxis']) => {
     .with('flipY', () => {
       return css`
         transform: rotateY(0); /*横軸に回転*/
+      `
+    })
+    .with('flipZtoLeftTop', () => {
+      return css`
+        transform: rotate3d(0, 0, 0, 0deg); /*奥行きをもたせて回転*/
       `
     })
     .otherwise(() => '')
@@ -71,7 +86,7 @@ export const Mask = styled.span<Pick<CharacterProps, 'duration' | 'imgPaddingU' 
   }
   
   ${Root}:hover & img {
-    ${({ flipAxis }) => injectBgEndState(flipAxis)}
+    ${({ flipAxis }) => injectImgEndState(flipAxis)}
     opacity: 0;
   }
 `
