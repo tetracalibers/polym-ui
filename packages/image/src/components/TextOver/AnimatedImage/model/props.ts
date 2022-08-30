@@ -12,6 +12,7 @@ import {
 } from '../../common/props'
 
 export const motionTypeOptions = [
+  'fade',
   'slideUp',
   'slideDown',
   'slideLtoR',
@@ -26,7 +27,7 @@ export const motionTypeOptions = [
 type MotionTypeOptions = typeof motionTypeOptions[number]
 
 const conf = {
-  motionType: NotRequired<MotionTypeOptions>('slideUp'),
+  motionType: NotRequired<MotionTypeOptions>('fade'),
 }
 type Conf = typeof conf
 
