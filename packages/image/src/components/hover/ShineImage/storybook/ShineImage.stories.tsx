@@ -1,5 +1,5 @@
 import { ComponentStory } from '@storybook/react'
-import { ShiningImage } from '..'
+import { ShineImage } from '..'
 import { commmonArgTypes } from '../../../model/argTypes'
 import { logicArgTypes } from '../model/argTypes'
 import { defaultProps } from '../model/props'
@@ -8,8 +8,8 @@ import { DocsPage } from './docsPage'
 import sample01 from '../../../../assets/myproduct.jpg'
 
 export default {
-  title: 'image effect/ShiningImage',
-  component: ShiningImage,
+  title: 'image effect/ShineImage',
+  component: ShineImage,
   parameters: {
     docs: {
       page: () => <DocsPage />,
@@ -24,8 +24,8 @@ export default {
   },
 }
 
-const Template: ComponentStory<typeof ShiningImage> = ({ src, ...args }) => (
-  <ShiningImage {...args} src={sample01} />
+const Template: ComponentStory<typeof ShineImage> = ({ src, ...args }) => (
+  <ShineImage {...args} src={sample01} />
 )
 
 export const playground = Template.bind({})

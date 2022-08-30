@@ -9,15 +9,15 @@ import { Image } from '../../core'
 import { CharacterProps, defaultProps } from './model/props'
 import { Mask } from './styled'
 
-export type ShiningImageProps = CharacterProps &
+export type ShineImageProps = CharacterProps &
   Omit<ComponentPropsWithoutRef<'img'>, 'children'>
 
-export type ShiningImageComponent = (
-  props: ShiningImageProps
+export type ShineImageComponent = (
+  props: ShineImageProps
 ) => ReactElement | null
 
-const ShiningImageInner: ShiningImageComponent = (
-  { ..._props }: ShiningImageProps,
+const ShineImageInner: ShineImageComponent = (
+  { ..._props }: ShineImageProps,
   ref?: ForwardedRef<HTMLImageElement>
 ) => {
   const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
@@ -32,4 +32,4 @@ const ShiningImageInner: ShiningImageComponent = (
   )
 }
 
-export const ShiningImage = forwardRef(ShiningImageInner)
+export const ShineImage = forwardRef(ShineImageInner)
