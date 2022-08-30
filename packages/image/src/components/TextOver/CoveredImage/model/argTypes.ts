@@ -1,4 +1,4 @@
-import { defaultProps, motionTypeOptions } from './props'
+import { defaultProps, motionTypeOptions, triggerOptions } from './props'
 import { CssStyle } from 'ts-typedef-helper'
 import { useSetDefaultAs } from 'story-builder'
 const withDefaultAs = useSetDefaultAs(defaultProps)
@@ -86,6 +86,24 @@ export const logicArgTypes = {
       ...withDefaultAs('padding').table,
       defaultValue: {
         summary: defaultProps.imgPaddingU,
+        details: null,
+      },
+    },
+  },
+  trigger: {
+    control: {
+      type: 'radio',
+    },
+    options: triggerOptions,
+    description:
+      'Which action activates the effect. (Setting "none" always activates the effect.)',
+    table: {
+      type: {
+        summary: null,
+      },
+      category: 'effect',
+      defaultValue: {
+        summary: defaultProps.trigger,
         details: null,
       },
     },

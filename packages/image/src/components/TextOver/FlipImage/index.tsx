@@ -23,16 +23,8 @@ const TextOverFlipImageInner: TextOverFlipImageComponent = (
   const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
     _.isUndefined(input) ? defaul : input
   )
-  const {
-    trigger,
-    duration,
-    aboveText,
-    width,
-    height,
-    bgColor,
-    flipAxis,
-    ...attrs
-  } = props
+  const { duration, aboveText, width, height, bgColor, flipAxis, ...attrs } =
+    props
 
   return (
     <Root width={width} height={height}>

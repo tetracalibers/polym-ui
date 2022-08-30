@@ -22,6 +22,9 @@ export const motionTypeOptions = [
 ] as const
 type MotionTypeOptions = typeof motionTypeOptions[number]
 
+export const triggerOptions = ['hover', 'none'] as const
+export type TriggerOptions = typeof triggerOptions[number]
+
 const conf = {
   motionType: NotRequired<MotionTypeOptions>('fade'),
   bgDuration: NotRequired<number>(0.3),
@@ -29,6 +32,7 @@ const conf = {
   bgOpacity: NotRequired<number>(0.7),
   imgPaddingV: NotRequired<number>(1.5),
   imgPaddingU: NotRequired<CssStyle.Unit.Length>('rem'),
+  trigger: NotRequired<TriggerOptions>('hover'),
 }
 type Conf = typeof conf
 
