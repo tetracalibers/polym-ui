@@ -3,10 +3,16 @@ import { CharacterProps } from '../model/props'
 import { match } from 'ts-pattern'
 import { ColorPalette as $, Truthy } from 'styled-utility-first'
 
-const throughShine = keyframes`
+const ripple = keyframes`
+  0% {
+    transform: scale(0);
+    opacity: 1;/*透過なし*/
+  }
+  30% {
+    opacity: 1;
+  }
   100% {
-    /*画面の見えていない左から右へ移動する終了地点*/
-    left: 125%;
+    transform: scale(2);/*アニメーションで大きくなった2倍の円の指定*/
   }
 `
 
@@ -17,7 +23,7 @@ export const Mask = styled.span<CharacterProps>`
 
   /* はみ出す画像を隠す */
   && {
-    position: relative; /*キラッの基点となる位置を定義*/
+    position: relative; /*基点となる位置を定義*/
     display: block;
     line-height: 0;
     overflow: hidden;
@@ -28,20 +34,16 @@ export const Mask = styled.span<CharacterProps>`
   &&::before {
     position: absolute;
     content: '';
-    width: 50%; /*キラッの横幅*/
-    height: 110%; /*キラッの縦幅*/
-    top: -10%; /*.shine span.maskのトップ0を基点*/
-    left: -75%; /*画面の見えていない左から右へ移動するスタート地点*/
-    background: linear-gradient(
-      to right,
-      rgba(255, 255, 255, 0) 0%,
-      rgba(255, 255, 255, 0.3) 100%
-    );
-    transform: skewX(-25deg); /*背景白透過を斜めに*/
+    transform: scale(0); /*円の大きさ初期値は0*/
+    opacity: 0; /*透過0*/
+    width: var(--width); /*円のサイズ指定*/
+    height: var(--width); /*円のサイズ指定*/
+    border-radius: 50%; /*円の角丸指定*/
+    background: rgba(255, 255, 255, 0.4); /*円の背景色*/
   }
 
   &&:hover::before {
     /*hoverした時の変化*/
-    animation: ${throughShine} var(--duration); /*アニメーションの名前と速度を定義*/
+    animation: ${ripple} var(--duration); /*アニメーションの名前と速度を定義*/
   }
 `
