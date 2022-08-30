@@ -36,8 +36,15 @@ const injectStartState = (motionType: CharacterProps['motionType']) => {
     })
     .with('spreadHorizontal', () => {
       return css`
-        transition: transform 0.3s cubic-bezier(0.8, 0, 0.2, 1) 0s;
+        transition: transform var(--bg-duration) cubic-bezier(0.8, 0, 0.2, 1) 0s;
         transform: scale(0, 1);
+        transform-origin: center;
+      `
+    })
+    .with('spreadVertical', () => {
+      return css`
+        transition: transform var(--bg-duration) cubic-bezier(0.8, 0, 0.2, 1) 0s;
+        transform: scale(1, 0);
         transform-origin: center;
       `
     })
@@ -56,7 +63,7 @@ const injectEndState = (motionType: CharacterProps['motionType']) => {
         transform: translateX(0);
       `
     })
-    .with('spreadHorizontal', () => {
+    .with('spreadHorizontal', 'spreadVertical', () => {
       return css`
         transform: scale(1, 1);
       `
