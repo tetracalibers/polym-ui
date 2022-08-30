@@ -11,6 +11,7 @@ export const Mask = styled.span<CharacterProps>`
   --width: ${({ width }) => width};
   --height: ${({ height }) => height};
   --duration: ${({ duration }) => duration}s;
+  --grayscale: ${({ grayScale }) => grayScale}%;
 
   /* はみ出す画像を隠す */
   && {
@@ -22,7 +23,7 @@ export const Mask = styled.span<CharacterProps>`
   }
 
   && img {
-    filter: grayscale(100%);
+    filter: grayscale(var(--grayscale));
     transition: var(--duration) ease-in-out;
   }
 
