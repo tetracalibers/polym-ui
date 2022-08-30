@@ -4,7 +4,7 @@ import {
   Required,
   NotRequired,
 } from 'react-tsx-props'
-import { commonDefaultProps, CommonProps } from '../../../../common/props'
+import { commonDefaultProps, CommonProps } from '../../../model/props'
 import { styleDefaultProps, StyleProps } from '../css-props/props'
 import { CssStyle } from 'ts-typedef-helper'
 import { defaultEffectProps, EffectProps } from '../../model/props'

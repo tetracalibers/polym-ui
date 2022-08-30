@@ -1,13 +1,12 @@
-import { ComponentStory, Story } from '@storybook/react'
+import { ComponentStory } from '@storybook/react'
 import { Image } from '..'
-import { commmonArgTypes } from '../../../common/argTypes'
+import { commmonArgTypes } from '../../model/argTypes'
 import { styleArgTypes } from '../css-props/argTypes'
 import { logicArgTypes } from '../model/argTypes'
 import { defaultProps } from '../model/props'
 import { DocsPage } from './docsPage'
 // @ts-ignore
-import sample01 from '../../assets/myproduct.jpg'
-import { DarkTextBox } from '../../../mock/TestBox'
+import sample01 from '../../../assets/myproduct.jpg'
 
 export default {
   title: 'image/Image',

@@ -1,6 +1,6 @@
 import { ComponentStory } from '@storybook/react'
 import { WillFade } from '..'
-import { commmonArgTypes } from '../../common/argTypes'
+import { commmonArgTypes } from '../../components/model/argTypes'
 import { DarkTextBox } from '../../mock/TestBox'
 import { styleArgTypes } from '../css-props/argTypes'
 import { logicArgTypes } from '../model/argTypes'

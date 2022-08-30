@@ -1,6 +1,6 @@
 import { ComponentStory } from '@storybook/react'
 import { ScaleImage } from '..'
-import { commmonArgTypes } from '../../../../common/argTypes'
+import { commmonArgTypes } from '../../../model/argTypes'
 import { DarkTextBox } from '../../../../mock/TestBox'
 import { styleArgTypes } from '../css-props/argTypes'
 import { logicArgTypes } from '../model/argTypes'

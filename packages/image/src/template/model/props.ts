@@ -4,7 +4,7 @@ import {
   Required,
   NotRequired,
 } from 'react-tsx-props'
-import { commonDefaultProps, CommonProps } from '../../common/props'
+import { commonDefaultProps, CommonProps } from '../../components/model/props'
 import { styleDefaultProps, StyleProps } from '../css-props/props'
 import { CssStyle } from 'ts-typedef-helper'
 
