@@ -20,21 +20,6 @@ export default {
     },
   },
   argTypes: {
-    children: {
-      control: {
-        type: null,
-      },
-      description: 'Child elements of the element specified by as props',
-      table: {
-        type: {
-          summary: null,
-        },
-        category: 'character',
-      },
-      type: {
-        required: true,
-      },
-    },
     ...logicArgTypes,
     ...effectArgTypes,
     ...commmonArgTypes,
