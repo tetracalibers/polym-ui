@@ -23,7 +23,8 @@ const ScaleImageInner: ScaleImageComponent = (
   const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
     _.isUndefined(input) ? defaul : input
   )
-  const { withRotate, zoom, clockwise, scaleFactor, angle, ...attrs } = props
+  // prettier-ignore
+  const { withRotate, zoom, clockwise, scaleFactor, angle, trigger, ...attrs } = props
   return (
     <Mask {...props}>
       <Image {...attrs} ref={ref} />
