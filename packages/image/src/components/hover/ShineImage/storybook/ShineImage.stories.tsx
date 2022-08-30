@@ -6,6 +6,7 @@ import { defaultProps } from '../model/props'
 import { DocsPage } from './docsPage'
 // @ts-ignore
 import sample01 from '../../../../assets/sakura.jpg'
+import { effectArgTypes } from '../../model/argTypes'
 
 export default {
   title: 'image effect/ShineImage',
@@ -21,6 +22,7 @@ export default {
   argTypes: {
     ...logicArgTypes,
     ...commmonArgTypes,
+    ...effectArgTypes,
   },
 }
 

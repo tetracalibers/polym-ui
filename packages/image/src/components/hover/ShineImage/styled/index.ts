@@ -13,6 +13,7 @@ const throughShine = keyframes`
 export const Mask = styled.span<CharacterProps>`
   --width: ${({ width }) => width};
   --height: ${({ height }) => height};
+  --duration: ${({ duration }) => duration}s;
 
   /* はみ出す画像を隠す */
   && {
@@ -41,6 +42,6 @@ export const Mask = styled.span<CharacterProps>`
 
   &&:hover::before {
     /*hoverした時の変化*/
-    animation: ${throughShine} 1s; /*アニメーションの名前と速度を定義*/
+    animation: ${throughShine} var(--duration); /*アニメーションの名前と速度を定義*/
   }
 `
