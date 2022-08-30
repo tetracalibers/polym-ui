@@ -24,6 +24,8 @@ type MotionTypeOptions = typeof motionTypeOptions[number]
 
 const conf = {
   motionType: NotRequired<MotionTypeOptions>('fade'),
+  bgDuration: NotRequired<number>(0.3),
+  txtDuration: NotRequired<number>(0.5),
 }
 type Conf = typeof conf
 

@@ -22,32 +22,6 @@ export const textOverImageArgTypes = {
       },
     },
   },
-  bgDuration: {
-    ...withDefaultAs('transitionDuration'),
-    description: 'Time required to animate the background',
-    table: {
-      ...withDefaultAs('transitionDuration').table,
-      defaultValue: {
-        summary: defaultTextOverImageProps.bgDuration,
-        details: null,
-      },
-      category: 'effect',
-      subcategory: 'animation',
-    },
-  },
-  txtDuration: {
-    ...withDefaultAs('transitionDuration'),
-    description: 'Time it takes for text above the image to appear',
-    table: {
-      ...withDefaultAs('transitionDuration').table,
-      defaultValue: {
-        summary: defaultTextOverImageProps.txtDuration,
-        details: null,
-      },
-      category: 'effect',
-      subcategory: 'animation',
-    },
-  },
   aboveText: {
     control: {
       type: 'text',

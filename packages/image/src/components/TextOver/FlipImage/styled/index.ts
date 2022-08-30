@@ -14,14 +14,14 @@ export const Root = styled.span<Pick<CharacterProps, 'width' | 'height'>>`
 `
 
 // prettier-ignore
-export const Mask = styled.span<Pick<CharacterProps, 'bgDuration' | 'bgColor' | 'bgOpacity' | 'imgPaddingU' | 'imgPaddingV'>>`
-  --bg-duration: ${({ bgDuration }) => bgDuration}s;
+export const Mask = styled.span<Pick<CharacterProps, 'duration' | 'bgColor' | 'bgOpacity' | 'imgPaddingU' | 'imgPaddingV'>>`
+  --duration: ${({ duration }) => duration}s;
   --bg-color: ${({ bgColor }) => bgColor};
   --bg-opacity: ${({ bgOpacity }) => bgOpacity};
   --img-padding: ${({ imgPaddingV, imgPaddingU }) => imgPaddingV! + imgPaddingU!};
 
   & img {
-    transition: all var(--bg-duration) ease;
+    transition: all var(--duration) ease;
     backface-visibility: hidden;/*三次元になった際に裏面を可視化させない*/
   }
   
@@ -57,6 +57,6 @@ export const TextWrap = styled.span`
   ${Root}:hover && {
     transform: rotateX(0);
     opacity: 1;
-    transition-delay: calc(var(--bg-duration) / 2);
+    transition-delay: calc(var(--duration) / 2);
   }
 `
