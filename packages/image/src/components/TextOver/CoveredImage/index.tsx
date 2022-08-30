@@ -27,7 +27,17 @@ const TextOverCoveredImageInner: TextOverCoveredImageComponent = (
   const { trigger, bgDuration, aboveText, imgPaddingV, imgPaddingU, motionType, width, height, bgColor, bgOpacity, txtDuration, ...attrs } = props
   return (
     <Root {...{ width, height }}>
-      <Mask {...{ bgDuration, bgOpacity, bgColor, motionType, trigger }}>
+      <Mask
+        {...{
+          bgDuration,
+          bgOpacity,
+          bgColor,
+          motionType,
+          trigger,
+          imgPaddingU,
+          imgPaddingV,
+        }}
+      >
         <Image {...attrs} ref={ref} />
         <TextWrap {...{ txtDuration, trigger }}>{aboveText}</TextWrap>
       </Mask>

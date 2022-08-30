@@ -82,10 +82,11 @@ export const Root = styled.span<Pick<CharacterProps, 'width' | 'height'>>`
 `
 
 // prettier-ignore
-export const Mask = styled.span<Pick<CharacterProps, 'bgDuration' | 'bgColor' | 'bgOpacity' | 'motionType' | 'trigger'>>`
+export const Mask = styled.span<Pick<CharacterProps, 'bgDuration' | 'bgColor' | 'bgOpacity' | 'motionType' | 'trigger' | 'imgPaddingU' | 'imgPaddingV'>>`
   --bg-duration: ${({ bgDuration }) => bgDuration}s;
   --bg-color: ${({ bgColor }) => bgColor};
   --bg-opacity: ${({ bgOpacity }) => bgOpacity};
+  --img-padding: ${({ imgPaddingV, imgPaddingU }) => imgPaddingV! + imgPaddingU!};
 
   position: relative; /*背景色の基点となる位置を定義*/
   display: block;
@@ -101,8 +102,10 @@ export const Mask = styled.span<Pick<CharacterProps, 'bgDuration' | 'bgColor' | 
     z-index: 2;
     opacity: 0; /*透過0*/
     background-color: var(--bg-color);
-    width: 100%;
-    height: 100%;
+    width: calc(100% - var(--img-padding) * 2);
+    height: calc(100% - var(--img-padding) * 2);
+    margin: var(--img-padding);
+    box-sizing: content-box;
     transition: var(--bg-duration) ease-in-out;
     ${({ motionType }) => injectStartState(motionType)}
     ${({ trigger }) => trigger === 'none' && insertBgEffect}
