@@ -54,6 +54,24 @@ export const logicArgTypes = {
       },
     },
   },
+  angle: {
+    control: {
+      type: 'number',
+    },
+    description:
+      'Angle of rotation. (Absolute values are used. Negative values do not cause counterclockwise rotation unless the "clockwise" props are set to false.)',
+    table: {
+      type: {
+        summary: null,
+      },
+      category: 'effect',
+      subcategory: 'rotate',
+      defaultValue: {
+        summary: defaultProps.angle,
+        details: null,
+      },
+    },
+  },
   scaleFactor: {
     control: {
       type: 'select',

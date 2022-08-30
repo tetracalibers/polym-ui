@@ -20,6 +20,7 @@ const conf = {
   zoom: NotRequired<ModeOptions>('out'),
   withRotate: NotRequired<boolean>(false),
   clockwise: NotRequired<boolean>(true),
+  angle: NotRequired<number>(5),
   scaleFactor: NotRequired<ScaleFactorRange>(0.2),
 }
 type Conf = typeof conf

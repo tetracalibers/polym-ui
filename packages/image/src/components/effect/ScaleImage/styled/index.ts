@@ -7,8 +7,8 @@ export const Mask = styled.span<CharacterProps>`
   --width: ${({ width }) => width};
   --height: ${({ height }) => height};
   --duration: ${({ duration }) => duration}s;
-  --degree: ${({ withRotate, clockwise }) =>
-    withRotate ? (clockwise ? 5 : -5) : 0}deg;
+  --degree: ${({ withRotate, angle, clockwise }) =>
+    withRotate ? (clockwise ? Math.abs(angle!) : -1 * Math.abs(angle!)) : 0}deg;
   --before-scale: ${({ zoom, scaleFactor }) => {
     return match(zoom!)
       .with('in', () => 1 + scaleFactor!)
