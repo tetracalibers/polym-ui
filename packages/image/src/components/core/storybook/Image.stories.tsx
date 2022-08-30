@@ -8,7 +8,7 @@ import { DocsPage } from './docsPage'
 import sample01 from '../../../assets/myproduct.jpg'
 
 export default {
-  title: 'image/Image',
+  title: 'core/Image',
   component: Image,
   parameters: {
     docs: {

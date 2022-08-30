@@ -9,7 +9,7 @@ import sample01 from '../../../../assets/myproduct.jpg'
 import { effectArgTypes } from '../../model/argTypes'
 
 export default {
-  title: 'image/ScaleImage',
+  title: 'image effect/ScaleImage',
   component: ScaleImage,
   parameters: {
     docs: {
