@@ -3,7 +3,7 @@ import { ColorPalette as $ } from 'styled-utility-first'
 
 export const DarkTextBox = styled.div`
   padding: 1rem 2rem;
-  text-align: center;
+  //text-align: center;
   color: ${$.grayScale.dark};
 `
 

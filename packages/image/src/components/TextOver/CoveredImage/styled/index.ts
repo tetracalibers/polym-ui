@@ -122,6 +122,8 @@ export const TextWrap = styled.span<CharacterProps>`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%); /*テキストの位置中央指定*/
+    width: 100%;
+    text-align: center;
   }
 
   ${Root}:hover && {
