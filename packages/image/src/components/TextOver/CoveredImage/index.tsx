@@ -24,12 +24,12 @@ const TextOverCoveredImageInner: TextOverCoveredImageComponent = (
     _.isUndefined(input) ? defaul : input
   )
   // prettier-ignore
-  const { trigger, bgDuration, aboveText, imgPaddingV, imgPaddingU, motionType, ...attrs } = props
+  const { trigger, bgDuration, aboveText, imgPaddingV, imgPaddingU, motionType, width, height, bgColor, bgOpacity, txtDuration, ...attrs } = props
   return (
-    <Root {...props}>
-      <Mask {...props}>
+    <Root {...{ width, height }}>
+      <Mask {...{ bgDuration, bgOpacity, bgColor, motionType, trigger }}>
         <Image {...attrs} ref={ref} />
-        <TextWrap {...props}>{aboveText}</TextWrap>
+        <TextWrap {...{ txtDuration, trigger }}>{aboveText}</TextWrap>
       </Mask>
     </Root>
   )

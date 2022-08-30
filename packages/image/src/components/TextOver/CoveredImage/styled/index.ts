@@ -62,16 +62,16 @@ const injectEndState = (motionType: CharacterProps['motionType']) => {
     .otherwise(() => '')
 }
 
-const insertBgEffect = css<CharacterProps>`
+const insertBgEffect = css<Pick<CharacterProps, 'motionType'>>`
   opacity: var(--bg-opacity); /*透過なしに変化*/
   ${({ motionType }) => injectEndState(motionType)}
 `
 
-const insertTxtEffect = css<CharacterProps>`
+const insertTxtEffect = css`
   opacity: 1;
 `
 
-export const Root = styled.span<CharacterProps>`
+export const Root = styled.span<Pick<CharacterProps, 'width' | 'height'>>`
   --width: ${({ width }) => width};
   --height: ${({ height }) => height};
 
@@ -81,7 +81,8 @@ export const Root = styled.span<CharacterProps>`
   height: var(--height);
 `
 
-export const Mask = styled.span<CharacterProps>`
+// prettier-ignore
+export const Mask = styled.span<Pick<CharacterProps, 'bgDuration' | 'bgColor' | 'bgOpacity' | 'motionType' | 'trigger'>>`
   --bg-duration: ${({ bgDuration }) => bgDuration}s;
   --bg-color: ${({ bgColor }) => bgColor};
   --bg-opacity: ${({ bgOpacity }) => bgOpacity};
@@ -112,7 +113,8 @@ export const Mask = styled.span<CharacterProps>`
   }
 `
 
-export const TextWrap = styled.span<CharacterProps>`
+// prettier-ignore
+export const TextWrap = styled.span<Pick<CharacterProps, 'txtDuration' | 'trigger'>>`
   --txt-duration: ${({ txtDuration }) => txtDuration}s;
 
   && {
