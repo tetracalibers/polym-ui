@@ -13,7 +13,8 @@ export type TriggerOptions = typeof triggerOptions[number]
 
 const conf = {
   trigger: NotRequired<TriggerOptions>('hover'),
-  duration: NotRequired<number>(0.3),
+  bgDuration: NotRequired<number>(0.3),
+  txtDuration: NotRequired<number>(0.5),
   imgPaddingV: NotRequired<number>(1.5),
   imgPaddingU: NotRequired<CssStyle.Unit.Length>('rem'),
 }

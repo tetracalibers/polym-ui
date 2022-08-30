@@ -22,14 +22,30 @@ export const textOverImageArgTypes = {
       },
     },
   },
-  duration: {
+  bgDuration: {
     ...withDefaultAs('transitionDuration'),
+    description: 'Time required to animate the background',
     table: {
       ...withDefaultAs('transitionDuration').table,
       defaultValue: {
-        summary: defaultTextOverImageProps.duration,
+        summary: defaultTextOverImageProps.bgDuration,
         details: null,
       },
+      category: 'effect',
+      subcategory: 'animation',
+    },
+  },
+  txtDuration: {
+    ...withDefaultAs('transitionDuration'),
+    description: 'Time it takes for text above the image to appear',
+    table: {
+      ...withDefaultAs('transitionDuration').table,
+      defaultValue: {
+        summary: defaultTextOverImageProps.txtDuration,
+        details: null,
+      },
+      category: 'effect',
+      subcategory: 'animation',
     },
   },
   aboveText: {
@@ -57,10 +73,7 @@ export const textOverImageArgTypes = {
     description:
       'Numeric value representing the size of the gap between the edge of the image and the edge of the background',
     table: {
-      type: {
-        summary: null,
-      },
-      category: 'style control',
+      ...withDefaultAs('padding').table,
       defaultValue: {
         summary: defaultTextOverImageProps.imgPaddingV,
         details: null,
@@ -74,10 +87,7 @@ export const textOverImageArgTypes = {
     options: CssStyle.Unit.length,
     description: 'Units of imgPaddingV',
     table: {
-      type: {
-        summary: null,
-      },
-      category: 'style control',
+      ...withDefaultAs('padding').table,
       defaultValue: {
         summary: defaultTextOverImageProps.imgPaddingU,
         details: null,

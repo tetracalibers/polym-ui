@@ -82,7 +82,7 @@ export const Root = styled.span<CharacterProps>`
 `
 
 export const Mask = styled.span<CharacterProps>`
-  --bg-duration: 0.3s;
+  --bg-duration: ${({ bgDuration }) => bgDuration}s;
   --bg-color: ${$.grayScale.dark};
   --bg-opacity: 0.7;
 
@@ -113,7 +113,7 @@ export const Mask = styled.span<CharacterProps>`
 `
 
 export const TextWrap = styled.span<CharacterProps>`
-  --txt-duration: 0.5s;
+  --txt-duration: ${({ txtDuration }) => txtDuration}s;
 
   && {
     position: absolute;
