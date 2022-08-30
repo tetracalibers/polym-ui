@@ -24,7 +24,7 @@ const TextOverAnimatedImageInner: TextOverAnimatedImageComponent = (
     _.isUndefined(input) ? defaul : input
   )
   // prettier-ignore
-  const { trigger, duration, aboveText, imgPaddingV, imgPaddingU, ...attrs } = props
+  const { trigger, duration, aboveText, imgPaddingV, imgPaddingU, motionType, ...attrs } = props
   return (
     <Mask {...props}>
       <Image {...attrs} ref={ref} />
