@@ -62,4 +62,32 @@ export const logicArgTypes = {
       },
     },
   },
+  imgPaddingV: {
+    control: {
+      type: 'number',
+    },
+    description:
+      'Numeric value representing the size of the gap between the edge of the image and the edge of the background',
+    table: {
+      ...withDefaultAs('padding').table,
+      defaultValue: {
+        summary: defaultProps.imgPaddingV,
+        details: null,
+      },
+    },
+  },
+  imgPaddingU: {
+    control: {
+      type: 'select',
+    },
+    options: CssStyle.Unit.length,
+    description: 'Units of imgPaddingV',
+    table: {
+      ...withDefaultAs('padding').table,
+      defaultValue: {
+        summary: defaultProps.imgPaddingU,
+        details: null,
+      },
+    },
+  },
 }

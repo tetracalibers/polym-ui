@@ -40,34 +40,6 @@ export const textOverImageArgTypes = {
       },
     },
   },
-  imgPaddingV: {
-    control: {
-      type: 'number',
-    },
-    description:
-      'Numeric value representing the size of the gap between the edge of the image and the edge of the background',
-    table: {
-      ...withDefaultAs('padding').table,
-      defaultValue: {
-        summary: defaultTextOverImageProps.imgPaddingV,
-        details: null,
-      },
-    },
-  },
-  imgPaddingU: {
-    control: {
-      type: 'select',
-    },
-    options: CssStyle.Unit.length,
-    description: 'Units of imgPaddingV',
-    table: {
-      ...withDefaultAs('padding').table,
-      defaultValue: {
-        summary: defaultTextOverImageProps.imgPaddingU,
-        details: null,
-      },
-    },
-  },
   bgColor: {
     ...withDefaultAs('backgroundColor'),
     description: 'color overlaid on an image',

@@ -14,8 +14,6 @@ export type TriggerOptions = typeof triggerOptions[number]
 
 const conf = {
   trigger: NotRequired<TriggerOptions>('hover'),
-  imgPaddingV: NotRequired<number>(1.5),
-  imgPaddingU: NotRequired<CssStyle.Unit.Length>('rem'),
   bgColor: NotRequired<CSST.Property.BackgroundColor>($.grayScale.dark),
 }
 type Conf = typeof conf

@@ -86,9 +86,8 @@ export const Root = styled.span<Pick<CharacterProps, 'width' | 'height'>>`
 `
 
 // prettier-ignore
-export const Mask = styled.span<Pick<CharacterProps, 'duration' | 'imgPaddingU' | 'imgPaddingV' | 'flipAxis'>>`
+export const Mask = styled.span<Pick<CharacterProps, 'duration' | 'flipAxis'>>`
   --duration: ${({ duration }) => duration}s;
-  --img-padding: ${({ imgPaddingV, imgPaddingU }) => imgPaddingV! + imgPaddingU!};
 
   & img {
     transition: all var(--duration) ease;

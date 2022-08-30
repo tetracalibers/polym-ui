@@ -27,6 +27,8 @@ const conf = {
   bgDuration: NotRequired<number>(0.3),
   txtDuration: NotRequired<number>(0.5),
   bgOpacity: NotRequired<number>(0.7),
+  imgPaddingV: NotRequired<number>(1.5),
+  imgPaddingU: NotRequired<CssStyle.Unit.Length>('rem'),
 }
 type Conf = typeof conf
 

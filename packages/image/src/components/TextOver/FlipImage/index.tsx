@@ -27,8 +27,6 @@ const TextOverFlipImageInner: TextOverFlipImageComponent = (
     trigger,
     duration,
     aboveText,
-    imgPaddingV,
-    imgPaddingU,
     width,
     height,
     bgColor,
@@ -38,12 +36,7 @@ const TextOverFlipImageInner: TextOverFlipImageComponent = (
 
   return (
     <Root width={width} height={height}>
-      <Mask
-        duration={duration}
-        imgPaddingV={imgPaddingV}
-        imgPaddingU={imgPaddingU}
-        flipAxis={flipAxis}
-      >
+      <Mask duration={duration} flipAxis={flipAxis}>
         <Image {...attrs} ref={ref} />
         <TextWrap flipAxis={flipAxis} bgColor={bgColor}>
           {aboveText}
