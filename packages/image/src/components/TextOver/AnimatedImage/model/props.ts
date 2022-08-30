@@ -6,16 +6,19 @@ import {
 } from 'react-tsx-props'
 import { commonDefaultProps, CommonProps } from '../../../model/props'
 import { CssStyle } from 'ts-typedef-helper'
-import { defaultEffectProps, EffectProps } from '../../model/props'
+import {
+  defaultTextOverImageProps,
+  TextOverImageProps,
+} from '../../common/props'
 
-const conf = {
-  sepia: NotRequired<number>(100),
-}
+const conf = {}
 type Conf = typeof conf
 
-export type CharacterProps = getPropType<Conf> & CommonProps & EffectProps
+export type CharacterProps = getPropType<Conf> &
+  CommonProps &
+  TextOverImageProps
 export const defaultProps = {
   ...getDefaultProps<CharacterProps>(conf),
   ...commonDefaultProps,
-  ...defaultEffectProps,
+  ...defaultTextOverImageProps,
 }

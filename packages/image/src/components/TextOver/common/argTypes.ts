@@ -40,8 +40,7 @@ export const textOverImageArgTypes = {
       'Text string to be displayed over the image, or React element that wraps the text',
     table: {
       type: {
-        summary: 'ReactNode',
-        details:
+        summary:
           'e.g. "Sapmle text" | <span>Sample text</span> | <YourComponent>Sample text</YourComponent>',
       },
       category: 'contents',

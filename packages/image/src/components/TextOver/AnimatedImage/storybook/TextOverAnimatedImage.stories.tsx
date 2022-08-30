@@ -1,16 +1,16 @@
 import { ComponentStory } from '@storybook/react'
-import { SepiaImage } from '..'
+import { TextOverAnimatedImage } from '..'
 import { commmonArgTypes } from '../../../model/argTypes'
 import { logicArgTypes } from '../model/argTypes'
 import { defaultProps } from '../model/props'
 import { DocsPage } from './docsPage'
 // @ts-ignore
 import sample01 from '../../../../assets/myproduct.jpg'
-import { effectArgTypes } from '../../model/argTypes'
+import { textOverImageArgTypes } from '../../common/argTypes'
 
 export default {
-  title: 'image effect/SepiaImage',
-  component: SepiaImage,
+  title: 'image effect/TextOverAnimatedImage',
+  component: TextOverAnimatedImage,
   parameters: {
     docs: {
       page: () => <DocsPage />,
@@ -21,14 +21,15 @@ export default {
   },
   argTypes: {
     ...logicArgTypes,
-    ...effectArgTypes,
+    ...textOverImageArgTypes,
     ...commmonArgTypes,
   },
 }
 
-const Template: ComponentStory<typeof SepiaImage> = ({ src, ...args }) => (
-  <SepiaImage {...args} src={sample01} />
-)
+const Template: ComponentStory<typeof TextOverAnimatedImage> = ({
+  src,
+  ...args
+}) => <TextOverAnimatedImage {...args} src={sample01} />
 
 export const playground = Template.bind({})
 playground.args = {

@@ -9,22 +9,22 @@ import { Image } from '../../core'
 import { CharacterProps, defaultProps } from './model/props'
 import { Mask } from './styled'
 
-export type SepiaImageProps = CharacterProps &
+export type TextOverAnimatedImageProps = CharacterProps &
   Omit<ComponentPropsWithoutRef<'img'>, 'children'>
 
-export type SepiaImageComponent = (
-  props: SepiaImageProps
+export type TextOverAnimatedImageComponent = (
+  props: TextOverAnimatedImageProps
 ) => ReactElement | null
 
-const SepiaImageInner: SepiaImageComponent = (
-  { ..._props }: SepiaImageProps,
+const TextOverAnimatedImageInner: TextOverAnimatedImageComponent = (
+  { ..._props }: TextOverAnimatedImageProps,
   ref?: ForwardedRef<HTMLImageElement>
 ) => {
   const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
     _.isUndefined(input) ? defaul : input
   )
   // prettier-ignore
-  const { trigger, duration, sepia, ...attrs } = props
+  const { trigger, duration, aboveText, imgPaddingV, imgPaddingU, ...attrs } = props
   return (
     <Mask {...props}>
       <Image {...attrs} ref={ref} />
@@ -32,4 +32,4 @@ const SepiaImageInner: SepiaImageComponent = (
   )
 }
 
-export const SepiaImage = forwardRef(SepiaImageInner)
+export const TextOverAnimatedImage = forwardRef(TextOverAnimatedImageInner)
