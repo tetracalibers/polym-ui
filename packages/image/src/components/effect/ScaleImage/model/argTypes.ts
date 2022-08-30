@@ -4,7 +4,7 @@ import { CssStyle } from 'ts-typedef-helper'
 export const logicArgTypes = {
   mode: {
     control: {
-      type: 'select',
+      type: 'radio',
     },
     options: modeOptions,
     description: 'Expanding or shrinking',

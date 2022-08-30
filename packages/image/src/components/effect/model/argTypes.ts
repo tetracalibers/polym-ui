@@ -4,7 +4,7 @@ import { defaultEffectProps, triggerOptions } from './props'
 export const logicArgTypes = {
   trigger: {
     control: {
-      type: 'select',
+      type: 'radio',
     },
     options: triggerOptions,
     description:
