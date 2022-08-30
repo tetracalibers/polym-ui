@@ -24,7 +24,7 @@ const ScaleImageInner: ScaleImageComponent = (
     _.isUndefined(input) ? defaul : input
   )
   // prettier-ignore
-  const { withRotate, zoom, clockwise, scaleFactor, angle, trigger, ...attrs } = props
+  const { withRotate, zoom, clockwise, scaleFactor, angle, trigger, duration, ...attrs } = props
   return (
     <Mask {...props}>
       <Image {...attrs} ref={ref} />
