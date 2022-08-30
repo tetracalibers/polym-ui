@@ -4,7 +4,9 @@ import { match } from 'ts-pattern'
 import { ColorPalette as $, Truthy } from 'styled-utility-first'
 
 const insertEffect = css<CharacterProps>`
-  filter: blur(var(--blur-radius));
+  --opacity: ${({ opacity }) => opacity};
+
+  opacity: var(--opacity);
 `
 
 export const Mask = styled.span<CharacterProps>`
@@ -22,7 +24,7 @@ export const Mask = styled.span<CharacterProps>`
   }
 
   && img {
-    opacity: 0;
+    opacity: 1;
     transition: var(--duration) ease-in-out;
     ${({ trigger }) => trigger === 'none' && insertEffect}
   }
