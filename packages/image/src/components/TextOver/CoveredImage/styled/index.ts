@@ -5,32 +5,23 @@ import { ColorPalette as $, Truthy } from 'styled-utility-first'
 
 const injectStartState = (motionType: CharacterProps['motionType']) => {
   return match(motionType)
-    .with('fade', () => {
-      return css`
-        transition: var(--bg-duration) ease-in-out;
-      `
-    })
     .with('slideUp', () => {
       return css`
-        transition: var(--bg-duration) ease-in-out;
         transform: translateY(100%);
       `
     })
     .with('slideDown', () => {
       return css`
-        transition: var(--bg-duration) ease-in-out;
         transform: translateY(-100%);
       `
     })
     .with('slideLtoR', () => {
       return css`
-        transition: var(--bg-duration) ease-in-out;
         transform: translateX(-100%);
       `
     })
     .with('slideRtoL', () => {
       return css`
-        transition: var(--bg-duration) ease-in-out;
         transform: translateX(100%);
       `
     })
@@ -71,6 +62,15 @@ const injectEndState = (motionType: CharacterProps['motionType']) => {
     .otherwise(() => '')
 }
 
+const insertBgEffect = css<CharacterProps>`
+  opacity: var(--bg-opacity); /*透過なしに変化*/
+  ${({ motionType }) => injectEndState(motionType)}
+`
+
+const insertTxtEffect = css<CharacterProps>`
+  opacity: 1;
+`
+
 export const Root = styled.span<CharacterProps>`
   --width: ${({ width }) => width};
   --height: ${({ height }) => height};
@@ -102,12 +102,13 @@ export const Mask = styled.span<CharacterProps>`
     background-color: var(--bg-color);
     width: 100%;
     height: 100%;
+    transition: var(--bg-duration) ease-in-out;
     ${({ motionType }) => injectStartState(motionType)}
+    ${({ trigger }) => trigger === 'none' && insertBgEffect}
   }
 
   ${Root}:hover &::before {
-    opacity: var(--bg-opacity); /*透過なしに変化*/
-    ${({ motionType }) => injectEndState(motionType)}
+    ${({ trigger }) => trigger !== 'none' && insertBgEffect}
   }
 `
 
@@ -124,9 +125,10 @@ export const TextWrap = styled.span<CharacterProps>`
     transform: translate(-50%, -50%); /*テキストの位置中央指定*/
     width: 100%;
     text-align: center;
+    ${({ trigger }) => trigger === 'none' && insertTxtEffect}
   }
 
   ${Root}:hover && {
-    opacity: 1; /*透過なしに変化*/
+    ${({ trigger }) => trigger !== 'none' && insertTxtEffect}
   }
 `
