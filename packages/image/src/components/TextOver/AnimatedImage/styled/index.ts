@@ -20,6 +20,11 @@ const injectStartState = (motionType: CharacterProps['motionType']) => {
         transform: translateX(-100%);
       `
     })
+    .with('slideRtoL', () => {
+      return css`
+        transform: translateX(100%);
+      `
+    })
     .otherwise(() => '')
 }
 
@@ -30,7 +35,7 @@ const injectEndState = (motionType: CharacterProps['motionType']) => {
         transform: translateY(0);
       `
     })
-    .with('slideLtoR', () => {
+    .with('slideLtoR', 'slideRtoL', () => {
       return css`
         transform: translateX(0);
       `
