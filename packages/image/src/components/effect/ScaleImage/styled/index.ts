@@ -6,6 +6,18 @@ import { ColorPalette as $, Truthy } from 'styled-utility-first'
 export const Mask = styled.span<CharacterProps>`
   --width: ${({ width }) => width};
   --height: ${({ height }) => height};
+  --before-scale: ${({ zoom, scaleFactor }) => {
+    return match(zoom!)
+      .with('in', () => 1 + scaleFactor!)
+      .with('out', () => 1)
+      .otherwise(() => '')
+  }};
+  --after-scale: ${({ zoom, scaleFactor }) => {
+    return match(zoom!)
+      .with('in', () => 1)
+      .with('out', () => 1 + scaleFactor!)
+      .otherwise(() => '')
+  }};
 
   /* はみ出す画像を隠す */
   && {
@@ -17,11 +29,11 @@ export const Mask = styled.span<CharacterProps>`
   }
 
   && img {
-    transform: scale(1);
+    transform: scale(var(--before-scale));
     transition: 0.3s ease-in-out;
   }
 
   && img:hover {
-    transform: scale(1.2);
+    transform: scale(var(--after-scale));
   }
 `
