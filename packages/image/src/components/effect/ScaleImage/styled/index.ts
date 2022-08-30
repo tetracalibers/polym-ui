@@ -7,6 +7,7 @@ export const Mask = styled.span<CharacterProps>`
   --width: ${({ width }) => width};
   --height: ${({ height }) => height};
   --duration: ${({ duration }) => duration}s;
+  --degree: ${({ withRotate }) => (withRotate ? '5deg' : 0)};
   --before-scale: ${({ zoom, scaleFactor }) => {
     return match(zoom!)
       .with('in', () => 1 + scaleFactor!)
@@ -35,6 +36,6 @@ export const Mask = styled.span<CharacterProps>`
   }
 
   && img:hover {
-    transform: scale(var(--after-scale));
+    transform: rotate(var(--degree)) scale(var(--after-scale));
   }
 `
