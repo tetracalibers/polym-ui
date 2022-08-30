@@ -27,7 +27,7 @@ export default {
 }
 
 const Template: ComponentStory<typeof Image> = ({ ...args }) => (
-  <Image {...args} src={sample01} width='250px' />
+  <Image {...args} src={sample01} />
 )
 
 export const playground = Template.bind({})

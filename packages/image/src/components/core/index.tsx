@@ -10,6 +10,7 @@ import {
 } from 'react'
 import { isStyledComponent, StyledComponent } from 'styled-components'
 import { CharacterProps, defaultProps } from './model/props'
+import { Img } from './styled'
 
 type AllowElement = StyledComponent<'img', any> | ReactElement<any, 'img'>
 
@@ -28,7 +29,7 @@ const ImageInner = <As extends AllowElement>(
   )
 
   if (!as) {
-    return <img {...props} ref={ref} />
+    return <Img {...props} ref={ref} />
   }
 
   const Component = (props: Omit<ImageProps<As>, 'as'>) =>
@@ -40,10 +41,3 @@ const ImageInner = <As extends AllowElement>(
 }
 
 export const Image = forwardRef(ImageInner)
-
-// export const Image = <As extends AllowElement>(
-//   { as, ...props }: ImageProps<As>,
-//   innerRef?: Ref<HTMLImageElement>
-// ) => {
-//   return <ImageWithRef {...props} ref={innerRef} as={as} />
-// }

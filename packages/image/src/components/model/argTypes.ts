@@ -1,4 +1,7 @@
 import { commonDefaultProps } from './props'
+import { useSetDefaultAs } from 'story-builder'
+
+const withDefaultAs = useSetDefaultAs(commonDefaultProps)
 
 export const commmonArgTypes = {
   as: {
@@ -43,33 +46,11 @@ export const commmonArgTypes = {
     },
   },
   width: {
-    control: {
-      type: 'text',
-    },
+    ...withDefaultAs('width'),
     description: 'CSS width value to be applied to the img tag',
-    table: {
-      type: {
-        summary: null,
-      },
-      category: 'css',
-      defaultValue: {
-        summary: commonDefaultProps.width,
-      },
-    },
   },
   height: {
-    control: {
-      type: 'text',
-    },
+    ...withDefaultAs('height'),
     description: 'CSS height value to be applied to the img tag',
-    table: {
-      type: {
-        summary: null,
-      },
-      category: 'css',
-      defaultValue: {
-        summary: commonDefaultProps.height,
-      },
-    },
   },
 }
