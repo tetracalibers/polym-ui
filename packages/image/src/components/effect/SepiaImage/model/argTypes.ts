@@ -2,19 +2,19 @@ import { defaultProps } from './props'
 import { CssStyle } from 'ts-typedef-helper'
 
 export const logicArgTypes = {
-  grayScale: {
+  sepia: {
     control: {
       type: 'number',
     },
-    description: 'degree of monochrome (%)',
+    description: 'sepia degree (%)',
     table: {
       type: {
         summary: null,
       },
       category: 'effect',
-      subcategory: 'monochrome',
+      subcategory: 'sepia',
       defaultValue: {
-        summary: defaultProps.grayScale,
+        summary: defaultProps.sepia,
         details: null,
       },
     },

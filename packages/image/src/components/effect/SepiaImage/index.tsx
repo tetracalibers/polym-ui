@@ -24,7 +24,7 @@ const SepiaImageInner: SepiaImageComponent = (
     _.isUndefined(input) ? defaul : input
   )
   // prettier-ignore
-  const { trigger, duration, ...attrs } = props
+  const { trigger, duration, sepia, ...attrs } = props
   return (
     <Mask {...props}>
       <Image {...attrs} ref={ref} />

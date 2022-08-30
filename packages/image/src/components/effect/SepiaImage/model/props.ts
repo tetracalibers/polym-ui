@@ -9,7 +9,7 @@ import { CssStyle } from 'ts-typedef-helper'
 import { defaultEffectProps, EffectProps } from '../../model/props'
 
 const conf = {
-  grayScale: NotRequired<number>(100),
+  sepia: NotRequired<number>(100),
 }
 type Conf = typeof conf
 

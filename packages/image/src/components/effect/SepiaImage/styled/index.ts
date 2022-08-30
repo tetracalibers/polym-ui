@@ -4,14 +4,14 @@ import { match } from 'ts-pattern'
 import { ColorPalette as $, Truthy } from 'styled-utility-first'
 
 const insertEffect = css<CharacterProps>`
-  filter: grayscale(0);
+  filter: sepia(0);
 `
 
 export const Mask = styled.span<CharacterProps>`
   --width: ${({ width }) => width};
   --height: ${({ height }) => height};
   --duration: ${({ duration }) => duration}s;
-  --grayscale: ${({ grayScale }) => grayScale}%;
+  --sepia: ${({ sepia }) => sepia}%;
 
   /* はみ出す画像を隠す */
   && {
@@ -23,7 +23,7 @@ export const Mask = styled.span<CharacterProps>`
   }
 
   && img {
-    filter: grayscale(var(--grayscale));
+    filter: sepia(var(--sepia));
     transition: var(--duration) ease-in-out;
   }
 
