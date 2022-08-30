@@ -59,14 +59,17 @@ const injectEndState = (motionType: CharacterProps['motionType']) => {
     .otherwise(() => '')
 }
 
-export const Root = styled.span`
+export const Root = styled.span<CharacterProps>`
+  --width: ${({ width }) => width};
+  --height: ${({ height }) => height};
+
   display: block;
   position: relative; /*テキストの基点となる位置を定義*/
+  width: var(--width);
+  height: var(--height);
 `
 
 export const Mask = styled.span<CharacterProps>`
-  --width: ${({ width }) => width};
-  --height: ${({ height }) => height};
   --bg-duration: 0.3s;
   --bg-color: ${$.grayScale.dark};
   --bg-opacity: 0.7;
@@ -76,8 +79,6 @@ export const Mask = styled.span<CharacterProps>`
   line-height: 0;
   /* はみ出す画像を隠す */
   overflow: hidden;
-  width: var(--width);
-  height: var(--height);
 
   &::before {
     content: '';

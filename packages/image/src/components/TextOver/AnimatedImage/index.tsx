@@ -26,7 +26,7 @@ const TextOverAnimatedImageInner: TextOverAnimatedImageComponent = (
   // prettier-ignore
   const { trigger, duration, aboveText, imgPaddingV, imgPaddingU, motionType, ...attrs } = props
   return (
-    <Root>
+    <Root {...props}>
       <Mask {...props}>
         <Image {...attrs} ref={ref} />
         <TextWrap {...props}>{aboveText}</TextWrap>
