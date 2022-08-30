@@ -1,7 +1,7 @@
 import { CssStyle } from 'ts-typedef-helper'
 import { defaultEffectProps, triggerOptions } from './props'
 
-export const logicArgTypes = {
+export const effectArgTypes = {
   trigger: {
     control: {
       type: 'radio',
