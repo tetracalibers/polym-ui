@@ -23,8 +23,20 @@ const TextOverFlipImageInner: TextOverFlipImageComponent = (
   const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
     _.isUndefined(input) ? defaul : input
   )
-  // prettier-ignore
-  const { trigger, duration, aboveText, imgPaddingV, imgPaddingU, motionType, width, height, bgColor, bgOpacity, ...attrs } = props
+  const {
+    trigger,
+    duration,
+    aboveText,
+    imgPaddingV,
+    imgPaddingU,
+    width,
+    height,
+    bgColor,
+    bgOpacity,
+    flipAxis,
+    ...attrs
+  } = props
+
   return (
     <Root width={width} height={height}>
       <Mask

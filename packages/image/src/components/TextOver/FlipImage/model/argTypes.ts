@@ -1,16 +1,15 @@
-import { defaultProps, motionTypeOptions } from './props'
+import { defaultProps, flipAxisOptions } from './props'
 import { CssStyle } from 'ts-typedef-helper'
 import { useSetDefaultAs } from 'story-builder'
 const withDefaultAs = useSetDefaultAs(defaultProps)
 
 export const logicArgTypes = {
-  motionType: {
+  flipAxis: {
     control: {
       type: 'radio',
     },
-    options: motionTypeOptions,
-    description:
-      'Type of animation when background and text appear over the image',
+    options: flipAxisOptions,
+    description: 'Axis of rotation',
     table: {
       type: {
         summary: null,
@@ -18,14 +17,14 @@ export const logicArgTypes = {
       category: 'effect',
       subcategory: 'animation',
       defaultValue: {
-        summary: defaultProps.motionType,
+        summary: defaultProps.flipAxis,
         details: null,
       },
     },
   },
   duration: {
     ...withDefaultAs('transitionDuration'),
-    description: 'Time required to animate the background',
+    description: 'Time required for rotation',
     table: {
       ...withDefaultAs('transitionDuration').table,
       defaultValue: {

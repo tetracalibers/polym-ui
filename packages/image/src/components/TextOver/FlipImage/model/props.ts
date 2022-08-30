@@ -11,20 +11,17 @@ import {
   TextOverImageProps,
 } from '../../common/props'
 
-export const motionTypeOptions = [
-  'fade',
-  'slideUp',
-  'slideDown',
-  'slideLtoR',
-  'slideRtoL',
-  'spreadHorizontal',
-  'spreadVertical',
+export const flipAxisOptions = [
+  'flipX',
+  'flipY',
+  'flipZtoLeftTop',
+  'flipZtoRightTop',
 ] as const
-type MotionTypeOptions = typeof motionTypeOptions[number]
+type FlipAxisOptions = typeof flipAxisOptions[number]
 
 const conf = {
-  motionType: NotRequired<MotionTypeOptions>('fade'),
   duration: NotRequired<number>(0.3),
+  flipAxis: NotRequired<FlipAxisOptions>('flipX'),
 }
 type Conf = typeof conf
 
