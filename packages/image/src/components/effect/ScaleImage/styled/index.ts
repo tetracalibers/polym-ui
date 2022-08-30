@@ -6,6 +6,7 @@ import { ColorPalette as $, Truthy } from 'styled-utility-first'
 export const Mask = styled.span<CharacterProps>`
   --width: ${({ width }) => width};
   --height: ${({ height }) => height};
+  --duration: ${({ duration }) => duration}s;
   --before-scale: ${({ zoom, scaleFactor }) => {
     return match(zoom!)
       .with('in', () => 1 + scaleFactor!)
@@ -30,7 +31,7 @@ export const Mask = styled.span<CharacterProps>`
 
   && img {
     transform: scale(var(--before-scale));
-    transition: 0.3s ease-in-out;
+    transition: var(--duration) ease-in-out;
   }
 
   && img:hover {

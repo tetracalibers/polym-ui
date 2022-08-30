@@ -1,5 +1,7 @@
 import { CssStyle } from 'ts-typedef-helper'
-//import { defaultEffectProps, triggerOptions } from './props'
+import { useSetDefaultAs } from 'story-builder'
+import { defaultEffectProps } from './props'
+const withDefaultAs = useSetDefaultAs(defaultEffectProps)
 
 export const effectArgTypes = {
   //trigger: {
@@ -20,4 +22,14 @@ export const effectArgTypes = {
   //    },
   //  },
   //},
+  duration: {
+    ...withDefaultAs('transitionDuration'),
+    table: {
+      ...withDefaultAs('transitionDuration').table,
+      defaultValue: {
+        summary: defaultEffectProps.duration,
+        details: null,
+      },
+    },
+  },
 }
