@@ -3,6 +3,53 @@ import { CharacterProps } from '../model/props'
 import { match } from 'ts-pattern'
 import { ColorPalette as $, Truthy } from 'styled-utility-first'
 
+const injectBgEndState = (flipAxis: CharacterProps['flipAxis']) => {
+  return match(flipAxis)
+    .with('flipX', () => {
+      return css`
+        transform: rotateX(-180deg); /*縦軸に回転*/
+      `
+    })
+    .with('flipY', () => {
+      return css`
+        transform: rotateY(-180deg);
+      `
+    })
+    .otherwise(() => '')
+}
+
+const injectTxtStartState = (flipAxis: CharacterProps['flipAxis']) => {
+  return match(flipAxis)
+    .with('flipX', () => {
+      return css`
+        transform: rotateX(90deg); /*縦軸に回転*/
+        transform-origin: 0% 50%; /*回転する基点*/
+      `
+    })
+    .with('flipY', () => {
+      return css`
+        transform: rotateY(90deg); /*横軸に回転*/
+        transform-origin: 50% 0%; /*回転する基点*/
+      `
+    })
+    .otherwise(() => '')
+}
+
+const injectTxtEndState = (flipAxis: CharacterProps['flipAxis']) => {
+  return match(flipAxis)
+    .with('flipX', () => {
+      return css`
+        transform: rotateX(0);
+      `
+    })
+    .with('flipY', () => {
+      return css`
+        transform: rotateY(0); /*横軸に回転*/
+      `
+    })
+    .otherwise(() => '')
+}
+
 export const Root = styled.span<Pick<CharacterProps, 'width' | 'height'>>`
   --width: ${({ width }) => width};
   --height: ${({ height }) => height};
@@ -14,10 +61,8 @@ export const Root = styled.span<Pick<CharacterProps, 'width' | 'height'>>`
 `
 
 // prettier-ignore
-export const Mask = styled.span<Pick<CharacterProps, 'duration' | 'bgColor' | 'bgOpacity' | 'imgPaddingU' | 'imgPaddingV'>>`
+export const Mask = styled.span<Pick<CharacterProps, 'duration' | 'imgPaddingU' | 'imgPaddingV' | 'flipAxis'>>`
   --duration: ${({ duration }) => duration}s;
-  --bg-color: ${({ bgColor }) => bgColor};
-  --bg-opacity: ${({ bgOpacity }) => bgOpacity};
   --img-padding: ${({ imgPaddingV, imgPaddingU }) => imgPaddingV! + imgPaddingU!};
 
   & img {
@@ -26,13 +71,16 @@ export const Mask = styled.span<Pick<CharacterProps, 'duration' | 'bgColor' | 'b
   }
   
   ${Root}:hover & img {
-    transform: rotateX(-180deg);/*縦軸に回転*/
+    ${({ flipAxis }) => injectBgEndState(flipAxis)}
     opacity: 0;
   }
 `
 
 // prettier-ignore
-export const TextWrap = styled.span`
+export const TextWrap = styled.span<Pick<CharacterProps, 'flipAxis' | 'bgOpacity' | 'bgColor'>>`
+  --bg-opacity: ${({ bgOpacity }) => bgOpacity};
+  --bg-color: ${({ bgColor }) => bgColor};
+
   && {
     /*ここからエリアの絶対配置の指定*/
     position: absolute;
@@ -41,12 +89,10 @@ export const TextWrap = styled.span`
     left: 0;
     right: 0;
     /*ここまでエリアの絶対配置の指定*/
-    transition: all 0.35s ease;/*移り変わる速さを変更したい場合はこの数値を変更*/
-    transform: rotateX(90deg);/*縦軸に回転*/
-    transform-origin: 0% 50%;/*回転する基点*/
+    transition: all var(--duration) ease;
     opacity: 0;
-    background:#333;/*背景色*/
-    color: #fff;/*テキストの色を変えたい場合はここを修正*/
+    background: var(--bg-color);/*背景色*/
+    ${({ flipAxis }) => injectTxtStartState(flipAxis)}
     /*ここからテキスト中央寄せの指定*/
     display: flex;
     justify-content: center;
@@ -55,8 +101,8 @@ export const TextWrap = styled.span`
   }
 
   ${Root}:hover && {
-    transform: rotateX(0);
-    opacity: 1;
+    opacity: var(--bg-opacity);
     transition-delay: calc(var(--duration) / 2);
+    ${({ flipAxis }) => injectTxtEndState(flipAxis)}
   }
 `

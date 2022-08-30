@@ -41,13 +41,14 @@ const TextOverFlipImageInner: TextOverFlipImageComponent = (
     <Root width={width} height={height}>
       <Mask
         duration={duration}
-        bgOpacity={bgOpacity}
-        bgColor={bgColor}
         imgPaddingV={imgPaddingV}
         imgPaddingU={imgPaddingU}
+        flipAxis={flipAxis}
       >
         <Image {...attrs} ref={ref} />
-        <TextWrap>{aboveText}</TextWrap>
+        <TextWrap flipAxis={flipAxis} bgOpacity={bgOpacity} bgColor={bgColor}>
+          {aboveText}
+        </TextWrap>
       </Mask>
     </Root>
   )
