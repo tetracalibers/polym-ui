@@ -9,21 +9,19 @@ import { Image } from '../../core'
 import { CharacterProps, defaultProps } from './model/props'
 import { Mask } from './styled'
 
-export type ScaleImageProps = CharacterProps &
+export type BlurImageProps = CharacterProps &
   Omit<ComponentPropsWithoutRef<'img'>, 'children'>
 
-export type ScaleImageComponent = (
-  props: ScaleImageProps
-) => ReactElement | null
+export type BlurImageComponent = (props: BlurImageProps) => ReactElement | null
 
-const ScaleImageInner: ScaleImageComponent = (
-  { ..._props }: ScaleImageProps,
+const BlurImageInner: BlurImageComponent = (
+  { ..._props }: BlurImageProps,
   ref?: ForwardedRef<HTMLImageElement>
 ) => {
   const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
     _.isUndefined(input) ? defaul : input
   )
-  const { withRotate, zoom, clockwise, scaleFactor, angle, ...attrs } = props
+  const { ...attrs } = props
   return (
     <Mask {...props}>
       <Image {...attrs} ref={ref} />
@@ -31,4 +29,4 @@ const ScaleImageInner: ScaleImageComponent = (
   )
 }
 
-export const ScaleImage = forwardRef(ScaleImageInner)
+export const BlurImage = forwardRef(BlurImageInner)
