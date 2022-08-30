@@ -1,5 +1,5 @@
 import { ComponentStory } from '@storybook/react'
-import { HaveSidebar } from '..'
+import { WithSidebar } from '..'
 import { commmonArgTypes } from '../../common/argTypes'
 import { Container, Sidebar, MainContents } from '../../mock/TestBox'
 import { styleArgTypes } from '../css-props/argTypes'
@@ -8,8 +8,8 @@ import { defaultProps } from '../model/props'
 import { DocsPage } from './docsPage'
 
 export default {
-  title: 'layout/HaveSidebar',
-  component: HaveSidebar,
+  title: 'layout/WithSidebar',
+  component: WithSidebar,
   parameters: {
     docs: {
       page: () => <DocsPage />,
@@ -41,14 +41,14 @@ export default {
   },
 }
 
-const Template: ComponentStory<typeof HaveSidebar> = ({
+const Template: ComponentStory<typeof WithSidebar> = ({
   children,
   ...args
 }) => (
-  <HaveSidebar {...args} as={Container}>
+  <WithSidebar {...args} as={Container}>
     <Sidebar />
     <MainContents />
-  </HaveSidebar>
+  </WithSidebar>
 )
 
 export const playground = Template.bind({})

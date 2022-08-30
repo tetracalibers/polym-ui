@@ -1,5 +1,5 @@
 import { VerticalCenter } from './VerticalCenter'
-import { HaveSidebar } from './HaveSidebar'
+import { WithSidebar } from './WithSidebar'
 import { HorizontalStack } from './HorizontalStack'
 import { VerticalStack } from './VerticalStack'
 import { HorizontalCenter } from './HorizontalCenter'
@@ -11,7 +11,7 @@ import { DifferStack } from './DifferStack'
 
 export {
   VerticalCenter,
-  HaveSidebar,
+  WithSidebar,
   HorizontalStack,
   HorizontalCenter,
   VerticalStack,

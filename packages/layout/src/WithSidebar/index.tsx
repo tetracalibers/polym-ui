@@ -7,16 +7,16 @@ import {
 import { CharacterProps, defaultProps } from './model/props'
 import { StyledElement } from './styled'
 
-export type HaveSidebarProps<As extends ElementType> =
+export type WithSidebarProps<As extends ElementType> =
   PolymorphicComponentPropWithRef<As, CharacterProps>
 
-export type HaveSidebarComponent = <As extends ElementType>(
-  props: HaveSidebarProps<As>
+export type WithSidebarComponent = <As extends ElementType>(
+  props: WithSidebarProps<As>
 ) => ReactElement | null
 
-export const HaveSidebar: HaveSidebarComponent = forwardRef(
+export const WithSidebar: WithSidebarComponent = forwardRef(
   <As extends ElementType>(
-    { as, children, ..._props }: HaveSidebarProps<As>,
+    { as, children, ..._props }: WithSidebarProps<As>,
     ref?: PolymorphicRef<As>
   ) => {
     const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
