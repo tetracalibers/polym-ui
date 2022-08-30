@@ -24,7 +24,7 @@ type FlipAxisOptions = typeof flipAxisOptions[number]
 const conf = {
   duration: NotRequired<number>(0.3),
   flipAxis: NotRequired<FlipAxisOptions>('flipX'),
-  bgColor: NotRequired<CSST.Property.BackgroundColor>($.pastel.purple),
+  bgColor: NotRequired<CSST.Property.BackgroundColor>('#d6ebff'),
 }
 type Conf = typeof conf
 
