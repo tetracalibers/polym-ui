@@ -42,7 +42,7 @@ export default {
 }
 
 const Template: Story<typeof Image> = ({ ...args }) => (
-  <Image {...args} as={<DarkTextBox />} src='' />
+  <Image {...args} as={DarkTextBox} src='' />
 )
 
 export const playground = Template.bind({})
