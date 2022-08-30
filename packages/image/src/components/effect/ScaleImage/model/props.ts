@@ -19,6 +19,7 @@ type ScaleFactorRange = typeof scaleFactorRange[number]
 const conf = {
   zoom: NotRequired<ModeOptions>('out'),
   withRotate: NotRequired<boolean>(false),
+  clockwise: NotRequired<boolean>(true),
   scaleFactor: NotRequired<ScaleFactorRange>(0.2),
 }
 type Conf = typeof conf

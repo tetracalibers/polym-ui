@@ -13,6 +13,7 @@ export const logicArgTypes = {
         summary: null,
       },
       category: 'effect',
+      subcategory: 'scale',
       defaultValue: {
         summary: defaultProps.zoom,
         details: null,
@@ -29,8 +30,26 @@ export const logicArgTypes = {
         summary: null,
       },
       category: 'effect',
+      subcategory: 'rotate',
       defaultValue: {
         summary: defaultProps.withRotate,
+        details: null,
+      },
+    },
+  },
+  clockwise: {
+    control: {
+      type: 'boolean',
+    },
+    description: 'Clockwise if true, counterclockwise if false',
+    table: {
+      type: {
+        summary: null,
+      },
+      category: 'effect',
+      subcategory: 'rotate',
+      defaultValue: {
+        summary: defaultProps.clockwise,
         details: null,
       },
     },
@@ -47,6 +66,7 @@ export const logicArgTypes = {
         summary: null,
       },
       category: 'effect',
+      subcategory: 'scale',
       defaultValue: {
         summary: defaultProps.scaleFactor,
         details: null,
