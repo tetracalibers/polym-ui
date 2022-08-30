@@ -94,4 +94,15 @@ export const textOverImageArgTypes = {
       },
     },
   },
+  bgColor: {
+    ...withDefaultAs('backgroundColor'),
+    description: 'color overlaid on an image',
+    table: {
+      ...withDefaultAs('backgroundColor').table,
+      defaultValue: {
+        summary: defaultTextOverImageProps.bgColor,
+        details: null,
+      },
+    },
+  },
 }

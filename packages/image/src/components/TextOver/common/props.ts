@@ -7,6 +7,7 @@ import {
 import { CssStyle } from 'ts-typedef-helper'
 import * as CSST from 'csstype'
 import { ReactNode } from 'react'
+import { ColorPalette as $, Truthy } from 'styled-utility-first'
 
 export const triggerOptions = ['hover', 'none'] as const
 export type TriggerOptions = typeof triggerOptions[number]
@@ -17,6 +18,7 @@ const conf = {
   txtDuration: NotRequired<number>(0.5),
   imgPaddingV: NotRequired<number>(1.5),
   imgPaddingU: NotRequired<CssStyle.Unit.Length>('rem'),
+  bgColor: NotRequired<CSST.Property.BackgroundColor>($.grayScale.dark),
 }
 type Conf = typeof conf
 
