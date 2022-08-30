@@ -41,6 +41,6 @@ export const Mask = styled.span<CharacterProps>`
 
   &&:hover::before {
     /*hoverした時の変化*/
-    animation: ${throughShine} 0.7s; /*アニメーションの名前と速度を定義*/
+    animation: ${throughShine} 1s; /*アニメーションの名前と速度を定義*/
   }
 `
