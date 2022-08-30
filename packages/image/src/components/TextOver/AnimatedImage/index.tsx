@@ -7,7 +7,7 @@ import {
 } from 'react'
 import { Image } from '../../core'
 import { CharacterProps, defaultProps } from './model/props'
-import { Mask } from './styled'
+import { Mask, Root, TextWrap } from './styled'
 
 export type TextOverAnimatedImageProps = CharacterProps &
   Omit<ComponentPropsWithoutRef<'img'>, 'children'>
@@ -26,9 +26,12 @@ const TextOverAnimatedImageInner: TextOverAnimatedImageComponent = (
   // prettier-ignore
   const { trigger, duration, aboveText, imgPaddingV, imgPaddingU, motionType, ...attrs } = props
   return (
-    <Mask {...props}>
-      <Image {...attrs} ref={ref} />
-    </Mask>
+    <Root>
+      <Mask {...props}>
+        <Image {...attrs} ref={ref} />
+        <TextWrap {...props}>{aboveText}</TextWrap>
+      </Mask>
+    </Root>
   )
 }
 
