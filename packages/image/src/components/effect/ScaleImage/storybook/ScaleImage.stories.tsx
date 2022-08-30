@@ -1,7 +1,6 @@
 import { ComponentStory } from '@storybook/react'
 import { ScaleImage } from '..'
 import { commmonArgTypes } from '../../../model/argTypes'
-import { styleArgTypes } from '../css-props/argTypes'
 import { logicArgTypes } from '../model/argTypes'
 import { defaultProps } from '../model/props'
 import { DocsPage } from './docsPage'
@@ -37,7 +36,6 @@ export default {
     },
     ...logicArgTypes,
     ...commmonArgTypes,
-    ...styleArgTypes,
   },
 }
 
