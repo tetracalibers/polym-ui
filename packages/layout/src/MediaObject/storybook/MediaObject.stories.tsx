@@ -1,5 +1,5 @@
 import { ComponentStory } from '@storybook/react'
-import { Media } from '..'
+import { MediaObject } from '..'
 import { commmonArgTypes } from '../../common/argTypes'
 import { DarkTextBox } from '../../mock/TestBox'
 import { styleArgTypes } from '../css-props/argTypes'
@@ -8,8 +8,8 @@ import { defaultProps } from '../model/props'
 import { DocsPage } from './docsPage'
 
 export default {
-  title: 'layout pettern/Media',
-  component: Media,
+  title: 'layout pettern/MediaObject',
+  component: MediaObject,
   parameters: {
     docs: {
       page: () => <DocsPage />,
@@ -40,10 +40,13 @@ export default {
   },
 }
 
-const Template: ComponentStory<typeof Media> = ({ children, ...args }) => (
-  <Media {...args} as={DarkTextBox}>
+const Template: ComponentStory<typeof MediaObject> = ({
+  children,
+  ...args
+}) => (
+  <MediaObject {...args} as={DarkTextBox}>
     {children}
-  </Media>
+  </MediaObject>
 )
 
 export const playground = Template.bind({})
