@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import { ElementType, forwardRef, ReactElement } from 'react'
+import { forwardRef, ReactElement } from 'react'
 import {
   PolymorphicComponentPropWithRef,
   PolymorphicRef,
@@ -7,15 +7,18 @@ import {
 import { CharacterProps, defaultProps } from './model/props'
 import { StyledElement } from './styled'
 
-export type ImageProps<As extends ElementType> =
+const allowHtmlTag = ['img', 'picture'] as const
+type AllowHtmlTag = typeof allowHtmlTag[number]
+
+export type ImageProps<As extends AllowHtmlTag> =
   PolymorphicComponentPropWithRef<As, CharacterProps>
 
-export type ImageComponent = <As extends ElementType>(
+export type ImageComponent = <As extends AllowHtmlTag>(
   props: ImageProps<As>
 ) => ReactElement | null
 
 export const Image: ImageComponent = forwardRef(
-  <As extends ElementType>(
+  <As extends AllowHtmlTag>(
     { as, children, ..._props }: ImageProps<As>,
     ref?: PolymorphicRef<As>
   ) => {
