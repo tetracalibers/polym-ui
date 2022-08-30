@@ -1,4 +1,5 @@
-import { ComponentStory } from '@storybook/react'
+import { ComponentStory, Story } from '@storybook/react'
+import { ReactElement } from 'react'
 import { Image } from '..'
 import { commmonArgTypes } from '../../common/argTypes'
 import { DarkTextBox } from '../../mock/TestBox'
@@ -40,10 +41,8 @@ export default {
   },
 }
 
-const Template: ComponentStory<typeof Image> = ({ children, ...args }) => (
-  <Image {...args} as={DarkTextBox}>
-    {children}
-  </Image>
+const Template: Story<typeof Image> = ({ ...args }) => (
+  <Image {...args} as={<DarkTextBox />} src='' />
 )
 
 export const playground = Template.bind({})

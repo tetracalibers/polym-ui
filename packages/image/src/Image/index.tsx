@@ -1,34 +1,66 @@
 import _ from 'lodash'
-import { forwardRef, ReactElement } from 'react'
 import {
-  PolymorphicComponentPropWithRef,
-  PolymorphicRef,
-} from '../common/polymorphic/standard'
+  Attributes,
+  cloneElement,
+  ComponentPropsWithoutRef,
+  createElement,
+  FC,
+  ForwardedRef,
+  forwardRef,
+  ReactElement,
+  Ref,
+} from 'react'
+import {
+  AnyStyledComponent,
+  isStyledComponent,
+  StyledComponent,
+  StyledComponentBase,
+  StyledComponentInnerComponent,
+} from 'styled-components'
 import { CharacterProps, defaultProps } from './model/props'
-import { StyledElement } from './styled'
 
 const allowHtmlTag = ['img', 'picture'] as const
-type AllowHtmlTag = typeof allowHtmlTag[number]
+type AllowElement = ReactElement<
+  unknown,
+  | typeof allowHtmlTag[number]
+  | StyledComponent<typeof allowHtmlTag[number], any>
+>
 
-export type ImageProps<As extends AllowHtmlTag> =
-  PolymorphicComponentPropWithRef<As, CharacterProps>
+export type ImageProps<As extends AllowElement> = {
+  ref?: Ref<
+    As['type'] extends 'picture' ? HTMLPictureElement : HTMLImageElement
+  >
+  as?: As
+} & CharacterProps &
+  ComponentPropsWithoutRef<
+    As['type'] extends AnyStyledComponent
+      ? StyledComponentInnerComponent<As['type']>
+      : As['type']
+  >
 
-export type ImageComponent = <As extends AllowHtmlTag>(
-  props: ImageProps<As>
-) => ReactElement | null
+// export type ImageComponent<As extends AllowElement> = (
+//   props: ImageProps<As>
+// ) => ReactElement<ImageProps<As>, As['type']> | null
 
-export const Image: ImageComponent = forwardRef(
-  <As extends AllowHtmlTag>(
-    { as, children, ..._props }: ImageProps<As>,
-    ref?: PolymorphicRef<As>
-  ) => {
-    const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
-      _.isUndefined(input) ? defaul : input
-    )
-    return (
-      <StyledElement {...props} ref={ref} as={as as unknown as undefined}>
-        {children}
-      </StyledElement>
-    )
-  }
-)
+const ImageInner = <As extends AllowElement>(
+  { as, ..._props }: ImageProps<As>,
+  ref: ForwardedRef<As>
+) => {
+  const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
+    _.isUndefined(input) ? defaul : input
+  )
+
+  const Component = (props: Attributes) =>
+    as !== undefined ? <>{as}</> : createElement('img', props)
+
+  return <Component {...props} ref={ref} />
+}
+
+const ImageWithRef = forwardRef(ImageInner)
+
+export const Image = <As extends AllowElement>(
+  { as, ...props }: ImageProps<As>,
+  innerRef: Ref<typeof ImageInner['arguments']['as']>
+) => {
+  return <ImageWithRef {...props} ref={innerRef} as={as} />
+}
