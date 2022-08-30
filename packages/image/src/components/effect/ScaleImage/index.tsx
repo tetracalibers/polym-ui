@@ -1,31 +1,34 @@
 import _ from 'lodash'
-import { ElementType, forwardRef, ReactElement } from 'react'
 import {
-  PolymorphicComponentPropWithRef,
-  PolymorphicRef,
-} from '../../../common/polymorphic/standard'
+  ComponentPropsWithoutRef,
+  ForwardedRef,
+  forwardRef,
+  ReactElement,
+} from 'react'
+import { Image } from '../../core'
 import { CharacterProps, defaultProps } from './model/props'
-import { StyledElement } from './styled'
+import { Mask } from './styled'
 
-export type ScaleImageProps<As extends ElementType> =
-  PolymorphicComponentPropWithRef<As, CharacterProps>
+export type ScaleImageProps = CharacterProps &
+  Omit<ComponentPropsWithoutRef<'img'>, 'children'>
 
-export type ScaleImageComponent = <As extends ElementType>(
-  props: ScaleImageProps<As>
+export type ScaleImageComponent = (
+  props: ScaleImageProps
 ) => ReactElement | null
 
-export const ScaleImage: ScaleImageComponent = forwardRef(
-  <As extends ElementType>(
-    { as, children, ..._props }: ScaleImageProps<As>,
-    ref?: PolymorphicRef<As>
-  ) => {
-    const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
-      _.isUndefined(input) ? defaul : input
-    )
-    return (
-      <StyledElement {...props} ref={ref} as={as as unknown as undefined}>
-        {children}
-      </StyledElement>
-    )
-  }
-)
+const ScaleImageInner: ScaleImageComponent = (
+  { ..._props }: ScaleImageProps,
+  ref?: ForwardedRef<HTMLImageElement>
+) => {
+  const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
+    _.isUndefined(input) ? defaul : input
+  )
+  const { trigger, mode, withRotate, ...attrs } = props
+  return (
+    <Mask {...props}>
+      <Image {...attrs} ref={ref} />
+    </Mask>
+  )
+}
+
+export const ScaleImage = forwardRef(ScaleImageInner)
