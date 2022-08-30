@@ -1,27 +1,27 @@
 import { CssStyle } from 'ts-typedef-helper'
 import { useSetDefaultAs } from 'story-builder'
-import { defaultEffectProps } from './props'
+import { defaultEffectProps, triggerOptions } from './props'
 const withDefaultAs = useSetDefaultAs(defaultEffectProps)
 
 export const effectArgTypes = {
-  //trigger: {
-  //  control: {
-  //    type: 'radio',
-  //  },
-  //  options: triggerOptions,
-  //  description:
-  //    'Which action activates the effect. (Setting "none" always activates the effect.)',
-  //  table: {
-  //    type: {
-  //      summary: null,
-  //    },
-  //    category: 'effect',
-  //    defaultValue: {
-  //      summary: defaultEffectProps.trigger,
-  //      details: null,
-  //    },
-  //  },
-  //},
+  trigger: {
+    control: {
+      type: 'radio',
+    },
+    options: triggerOptions,
+    description:
+      'Which action activates the effect. (Setting "none" always activates the effect.)',
+    table: {
+      type: {
+        summary: null,
+      },
+      category: 'effect',
+      defaultValue: {
+        summary: defaultEffectProps.trigger,
+        details: null,
+      },
+    },
+  },
   duration: {
     ...withDefaultAs('transitionDuration'),
     table: {

@@ -7,11 +7,11 @@ import {
 import { CssStyle } from 'ts-typedef-helper'
 import * as CSST from 'csstype'
 
-//export const triggerOptions = ['hover', 'none'] as const
-//export type TriggerOptions = typeof triggerOptions[number]
+export const triggerOptions = ['hover', 'none'] as const
+export type TriggerOptions = typeof triggerOptions[number]
 
 const conf = {
-  //trigger: NotRequired<TriggerOptions>('hover'),
+  trigger: NotRequired<TriggerOptions>('hover'),
   duration: NotRequired<number>(0.3),
 }
 type Conf = typeof conf

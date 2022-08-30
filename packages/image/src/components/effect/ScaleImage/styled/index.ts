@@ -3,22 +3,27 @@ import { CharacterProps } from '../model/props'
 import { match } from 'ts-pattern'
 import { ColorPalette as $, Truthy } from 'styled-utility-first'
 
-export const Mask = styled.span<CharacterProps>`
-  --width: ${({ width }) => width};
-  --height: ${({ height }) => height};
-  --duration: ${({ duration }) => duration}s;
+const insertEffect = css<CharacterProps>`
   --degree: ${({ withRotate, angle, clockwise }) =>
     withRotate ? (clockwise ? Math.abs(angle!) : -1 * Math.abs(angle!)) : 0}deg;
-  --before-scale: ${({ zoom, scaleFactor }) => {
-    return match(zoom!)
-      .with('in', () => 1 + scaleFactor!)
-      .with('out', () => 1)
-      .otherwise(() => '')
-  }};
   --after-scale: ${({ zoom, scaleFactor }) => {
     return match(zoom!)
       .with('in', () => 1)
       .with('out', () => 1 + scaleFactor!)
+      .otherwise(() => '')
+  }};
+
+  transform: rotate(var(--degree)) scale(var(--after-scale));
+`
+
+export const Mask = styled.span<CharacterProps>`
+  --width: ${({ width }) => width};
+  --height: ${({ height }) => height};
+  --duration: ${({ duration }) => duration}s;
+  --before-scale: ${({ zoom, scaleFactor }) => {
+    return match(zoom!)
+      .with('in', () => 1 + scaleFactor!)
+      .with('out', () => 1)
       .otherwise(() => '')
   }};
 
@@ -34,9 +39,10 @@ export const Mask = styled.span<CharacterProps>`
   && img {
     transform: scale(var(--before-scale));
     transition: var(--duration) ease-in-out;
+    ${({ trigger }) => trigger === 'none' && insertEffect}
   }
 
   && img:hover {
-    transform: rotate(var(--degree)) scale(var(--after-scale));
+    ${({ trigger }) => trigger === 'hover' && insertEffect}
   }
 `
