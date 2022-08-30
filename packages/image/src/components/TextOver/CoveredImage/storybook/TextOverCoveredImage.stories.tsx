@@ -1,5 +1,5 @@
 import { ComponentStory } from '@storybook/react'
-import { TextOverAnimatedImage } from '..'
+import { TextOverCoveredImage } from '..'
 import { commmonArgTypes } from '../../../model/argTypes'
 import { logicArgTypes } from '../model/argTypes'
 import { defaultProps } from '../model/props'
@@ -10,8 +10,8 @@ import { textOverImageArgTypes } from '../../common/argTypes'
 import { LightTextBox } from '../../../../mock/TestBox'
 
 export default {
-  title: 'image effect/TextOverAnimatedImage',
-  component: TextOverAnimatedImage,
+  title: 'image effect/TextOverCoveredImage',
+  component: TextOverCoveredImage,
   parameters: {
     docs: {
       page: () => <DocsPage />,
@@ -27,12 +27,12 @@ export default {
   },
 }
 
-const Template: ComponentStory<typeof TextOverAnimatedImage> = ({
+const Template: ComponentStory<typeof TextOverCoveredImage> = ({
   src,
   aboveText,
   ...args
 }) => (
-  <TextOverAnimatedImage
+  <TextOverCoveredImage
     {...args}
     aboveText={<LightTextBox>{aboveText}</LightTextBox>}
     src={sample01}

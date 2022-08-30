@@ -9,15 +9,15 @@ import { Image } from '../../core'
 import { CharacterProps, defaultProps } from './model/props'
 import { Mask, Root, TextWrap } from './styled'
 
-export type TextOverAnimatedImageProps = CharacterProps &
+export type TextOverCoveredImageProps = CharacterProps &
   Omit<ComponentPropsWithoutRef<'img'>, 'children'>
 
-export type TextOverAnimatedImageComponent = (
-  props: TextOverAnimatedImageProps
+export type TextOverCoveredImageComponent = (
+  props: TextOverCoveredImageProps
 ) => ReactElement | null
 
-const TextOverAnimatedImageInner: TextOverAnimatedImageComponent = (
-  { ..._props }: TextOverAnimatedImageProps,
+const TextOverCoveredImageInner: TextOverCoveredImageComponent = (
+  { ..._props }: TextOverCoveredImageProps,
   ref?: ForwardedRef<HTMLImageElement>
 ) => {
   const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
@@ -35,4 +35,4 @@ const TextOverAnimatedImageInner: TextOverAnimatedImageComponent = (
   )
 }
 
-export const TextOverAnimatedImage = forwardRef(TextOverAnimatedImageInner)
+export const TextOverCoveredImage = forwardRef(TextOverCoveredImageInner)
