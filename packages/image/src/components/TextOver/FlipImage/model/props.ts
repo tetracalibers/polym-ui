@@ -6,6 +6,8 @@ import {
 } from 'react-tsx-props'
 import { commonDefaultProps, CommonProps } from '../../../model/props'
 import { CssStyle } from 'ts-typedef-helper'
+import * as CSST from 'csstype'
+import { ColorPalette as $, Truthy } from 'styled-utility-first'
 import {
   defaultTextOverImageProps,
   TextOverImageProps,
@@ -22,6 +24,7 @@ type FlipAxisOptions = typeof flipAxisOptions[number]
 const conf = {
   duration: NotRequired<number>(0.3),
   flipAxis: NotRequired<FlipAxisOptions>('flipX'),
+  bgColor: NotRequired<CSST.Property.BackgroundColor>($.pastel.purple),
 }
 type Conf = typeof conf
 

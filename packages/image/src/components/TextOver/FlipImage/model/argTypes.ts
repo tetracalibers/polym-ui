@@ -35,4 +35,15 @@ export const logicArgTypes = {
       subcategory: 'animation',
     },
   },
+  bgColor: {
+    ...withDefaultAs('backgroundColor'),
+    description: 'color overlaid on an image',
+    table: {
+      ...withDefaultAs('backgroundColor').table,
+      defaultValue: {
+        summary: defaultProps.bgColor,
+        details: null,
+      },
+    },
+  },
 }

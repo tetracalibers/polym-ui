@@ -6,6 +6,8 @@ import {
 } from 'react-tsx-props'
 import { commonDefaultProps, CommonProps } from '../../../model/props'
 import { CssStyle } from 'ts-typedef-helper'
+import * as CSST from 'csstype'
+import { ColorPalette as $, Truthy } from 'styled-utility-first'
 import {
   defaultTextOverImageProps,
   TextOverImageProps,
@@ -33,6 +35,7 @@ const conf = {
   imgPaddingV: NotRequired<number>(1.5),
   imgPaddingU: NotRequired<CssStyle.Unit.Length>('rem'),
   trigger: NotRequired<TriggerOptions>('hover'),
+  bgColor: NotRequired<CSST.Property.BackgroundColor>($.grayScale.dark),
 }
 type Conf = typeof conf
 
