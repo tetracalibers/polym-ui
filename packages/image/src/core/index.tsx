@@ -39,11 +39,11 @@ const ImageInner = <As extends AllowElement>(
   return <Component {...props} ref={ref} />
 }
 
-const ImageWithRef = forwardRef(ImageInner)
+export const Image = forwardRef(ImageInner)
 
-export const Image = <As extends AllowElement>(
-  { as, ...props }: ImageProps<As>,
-  innerRef: Ref<typeof ImageInner['arguments']['as']>
-) => {
-  return <ImageWithRef {...props} ref={innerRef} as={as} />
-}
+// export const Image = <As extends AllowElement>(
+//   { as, ...props }: ImageProps<As>,
+//   innerRef?: Ref<HTMLImageElement>
+// ) => {
+//   return <ImageWithRef {...props} ref={innerRef} as={as} />
+// }

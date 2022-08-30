@@ -1,14 +1,16 @@
 import {
   getDefaultProps,
   getPropType,
-  Required,
   NotRequired,
+  Required,
 } from 'react-tsx-props'
 import { commonDefaultProps, CommonProps } from '../../common/props'
 import { styleDefaultProps, StyleProps } from '../css-props/props'
-import { CssStyle } from 'ts-typedef-helper'
 
-const conf = {}
+const conf = {
+  src: Required<HTMLImageElement['src']>(),
+  alt: NotRequired<HTMLImageElement['alt']>(''),
+}
 type Conf = typeof conf
 
 export type CharacterProps = getPropType<Conf> & CommonProps & StyleProps

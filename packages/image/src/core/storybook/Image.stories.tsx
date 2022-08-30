@@ -1,15 +1,16 @@
 import { ComponentStory, Story } from '@storybook/react'
-import { ReactElement } from 'react'
 import { Image } from '..'
 import { commmonArgTypes } from '../../common/argTypes'
-import { DarkTextBox } from '../../mock/TestBox'
 import { styleArgTypes } from '../css-props/argTypes'
 import { logicArgTypes } from '../model/argTypes'
 import { defaultProps } from '../model/props'
 import { DocsPage } from './docsPage'
+// @ts-ignore
+import sample01 from '../../assets/myproduct.jpg'
+import { DarkTextBox } from '../../mock/TestBox'
 
 export default {
-  title: 'hide-and-seek/Image',
+  title: 'image/Image',
   component: Image,
   parameters: {
     docs: {
@@ -20,29 +21,14 @@ export default {
     },
   },
   argTypes: {
-    children: {
-      control: {
-        type: null,
-      },
-      description: 'Child elements of the element specified by as props',
-      table: {
-        type: {
-          summary: null,
-        },
-        category: 'character',
-      },
-      type: {
-        required: true,
-      },
-    },
     ...logicArgTypes,
     ...commmonArgTypes,
     ...styleArgTypes,
   },
 }
 
-const Template: Story<typeof Image> = ({ ...args }) => (
-  <Image {...args} as={DarkTextBox} src='' />
+const Template: ComponentStory<typeof Image> = ({ ...args }) => (
+  <Image {...args} src={sample01} width='250px' />
 )
 
 export const playground = Template.bind({})
