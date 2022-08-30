@@ -13,8 +13,7 @@ export const logicArgTypes = {
       type: {
         summary: null,
       },
-      category: 'style control',
-      subcategory: 'effet',
+      category: 'effect',
       defaultValue: {
         summary: defaultEffectProps.trigger,
         details: null,

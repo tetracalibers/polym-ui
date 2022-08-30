@@ -9,7 +9,13 @@ import { styleDefaultProps, StyleProps } from '../css-props/props'
 import { CssStyle } from 'ts-typedef-helper'
 import { defaultEffectProps, EffectProps } from '../../model/props'
 
-const conf = {}
+export const modeOptions = ['enlarge', 'shrink']
+type ModeOptions = typeof modeOptions[number]
+
+const conf = {
+  mode: NotRequired<ModeOptions>('enlarge'),
+  withRotate: NotRequired<boolean>(false),
+}
 type Conf = typeof conf
 
 export type CharacterProps = getPropType<Conf> &
