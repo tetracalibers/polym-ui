@@ -20,6 +20,11 @@ const injectImgEndState = (flipAxis: CharacterProps['flipAxis']) => {
         transform: rotate3d(-1, 1, 0, 100deg); /*奥行きをもたせて回転*/
       `
     })
+    .with('flipZtoRightTop', () => {
+      return css`
+        transform: rotate3d(-1, -1, 0, 100deg);
+      `
+    })
     .otherwise(() => '')
 }
 
@@ -42,6 +47,11 @@ const injectTxtStartState = (flipAxis: CharacterProps['flipAxis']) => {
         transform: rotate3d(1, -1, 0, 100deg); /*奥行きをもたせて回転*/
       `
     })
+    .with('flipZtoRightTop', () => {
+      return css`
+        transform: rotate3d(1, 1, 0, 100deg);
+      `
+    })
     .otherwise(() => '')
 }
 
@@ -57,7 +67,7 @@ const injectTxtEndState = (flipAxis: CharacterProps['flipAxis']) => {
         transform: rotateY(0); /*横軸に回転*/
       `
     })
-    .with('flipZtoLeftTop', () => {
+    .with('flipZtoLeftTop', 'flipZtoRightTop', () => {
       return css`
         transform: rotate3d(0, 0, 0, 0deg); /*奥行きをもたせて回転*/
       `
