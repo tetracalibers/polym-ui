@@ -1,15 +1,13 @@
 import { ComponentStory } from '@storybook/react'
-import { Image } from '..'
+import { Header } from '..'
 import { commmonArgTypes } from '../../model/argTypes'
 import { logicArgTypes } from '../model/argTypes'
 import { defaultProps } from '../model/props'
 import { DocsPage } from './docsPage'
-// @ts-ignore
-import sample01 from '../../../assets/myproduct.jpg'
 
 export default {
-  title: 'core/Image',
-  component: Image,
+  title: 'core/Header',
+  component: Header,
   parameters: {
     docs: {
       page: () => <DocsPage />,
@@ -24,8 +22,8 @@ export default {
   },
 }
 
-const Template: ComponentStory<typeof Image> = ({ ...args }) => (
-  <Image {...args} src={sample01} />
+const Template: ComponentStory<typeof Header> = ({ children, ...args }) => (
+  <Header {...args}>{children}</Header>
 )
 
 export const playground = Template.bind({})

@@ -10,34 +10,41 @@ import {
 } from 'react'
 import { isStyledComponent, StyledComponent } from 'styled-components'
 import { CharacterProps, defaultProps } from './model/props'
-import { Img } from './styled'
 
-type AllowElement = StyledComponent<'img', any> | ReactElement<any, 'img'>
+type AllowElement = StyledComponent<'header', any> | ReactElement<any, 'header'>
 
-export type ImageProps<As extends AllowElement> = {
-  ref?: Ref<HTMLImageElement>
+export type HeaderProps<As extends AllowElement> = {
+  ref?: Ref<HTMLElement>
   as?: As
 } & CharacterProps &
-  Omit<ComponentPropsWithoutRef<'img'>, 'children' | 'width' | 'height'>
+  ComponentPropsWithoutRef<'header'>
 
-const ImageInner = <As extends AllowElement>(
-  { as, ..._props }: ImageProps<As>,
-  ref: ForwardedRef<HTMLImageElement>
+const HeaderInner = <As extends AllowElement>(
+  { as, children, ..._props }: HeaderProps<As>,
+  ref: ForwardedRef<HTMLElement>
 ) => {
   const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
     _.isUndefined(input) ? defaul : input
   )
 
   if (!as) {
-    return <Img {...props} ref={ref} />
+    return (
+      <header {...props} ref={ref}>
+        {children}
+      </header>
+    )
   }
 
-  const Component = (props: Omit<ImageProps<As>, 'as'>) =>
+  const Component = (props: Omit<HeaderProps<As>, 'as'>) =>
     isStyledComponent(as)
       ? cloneElement(<Fragment>{as}</Fragment>, props)
       : cloneElement(as, props)
 
-  return <Component {...props} ref={ref} />
+  return (
+    <Component {...props} ref={ref}>
+      {children}
+    </Component>
+  )
 }
 
-export const Image = forwardRef(ImageInner)
+export const Header = forwardRef(HeaderInner)

@@ -17,40 +17,16 @@ export const commmonArgTypes = {
       },
     },
   },
-  src: {
+  children: {
     control: {
       type: null,
     },
-    description: 'Image url and path',
+    description: 'Elements to be included in the header tag',
     table: {
+      category: 'react',
       type: {
         summary: null,
       },
-      category: 'html',
     },
-    type: {
-      required: true,
-    },
-  },
-  alt: {
-    control: {
-      type: 'text',
-    },
-    description:
-      'Alternative text that is comfortable to replace and conveys the content without overloading. (Do not specify if the image is for decorative purposes only.)',
-    table: {
-      type: {
-        summary: null,
-      },
-      category: 'html',
-    },
-  },
-  width: {
-    ...withDefaultAs('width'),
-    description: 'CSS width value to be applied to the img tag',
-  },
-  height: {
-    ...withDefaultAs('height'),
-    description: 'CSS height value to be applied to the img tag',
   },
 }

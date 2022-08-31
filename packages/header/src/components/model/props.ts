@@ -7,12 +7,7 @@ import {
 import { CssStyle } from 'ts-typedef-helper'
 import * as CSST from 'csstype'
 
-const conf = {
-  src: Required<HTMLImageElement['src']>(),
-  alt: NotRequired<HTMLImageElement['alt']>(''),
-  width: NotRequired<CSST.Property.Width>('300px'),
-  height: NotRequired<CSST.Property.Height>('auto'),
-}
+const conf = {}
 type Conf = typeof conf
 
 export type CommonProps = getPropType<Conf>
