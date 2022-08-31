@@ -23,19 +23,22 @@ const TextOverFramedImageInner: TextOverFramedImageComponent = (
   const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
     _.isUndefined(input) ? defaul : input
   )
-  // prettier-ignore
-  const { trigger, bgDuration, aboveText, imgPaddingV, imgPaddingU, motionType, width, height, bgColor, bgOpacity, txtDuration, ...attrs } = props
+  const {
+    trigger,
+    bgDuration,
+    aboveText,
+    imgPadding,
+    width,
+    height,
+    bgColor,
+    bgOpacity,
+    txtDuration,
+    ...attrs
+  } = props
+
   return (
     <Root width={width} height={height}>
-      <Mask
-        bgDuration={bgDuration}
-        bgOpacity={bgOpacity}
-        bgColor={bgColor}
-        motionType={motionType}
-        trigger={trigger}
-        imgPaddingV={imgPaddingV}
-        imgPaddingU={imgPaddingU}
-      >
+      <Mask imgPadding={imgPadding}>
         <Image {...attrs} ref={ref} />
         <TextWrap txtDuration={txtDuration} trigger={trigger}>
           {aboveText}

@@ -1,28 +1,9 @@
-import { defaultProps, motionTypeOptions, triggerOptions } from './props'
+import { defaultProps, triggerOptions } from './props'
 import { CssStyle } from 'ts-typedef-helper'
 import { useSetDefaultAs } from 'story-builder'
 const withDefaultAs = useSetDefaultAs(defaultProps)
 
 export const logicArgTypes = {
-  motionType: {
-    control: {
-      type: 'radio',
-    },
-    options: motionTypeOptions,
-    description:
-      'Type of animation when background and text appear over the image',
-    table: {
-      type: {
-        summary: null,
-      },
-      category: 'effect',
-      subcategory: 'animation',
-      defaultValue: {
-        summary: defaultProps.motionType,
-        details: null,
-      },
-    },
-  },
   bgDuration: {
     ...withDefaultAs('transitionDuration'),
     description: 'Time required to animate the background',
@@ -62,30 +43,17 @@ export const logicArgTypes = {
       },
     },
   },
-  imgPaddingV: {
+  imgPadding: {
+    ...withDefaultAs('padding').table,
     control: {
-      type: 'number',
+      type: 'text',
     },
     description:
-      'Numeric value representing the size of the gap between the edge of the image and the edge of the background',
+      'Size of the gap between the edge of the image and the edge of the background',
     table: {
       ...withDefaultAs('padding').table,
       defaultValue: {
-        summary: defaultProps.imgPaddingV,
-        details: null,
-      },
-    },
-  },
-  imgPaddingU: {
-    control: {
-      type: 'select',
-    },
-    options: CssStyle.Unit.length,
-    description: 'Units of imgPaddingV',
-    table: {
-      ...withDefaultAs('padding').table,
-      defaultValue: {
-        summary: defaultProps.imgPaddingU,
+        summary: defaultProps.imgPadding,
         details: null,
       },
     },
