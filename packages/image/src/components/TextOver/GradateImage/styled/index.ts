@@ -13,11 +13,11 @@ export const Root = styled.span<Pick<CharacterProps, 'width' | 'height'>>`
   height: var(--height);
 `
 
-export const Mask = styled.span<Pick<CharacterProps, 'duration'>>`
-  --duration: ${({ duration }) => duration}s;
+export const Mask = styled.span<Pick<CharacterProps, 'bgDuration'>>`
+  --bg-duration: ${({ bgDuration }) => bgDuration}s;
 
   position: relative; /*グラデーションの基点となる位置を定義*/
-  transition: 0.3s ease-in-out; /*移り変わる速さを変更したい場合はこの数値を変更*/
+  transition: var(--bg-duration) ease-in-out; /*移り変わる速さを変更したい場合はこの数値を変更*/
   display: block; /*画像をくくるspanタグをブロック要素にする*/
   line-height: 0; /*行の高さを0にする*/
 
@@ -39,7 +39,7 @@ export const Mask = styled.span<Pick<CharacterProps, 'duration'>>`
 
   & img {
     opacity: 1;
-    transition: 0.3s ease-in-out;
+    transition: var(--bg-duration) ease-in-out;
   }
 
   &:hover img {
@@ -48,10 +48,12 @@ export const Mask = styled.span<Pick<CharacterProps, 'duration'>>`
   }
 `
 
-export const TextWrap = styled.span`
+export const TextWrap = styled.span<Pick<CharacterProps, 'txtDuration'>>`
+  --txt-duration: ${({ txtDuration }) => txtDuration}s;
+
   && {
     opacity: 0;
-    transition: 0.5s ease-in-out; /*移り変わる速さを変更したい場合はこの数値を変更*/
+    transition: var(--txt-duration) ease-in-out;
     position: absolute;
     z-index: 3; /*テキストを前面に出す*/
     top: 50%;
@@ -59,7 +61,6 @@ export const TextWrap = styled.span`
     transform: translate(-50%, -50%);
     width: 100%;
     text-align: center;
-    line-height: 1.5; /*行の高さを1.5にする*/
   }
 
   ${Root}:hover && {

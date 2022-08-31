@@ -23,13 +23,13 @@ const TextOverGradateImageInner: TextOverGradateImageComponent = (
   const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
     _.isUndefined(input) ? defaul : input
   )
-  const { duration, aboveText, width, height, ...attrs } = props
+  const { aboveText, width, height, bgDuration, txtDuration, ...attrs } = props
 
   return (
     <Root width={width} height={height}>
-      <Mask duration={duration}>
+      <Mask bgDuration={bgDuration}>
         <Image {...attrs} ref={ref} />
-        <TextWrap>{aboveText}</TextWrap>
+        <TextWrap txtDuration={txtDuration}>{aboveText}</TextWrap>
       </Mask>
     </Root>
   )

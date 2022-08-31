@@ -14,7 +14,8 @@ import {
 } from '../../common/props'
 
 const conf = {
-  duration: NotRequired<number>(0.3),
+  bgDuration: NotRequired<number>(0.3),
+  txtDuration: NotRequired<number>(0.5),
 }
 type Conf = typeof conf
 
