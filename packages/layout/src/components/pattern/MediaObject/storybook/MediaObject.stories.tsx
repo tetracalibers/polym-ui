@@ -6,6 +6,7 @@ import { styleArgTypes } from '../css-props/argTypes'
 import { logicArgTypes } from '../model/argTypes'
 import { defaultProps } from '../model/props'
 import { DocsPage } from './docsPage'
+import { WithSidebar } from '../../../primitive/WithSidebar'
 
 export default {
   title: 'layout pettern/MediaObject',
@@ -40,11 +41,14 @@ export default {
   },
 }
 
+const DivElemt = () => <div>sample</div>
+const ImgElemt = () => <img>sample</img>
+
 const Template: ComponentStory<typeof MediaObject> = ({
   children,
   ...args
 }) => (
-  <MediaObject {...args} as={DarkTextBox}>
+  <MediaObject {...args} as={ImgElemt}>
     {children}
   </MediaObject>
 )
