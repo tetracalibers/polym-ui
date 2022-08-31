@@ -19,6 +19,10 @@ module.exports = {
     '@whitespace/storybook-addon-html',
     'storybook-addon-pseudo-states',
     '@storybook/addon-a11y',
+    '@storybook/addon-interactions',
   ],
   framework: '@storybook/react',
+  features: {
+    interactionsDebugger: true, // 👈 Enable playback controls
+  },
 }
