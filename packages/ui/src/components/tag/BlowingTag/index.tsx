@@ -3,27 +3,27 @@ import { ElementType, forwardRef, ReactElement } from 'react'
 import {
   PolymorphicComponentPropWithRef,
   PolymorphicRef,
-} from '../common/polymorphic'
+} from '../../../types/polymorphic/standard'
 import { CharacterProps, defaultProps } from './model/props'
 import { StyledElement } from './styled'
 
-export type WillFadeProps<As extends ElementType> =
+export type BlowingTagProps<As extends ElementType> =
   PolymorphicComponentPropWithRef<As, CharacterProps>
 
-export type WillFadeComponent = <As extends ElementType>(
-  props: WillFadeProps<As>
+export type BlowingTagComponent = <As extends ElementType>(
+  props: BlowingTagProps<As>
 ) => ReactElement | null
 
-export const WillFade: WillFadeComponent = forwardRef(
+export const BlowingTag: BlowingTagComponent = forwardRef(
   <As extends ElementType>(
-    { as, children, ..._props }: WillFadeProps<As>,
+    { as, children, ..._props }: BlowingTagProps<As>,
     ref?: PolymorphicRef<As>
   ) => {
     const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
       _.isUndefined(input) ? defaul : input
     )
     return (
-      <StyledElement {...props} ref={ref} as={as as unknown as undefined}>
+      <StyledElement {...props} as={as as unknown as undefined} ref={ref}>
         {children}
       </StyledElement>
     )

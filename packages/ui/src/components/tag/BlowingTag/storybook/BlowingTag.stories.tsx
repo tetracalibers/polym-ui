@@ -1,19 +1,12 @@
 import { ComponentStory } from '@storybook/react'
-import { WillFade } from '..'
-import { commmonArgTypes } from '../../common/argTypes'
-import { DarkTextBox } from '../../mock/TestBox'
+import { BlowingTag } from '..'
+import { LightTextBox } from '../../../../mock/TestBox'
 import { styleArgTypes } from '../css-props/argTypes'
-import { defaultProps } from '../model/props'
-import { DocsPage } from './docsPage'
+import { defaultProps, tailPosOptions } from '../model/props'
 
 export default {
-  title: 'shape container/WillFade',
-  component: WillFade,
-  parameters: {
-    docs: {
-      page: () => <DocsPage />,
-    },
-  },
+  title: 'shape container/BlowingTag',
+  component: BlowingTag,
   argTypes: {
     children: {
       control: {
@@ -30,18 +23,18 @@ export default {
         required: true,
       },
     },
-    fadeFrom: {
+    tailPos: {
       control: {
         type: null,
       },
-      description: 'Which direction the elements appear from',
+      description: 'Which side is attached to the arrow part of the balloon',
       table: {
         type: {
           summary: null,
         },
         category: 'character',
         defaultValue: {
-          summary: '', // TODO
+          summary: defaultProps.tailPos,
           details: null,
         },
       },
@@ -49,20 +42,26 @@ export default {
         required: true,
       },
     },
-    ...commmonArgTypes,
     ...styleArgTypes,
   },
 }
 
-const Template: ComponentStory<typeof WillFade> = ({ children, ...args }) => (
-  <WillFade {...args} as={DarkTextBox}>
+const Template: ComponentStory<typeof BlowingTag> = ({ children, ...args }) => (
+  <BlowingTag {...args} as={LightTextBox}>
     {children}
-  </WillFade>
+  </BlowingTag>
 )
 
 export const playground = Template.bind({})
 playground.args = {
   ...defaultProps,
-  children: 'Fade!!',
+  children: 'Example Text',
 }
-playground.argTypes = {}
+playground.argTypes = {
+  tailPos: {
+    control: {
+      type: 'radio',
+    },
+    options: tailPosOptions,
+  },
+}

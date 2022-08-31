@@ -1,11 +1,11 @@
 import React, { forwardRef } from 'react'
 import { CharacterProps, defaultProps } from './model/props'
+import { StyledElement } from './styled'
+import _ from 'lodash'
 import {
   PolymorphicComponentPropWithRef,
   PolymorphicRef,
-} from '../common/polymorphic'
-import { StyledElement } from './styled'
-import _ from 'lodash'
+} from '../../../types/polymorphic/standard'
 
 export type PointedTagProps<As extends React.ElementType> =
   PolymorphicComponentPropWithRef<As, CharacterProps>

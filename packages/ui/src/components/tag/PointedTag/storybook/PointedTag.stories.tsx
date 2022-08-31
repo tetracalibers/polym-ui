@@ -1,7 +1,6 @@
 import { ComponentStory } from '@storybook/react'
 import { PointedTag } from '..'
-import { commmonArgTypes } from '../../common/argTypes'
-import { DarkTextLink } from '../../mock/TestBox'
+import { DarkTextLink } from '../../../../mock/TestBox'
 import { styleArgTypes } from '../css-props/argTypes'
 import { defaultProps } from '../model/props'
 
@@ -24,7 +23,6 @@ export default {
         required: true,
       },
     },
-    ...commmonArgTypes,
     ...styleArgTypes,
   },
 }

@@ -1,5 +1,4 @@
 import { getDefaultProps, getPropType, Required } from 'react-tsx-props'
-import { commonDefaultProps, CommonProps } from '../../common/props'
 import { styleDefaultProps, StyleProps } from '../css-props/props'
 
 export const tailPosOptions = ['top', 'bottom', 'left', 'right'] as const
@@ -10,9 +9,8 @@ const conf = {
 }
 type Conf = typeof conf
 
-export type CharacterProps = getPropType<Conf> & CommonProps & StyleProps
+export type CharacterProps = getPropType<Conf> & StyleProps
 export const defaultProps = {
   ...getDefaultProps<CharacterProps>(conf),
-  ...commonDefaultProps,
   ...styleDefaultProps,
 }
