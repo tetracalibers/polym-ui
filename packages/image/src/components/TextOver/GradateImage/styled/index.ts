@@ -34,9 +34,10 @@ export const Mask = styled.span<Pick<CharacterProps, 'bgDuration'|'coverOpacity'
     height: 100%;
     background: linear-gradient(
       45deg,
-      rgba(88, 182, 211, 0.6),
-      rgba(229, 93, 135, 0.6)
+      rgba(88, 182, 211, 1),
+      rgba(229, 93, 135, 1)
     ); /*背景色（グラデーション）*/
+    opacity: var(--cover-opacity);
   }
 
   & img {
