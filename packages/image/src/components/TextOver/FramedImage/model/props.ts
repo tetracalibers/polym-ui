@@ -18,6 +18,7 @@ export type TriggerOptions = typeof triggerOptions[number]
 
 const conf = {
   txtDuration: NotRequired<number>(0.5),
+  drawDuration: NotRequired<number>(0.3),
   imgPadding: NotRequired<CSST.Property.Padding>('4%'),
   imgBlur: NotRequired<number>(2),
   imgOpacity: NotRequired<number>(0.5),

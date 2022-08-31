@@ -18,12 +18,12 @@ export const Root = styled.span<Pick<CharacterProps, 'width' | 'height'>>`
 `
 
 // prettier-ignore
-export const Mask = styled.span<Pick<CharacterProps, 'imgPadding' | 'imgBlur' | 'imgOpacity' | 'imgGrayScale' | 'lineColor' | 'lineStyle' | 'lineThickness'>>`
+export const Mask = styled.span<Pick<CharacterProps, 'imgPadding' | 'imgBlur' | 'imgOpacity' | 'imgGrayScale' | 'lineColor' | 'lineStyle' | 'lineThickness' | 'drawDuration'>>`
   --img-padding: ${({ imgPadding }) => imgPadding};
   --img-blur: ${({ imgBlur }) => imgBlur}px;
   --img-opacity: ${({ imgOpacity }) => imgOpacity};
   --img-grayscale: ${({ imgGrayScale }) => imgGrayScale}%;
-  --border-duration: 0.3s;
+  --border-duration: ${({ drawDuration }) => drawDuration}s;
   --border-color: ${({ lineColor }) => lineColor};
   --border-style: ${({ lineStyle }) => lineStyle};
   --thickness: ${({ lineThickness }) => lineThickness}px;

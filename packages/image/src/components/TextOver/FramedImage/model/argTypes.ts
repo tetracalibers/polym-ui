@@ -17,6 +17,20 @@ export const logicArgTypes = {
       subcategory: 'animation',
     },
   },
+  drawDuration: {
+    ...withDefaultAs('transitionDuration'),
+    description:
+      'Time it takes for the line to be completely drawn over the image',
+    table: {
+      ...withDefaultAs('transitionDuration').table,
+      defaultValue: {
+        summary: defaultProps.drawDuration,
+        details: null,
+      },
+      category: 'effect',
+      subcategory: 'animation',
+    },
+  },
   imgPadding: {
     ...withDefaultAs('padding').table,
     control: {
@@ -31,7 +45,7 @@ export const logicArgTypes = {
         details: null,
       },
       category: 'effect',
-      subcategory: 'line',
+      subcategory: 'space',
     },
   },
   trigger: {
