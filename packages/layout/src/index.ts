@@ -1,13 +1,13 @@
-import { VerticalCenter } from './VerticalCenter'
-import { WithSidebar } from './WithSidebar'
-import { HorizontalStack } from './HorizontalStack'
-import { VerticalStack } from './VerticalStack'
-import { HorizontalCenter } from './HorizontalCenter'
-import { SliderAlign } from './SliderAlign'
-import { Grid } from './Grid'
-import { OverlapLayer } from './OverlapLayer'
-import { AspectFrame } from './AspectFrame'
-import { DifferStack } from './DifferStack'
+import { VerticalCenter } from './components/primitive/VerticalCenter'
+import { WithSidebar } from './components/primitive/WithSidebar'
+import { HorizontalStack } from './components/primitive/HorizontalStack'
+import { VerticalStack } from './components/primitive/VerticalStack'
+import { HorizontalCenter } from './components/primitive/HorizontalCenter'
+import { SliderAlign } from './components/primitive/SliderAlign'
+import { Grid } from './components/primitive/Grid'
+import { OverlapLayer } from './components/primitive/OverlapLayer'
+import { AspectFrame } from './components/primitive/AspectFrame'
+import { DifferStack } from './components/primitive/DifferStack'
 
 export {
   VerticalCenter,
