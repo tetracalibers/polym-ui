@@ -25,13 +25,10 @@ const TextOverFramedImageInner: TextOverFramedImageComponent = (
   )
   const {
     trigger,
-    bgDuration,
     aboveText,
     imgPadding,
     width,
     height,
-    bgColor,
-    bgOpacity,
     txtDuration,
     ...attrs
   } = props

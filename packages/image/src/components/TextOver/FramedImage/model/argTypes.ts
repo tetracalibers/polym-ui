@@ -4,19 +4,6 @@ import { useSetDefaultAs } from 'story-builder'
 const withDefaultAs = useSetDefaultAs(defaultProps)
 
 export const logicArgTypes = {
-  bgDuration: {
-    ...withDefaultAs('transitionDuration'),
-    description: 'Time required to animate the background',
-    table: {
-      ...withDefaultAs('transitionDuration').table,
-      defaultValue: {
-        summary: defaultProps.bgDuration,
-        details: null,
-      },
-      category: 'effect',
-      subcategory: 'animation',
-    },
-  },
   txtDuration: {
     ...withDefaultAs('transitionDuration'),
     description: 'Time it takes for text above the image to appear',
@@ -28,19 +15,6 @@ export const logicArgTypes = {
       },
       category: 'effect',
       subcategory: 'animation',
-    },
-  },
-  bgOpacity: {
-    control: {
-      type: 'number',
-    },
-    description: 'Transparency of the color covering the image',
-    table: {
-      ...withDefaultAs('opacity').table,
-      defaultValue: {
-        summary: defaultProps.bgOpacity,
-        details: null,
-      },
     },
   },
   imgPadding: {
@@ -72,17 +46,6 @@ export const logicArgTypes = {
       category: 'effect',
       defaultValue: {
         summary: defaultProps.trigger,
-        details: null,
-      },
-    },
-  },
-  bgColor: {
-    ...withDefaultAs('backgroundColor'),
-    description: 'color overlaid on an image',
-    table: {
-      ...withDefaultAs('backgroundColor').table,
-      defaultValue: {
-        summary: defaultProps.bgColor,
         details: null,
       },
     },
