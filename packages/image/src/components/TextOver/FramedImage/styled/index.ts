@@ -18,14 +18,14 @@ export const Root = styled.span<Pick<CharacterProps, 'width' | 'height'>>`
 `
 
 // prettier-ignore
-export const Mask = styled.span<Pick<CharacterProps, 'imgPadding' | 'imgBlur' | 'imgOpacity' | 'imgGrayScale' | 'lineColor'>>`
+export const Mask = styled.span<Pick<CharacterProps, 'imgPadding' | 'imgBlur' | 'imgOpacity' | 'imgGrayScale' | 'lineColor' | 'lineStyle'>>`
   --img-padding: ${({ imgPadding }) => imgPadding};
   --img-blur: ${({ imgBlur }) => imgBlur}px;
   --img-opacity: ${({ imgOpacity }) => imgOpacity};
   --img-grayscale: ${({ imgGrayScale }) => imgGrayScale}%;
   --border-duration: 0.3s;
   --border-color: ${({ lineColor }) => lineColor};
-  --border-style: solid;
+  --border-style: ${({ lineStyle }) => lineStyle};
   --thickness: 1px;
 
   position: relative; /*背景色の基点となる位置を定義*/

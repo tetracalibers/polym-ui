@@ -117,4 +117,17 @@ export const logicArgTypes = {
       subcategory: 'line',
     },
   },
+  lineStyle: {
+    ...withDefaultAs('borderStyle'),
+    description: 'Type of enclosure line drawn over the image',
+    table: {
+      ...withDefaultAs('borderStyle').table,
+      defaultValue: {
+        summary: defaultProps.lineStyle,
+        details: null,
+      },
+      category: 'effect',
+      subcategory: 'line',
+    },
+  },
 }
