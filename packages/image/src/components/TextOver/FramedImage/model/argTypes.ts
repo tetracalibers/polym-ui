@@ -67,4 +67,22 @@ export const logicArgTypes = {
       },
     },
   },
+  imgOpacity: {
+    control: {
+      type: 'number',
+    },
+    description:
+      '1 for no transparency, 0 for transparency, and transparency between the two.',
+    table: {
+      type: {
+        summary: null,
+      },
+      category: 'effect',
+      subcategory: 'filter',
+      defaultValue: {
+        summary: defaultProps.imgOpacity,
+        details: null,
+      },
+    },
+  },
 }
