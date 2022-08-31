@@ -1,4 +1,4 @@
-import { styleDefaultProps, StyleProps } from './../css-props/props'
+import { styleDefaultProps, StyleProps } from '../css-props/props'
 import { getDefaultProps, getPropType } from 'react-tsx-props'
 import { commonDefaultProps, CommonProps } from '../../common/props'
 

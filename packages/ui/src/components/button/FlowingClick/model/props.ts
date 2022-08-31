@@ -1,6 +1,6 @@
 import { StyleProps, styleDefaultProps } from '../css-props/props'
 import { getDefaultProps, getPropType, Required } from 'react-tsx-props'
-import { commonDefaultProps, CommonProps } from '../../common/props'
+import { CommonProps, commonDefaultProps } from '../../common/props'
 
 export const presets = [
   'from-left',

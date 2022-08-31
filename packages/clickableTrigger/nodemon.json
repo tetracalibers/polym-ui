@@ -1,5 +1,0 @@
-{
-  "watch": ["lib"],
-  "ext": "js",
-  "exec": "node lib/bundle.es.js"
-}
