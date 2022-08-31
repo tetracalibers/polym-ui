@@ -25,6 +25,7 @@ const conf = {
   trigger: NotRequired<TriggerOptions>('hover'),
   lineColor: NotRequired<CSST.Property.BorderColor>($.grayScale.light),
   lineStyle: NotRequired<CSST.Property.BorderStyle>('solid'),
+  lineThickness: NotRequired<number>(1),
 }
 type Conf = typeof conf
 

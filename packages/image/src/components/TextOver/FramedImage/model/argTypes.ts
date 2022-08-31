@@ -130,4 +130,20 @@ export const logicArgTypes = {
       subcategory: 'line',
     },
   },
+  lineThickness: {
+    ...withDefaultAs('borderWidth'),
+    description: 'Thickness of the enclosing line drawn over the image (px)',
+    control: {
+      type: 'number',
+    },
+    table: {
+      ...withDefaultAs('borderWidth').table,
+      defaultValue: {
+        summary: defaultProps.lineThickness,
+        details: null,
+      },
+      category: 'effect',
+      subcategory: 'line',
+    },
+  },
 }
