@@ -51,6 +51,7 @@ const TextOverFramedImageInner: TextOverFramedImageComponent = (
         lineStyle={lineStyle}
         lineThickness={lineThickness}
         drawDuration={drawDuration}
+        trigger={trigger}
       >
         <Image {...attrs} ref={ref} />
         <TextWrap txtDuration={txtDuration} trigger={trigger}>

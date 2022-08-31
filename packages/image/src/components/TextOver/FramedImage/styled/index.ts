@@ -3,6 +3,16 @@ import { CharacterProps } from '../model/props'
 import { match } from 'ts-pattern'
 import { ColorPalette as $, Truthy } from 'styled-utility-first'
 
+const insertDrawEffect = css`
+  opacity: 1;
+  transform: scale(1);
+`
+
+const insertImgEffect = css`
+  filter: blur(var(--img-blur)) opacity(var(--img-opacity))
+    grayScale(var(--img-grayscale));
+`
+
 const insertTxtEffect = css`
   opacity: 1;
 `
@@ -18,7 +28,7 @@ export const Root = styled.span<Pick<CharacterProps, 'width' | 'height'>>`
 `
 
 // prettier-ignore
-export const Mask = styled.span<Pick<CharacterProps, 'imgPadding' | 'imgBlur' | 'imgOpacity' | 'imgGrayScale' | 'lineColor' | 'lineStyle' | 'lineThickness' | 'drawDuration'>>`
+export const Mask = styled.span<Pick<CharacterProps, 'imgPadding' | 'imgBlur' | 'imgOpacity' | 'imgGrayScale' | 'lineColor' | 'lineStyle' | 'lineThickness' | 'drawDuration' | 'trigger'>>`
   --img-padding: ${({ imgPadding }) => imgPadding};
   --img-blur: ${({ imgBlur }) => imgBlur}px;
   --img-opacity: ${({ imgOpacity }) => imgOpacity};
@@ -50,22 +60,27 @@ export const Mask = styled.span<Pick<CharacterProps, 'imgPadding' | 'imgBlur' | 
     border-top: var(--thickness) var(--border-style) var(--border-color);
     border-bottom: var(--thickness) var(--border-style) var(--border-color);
     transform: scale(0, 1);
+    ${({ trigger }) => trigger === 'none' && insertDrawEffect}
   }
 
   &::after {
     border-right: var(--thickness) var(--border-style) var(--border-color);
     border-left: var(--thickness) var(--border-style) var(--border-color);
     transform: scale(1, 0);
+    ${({ trigger }) => trigger === 'none' && insertDrawEffect}
   }
 
   ${Root}:hover &::before,
   ${Root}:hover &::after {
-    opacity: 1;
-    transform: scale(1);
+    ${({ trigger }) => trigger === 'hover' && insertDrawEffect}
+  }
+  
+  & img {
+    ${({ trigger }) => trigger === 'none' && insertImgEffect}
   }
   
   ${Root}:hover & img {
-    filter: blur(var(--img-blur)) opacity(var(--img-opacity)) grayScale(var(--img-grayscale));
+    ${({ trigger }) => trigger === 'hover' && insertImgEffect}
   }
 `
 
@@ -87,6 +102,6 @@ export const TextWrap = styled.span<Pick<CharacterProps, 'txtDuration' | 'trigge
   }
 
   ${Root}:hover && {
-    ${({ trigger }) => trigger !== 'none' && insertTxtEffect}
+    ${({ trigger }) => trigger === 'hover' && insertTxtEffect}
   }
 `
