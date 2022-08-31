@@ -25,6 +25,7 @@ export type MediaObjectProps<As extends AllowTag> = {
   ref?: ForwardedRef<HTMLElementTagNameMap[As]>
   as?: As
   children: ReactNode
+  media: ReactElement<any, 'img'>
 } & CharacterProps &
   ComponentProps<As>
 
@@ -36,6 +37,7 @@ export const MediaObjectInner = <As extends AllowTag>({
   as,
   children,
   ref,
+  media,
   ..._props
 }: MediaObjectProps<As>) => {
   const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
@@ -56,6 +58,7 @@ export const MediaObjectInner = <As extends AllowTag>({
   const Tag = as as string
   return (
     <Tag {...props} ref={ref}>
+      {media}
       {children}
     </Tag>
   )
