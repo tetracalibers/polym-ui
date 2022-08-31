@@ -21,7 +21,7 @@ export const Mask = styled.span<Pick<CharacterProps, 'duration'>>`
   display: block; /*画像をくくるspanタグをブロック要素にする*/
   line-height: 0; /*行の高さを0にする*/
 
-  &::before {
+  ${Root}:hover &::before {
     /*hoverした時の変化*/
     content: '';
     position: absolute;
