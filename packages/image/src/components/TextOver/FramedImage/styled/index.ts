@@ -20,6 +20,9 @@ export const Root = styled.span<Pick<CharacterProps, 'width' | 'height'>>`
 // prettier-ignore
 export const Mask = styled.span<Pick<CharacterProps, 'imgPadding'>>`
   --img-padding: ${({ imgPadding }) => imgPadding};
+  --img-blur: 2px;
+  --img-opacity: 0.5;
+  --img-grayscale: 100%;
   --border-duration: 0.3s;
   --border-color: ${$.grayScale.light};
   --border-style: solid;
@@ -28,6 +31,7 @@ export const Mask = styled.span<Pick<CharacterProps, 'imgPadding'>>`
   position: relative; /*背景色の基点となる位置を定義*/
   display: block;
   line-height: 0;
+  overflow: hidden;
 
   &::before,
   &::after {
@@ -58,6 +62,10 @@ export const Mask = styled.span<Pick<CharacterProps, 'imgPadding'>>`
   ${Root}:hover &::after {
     opacity: 1;
     transform: scale(1);
+  }
+  
+  ${Root}:hover & img {
+    filter: blur(var(--img-blur)) opacity(var(--img-opacity)) grayScale(var(--img-grayscale));
   }
 `
 

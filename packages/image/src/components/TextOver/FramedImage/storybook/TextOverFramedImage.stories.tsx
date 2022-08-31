@@ -7,7 +7,7 @@ import { DocsPage } from './docsPage'
 // @ts-ignore
 import sample01 from '../../../../assets/myproduct.jpg'
 import { textOverImageArgTypes } from '../../common/argTypes'
-import { LightTextBox } from '../../../../mock/TestBox'
+import { DarkTextBox, LightTextBox } from '../../../../mock/TestBox'
 
 export default {
   title: 'image effect/TextOverFramedImage',
@@ -34,7 +34,7 @@ const Template: ComponentStory<typeof TextOverFramedImage> = ({
 }) => (
   <TextOverFramedImage
     {...args}
-    aboveText={<LightTextBox>{aboveText}</LightTextBox>}
+    aboveText={<DarkTextBox>{aboveText}</DarkTextBox>}
     src={sample01}
   />
 )
