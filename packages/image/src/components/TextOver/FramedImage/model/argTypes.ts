@@ -50,4 +50,21 @@ export const logicArgTypes = {
       },
     },
   },
+  imgBlur: {
+    control: {
+      type: 'number',
+    },
+    description: 'radius of blur (px)',
+    table: {
+      type: {
+        summary: null,
+      },
+      category: 'effect',
+      subcategory: 'filter',
+      defaultValue: {
+        summary: defaultProps.imgBlur,
+        details: null,
+      },
+    },
+  },
 }

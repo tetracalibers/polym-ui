@@ -18,9 +18,9 @@ export const Root = styled.span<Pick<CharacterProps, 'width' | 'height'>>`
 `
 
 // prettier-ignore
-export const Mask = styled.span<Pick<CharacterProps, 'imgPadding'>>`
+export const Mask = styled.span<Pick<CharacterProps, 'imgPadding' | 'imgBlur'>>`
   --img-padding: ${({ imgPadding }) => imgPadding};
-  --img-blur: 2px;
+  --img-blur: ${({ imgBlur }) => imgBlur}px;
   --img-opacity: 0.5;
   --img-grayscale: 100%;
   --border-duration: 0.3s;

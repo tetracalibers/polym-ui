@@ -19,6 +19,7 @@ export type TriggerOptions = typeof triggerOptions[number]
 const conf = {
   txtDuration: NotRequired<number>(0.5),
   imgPadding: NotRequired<CSST.Property.Padding>('4%'),
+  imgBlur: NotRequired<number>(2),
   trigger: NotRequired<TriggerOptions>('hover'),
 }
 type Conf = typeof conf
