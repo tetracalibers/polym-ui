@@ -6,7 +6,9 @@ import { styleArgTypes } from '../css-props/argTypes'
 import { logicArgTypes } from '../model/argTypes'
 import { defaultProps } from '../model/props'
 import { DocsPage } from './docsPage'
-import { WithSidebar } from '../../../primitive/WithSidebar'
+import { VerticalStack } from '../../../primitive/VerticalStack'
+import { BlurImage } from '../../../../../../image/src/components/effect/BlurImage'
+import { ComponentElement, FC } from 'react'
 
 export default {
   title: 'layout pettern/MediaObject',
@@ -45,7 +47,7 @@ const Template: ComponentStory<typeof MediaObject> = ({
   children,
   ...args
 }) => (
-  <MediaObject {...args} as={DarkTextBox}>
+  <MediaObject {...args} as={'div'}>
     {children}
   </MediaObject>
 )

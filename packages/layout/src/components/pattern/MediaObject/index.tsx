@@ -1,12 +1,6 @@
 /* eslint-disable no-undef */
 import _ from 'lodash'
-import {
-  ComponentClass,
-  ComponentProps,
-  FC,
-  ForwardedRef,
-  forwardRef,
-} from 'react'
+import { ComponentProps, ForwardedRef, forwardRef, ReactNode } from 'react'
 import { CharacterProps, defaultProps } from './model/props'
 
 const allowTag = [
@@ -21,26 +15,14 @@ const allowTag = [
 ] as const
 type AllowTag = typeof allowTag[number]
 
-type AllowElementPropsMap = { [k in AllowTag]: ComponentProps<k> }
-
-type AllowElement =
-  | AllowTag
-  | ComponentClass<AllowElementPropsMap[AllowTag]>
-  | FC<AllowElementPropsMap[AllowTag]>
-
-export type MediaObjectProps<As extends AllowElement> = {
-  ref?: ForwardedRef<
-    As extends AllowTag
-      ? HTMLElementTagNameMap[As]
-      : As extends ComponentClass | FC
-      ? As
-      : never
-  >
+export type MediaObjectProps<As extends AllowTag> = {
+  ref?: ForwardedRef<HTMLElementTagNameMap[As]>
   as?: As
+  children: ReactNode
 } & CharacterProps &
   ComponentProps<As>
 
-export const MediaObjectInner = <As extends AllowElement>({
+export const MediaObjectInner = <As extends AllowTag>({
   as,
   children,
   ref,
@@ -50,21 +32,22 @@ export const MediaObjectInner = <As extends AllowElement>({
     _.isUndefined(input) ? defaul : input
   )
 
-  if (allowTag.includes(as as AllowTag)) {
-    const Tag = as as string
+  if (as === undefined) {
     return (
-      <Tag {...props} ref={ref}>
+      <div
+        {...(props as Omit<MediaObjectProps<'div'>, 'as' | 'ref' | 'children'>)}
+        ref={ref as ForwardedRef<HTMLDivElement>}
+      >
         {children}
-      </Tag>
+      </div>
     )
   }
 
-  const Component = as as FC | ComponentClass
-
+  const Tag = as as string
   return (
-    <Component {...props} ref={ref}>
+    <Tag {...props} ref={ref}>
       {children}
-    </Component>
+    </Tag>
   )
 }
 
