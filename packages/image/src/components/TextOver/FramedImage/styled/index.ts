@@ -18,6 +18,12 @@ export const Root = styled.span<Pick<CharacterProps, 'width' | 'height'>>`
 `
 
 export const Mask = styled.span`
+  --img-padding: 4%;
+  --border-duration: 0.3s;
+  --border-color: ${$.grayScale.light};
+  --border-style: solid;
+  --thickness: 1px;
+
   position: relative; /*背景色の基点となる位置を定義*/
   display: block;
   line-height: 0;
@@ -25,25 +31,25 @@ export const Mask = styled.span`
   &::before,
   &::after {
     position: absolute;
-    top: 4%;
-    right: 4%;
-    bottom: 4%;
-    left: 4%;
+    top: var(--img-padding);
+    right: var(--img-padding);
+    bottom: var(--img-padding);
+    left: var(--img-padding);
     z-index: 3;
     content: '';
     opacity: 0;
-    transition: 0.3s ease-in-out;
+    transition: var(--border-duration) ease-in-out;
   }
 
   &::before {
-    border-top: 1px solid #fff; /*枠線の色と太さを変更したい場合はこの数値を変更*/
-    border-bottom: 1px solid #fff; /*枠線の色と太さを変更したい場合はこの数値を変更*/
+    border-top: var(--thickness) var(--border-style) var(--border-color);
+    border-bottom: var(--thickness) var(--border-style) var(--border-color);
     transform: scale(0, 1);
   }
 
   &::after {
-    border-right: 1px solid #fff; /*枠線の色と太さを変更したい場合はこの数値を変更*/
-    border-left: 1px solid #fff; /*枠線の色と太さを変更したい場合はこの数値を変更*/
+    border-right: var(--thickness) var(--border-style) var(--border-color);
+    border-left: var(--thickness) var(--border-style) var(--border-color);
     transform: scale(1, 0);
   }
 
