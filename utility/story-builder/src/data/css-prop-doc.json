@@ -5100,10 +5100,9 @@
   },
   "opacity": {
     "control": {
-      "type": "select"
+      "type": "number"
     },
-    "options": ["<alpha-value>"],
-    "description": "",
+    "description": "Opacity of the element, i.e., the degree to which the content behind the element is hidden",
     "table": {
       "category": "CSS",
       "subcategory": "Color",
