@@ -30,12 +30,19 @@ const TextOverGradateImageInner: TextOverGradateImageComponent = (
     bgDuration,
     txtDuration,
     coverOpacity,
+    gradientFrom,
+    gradientTo,
     ...attrs
   } = props
 
   return (
     <Root width={width} height={height}>
-      <Mask bgDuration={bgDuration} coverOpacity={coverOpacity}>
+      <Mask
+        bgDuration={bgDuration}
+        coverOpacity={coverOpacity}
+        gradientFrom={gradientFrom}
+        gradientTo={gradientTo}
+      >
         <Image {...attrs} ref={ref} />
         <TextWrap txtDuration={txtDuration}>{aboveText}</TextWrap>
       </Mask>

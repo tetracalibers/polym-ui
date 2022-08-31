@@ -43,4 +43,30 @@ export const logicArgTypes = {
       subcategory: 'filter',
     },
   },
+  gradientFrom: {
+    ...withDefaultAs('color'),
+    description: 'Linear gradient starting color',
+    table: {
+      ...withDefaultAs('color').table,
+      defaultValue: {
+        summary: defaultProps.gradientFrom,
+        details: null,
+      },
+      category: 'effect',
+      subcategory: 'gradation',
+    },
+  },
+  gradientTo: {
+    ...withDefaultAs('color'),
+    description: 'Linear gradient end color',
+    table: {
+      ...withDefaultAs('color').table,
+      defaultValue: {
+        summary: defaultProps.gradientTo,
+        details: null,
+      },
+      category: 'effect',
+      subcategory: 'gradation',
+    },
+  },
 }

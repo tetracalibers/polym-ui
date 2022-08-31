@@ -17,6 +17,8 @@ const conf = {
   bgDuration: NotRequired<number>(0.3),
   txtDuration: NotRequired<number>(0.5),
   coverOpacity: NotRequired<number>(0.6),
+  gradientFrom: NotRequired<CSST.Property.Color>('#7ee8fa'),
+  gradientTo: NotRequired<CSST.Property.Color>('#eec0c6'),
 }
 type Conf = typeof conf
 
