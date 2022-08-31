@@ -1,0 +1,33 @@
+/*!
+  Hooks.js v0.0.0
+  https://github.com/tetracalibers/polym-ui/tree/main/packages/core#readme
+  Released under the MIT License.
+*/
+
+/*!
+  StyledUtilityFirst.js v0.0.0
+  https://github.com/tetracalibers/React-polyhexUI/tree/main/packages/core#readme
+  Released under the MIT License.
+*/
+
+/*!
+  Ui.js v0.0.0
+  https://github.com/tetracalibers/polym-ui/tree/main/packages/core#readme
+  Released under the MIT License.
+*/
+
+/*!
+  react-tsx-props v0.0.0
+  https://github.com/tetracalibers/React-polyhexUI/tree/main/packages/core#readme
+  Released under the MIT License.
+*/
+
+/**
+   * @license React
+   * react-jsx-runtime.production.min.js
+   *
+   * Copyright (c) Facebook, Inc. and its affiliates.
+   *
+   * This source code is licensed under the MIT license found in the
+   * LICENSE file in the root directory of this source tree.
+   */
