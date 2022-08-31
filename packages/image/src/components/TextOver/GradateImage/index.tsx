@@ -32,6 +32,7 @@ const TextOverGradateImageInner: TextOverGradateImageComponent = (
     coverOpacity,
     gradientFrom,
     gradientTo,
+    gradientSlope,
     ...attrs
   } = props
 
@@ -42,6 +43,7 @@ const TextOverGradateImageInner: TextOverGradateImageComponent = (
         coverOpacity={coverOpacity}
         gradientFrom={gradientFrom}
         gradientTo={gradientTo}
+        gradientSlope={gradientSlope}
       >
         <Image {...attrs} ref={ref} />
         <TextWrap txtDuration={txtDuration}>{aboveText}</TextWrap>

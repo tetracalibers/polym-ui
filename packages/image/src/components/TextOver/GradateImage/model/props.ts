@@ -19,6 +19,7 @@ const conf = {
   coverOpacity: NotRequired<number>(0.6),
   gradientFrom: NotRequired<CSST.Property.Color>('#7ee8fa'),
   gradientTo: NotRequired<CSST.Property.Color>('#eec0c6'),
+  gradientSlope: NotRequired<number>(45),
 }
 type Conf = typeof conf
 

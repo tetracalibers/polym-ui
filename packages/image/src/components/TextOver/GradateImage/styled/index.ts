@@ -14,11 +14,12 @@ export const Root = styled.span<Pick<CharacterProps, 'width' | 'height'>>`
 `
 
 // prettier-ignore
-export const Mask = styled.span<Pick<CharacterProps, 'bgDuration'|'coverOpacity' | 'gradientFrom' | 'gradientTo'>>`
+export const Mask = styled.span<Pick<CharacterProps, 'bgDuration'|'coverOpacity' | 'gradientFrom' | 'gradientTo' | 'gradientSlope'>>`
   --bg-duration: ${({ bgDuration }) => bgDuration}s;
   --cover-opacity: ${({ coverOpacity }) => coverOpacity};
   --gd-from: ${({ gradientFrom }) => gradientFrom};
   --gd-to: ${({ gradientTo }) => gradientTo};
+  --gd-slope: ${({ gradientSlope }) => gradientSlope}deg;
   
   position: relative; /*グラデーションの基点となる位置を定義*/
   transition: var(--bg-duration) ease-in-out; /*移り変わる速さを変更したい場合はこの数値を変更*/
@@ -35,7 +36,7 @@ export const Mask = styled.span<Pick<CharacterProps, 'bgDuration'|'coverOpacity'
     width: 100%;
     height: 100%;
     background: linear-gradient(
-      45deg,
+      var(--gd-slope),
       var(--gd-from),
       var(--gd-to)
     ); /*背景色（グラデーション）*/

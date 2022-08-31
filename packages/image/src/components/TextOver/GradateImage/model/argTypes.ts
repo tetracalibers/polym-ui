@@ -69,4 +69,18 @@ export const logicArgTypes = {
       subcategory: 'gradation',
     },
   },
+  gradientSlope: {
+    control: {
+      type: 'number',
+    },
+    description: 'Axis tilt of gradient color change (deg)',
+    table: {
+      defaultValue: {
+        summary: defaultProps.gradientSlope,
+        details: null,
+      },
+      category: 'effect',
+      subcategory: 'gradation',
+    },
+  },
 }
