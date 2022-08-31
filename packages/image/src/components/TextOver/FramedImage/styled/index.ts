@@ -3,70 +3,6 @@ import { CharacterProps } from '../model/props'
 import { match } from 'ts-pattern'
 import { ColorPalette as $, Truthy } from 'styled-utility-first'
 
-const injectStartState = (motionType: CharacterProps['motionType']) => {
-  return match(motionType)
-    .with('slideUp', () => {
-      return css`
-        transform: translateY(100%);
-      `
-    })
-    .with('slideDown', () => {
-      return css`
-        transform: translateY(-100%);
-      `
-    })
-    .with('slideLtoR', () => {
-      return css`
-        transform: translateX(-100%);
-      `
-    })
-    .with('slideRtoL', () => {
-      return css`
-        transform: translateX(100%);
-      `
-    })
-    .with('spreadHorizontal', () => {
-      return css`
-        transition: transform var(--bg-duration) cubic-bezier(0.8, 0, 0.2, 1) 0s;
-        transform: scale(0, 1);
-        transform-origin: center;
-      `
-    })
-    .with('spreadVertical', () => {
-      return css`
-        transition: transform var(--bg-duration) cubic-bezier(0.8, 0, 0.2, 1) 0s;
-        transform: scale(1, 0);
-        transform-origin: center;
-      `
-    })
-    .otherwise(() => '')
-}
-
-const injectEndState = (motionType: CharacterProps['motionType']) => {
-  return match(motionType)
-    .with('slideUp', 'slideDown', () => {
-      return css`
-        transform: translateY(0);
-      `
-    })
-    .with('slideLtoR', 'slideRtoL', () => {
-      return css`
-        transform: translateX(0);
-      `
-    })
-    .with('spreadHorizontal', 'spreadVertical', () => {
-      return css`
-        transform: scale(1, 1);
-      `
-    })
-    .otherwise(() => '')
-}
-
-const insertBgEffect = css<Pick<CharacterProps, 'motionType'>>`
-  opacity: var(--bg-opacity); /*透過なしに変化*/
-  ${({ motionType }) => injectEndState(motionType)}
-`
-
 const insertTxtEffect = css`
   opacity: 1;
 `
@@ -81,38 +17,40 @@ export const Root = styled.span<Pick<CharacterProps, 'width' | 'height'>>`
   height: var(--height);
 `
 
-// prettier-ignore
-export const Mask = styled.span<Pick<CharacterProps, 'bgDuration' | 'bgColor' | 'bgOpacity' | 'motionType' | 'trigger' | 'imgPaddingU' | 'imgPaddingV'>>`
-  --bg-duration: ${({ bgDuration }) => bgDuration}s;
-  --bg-color: ${({ bgColor }) => bgColor};
-  --bg-opacity: ${({ bgOpacity }) => bgOpacity};
-  --img-padding: ${({ imgPaddingV, imgPaddingU }) => imgPaddingV! + imgPaddingU!};
-
+export const Mask = styled.span`
   position: relative; /*背景色の基点となる位置を定義*/
   display: block;
   line-height: 0;
-  /* はみ出す画像を隠す */
-  overflow: hidden;
 
-  &::before {
-    content: '';
+  &::before,
+  &::after {
     position: absolute;
-    left: 0;
-    top: 0;
-    z-index: 2;
-    opacity: 0; /*透過0*/
-    background-color: var(--bg-color);
-    width: calc(100% - var(--img-padding) * 2);
-    height: calc(100% - var(--img-padding) * 2);
-    margin: var(--img-padding);
-    box-sizing: content-box;
-    transition: var(--bg-duration) ease-in-out;
-    ${({ motionType }) => injectStartState(motionType)}
-    ${({ trigger }) => trigger === 'none' && insertBgEffect}
+    top: 4%;
+    right: 4%;
+    bottom: 4%;
+    left: 4%;
+    z-index: 3;
+    content: '';
+    opacity: 0;
+    transition: 0.3s ease-in-out;
   }
 
-  ${Root}:hover &::before {
-    ${({ trigger }) => trigger !== 'none' && insertBgEffect}
+  &::before {
+    border-top: 1px solid #fff; /*枠線の色と太さを変更したい場合はこの数値を変更*/
+    border-bottom: 1px solid #fff; /*枠線の色と太さを変更したい場合はこの数値を変更*/
+    transform: scale(0, 1);
+  }
+
+  &::after {
+    border-right: 1px solid #fff; /*枠線の色と太さを変更したい場合はこの数値を変更*/
+    border-left: 1px solid #fff; /*枠線の色と太さを変更したい場合はこの数値を変更*/
+    transform: scale(1, 0);
+  }
+
+  ${Root}:hover &::before,
+  ${Root}:hover &::after {
+    opacity: 1;
+    transform: scale(1);
   }
 `
 
