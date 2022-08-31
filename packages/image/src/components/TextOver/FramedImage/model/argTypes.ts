@@ -85,4 +85,21 @@ export const logicArgTypes = {
       },
     },
   },
+  imgGrayScale: {
+    control: {
+      type: 'number',
+    },
+    description: 'degree of monochrome (%)',
+    table: {
+      type: {
+        summary: null,
+      },
+      category: 'effect',
+      subcategory: 'filter',
+      defaultValue: {
+        summary: defaultProps.imgGrayScale,
+        details: null,
+      },
+    },
+  },
 }
