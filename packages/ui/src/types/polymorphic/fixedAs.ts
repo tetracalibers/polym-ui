@@ -75,3 +75,23 @@ export type TrComponentPropWithRef<Props = {}> = PolymorphicRef<'tr'> &
   ComponentPropsWithoutRef<'tr'> & {
     children: ThComponentPropWithRef | TdComponentPropWithRef
   }
+
+/* -------------------------------------------- */
+/* SPAN                                         */
+/* -------------------------------------------- */
+
+export type SpanComponentProp<Props = {}> = PropsWithChildren<Props> &
+  ComponentPropsWithoutRef<'span'>
+
+export type SpanComponentPropWithRef<Props = {}> = SpanComponentProp<Props> &
+  PolymorphicRef<'span'>
+
+/* -------------------------------------------- */
+/* DIV                                          */
+/* -------------------------------------------- */
+
+export type DivComponentProp<Props = {}> = PropsWithChildren<Props> &
+  ComponentPropsWithoutRef<'div'>
+
+export type DivComponentPropWithRef<Props = {}> = DivComponentProp<Props> &
+  PolymorphicRef<'div'>

@@ -68,7 +68,6 @@
     "ts-pattern": "^4.0.5",
     "ts-typedef-helper": "*",
     "typescript": "^4.7.4",
-    "zx": "^7.0.8",
-    "@polym-ui/symbol": "*"
+    "zx": "^7.0.8"
   }
 }
