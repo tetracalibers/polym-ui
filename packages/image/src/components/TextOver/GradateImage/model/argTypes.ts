@@ -1,4 +1,4 @@
-import { defaultProps } from './props'
+import { defaultProps, triggerOptions } from './props'
 import { CssStyle } from 'ts-typedef-helper'
 import { useSetDefaultAs } from 'story-builder'
 const withDefaultAs = useSetDefaultAs(defaultProps)
@@ -81,6 +81,24 @@ export const logicArgTypes = {
       },
       category: 'effect',
       subcategory: 'gradation',
+    },
+  },
+  trigger: {
+    control: {
+      type: 'radio',
+    },
+    options: triggerOptions,
+    description:
+      'Which action activates the effect. (Setting "none" always activates the effect.)',
+    table: {
+      type: {
+        summary: null,
+      },
+      category: 'effect',
+      defaultValue: {
+        summary: defaultProps.trigger,
+        details: null,
+      },
     },
   },
 }

@@ -33,6 +33,7 @@ const TextOverGradateImageInner: TextOverGradateImageComponent = (
     gradientFrom,
     gradientTo,
     gradientSlope,
+    trigger,
     ...attrs
   } = props
 
@@ -44,9 +45,12 @@ const TextOverGradateImageInner: TextOverGradateImageComponent = (
         gradientFrom={gradientFrom}
         gradientTo={gradientTo}
         gradientSlope={gradientSlope}
+        trigger={trigger}
       >
         <Image {...attrs} ref={ref} />
-        <TextWrap txtDuration={txtDuration}>{aboveText}</TextWrap>
+        <TextWrap txtDuration={txtDuration} trigger={trigger}>
+          {aboveText}
+        </TextWrap>
       </Mask>
     </Root>
   )

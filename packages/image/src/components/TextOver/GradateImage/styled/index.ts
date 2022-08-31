@@ -3,6 +3,23 @@ import { CharacterProps } from '../model/props'
 import { match } from 'ts-pattern'
 import { ColorPalette as $, Truthy } from 'styled-utility-first'
 
+const insertCoverEffect = css`
+  background: linear-gradient(
+    var(--gd-slope),
+    var(--gd-from),
+    var(--gd-to)
+  ); /*背景色（グラデーション）*/
+  opacity: var(--cover-opacity);
+`
+
+const insertImgEffect = css`
+  opacity: var(--cover-opacity);
+`
+
+const insertTxtEffect = css`
+  opacity: 1;
+`
+
 export const Root = styled.span<Pick<CharacterProps, 'width' | 'height'>>`
   --width: ${({ width }) => width};
   --height: ${({ height }) => height};
@@ -14,7 +31,7 @@ export const Root = styled.span<Pick<CharacterProps, 'width' | 'height'>>`
 `
 
 // prettier-ignore
-export const Mask = styled.span<Pick<CharacterProps, 'bgDuration'|'coverOpacity' | 'gradientFrom' | 'gradientTo' | 'gradientSlope'>>`
+export const Mask = styled.span<Pick<CharacterProps, 'bgDuration'|'coverOpacity' | 'gradientFrom' | 'gradientTo' | 'gradientSlope' | 'trigger'>>`
   --bg-duration: ${({ bgDuration }) => bgDuration}s;
   --cover-opacity: ${({ coverOpacity }) => coverOpacity};
   --gd-from: ${({ gradientFrom }) => gradientFrom};
@@ -26,7 +43,7 @@ export const Mask = styled.span<Pick<CharacterProps, 'bgDuration'|'coverOpacity'
   display: block; /*画像をくくるspanタグをブロック要素にする*/
   line-height: 0; /*行の高さを0にする*/
 
-  ${Root}:hover &::before {
+  &::before {
     /*hoverした時の変化*/
     content: '';
     position: absolute;
@@ -35,26 +52,26 @@ export const Mask = styled.span<Pick<CharacterProps, 'bgDuration'|'coverOpacity'
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(
-      var(--gd-slope),
-      var(--gd-from),
-      var(--gd-to)
-    ); /*背景色（グラデーション）*/
-    opacity: var(--cover-opacity);
+    ${({ trigger }) => trigger === 'none' && insertCoverEffect}
+  }
+  
+  ${Root}:hover &::before {
+    ${({ trigger }) => trigger === 'hover' && insertCoverEffect}
   }
 
   & img {
     opacity: 1;
     transition: var(--bg-duration) ease-in-out;
+    ${({ trigger }) => trigger === 'none' && insertImgEffect}
   }
 
   &:hover img {
-    /*hoverした時の変化*/
-    opacity: var(--cover-opacity);
+    ${({ trigger }) => trigger === 'hover' && insertImgEffect}
   }
 `
 
-export const TextWrap = styled.span<Pick<CharacterProps, 'txtDuration'>>`
+// prettier-ignore
+export const TextWrap = styled.span<Pick<CharacterProps, 'txtDuration' | 'trigger'>>`
   --txt-duration: ${({ txtDuration }) => txtDuration}s;
 
   && {
@@ -67,9 +84,10 @@ export const TextWrap = styled.span<Pick<CharacterProps, 'txtDuration'>>`
     transform: translate(-50%, -50%);
     width: 100%;
     text-align: center;
+    ${({ trigger }) => trigger === 'none' && insertTxtEffect}
   }
 
   ${Root}:hover && {
-    opacity: 1;
+    ${({ trigger }) => trigger === 'hover' && insertTxtEffect}
   }
 `
