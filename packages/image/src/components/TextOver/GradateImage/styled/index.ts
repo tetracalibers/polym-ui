@@ -3,78 +3,6 @@ import { CharacterProps } from '../model/props'
 import { match } from 'ts-pattern'
 import { ColorPalette as $, Truthy } from 'styled-utility-first'
 
-const injectImgEndState = (flipAxis: CharacterProps['flipAxis']) => {
-  return match(flipAxis)
-    .with('flipX', () => {
-      return css`
-        transform: rotateX(-180deg); /*縦軸に回転*/
-      `
-    })
-    .with('flipY', () => {
-      return css`
-        transform: rotateY(-180deg);
-      `
-    })
-    .with('flipZtoLeftTop', () => {
-      return css`
-        transform: rotate3d(-1, 1, 0, 100deg); /*奥行きをもたせて回転*/
-      `
-    })
-    .with('flipZtoRightTop', () => {
-      return css`
-        transform: rotate3d(-1, -1, 0, 100deg);
-      `
-    })
-    .otherwise(() => '')
-}
-
-const injectTxtStartState = (flipAxis: CharacterProps['flipAxis']) => {
-  return match(flipAxis)
-    .with('flipX', () => {
-      return css`
-        transform: rotateX(90deg); /*縦軸に回転*/
-        transform-origin: 0% 50%; /*回転する基点*/
-      `
-    })
-    .with('flipY', () => {
-      return css`
-        transform: rotateY(90deg); /*横軸に回転*/
-        transform-origin: 50% 0%; /*回転する基点*/
-      `
-    })
-    .with('flipZtoLeftTop', () => {
-      return css`
-        transform: rotate3d(1, -1, 0, 100deg); /*奥行きをもたせて回転*/
-      `
-    })
-    .with('flipZtoRightTop', () => {
-      return css`
-        transform: rotate3d(1, 1, 0, 100deg);
-      `
-    })
-    .otherwise(() => '')
-}
-
-const injectTxtEndState = (flipAxis: CharacterProps['flipAxis']) => {
-  return match(flipAxis)
-    .with('flipX', () => {
-      return css`
-        transform: rotateX(0);
-      `
-    })
-    .with('flipY', () => {
-      return css`
-        transform: rotateY(0); /*横軸に回転*/
-      `
-    })
-    .with('flipZtoLeftTop', 'flipZtoRightTop', () => {
-      return css`
-        transform: rotate3d(0, 0, 0, 0deg); /*奥行きをもたせて回転*/
-      `
-    })
-    .otherwise(() => '')
-}
-
 export const Root = styled.span<Pick<CharacterProps, 'width' | 'height'>>`
   --width: ${({ width }) => width};
   --height: ${({ height }) => height};
@@ -85,47 +13,54 @@ export const Root = styled.span<Pick<CharacterProps, 'width' | 'height'>>`
   height: var(--height);
 `
 
-// prettier-ignore
-export const Mask = styled.span<Pick<CharacterProps, 'duration' | 'flipAxis'>>`
+export const Mask = styled.span<Pick<CharacterProps, 'duration'>>`
   --duration: ${({ duration }) => duration}s;
 
-  & img {
-    transition: all var(--duration) ease;
-    backface-visibility: hidden;/*三次元になった際に裏面を可視化させない*/
+  position: relative; /*グラデーションの基点となる位置を定義*/
+  transition: 0.3s ease-in-out; /*移り変わる速さを変更したい場合はこの数値を変更*/
+  display: block; /*画像をくくるspanタグをブロック要素にする*/
+  line-height: 0; /*行の高さを0にする*/
+
+  &::before {
+    /*hoverした時の変化*/
+    content: '';
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      45deg,
+      rgba(88, 182, 211, 0.6),
+      rgba(229, 93, 135, 0.6)
+    ); /*背景色（グラデーション）*/
   }
-  
-  ${Root}:hover & img {
-    ${({ flipAxis }) => injectImgEndState(flipAxis)}
-    opacity: 0;
+
+  & img {
+    opacity: 1;
+    transition: 0.3s ease-in-out;
+  }
+
+  &:hover img {
+    /*hoverした時の変化*/
+    opacity: 0.6;
   }
 `
 
-// prettier-ignore
-export const TextWrap = styled.span<Pick<CharacterProps, 'flipAxis' | 'bgColor'>>`
-  --bg-color: ${({ bgColor }) => bgColor};
-
+export const TextWrap = styled.span`
   && {
-    /*ここからエリアの絶対配置の指定*/
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    /*ここまでエリアの絶対配置の指定*/
-    transition: all var(--duration) ease;
     opacity: 0;
-    background: var(--bg-color);/*背景色*/
-    ${({ flipAxis }) => injectTxtStartState(flipAxis)}
-    /*ここからテキスト中央寄せの指定*/
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /*ここまでテキスト中央寄せの指定*/
+    transition: 0.5s ease-in-out; /*移り変わる速さを変更したい場合はこの数値を変更*/
+    position: absolute;
+    z-index: 3; /*テキストを前面に出す*/
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 1.5; /*行の高さを1.5にする*/
   }
 
   ${Root}:hover && {
     opacity: 1;
-    transition-delay: calc(var(--duration) / 2);
-    ${({ flipAxis }) => injectTxtEndState(flipAxis)}
   }
 `

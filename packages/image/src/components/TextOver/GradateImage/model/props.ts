@@ -13,18 +13,8 @@ import {
   TextOverImageProps,
 } from '../../common/props'
 
-export const flipAxisOptions = [
-  'flipX',
-  'flipY',
-  'flipZtoLeftTop',
-  'flipZtoRightTop',
-] as const
-type FlipAxisOptions = typeof flipAxisOptions[number]
-
 const conf = {
   duration: NotRequired<number>(0.3),
-  flipAxis: NotRequired<FlipAxisOptions>('flipX'),
-  bgColor: NotRequired<CSST.Property.BackgroundColor>('#d6ebff'),
 }
 type Conf = typeof conf
 
