@@ -16,6 +16,7 @@ import {
 const conf = {
   bgDuration: NotRequired<number>(0.3),
   txtDuration: NotRequired<number>(0.5),
+  coverOpacity: NotRequired<number>(0.6),
 }
 type Conf = typeof conf
 

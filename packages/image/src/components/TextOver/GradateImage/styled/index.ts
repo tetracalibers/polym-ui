@@ -13,8 +13,10 @@ export const Root = styled.span<Pick<CharacterProps, 'width' | 'height'>>`
   height: var(--height);
 `
 
-export const Mask = styled.span<Pick<CharacterProps, 'bgDuration'>>`
+// prettier-ignore
+export const Mask = styled.span<Pick<CharacterProps, 'bgDuration'|'coverOpacity'>>`
   --bg-duration: ${({ bgDuration }) => bgDuration}s;
+  --cover-opacity: ${({ coverOpacity }) => coverOpacity};
 
   position: relative; /*グラデーションの基点となる位置を定義*/
   transition: var(--bg-duration) ease-in-out; /*移り変わる速さを変更したい場合はこの数値を変更*/
@@ -44,7 +46,7 @@ export const Mask = styled.span<Pick<CharacterProps, 'bgDuration'>>`
 
   &:hover img {
     /*hoverした時の変化*/
-    opacity: 0.6;
+    opacity: var(--cover-opacity);
   }
 `
 

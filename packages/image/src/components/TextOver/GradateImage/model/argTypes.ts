@@ -30,4 +30,17 @@ export const logicArgTypes = {
       subcategory: 'animation',
     },
   },
+  coverOpacity: {
+    ...withDefaultAs('opacity'),
+    description: 'Transparency of the gradient over the image',
+    table: {
+      ...withDefaultAs('opacity').table,
+      defaultValue: {
+        summary: defaultProps.coverOpacity,
+        details: null,
+      },
+      category: 'effect',
+      subcategory: 'filter',
+    },
+  },
 }
