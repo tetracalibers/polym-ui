@@ -1,6 +1,7 @@
 import { forwardRef, ForwardRefRenderFunction, HTMLAttributes } from 'react'
 import styled from 'styled-components'
-import { FileName, FolderName } from '@polym-ui/typography'
+import { FileName } from '../../../with-icon/FileName'
+import { FolderName } from '../../../with-icon/FolderName'
 
 export interface NodeLabelProps extends HTMLAttributes<HTMLDivElement> {
   name: string

@@ -2,11 +2,11 @@ import _ from 'lodash'
 import { forwardRef, ReactElement } from 'react'
 import { CharacterProps, defaultProps } from './model/props'
 import { StyledInput, StyledLabel, Square, IconWrapper } from './styled'
-import { CheckIcon } from '@polym-ui/symbol'
-import { WithIcon } from '@polym-ui/typography'
-import { OverlapLayer } from '@polym-ui/layout'
 import { InputComponentPropWithRef } from '../../types/polymorphic/fixedAs'
 import { PolymorphicRef } from '../../types/polymorphic/standard'
+import { CheckIcon } from '../icon/CheckIcon'
+import { OverlapLayer } from '../layout-algorithm/OverlapLayer'
+import { WithIcon } from '../with-icon/core'
 
 export type CheckboxProps = Omit<
   InputComponentPropWithRef<CharacterProps>,

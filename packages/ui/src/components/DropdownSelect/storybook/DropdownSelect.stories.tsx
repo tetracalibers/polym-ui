@@ -38,6 +38,7 @@ export default {
 const Template: ComponentStory<typeof DropdownSelect> = ({
   children,
   ...args
+  // @ts-ignore
 }) => <DropdownSelect {...args}>{children}</DropdownSelect>
 
 export const playground = Template.bind({})

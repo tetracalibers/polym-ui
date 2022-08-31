@@ -3,9 +3,9 @@ import { forwardRef, ReactElement } from 'react'
 import { useStretchableTextArea } from './hooks/useStretchableTextArea'
 import { CharacterProps, defaultProps } from './model/props'
 import { StyledLabel, StyledTextarea } from './styled'
-import { VerticalStack } from '@polym-ui/layout'
 import { TextAreaComponentPropWithRef } from '../../../types/polymorphic/fixedAs'
 import { PolymorphicRef } from '../../../types/polymorphic/standard'
+import { VerticalStack } from '../../layout-algorithm/VerticalStack'
 
 export type TextAreaProps = TextAreaComponentPropWithRef<CharacterProps>
 

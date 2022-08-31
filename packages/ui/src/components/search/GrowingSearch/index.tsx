@@ -10,10 +10,10 @@ import {
 } from './styled'
 import { BiSearchAlt } from 'react-icons/bi'
 import { RiCloseCircleLine } from 'react-icons/ri'
-import { OverlapLayer } from '@polym-ui/layout'
 import { useInput } from '@polym/hooks'
 import { InputComponentPropWithRef } from '../../../types/polymorphic/fixedAs'
 import { PolymorphicRef } from '../../../types/polymorphic/standard'
+import { OverlapLayer } from '../../layout-algorithm/OverlapLayer'
 
 export type GrowingSearchProps = Omit<
   InputComponentPropWithRef<CharacterProps>,

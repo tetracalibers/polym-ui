@@ -1,10 +1,12 @@
+// @ts-nocheck
+
 import _ from 'lodash'
 import { ReactElement, ReactNode } from 'react'
 import { useCharCount } from './hooks/useCharCount'
 import { CharacterProps, _defaultProps } from './model/props'
-import { VerticalStack } from '@polym-ui/layout'
 import { TextArea } from '../core'
 import { TextAreaComponentProp } from '../../../types/polymorphic/fixedAs'
+import { VerticalStack } from '../../layout-algorithm/VerticalStack'
 
 export type CharLimitedTextareaProps = TextAreaComponentProp<CharacterProps> & {
   renderCharCountLabel?: (

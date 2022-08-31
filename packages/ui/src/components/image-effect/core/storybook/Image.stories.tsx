@@ -4,7 +4,7 @@ import { logicArgTypes } from '../model/argTypes'
 import { defaultProps } from '../model/props'
 import { DocsPage } from './docsPage'
 // @ts-ignore
-import sample01 from '../../../assets/myproduct.jpg'
+import sample01 from '../../assets/myproduct.jpg'
 
 export default {
   title: 'core/Image',

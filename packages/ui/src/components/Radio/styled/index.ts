@@ -2,7 +2,6 @@ import styled, { css } from 'styled-components'
 import { CharacterProps } from '../model/props'
 import { match } from 'ts-pattern'
 import { ColorPalette, Truthy } from 'styled-utility-first'
-import { CircleIcon } from '@polym-ui/symbol'
 
 export const Label = styled.label<{ disabled: boolean | undefined }>`
   cursor: pointer;

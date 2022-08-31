@@ -2,11 +2,11 @@ import _ from 'lodash'
 import { ElementType, forwardRef, ReactElement } from 'react'
 import { CharacterProps, defaultProps } from './model/props'
 import { StyledButton, SymbolWrapper, Line1, Line2, Line3 } from './styled'
-import { VerticalStack } from '@polym-ui/layout'
 import {
   PolymorphicComponentPropWithRef,
   PolymorphicRef,
 } from '../../types/polymorphic/standard'
+import { VerticalStack } from '../layout-algorithm/VerticalStack'
 
 export type BurgerToggleProps<As extends ElementType> = Omit<
   PolymorphicComponentPropWithRef<As, CharacterProps>,

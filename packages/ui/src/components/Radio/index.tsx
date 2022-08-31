@@ -2,12 +2,12 @@ import _ from 'lodash'
 import { forwardRef, ReactElement } from 'react'
 import { CharacterProps, defaultProps } from './model/props'
 import { Label, Input, Circle, RadioButton } from './styled'
-import { WithIcon } from '@polym-ui/typography'
-import { CircleIcon } from '@polym-ui/symbol'
-import { OverlapLayer } from '@polym-ui/layout'
 import { ColorPalette } from 'styled-utility-first'
 import { InputComponentPropWithRef } from '../../types/polymorphic/fixedAs'
 import { PolymorphicRef } from '../../types/polymorphic/standard'
+import { CircleIcon } from '../icon/CircleIcon'
+import { OverlapLayer } from '../layout-algorithm/OverlapLayer'
+import { WithIcon } from '../with-icon/core'
 
 export type RadioProps = Omit<InputComponentPropWithRef<CharacterProps>, 'type'>
 

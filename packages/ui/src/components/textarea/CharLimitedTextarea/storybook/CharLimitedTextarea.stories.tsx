@@ -81,6 +81,7 @@ export default {
 const Template: ComponentStory<typeof CharLimitedTextarea> = ({
   children,
   ...args
+  // @ts-ignore
 }) => <CharLimitedTextarea {...args}>{children}</CharLimitedTextarea>
 
 export const playground = Template.bind({})

@@ -10,12 +10,12 @@ import {
 } from 'react'
 import { CharacterProps, ChoiceItem, defaultProps } from './model/props'
 import { Root, AutoComplete, SelectList } from './styled'
-import { ArrowIcon } from '@polym-ui/symbol'
-import { VisuallyHidden } from '@polym-ui/a11y-helper'
 import { match } from 'ts-pattern'
 import { SelectComponentPropWithRef } from '../../types/polymorphic/fixedAs'
 import { useInput, useUnFocus } from '@polym/hooks'
 import { PolymorphicRef } from '../../types/polymorphic/standard'
+import { VisuallyHidden } from '../a11y-helper/VisuallyHidden'
+import { ArrowIcon } from '../icon/ArrowIcon'
 
 export type DropdownSelectProps = SelectComponentPropWithRef<CharacterProps>
 
