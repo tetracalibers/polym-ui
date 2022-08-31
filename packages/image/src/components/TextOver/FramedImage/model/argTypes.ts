@@ -30,6 +30,8 @@ export const logicArgTypes = {
         summary: defaultProps.imgPadding,
         details: null,
       },
+      category: 'effect',
+      subcategory: 'line',
     },
   },
   trigger: {
@@ -100,6 +102,19 @@ export const logicArgTypes = {
         summary: defaultProps.imgGrayScale,
         details: null,
       },
+    },
+  },
+  lineColor: {
+    ...withDefaultAs('borderColor'),
+    description: 'Color of the enclosing line drawn over the image',
+    table: {
+      ...withDefaultAs('borderColor').table,
+      defaultValue: {
+        summary: defaultProps.lineColor,
+        details: null,
+      },
+      category: 'effect',
+      subcategory: 'line',
     },
   },
 }

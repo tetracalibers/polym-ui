@@ -33,6 +33,7 @@ const TextOverFramedImageInner: TextOverFramedImageComponent = (
     imgBlur,
     imgOpacity,
     imgGrayScale,
+    lineColor,
     ...attrs
   } = props
 
@@ -43,6 +44,7 @@ const TextOverFramedImageInner: TextOverFramedImageComponent = (
         imgBlur={imgBlur}
         imgOpacity={imgOpacity}
         imgGrayScale={imgGrayScale}
+        lineColor={lineColor}
       >
         <Image {...attrs} ref={ref} />
         <TextWrap txtDuration={txtDuration} trigger={trigger}>

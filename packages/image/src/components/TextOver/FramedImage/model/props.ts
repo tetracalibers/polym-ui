@@ -23,6 +23,7 @@ const conf = {
   imgOpacity: NotRequired<number>(0.5),
   imgGrayScale: NotRequired<number>(0),
   trigger: NotRequired<TriggerOptions>('hover'),
+  lineColor: NotRequired<CSST.Property.BorderColor>($.grayScale.light),
 }
 type Conf = typeof conf
 
