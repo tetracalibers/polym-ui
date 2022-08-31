@@ -1,23 +1,12 @@
+/* eslint-disable no-undef */
 import _ from 'lodash'
 import {
-  cloneElement,
-  ComponentPropsWithoutRef,
-  ComponentType,
-  createElement,
-  ElementType,
+  ComponentClass,
+  ComponentProps,
+  FC,
   ForwardedRef,
   forwardRef,
-  ReactElement,
-  ReactNode,
-  Ref,
 } from 'react'
-import {
-  AnyStyledComponent,
-  isStyledComponent,
-  StyledComponent,
-  StyledComponentBase,
-  StyledComponentInnerComponent,
-} from 'styled-components'
 import { CharacterProps, defaultProps } from './model/props'
 
 const allowTag = [
@@ -32,40 +21,45 @@ const allowTag = [
 ] as const
 type AllowTag = typeof allowTag[number]
 
-// eslint-disable-next-line no-undef
-type AllowElementTypeMap = { [k in AllowTag]: JSX.IntrinsicElements[k] }
+type AllowElementPropsMap = { [k in AllowTag]: ComponentProps<k> }
 
-type AllowElement = ElementType<AllowTag> | AllowTag
+type AllowElement =
+  | AllowTag
+  | ComponentClass<AllowElementPropsMap[AllowTag]>
+  | FC<AllowElementPropsMap[AllowTag]>
 
 export type MediaObjectProps<As extends AllowElement> = {
-  ref?: Ref<
-    // eslint-disable-next-line no-undef
-    HTMLElementTagNameMap[As extends AnyStyledComponent
-      ? StyledComponentInnerComponent<As>
-      : As extends ComponentType<infer T>
-      ? T
-      : never]
+  ref?: ForwardedRef<
+    As extends AllowTag
+      ? HTMLElementTagNameMap[As]
+      : As extends ComponentClass | FC
+      ? As
+      : never
   >
   as?: As
 } & CharacterProps &
-  ComponentPropsWithoutRef<
-    As extends AnyStyledComponent
-      ? StyledComponentInnerComponent<As>
-      : As extends ComponentType<infer T>
-      ? T
-      : never
-  >
+  ComponentProps<As>
 
-const MediaObjectInner = <As extends AllowElement>(
-  { as, children, ..._props }: MediaObjectProps<As>,
-  // eslint-disable-next-line no-undef
-  ref?: ForwardedRef<MediaObjectProps<As>['ref']>
-) => {
+export const MediaObjectInner = <As extends AllowElement>({
+  as,
+  children,
+  ref,
+  ..._props
+}: MediaObjectProps<As>) => {
   const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
     _.isUndefined(input) ? defaul : input
   )
 
-  const Component = as || ('div' as ElementType)
+  if (allowTag.includes(as as AllowTag)) {
+    const Tag = as as string
+    return (
+      <Tag {...props} ref={ref}>
+        {children}
+      </Tag>
+    )
+  }
+
+  const Component = as as FC | ComponentClass
 
   return (
     <Component {...props} ref={ref}>

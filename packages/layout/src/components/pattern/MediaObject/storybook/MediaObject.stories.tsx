@@ -1,5 +1,5 @@
 import { ComponentStory } from '@storybook/react'
-import { MediaObject } from '..'
+import { MediaObject, MediaObjectInner } from '..'
 import { commmonArgTypes } from '../../../../common/argTypes'
 import { DarkTextBox } from '../../../../mock/TestBox'
 import { styleArgTypes } from '../css-props/argTypes'
@@ -41,14 +41,11 @@ export default {
   },
 }
 
-const DivElemt = () => <div>sample</div>
-const ImgElemt = () => <img>sample</img>
-
 const Template: ComponentStory<typeof MediaObject> = ({
   children,
   ...args
 }) => (
-  <MediaObject {...args} as={ImgElemt}>
+  <MediaObject {...args} as={DarkTextBox}>
     {children}
   </MediaObject>
 )
