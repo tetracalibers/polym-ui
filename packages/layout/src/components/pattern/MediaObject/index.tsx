@@ -1,6 +1,12 @@
 /* eslint-disable no-undef */
 import _ from 'lodash'
-import { ComponentProps, ForwardedRef, forwardRef, ReactNode } from 'react'
+import {
+  ComponentProps,
+  ForwardedRef,
+  forwardRef,
+  ReactElement,
+  ReactNode,
+} from 'react'
 import { CharacterProps, defaultProps } from './model/props'
 
 const allowTag = [
@@ -21,6 +27,10 @@ export type MediaObjectProps<As extends AllowTag> = {
   children: ReactNode
 } & CharacterProps &
   ComponentProps<As>
+
+export type MediaObjectComponent = <As extends AllowTag>(
+  props: MediaObjectProps<As>
+) => ReactElement | null
 
 export const MediaObjectInner = <As extends AllowTag>({
   as,
@@ -51,4 +61,4 @@ export const MediaObjectInner = <As extends AllowTag>({
   )
 }
 
-export const MediaObject = forwardRef(MediaObjectInner)
+export const MediaObject: MediaObjectComponent = forwardRef(MediaObjectInner)

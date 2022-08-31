@@ -1,14 +1,11 @@
 import { ComponentStory } from '@storybook/react'
-import { MediaObject, MediaObjectInner } from '..'
+import { MediaObject } from '..'
 import { commmonArgTypes } from '../../../../common/argTypes'
 import { DarkTextBox } from '../../../../mock/TestBox'
 import { styleArgTypes } from '../css-props/argTypes'
 import { logicArgTypes } from '../model/argTypes'
 import { defaultProps } from '../model/props'
 import { DocsPage } from './docsPage'
-import { VerticalStack } from '../../../primitive/VerticalStack'
-import { BlurImage } from '../../../../../../image/src/components/effect/BlurImage'
-import { ComponentElement, FC } from 'react'
 
 export default {
   title: 'layout pettern/MediaObject',
@@ -46,11 +43,7 @@ export default {
 const Template: ComponentStory<typeof MediaObject> = ({
   children,
   ...args
-}) => (
-  <MediaObject {...args} as={'div'}>
-    {children}
-  </MediaObject>
-)
+}) => <MediaObject {...args}>{children}</MediaObject>
 
 export const playground = Template.bind({})
 playground.args = {

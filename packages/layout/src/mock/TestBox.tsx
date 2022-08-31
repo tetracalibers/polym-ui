@@ -78,7 +78,7 @@ export const MainContents = styled(BorderBox)`
   background-color: ${$.pastel.pink}66;
 `
 
-export const DarkTextBox = styled.img`
+export const DarkTextBox = styled.div`
   padding: 1rem 2rem;
   text-align: center;
   color: ${$.grayScale.dark};
