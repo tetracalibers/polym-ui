@@ -1,8 +1,7 @@
 import { ComponentStory } from '@storybook/react'
 import { VisuallyHidden } from '..'
-import { commmonArgTypes } from '../../common/argTypes'
-import { DarkTextBox } from '../../mock/TestBox'
-import { styleArgTypes } from '../css-props/argTypes'
+import { DarkTextBox } from '../../../../../../a11y-helper/src/mock/TestBox'
+import { commmonArgTypes } from '../../../../types/argTypes'
 import { logicArgTypes } from '../model/argTypes'
 import { defaultProps } from '../model/props'
 import { DocsPage } from './docsPage'
@@ -36,8 +35,6 @@ export default {
       },
     },
     ...logicArgTypes,
-    ...commmonArgTypes,
-    ...styleArgTypes,
     as: {
       ...commmonArgTypes.as,
       description:
