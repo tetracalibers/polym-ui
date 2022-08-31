@@ -34,7 +34,7 @@ const Template: ComponentStory<typeof TextOverGradateImage> = ({
 }) => (
   <TextOverGradateImage
     {...args}
-    aboveText={<DarkTextBox>{aboveText}</DarkTextBox>}
+    aboveText={<LightTextBox>{aboveText}</LightTextBox>}
     src={sample01}
   />
 )
