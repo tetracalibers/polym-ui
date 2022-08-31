@@ -57,6 +57,8 @@ export const TextWrap = styled.span`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
     line-height: 1.5; /*行の高さを1.5にする*/
   }
 
