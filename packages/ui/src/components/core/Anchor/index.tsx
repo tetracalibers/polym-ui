@@ -1,6 +1,7 @@
 import _ from 'lodash'
 import { ComponentPropsWithoutRef, forwardRef, Ref, ReactNode } from 'react'
 import { CharacterProps, defaultProps } from './model/props'
+import { CheckSemanticAnchor } from './styled'
 
 type WithoutChildren<Props> = Omit<Props, 'children'>
 
@@ -16,9 +17,9 @@ const AnchorInner = ({ children, ref, href, ..._props }: Props) => {
   )
 
   return (
-    <a {...props} ref={ref} href={href}>
+    <CheckSemanticAnchor {...props} ref={ref} href={href}>
       {children}
-    </a>
+    </CheckSemanticAnchor>
   )
 }
 

@@ -20,15 +20,33 @@ export default {
   },
 }
 
-const Template: ComponentStory<typeof Anchor> = ({ href, ...args }) => (
+const Template: ComponentStory<typeof Anchor> = ({
+  children,
+  href,
+  ...args
+}) => (
   <Anchor href={href} {...args}>
-    sample
+    {children}
   </Anchor>
 )
 
 export const playground = Template.bind({})
 playground.args = {
   ...defaultProps,
+  children: 'Correct Usage',
   href: 'https://tetracalibers.notion.site/tomixy-TetraCalibers-30b94fb9fc054d4da667539ef35f42c6',
 }
-playground.argTypes = {}
+
+export const violationUsage01 = Template.bind({})
+violationUsage01.args = {
+  ...defaultProps,
+  children: <div tabIndex={0}>Examples of Violations</div>,
+  href: 'https://tetracalibers.notion.site/tomixy-TetraCalibers-30b94fb9fc054d4da667539ef35f42c6',
+}
+violationUsage01.argTypes = {
+  children: {
+    control: {
+      type: null,
+    },
+  },
+}
