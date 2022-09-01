@@ -36,7 +36,9 @@ const SlideFillButtonInner = ({
   const thisProps = { slide }
   return (
     <ThemeProvider theme={thisProps}>
-      <STyledButton {...superProps}>{decorate(children)}</STyledButton>
+      <STyledButton {...superProps} ref={ref}>
+        {decorate(children)}
+      </STyledButton>
     </ThemeProvider>
   )
 }
