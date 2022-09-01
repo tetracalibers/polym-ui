@@ -35,4 +35,19 @@ export const logicArgTypes = {
       required: true,
     },
   },
+  openInNewTab: {
+    control: {
+      type: 'boolean',
+    },
+    description: 'Whether to open the link in a new tab',
+    table: {
+      category: 'feature',
+      type: {
+        summary: null,
+      },
+      defaultValue: {
+        summary: defaultProps.openInNewTab,
+      },
+    },
+  },
 }

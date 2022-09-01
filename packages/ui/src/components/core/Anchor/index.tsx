@@ -11,13 +11,26 @@ type Props = {
 } & CharacterProps &
   WithoutChildren<ComponentPropsWithoutRef<'a'>>
 
-const AnchorInner = ({ children, ref, href, ..._props }: Props) => {
+const AnchorInner = ({
+  children,
+  ref,
+  href,
+  openInNewTab,
+  ..._props
+}: Props) => {
   const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
     _.isUndefined(input) ? defaul : input
   )
 
+  const openControl = openInNewTab
+    ? {
+        target: '_blank',
+        rel: 'noopener noreferrer',
+      }
+    : {}
+
   return (
-    <CheckSemanticAnchor {...props} ref={ref} href={href}>
+    <CheckSemanticAnchor {...props} ref={ref} href={href} {...openControl}>
       {children}
     </CheckSemanticAnchor>
   )

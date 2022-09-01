@@ -7,6 +7,7 @@ import {
 
 const conf = {
   href: Required<string>(),
+  openInNewTab: NotRequired<boolean>(false),
 }
 type Conf = typeof conf
 
