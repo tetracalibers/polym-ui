@@ -5,7 +5,12 @@ import {
   Required,
 } from 'react-tsx-props'
 
-const conf = {}
+export const buttonTypeOptions = ['submit', 'reset', 'button'] as const
+type ButtonTypeOptions = typeof buttonTypeOptions[number]
+
+const conf = {
+  type: NotRequired<ButtonTypeOptions>('button'),
+}
 type Conf = typeof conf
 
 export type CharacterProps = getPropType<Conf>

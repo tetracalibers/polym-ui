@@ -11,13 +11,13 @@ type Props = {
 } & CharacterProps &
   WithoutChildren<ComponentPropsWithoutRef<'button'>>
 
-const ButtonInner = ({ children, ref, ..._props }: Props) => {
+const ButtonInner = ({ children, ref, type, ..._props }: Props) => {
   const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
     _.isUndefined(input) ? defaul : input
   )
 
   return (
-    <StyledButton {...props} ref={ref}>
+    <StyledButton {...props} ref={ref} type={type}>
       {children}
     </StyledButton>
   )
