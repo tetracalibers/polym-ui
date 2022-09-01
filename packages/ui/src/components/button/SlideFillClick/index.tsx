@@ -1,5 +1,6 @@
 import _ from 'lodash'
 import { forwardRef, ReactNode } from 'react'
+import { ThemeProvider } from 'styled-components'
 import { Anchor, AnchorCoreProps } from '../../core/Anchor'
 import { Button, ButtonCoreProps } from '../../core/Button'
 import { defaultButtonCoreProps } from '../../core/Button/model/props'
@@ -20,9 +21,11 @@ const SlideFillAnchorInner = ({
   const thisProps = { slide }
   const decorate = getChildrenDecorator(thisProps)
   return (
-    <STyledAnchor {...superProps} ref={ref}>
-      {decorate(children)}
-    </STyledAnchor>
+    <ThemeProvider theme={thisProps}>
+      <STyledAnchor {...superProps} ref={ref}>
+        {decorate(children)}
+      </STyledAnchor>
+    </ThemeProvider>
   )
 }
 
@@ -35,7 +38,11 @@ const SlideFillButtonInner = ({
   const thisProps = { slide }
   const decorate = getChildrenDecorator(thisProps)
 
-  return <STyledButton {...superProps}>{decorate(children)}</STyledButton>
+  return (
+    <ThemeProvider theme={thisProps}>
+      <STyledButton {...superProps}>{decorate(children)}</STyledButton>
+    </ThemeProvider>
+  )
 }
 
 export const SlideFillClick = {
