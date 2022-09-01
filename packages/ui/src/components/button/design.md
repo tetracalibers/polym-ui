@@ -60,11 +60,11 @@
 
 グラデーションが変化
 
-### ToFilledButton
+### SlideFillButton
 
 線から塗りへ変化
 
-### StraightLineButton
+### TraceFillButton
 
 線が伸びるボタン
 
