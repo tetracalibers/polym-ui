@@ -17,7 +17,7 @@ const ButtonInner = ({ children, ref, type, ..._props }: Props) => {
   )
 
   return (
-    <StyledButton {...props} ref={ref} type={type}>
+    <StyledButton {...props} ref={ref} type={type ?? 'button'}>
       {children}
     </StyledButton>
   )

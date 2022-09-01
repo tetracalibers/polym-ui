@@ -10,13 +10,13 @@ type Props = {
 } & CharacterProps &
   WithoutChildren<ComponentPropsWithoutRef<'a'>>
 
-const AnchorInner = ({ children, ref, ..._props }: Props) => {
+const AnchorInner = ({ children, ref, href, ..._props }: Props) => {
   const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
     _.isUndefined(input) ? defaul : input
   )
 
   return (
-    <a {...props} ref={ref}>
+    <a {...props} ref={ref} href={href}>
       {children}
     </a>
   )
