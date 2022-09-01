@@ -15,9 +15,31 @@ const SlideFillAnchorInner = ({
   children,
   ref,
   slide = defaultProps.slide,
+  animatedBgColor = defaultProps.animatedBgColor,
+  animatedColor = defaultProps.animatedColor,
+  animateLineThickness = defaultProps.animateLineThickness,
+  duration = defaultProps.duration,
+  borderColor = defaultProps.borderColor,
+  borderWidth = defaultProps.borderWidth,
+  paddingYV = defaultProps.paddingYV,
+  paddingYU = defaultProps.paddingYU,
+  paddingXV = defaultProps.paddingXV,
+  paddingXU = defaultProps.paddingXU,
   ...superProps
 }: AnchorCoreProps & CharacterProps) => {
-  const thisProps = { slide }
+  const thisProps = {
+    slide,
+    animatedBgColor,
+    animatedColor,
+    animateLineThickness,
+    duration,
+    borderColor,
+    borderWidth,
+    paddingYV,
+    paddingYU,
+    paddingXV,
+    paddingXU,
+  }
   return (
     <ThemeProvider theme={thisProps}>
       <STyledAnchor {...superProps} ref={ref}>
@@ -31,9 +53,31 @@ const SlideFillButtonInner = ({
   children,
   ref,
   slide = defaultProps.slide,
+  animatedBgColor = defaultProps.animatedBgColor,
+  animatedColor = defaultProps.animatedColor,
+  animateLineThickness = defaultProps.animateLineThickness,
+  duration = defaultProps.duration,
+  borderColor = defaultProps.borderColor,
+  borderWidth = defaultProps.borderWidth,
+  paddingYV = defaultProps.paddingYV,
+  paddingYU = defaultProps.paddingYU,
+  paddingXV = defaultProps.paddingXV,
+  paddingXU = defaultProps.paddingXU,
   ...superProps
 }: ButtonCoreProps & CharacterProps) => {
-  const thisProps = { slide }
+  const thisProps = {
+    slide,
+    animatedBgColor,
+    animatedColor,
+    animateLineThickness,
+    duration,
+    borderColor,
+    borderWidth,
+    paddingYV,
+    paddingYU,
+    paddingXV,
+    paddingXU,
+  }
   return (
     <ThemeProvider theme={thisProps}>
       <STyledButton {...superProps} ref={ref}>

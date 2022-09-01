@@ -1,8 +1,7 @@
 import styled, { css } from 'styled-components'
 import { CharacterProps } from '../model/props'
 import { match } from 'ts-pattern'
-import { ColorPalette as $, ResetCss, Truthy } from 'styled-utility-first'
-import { CannotIncludeInteractiveElements } from '../../../../css/alert'
+import { ColorPalette as $, ResetCss } from 'styled-utility-first'
 import { Button } from '../../../core/Button'
 import { Anchor } from '../../../core/Anchor'
 
@@ -209,16 +208,20 @@ const afterBg = (slide: CharacterProps['slide']) => {
 // 線 -> 背景 -> テキスト
 
 const variables = css`
-  /* effect ------------------------------------- */
-  --animated-bg-color: ${$.grayScale.dark};
-  --animated-color: ${$.grayScale.light};
-  --animate-line-thickness: 1.5px;
-  --duration: 0.6s;
-  /* css ---------------------------------------- */
-  --bd-color: ${$.pastel.purple};
-  --bd-width: 1px;
-  --paddingY: 1em;
-  --paddingX: 2em;
+  ${({ theme }) => {
+    return css`
+      /* effect ------------------------------------- */
+      --animated-bg-color: ${theme.animatedBgColor};
+      --animated-color: ${theme.animatedColor};
+      --animate-line-thickness: ${theme.animateLineThickness}px;
+      --duration: ${theme.duration}s;
+      /* css ---------------------------------------- */
+      --bd-color: ${theme.borderColor};
+      --bd-width: ${theme.borderWidth}px;
+      --paddingY: ${theme.paddingYV + theme.paddingYU};
+      --paddingX: ${theme.paddingXV + theme.paddingXU};
+    `
+  }}
 `
 
 const clickareaStyle = css`
@@ -272,8 +275,6 @@ export const STyledAnchor = styled(Anchor)`
 `
 
 export const ChildrenWrapper = styled.span`
-  ${variables}
-
   && {
     display: block;
     z-index: 2;
