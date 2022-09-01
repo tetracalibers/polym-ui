@@ -7,10 +7,9 @@ import { defaultButtonCoreProps } from '../../core/Button/model/props'
 import { CharacterProps, defaultProps } from './model/props'
 import { ChildrenWrapper, STyledAnchor, STyledButton } from './styled'
 
-const getChildrenDecorator =
-  (props: CharacterProps) => (children: ReactNode) => {
-    return <ChildrenWrapper {...props}>{children}</ChildrenWrapper>
-  }
+const decorate = (children: ReactNode) => {
+  return <ChildrenWrapper>{children}</ChildrenWrapper>
+}
 
 const SlideFillAnchorInner = ({
   children,
@@ -19,7 +18,6 @@ const SlideFillAnchorInner = ({
   ...superProps
 }: AnchorCoreProps & CharacterProps) => {
   const thisProps = { slide }
-  const decorate = getChildrenDecorator(thisProps)
   return (
     <ThemeProvider theme={thisProps}>
       <STyledAnchor {...superProps} ref={ref}>
@@ -36,8 +34,6 @@ const SlideFillButtonInner = ({
   ...superProps
 }: ButtonCoreProps & CharacterProps) => {
   const thisProps = { slide }
-  const decorate = getChildrenDecorator(thisProps)
-
   return (
     <ThemeProvider theme={thisProps}>
       <STyledButton {...superProps}>{decorate(children)}</STyledButton>
