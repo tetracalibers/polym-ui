@@ -14,6 +14,6 @@ const conf = {
 type Conf = typeof conf
 
 export type CoreProps = getPropType<Conf>
-export const defaultProps = {
+export const defaultCoreProps = {
   ...getDefaultProps<CoreProps>(conf),
 }

@@ -7,7 +7,7 @@ import {
   ReactElement,
   ForwardedRef,
 } from 'react'
-import { CoreProps, defaultProps } from './model/props'
+import { CoreProps, defaultCoreProps } from './model/props'
 import { CheckSemanticButton, StyledButton } from './styled'
 
 export type ButtonCoreProps = {
@@ -19,7 +19,7 @@ export type ButtonCoreProps = {
 export type ButtonComponent = (props: ButtonCoreProps) => ReactElement | null
 
 const ButtonInner = ({ children, ref, type, ..._props }: ButtonCoreProps) => {
-  const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
+  const props = _.mergeWith(_props, defaultCoreProps, (input, defaul) =>
     _.isUndefined(input) ? defaul : input
   )
 
