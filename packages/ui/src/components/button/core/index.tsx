@@ -7,41 +7,48 @@ import {
   ReactElement,
   Ref,
   Fragment,
+  FC,
+  ReactNode,
 } from 'react'
 import { isStyledComponent, StyledComponent } from 'styled-components'
 import { CharacterProps, defaultProps } from './model/props'
 import { StyledButton } from './styled'
+import { SpecificAttr } from './model/attr'
 
 type AllowElement = StyledComponent<'button', any> | ReactElement<any, 'button'>
 
-export type ButtonProps<As extends AllowElement> = {
-  ref?: Ref<HTMLButtonElement>
-  as?: As
-} & CharacterProps &
-  Omit<ComponentPropsWithoutRef<'button'>, 'children'>
+type Mode = 'a' | 'button'
 
-const ButtonInner = <As extends AllowElement>(
-  { as, ..._props }: ButtonProps<As>,
-  ref: ForwardedRef<HTMLButtonElement>
-) => {
+type CannotHaveChildren<Props> = Omit<Props, 'children'>
+
+type CommonProps = {
+  children: ReactNode
+} & CharacterProps
+
+type AnchorModeProps = {
+  mode: 'a'
+  ref: Ref<HTMLAnchorElement>
+} & CommonProps &
+  ComponentPropsWithoutRef<'a'>
+
+type ButtonModeProps = {
+  mode: 'button'
+  ref: Ref<HTMLButtonElement>
+} & CommonProps &
+  ComponentPropsWithoutRef<'button'>
+
+const ButtonInner: FC<ButtonModeProps | AnchorModeProps> = _props => {
   const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
     _.isUndefined(input) ? defaul : input
   )
 
-  if (isStyledComponent(as)) {
-    as.defaultProps
+  const { mode, children, ...attr } = props
+
+  if (mode === 'button') {
+    return <button {...attr}>{children}</button>
+  } else {
+    return <a {...attr}>{children}</a>
   }
-
-  if (!as) {
-    return <button {...props} ref={ref} />
-  }
-
-  const Component = (props: Omit<ButtonProps<As>, 'as'>) =>
-    isStyledComponent(as)
-      ? cloneElement(<Fragment>{as}</Fragment>, props)
-      : cloneElement(as, props)
-
-  return <Component {...props} ref={ref} />
 }
 
 export const Button = forwardRef(ButtonInner)
