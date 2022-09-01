@@ -6,25 +6,39 @@ import { CannotIncludeInteractiveElements } from '../../../../css/alert'
 import { Button } from '../../../core/Button'
 import { Anchor } from '../../../core/Anchor'
 
+// 線 -> 背景 -> テキスト
+
+const variables = css`
+  /* effect ------------------------------------- */
+  --animated-bg-color: ${$.grayScale.dark};
+  --animated-color: ${$.grayScale.light};
+  --animate-line-thickness: 1.5px;
+  --duration: 0.4s;
+  /* css ---------------------------------------- */
+  --bd-color: ${$.pastel.purple};
+  --bd-width: 1px;
+  --paddingY: 1em;
+  --paddingX: 2em;
+`
+
 const clickareaStyle = css`
+  ${variables}
+
   /*線の基点とするためrelativeを指定*/
   position: relative;
   /*ボタンの形状*/
   display: inline-block;
-  padding: 10px 30px;
-
-  color: #333;
-  border: 1px solid #ccc;
+  padding: var(--paddingY) var(--paddingX);
+  color: var(--animated-bg-color);
+  border: var(--bd-width) solid var(--bd-color);
   text-decoration: none;
   outline: none;
-  /*はみ出す背景色を隠す*/
-  overflow: hidden;
 
   &:hover {
-    color: #ccc;
+    color: var(--animated-color);
     border-color: transparent;
     /*色の変化を遅らせる*/
-    transition-delay: 0.6s;
+    transition-delay: var(--duration);
   }
 
   /*背景の設定*/
@@ -38,9 +52,9 @@ const clickareaStyle = css`
     /*背景の形状*/
     height: 100%;
     width: 100%;
-    background: #333;
+    background-color: var(--animated-bg-color);
     /*アニメーションの設定*/
-    transition: all 0.3s;
+    transition: all calc(var(--duration) / 2);
     transform: scale(0, 1);
     transform-origin: center;
   }
@@ -49,7 +63,7 @@ const clickareaStyle = css`
   &:hover::before {
     width: 100%;
     /*0.4秒遅れてアニメーション*/
-    transition-delay: 0.4s;
+    transition-delay: calc(var(--duration) / 2 + (var(--duration) / 6));
     transform: scale(1, 1);
   }
 `
@@ -64,6 +78,8 @@ export const STyledAnchor = styled(Anchor)`
 `
 
 export const ChildrenWrapper = styled.span`
+  ${variables}
+
   && {
     display: block;
     z-index: 2;
@@ -77,10 +93,10 @@ export const ChildrenWrapper = styled.span`
     position: absolute;
     /*線の形状*/
     width: 100%;
-    height: 1px;
-    background: #333;
+    height: var(--animate-line-thickness);
+    background-color: var(--animated-bg-color);
     /*アニメーションの設定*/
-    transition: all 0.3s;
+    transition: all calc(var(--duration) / 2);
     transform: scale(0, 1);
     transform-origin: center;
   }
@@ -88,13 +104,13 @@ export const ChildrenWrapper = styled.span`
   /*上線*/
   &&::before {
     left: 0;
-    top: 0;
+    top: calc(-1 * var(--animate-line-thickness) * 2 / 3);
   }
 
   /*下線*/
   &&::after {
     left: 0;
-    bottom: 0;
+    bottom: calc(-1 * var(--animate-line-thickness) * 2 / 3);
   }
 
   /*hoverをすると線が伸びる*/
