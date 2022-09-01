@@ -4,10 +4,11 @@ import { Anchor, AnchorCoreProps } from '../../core/Anchor'
 import { Button, ButtonCoreProps } from '../../core/Button'
 import { defaultButtonCoreProps } from '../../core/Button/model/props'
 import { CharacterProps, defaultProps } from './model/props'
+import { ChildrenWrapper, STyledAnchor, STyledButton } from './styled'
 
 const getChildrenDecorator =
   (props: CharacterProps) => (children: ReactNode) => {
-    return <span {...props}>{children}</span>
+    return <ChildrenWrapper {...props}>{children}</ChildrenWrapper>
   }
 
 const SlideFillAnchorInner = ({
@@ -19,9 +20,9 @@ const SlideFillAnchorInner = ({
   const thisProps = { slide }
   const decorate = getChildrenDecorator(thisProps)
   return (
-    <Anchor {...superProps} ref={ref}>
+    <STyledAnchor {...superProps} ref={ref}>
       {decorate(children)}
-    </Anchor>
+    </STyledAnchor>
   )
 }
 
@@ -34,7 +35,7 @@ const SlideFillButtonInner = ({
   const thisProps = { slide }
   const decorate = getChildrenDecorator(thisProps)
 
-  return <Button {...superProps}>{decorate(children)}</Button>
+  return <STyledButton {...superProps}>{decorate(children)}</STyledButton>
 }
 
 export const SlideFillClick = {

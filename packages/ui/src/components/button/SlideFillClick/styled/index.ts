@@ -3,52 +3,105 @@ import { CharacterProps } from '../model/props'
 import { match } from 'ts-pattern'
 import { ColorPalette as $, ResetCss, Truthy } from 'styled-utility-first'
 import { CannotIncludeInteractiveElements } from '../../../../css/alert'
+import { Button } from '../../../core/Button'
+import { Anchor } from '../../../core/Anchor'
 
-export const CheckSemanticButton = styled.button`
-  /* インタラクティブコンテンツを子要素に持つ場合、警告 */
-  ${CannotIncludeInteractiveElements}
+const clickareaStyle = css`
+  /*線の基点とするためrelativeを指定*/
+  position: relative;
+  /*ボタンの形状*/
+  display: inline-block;
+  padding: 10px 30px;
+
+  color: #333;
+  border: 1px solid #ccc;
+  text-decoration: none;
+  outline: none;
+  /*はみ出す背景色を隠す*/
+  overflow: hidden;
+
+  &:hover {
+    color: #ccc;
+    border-color: transparent;
+    /*色の変化を遅らせる*/
+    transition-delay: 0.6s;
+  }
+
+  /*背景の設定*/
+  &::before {
+    content: '';
+    /*絶対配置で線の位置を決める*/
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    /*背景の形状*/
+    height: 100%;
+    width: 100%;
+    background: #333;
+    /*アニメーションの設定*/
+    transition: all 0.3s;
+    transform: scale(0, 1);
+    transform-origin: center;
+  }
+
+  /*hoverをすると背景が伸びる*/
+  &:hover::before {
+    width: 100%;
+    /*0.4秒遅れてアニメーション*/
+    transition-delay: 0.4s;
+    transform: scale(1, 1);
+  }
 `
 
-export const StyledButton = styled(CheckSemanticButton)`
-  /* reset -------------------------------------- */
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  outline: none;
-  padding: 0;
-  appearance: none;
+export const STyledButton = styled(Button)`
+  ${ResetCss.button}
+  ${clickareaStyle}
+`
 
-  /* normal ------------------------------------- */
-  background-color: white;
-  border-radius: 1em;
-  border: 1px solid rgb(236, 239, 241);
-  box-shadow: rgba(207, 216, 220, 0.4) 0px 2px 4px,
-    rgba(207, 216, 220, 0.3) 0px 7px 13px -3px,
-    rgba(207, 216, 220, 0.2) 0px -3px 0px inset;
-  padding: 1em 2em;
+export const STyledAnchor = styled(Anchor)`
+  ${clickareaStyle}
+`
 
-  /* onFocus ------------------------------------ */
-  outline: 2px solid transparent;
-  outline-offset: 100px;
-  transition: all 0.5 ease;
-
-  &:focus,
-  &:active {
-    outline-color: ${$.pastel.water};
-    outline-offset: -2px;
+export const ChildrenWrapper = styled.span`
+  && {
+    display: block;
+    z-index: 2;
   }
 
-  /* onClick ------------------------------------ */
-  &:hover,
-  &:active {
-    position: relative;
-    top: 3px;
-    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
-      rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  /*線の設定*/
+  &&::before,
+  &&::after {
+    content: '';
+    /*絶対配置で線の位置を決める*/
+    position: absolute;
+    /*線の形状*/
+    width: 100%;
+    height: 1px;
+    background: #333;
+    /*アニメーションの設定*/
+    transition: all 0.3s;
+    transform: scale(0, 1);
+    transform-origin: center;
   }
 
-  &:disabled {
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
-      rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+  /*上線*/
+  &&::before {
+    left: 0;
+    top: 0;
+  }
+
+  /*下線*/
+  &&::after {
+    left: 0;
+    bottom: 0;
+  }
+
+  /*hoverをすると線が伸びる*/
+  ${STyledAnchor}:hover &&::before,
+  ${STyledAnchor}:hover &&::after,
+  ${STyledButton}:hover &&::before,
+  ${STyledButton}:hover &&::after {
+    transform: scale(1, 1);
   }
 `
