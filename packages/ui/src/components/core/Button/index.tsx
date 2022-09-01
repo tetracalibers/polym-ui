@@ -1,7 +1,7 @@
 import _ from 'lodash'
 import { ComponentPropsWithoutRef, forwardRef, Ref, ReactNode } from 'react'
 import { CharacterProps, defaultProps } from './model/props'
-import { StyledButton } from './styled'
+import { CheckSemanticButton, StyledButton } from './styled'
 
 type WithoutChildren<Props> = Omit<Props, 'children'>
 
@@ -17,9 +17,9 @@ const ButtonInner = ({ children, ref, type, ..._props }: Props) => {
   )
 
   return (
-    <StyledButton {...props} ref={ref} type={type ?? 'button'}>
+    <CheckSemanticButton {...props} ref={ref} type={type ?? 'button'}>
       {children}
-    </StyledButton>
+    </CheckSemanticButton>
   )
 }
 

@@ -4,7 +4,12 @@ import { match } from 'ts-pattern'
 import { ColorPalette as $, ResetCss, Truthy } from 'styled-utility-first'
 import { CannotIncludeInteractiveElements } from '../../../../css/alert'
 
-export const ResetStyleButton = styled.button`
+export const CheckSemanticButton = styled.button`
+  /* インタラクティブコンテンツを子要素に持つ場合、警告 */
+  ${CannotIncludeInteractiveElements}
+`
+
+export const StyledButton = styled(CheckSemanticButton)`
   /* reset -------------------------------------- */
   background-color: transparent;
   border: none;
@@ -13,15 +18,6 @@ export const ResetStyleButton = styled.button`
   padding: 0;
   appearance: none;
 
-  /* -------------------------------------------- */
-  /* WARMING                                      */
-  /* -------------------------------------------- */
-
-  /* インタラクティブコンテンツを子要素に持つ場合、警告 */
-  ${CannotIncludeInteractiveElements}
-`
-
-export const StyledButton = styled(ResetStyleButton)`
   /* normal ------------------------------------- */
   background-color: white;
   border-radius: 1em;
