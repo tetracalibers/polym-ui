@@ -33,7 +33,7 @@ const beforeLine = (slide: CharacterProps['slide']) => {
     })
     .with('Down', () => {
       return css`
-        &&:before,
+        &&::before,
         &&::after {
           width: var(--animate-line-thickness);
           height: 0;
@@ -52,6 +52,27 @@ const beforeLine = (slide: CharacterProps['slide']) => {
         }
       `
     })
+    .with('Up', () => {
+      return css`
+        &&::before,
+        &&::after {
+          width: var(--animate-line-thickness);
+          height: 0;
+        }
+
+        /*左線*/
+        &&::before {
+          left: calc(-1 * var(--animate-line-thickness) * 2 / 3);
+          bottom: 0;
+        }
+
+        /*右線*/
+        &&::after {
+          right: calc(-1 * var(--animate-line-thickness) * 2 / 3);
+          bottom: 0;
+        }
+      `
+    })
     .otherwise(() => '')
 }
 
@@ -62,7 +83,7 @@ const afterLine = (slide: CharacterProps['slide']) => {
         transform: scale(1, 1);
       `
     })
-    .with('Down', () => {
+    .with('Down', 'Up', () => {
       return css`
         height: 100%;
       `
@@ -78,10 +99,22 @@ const beforeBg = (slide: CharacterProps['slide']) => {
         transform-origin: center;
         height: 100%;
         width: 100%;
+        left: 0;
+        top: 0;
       `
     })
     .with('Down', () => {
       return css`
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 0;
+      `
+    })
+    .with('Up', () => {
+      return css`
+        left: 0;
+        bottom: 0;
         width: 100%;
         height: 0;
       `
@@ -97,7 +130,7 @@ const afterBg = (slide: CharacterProps['slide']) => {
         transform: scale(1, 1);
       `
     })
-    .with('Down', () => {
+    .with('Down', 'Up', () => {
       return css`
         height: 100%;
       `
@@ -145,8 +178,6 @@ const clickareaStyle = css`
     content: '';
     /*絶対配置で線の位置を決める*/
     position: absolute;
-    left: 0;
-    top: 0;
     z-index: -1;
     /*背景の形状*/
     background-color: var(--animated-bg-color);
