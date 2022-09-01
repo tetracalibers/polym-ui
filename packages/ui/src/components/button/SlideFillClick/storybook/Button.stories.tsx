@@ -2,13 +2,13 @@ import { ComponentStory } from '@storybook/react'
 import { logicArgTypes } from '../model/argTypes'
 import { defaultProps } from '../model/props'
 import { DocsPage } from './docsPage'
-import { ToFilledClick } from '..'
-import { coreArgTypes } from '../../../core/Anchor/model/argTypes'
-import { defaultAnchorCoreProps } from '../../../core/Anchor/model/props'
+import { SlideFillClick } from '..'
+import { coreArgTypes } from '../../../core/Button/model/argTypes'
+import { defaultButtonCoreProps } from '../../../core/Button/model/props'
 
 export default {
-  title: 'button & link/ToFilledClick/Anchor',
-  component: ToFilledClick,
+  title: 'button & link/SlideFillClick/Button',
+  component: SlideFillClick,
   parameters: {
     docs: {
       page: () => <DocsPage />,
@@ -23,14 +23,14 @@ export default {
   },
 }
 
-const Template: ComponentStory<typeof ToFilledClick.Anchor> = ({
+const Template: ComponentStory<typeof SlideFillClick.Button> = ({
   children,
   ...args
-}) => <ToFilledClick.Anchor {...args}>{children}</ToFilledClick.Anchor>
+}) => <SlideFillClick.Button {...args}>{children}</SlideFillClick.Button>
 
 export const playground = Template.bind({})
 playground.args = {
   ...defaultProps,
-  ...defaultAnchorCoreProps,
+  ...defaultButtonCoreProps,
   children: 'Correct Usage',
 }

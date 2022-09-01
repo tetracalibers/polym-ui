@@ -5,7 +5,7 @@ import { Button, ButtonCoreProps } from '../../core/Button'
 import { defaultButtonCoreProps } from '../../core/Button/model/props'
 import { CharacterProps, defaultProps } from './model/props'
 
-const ToFilledAnchorInner = ({
+const SlideFillAnchorInner = ({
   children,
   ref,
   ...superProps
@@ -21,7 +21,7 @@ const ToFilledAnchorInner = ({
   )
 }
 
-const ToFilledButtonInner = ({
+const SlideFillButtonInner = ({
   children,
   ref,
   ...superProps
@@ -33,7 +33,7 @@ const ToFilledButtonInner = ({
   return <Button {...superProps}>{children}</Button>
 }
 
-export const ToFilledClick = {
-  Button: forwardRef<HTMLButtonElement, ButtonCoreProps>(ToFilledButtonInner),
-  Anchor: forwardRef<HTMLAnchorElement, AnchorCoreProps>(ToFilledAnchorInner),
+export const SlideFillClick = {
+  Button: forwardRef<HTMLButtonElement, ButtonCoreProps>(SlideFillButtonInner),
+  Anchor: forwardRef<HTMLAnchorElement, AnchorCoreProps>(SlideFillAnchorInner),
 }
