@@ -94,6 +94,27 @@ const beforeLine = (slide: CharacterProps['slide']) => {
         }
       `
     })
+    .with('RtoL', () => {
+      return css`
+        &&::before,
+        &&::after {
+          height: var(--animate-line-thickness);
+          width: 0;
+        }
+
+        /*右上線*/
+        &&::before {
+          top: calc(-1 * var(--animate-line-thickness) * 2 / 3);
+          right: 0;
+        }
+
+        /*右下線*/
+        &&::after {
+          bottom: calc(-1 * var(--animate-line-thickness) * 2 / 3);
+          right: 0;
+        }
+      `
+    })
     .otherwise(() => '')
 }
 
@@ -109,7 +130,7 @@ const afterLine = (slide: CharacterProps['slide']) => {
         height: 100%;
       `
     })
-    .with('LtoR', () => {
+    .with('LtoR', 'RtoL', () => {
       return css`
         width: 100%;
       `
@@ -153,6 +174,14 @@ const beforeBg = (slide: CharacterProps['slide']) => {
         width: 0;
       `
     })
+    .with('RtoL', () => {
+      return css`
+        right: 0;
+        bottom: 0;
+        height: 100%;
+        width: 0;
+      `
+    })
     .otherwise(() => '')
 }
 
@@ -169,7 +198,7 @@ const afterBg = (slide: CharacterProps['slide']) => {
         height: 100%;
       `
     })
-    .with('LtoR', () => {
+    .with('LtoR', 'RtoL', () => {
       return css`
         width: 100%;
       `
