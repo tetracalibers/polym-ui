@@ -40,6 +40,8 @@
     "ts-pattern": "^4.0.5",
     "ts-typedef-helper": "*",
     "typescript": "^4.7.4",
-    "@vscode/web-custom-data": "^0.4.0"
+    "@vscode/web-custom-data": "^0.4.0",
+    "ts-node": "^10.9.1",
+    "json-microscope": "*"
   }
 }
