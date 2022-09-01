@@ -1,13 +1,13 @@
 import { ComponentStory } from '@storybook/react'
 import { thisArgTypes } from '../model/argTypes'
 import { defaultProps } from '../model/props'
-import { DocsPage } from './docsPage'
+import { DocsPage } from '../../../core/Anchor/storybook/docsPage'
 import { SlideFillClick } from '..'
 import { coreArgTypes } from '../../../core/Anchor/model/argTypes'
 import { defaultAnchorCoreProps } from '../../../core/Anchor/model/props'
 
 export default {
-  title: 'button & link/SlideFillClick/Anchor',
+  title: 'button & link/SlideFillClick/SlideFillClick.Anchor',
   component: SlideFillClick,
   parameters: {
     docs: {
