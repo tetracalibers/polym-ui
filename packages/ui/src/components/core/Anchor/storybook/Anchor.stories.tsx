@@ -50,3 +50,17 @@ violationUsage01.argTypes = {
     },
   },
 }
+
+export const violationUsage02 = Template.bind({})
+violationUsage02.args = {
+  ...defaultProps,
+  children: <div>Examples of Violations</div>,
+  href: 'javascript:void(0)',
+}
+violationUsage02.argTypes = {
+  children: {
+    control: {
+      type: null,
+    },
+  },
+}
