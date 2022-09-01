@@ -30,5 +30,8 @@ export const logicArgTypes = {
         summary: null,
       },
     },
+    type: {
+      required: true,
+    },
   },
 }

@@ -20,4 +20,19 @@ export const logicArgTypes = {
       required: true,
     },
   },
+  children: {
+    control: {
+      type: null,
+    },
+    description: 'Elements you want to function as links',
+    table: {
+      category: 'react',
+      type: {
+        summary: null,
+      },
+    },
+    type: {
+      required: true,
+    },
+  },
 }
