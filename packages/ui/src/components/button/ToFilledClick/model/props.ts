@@ -1,4 +1,3 @@
-import { defaultCoreProps } from './../../../core/Button/model/props'
 import {
   getDefaultProps,
   getPropType,
@@ -15,5 +14,4 @@ type Conf = typeof conf
 export type CharacterProps = getPropType<Conf>
 export const defaultProps = {
   ...getDefaultProps<CharacterProps>(conf),
-  ...defaultCoreProps,
 }

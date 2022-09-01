@@ -1,6 +1,6 @@
 import { ComponentStory } from '@storybook/react'
 import { coreArgTypes } from '../model/argTypes'
-import { defaultCoreProps } from '../model/props'
+import { defaultButtonCoreProps } from '../model/props'
 import { DocsPage } from './docsPage'
 import { Button } from '..'
 import { DarkTextBox } from '../../../../mock/TestBox'
@@ -28,13 +28,13 @@ const Template: ComponentStory<typeof Button> = ({ children, ...args }) => (
 
 export const playground = Template.bind({})
 playground.args = {
-  ...defaultCoreProps,
+  ...defaultButtonCoreProps,
   children: 'Correct Usage',
 }
 
 export const violationUsage01 = Template.bind({})
 violationUsage01.args = {
-  ...defaultCoreProps,
+  ...defaultButtonCoreProps,
   children: <a>Examples of Violations</a>,
 }
 violationUsage01.argTypes = {

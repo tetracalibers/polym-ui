@@ -2,9 +2,10 @@ import _ from 'lodash'
 import { forwardRef } from 'react'
 import { Anchor, AnchorCoreProps } from '../../core/Anchor'
 import { Button, ButtonCoreProps } from '../../core/Button'
-import { CharacterProps } from './model/props'
+import { defaultButtonCoreProps } from '../../core/Button/model/props'
+import { CharacterProps, defaultProps } from './model/props'
 
-const ToFilledLinkInner = ({
+const ToFilledAnchorInner = ({
   children,
   ref,
   ...superProps
@@ -28,11 +29,11 @@ const ToFilledButtonInner = ({
   //const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
   //  _.isUndefined(input) ? defaul : input
   //)
-  //
+
   return <Button {...superProps}>{children}</Button>
 }
 
 export const ToFilledClick = {
   Button: forwardRef<HTMLButtonElement, ButtonCoreProps>(ToFilledButtonInner),
-  Link: forwardRef<HTMLAnchorElement, AnchorCoreProps>(ToFilledLinkInner),
+  Anchor: forwardRef<HTMLAnchorElement, AnchorCoreProps>(ToFilledAnchorInner),
 }

@@ -6,7 +6,7 @@ import {
   ReactNode,
   ForwardedRef,
 } from 'react'
-import { CharacterProps, defaultProps } from './model/props'
+import { CharacterProps, defaultAnchorCoreProps } from './model/props'
 import { CheckSemanticAnchor } from './styled'
 
 export type AnchorCoreProps = {
@@ -22,7 +22,7 @@ const AnchorInner = ({
   openInNewTab,
   ..._props
 }: AnchorCoreProps) => {
-  const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
+  const props = _.mergeWith(_props, defaultAnchorCoreProps, (input, defaul) =>
     _.isUndefined(input) ? defaul : input
   )
 

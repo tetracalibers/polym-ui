@@ -12,6 +12,6 @@ const conf = {
 type Conf = typeof conf
 
 export type CharacterProps = getPropType<Conf>
-export const defaultProps = {
+export const defaultAnchorCoreProps = {
   ...getDefaultProps<CharacterProps>(conf),
 }

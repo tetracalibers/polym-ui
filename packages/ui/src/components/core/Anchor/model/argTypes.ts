@@ -1,7 +1,7 @@
-import { defaultProps } from './props'
+import { defaultAnchorCoreProps } from './props'
 import { CssStyle } from 'ts-typedef-helper'
 
-export const logicArgTypes = {
+export const coreArgTypes = {
   href: {
     control: {
       type: 'text',
@@ -13,7 +13,7 @@ export const logicArgTypes = {
         summary: null,
       },
       defaultValue: {
-        summary: defaultProps.href,
+        summary: defaultAnchorCoreProps.href,
       },
     },
     type: {
@@ -46,7 +46,7 @@ export const logicArgTypes = {
         summary: null,
       },
       defaultValue: {
-        summary: defaultProps.openInNewTab,
+        summary: defaultAnchorCoreProps.openInNewTab,
       },
     },
   },

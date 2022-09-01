@@ -1,6 +1,6 @@
 import { ComponentStory } from '@storybook/react'
-import { logicArgTypes } from '../model/argTypes'
-import { defaultProps } from '../model/props'
+import { coreArgTypes } from '../model/argTypes'
+import { defaultAnchorCoreProps } from '../model/props'
 import { DocsPage } from './docsPage'
 import { Anchor } from '..'
 
@@ -16,7 +16,7 @@ export default {
     },
   },
   argTypes: {
-    ...logicArgTypes,
+    ...coreArgTypes,
   },
 }
 
@@ -32,14 +32,14 @@ const Template: ComponentStory<typeof Anchor> = ({
 
 export const playground = Template.bind({})
 playground.args = {
-  ...defaultProps,
+  ...defaultAnchorCoreProps,
   children: 'Correct Usage',
   href: 'https://tetracalibers.notion.site/tomixy-TetraCalibers-30b94fb9fc054d4da667539ef35f42c6',
 }
 
 export const violationUsage01 = Template.bind({})
 violationUsage01.args = {
-  ...defaultProps,
+  ...defaultAnchorCoreProps,
   children: <div tabIndex={0}>Examples of Violations</div>,
   href: 'https://tetracalibers.notion.site/tomixy-TetraCalibers-30b94fb9fc054d4da667539ef35f42c6',
 }
@@ -53,7 +53,7 @@ violationUsage01.argTypes = {
 
 export const violationUsage02 = Template.bind({})
 violationUsage02.args = {
-  ...defaultProps,
+  ...defaultAnchorCoreProps,
   children: <div>Examples of Violations</div>,
   href: 'javascript:void(0)',
 }

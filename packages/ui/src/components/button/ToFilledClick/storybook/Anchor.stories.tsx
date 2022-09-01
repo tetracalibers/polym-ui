@@ -3,11 +3,11 @@ import { logicArgTypes } from '../model/argTypes'
 import { defaultProps } from '../model/props'
 import { DocsPage } from './docsPage'
 import { ToFilledClick } from '..'
-import { coreArgTypes } from '../../../core/Button/model/argTypes'
-import { defaultButtonCoreProps } from '../../../core/Button/model/props'
+import { coreArgTypes } from '../../../core/Anchor/model/argTypes'
+import { defaultAnchorCoreProps } from '../../../core/Anchor/model/props'
 
 export default {
-  title: 'button & link/ToFilledClick/Button',
+  title: 'button & link/ToFilledClick/Anchor',
   component: ToFilledClick,
   parameters: {
     docs: {
@@ -23,14 +23,14 @@ export default {
   },
 }
 
-const Template: ComponentStory<typeof ToFilledClick.Button> = ({
+const Template: ComponentStory<typeof ToFilledClick.Anchor> = ({
   children,
   ...args
-}) => <ToFilledClick.Button {...args}>{children}</ToFilledClick.Button>
+}) => <ToFilledClick.Anchor {...args}>{children}</ToFilledClick.Anchor>
 
 export const playground = Template.bind({})
 playground.args = {
   ...defaultProps,
-  ...defaultButtonCoreProps,
+  ...defaultAnchorCoreProps,
   children: 'Correct Usage',
 }
