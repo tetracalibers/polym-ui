@@ -11,6 +11,19 @@ export const ResetStyleButton = styled.button`
   outline: none;
   padding: 0;
   appearance: none;
+
+  /* -------------------------------------------- */
+  /* WARMING                                      */
+  /* -------------------------------------------- */
+
+  /* インタラクティブコンテンツを子要素に持つ場合、警告 */
+  & button::after,
+  & a::after,
+  & [tabindex]::after {
+    background-color: ${$.vivid.red};
+    color: white;
+    content: '[ERROR] invalid child element : "a" or "button" or "[tabindex]"';
+  }
 `
 
 export const StyledButton = styled(ResetStyleButton)`
