@@ -3,13 +3,11 @@ import { ComponentPropsWithoutRef, forwardRef, Ref, ReactNode } from 'react'
 import { CharacterProps, defaultProps } from './model/props'
 import { CheckSemanticAnchor } from './styled'
 
-type WithoutChildren<Props> = Omit<Props, 'children'>
-
-type Props = {
+export type AnchorCoreProps = {
   ref: Ref<HTMLAnchorElement>
   children: ReactNode
 } & CharacterProps &
-  WithoutChildren<ComponentPropsWithoutRef<'a'>>
+  Omit<ComponentPropsWithoutRef<'a'>, 'children' | 'href'>
 
 const AnchorInner = ({
   children,
@@ -17,7 +15,7 @@ const AnchorInner = ({
   href,
   openInNewTab,
   ..._props
-}: Props) => {
+}: AnchorCoreProps) => {
   const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
     _.isUndefined(input) ? defaul : input
   )

@@ -1,14 +1,14 @@
 import { ComponentStory } from '@storybook/react'
-import { coreArgTypes } from '../model/argTypes'
+import { logicArgTypes } from '../model/argTypes'
 import { defaultProps } from '../model/props'
 import { DocsPage } from './docsPage'
-import { Button } from '..'
+import { ToFilledClick } from '..'
 import { DarkTextBox } from '../../../../mock/TestBox'
 import { VerticalStack } from '../../../layout-algorithm/VerticalStack'
 
 export default {
-  title: 'core/Button',
-  component: Button,
+  title: 'core/ToFilledClick',
+  component: ToFilledClick,
   parameters: {
     docs: {
       page: () => <DocsPage />,
@@ -18,13 +18,14 @@ export default {
     },
   },
   argTypes: {
-    ...coreArgTypes,
+    ...logicArgTypes,
   },
 }
 
-const Template: ComponentStory<typeof Button> = ({ children, ...args }) => (
-  <Button {...args}>{children}</Button>
-)
+const Template: ComponentStory<typeof ToFilledClick> = ({
+  children,
+  ...args
+}) => <ToFilledClick {...args}>{children}</ToFilledClick>
 
 export const playground = Template.bind({})
 playground.args = {
