@@ -6,6 +6,105 @@ import { CannotIncludeInteractiveElements } from '../../../../css/alert'
 import { Button } from '../../../core/Button'
 import { Anchor } from '../../../core/Anchor'
 
+const beforeLine = (slide: CharacterProps['slide']) => {
+  return match(slide)
+    .with('FromCenter', () => {
+      return css`
+        &&::before,
+        &&::after {
+          transform: scale(0, 1);
+          transform-origin: center;
+          width: 100%;
+          height: var(--animate-line-thickness);
+        }
+
+        /*上線*/
+        &&::before {
+          left: 0;
+          top: calc(-1 * var(--animate-line-thickness) * 2 / 3);
+        }
+
+        /*下線*/
+        &&::after {
+          left: 0;
+          bottom: calc(-1 * var(--animate-line-thickness) * 2 / 3);
+        }
+      `
+    })
+    .with('Down', () => {
+      return css`
+        &&:before,
+        &&::after {
+          width: var(--animate-line-thickness);
+          height: 0;
+        }
+
+        /*左線*/
+        &&::before {
+          left: calc(-1 * var(--animate-line-thickness) * 2 / 3);
+          top: 0;
+        }
+
+        /*右線*/
+        &&::after {
+          right: calc(-1 * var(--animate-line-thickness) * 2 / 3);
+          top: 0;
+        }
+      `
+    })
+    .otherwise(() => '')
+}
+
+const afterLine = (slide: CharacterProps['slide']) => {
+  return match(slide)
+    .with('FromCenter', () => {
+      return css`
+        transform: scale(1, 1);
+      `
+    })
+    .with('Down', () => {
+      return css`
+        height: 100%;
+      `
+    })
+    .otherwise(() => '')
+}
+
+const beforeBg = (slide: CharacterProps['slide']) => {
+  return match(slide)
+    .with('FromCenter', () => {
+      return css`
+        transform: scale(0, 1);
+        transform-origin: center;
+        height: 100%;
+        width: 100%;
+      `
+    })
+    .with('Down', () => {
+      return css`
+        width: 100%;
+        height: 0;
+      `
+    })
+    .otherwise(() => '')
+}
+
+const afterBg = (slide: CharacterProps['slide']) => {
+  return match(slide)
+    .with('FromCenter', () => {
+      return css`
+        width: 100%;
+        transform: scale(1, 1);
+      `
+    })
+    .with('Down', () => {
+      return css`
+        height: 100%;
+      `
+    })
+    .otherwise(() => '')
+}
+
 // 線 -> 背景 -> テキスト
 
 const variables = css`
@@ -13,7 +112,7 @@ const variables = css`
   --animated-bg-color: ${$.grayScale.dark};
   --animated-color: ${$.grayScale.light};
   --animate-line-thickness: 1.5px;
-  --duration: 0.4s;
+  --duration: 0.6s;
   /* css ---------------------------------------- */
   --bd-color: ${$.pastel.purple};
   --bd-width: 1px;
@@ -50,21 +149,17 @@ const clickareaStyle = css`
     top: 0;
     z-index: -1;
     /*背景の形状*/
-    height: 100%;
-    width: 100%;
     background-color: var(--animated-bg-color);
     /*アニメーションの設定*/
     transition: all calc(var(--duration) / 2);
-    transform: scale(0, 1);
-    transform-origin: center;
+    ${({ theme }) => beforeBg(theme.slide)}
   }
 
   /*hoverをすると背景が伸びる*/
   &:hover::before {
-    width: 100%;
     /*0.4秒遅れてアニメーション*/
     transition-delay: calc(var(--duration) / 2 + (var(--duration) / 6));
-    transform: scale(1, 1);
+    ${({ theme }) => afterBg(theme.slide)}
   }
 `
 
@@ -92,32 +187,18 @@ export const ChildrenWrapper = styled.span`
     /*絶対配置で線の位置を決める*/
     position: absolute;
     /*線の形状*/
-    width: 100%;
-    height: var(--animate-line-thickness);
     background-color: var(--animated-bg-color);
     /*アニメーションの設定*/
     transition: all calc(var(--duration) / 2);
-    transform: scale(0, 1);
-    transform-origin: center;
   }
 
-  /*上線*/
-  &&::before {
-    left: 0;
-    top: calc(-1 * var(--animate-line-thickness) * 2 / 3);
-  }
-
-  /*下線*/
-  &&::after {
-    left: 0;
-    bottom: calc(-1 * var(--animate-line-thickness) * 2 / 3);
-  }
+  ${({ theme }) => beforeLine(theme.slide)}
 
   /*hoverをすると線が伸びる*/
   ${STyledAnchor}:hover &&::before,
   ${STyledAnchor}:hover &&::after,
   ${STyledButton}:hover &&::before,
   ${STyledButton}:hover &&::after {
-    transform: scale(1, 1);
+    ${({ theme }) => afterLine(theme.slide)}
   }
 `
