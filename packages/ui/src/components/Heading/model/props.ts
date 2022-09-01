@@ -5,7 +5,7 @@ import {
   Required,
 } from 'react-tsx-props'
 
-export const levelOptions = [1, 2, 3, 4, 5, 6]
+export const levelOptions = [1, 2, 3, 4, 5, 6] as const
 type LevelOptions = typeof levelOptions[number]
 
 const conf = {
