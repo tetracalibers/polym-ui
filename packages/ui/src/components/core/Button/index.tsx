@@ -1,13 +1,22 @@
 import _ from 'lodash'
-import { ComponentPropsWithoutRef, forwardRef, Ref, ReactNode } from 'react'
+import {
+  ComponentPropsWithoutRef,
+  forwardRef,
+  Ref,
+  ReactNode,
+  ReactElement,
+  ForwardedRef,
+} from 'react'
 import { CoreProps, defaultProps } from './model/props'
 import { CheckSemanticButton, StyledButton } from './styled'
 
 export type ButtonCoreProps = {
-  ref: Ref<HTMLButtonElement>
+  ref?: ForwardedRef<HTMLButtonElement>
   children: ReactNode
 } & CoreProps &
   Omit<ComponentPropsWithoutRef<'button'>, 'children' | 'type'>
+
+export type ButtonComponent = (props: ButtonCoreProps) => ReactElement | null
 
 const ButtonInner = ({ children, ref, type, ..._props }: ButtonCoreProps) => {
   const props = _.mergeWith(_props, defaultProps, (input, defaul) =>

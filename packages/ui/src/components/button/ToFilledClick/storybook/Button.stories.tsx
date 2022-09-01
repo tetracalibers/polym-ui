@@ -22,10 +22,10 @@ export default {
   },
 }
 
-const Template: ComponentStory<typeof ToFilledClick> = ({
+const Template: ComponentStory<typeof ToFilledClick.Button> = ({
   children,
   ...args
-}) => <ToFilledClick {...args}>{children}</ToFilledClick>
+}) => <ToFilledClick.Button {...args}>{children}</ToFilledClick.Button>
 
 export const playground = Template.bind({})
 playground.args = {

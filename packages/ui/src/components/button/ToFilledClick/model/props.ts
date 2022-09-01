@@ -8,9 +8,7 @@ import {
 export const buttonTypeOptions = ['submit', 'reset', 'button'] as const
 type ButtonTypeOptions = typeof buttonTypeOptions[number]
 
-const conf = {
-  type: NotRequired<ButtonTypeOptions>('button'),
-}
+const conf = {}
 type Conf = typeof conf
 
 export type CharacterProps = getPropType<Conf>

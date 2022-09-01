@@ -1,10 +1,16 @@
 import _ from 'lodash'
-import { ComponentPropsWithoutRef, forwardRef, Ref, ReactNode } from 'react'
+import {
+  ComponentPropsWithoutRef,
+  forwardRef,
+  Ref,
+  ReactNode,
+  ForwardedRef,
+} from 'react'
 import { CharacterProps, defaultProps } from './model/props'
 import { CheckSemanticAnchor } from './styled'
 
 export type AnchorCoreProps = {
-  ref: Ref<HTMLAnchorElement>
+  ref: ForwardedRef<HTMLAnchorElement>
   children: ReactNode
 } & CharacterProps &
   Omit<ComponentPropsWithoutRef<'a'>, 'children' | 'href'>

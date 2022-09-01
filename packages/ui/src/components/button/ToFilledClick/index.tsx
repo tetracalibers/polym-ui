@@ -1,34 +1,38 @@
 import _ from 'lodash'
-import {
-  ComponentPropsWithoutRef,
-  forwardRef,
-  Ref,
-  ReactNode,
-  ReactElement,
-} from 'react'
+import { forwardRef } from 'react'
 import { Anchor, AnchorCoreProps } from '../../core/Anchor'
 import { Button, ButtonCoreProps } from '../../core/Button'
-import { CharacterProps, defaultProps } from './model/props'
-import { CheckSemanticButton, StyledButton } from './styled'
+import { CharacterProps } from './model/props'
 
-type WithoutChildren<Props> = Omit<Props, 'children'>
+const ToFilledLinkInner = ({
+  children,
+  ref,
+  ...superProps
+}: AnchorCoreProps & CharacterProps) => {
+  //const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
+  //  _.isUndefined(input) ? defaul : input
+  //)
 
-type AllowTag = 'a' | 'button'
-
-const ToFilledClickInner = <As extends AnchorCoreProps | ButtonCoreProps>(
-  { ..._props }: CharacterProps,
-  as: AllowTag,
-  { children, ...superProps }: As
-) => {
-  const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
-    _.isUndefined(input) ? defaul : input
+  return (
+    <Anchor {...superProps} ref={ref}>
+      {children}
+    </Anchor>
   )
-
-  const Component = as === 'a' ? Anchor : Button
-
-  type SuperProps = typeof as extends 'a' ? AnchorCoreProps : ButtonCoreProps
-
-  return <Component {...(superProps as SuperProps)}>{children}</Component>
 }
 
-export const ToFilledClick = forwardRef(ToFilledClickInner)
+const ToFilledButtonInner = ({
+  children,
+  ref,
+  ...superProps
+}: ButtonCoreProps & CharacterProps) => {
+  //const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
+  //  _.isUndefined(input) ? defaul : input
+  //)
+  //
+  return <Button {...superProps}>{children}</Button>
+}
+
+export const ToFilledClick = {
+  Button: forwardRef<HTMLButtonElement, ButtonCoreProps>(ToFilledButtonInner),
+  Link: forwardRef<HTMLAnchorElement, AnchorCoreProps>(ToFilledLinkInner),
+}
