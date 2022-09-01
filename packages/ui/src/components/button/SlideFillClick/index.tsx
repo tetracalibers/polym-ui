@@ -1,22 +1,26 @@
 import _ from 'lodash'
-import { forwardRef } from 'react'
+import { forwardRef, ReactNode } from 'react'
 import { Anchor, AnchorCoreProps } from '../../core/Anchor'
 import { Button, ButtonCoreProps } from '../../core/Button'
 import { defaultButtonCoreProps } from '../../core/Button/model/props'
 import { CharacterProps, defaultProps } from './model/props'
 
+const getChildrenDecorator =
+  (props: CharacterProps) => (children: ReactNode) => {
+    return <span {...props}>{children}</span>
+  }
+
 const SlideFillAnchorInner = ({
   children,
   ref,
+  slide = defaultProps.slide,
   ...superProps
 }: AnchorCoreProps & CharacterProps) => {
-  //const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
-  //  _.isUndefined(input) ? defaul : input
-  //)
-
+  const thisProps = { slide }
+  const decorate = getChildrenDecorator(thisProps)
   return (
     <Anchor {...superProps} ref={ref}>
-      {children}
+      {decorate(children)}
     </Anchor>
   )
 }
@@ -24,13 +28,13 @@ const SlideFillAnchorInner = ({
 const SlideFillButtonInner = ({
   children,
   ref,
+  slide = defaultProps.slide,
   ...superProps
 }: ButtonCoreProps & CharacterProps) => {
-  //const props = _.mergeWith(_props, defaultProps, (input, defaul) =>
-  //  _.isUndefined(input) ? defaul : input
-  //)
+  const thisProps = { slide }
+  const decorate = getChildrenDecorator(thisProps)
 
-  return <Button {...superProps}>{children}</Button>
+  return <Button {...superProps}>{decorate(children)}</Button>
 }
 
 export const SlideFillClick = {

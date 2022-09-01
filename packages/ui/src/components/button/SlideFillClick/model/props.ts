@@ -5,24 +5,21 @@ import {
   Required,
 } from 'react-tsx-props'
 
-export const buttonTypeOptions = ['submit', 'reset', 'button'] as const
-type ButtonTypeOptions = typeof buttonTypeOptions[number]
-
-export const fillMotionOptions = [
-  'slideDown',
-  'slideUp',
-  'slideLtoR',
-  'slideRtoL',
-  'spread',
+export const slideOptions = [
+  'Down',
+  'Up',
+  'LtoR',
+  'RtoL',
+  'FromCenter',
   //'mergeLine',
   //'traceMergeLine',
   //'enclose',
 ] as const
 
-type FillMotionOptions = typeof fillMotionOptions[number]
+type SlideOptions = typeof slideOptions[number]
 
 const conf = {
-  fillMotion: NotRequired<FillMotionOptions>('slideLtoR'),
+  slide: NotRequired<SlideOptions>('LtoR'),
 }
 type Conf = typeof conf
 

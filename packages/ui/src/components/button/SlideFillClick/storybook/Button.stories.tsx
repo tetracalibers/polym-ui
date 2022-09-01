@@ -1,5 +1,5 @@
 import { ComponentStory } from '@storybook/react'
-import { logicArgTypes } from '../model/argTypes'
+import { thisArgTypes } from '../model/argTypes'
 import { defaultProps } from '../model/props'
 import { DocsPage } from './docsPage'
 import { SlideFillClick } from '..'
@@ -19,7 +19,7 @@ export default {
   },
   argTypes: {
     ...coreArgTypes,
-    ...logicArgTypes,
+    ...thisArgTypes,
   },
 }
 
