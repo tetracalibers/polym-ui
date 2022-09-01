@@ -19,4 +19,16 @@ export const logicArgTypes = {
       },
     },
   },
+  children: {
+    control: {
+      type: null,
+    },
+    description: 'Element to be displayed as a button label. ',
+    table: {
+      category: 'react',
+      type: {
+        summary: null,
+      },
+    },
+  },
 }

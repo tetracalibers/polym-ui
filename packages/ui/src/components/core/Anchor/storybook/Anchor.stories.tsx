@@ -11,7 +11,7 @@ export default {
     docs: {
       page: () => <DocsPage />,
       description: {
-        component: '',
+        component: 'Component that wraps the "a" tag in HTML',
       },
     },
   },

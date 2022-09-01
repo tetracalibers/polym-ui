@@ -13,7 +13,7 @@ export default {
     docs: {
       page: () => <DocsPage />,
       description: {
-        component: '',
+        component: 'Component that wraps the "button" tag in HTML',
       },
     },
   },
