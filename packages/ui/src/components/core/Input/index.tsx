@@ -8,6 +8,8 @@ import {
   useContext,
 } from 'react'
 import { useNanoId, useShareState } from '@polym/hooks'
+import { STyledInput, STyledNumberInput } from './styled'
+import { VerticalStack } from '../../layout-algorithm/VerticalStack'
 
 /* -------------------------------------------- */
 /* CONTEXT                                      */
@@ -52,7 +54,7 @@ type InnerInputCommonProps = {
 const _Text = ({ ref, ...props }: InnerInputCommonProps) => {
   const { relationId } = useContext(InputContext)
 
-  return <input type='text' {...props} ref={ref} id={relationId} />
+  return <STyledInput type='text' {...props} ref={ref} id={relationId} />
 }
 const Text = forwardRef(_Text)
 
@@ -63,7 +65,9 @@ const Text = forwardRef(_Text)
 const _Number = ({ ref, ...props }: InnerInputCommonProps) => {
   const { relationId } = useContext(InputContext)
 
-  return <input type='number' {...props} ref={ref} id={relationId} />
+  return (
+    <STyledNumberInput type='number' {...props} ref={ref} id={relationId} />
+  )
 }
 const Number = forwardRef(_Number)
 
@@ -88,8 +92,10 @@ export const Input = ({ id, children }: InputCoreProps) => {
 
   return (
     <InputContext.Provider value={shareState}>
-      {Label}
-      {Input}
+      <VerticalStack spaceV={0.5}>
+        {Label}
+        {Input}
+      </VerticalStack>
     </InputContext.Provider>
   )
 }
