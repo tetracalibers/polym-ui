@@ -17,12 +17,6 @@ export const STyledInput = styled.input`
     line-height: 19px;
   }
 
-  &::-webkit-outer-spin-button,
-  &::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-
   &:focus {
     outline: 2px solid ${$.pastel.water};
   }

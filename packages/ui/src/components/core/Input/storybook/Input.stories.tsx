@@ -5,13 +5,13 @@ import { DocsPage } from './docsPage'
 import { Input } from '..'
 
 export default {
-  title: 'core/Input',
+  title: 'form control/Input',
   component: Input,
   parameters: {
     docs: {
       page: () => <DocsPage />,
       description: {
-        component: 'Component that wraps the "button" tag in HTML',
+        component: '',
       },
     },
   },
