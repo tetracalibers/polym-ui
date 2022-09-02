@@ -94,6 +94,29 @@ const _Text = ({ ref, id, ...props }: InnerInputCommonProps) => {
 const Text = forwardRef(_Text)
 
 /* -------------------------------------------- */
+/* EMAIL INPUT                                  */
+/* -------------------------------------------- */
+
+const _Email = ({ ref, id, ...props }: InnerInputCommonProps) => {
+  const { inputId, updateInputId } = useContext(InputContext)
+  useRegisterId(id, updateInputId)
+
+  return (
+    <STyledInput
+      type='email'
+      {...props}
+      ref={ref}
+      id={inputId}
+      autoCapitalize='none'
+      autoCorrect='off'
+      spellCheck={false}
+    />
+  )
+}
+
+const Email = forwardRef(_Email)
+
+/* -------------------------------------------- */
 /* NUMBER INPUT                                 */
 /* -------------------------------------------- */
 
@@ -158,3 +181,4 @@ export const Input = ({ children }: InputCoreProps) => {
 Input.Label = Label
 Input.Text = Text
 Input.Number = Number
+Input.Email = Email
