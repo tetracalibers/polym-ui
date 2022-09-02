@@ -4,6 +4,7 @@ import { CenterLineHeading } from '..'
 import { coreArgTypes } from '../../../core/Heading/model/argTypes'
 import { defaultHeadingCoreProps } from '../../../core/Heading/model/props'
 import { defaultProps } from '../model/props'
+import { thisArgTypes } from '../model/argTypes'
 
 export default {
   title: 'readable content/CenterLineHeading',
@@ -12,12 +13,13 @@ export default {
     docs: {
       page: () => <DocsPage />,
       description: {
-        component: 'Component that wraps the "button" tag in HTML',
+        component: '',
       },
     },
   },
   argTypes: {
     ...coreArgTypes,
+    ...thisArgTypes,
   },
 }
 
