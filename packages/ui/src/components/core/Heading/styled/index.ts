@@ -2,7 +2,14 @@ import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
 import { LevelOptions } from '../model/props'
 import { ColorPalette as $ } from 'styled-utility-first'
 
+const resets = css`
+  margin-top: 0;
+  margin-bottom: 0;
+`
+
 export const SemanticHeading = styled.h1`
+  ${resets}
+
   --h1-size: 1.75rem;
   --h2-size: 1.75rem;
   --h3-size: 1.5rem;

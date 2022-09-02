@@ -5,7 +5,7 @@ import { DocsPage } from './docsPage'
 import { Heading } from '..'
 
 export default {
-  title: 'readable content/Heading',
+  title: 'core/Heading',
   component: Heading,
   parameters: {
     docs: {
