@@ -5,6 +5,12 @@
 */
 
 /*!
+  HtmlAttr.js v0.0.0
+  https://github.com/tetracalibers/polym-ui/tree/main/packages/core#readme
+  Released under the MIT License.
+*/
+
+/*!
   StyledUtilityFirst.js v0.0.0
   https://github.com/tetracalibers/React-polyhexUI/tree/main/packages/core#readme
   Released under the MIT License.
