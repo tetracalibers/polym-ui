@@ -5,22 +5,17 @@ import {
   forwardRef,
   ReactElement,
   ReactNode,
-  SyntheticEvent,
   useCallback,
   useContext,
   useLayoutEffect,
   useState,
-  ChangeEvent,
-  useEffect,
 } from 'react'
 import { useShareState } from '@polym/hooks'
-import { STyledInput, STyledNumberInput } from './styled'
+import { STyledInput } from './styled'
 import { VerticalStack } from '../../layout-algorithm/VerticalStack'
 import { defaultNumberInputProps, NumberInputProps } from './model/props'
-import { Button } from '../Button'
-import { CgMathPlus, CgMathMinus } from 'react-icons/cg'
 import { nanoid } from 'nanoid'
-import { VisuallyHidden } from '../../a11y-helper/VisuallyHidden'
+import { Stepper } from './Stepper'
 
 /* -------------------------------------------- */
 /* HOOK                                         */
@@ -82,7 +77,7 @@ const Label = ({ children, id, ...props }: LabelProps) => {
 /* INPUT PROPS                                  */
 /* -------------------------------------------- */
 
-type InnerInputCommonProps = {
+export type InnerInputCommonProps = {
   ref?: ForwardedRef<HTMLInputElement>
 } & Omit<ComponentPropsWithoutRef<'input'>, 'children' | 'type'>
 
@@ -112,46 +107,16 @@ const _Number = ({
   const { inputId, updateInputId, labelId } = useContext(InputContext)
   useRegisterId(id, updateInputId)
 
-  if (!stepper) {
-    return <STyledNumberInput type='number' {...props} ref={ref} id={inputId} />
-  }
-
-  const [count, setCount] = useState<string>(initNum!.toString())
-  const onInput = (e: ChangeEvent<HTMLInputElement>) => {
-    const inputNum = e.target.value
-    setCount(inputNum)
-  }
-  const onDecrement = () => setCount((+count - 1).toString())
-  const onIncrement = () => setCount((+count + 1).toString())
-
-  return (
-    <div>
-      <Button
-        aria-label='decrease'
-        aria-describedby={labelId}
-        onClick={onDecrement}
-      >
-        <CgMathMinus />
-      </Button>
-      <input
-        type='number'
-        {...props}
-        ref={ref}
-        id={inputId}
-        value={count}
-        onChange={onInput}
-      />
-      <Button
-        aria-label='increase'
-        aria-describedby={labelId}
-        onClick={onIncrement}
-      >
-        <CgMathPlus />
-      </Button>
-      <VisuallyHidden role='status' aria-live='polite'>
-        {count}
-      </VisuallyHidden>
-    </div>
+  return stepper ? (
+    <Stepper
+      {...props}
+      ref={ref}
+      inputId={inputId!}
+      labelId={labelId!}
+      initNum={initNum}
+    />
+  ) : (
+    <STyledInput type='number' {...props} ref={ref} id={inputId} />
   )
 }
 const Number = forwardRef(_Number)
