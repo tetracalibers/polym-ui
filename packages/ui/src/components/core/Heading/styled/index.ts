@@ -21,28 +21,3 @@ export const SemanticHeading = styled.h1`
     font-size: var(${'--h' + theme.level + '-size'});
   `}
 `
-
-export const Inner = styled.span``
-
-const variables = css`
-  --paddingX: 0.4em;
-  --paddingY: 1em;
-  --main-color: rgb(240, 98, 146);
-  --txt-color: ${$.grayScale.dark};
-`
-
-const defaultStyle = {} as {
-  [k in LevelOptions as `h${k}`]: FlattenSimpleInterpolation
-}
-
-defaultStyle.h4 = css`
-  padding-left: 0.375em;
-  border-left: min(0.125em, 2px) solid var(--main-color);
-  font-weight: bold;
-  color: var(--txt-color);
-`
-
-defaultStyle.h5 = css`
-  color: var(--main-color);
-  font-weight: bold;
-`
