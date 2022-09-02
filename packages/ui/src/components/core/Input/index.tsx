@@ -10,6 +10,7 @@ import {
 import { useNanoId, useShareState } from '@polym/hooks'
 import { STyledInput, STyledNumberInput } from './styled'
 import { VerticalStack } from '../../layout-algorithm/VerticalStack'
+import { NumberInputProps } from './model/props'
 
 /* -------------------------------------------- */
 /* CONTEXT                                      */
@@ -62,7 +63,11 @@ const Text = forwardRef(_Text)
 /* NUMBER INPUT                                 */
 /* -------------------------------------------- */
 
-const _Number = ({ ref, ...props }: InnerInputCommonProps) => {
+const _Number = ({
+  ref,
+  stepper,
+  ...props
+}: InnerInputCommonProps & NumberInputProps) => {
   const { relationId } = useContext(InputContext)
 
   return (

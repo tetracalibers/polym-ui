@@ -5,7 +5,7 @@ import { DocsPage } from './docsPage'
 import { Input } from '..'
 
 export default {
-  title: 'form control/Input',
+  title: 'form control/TextInput',
   component: Input,
   parameters: {
     docs: {
@@ -29,21 +29,7 @@ const TextTemplate: ComponentStory<typeof Input> = () => (
   </Input>
 )
 
-export const textInput = TextTemplate.bind({})
-textInput.args = {
-  ...defaultInputCoreProps,
-}
-
-/* -------------------------------------------- */
-
-const NumberTemplate: ComponentStory<typeof Input> = () => (
-  <Input>
-    <Input.Label>Number Input</Input.Label>
-    <Input.Number />
-  </Input>
-)
-
-export const numberInput = NumberTemplate.bind({})
-numberInput.args = {
+export const playground = TextTemplate.bind({})
+playground.args = {
   ...defaultInputCoreProps,
 }
