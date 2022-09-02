@@ -14,6 +14,7 @@ import catImage from '../../../../assets/cat.jpg'
 import { Heading } from '../../../core/Heading'
 import { VerticalStack } from '../../../layout-algorithm/VerticalStack'
 import { BlurImage } from '../../../image-effect/effect/BlurImage'
+import { ShineImage } from '../../../image-effect/animation/ShineImage'
 
 export default {
   title: 'layout pettern/MediaObject',
@@ -49,11 +50,14 @@ export default {
 
 const Template: ComponentStory<typeof MediaObject> = () => (
   <VerticalStack>
-    <MediaObject media={<BlurImage src={nightImage} />}>
+    <MediaObject media={<BlurImage src={nightImage} duration={0.5} />}>
       <Heading>Night View</Heading>
       <LoremIpsum />
     </MediaObject>
-    <MediaObject media={<ScaleImage src={catImage} zoom='in' />}>
+    <MediaObject
+      media={<ScaleImage src={catImage} zoom='in' />}
+      mediaSide={'right'}
+    >
       <Heading>Kittenhood</Heading>
       <LoremIpsum />
     </MediaObject>
