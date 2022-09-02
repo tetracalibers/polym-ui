@@ -20,6 +20,7 @@ import { defaultNumberInputProps, NumberInputProps } from './model/props'
 import { Button } from '../Button'
 import { CgMathPlus, CgMathMinus } from 'react-icons/cg'
 import { nanoid } from 'nanoid'
+import { VisuallyHidden } from '../../a11y-helper/VisuallyHidden'
 
 /* -------------------------------------------- */
 /* HOOK                                         */
@@ -147,6 +148,9 @@ const _Number = ({
       >
         <CgMathPlus />
       </Button>
+      <VisuallyHidden role='status' aria-live='polite'>
+        {count}
+      </VisuallyHidden>
     </div>
   )
 }
