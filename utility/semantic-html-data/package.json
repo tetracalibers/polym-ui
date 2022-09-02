@@ -1,5 +1,5 @@
 {
-  "name": "@polym/html-attr",
+  "name": "@polym/semantic-html-data",
   "version": "0.0.0",
   "description": "HTML attribute data acquisition utility",
   "author": {
