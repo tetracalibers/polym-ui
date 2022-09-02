@@ -4,31 +4,31 @@ import { useSetDefaultAs } from 'story-builder'
 const withDefaultAs = useSetDefaultAs(defaultProps)
 
 export const thisArgTypes = {
-  paddingBottomV: {
+  paddingLeftV: {
     ...withDefaultAs('padding'),
     control: {
       type: 'number',
     },
     description:
-      'Numeric value representing the gap between the heading text and the underline',
+      'Numeric value representing the gap between the heading text and the left line',
     table: {
       ...withDefaultAs('padding').table,
       defaultValue: {
-        summary: defaultProps.paddingBottomV,
+        summary: defaultProps.paddingLeftV,
       },
     },
   },
-  paddingBottomU: {
+  paddingLeftU: {
     ...withDefaultAs('padding'),
     control: {
       type: 'select',
     },
     options: CssStyle.Unit.length,
-    description: 'Units of paddingBottomV',
+    description: 'Units of paddingLeftV',
     table: {
       ...withDefaultAs('padding').table,
       defaultValue: {
-        summary: defaultProps.paddingBottomU,
+        summary: defaultProps.paddingLeftU,
       },
     },
   },

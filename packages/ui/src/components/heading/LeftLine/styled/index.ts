@@ -4,7 +4,7 @@ import { ColorPalette as $ } from 'styled-utility-first'
 
 const variables = css`
   ${({ theme }) => css`
-    --padding-bottom: ${theme.paddingBottomV + theme.paddingBottomU};
+    --padding-left: ${theme.paddingLeftV + theme.paddingLeftU};
     --line-thickness: ${theme.lineThicknessV + theme.lineThicknessU};
     --main-color: ${theme.lineColor};
     --txt-color: ${theme.color};
@@ -15,8 +15,8 @@ const variables = css`
 export const STyledHeading = styled(Heading)`
   ${variables}
 
-  padding-left: 0.375em;
-  border-left: 0.25ch var(--line-style) var(--main-color);
+  padding-left: var(--padding-left);
+  border-left: var(--line-thickness) var(--line-style) var(--main-color);
   font-weight: bold;
   color: var(--txt-color);
 `

@@ -7,8 +7,8 @@ import { STyledHeading } from './styled'
 const LeftLineHeadingInner = ({
   children,
   ref,
-  paddingBottomV = defaultProps.paddingBottomV,
-  paddingBottomU = defaultProps.paddingBottomU,
+  paddingLeftV = defaultProps.paddingLeftV,
+  paddingLeftU = defaultProps.paddingLeftU,
   lineThicknessV = defaultProps.lineThicknessV,
   lineThicknessU = defaultProps.lineThicknessU,
   lineStyle = defaultProps.lineStyle,
@@ -17,8 +17,8 @@ const LeftLineHeadingInner = ({
   ...props
 }: HeadingCoreProps & CharacterProps) => {
   const themeProps = {
-    paddingBottomU,
-    paddingBottomV,
+    paddingLeftU,
+    paddingLeftV,
     lineThicknessV,
     lineThicknessU,
     lineStyle,

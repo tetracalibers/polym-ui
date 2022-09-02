@@ -10,10 +10,10 @@ import { CssStyle } from 'ts-typedef-helper'
 
 const conf = {
   /* css ---------------------------------------- */
-  paddingBottomV: NotRequired<number>(0.4),
-  paddingBottomU: NotRequired<CssStyle.Unit.Length>('em'),
+  paddingLeftV: NotRequired<number>(0.375),
+  paddingLeftU: NotRequired<CssStyle.Unit.Length>('em'),
   lineThicknessV: NotRequired<number>(0.25),
-  lineThicknessU: NotRequired<CssStyle.Unit.Length>('ex'),
+  lineThicknessU: NotRequired<CssStyle.Unit.Length>('ch'),
   lineColor: NotRequired<CSST.Property.BorderColor>('rgb(240, 98, 146)'),
   color: NotRequired<CSST.Property.Color>($.grayScale.dark),
   lineStyle: NotRequired<CSST.Property.BorderStyle>('solid'),
