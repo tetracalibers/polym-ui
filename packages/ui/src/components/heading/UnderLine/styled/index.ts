@@ -4,18 +4,19 @@ import { ColorPalette as $ } from 'styled-utility-first'
 
 const variables = css`
   ${({ theme }) => css`
-    --paddingX: ${theme.paddingXV + theme.paddingXU};
-    --paddingY: ${theme.paddingYV + theme.paddingYU};
-    --main-color: ${theme.bgColor};
+    --padding-bottom: ${theme.paddingBottomV + theme.paddingBottomU};
+    --line-thickness: ${theme.lineThicknessV + theme.lineThicknessU};
+    --main-color: ${theme.lineColor};
     --txt-color: ${theme.color};
+    --line-style: ${theme.lineStyle};
   `}
 `
 
 export const STyledHeading = styled(Heading)`
   ${variables}
 
-  padding-bottom: 0.4em;
-  border-bottom: 0.25ex solid var(--main-color);
+  padding-bottom: var(--padding-bottom);
+  border-bottom: var(--line-thickness) var(--line-style) var(--main-color);
   font-weight: bold;
   color: var(--txt-color);
 `

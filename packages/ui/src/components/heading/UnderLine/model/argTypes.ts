@@ -4,69 +4,78 @@ import { useSetDefaultAs } from 'story-builder'
 const withDefaultAs = useSetDefaultAs(defaultProps)
 
 export const thisArgTypes = {
-  paddingYV: {
+  paddingBottomV: {
     ...withDefaultAs('padding'),
     control: {
       type: 'number',
     },
     description:
-      'Numeric value representing the size of the vertical inner margin of heading area',
+      'Numeric value representing the gap between the heading text and the underline',
     table: {
       ...withDefaultAs('padding').table,
       defaultValue: {
-        summary: defaultProps.paddingYV,
+        summary: defaultProps.paddingBottomV,
       },
     },
   },
-  paddingXV: {
+  paddingBottomU: {
     ...withDefaultAs('padding'),
+    control: {
+      type: 'select',
+    },
+    options: CssStyle.Unit.length,
+    description: 'Units of paddingBottomV',
+    table: {
+      ...withDefaultAs('padding').table,
+      defaultValue: {
+        summary: defaultProps.paddingBottomU,
+      },
+    },
+  },
+  lineThicknessV: {
+    ...withDefaultAs('borderWidth'),
     control: {
       type: 'number',
     },
-    description:
-      'Numeric value representing the size of the horizontal inner margin of heading area',
+    description: 'Numeric value for underline thickness',
     table: {
-      ...withDefaultAs('padding').table,
+      ...withDefaultAs('borderWidth').table,
       defaultValue: {
-        summary: defaultProps.paddingXV,
+        summary: defaultProps.lineThicknessV,
       },
     },
   },
-  paddingYU: {
-    ...withDefaultAs('padding'),
+  lineThicknessU: {
+    ...withDefaultAs('borderWidth'),
     control: {
       type: 'select',
     },
     options: CssStyle.Unit.length,
-    description: 'Units of paddingYV',
+    description: 'Units of lineThicknessV',
     table: {
-      ...withDefaultAs('padding').table,
+      ...withDefaultAs('borderWidth').table,
       defaultValue: {
-        summary: defaultProps.paddingYU,
+        summary: defaultProps.lineThicknessU,
       },
     },
   },
-  paddingXU: {
-    ...withDefaultAs('padding'),
-    control: {
-      type: 'select',
-    },
-    options: CssStyle.Unit.length,
-    description: 'Units of paddingXV',
+  lineStyle: {
+    ...withDefaultAs('borderStyle'),
+    description: 'Type of underlining',
     table: {
-      ...withDefaultAs('padding').table,
+      ...withDefaultAs('borderStyle').table,
       defaultValue: {
-        summary: defaultProps.paddingXU,
+        summary: defaultProps.lineStyle,
       },
     },
   },
-  bgColor: {
-    ...withDefaultAs('backgroundColor'),
-    description: 'Background color of heading area',
+  lineColor: {
+    ...withDefaultAs('borderColor'),
+    description: 'Color of underline',
     table: {
-      ...withDefaultAs('backgroundColor').table,
+      ...withDefaultAs('borderColor').table,
       defaultValue: {
-        summary: defaultProps.bgColor,
+        summary: defaultProps.lineColor,
       },
     },
   },

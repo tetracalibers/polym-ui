@@ -10,12 +10,13 @@ import { CssStyle } from 'ts-typedef-helper'
 
 const conf = {
   /* css ---------------------------------------- */
-  paddingYV: NotRequired<number>(1),
-  paddingYU: NotRequired<CssStyle.Unit.Length>('em'),
-  paddingXV: NotRequired<number>(0.4),
-  paddingXU: NotRequired<CssStyle.Unit.Length>('em'),
-  bgColor: NotRequired<CSST.Property.BackgroundColor>('rgb(240, 98, 146)'),
+  paddingBottomV: NotRequired<number>(0.4),
+  paddingBottomU: NotRequired<CssStyle.Unit.Length>('em'),
+  lineThicknessV: NotRequired<number>(0.25),
+  lineThicknessU: NotRequired<CssStyle.Unit.Length>('ex'),
+  lineColor: NotRequired<CSST.Property.BorderColor>('rgb(240, 98, 146)'),
   color: NotRequired<CSST.Property.Color>($.grayScale.dark),
+  lineStyle: NotRequired<CSST.Property.BorderStyle>('solid'),
 }
 type Conf = typeof conf
 

@@ -7,20 +7,22 @@ import { STyledHeading } from './styled'
 const UnderLineHeadingInner = ({
   children,
   ref,
-  paddingYV = defaultProps.paddingYV,
-  paddingYU = defaultProps.paddingYU,
-  paddingXV = defaultProps.paddingXV,
-  paddingXU = defaultProps.paddingXU,
-  bgColor = defaultProps.bgColor,
+  paddingBottomV = defaultProps.paddingBottomV,
+  paddingBottomU = defaultProps.paddingBottomU,
+  lineThicknessV = defaultProps.lineThicknessV,
+  lineThicknessU = defaultProps.lineThicknessU,
+  lineStyle = defaultProps.lineStyle,
+  lineColor = defaultProps.lineColor,
   color = defaultProps.color,
   ...props
 }: HeadingCoreProps & CharacterProps) => {
   const themeProps = {
-    paddingXU,
-    paddingXV,
-    paddingYU,
-    paddingYV,
-    bgColor,
+    paddingBottomU,
+    paddingBottomV,
+    lineThicknessV,
+    lineThicknessU,
+    lineStyle,
+    lineColor,
     color,
   }
 
