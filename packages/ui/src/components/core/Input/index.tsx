@@ -1,24 +1,46 @@
 import {
   ComponentPropsWithoutRef,
   createContext,
-  Dispatch,
   ForwardedRef,
   forwardRef,
   ReactElement,
   ReactNode,
-  SetStateAction,
   useCallback,
   useContext,
   useLayoutEffect,
   useState,
 } from 'react'
-import { useNanoId, useShareState } from '@polym/hooks'
+import { useShareState } from '@polym/hooks'
 import { STyledInput, STyledNumberInput } from './styled'
 import { VerticalStack } from '../../layout-algorithm/VerticalStack'
 import { NumberInputProps } from './model/props'
 import { Button } from '../Button'
 import { CgMathPlus, CgMathMinus } from 'react-icons/cg'
 import { nanoid } from 'nanoid'
+
+/* -------------------------------------------- */
+/* HOOK                                         */
+/* -------------------------------------------- */
+
+const useShareId = () => {
+  const [id, setId] = useState<string>()
+
+  const updateId = useCallback((newId: string) => {
+    setId(newId)
+  }, [])
+
+  return [id, updateId] as const
+}
+
+const useRegisterId = (
+  id: string | undefined,
+  updateFn: (id: string) => void
+) => {
+  useLayoutEffect(() => {
+    const notUndefinedId = id ?? nanoid()
+    updateFn(notUndefinedId)
+  }, [])
+}
 
 /* -------------------------------------------- */
 /* CONTEXT                                      */
@@ -43,11 +65,7 @@ type LabelProps = {
 
 const Label = ({ children, id, ...props }: LabelProps) => {
   const { inputId, updateLabelId, labelId } = useContext(InputContext)
-
-  useLayoutEffect(() => {
-    const newId = id ?? nanoid()
-    updateLabelId(newId)
-  }, [])
+  useRegisterId(id, updateLabelId)
 
   return (
     <label {...props} htmlFor={inputId} id={labelId}>
@@ -70,11 +88,7 @@ type InnerInputCommonProps = {
 
 const _Text = ({ ref, id, ...props }: InnerInputCommonProps) => {
   const { inputId, updateInputId } = useContext(InputContext)
-
-  useLayoutEffect(() => {
-    const newId = id ?? nanoid()
-    updateInputId(newId)
-  }, [])
+  useRegisterId(id, updateInputId)
 
   return <STyledInput type='text' {...props} ref={ref} id={inputId} />
 }
@@ -91,11 +105,7 @@ const _Number = ({
   ...props
 }: InnerInputCommonProps & NumberInputProps) => {
   const { inputId, updateInputId } = useContext(InputContext)
-
-  useLayoutEffect(() => {
-    const newId = id ?? nanoid()
-    updateInputId(newId)
-  }, [])
+  useRegisterId(id, updateInputId)
 
   if (!stepper) {
     return <STyledNumberInput type='number' {...props} ref={ref} id={inputId} />
@@ -129,16 +139,8 @@ export type InputCoreProps = {
 export const Input = ({ children }: InputCoreProps) => {
   const [Label, Input] = children
 
-  const [inputId, setInputId] = useState<string>()
-  const [labelId, setLabelId] = useState<string>()
-
-  const updateInputId = useCallback((id: string) => {
-    setInputId(id)
-  }, [])
-
-  const updateLabelId = useCallback((id: string) => {
-    setLabelId(id)
-  }, [])
+  const [inputId, updateInputId] = useShareId()
+  const [labelId, updateLabelId] = useShareId()
 
   const shareState = useShareState(
     { inputId, updateInputId, labelId, updateLabelId },
