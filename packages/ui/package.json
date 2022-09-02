@@ -74,6 +74,6 @@
     "ts-pattern": "^4.0.5",
     "ts-typedef-helper": "*",
     "typescript": "^4.7.4",
-    "@polym/html-attr": "*"
+    "@polym/semantic-html-data": "*"
   }
 }
