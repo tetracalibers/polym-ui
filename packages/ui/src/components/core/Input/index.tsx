@@ -10,6 +10,8 @@ import {
 import { useNanoId, useShareState } from '@polym/hooks'
 
 /* -------------------------------------------- */
+/* CONTEXT                                      */
+/* -------------------------------------------- */
 
 type InputState = {
   relationId: string
@@ -17,6 +19,8 @@ type InputState = {
 
 const InputContext = createContext<InputState>({} as InputState)
 
+/* -------------------------------------------- */
+/* LABEL                                        */
 /* -------------------------------------------- */
 
 type LabelProps = {
@@ -34,10 +38,16 @@ const Label = ({ children, ...props }: LabelProps) => {
 }
 
 /* -------------------------------------------- */
+/* INPUT PROPS                                  */
+/* -------------------------------------------- */
 
 type InnerInputCommonProps = {
   ref?: ForwardedRef<HTMLInputElement>
 } & Omit<ComponentPropsWithoutRef<'input'>, 'children' | 'type' | 'id'>
+
+/* -------------------------------------------- */
+/* TEXT INPUT                                   */
+/* -------------------------------------------- */
 
 const Text = forwardRef(({ ref, ...props }: InnerInputCommonProps) => {
   const { relationId } = useContext(InputContext)
@@ -46,12 +56,24 @@ const Text = forwardRef(({ ref, ...props }: InnerInputCommonProps) => {
 })
 
 /* -------------------------------------------- */
+/* NUMBER INPUT                                 */
+/* -------------------------------------------- */
+
+const Number = forwardRef(({ ref, ...props }: InnerInputCommonProps) => {
+  const { relationId } = useContext(InputContext)
+
+  return <input type='number' {...props} ref={ref} id={relationId} />
+})
+
+/* -------------------------------------------- */
+/* ROOT                                         */
+/* -------------------------------------------- */
 
 export type InputCoreProps = {
   id?: string
   children: [
     ReactElement<LabelProps, typeof Label>,
-    ReactElement<InnerInputCommonProps, typeof Text>
+    ReactElement<InnerInputCommonProps, typeof Text | typeof Number>
   ]
 }
 
@@ -74,3 +96,4 @@ export const Input = ({ id, children }: InputCoreProps) => {
 
 Input.Label = Label
 Input.Text = Text
+Input.Number = Number

@@ -20,14 +20,30 @@ export default {
   },
 }
 
-const Template: ComponentStory<typeof Input> = ({ children, ...args }) => (
-  <Input {...args}>
-    <Input.Label>Sample Input</Input.Label>
+/* -------------------------------------------- */
+
+const TextTemplate: ComponentStory<typeof Input> = () => (
+  <Input>
+    <Input.Label>Text Input</Input.Label>
     <Input.Text />
   </Input>
 )
 
-export const playground = Template.bind({})
-playground.args = {
+export const textInput = TextTemplate.bind({})
+textInput.args = {
+  ...defaultInputCoreProps,
+}
+
+/* -------------------------------------------- */
+
+const NumberTemplate: ComponentStory<typeof Input> = () => (
+  <Input>
+    <Input.Label>Number Input</Input.Label>
+    <Input.Number />
+  </Input>
+)
+
+export const numberInput = NumberTemplate.bind({})
+numberInput.args = {
   ...defaultInputCoreProps,
 }
