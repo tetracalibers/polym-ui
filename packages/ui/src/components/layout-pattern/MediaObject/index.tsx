@@ -1,8 +1,9 @@
-import { ReactElement } from 'react'
+import { ReactElement, ReactNode } from 'react'
+import { VerticalCenter } from '../../layout-algorithm/VerticalCenter'
 import { WithSidebar } from '../../layout-algorithm/WithSidebar'
 
 export type MediaObjectProps = {
-  children: ReactElement
+  children: ReactNode
   media: ReactElement
 }
 
@@ -10,7 +11,7 @@ export const MediaObject = ({ children, media }: MediaObjectProps) => {
   return (
     <WithSidebar>
       {media}
-      {children}
+      <div>{children}</div>
     </WithSidebar>
   )
 }

@@ -5,6 +5,11 @@ import { DarkTextBox } from '../../../../mock/TestBox'
 import { logicArgTypes } from '../model/argTypes'
 import { defaultProps } from '../model/props'
 import { DocsPage } from './docsPage'
+import { ScaleImage } from '../../../image-effect/effect/ScaleImage'
+import LoremIpsum from 'react-lorem-ipsum'
+// @ts-ignore
+import nightImage from '../../../../assets/night.jpg'
+import { Heading } from '../../../core/Heading'
 
 export default {
   title: 'layout pettern/MediaObject',
@@ -38,10 +43,12 @@ export default {
   },
 }
 
-const Template: ComponentStory<typeof MediaObject> = ({
-  children,
-  ...args
-}) => <MediaObject {...args}>{children}</MediaObject>
+const Template: ComponentStory<typeof MediaObject> = () => (
+  <MediaObject media={<ScaleImage src={nightImage} />}>
+    <Heading>Night View</Heading>
+    <LoremIpsum />
+  </MediaObject>
+)
 
 export const playground = Template.bind({})
 playground.args = {
