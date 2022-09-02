@@ -7,7 +7,7 @@ import {
 } from 'react'
 import { ThemeProvider } from 'styled-components'
 import { CoreProps, defaultHeadingCoreProps } from './model/props'
-import { StyledHeading } from './styled'
+import { Inner, SemanticHeading, STyledHeading } from './styled'
 
 export type HeadingProps = {
   ref?: ForwardedRef<HTMLHeadingElement>
@@ -27,9 +27,9 @@ const HeadingInner = ({
 
   return (
     <ThemeProvider theme={{ level }}>
-      <StyledHeading {...props} ref={ref} as={Tag}>
-        {children}
-      </StyledHeading>
+      <STyledHeading {...props} ref={ref} as={Tag}>
+        <Inner>{children}</Inner>
+      </STyledHeading>
     </ThemeProvider>
   )
 }
