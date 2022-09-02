@@ -9,8 +9,10 @@ const alertStyle = css`
   display: block;
 `
 
+/* -------------------------------------------- */
+
+/* インタラクティブコンテンツを子要素に持つ場合、警告 */
 export const CannotIncludeInteractiveElements = css`
-  /* インタラクティブコンテンツを子要素に持つ場合、警告 */
   & button::after,
   & a::after,
   & [tabindex]::after {
@@ -19,8 +21,11 @@ export const CannotIncludeInteractiveElements = css`
   }
 `
 
+/* 内容モデルがPhrasingの場合の子要素違反をチェック */
+export const CannotIncludeIfContentModelIsPhasing = css``
+
+/* aタグをbuttonタグとして使わない */
 export const AtagIsNotButtonTag = css`
-  /* aタグをbuttonタグとして使わない */
   &[href='javascript:void(0)']:not([role='button'])::after,
   &[onclick]:not([role='button'])::after {
     ${alertStyle}

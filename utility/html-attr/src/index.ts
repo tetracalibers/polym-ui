@@ -17,3 +17,11 @@ export const Anchor$Button = {
     button: _.without(htmlAttrs['button'], ...htmlAttrs['a']) as string[],
   },
 }
+
+/* -------------------------------------------- */
+/* CONTENT MODEL                                */
+/* -------------------------------------------- */
+
+import { flowNotPhrasing, flow, phrasing } from './ContentModel'
+
+export { flowNotPhrasing, flow, phrasing }
