@@ -5,15 +5,18 @@ import {
   forwardRef,
   ReactElement,
   ReactNode,
+  SyntheticEvent,
   useCallback,
   useContext,
   useLayoutEffect,
   useState,
+  ChangeEvent,
+  useEffect,
 } from 'react'
 import { useShareState } from '@polym/hooks'
 import { STyledInput, STyledNumberInput } from './styled'
 import { VerticalStack } from '../../layout-algorithm/VerticalStack'
-import { NumberInputProps } from './model/props'
+import { defaultNumberInputProps, NumberInputProps } from './model/props'
 import { Button } from '../Button'
 import { CgMathPlus, CgMathMinus } from 'react-icons/cg'
 import { nanoid } from 'nanoid'
@@ -102,22 +105,46 @@ const _Number = ({
   ref,
   stepper,
   id,
+  initNum = defaultNumberInputProps.initNum,
   ...props
 }: InnerInputCommonProps & NumberInputProps) => {
-  const { inputId, updateInputId } = useContext(InputContext)
+  const { inputId, updateInputId, labelId } = useContext(InputContext)
   useRegisterId(id, updateInputId)
 
   if (!stepper) {
     return <STyledNumberInput type='number' {...props} ref={ref} id={inputId} />
   }
 
+  const [count, setCount] = useState<string>(initNum!.toString())
+  const onInput = (e: ChangeEvent<HTMLInputElement>) => {
+    const inputNum = e.target.value
+    setCount(inputNum)
+  }
+  const onDecrement = () => setCount((+count - 1).toString())
+  const onIncrement = () => setCount((+count + 1).toString())
+
   return (
     <div>
-      <Button aria-label='decrease'>
+      <Button
+        aria-label='decrease'
+        aria-describedby={labelId}
+        onClick={onDecrement}
+      >
         <CgMathMinus />
       </Button>
-      <input type='number' {...props} ref={ref} id={inputId} />
-      <Button aria-label='increase'>
+      <input
+        type='number'
+        {...props}
+        ref={ref}
+        id={inputId}
+        value={count}
+        onChange={onInput}
+      />
+      <Button
+        aria-label='increase'
+        aria-describedby={labelId}
+        onClick={onIncrement}
+      >
         <CgMathPlus />
       </Button>
     </div>

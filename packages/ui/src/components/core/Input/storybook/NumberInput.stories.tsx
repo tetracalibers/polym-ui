@@ -20,10 +20,12 @@ export default {
   },
 }
 
-const NumberTemplate: ComponentStory<typeof Input['Number']> = () => (
+const NumberTemplate: ComponentStory<typeof Input['Number']> = ({
+  stepper,
+}) => (
   <Input>
     <Input.Label>Number Input</Input.Label>
-    <Input.Number />
+    <Input.Number stepper={stepper} />
   </Input>
 )
 

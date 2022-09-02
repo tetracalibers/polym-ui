@@ -17,6 +17,7 @@ export const defaultInputCoreProps = {
 
 const numberConf = {
   stepper: NotRequired<boolean>(true),
+  initNum: NotRequired<number>(0),
 }
 
 export type NumberInputProps = getPropType<typeof numberConf>

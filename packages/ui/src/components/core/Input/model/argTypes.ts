@@ -16,7 +16,7 @@ export const numberArgTypes = {
     table: {
       category: 'feature',
       type: {
-        summary: 'null',
+        summary: null,
       },
       defaultValue: {
         summary: defaultNumberInputProps.stepper,
