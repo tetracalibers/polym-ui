@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components'
 import { match } from 'ts-pattern'
 import { ColorPalette as $, ResetCss, Truthy } from 'styled-utility-first'
+import { flowNotPhrasing } from '@polym/semantic-html-data'
 
 const alertStyle = css`
   background-color: ${$.vivid.red};
@@ -17,12 +18,20 @@ export const CannotIncludeInteractiveElements = css`
   & a::after,
   & [tabindex]::after {
     ${alertStyle}
-    content: '[HTML WARMING] invalid child element : "a" or "button" or "[tabindex]"';
+    content: '[HTML WARMING] invalid child element : "a", "button", "[tabindex]"';
   }
 `
 
 /* 内容モデルがPhrasingの場合の子要素違反をチェック */
-export const CannotIncludeIfContentModelIsPhasing = css``
+export const CannotIncludeIfContentModelIsPhasing = css`
+  & ${flowNotPhrasing.join('::after, ')} {
+    ${alertStyle}
+    font-size: 1rem;
+    content: '[HTML WARMING] invalid child element : ${flowNotPhrasing
+      .map(selector => `"${selector}"`)
+      .join(', ')}"';
+  }
+`
 
 /* aタグをbuttonタグとして使わない */
 export const AtagIsNotButtonTag = css`

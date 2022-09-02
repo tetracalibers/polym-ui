@@ -1,6 +1,7 @@
 import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
 import { LevelOptions } from '../model/props'
 import { ColorPalette as $ } from 'styled-utility-first'
+import { CannotIncludeIfContentModelIsPhasing } from '../../../../css/alert'
 
 const resets = css`
   margin-top: 0;
@@ -9,6 +10,7 @@ const resets = css`
 
 export const SemanticHeading = styled.h1`
   ${resets}
+  ${CannotIncludeIfContentModelIsPhasing}
 
   --h1-size: 1.75rem;
   --h2-size: 1.75rem;

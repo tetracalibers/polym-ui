@@ -29,3 +29,16 @@ playground.args = {
   ...defaultHeadingCoreProps,
   children: 'Correct Usage',
 }
+
+export const violationUsage01 = Template.bind({})
+violationUsage01.args = {
+  ...defaultHeadingCoreProps,
+  children: <h1>Examples of Violations</h1>,
+}
+violationUsage01.argTypes = {
+  children: {
+    control: {
+      type: null,
+    },
+  },
+}
