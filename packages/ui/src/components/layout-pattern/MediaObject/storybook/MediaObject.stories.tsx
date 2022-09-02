@@ -9,7 +9,11 @@ import { ScaleImage } from '../../../image-effect/effect/ScaleImage'
 import LoremIpsum from 'react-lorem-ipsum'
 // @ts-ignore
 import nightImage from '../../../../assets/night.jpg'
+// @ts-ignore
+import catImage from '../../../../assets/cat.jpg'
 import { Heading } from '../../../core/Heading'
+import { VerticalStack } from '../../../layout-algorithm/VerticalStack'
+import { BlurImage } from '../../../image-effect/effect/BlurImage'
 
 export default {
   title: 'layout pettern/MediaObject',
@@ -44,10 +48,16 @@ export default {
 }
 
 const Template: ComponentStory<typeof MediaObject> = () => (
-  <MediaObject media={<ScaleImage src={nightImage} />}>
-    <Heading>Night View</Heading>
-    <LoremIpsum />
-  </MediaObject>
+  <VerticalStack>
+    <MediaObject media={<BlurImage src={nightImage} />}>
+      <Heading>Night View</Heading>
+      <LoremIpsum />
+    </MediaObject>
+    <MediaObject media={<ScaleImage src={catImage} zoom='in' />}>
+      <Heading>Kittenhood</Heading>
+      <LoremIpsum />
+    </MediaObject>
+  </VerticalStack>
 )
 
 export const playground = Template.bind({})
