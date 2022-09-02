@@ -11,6 +11,8 @@ import { useNanoId, useShareState } from '@polym/hooks'
 import { STyledInput, STyledNumberInput } from './styled'
 import { VerticalStack } from '../../layout-algorithm/VerticalStack'
 import { NumberInputProps } from './model/props'
+import { Button } from '../Button'
+import { CgMathPlus, CgMathMinus } from 'react-icons/cg'
 
 /* -------------------------------------------- */
 /* CONTEXT                                      */
@@ -70,8 +72,22 @@ const _Number = ({
 }: InnerInputCommonProps & NumberInputProps) => {
   const { relationId } = useContext(InputContext)
 
+  if (!stepper) {
+    return (
+      <STyledNumberInput type='number' {...props} ref={ref} id={relationId} />
+    )
+  }
+
   return (
-    <STyledNumberInput type='number' {...props} ref={ref} id={relationId} />
+    <div>
+      <Button aria-label='decrease'>
+        <CgMathMinus />
+      </Button>
+      <input type='number' {...props} ref={ref} id={relationId} />
+      <Button aria-label='increase'>
+        <CgMathPlus />
+      </Button>
+    </div>
   )
 }
 const Number = forwardRef(_Number)
