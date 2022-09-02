@@ -49,21 +49,23 @@ type InnerInputCommonProps = {
 /* TEXT INPUT                                   */
 /* -------------------------------------------- */
 
-const Text = forwardRef(({ ref, ...props }: InnerInputCommonProps) => {
+const _Text = ({ ref, ...props }: InnerInputCommonProps) => {
   const { relationId } = useContext(InputContext)
 
   return <input type='text' {...props} ref={ref} id={relationId} />
-})
+}
+const Text = forwardRef(_Text)
 
 /* -------------------------------------------- */
 /* NUMBER INPUT                                 */
 /* -------------------------------------------- */
 
-const Number = forwardRef(({ ref, ...props }: InnerInputCommonProps) => {
+const _Number = ({ ref, ...props }: InnerInputCommonProps) => {
   const { relationId } = useContext(InputContext)
 
   return <input type='number' {...props} ref={ref} id={relationId} />
-})
+}
+const Number = forwardRef(_Number)
 
 /* -------------------------------------------- */
 /* ROOT                                         */
