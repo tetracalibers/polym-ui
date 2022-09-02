@@ -2,8 +2,13 @@ import { useState, ChangeEvent } from 'react'
 import { CgMathMinus, CgMathPlus } from 'react-icons/cg'
 import { InnerInputCommonProps } from '.'
 import { VisuallyHidden } from '../../a11y-helper/VisuallyHidden'
-import { Button } from '../Button'
 import { NumberInputProps } from './model/props'
+import {
+  DecrementButton,
+  IncrementButton,
+  NumberInput,
+  Root,
+} from './styled/stepper'
 
 type Props = InnerInputCommonProps &
   NumberInputProps & {
@@ -27,15 +32,15 @@ export const Stepper = ({
   const onIncrement = () => setCount((+count + 1).toString())
 
   return (
-    <div>
-      <Button
+    <Root>
+      <DecrementButton
         aria-label='decrease'
         aria-describedby={labelId}
         onClick={onDecrement}
       >
         <CgMathMinus />
-      </Button>
-      <input
+      </DecrementButton>
+      <NumberInput
         type='number'
         {...props}
         ref={ref}
@@ -43,16 +48,16 @@ export const Stepper = ({
         value={count}
         onChange={onInput}
       />
-      <Button
+      <IncrementButton
         aria-label='increase'
         aria-describedby={labelId}
         onClick={onIncrement}
       >
         <CgMathPlus />
-      </Button>
+      </IncrementButton>
       <VisuallyHidden role='status' aria-live='polite'>
         {count}
       </VisuallyHidden>
-    </div>
+    </Root>
   )
 }

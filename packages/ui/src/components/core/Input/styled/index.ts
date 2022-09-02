@@ -21,15 +21,3 @@ export const STyledInput = styled.input`
     outline: 2px solid ${$.pastel.water};
   }
 `
-
-export const STyledNumberInput = styled(STyledInput)`
-  &[type='number'] {
-    -moz-appearance: textfield;
-  }
-
-  &::-webkit-outer-spin-button,
-  &::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-`
