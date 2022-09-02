@@ -28,18 +28,19 @@ export const Tuning = styled.div`
   gap: 1.5rem;
 
   & img {
-    object-fit: fill;
+    object-fit: cover;
     width: 100%;
   }
 
   & > :first-child {
     flex-basis: 15rem;
     flex-grow: 1;
+    display: flex;
   }
 
   & > :last-child {
     flex-basis: 0;
     flex-grow: 999;
-    min-width: 40%;
+    min-width: 50%;
   }
 `
