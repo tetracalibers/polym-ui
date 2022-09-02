@@ -7,7 +7,7 @@ import {
 } from 'react'
 import { ThemeProvider } from 'styled-components'
 import { CoreProps, defaultHeadingCoreProps } from './model/props'
-import { Inner, SemanticHeading, STyledHeading } from './styled'
+import { SemanticHeading } from './styled'
 
 export type HeadingCoreProps = {
   ref?: ForwardedRef<HTMLHeadingElement>

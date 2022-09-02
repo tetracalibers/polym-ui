@@ -35,31 +35,6 @@ const defaultStyle = {} as {
   [k in LevelOptions as `h${k}`]: FlattenSimpleInterpolation
 }
 
-defaultStyle.h1 = css`
-  padding: var(--paddingY) var(--paddingX);
-  background-color: var(--main-color);
-  color: #fff;
-  text-align: center;
-  font-weight: bold;
-
-  ${Inner} {
-    position: relative;
-    display: inline-block;
-    transform: translateY(-20%);
-  }
-
-  ${Inner}::after {
-    content: '';
-    position: absolute;
-    bottom: calc(-1 * var(--paddingX));
-    left: 50%;
-    width: 3em;
-    height: 1px;
-    background-color: currentColor;
-    transform: translateX(-50%);
-  }
-`
-
 defaultStyle.h2 = css`
   padding-bottom: 0.4em;
   border-bottom: min(0.25em, 4px) solid var(--main-color);
@@ -84,11 +59,4 @@ defaultStyle.h4 = css`
 defaultStyle.h5 = css`
   color: var(--main-color);
   font-weight: bold;
-`
-
-export const STyledHeading = styled(SemanticHeading)`
-  ${variables}
-
-  ${({ theme }) =>
-    defaultStyle[`h${theme.level}` as 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6']}
 `
