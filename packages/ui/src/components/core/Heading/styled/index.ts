@@ -35,20 +35,6 @@ const defaultStyle = {} as {
   [k in LevelOptions as `h${k}`]: FlattenSimpleInterpolation
 }
 
-defaultStyle.h2 = css`
-  padding-bottom: 0.4em;
-  border-bottom: min(0.25em, 4px) solid var(--main-color);
-  font-weight: bold;
-  color: var(--txt-color);
-`
-
-defaultStyle.h3 = css`
-  padding-bottom: 6px;
-  border-bottom: min(0.125em, 2px) solid var(--main-color);
-  font-weight: bold;
-  color: var(--txt-color);
-`
-
 defaultStyle.h4 = css`
   padding-left: 0.375em;
   border-left: min(0.125em, 2px) solid var(--main-color);

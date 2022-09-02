@@ -7,7 +7,7 @@ import { defaultProps } from '../model/props'
 import { thisArgTypes } from '../model/argTypes'
 
 export default {
-  title: 'readable content/UnderLineHeading',
+  title: 'Heading Decoration/UnderLineHeading',
   component: UnderLineHeading,
   parameters: {
     docs: {

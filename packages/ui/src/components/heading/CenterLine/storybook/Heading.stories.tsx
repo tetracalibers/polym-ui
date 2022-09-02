@@ -7,7 +7,7 @@ import { defaultProps } from '../model/props'
 import { thisArgTypes } from '../model/argTypes'
 
 export default {
-  title: 'readable content/CenterLineHeading',
+  title: 'Heading Decoration/CenterLineHeading',
   component: CenterLineHeading,
   parameters: {
     docs: {
