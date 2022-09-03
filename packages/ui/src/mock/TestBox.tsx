@@ -71,6 +71,11 @@ export const VerticalStackContainer = styled(Container)`
   height: 200vh;
 `
 
+export const NeedScrollPage = styled.div`
+  height: 200vh;
+  color: ${$.grayScale.dark};
+`
+
 export const VerticalStackChild = styled(BorderBox)`
   margin: 0 2em;
   min-height: 100px;
