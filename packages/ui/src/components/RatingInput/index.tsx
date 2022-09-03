@@ -3,6 +3,7 @@ import { CharacterProps, defaultProps } from './model/props'
 import { ImStarFull } from 'react-icons/im'
 import { nanoid } from 'nanoid'
 import { RateButton } from './styled'
+import { VisuallyHidden } from '../a11y-helper/VisuallyHidden'
 
 export const RatingInput = ({
   value = defaultProps.value,
@@ -43,6 +44,9 @@ export const RatingInput = ({
           data-coloring={value <= coloredRate}
         />
       ))}
+      <VisuallyHidden role='status' aria-live='polite'>
+        {selectedRate}
+      </VisuallyHidden>
     </div>
   )
 }
