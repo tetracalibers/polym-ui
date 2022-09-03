@@ -3,5 +3,15 @@ import { useShareState } from './module/useShareState'
 import { useNanoId } from './module/useNanoId'
 import { useInput } from './module/useInput'
 import { useComposite } from './module/useComposite'
+import { useShareId } from './module/useShareId'
+import { useRegisterId } from './module/useRegisterId'
 
-export { useUnFocus, useShareState, useNanoId, useInput, useComposite }
+export {
+  useUnFocus,
+  useShareState,
+  useNanoId,
+  useInput,
+  useComposite,
+  useShareId,
+  useRegisterId,
+}

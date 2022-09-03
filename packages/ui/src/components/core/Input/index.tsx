@@ -5,41 +5,13 @@ import {
   forwardRef,
   ReactElement,
   ReactNode,
-  useCallback,
   useContext,
-  useLayoutEffect,
-  useState,
 } from 'react'
-import { useShareState } from '@polym/hooks'
+import { useRegisterId, useShareId, useShareState } from '@polym/hooks'
 import { STyledInput } from './styled'
 import { VerticalStack } from '../../layout-algorithm/VerticalStack'
 import { defaultNumberInputProps, NumberInputProps } from './model/props'
-import { nanoid } from 'nanoid'
 import { Stepper } from './Stepper'
-
-/* -------------------------------------------- */
-/* HOOK                                         */
-/* -------------------------------------------- */
-
-const useShareId = () => {
-  const [id, setId] = useState<string>()
-
-  const updateId = useCallback((newId: string) => {
-    setId(newId)
-  }, [])
-
-  return [id, updateId] as const
-}
-
-const useRegisterId = (
-  id: string | undefined,
-  updateFn: (id: string) => void
-) => {
-  useLayoutEffect(() => {
-    const notUndefinedId = id ?? nanoid()
-    updateFn(notUndefinedId)
-  }, [])
-}
 
 /* -------------------------------------------- */
 /* CONTEXT                                      */
