@@ -1,5 +1,6 @@
 import styled, { createGlobalStyle, css } from 'styled-components'
-import { ColorPalette as $ } from 'styled-utility-first'
+import { ColorPalette as $, ResetCss } from 'styled-utility-first'
+import { Button } from '../../core/Button'
 
 export const OverlayWrapper = styled.div`
   /* 重ねる ---------------------------------------- */
@@ -31,5 +32,27 @@ export const BackCover = createGlobalStyle`
     right: 0;
     z-index: 1;
     backdrop-filter: blur(6px) contrast(.5) brightness(.9);
+  }
+`
+
+export const CloseButton = styled(Button)`
+  ${ResetCss.button}
+
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 2.5rem;
+  color: #4a5459;
+  transition: box-shadow 0.5s, background-color 0.75s;
+  height: 2.5rem;
+  width: 2.5rem;
+  box-sizing: content-box;
+  border-radius: 50%;
+
+  &:focus,
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset,
+      rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
   }
 `

@@ -7,10 +7,12 @@ import {
   createContext,
   useContext,
   Children,
+  useState,
 } from 'react'
 import { VisuallyHidden } from '../a11y-helper/VisuallyHidden'
-import { BackCover, OverlayWrapper } from './styled'
+import { BackCover, CloseButton, OverlayWrapper } from './styled'
 import { useRegisterId, useShareId, useShareState } from '@polym/hooks'
+import { AiOutlineClose } from 'react-icons/ai'
 
 /* -------------------------------------------- */
 /* CONTEXT                                      */
@@ -94,9 +96,12 @@ export const Modal = ({ children, open }: ModalProps) => {
     [titleId, contentId]
   )
 
+  const [isOpen, setOpenStatus] = useState(open)
+  const closeAction = () => setOpenStatus(false)
+
   return (
     <ModalContext.Provider value={shareState}>
-      {open && (
+      {isOpen && (
         <>
           <BackCover />
           <OverlayWrapper
@@ -106,6 +111,10 @@ export const Modal = ({ children, open }: ModalProps) => {
             aria-modal={true}
           >
             {children}
+            <CloseButton onClick={closeAction}>
+              <AiOutlineClose aria-hidden='true' />
+              <VisuallyHidden>Close</VisuallyHidden>
+            </CloseButton>
           </OverlayWrapper>
         </>
       )}
