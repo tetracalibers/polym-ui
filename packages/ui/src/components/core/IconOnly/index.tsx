@@ -15,7 +15,7 @@ const _IconButton = ({
   ...superProps
 }: IconOnlyCoreProps) => {
   const iconForA11y = useMemo(
-    () => cloneElement(icon, { ariaHidden: true }),
+    () => cloneElement(icon, { 'aria-hidden': true }),
     []
   )
 

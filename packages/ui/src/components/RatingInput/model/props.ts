@@ -16,7 +16,7 @@ const conf = {
 type Conf = typeof conf
 
 export type CharacterProps = getPropType<Conf> & {
-  onClick?: (e: SyntheticEvent, i: number) => void
+  onSelectRate?: (i: number) => void
 }
 
 export const defaultProps = {

@@ -1,12 +1,21 @@
-import { SyntheticEvent, useMemo, useState } from 'react'
-import { CharacterProps } from './model/props'
+import { useMemo, useState } from 'react'
+import { CharacterProps, defaultProps } from './model/props'
 import { ImStarFull } from 'react-icons/im'
-import { IconOnly } from '../core/IconOnly'
 import { nanoid } from 'nanoid'
+import { RateButton } from './styled'
 
-export const RatingInput = ({ value, max, onClick }: CharacterProps) => {
-  const [currRate, setCurrRate] = useState(value)
-  const resetRate = () => setCurrRate(value)
+export const RatingInput = ({
+  value = defaultProps.value,
+  max = defaultProps.max,
+  onSelectRate,
+}: CharacterProps) => {
+  const [selectedRate, setSelectedRate] = useState<number>(value!)
+  const [coloredRate, setColoredRate] = useState<number>(value!)
+  const resetColor = () => setColoredRate(selectedRate)
+  const selectRate = (value: number) => {
+    setSelectedRate(value)
+    setColoredRate(value)
+  }
 
   const buttons = useMemo(
     () =>
@@ -19,18 +28,19 @@ export const RatingInput = ({ value, max, onClick }: CharacterProps) => {
     [max]
   )
 
-  const clickHandler = (e: SyntheticEvent, val: number) =>
-    onClick && onClick(e, val)
+  const onValueChanged = () => onSelectRate && onSelectRate(selectedRate)
 
   return (
-    <div onBlur={resetRate}>
-      <input type='hidden' value={currRate} />
+    <div onMouseOut={resetColor}>
+      <input type='hidden' value={selectedRate} onChange={onValueChanged} />
       {buttons.map(({ key, value }) => (
-        <IconOnly.Button
+        <RateButton
           icon={<ImStarFull />}
           label={`rate_${value}`}
           key={key}
-          onClick={e => clickHandler(e, value)}
+          onClick={() => selectRate(value)}
+          onMouseOver={() => setColoredRate(value)}
+          data-coloring={value <= coloredRate}
         />
       ))}
     </div>
