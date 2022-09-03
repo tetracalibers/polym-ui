@@ -13,6 +13,6 @@ const conf = {
 }
 
 export type CharacterProps = getPropType<typeof conf>
-export const defaultProps = {
+export const defaultIconOnlyProps = {
   ...getDefaultProps<CharacterProps>(conf),
 }

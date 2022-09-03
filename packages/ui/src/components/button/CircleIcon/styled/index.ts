@@ -2,8 +2,9 @@ import styled from 'styled-components'
 import { Button } from '../../../core/Button'
 import { ResetCss } from 'styled-utility-first'
 import { ColorPalette as $ } from 'styled-utility-first'
+import { IconOnly } from '../../../core/IconOnly'
 
-export const STyledButton = styled(Button)`
+export const STyledButton = styled(IconOnly.Button)`
   ${ResetCss.button}
 
   --button-size: 3.5rem;

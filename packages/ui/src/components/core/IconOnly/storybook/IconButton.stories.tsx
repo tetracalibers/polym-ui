@@ -1,6 +1,6 @@
 import { ComponentStory } from '@storybook/react'
-import { thisArgTypes } from '../model/argTypes'
-import { defaultProps } from '../model/props'
+import { iconOnlyCoreArgTypes } from '../model/argTypes'
+import { defaultIconOnlyProps } from '../model/props'
 import { IconOnly } from '..'
 import { DocsPage } from '../../Button/storybook/docsPage'
 import { ImTwitter } from 'react-icons/im'
@@ -17,7 +17,7 @@ export default {
     },
   },
   argTypes: {
-    ...thisArgTypes,
+    ...iconOnlyCoreArgTypes,
   },
 }
 
@@ -27,5 +27,5 @@ const Template: ComponentStory<typeof IconOnly.Button> = () => (
 
 export const playground = Template.bind({})
 playground.args = {
-  ...defaultProps,
+  ...defaultIconOnlyProps,
 }

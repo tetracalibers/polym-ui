@@ -1,13 +1,13 @@
 import { ComponentStory } from '@storybook/react'
 import { thisArgTypes } from '../model/argTypes'
 import { defaultProps } from '../model/props'
-import { IconClick } from '..'
+import { CircleIconClick } from '..'
 import { DocsPage } from '../../../core/Button/storybook/docsPage'
 import { ImTwitter } from 'react-icons/im'
 
 export default {
-  title: 'button & link/IconClick/IconClick.Button',
-  component: IconClick,
+  title: 'button & link/CircleIconClick/CircleIconClick.Button',
+  component: CircleIconClick,
   parameters: {
     docs: {
       page: () => <DocsPage />,
@@ -21,8 +21,8 @@ export default {
   },
 }
 
-const Template: ComponentStory<typeof IconClick.Button> = () => (
-  <IconClick.Button icon={<ImTwitter />} label='go to Twitter' />
+const Template: ComponentStory<typeof CircleIconClick.Button> = () => (
+  <CircleIconClick.Button icon={<ImTwitter />} label='go to Twitter' />
 )
 
 export const playground = Template.bind({})

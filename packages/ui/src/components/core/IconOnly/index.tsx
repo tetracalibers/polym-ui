@@ -3,12 +3,17 @@ import { VisuallyHidden } from '../../a11y-helper/VisuallyHidden'
 import { Button, ButtonCoreProps } from '../Button'
 import { CharacterProps } from './model/props'
 
-type IconButtonProps = {
+export type IconOnlyCoreProps = {
   icon: ReactElement
 } & CharacterProps &
   Omit<ButtonCoreProps, 'children'>
 
-const _IconButton = ({ ref, label, icon, ...superProps }: IconButtonProps) => {
+const _IconButton = ({
+  ref,
+  label,
+  icon,
+  ...superProps
+}: IconOnlyCoreProps) => {
   const iconForA11y = useMemo(
     () => cloneElement(icon, { ariaHidden: true }),
     []
@@ -23,5 +28,5 @@ const _IconButton = ({ ref, label, icon, ...superProps }: IconButtonProps) => {
 }
 
 export const IconOnly = {
-  Button: forwardRef<HTMLElement, IconButtonProps>(_IconButton),
+  Button: forwardRef<HTMLElement, IconOnlyCoreProps>(_IconButton),
 }
