@@ -6,6 +6,9 @@ import { coreArgTypes } from '../model/argTypes'
 import LoremIpsum from 'react-lorem-ipsum'
 import { Container, NeedScrollPage } from '../../../mock/TestBox'
 import { BackCover } from '../styled'
+import { CenterLineHeading } from '../../heading/CenterLine'
+import RippleClick from '../../button/RippleClick'
+import { Button } from '../../core/Button'
 
 export default {
   title: 'dialog/Modal',
@@ -26,7 +29,15 @@ export default {
 const Template: ComponentStory<typeof Modal> = ({ ...args }) => (
   <NeedScrollPage>
     <Modal {...args}>
-      <LoremIpsum />
+      <Modal.Title>
+        <CenterLineHeading>Modal Window</CenterLineHeading>
+      </Modal.Title>
+      <Modal.Content>
+        <LoremIpsum />
+      </Modal.Content>
+      <Modal.Controls>
+        <Button>Cancel</Button>
+      </Modal.Controls>
     </Modal>
     <LoremIpsum p={10} />
   </NeedScrollPage>
