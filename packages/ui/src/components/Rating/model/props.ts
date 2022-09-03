@@ -7,6 +7,7 @@ import {
 import * as CSST from 'csstype'
 import { ColorPalette as $, ResetCss } from 'styled-utility-first'
 import { CssStyle } from 'ts-typedef-helper'
+import { ChangeEvent, SyntheticEvent } from 'react'
 
 const conf = {
   value: NotRequired<number>(0),
@@ -15,7 +16,7 @@ const conf = {
 type Conf = typeof conf
 
 export type CharacterProps = getPropType<Conf> & {
-  onClick?: (i: number) => void
+  onClick?: (e: SyntheticEvent, i: number) => void
 }
 
 export const defaultProps = {
