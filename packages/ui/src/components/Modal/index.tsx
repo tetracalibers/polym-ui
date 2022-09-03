@@ -1,12 +1,11 @@
 import {
-  forwardRef,
   isValidElement,
   ReactNode,
   cloneElement,
-  useCallback,
   useMemo,
   ReactElement,
   createContext,
+  useContext,
 } from 'react'
 import { VisuallyHidden } from '../a11y-helper/VisuallyHidden'
 import { BackCover, OverlayWrapper } from './styled'
@@ -35,16 +34,20 @@ type TitleProps = {
 }
 
 const Title = ({ children, hidden = false }: TitleProps) => {
+  const isValidChildren = isValidElement(children)
+
+  const { titleId, updateTitleId } = useContext(ModalContext)
+  useRegisterId(isValidChildren ? children.props.id : undefined, updateTitleId)
+
   const Element = useMemo(() => {
     if (hidden) {
-      return <VisuallyHidden id={'id'}>{children}</VisuallyHidden>
+      return <VisuallyHidden id={titleId}>{children}</VisuallyHidden>
     }
-    if (isValidElement(children)) {
-      const newId = children.props.id + ' ' + 'id'
-      return cloneElement(children, { id: newId })
+    if (isValidChildren) {
+      return cloneElement(children, { id: titleId })
     }
-    return <div id={'id'}>{children}</div>
-  }, [hidden])
+    return <div id={titleId}>{children}</div>
+  }, [hidden, titleId])
 
   return <>{Element}</>
 }
@@ -58,7 +61,10 @@ type ContentProps = {
 }
 
 const Content = ({ children }: ContentProps) => {
-  return <div>{children}</div>
+  const { contentId, updateContentId } = useContext(ModalContext)
+  useRegisterId(undefined, updateContentId)
+
+  return <div id={contentId}>{children}</div>
 }
 
 /* -------------------------------------------- */
@@ -99,8 +105,8 @@ export const Modal = ({ children }: ModalProps) => {
       <BackCover />
       <OverlayWrapper
         role='dialog'
-        aria-labelledby='dialog_label'
-        aria-describedby='dialog_desc'
+        aria-labelledby={titleId}
+        aria-describedby={contentId}
         aria-modal={true}
       >
         {children}
