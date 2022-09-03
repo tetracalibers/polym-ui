@@ -6,9 +6,24 @@ import {
   useCallback,
   useMemo,
   ReactElement,
+  createContext,
 } from 'react'
 import { VisuallyHidden } from '../a11y-helper/VisuallyHidden'
 import { BackCover, OverlayWrapper } from './styled'
+import { useRegisterId, useShareId, useShareState } from '@polym/hooks'
+
+/* -------------------------------------------- */
+/* CONTEXT                                      */
+/* -------------------------------------------- */
+
+type ModalState = {
+  titleId?: string
+  contentId?: string
+  updateTitleId: (id: string) => void
+  updateContentId: (id: string) => void
+}
+
+const ModalContext = createContext<ModalState>({} as ModalState)
 
 /* -------------------------------------------- */
 /* TITLE                                        */
@@ -71,8 +86,16 @@ export type ModalProps = {
 }
 
 export const Modal = ({ children }: ModalProps) => {
+  const [titleId, updateTitleId] = useShareId()
+  const [contentId, updateContentId] = useShareId()
+
+  const shareState = useShareState(
+    { titleId, updateTitleId, contentId, updateContentId },
+    [titleId, contentId]
+  )
+
   return (
-    <>
+    <ModalContext.Provider value={shareState}>
       <BackCover />
       <OverlayWrapper
         role='dialog'
@@ -82,7 +105,7 @@ export const Modal = ({ children }: ModalProps) => {
       >
         {children}
       </OverlayWrapper>
-    </>
+    </ModalContext.Provider>
   )
 }
 
