@@ -82,9 +82,10 @@ export type ModalProps = {
     ReactElement<ContentProps, typeof Content>,
     ReactElement<ControlsProps, typeof Controls>
   ]
+  open: boolean
 }
 
-export const Modal = ({ children }: ModalProps) => {
+export const Modal = ({ children, open }: ModalProps) => {
   const [titleId, updateTitleId] = useShareId()
   const [contentId, updateContentId] = useShareId()
 
@@ -95,15 +96,19 @@ export const Modal = ({ children }: ModalProps) => {
 
   return (
     <ModalContext.Provider value={shareState}>
-      <BackCover />
-      <OverlayWrapper
-        role='dialog'
-        aria-labelledby={titleId}
-        aria-describedby={contentId}
-        aria-modal={true}
-      >
-        {children}
-      </OverlayWrapper>
+      {open && (
+        <>
+          <BackCover />
+          <OverlayWrapper
+            role='dialog'
+            aria-labelledby={titleId}
+            aria-describedby={contentId}
+            aria-modal={true}
+          >
+            {children}
+          </OverlayWrapper>
+        </>
+      )}
     </ModalContext.Provider>
   )
 }

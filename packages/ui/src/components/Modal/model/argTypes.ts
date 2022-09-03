@@ -16,4 +16,19 @@ export const coreArgTypes = {
       required: true,
     },
   },
+  open: {
+    control: {
+      type: 'boolean',
+    },
+    description: 'Whether to keep the modal open or not',
+    table: {
+      category: 'feature',
+      type: {
+        summary: null,
+      },
+    },
+    type: {
+      required: true,
+    },
+  },
 }
