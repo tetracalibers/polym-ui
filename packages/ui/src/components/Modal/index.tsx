@@ -6,6 +6,7 @@ import {
   ReactElement,
   createContext,
   useContext,
+  Children,
 } from 'react'
 import { VisuallyHidden } from '../a11y-helper/VisuallyHidden'
 import { BackCover, OverlayWrapper } from './styled'
@@ -34,22 +35,14 @@ type TitleProps = {
 }
 
 const Title = ({ children, hidden = false }: TitleProps) => {
-  const isValidChildren = isValidElement(children)
-
   const { titleId, updateTitleId } = useContext(ModalContext)
-  useRegisterId(isValidChildren ? children.props.id : undefined, updateTitleId)
+  useRegisterId(undefined, updateTitleId)
 
-  const Element = useMemo(() => {
-    if (hidden) {
-      return <VisuallyHidden id={titleId}>{children}</VisuallyHidden>
-    }
-    if (isValidChildren) {
-      return cloneElement(children, { id: titleId })
-    }
-    return <div id={titleId}>{children}</div>
-  }, [hidden, titleId])
-
-  return <>{Element}</>
+  return hidden ? (
+    <VisuallyHidden id={titleId}>{children}</VisuallyHidden>
+  ) : (
+    <div id={titleId}>{children}</div>
+  )
 }
 
 /* -------------------------------------------- */
