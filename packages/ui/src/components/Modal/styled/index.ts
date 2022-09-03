@@ -1,6 +1,16 @@
-import styled, { createGlobalStyle, css } from 'styled-components'
+import styled, { createGlobalStyle, css, keyframes } from 'styled-components'
 import { ColorPalette as $, ResetCss } from 'styled-utility-first'
 import { Button } from '../../core/Button'
+
+const show = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+`
 
 export const OverlayWrapper = styled.div`
   /* 重ねる ---------------------------------------- */
@@ -9,7 +19,7 @@ export const OverlayWrapper = styled.div`
   top: 50%;
   left: 50%;
   /* 要素の中央がコンテナの中央になるよう修正 */
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(0.3);
   z-index: 999;
 
   /* modal window自体のスタイル ------------------------ */
@@ -20,6 +30,10 @@ export const OverlayWrapper = styled.div`
     rgba(136, 165, 191, 0.2) -6px -2px 16px 0px;
   color: ${$.grayScale.dark};
   border-radius: 1rem;
+
+  animation-name: ${show};
+  animation-duration: 0.75s;
+  animation-fill-mode: forwards;
 `
 
 export const BackCover = createGlobalStyle`

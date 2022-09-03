@@ -1,12 +1,8 @@
 import {
-  isValidElement,
   ReactNode,
-  cloneElement,
-  useMemo,
   ReactElement,
   createContext,
   useContext,
-  Children,
   useState,
 } from 'react'
 import { VisuallyHidden } from '../a11y-helper/VisuallyHidden'
