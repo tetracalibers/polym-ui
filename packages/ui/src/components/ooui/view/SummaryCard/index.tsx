@@ -1,5 +1,5 @@
 import { ReactElement, ReactNode } from 'react'
-import { Flex, Summary } from './styled'
+import { Flex, Logo, Summary } from './styled'
 
 type SummaryCardProps = {
   logo: ReactElement
@@ -9,7 +9,7 @@ type SummaryCardProps = {
 export const SummaryCard = ({ children, logo }: SummaryCardProps) => {
   return (
     <Flex>
-      {logo}
+      <Logo>{logo}</Logo>
       <Summary>{children}</Summary>
     </Flex>
   )
