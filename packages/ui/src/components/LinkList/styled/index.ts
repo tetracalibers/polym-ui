@@ -7,12 +7,45 @@ const injectStyleThemeAs = (styleType: CharacterProps['styleType']) => {
   return match(styleType)
     .with('growUnderFromCenter', () => {
       return css`
-        transform-origin: center top;
+        & a::after {
+          transform-origin: center top;
+          bottom: 0;
+        }
+
+        &[data-active='true'] a::after,
+        & a:hover::after {
+          transform: scale(1, 1); /*X方向にスケール拡大*/
+        }
       `
     })
     .with('growUnderFromLeft', () => {
       return css`
-        transform-origin: left top;
+        & a::after {
+          transform-origin: left top;
+          bottom: 0;
+        }
+
+        &[data-active='true'] a::after,
+        & a:hover::after {
+          transform: scale(1, 1); /*X方向にスケール拡大*/
+        }
+      `
+    })
+    .with('growUpperFromLeft', () => {
+      return css`
+        & a::after {
+          transform-origin: left top;
+          top: 0;
+        }
+
+        &[data-active='true'] a::after {
+          transform: scale(0.1, 1); /*X方向に0.2スケール拡大*/
+        }
+
+        &[data-active='true'] a:hover::after,
+        & a:hover::after {
+          transform: scale(1, 1); /*X方向にスケール拡大*/
+        }
       `
     })
     .otherwise(() => '')
@@ -42,12 +75,10 @@ export const Li = styled.li`
     color: #00b7c3;
   }
 
-  /* styleTypeによって分岐 ---------------------------- */
   & a::after {
     content: '';
     /*絶対配置で線の位置を決める*/
     position: absolute;
-    bottom: 0;
     left: 10%;
     /*線の形状*/
     width: 80%;
@@ -56,11 +87,7 @@ export const Li = styled.li`
     /*アニメーションの指定*/
     transition: all 0.3s;
     transform: scale(0, 1); /*X方向0、Y方向1*/
-    ${({ theme }) => injectStyleThemeAs(theme.styleType)}
   }
 
-  &[data-active='true'] a::after,
-  & a:hover::after {
-    transform: scale(1, 1); /*X方向にスケール拡大*/
-  }
+  ${({ theme }) => injectStyleThemeAs(theme.styleType)}
 `
