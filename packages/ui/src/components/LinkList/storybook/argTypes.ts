@@ -2,10 +2,9 @@ import {
   defaultFillLinkListProps,
   fillHoverEffectOptions,
   underlineHoverEffectOptions,
-} from './../index'
+} from '../index'
 import { CssStyle } from 'ts-typedef-helper'
 import { defaultUnderLineLinkListProps } from '..'
-import { defaultLinkListCoreProps, styleTypeOptions } from './props'
 
 export const coreArgTypes = {
   // styleType: {

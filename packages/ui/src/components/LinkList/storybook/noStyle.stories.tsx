@@ -1,7 +1,6 @@
 import { ComponentStory } from '@storybook/react'
-import { coreArgTypes } from '../model/argTypes'
-import { defaultLinkListCoreProps } from '../model/props'
-import { LinkList } from '..'
+import { coreArgTypes } from './argTypes'
+import { defaultLinkListCoreProps, LinkList } from '..'
 
 export default {
   title: 'navigation/LinkList',
@@ -23,7 +22,7 @@ export default {
 
 /* -------------------------------------------- */
 
-const EmailTemplate: ComponentStory<typeof LinkList> = ({ ...args }) => (
+const Template: ComponentStory<typeof LinkList> = ({ ...args }) => (
   <LinkList {...args}>
     <LinkList.Item href='#profile'>Profile</LinkList.Item>
     <LinkList.Item href='#writing'>Writing</LinkList.Item>
@@ -33,7 +32,7 @@ const EmailTemplate: ComponentStory<typeof LinkList> = ({ ...args }) => (
   </LinkList>
 )
 
-export const noStyle = EmailTemplate.bind({})
+export const noStyle = Template.bind({})
 noStyle.args = {
   ...defaultLinkListCoreProps,
 }

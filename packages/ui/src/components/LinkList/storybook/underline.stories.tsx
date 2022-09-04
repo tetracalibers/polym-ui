@@ -1,5 +1,5 @@
 import { ComponentStory } from '@storybook/react'
-import { underlineVerArgTypes } from '../model/argTypes'
+import { underlineVerArgTypes } from './argTypes'
 import { defaultUnderLineLinkListProps, LinkList } from '..'
 
 export default {
@@ -22,7 +22,7 @@ export default {
 
 /* -------------------------------------------- */
 
-const EmailTemplate: ComponentStory<typeof LinkList> = ({ ...args }) => (
+const Template: ComponentStory<typeof LinkList> = ({ ...args }) => (
   <LinkList.Underline {...args}>
     <LinkList.Item href='#profile'>Profile</LinkList.Item>
     <LinkList.Item href='#writing'>Writing</LinkList.Item>
@@ -32,7 +32,7 @@ const EmailTemplate: ComponentStory<typeof LinkList> = ({ ...args }) => (
   </LinkList.Underline>
 )
 
-export const underline = EmailTemplate.bind({})
+export const underline = Template.bind({})
 underline.args = {
   ...defaultUnderLineLinkListProps,
 }

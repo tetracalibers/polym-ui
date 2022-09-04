@@ -1,7 +1,6 @@
-import { Children, ElementType, forwardRef, ReactElement } from 'react'
-import styled, { createGlobalStyle, ThemeProvider } from 'styled-components'
+import { forwardRef, ReactElement } from 'react'
+import styled, { ThemeProvider } from 'styled-components'
 import { Anchor, AnchorCoreProps } from '../core/Anchor'
-import { Li, Ul } from './styled'
 import { getDefaultProps, getPropType, NotRequired } from 'react-tsx-props'
 import { CoreUl } from './styled/core'
 import { injectUnderlineStyle } from './styled/underline'
@@ -104,9 +103,8 @@ export const fillHoverEffectOptions = [
 ] as const
 
 const fillStyleConf = {
-  hoverEffect: NotRequired<typeof fillHoverEffectOptions[number]>(
-    'fillFromHorizontalLine'
-  ),
+  hoverEffect:
+    NotRequired<typeof fillHoverEffectOptions[number]>('fillFromLeft'),
 }
 
 export type FillLinkListProps = LinkListCoreProps &
