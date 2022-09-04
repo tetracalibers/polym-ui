@@ -5,6 +5,8 @@ import { ScaleImage } from '../../../../image-effect/effect/ScaleImage'
 import { data } from '../../../data/latexnote'
 import { VerticalStack } from '../../../../layout-algorithm/VerticalStack'
 import { Image } from '../../../../image-effect/core'
+import { CircleClip } from '../../../../shape-clip/Circle'
+import { HorizontalCenter } from '../../../../layout-algorithm/HorizontalCenter'
 
 export default {
   title: 'OOUI/SingleView',
@@ -29,7 +31,9 @@ const { summary, logoSrc, tags } = data[0]
 const TextTemplate: ComponentStory<typeof SingleView> = () => (
   <SingleView>
     <VerticalStack>
-      <Image src={logoSrc} />
+      <CircleClip>
+        <Image src={logoSrc} />
+      </CircleClip>
       <div>{summary.en}</div>
     </VerticalStack>
   </SingleView>
