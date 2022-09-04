@@ -20,18 +20,18 @@ const setEffect = (type: UnderLineLinkListProps['hoverEffect']) => {
 }
 
 export const injectUnderlineStyle = css`
-  &._underline__cdde0ee7 {
+  & {
     --color: ${$.pastel.purple};
     --bg-color: ${$.pastel.pink};
     --duration: 0.5s;
   }
 
-  &._underline__cdde0ee7 > li a {
+  & > li a {
     /*基点とするためrelativeを指定*/
     position: relative;
   }
 
-  &._underline__cdde0ee7 > li a::after {
+  & > li a::after {
     content: '';
     position: absolute;
     background-color: var(--bg-color);
@@ -46,13 +46,13 @@ export const injectUnderlineStyle = css`
     ${({ theme }) => setEffect(theme.hoverEffect)}
   }
 
-  &._underline__cdde0ee7 > li[data-active='true'] a,
-  &._underline__cdde0ee7 > li a:hover {
+  & > li[data-active='true'] a,
+  & > li a:hover {
     color: var(--color);
   }
 
-  &._underline__cdde0ee7 > li[data-active='true'] a::after,
-  &._underline__cdde0ee7 > li a:hover::after {
+  & > li[data-active='true'] a::after,
+  & > li a:hover::after {
     transform: scale(1, 1); /*X方向にスケール拡大*/
   }
 `

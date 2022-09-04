@@ -4,6 +4,7 @@ import { Anchor, AnchorCoreProps } from '../core/Anchor'
 import { Li, Ul } from './styled'
 import { getDefaultProps, getPropType, NotRequired } from 'react-tsx-props'
 import { CoreUl } from './styled/core'
+import { injectUnderlineStyle } from './styled/underline'
 
 /* -------------------------------------------- */
 /* LINKLIST.ITEM                                */
@@ -32,8 +33,6 @@ const linkListCorePropsConf = {
 
 export type LinkListCoreProps = {
   children: [...ReactElement<LinkItemProps, typeof Item>[]]
-  className?: string
-  theme?: object
 } & getPropType<typeof linkListCorePropsConf>
 
 export const defaultLinkListCoreProps = getDefaultProps<LinkListCoreProps>(
@@ -42,16 +41,10 @@ export const defaultLinkListCoreProps = getDefaultProps<LinkListCoreProps>(
 
 export const LinkList = ({
   children,
-  className,
-  theme,
   ...props
 }: //activeNth = defaultLinkListCoreProps.activeNth,
 LinkListCoreProps) => {
-  return (
-    <CoreUl {...props} className={className}>
-      {children}
-    </CoreUl>
-  )
+  return <CoreUl {...props}>{children}</CoreUl>
 }
 
 LinkList.Item = Item
@@ -79,19 +72,25 @@ export const defaultUnderLineLinkListProps = {
   ...getDefaultProps<UnderLineLinkListProps>(underlineStyleConf),
 }
 
-export const UnderlineLinkList = ({
-  children,
-  hoverEffect = defaultUnderLineLinkListProps.hoverEffect,
-  ...props
-}: UnderLineLinkListProps) => {
-  return (
-    <ThemeProvider theme={{ hoverEffect }}>
-      <LinkList {...props} className='_underline__cdde0ee7'>
-        {children}
-      </LinkList>
-    </ThemeProvider>
-  )
+const getUnderlineVersion = (CoreComponent: typeof LinkList) => {
+  const Component = styled(CoreComponent)`
+    ${injectUnderlineStyle}
+  `
+
+  return ({
+    children,
+    hoverEffect = defaultUnderLineLinkListProps.hoverEffect,
+    ...props
+  }: UnderLineLinkListProps) => {
+    return (
+      <ThemeProvider theme={{ hoverEffect }}>
+        <Component {...props}>{children}</Component>
+      </ThemeProvider>
+    )
+  }
 }
+
+LinkList.Underline = getUnderlineVersion(LinkList)
 
 /* -------------------------------------------- */
 /* FILL STYLE                                   */

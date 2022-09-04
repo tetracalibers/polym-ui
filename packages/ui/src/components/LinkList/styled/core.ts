@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components'
 import { ColorPalette as $ } from 'styled-utility-first'
 import { match } from 'ts-pattern'
-import { injectUnderlineStyle } from './underline'
 
 export const baseStyle = css`
   display: flex;
@@ -31,6 +30,4 @@ export const CoreUl = styled.ul`
     text-decoration: none;
     color: ${$.grayScale.dark};
   }
-
-  ${injectUnderlineStyle}
 `
