@@ -7,6 +7,7 @@ export const Flex = styled.div`
   align-items: center;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
   border-radius: calc(75px * 0.5);
+  width: fit-content;
 `
 
 export const Summary = styled.div`
