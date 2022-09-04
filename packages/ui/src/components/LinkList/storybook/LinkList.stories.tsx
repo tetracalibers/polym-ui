@@ -12,6 +12,9 @@ export default {
         component: '',
       },
     },
+    backgrounds: {
+      default: 'light',
+    },
   },
   argTypes: {
     ...coreArgTypes,
