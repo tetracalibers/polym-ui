@@ -1,7 +1,7 @@
 import { ComponentStory } from '@storybook/react'
-import { coreArgTypes } from '../model/argTypes'
+import { coreArgTypes, underlineVerArgTypes } from '../model/argTypes'
 import { defaultLinkListCoreProps } from '../model/props'
-import { LinkList } from '..'
+import { defaultUnderLineLinkListProps, LinkList, UnderlineLinkList } from '..'
 
 export default {
   title: 'navigation/LinkList',
@@ -17,23 +17,23 @@ export default {
     },
   },
   argTypes: {
-    ...coreArgTypes,
+    ...underlineVerArgTypes,
   },
 }
 
 /* -------------------------------------------- */
 
 const EmailTemplate: ComponentStory<typeof LinkList> = ({ ...args }) => (
-  <LinkList {...args}>
+  <UnderlineLinkList {...args}>
     <LinkList.Item href='#profile'>Profile</LinkList.Item>
     <LinkList.Item href='#writing'>Writing</LinkList.Item>
     <LinkList.Item href='#lecture'>Lecture</LinkList.Item>
     <LinkList.Item href='#blog'>Blog</LinkList.Item>
     <LinkList.Item href='#work'>Work</LinkList.Item>
-  </LinkList>
+  </UnderlineLinkList>
 )
 
-export const noStyle = EmailTemplate.bind({})
-noStyle.args = {
-  ...defaultLinkListCoreProps,
+export const underline = EmailTemplate.bind({})
+underline.args = {
+  ...defaultUnderLineLinkListProps,
 }

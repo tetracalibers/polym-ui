@@ -56,33 +56,6 @@ const injectStyleThemeAs = (styleType: CharacterProps['styleType']) => {
         }
       `
     })
-    .with('growUpperFromLeft', () => {
-      return css`
-        & a::after {
-          transform-origin: left top;
-          top: 0;
-          left: 10%;
-          /*線の形状*/
-          width: 80%;
-          height: 2px;
-          transform: scale(0, 1); /*X方向0、Y方向1*/
-        }
-
-        &[data-active='true'] a,
-        & a:hover {
-          color: var(--color);
-        }
-
-        &[data-active='true'] a::after {
-          transform: scale(0.1, 1); /*X方向に0.2スケール拡大*/
-        }
-
-        &[data-active='true'] a:hover::after,
-        & a:hover::after {
-          transform: scale(1, 1); /*X方向にスケール拡大*/
-        }
-      `
-    })
     .with('fillFromLeft', () => {
       return css`
         & a::after {
