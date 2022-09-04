@@ -3,6 +3,11 @@ import { ColorPalette as $ } from 'styled-utility-first'
 import { match } from 'ts-pattern'
 import { CharacterProps } from '../model/props'
 
+const variables = css`
+  --color: ${$.pastel.purple};
+  --bg-color: ${$.pastel.pink};
+`
+
 const injectStyleThemeAs = (styleType: CharacterProps['styleType']) => {
   return match(styleType)
     .with('growUnderFromCenter', () => {
@@ -10,6 +15,16 @@ const injectStyleThemeAs = (styleType: CharacterProps['styleType']) => {
         & a::after {
           transform-origin: center top;
           bottom: 0;
+          left: 10%;
+          /*線の形状*/
+          width: 80%;
+          height: 2px;
+          transform: scale(0, 1); /*X方向0、Y方向1*/
+        }
+
+        &[data-active='true'] a,
+        & a:hover {
+          color: var(--color);
         }
 
         &[data-active='true'] a::after,
@@ -23,6 +38,16 @@ const injectStyleThemeAs = (styleType: CharacterProps['styleType']) => {
         & a::after {
           transform-origin: left top;
           bottom: 0;
+          left: 10%;
+          /*線の形状*/
+          width: 80%;
+          height: 2px;
+          transform: scale(0, 1); /*X方向0、Y方向1*/
+        }
+
+        &[data-active='true'] a,
+        & a:hover {
+          color: var(--color);
         }
 
         &[data-active='true'] a::after,
@@ -36,6 +61,16 @@ const injectStyleThemeAs = (styleType: CharacterProps['styleType']) => {
         & a::after {
           transform-origin: left top;
           top: 0;
+          left: 10%;
+          /*線の形状*/
+          width: 80%;
+          height: 2px;
+          transform: scale(0, 1); /*X方向0、Y方向1*/
+        }
+
+        &[data-active='true'] a,
+        & a:hover {
+          color: var(--color);
         }
 
         &[data-active='true'] a::after {
@@ -48,10 +83,37 @@ const injectStyleThemeAs = (styleType: CharacterProps['styleType']) => {
         }
       `
     })
+    .with('fillFromLeft', () => {
+      return css`
+        & a::after {
+          z-index: -1;
+          bottom: 0;
+          left: 0;
+          /*背景の形状*/
+          width: 0;
+          height: 100%;
+          opacity: 0; /*はじめは透過0*/
+          border-radius: 3rem;
+        }
+
+        &[data-active='true'] a,
+        & a:hover {
+          color: ${$.grayScale.light};
+        }
+
+        &[data-active='true'] a::after,
+        & a:hover::after {
+          width: 100%; /*横幅を伸ばす*/
+          opacity: 1; /*不透明に*/
+        }
+      `
+    })
     .otherwise(() => '')
 }
 
 export const Ul = styled.ul`
+  ${variables}
+
   display: flex;
   list-style: none;
   justify-content: center;
@@ -70,23 +132,12 @@ export const Li = styled.li`
     position: relative;
   }
 
-  &[data-active='true'] a,
-  & a:hover {
-    color: #00b7c3;
-  }
-
   & a::after {
     content: '';
-    /*絶対配置で線の位置を決める*/
     position: absolute;
-    left: 10%;
-    /*線の形状*/
-    width: 80%;
-    height: 2px;
-    background: #0099bc;
+    background-color: var(--bg-color);
     /*アニメーションの指定*/
-    transition: all 0.3s;
-    transform: scale(0, 1); /*X方向0、Y方向1*/
+    transition: all 0.5s;
   }
 
   ${({ theme }) => injectStyleThemeAs(theme.styleType)}
