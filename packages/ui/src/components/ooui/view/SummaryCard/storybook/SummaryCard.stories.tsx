@@ -5,7 +5,7 @@ import algorithmDataStructuresLogo from '../../../../../assets/LaTeXbooks/algori
 import { ShineImage } from '../../../../image-effect/animation/ShineImage'
 
 export default {
-  title: 'OOUI/TextSummaryCard',
+  title: 'OOUI/SummaryCard',
   component: SummaryCard,
   parameters: {
     docs: {
