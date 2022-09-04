@@ -1,25 +1,59 @@
 import styled from 'styled-components'
 import { ColorPalette as $ } from 'styled-utility-first'
+import { Grid } from '../../../../layout-algorithm/Grid'
+import { SummaryFlex } from '../../SummaryCard/styled'
 
-export const Flex = styled.div`
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
-  border-radius: calc(75px * 0.5);
-  width: fit-content;
-`
+const pastel = [
+  'rgba(227, 163, 171, .1)',
+  'rgba(202, 226, 230, .1)',
+  'rgba(204, 223, 181, .1)',
+  'rgba(194, 199, 225, .1)',
+]
 
-export const Summary = styled.div`
-  padding: 1rem;
-  color: ${$.grayScale.dark};
-`
+export const SummaryCardGrid = styled(Grid)`
+  width: 100%;
+  height: 100%;
+  padding: 1.5rem;
+  box-sizing: border-box;
 
-export const Logo = styled.div`
-  &&,
-  && * {
-    width: 75px;
-    height: 75px;
-    border-radius: 50%;
+  && {
+    grid-gap: 1.5rem;
+  }
+
+  & > * {
+    box-shadow: rgba(136, 165, 191, 0.48) 3px 1px 8px 0px,
+      rgba(255, 255, 255, 0.8) -3px -1px 8px 0px;
+  }
+
+  & ${SummaryFlex}:nth-child(4n+1) {
+    background-image: linear-gradient(
+      -90deg,
+      ${pastel[0]} 0%,
+      rgba(255, 255, 255, 0) 100%
+    );
+  }
+
+  & ${SummaryFlex}:nth-child(4n+2) {
+    background-image: linear-gradient(
+      -90deg,
+      ${pastel[1]} 0%,
+      rgba(255, 255, 255, 0) 100%
+    );
+  }
+
+  & ${SummaryFlex}:nth-child(4n+3) {
+    background-image: linear-gradient(
+      -90deg,
+      ${pastel[2]} 0%,
+      rgba(255, 255, 255, 0) 100%
+    );
+  }
+
+  & ${SummaryFlex}:nth-child(4n+4) {
+    background-image: linear-gradient(
+      -90deg,
+      ${pastel[3]} 0%,
+      rgba(255, 255, 255, 0) 100%
+    );
   }
 `

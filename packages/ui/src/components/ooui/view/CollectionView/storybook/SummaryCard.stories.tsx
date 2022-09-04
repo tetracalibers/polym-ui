@@ -55,6 +55,9 @@ export default {
         component: '',
       },
     },
+    backgrounds: {
+      default: 'dark',
+    },
   },
   argTypes: {},
 }
@@ -213,8 +216,8 @@ const data = [
 
 const TextTemplate: ComponentStory<typeof CollectionView> = () => (
   <CollectionView>
-    {data.map(({ summary, logoSrc }) => (
-      <SummaryCard logo={<ScaleImage src={logoSrc} />}>
+    {data.map(({ summary, logoSrc }, idx) => (
+      <SummaryCard logo={<ScaleImage src={logoSrc} />} key={idx}>
         {summary.en}
       </SummaryCard>
     ))}
