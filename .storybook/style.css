@@ -4,7 +4,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Zen+Kurenaido&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital@1&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Kaisei+Opti&display=swap');
 
 * {
   font-family: 'Inconsolata', 'Zen Kurenaido' !important;
@@ -12,7 +11,7 @@
 
 code[class*='language-'] *,
 pre[class*='language-'] * {
-  font-family: 'IBM Plex Mono', 'Kaisei Opti' !important;
+  font-family: 'IBM Plex Mono' !important;
 }
 
 .bytomixy :lang(ja) {
