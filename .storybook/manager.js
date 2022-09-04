@@ -1,6 +1,7 @@
 // .storybook/manager.js
 
 import { addons } from '@storybook/addons'
+import polymuiTheme from './PolymuiTheme'
 
 addons.setConfig({
   //isFullscreen: false,
@@ -9,7 +10,7 @@ addons.setConfig({
   panelPosition: 'right',
   //enableShortcuts: true,
   //showToolbar: true,
-  //theme: undefined,
+  theme: polymuiTheme,
   selectedPanel: 'storybook/controls/panel',
   //initialActive: 'sidebar',
   //sidebar: {
