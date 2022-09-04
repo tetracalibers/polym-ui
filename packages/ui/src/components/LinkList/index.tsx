@@ -1,4 +1,5 @@
 import { Children, forwardRef, ReactElement } from 'react'
+import { ThemeProvider } from 'styled-components'
 import { Anchor, AnchorCoreProps } from '../core/Anchor'
 import { CharacterProps, defaultLinkListCoreProps } from './model/props'
 import { Li, Ul } from './styled'
@@ -30,10 +31,14 @@ type LinkListCoreProps = {
 
 export const LinkList = ({
   children,
+  styleType = defaultLinkListCoreProps.styleType,
 }: //activeNth = defaultLinkListCoreProps.activeNth,
-//styleType = defaultLinkListCoreProps.styleType,
 LinkListCoreProps) => {
-  return <Ul>{children}</Ul>
+  return (
+    <ThemeProvider theme={{ styleType }}>
+      <Ul>{children}</Ul>
+    </ThemeProvider>
+  )
 }
 
 /* -------------------------------------------- */

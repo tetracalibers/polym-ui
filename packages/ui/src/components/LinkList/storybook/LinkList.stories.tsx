@@ -23,8 +23,8 @@ export default {
 
 /* -------------------------------------------- */
 
-const EmailTemplate: ComponentStory<typeof LinkList> = () => (
-  <LinkList>
+const EmailTemplate: ComponentStory<typeof LinkList> = ({ ...args }) => (
+  <LinkList {...args}>
     <LinkList.Item href='#profile'>Profile</LinkList.Item>
     <LinkList.Item href='#writing'>Writing</LinkList.Item>
     <LinkList.Item href='#lecture'>Lecture</LinkList.Item>

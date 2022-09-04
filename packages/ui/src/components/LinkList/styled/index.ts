@@ -1,5 +1,22 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { ColorPalette as $ } from 'styled-utility-first'
+import { match } from 'ts-pattern'
+import { CharacterProps } from '../model/props'
+
+const injectStyleThemeAs = (styleType: CharacterProps['styleType']) => {
+  return match(styleType)
+    .with('growUnderFromCenter', () => {
+      return css`
+        transform-origin: center top;
+      `
+    })
+    .with('growUnderFromLeft', () => {
+      return css`
+        transform-origin: left top;
+      `
+    })
+    .otherwise(() => '')
+}
 
 export const Ul = styled.ul`
   display: flex;
@@ -39,7 +56,7 @@ export const Li = styled.li`
     /*アニメーションの指定*/
     transition: all 0.3s;
     transform: scale(0, 1); /*X方向0、Y方向1*/
-    transform-origin: center top; /*上部中央基点*/
+    ${({ theme }) => injectStyleThemeAs(theme.styleType)}
   }
 
   &[data-active='true'] a::after,
