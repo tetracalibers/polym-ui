@@ -7,6 +7,8 @@ import { VerticalStack } from '../../../../layout-algorithm/VerticalStack'
 import { Image } from '../../../../image-effect/core'
 import { CircleClip } from '../../../../shape-clip/Circle'
 import { HorizontalCenter } from '../../../../layout-algorithm/HorizontalCenter'
+import { CenterLineHeading } from '../../../../heading/CenterLine'
+import { VerticalCenter } from '../../../../layout-algorithm/VerticalCenter'
 
 export default {
   title: 'OOUI/SingleView',
@@ -18,7 +20,7 @@ export default {
       },
     },
     backgrounds: {
-      default: 'dark',
+      default: 'light',
     },
   },
   argTypes: {},
@@ -34,7 +36,9 @@ const TextTemplate: ComponentStory<typeof SingleView> = () => (
       <CircleClip>
         <Image src={logoSrc} />
       </CircleClip>
-      <div>{summary.en}</div>
+      <CenterLineHeading bgColor={'rgba(255, 255, 255, 0)'} color={'#4d608b'}>
+        {summary.en}
+      </CenterLineHeading>
     </VerticalStack>
   </SingleView>
 )
