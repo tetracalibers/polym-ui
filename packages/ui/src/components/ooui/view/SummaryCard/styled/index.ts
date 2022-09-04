@@ -15,7 +15,7 @@ export const SummaryFlex = styled.div`
 
 export const Summary = styled.div`
   padding: 1rem;
-  color: ${$.grayScale.dark};
+  color: rgb(38, 50, 56);
   text-transform: uppercase;
   font-size: calc((var(--image-size) - var(--padding)) / 5);
   overflow-wrap: break-word;
