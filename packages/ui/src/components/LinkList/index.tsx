@@ -5,6 +5,7 @@ import { Li, Ul } from './styled'
 import { getDefaultProps, getPropType, NotRequired } from 'react-tsx-props'
 import { CoreUl } from './styled/core'
 import { injectUnderlineStyle } from './styled/underline'
+import { injectFillStyle } from './styled/fill'
 
 /* -------------------------------------------- */
 /* LINKLIST.ITEM                                */
@@ -95,6 +96,46 @@ LinkList.Underline = getUnderlineVersion(LinkList)
 /* -------------------------------------------- */
 /* FILL STYLE                                   */
 /* -------------------------------------------- */
+
+export const fillHoverEffectOptions = [
+  'fillFromLeft',
+  'fillFromUnderline',
+  'fillFromHorizontalLine',
+] as const
+
+const fillStyleConf = {
+  hoverEffect: NotRequired<typeof fillHoverEffectOptions[number]>(
+    'fillFromHorizontalLine'
+  ),
+}
+
+export type FillLinkListProps = LinkListCoreProps &
+  getPropType<typeof fillStyleConf>
+
+export const defaultFillLinkListProps = {
+  ...defaultLinkListCoreProps,
+  ...getDefaultProps<FillLinkListProps>(fillStyleConf),
+}
+
+const getFillVersion = (CoreComponent: typeof LinkList) => {
+  const Component = styled(CoreComponent)`
+    ${injectFillStyle}
+  `
+
+  return ({
+    children,
+    hoverEffect = defaultFillLinkListProps.hoverEffect,
+    ...props
+  }: FillLinkListProps) => {
+    return (
+      <ThemeProvider theme={{ hoverEffect }}>
+        <Component {...props}>{children}</Component>
+      </ThemeProvider>
+    )
+  }
+}
+
+LinkList.Fill = getFillVersion(LinkList)
 
 /* -------------------------------------------- */
 /* BORDER STYLE                                 */
