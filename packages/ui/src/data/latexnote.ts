@@ -1,45 +1,45 @@
 // @ts-ignore
-import algorithmDataStructuresLogo from '../../../assets/LaTeXbooks/algorithm-datastructureLogo.jpg'
+import algorithmDataStructuresLogo from '../assets/LaTeXbooks/algorithm-datastructureLogo.jpg'
 // @ts-ignore
-import englishLogo from '../../../assets/LaTeXbooks/english-idiomLogo.jpg'
+import englishLogo from '../assets/LaTeXbooks/english-idiomLogo.jpg'
 // @ts-ignore
-import sqlLogo from '../../../assets/LaTeXbooks/sqlLogo.jpg'
+import sqlLogo from '../assets/LaTeXbooks/sqlLogo.jpg'
 // @ts-ignore
-import securityLogo from '../../../assets/LaTeXbooks/securityLogo.jpg'
+import securityLogo from '../assets/LaTeXbooks/securityLogo.jpg'
 // @ts-ignore
-import networkLogo from '../../../assets/LaTeXbooks/networkLogo.jpg'
+import networkLogo from '../assets/LaTeXbooks/networkLogo.jpg'
 // @ts-ignore
-import apLogo from '../../../assets/LaTeXbooks/apLogo.jpg'
+import apLogo from '../assets/LaTeXbooks/apLogo.jpg'
 // @ts-ignore
-import combinatoricsLogo from '../../../assets/LaTeXbooks/combinatoricsLogo.jpg'
+import combinatoricsLogo from '../assets/LaTeXbooks/combinatoricsLogo.jpg'
 // @ts-ignore
-import integersLogo from '../../../assets/LaTeXbooks/integersLogo.jpg'
+import integersLogo from '../assets/LaTeXbooks/integersLogo.jpg'
 // @ts-ignore
-import linearalgebraLogo from '../../../assets/LaTeXbooks/linearalgebraLogo.jpg'
+import linearalgebraLogo from '../assets/LaTeXbooks/linearalgebraLogo.jpg'
 // @ts-ignore
-import mechanicsLogo from '../../../assets/LaTeXbooks/mechanicsLogo.jpg'
+import mechanicsLogo from '../assets/LaTeXbooks/mechanicsLogo.jpg'
 // @ts-ignore
-import thermodynamicsBasicLogo from '../../../assets/LaTeXbooks/thermodynamics-basicLogo.jpg'
+import thermodynamicsBasicLogo from '../assets/LaTeXbooks/thermodynamics-basicLogo.jpg'
 // @ts-ignore
-import thermodynamicsUniversityLogo from '../../../assets/LaTeXbooks/thermodynamics-universityLogo.jpg'
+import thermodynamicsUniversityLogo from '../assets/LaTeXbooks/thermodynamics-universityLogo.jpg'
 // @ts-ignore
-import iupacIntroLogo from '../../../assets/LaTeXbooks/iupac-introLogo.jpg'
+import iupacIntroLogo from '../assets/LaTeXbooks/iupac-introLogo.jpg'
 // @ts-ignore
-import iupacAlkaneLogo from '../../../assets/LaTeXbooks/iupac-alkaneLogo.jpg'
+import iupacAlkaneLogo from '../assets/LaTeXbooks/iupac-alkaneLogo.jpg'
 // @ts-ignore
-import iupacCycloalkaneLogo from '../../../assets/LaTeXbooks/iupac-cycloalkaneLogo.jpg'
+import iupacCycloalkaneLogo from '../assets/LaTeXbooks/iupac-cycloalkaneLogo.jpg'
 // @ts-ignore
-import iupacHalogenLogo from '../../../assets/LaTeXbooks/iupac-halogenLogo.jpg'
+import iupacHalogenLogo from '../assets/LaTeXbooks/iupac-halogenLogo.jpg'
 // @ts-ignore
-import iupacOxygenSulfurMonobounditionLogo from '../../../assets/LaTeXbooks/iupac-oxygenSulfurMonobounditionLogo.jpg'
+import iupacOxygenSulfurMonobounditionLogo from '../assets/LaTeXbooks/iupac-oxygenSulfurMonobounditionLogo.jpg'
 // @ts-ignore
-import iupacNomenclatureLogo from '../../../assets/LaTeXbooks/iupac-nomenclatureLogo.jpg'
+import iupacNomenclatureLogo from '../assets/LaTeXbooks/iupac-nomenclatureLogo.jpg'
 // @ts-ignore
-import iupacHeterocyclicRingLogo from '../../../assets/LaTeXbooks/iupac-heterocyclicRingLogo.jpg'
+import iupacHeterocyclicRingLogo from '../assets/LaTeXbooks/iupac-heterocyclicRingLogo.jpg'
 // @ts-ignore
-import iupacCondensedRingLogo from '../../../assets/LaTeXbooks/iupac-condensedRingLogo.jpg'
+import iupacCondensedRingLogo from '../assets/LaTeXbooks/iupac-condensedRingLogo.jpg'
 // @ts-ignore
-import iupacComplexCondensedRingLogo from '../../../assets/LaTeXbooks/iupac-complexCondensedRingLogo.jpg'
+import iupacComplexCondensedRingLogo from '../assets/LaTeXbooks/iupac-complexCondensedRingLogo.jpg'
 
 const tags = {
   HIGH_SCHOOL: {

@@ -2,7 +2,7 @@ import { ComponentStory } from '@storybook/react'
 import { CollectionView } from '..'
 import { SummaryCard } from '../../SummaryCard'
 import { ScaleImage } from '../../../../image-effect/effect/ScaleImage'
-import { data } from '../../../data/latexnote'
+import { data } from '../../../../../data/latexnote'
 
 export default {
   title: 'OOUI/CollectionView',
