@@ -8,3 +8,9 @@ export const Wrapper = styled.div<CharacterProps>`
     display: none;
   }
 `
+
+export const ToggleHidden = styled.div`
+  &[aria-hidden='true'] {
+    display: none;
+  }
+`
