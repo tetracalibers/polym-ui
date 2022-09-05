@@ -5,7 +5,6 @@ import {
   ElementType,
   forwardRef,
   ReactElement,
-  ReactNode,
   useCallback,
   useContext,
   useMemo,
@@ -163,20 +162,16 @@ export const defaultUnderLineLinkListProps = {
   ...getDefaultProps<UnderLineLinkListProps>(underlineLinkListConf),
 }
 
-export const getUnderlineLinkList = <P = {}, C = ReactNode>(
-  CoreComponent: ElementType
-) => {
+export const getUnderlineLinkList = (CoreComponent: ElementType) => {
   const Component = styled(CoreComponent)`
     ${injectUnderlineStyle}
   `
 
-  return (
-    children: C,
-    {
-      hoverEffect = defaultUnderLineLinkListProps.hoverEffect,
-      ...props
-    }: P & LinkListStylePropsAs['Underline']
-  ) => {
+  return ({
+    children,
+    hoverEffect = defaultUnderLineLinkListProps.hoverEffect,
+    ...props
+  }: UnderLineLinkListProps) => {
     return (
       <ThemeProvider theme={{ hoverEffect }}>
         <Component {...props}>{children}</Component>
@@ -196,20 +191,16 @@ export const defaultFillLinkListProps = {
   ...getDefaultProps<FillLinkListProps>(fillLinkListConf),
 }
 
-export const getFillLinkList = <P = {}, C = ReactNode>(
-  CoreComponent: ElementType
-) => {
+export const getFillLinkList = (CoreComponent: ElementType) => {
   const Component = styled(CoreComponent)`
     ${injectFillStyle}
   `
 
-  return (
-    children: C,
-    {
-      hoverEffect = defaultFillLinkListProps.hoverEffect,
-      ...props
-    }: P & LinkListStylePropsAs['Fill']
-  ) => {
+  return ({
+    children,
+    hoverEffect = defaultFillLinkListProps.hoverEffect,
+    ...props
+  }: FillLinkListProps) => {
     return (
       <ThemeProvider theme={{ hoverEffect }}>
         <Component {...props}>{children}</Component>
@@ -230,20 +221,16 @@ export const defaultBorderLinkListProps = {
   ...getDefaultProps<BorderLinkListProps>(borderLinkListConf),
 }
 
-export const getBorderLinkList = <P = {}, C = ReactNode>(
-  CoreComponent: ElementType
-) => {
+export const getBorderLinkList = (CoreComponent: ElementType) => {
   const Component = styled(CoreComponent)`
     ${injectBorderStyle}
   `
 
-  return (
-    children: C,
-    {
-      hoverEffect = defaultBorderLinkListProps.hoverEffect,
-      ...props
-    }: P & LinkListStylePropsAs['Border']
-  ) => {
+  return ({
+    children,
+    hoverEffect = defaultBorderLinkListProps.hoverEffect,
+    ...props
+  }: BorderLinkListProps) => {
     return (
       <ThemeProvider theme={{ hoverEffect }}>
         <Component {...props}>{children}</Component>

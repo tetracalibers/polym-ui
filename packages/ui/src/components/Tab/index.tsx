@@ -203,18 +203,16 @@ const Panel = ({ title, children }: PanelProps) => {
 
 type TabProps<ListTheme extends keyof typeof TitleTabList> = {
   titleStyleFn?: (title: string) => ReactElement
-  titleTabListTheme?: {
-    theme: ListTheme
-    props: LinkListStylePropsAs[ListTheme]
-  }
+  titleTabListTheme?: ListTheme
   // 2つ以上の子を持つよう強制
   children: [...ReactElement<PanelProps, typeof Panel>[]]
-}
+} & LinkListStylePropsAs[ListTheme]
 
 export const Tab = <ListTheme extends keyof typeof TitleTabList>({
   titleStyleFn,
   titleTabListTheme,
   children,
+  ...styleProps
 }: TabProps<ListTheme>) => {
   const [activePanelId, setActivePanelId] = useState<string>()
   const [panels, addPanel] = useTabPanels()
@@ -242,7 +240,7 @@ export const Tab = <ListTheme extends keyof typeof TitleTabList>({
     })
 
     if (titleTabListTheme) {
-      const { theme, props: styleProps } = titleTabListTheme
+      const theme = titleTabListTheme
       const Component = TitleTabList[theme] as any
       return <Component {...styleProps}>{items}</Component>
     }

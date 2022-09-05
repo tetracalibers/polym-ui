@@ -42,7 +42,11 @@ export default {
 }
 
 const Template: ComponentStory<typeof Tab> = () => (
-  <Tab titleStyleFn={(title: string) => <FileName>{title}</FileName>}>
+  <Tab
+    titleStyleFn={(title: string) => <FileName>{title}</FileName>}
+    titleTabListTheme={'Border'}
+    hoverEffect={'goAround'}
+  >
     <Tab.Panel title='html'>
       <CenterLineHeading>HTML</CenterLineHeading>
       <LoremIpsum />
