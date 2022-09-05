@@ -18,6 +18,8 @@ import { ToggleHidden } from './styled'
 import { Anchor } from '../core/Anchor'
 import { match } from 'ts-pattern'
 import _ from 'lodash'
+import { CoreUl } from '../LinkList/styled/core'
+import { LinkList } from '../LinkList'
 
 /* -------------------------------------------- */
 /* UTILITY                                      */
@@ -153,9 +155,9 @@ const _TitleTabList = (
   ref?: ForwardedRef<HTMLUListElement>
 ) => {
   return (
-    <ul role='tablist' ref={ref}>
+    <CoreUl role='tablist' ref={ref}>
       {children}
-    </ul>
+    </CoreUl>
   )
 }
 
@@ -198,13 +200,12 @@ const Panel = ({ title, children }: PanelProps) => {
 /* -------------------------------------------- */
 
 type TabProps = {
-  titleListStyleFn?: (children: [...ReactElement[]]) => ReactElement
   titleStyleFn?: (title: string) => ReactElement
   // 2つ以上の子を持つよう強制
   children: [...ReactElement<PanelProps, typeof Panel>[]]
 }
 
-export const Tab = ({ titleListStyleFn, titleStyleFn, children }: TabProps) => {
+export const Tab = ({ titleStyleFn, children }: TabProps) => {
   const [activePanelId, setActivePanelId] = useState<string>()
   const [panels, addPanel] = useTabPanels()
 
@@ -230,11 +231,7 @@ export const Tab = ({ titleListStyleFn, titleStyleFn, children }: TabProps) => {
       )
     })
 
-    if (!titleListStyleFn) {
-      return <TitleTabList>{items}</TitleTabList>
-    }
-
-    return titleListStyleFn(items)
+    return <TitleTabList>{items}</TitleTabList>
   }, [panels])
 
   // 最初は1つ目のタブをアクティブ化
