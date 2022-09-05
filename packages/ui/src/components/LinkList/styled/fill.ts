@@ -61,21 +61,20 @@ const setEffect = (type: FillLinkListProps['hoverEffect']) => {
           width: 0;
           height: 1px;
           border-radius: 1rem 1rem 0 0;
-          /*アニメーションの指定*/
           z-index: -1;
           bottom: 0;
           left: 0;
           opacity: 0; /*はじめは透過0*/
         }
 
-        &[data-active='true'] a::after,
-        & a:hover::after {
+        & > li[data-active='true'] a::after,
+        & > li a:hover::after {
           animation: ${fromUnderlineToFill}
             calc(var(--duration) - var(--duration) * 0.28) forwards;
         }
 
-        &[data-active='true'] a::after,
-        & a:hover::after {
+        & > li[data-active='true'] a::after,
+        & > li a:hover::after {
           width: 100%; /*横幅を伸ばす*/
           opacity: 1; /*不透明に*/
         }
@@ -123,8 +122,8 @@ const setEffect = (type: FillLinkListProps['hoverEffect']) => {
           transition: all calc(var(--duration) - var(--duration) * 0.28);
         }
 
-        & li a:hover::before,
-        & li a:hover::after {
+        & > li a:hover::before,
+        & > li a:hover::after {
           transform: translateX(0); /*X方向に0%移動*/
         }
       `
@@ -137,6 +136,11 @@ export const injectFillStyle = css`
     ${variables}
   }
 
+  & > li {
+    margin-left: 3px;
+    margin-right: 3px;
+  }
+
   & > li a {
     /*基点とするためrelativeを指定*/
     position: relative;
@@ -147,8 +151,8 @@ export const injectFillStyle = css`
     position: absolute;
   }
 
-  &[data-active='true'] a,
-  & a:hover {
+  & > li[data-active='true'] a,
+  & > li a:hover {
     color: var(--color);
   }
 

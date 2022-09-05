@@ -182,15 +182,15 @@ const twoLinesMergeStyle = css`
 
   /*現在地とhoverした際の線の変化*/
 
-  & > li.current::before,
-  & > li.current::after,
+  & > li[data-active='true']::before,
+  & > li[data-active='true']::after,
   & > li:hover::before,
   & > li:hover::after {
     width: 100%; /*横幅を100%に*/
   }
 
-  & > li.current span::before,
-  & > li.current span::after,
+  & > li[data-active='true'] span::before,
+  & > li[data-active='true'] span::after,
   & > li:hover span::before,
   & > li:hover span::after {
     height: 100%; /*縦幅を100%に*/

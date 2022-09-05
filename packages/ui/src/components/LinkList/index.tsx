@@ -1,4 +1,4 @@
-import { forwardRef, ReactElement } from 'react'
+import { Children, forwardRef, ReactElement, useMemo } from 'react'
 import styled, { ThemeProvider } from 'styled-components'
 import { Anchor, AnchorCoreProps } from '../core/Anchor'
 import { getDefaultProps, getPropType, NotRequired } from 'react-tsx-props'
@@ -14,13 +14,10 @@ import { injectBorderStyle } from './styled/border'
 type LinkItemProps = AnchorCoreProps
 
 const _Item = ({ children, ...superProps }: LinkItemProps) => {
-  // TODO keyが必須
   return (
-    <li>
-      <Anchor {...superProps}>
-        <span>{children}</span>
-      </Anchor>
-    </li>
+    <Anchor {...superProps}>
+      <span>{children}</span>
+    </Anchor>
   )
 }
 
@@ -44,10 +41,16 @@ export const defaultLinkListCoreProps = getDefaultProps<LinkListCoreProps>(
 
 export const LinkList = ({
   children,
+  activeNth = defaultLinkListCoreProps.activeNth,
   ...props
-}: //activeNth = defaultLinkListCoreProps.activeNth,
-LinkListCoreProps) => {
-  return <CoreUl {...props}>{children}</CoreUl>
+}: LinkListCoreProps) => {
+  const listItem = useMemo(() => {
+    return Children.map(children, (child, idx) => (
+      <li data-active={activeNth === idx + 1}>{child}</li>
+    ))
+  }, [activeNth])
+
+  return <CoreUl {...props}>{listItem}</CoreUl>
 }
 
 LinkList.Item = Item
@@ -64,7 +67,7 @@ export const underlineHoverEffectOptions = [
 
 const underlineStyleConf = {
   hoverEffect:
-    NotRequired<typeof underlineHoverEffectOptions[number]>('growFromCenter'),
+    NotRequired<typeof underlineHoverEffectOptions[number]>('growFromCircle'),
 }
 
 export type UnderLineLinkListProps = LinkListCoreProps &
