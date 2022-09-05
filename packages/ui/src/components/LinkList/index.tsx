@@ -1,4 +1,11 @@
-import { Children, forwardRef, ReactElement, useMemo } from 'react'
+import {
+  Children,
+  forwardRef,
+  ReactElement,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react'
 import styled, { ThemeProvider } from 'styled-components'
 import { Anchor, AnchorCoreProps } from '../core/Anchor'
 import { getDefaultProps, getPropType, NotRequired } from 'react-tsx-props'
@@ -28,7 +35,7 @@ const Item = forwardRef(_Item)
 /* -------------------------------------------- */
 
 const linkListCorePropsConf = {
-  activeNth: NotRequired<number>(1),
+  initialActiveNth: NotRequired<number>(1),
 }
 
 export type LinkListCoreProps = {
@@ -41,12 +48,16 @@ export const defaultLinkListCoreProps = getDefaultProps<LinkListCoreProps>(
 
 export const LinkList = ({
   children,
-  activeNth = defaultLinkListCoreProps.activeNth,
+  initialActiveNth = defaultLinkListCoreProps.initialActiveNth,
   ...props
 }: LinkListCoreProps) => {
+  const [activeNth, setActiveNth] = useState(initialActiveNth! - 1)
+
   const listItem = useMemo(() => {
     return Children.map(children, (child, idx) => (
-      <li data-active={activeNth === idx + 1}>{child}</li>
+      <li data-active={activeNth === idx} onClick={() => setActiveNth(idx)}>
+        {child}
+      </li>
     ))
   }, [activeNth])
 

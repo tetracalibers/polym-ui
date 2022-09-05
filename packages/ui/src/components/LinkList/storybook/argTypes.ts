@@ -2,6 +2,7 @@ import {
   borderHoverEffectOptions,
   defaultBorderLinkListProps,
   defaultFillLinkListProps,
+  defaultLinkListCoreProps,
   fillHoverEffectOptions,
   underlineHoverEffectOptions,
 } from '../index'
@@ -9,23 +10,22 @@ import { CssStyle } from 'ts-typedef-helper'
 import { defaultUnderLineLinkListProps } from '..'
 
 export const coreArgTypes = {
-  // styleType: {
-  //   control: {
-  //     type: 'radio',
-  //   },
-  //   options: styleTypeOptions,
-  //   description: '',
-  //   table: {
-  //     type: {
-  //       summary: null,
-  //     },
-  //     category: 'effect',
-  //     defaultValue: {
-  //       summary: defaultLinkListCoreProps.styleType,
-  //       details: null,
-  //     },
-  //   },
-  // },
+  initialActiveNth: {
+    control: {
+      type: 'number',
+    },
+    description: '',
+    table: {
+      type: {
+        summary: null,
+      },
+      category: 'init',
+      defaultValue: {
+        summary: defaultLinkListCoreProps.initialActiveNth,
+        details: null,
+      },
+    },
+  },
 }
 
 export const underlineVerArgTypes = {
