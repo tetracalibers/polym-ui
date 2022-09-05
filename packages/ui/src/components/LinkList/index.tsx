@@ -1,8 +1,11 @@
 import {
   Children,
+  cloneElement,
+  createContext,
   forwardRef,
   ReactElement,
-  useEffect,
+  useCallback,
+  useContext,
   useMemo,
   useState,
 } from 'react'
@@ -13,6 +16,18 @@ import { CoreUl } from './styled/core'
 import { injectUnderlineStyle } from './styled/underline'
 import { injectFillStyle } from './styled/fill'
 import { injectBorderStyle } from './styled/border'
+import { useShareState } from '@polym/hooks'
+
+/* -------------------------------------------- */
+/* CONTEXT                                      */
+/* -------------------------------------------- */
+
+type LinkListState = {
+  activeNth?: number
+  updateActiveNth: (id: number) => void
+}
+
+const LinkListContext = createContext<LinkListState>({} as LinkListState)
 
 /* -------------------------------------------- */
 /* LINKLIST.ITEM                                */
@@ -29,6 +44,30 @@ const _Item = ({ children, ...superProps }: LinkItemProps) => {
 }
 
 const Item = forwardRef(_Item)
+
+/* -------------------------------------------- */
+
+type LiProps = {
+  children: ReactElement<LinkItemProps, typeof Item>
+  nth: number
+}
+
+const Li = ({ children, nth }: LiProps) => {
+  const { activeNth, updateActiveNth } = useContext(LinkListContext)
+
+  const linkElement = useMemo(() => {
+    return cloneElement(
+      children,
+      activeNth === nth ? { 'aria-current': 'page' } : {}
+    )
+  }, [activeNth])
+
+  return (
+    <li onClick={() => updateActiveNth(nth)} data-active={activeNth === nth}>
+      {linkElement}
+    </li>
+  )
+}
 
 /* -------------------------------------------- */
 /* LINKLIST                                     */
@@ -53,18 +92,28 @@ export const LinkList = ({
 }: LinkListCoreProps) => {
   const [activeNth, setActiveNth] = useState(initialActiveNth! - 1)
 
-  const listItem = useMemo(() => {
-    return Children.map(children, (child, idx) => (
-      <li data-active={activeNth === idx} onClick={() => setActiveNth(idx)}>
-        {child}
-      </li>
-    ))
-  }, [activeNth])
+  const updateActiveNth = useCallback((nth: number) => {
+    setActiveNth(nth)
+  }, [])
 
-  return <CoreUl {...props}>{listItem}</CoreUl>
+  const shareState = useShareState({ activeNth, updateActiveNth }, [activeNth])
+
+  const items = useMemo(() => {
+    return Children.map(children, (child, idx) => {
+      return <Li nth={idx}>{child}</Li>
+    })
+  }, [])
+
+  return (
+    <LinkListContext.Provider value={shareState}>
+      <CoreUl {...props}>{items}</CoreUl>
+    </LinkListContext.Provider>
+  )
 }
 
 LinkList.Item = Item
+
+/* ---------------------------------------------------------------------------------------- */
 
 /* -------------------------------------------- */
 /* UNDERLINE STYLE                              */

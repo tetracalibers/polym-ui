@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react'
 
-export const useShareId = () => {
-  const [id, setId] = useState<string>()
+export const useShareId = (initial?: string) => {
+  const [id, setId] = useState(initial)
 
   const updateId = useCallback((newId: string) => {
     setId(newId)
