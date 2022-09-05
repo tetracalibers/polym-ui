@@ -213,6 +213,7 @@ type TabProps<ListTheme extends keyof typeof TitleTabList> = {
 
 export const Tab = <ListTheme extends keyof typeof TitleTabList>({
   titleStyleFn,
+  titleTabListTheme,
   children,
 }: TabProps<ListTheme>) => {
   const [activePanelId, setActivePanelId] = useState<string>()
@@ -240,7 +241,13 @@ export const Tab = <ListTheme extends keyof typeof TitleTabList>({
       )
     })
 
-    return <TitleTabList.Underline>{items}</TitleTabList.Underline>
+    if (titleTabListTheme) {
+      const { theme, props: styleProps } = titleTabListTheme
+      const Component = TitleTabList[theme] as any
+      return <Component {...styleProps}>{items}</Component>
+    }
+
+    return <TitleTabList>{items}</TitleTabList>
   }, [panels])
 
   // 最初は1つ目のタブをアクティブ化
