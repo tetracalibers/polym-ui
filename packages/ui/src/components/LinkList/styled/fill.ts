@@ -42,8 +42,8 @@ const setEffect = (type: FillLinkListProps['hoverEffect']) => {
           opacity: 0; /*はじめは透過0*/
         }
 
-        &[data-active='true'] a::after,
-        & a:hover::after {
+        & > li[data-active='true'] a::after,
+        & > li a:hover::after {
           width: 100%; /*横幅を伸ばす*/
           opacity: 1; /*不透明に*/
         }
@@ -55,7 +55,7 @@ const setEffect = (type: FillLinkListProps['hoverEffect']) => {
           transition: all var(--duration);
         }
 
-        & > li a:after {
+        & > li a::after {
           background-color: var(--bg-color);
           /*背景の形状*/
           width: 0;
