@@ -21,6 +21,7 @@ import {
   getBorderLinkList,
   getFillLinkList,
   getUnderlineLinkList,
+  LinkListStylePropsAs,
 } from '../LinkList'
 
 /* -------------------------------------------- */
@@ -200,13 +201,20 @@ const Panel = ({ title, children }: PanelProps) => {
 /* ROOT                                         */
 /* -------------------------------------------- */
 
-type TabProps = {
+type TabProps<ListTheme extends keyof typeof TitleTabList> = {
   titleStyleFn?: (title: string) => ReactElement
+  titleTabListTheme?: {
+    theme: ListTheme
+    props: LinkListStylePropsAs[ListTheme]
+  }
   // 2つ以上の子を持つよう強制
   children: [...ReactElement<PanelProps, typeof Panel>[]]
 }
 
-export const Tab = ({ titleStyleFn, children }: TabProps) => {
+export const Tab = <ListTheme extends keyof typeof TitleTabList>({
+  titleStyleFn,
+  children,
+}: TabProps<ListTheme>) => {
   const [activePanelId, setActivePanelId] = useState<string>()
   const [panels, addPanel] = useTabPanels()
 

@@ -114,10 +114,8 @@ export const LinkList = ({
 
 LinkList.Item = Item
 
-/* ---------------------------------------------------------------------------------------- */
-
 /* -------------------------------------------- */
-/* UNDERLINE STYLE                              */
+/* WITH STYLE                                   */
 /* -------------------------------------------- */
 
 export const underlineHoverEffectOptions = [
@@ -126,13 +124,38 @@ export const underlineHoverEffectOptions = [
   'growFromCircle',
 ] as const
 
-export const underlineLinkListConf = {
+const underlineLinkListConf = {
   hoverEffect:
     NotRequired<typeof underlineHoverEffectOptions[number]>('growFromCircle'),
 }
 
+export const fillHoverEffectOptions = [
+  'fillFromLeft',
+  'fillFromUnderline',
+  'fillFromHorizontalLine',
+] as const
+
+const fillLinkListConf = {
+  hoverEffect:
+    NotRequired<typeof fillHoverEffectOptions[number]>('fillFromLeft'),
+}
+
+export const borderHoverEffectOptions = ['goAround', 'twoLinesMerge'] as const
+
+const borderLinkListConf = {
+  hoverEffect: NotRequired<typeof borderHoverEffectOptions[number]>('goAround'),
+}
+
+export type LinkListStylePropsAs = {
+  Border: getPropType<typeof underlineLinkListConf>
+  Fill: getPropType<typeof fillLinkListConf>
+  Underline: getPropType<typeof underlineLinkListConf>
+}
+
+/* Underline ---------------------------------- */
+
 export type UnderLineLinkListProps = LinkListCoreProps &
-  getPropType<typeof underlineLinkListConf>
+  LinkListStylePropsAs['Underline']
 
 export const defaultUnderLineLinkListProps = {
   ...defaultLinkListCoreProps,
@@ -159,23 +182,9 @@ export const getUnderlineLinkList = (CoreComponent: ElementType) => {
 
 LinkList.Underline = getUnderlineLinkList(LinkList)
 
-/* -------------------------------------------- */
-/* FILL STYLE                                   */
-/* -------------------------------------------- */
+/* Fill --------------------------------------- */
 
-export const fillHoverEffectOptions = [
-  'fillFromLeft',
-  'fillFromUnderline',
-  'fillFromHorizontalLine',
-] as const
-
-export const fillLinkListConf = {
-  hoverEffect:
-    NotRequired<typeof fillHoverEffectOptions[number]>('fillFromLeft'),
-}
-
-export type FillLinkListProps = LinkListCoreProps &
-  getPropType<typeof fillLinkListConf>
+export type FillLinkListProps = LinkListCoreProps & LinkListStylePropsAs['Fill']
 
 export const defaultFillLinkListProps = {
   ...defaultLinkListCoreProps,
@@ -202,18 +211,10 @@ export const getFillLinkList = (CoreComponent: ElementType) => {
 
 LinkList.Fill = getFillLinkList(LinkList)
 
-/* -------------------------------------------- */
-/* BORDER STYLE                                 */
-/* -------------------------------------------- */
-
-export const borderHoverEffectOptions = ['goAround', 'twoLinesMerge'] as const
-
-export const borderLinkListConf = {
-  hoverEffect: NotRequired<typeof borderHoverEffectOptions[number]>('goAround'),
-}
+/* Border ------------------------------------- */
 
 export type BorderLinkListProps = LinkListCoreProps &
-  getPropType<typeof borderLinkListConf>
+  LinkListStylePropsAs['Border']
 
 export const defaultBorderLinkListProps = {
   ...defaultLinkListCoreProps,
