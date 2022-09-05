@@ -20,6 +20,14 @@ import { match } from 'ts-pattern'
 import _ from 'lodash'
 
 /* -------------------------------------------- */
+/* UTILITY                                      */
+/* -------------------------------------------- */
+
+const generateTabId = (panelId: string) => `for_${panelId}`
+const returnPanelId = (tabId: string, prefix = 'for_') =>
+  tabId.replace(prefix, '')
+
+/* -------------------------------------------- */
 /* HOOK                                         */
 /* -------------------------------------------- */
 
@@ -44,13 +52,10 @@ export const useTabPanels = () => {
   return [collection, addItem] as const
 }
 
-export const useShiftLink = (
-  activeId: string,
-  updateFn: (id: string) => void
-) => {
-  const shiftByClick = (e: SyntheticEvent) => {
+export const useShiftLink = (updateFn: (id: string) => void) => {
+  const shiftByClick = (e: SyntheticEvent<HTMLAnchorElement>) => {
     e.preventDefault()
-    updateFn(activeId)
+    updateFn(e.currentTarget.id)
   }
 
   const parent = (e: SyntheticEvent) => {
@@ -99,8 +104,6 @@ type TabState = {
 
 const TabContext = createContext<TabState>({} as TabState)
 
-const generateTabId = (panelId: string) => `for_${panelId}`
-
 /* -------------------------------------------- */
 /* TITLE LIST ITEM (PRIVATE)                    */
 /* -------------------------------------------- */
@@ -113,9 +116,8 @@ type TitleTabProps = {
 
 const TitleTab = ({ children, panelId, tabId }: TitleTabProps) => {
   const { activePanelId, updateActivePanelId } = useContext(TabContext)
-  const [onAnchorClick, onAnchorKeyDown] = useShiftLink(
-    activePanelId!,
-    updateActivePanelId
+  const [onAnchorClick, onAnchorKeyDown] = useShiftLink((tabId: string) =>
+    updateActivePanelId(returnPanelId(tabId))
   )
 
   return (

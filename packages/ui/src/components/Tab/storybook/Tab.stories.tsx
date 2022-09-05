@@ -2,14 +2,13 @@ import { ComponentStory } from '@storybook/react'
 import { logicArgTypes } from '../model/argTypes'
 import { defaultProps } from '../model/props'
 import { DocsPage } from './docsPage'
-import { nanoid } from 'nanoid'
 import { LoremIpsum } from 'react-lorem-ipsum'
-import { TabGroup } from '../core/TabGroup'
-const { Tab } = TabGroup
+import { Tab } from '../'
+import { CenterLineHeading } from '../../heading/CenterLine'
 
 export default {
   title: 'hide-and-seek/Tab',
-  component: TabGroup,
+  component: Tab,
   subcomponent: {
     Tab,
   },
@@ -41,20 +40,21 @@ export default {
   },
 }
 
-const seed = [...new Array(3)].map(() => nanoid())
-
-const Template: ComponentStory<typeof TabGroup> = () => (
-  <TabGroup>
-    {seed.map((id, idx) => (
-      <Tab key={id}>
-        <h2>Tab {idx + 1}</h2>
-        <>
-          <h3>Panel {idx + 1}</h3>
-          <LoremIpsum />
-        </>
-      </Tab>
-    ))}
-  </TabGroup>
+const Template: ComponentStory<typeof Tab> = () => (
+  <Tab>
+    <Tab.Panel title='html'>
+      <CenterLineHeading>HTML</CenterLineHeading>
+      <LoremIpsum />
+    </Tab.Panel>
+    <Tab.Panel title='css'>
+      <CenterLineHeading>CSS</CenterLineHeading>
+      <LoremIpsum />
+    </Tab.Panel>
+    <Tab.Panel title='js'>
+      <CenterLineHeading>JavaScript</CenterLineHeading>
+      <LoremIpsum />
+    </Tab.Panel>
+  </Tab>
 )
 
 export const playground = Template.bind({})
