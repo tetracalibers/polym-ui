@@ -1,6 +1,11 @@
 import { ComponentPropsWithoutRef } from 'react'
 import styled from 'styled-components'
-import { Core, injectDashedLineStyle, injectSolidLineStyle } from './styled'
+import {
+  Core,
+  injectDashedLineStyle,
+  injectSolidLineStyle,
+  injectWavyLineStyle,
+} from './styled'
 
 /* -------------------------------------------- */
 /* CORE                                         */
@@ -48,3 +53,21 @@ const getDashedLineText = (CoreComponent: typeof Text) => {
 }
 
 Text.DashedLine = getDashedLineText(Text)
+
+/* -------------------------------------------- */
+/* WAVYLINE                                     */
+/* -------------------------------------------- */
+
+type WavyLineProps = SolidLineTextProps
+
+const getWavyLineText = (CoreComponent: typeof Text) => {
+  const Component = styled(CoreComponent)`
+    ${injectWavyLineStyle}
+  `
+
+  return ({ children, ...props }: WavyLineProps) => {
+    return <Component {...props}>{children}</Component>
+  }
+}
+
+Text.WavyLine = getWavyLineText(Text)
