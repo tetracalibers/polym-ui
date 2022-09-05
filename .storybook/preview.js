@@ -15,6 +15,7 @@ export const parameters = {
     values: [
       { name: 'light', value: ColorPalette.grayScale.light },
       { name: 'dark', value: ColorPalette.grayScale.dark },
+      { name: 'white', value: '#FFFFFF' },
     ],
   },
 }
