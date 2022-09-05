@@ -30,4 +30,8 @@ export const CoreUl = styled.ul`
     text-decoration: none;
     color: ${$.grayScale.dark};
   }
+
+  & > li a:focus {
+    outline: 2px solid ${$.pastel.water};
+  }
 `
