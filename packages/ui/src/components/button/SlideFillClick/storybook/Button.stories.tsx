@@ -3,7 +3,7 @@ import { thisArgTypes } from '../model/argTypes'
 import { defaultProps } from '../model/props'
 import { DocsPage } from '../../../core/Button/storybook/docsPage'
 import { SlideFillClick } from '..'
-import { coreArgTypes } from '../../../core/Button/model/argTypes'
+import { coreArgTypes } from '../../../core/Button/storybook/argTypes'
 import { defaultButtonCoreProps } from '../../../core/Button/model/props'
 
 export default {

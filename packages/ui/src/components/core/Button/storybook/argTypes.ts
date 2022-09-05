@@ -1,4 +1,4 @@
-import { buttonTypeOptions, defaultButtonCoreProps } from './props'
+import { buttonTypeOptions, defaultButtonCoreProps } from '../model/props'
 import { CssStyle } from 'ts-typedef-helper'
 
 export const coreArgTypes = {

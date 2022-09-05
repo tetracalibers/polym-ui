@@ -2,7 +2,7 @@ import { defaultIconOnlyProps } from './props'
 import { CssStyle } from 'ts-typedef-helper'
 import { useSetDefaultAs } from 'story-builder'
 import { defaultButtonCoreProps } from '../../Button/model/props'
-import { coreArgTypes } from '../../Button/model/argTypes'
+import { coreArgTypes } from '../../Button/storybook/argTypes'
 const withDefaultAs = useSetDefaultAs(defaultIconOnlyProps)
 import _ from 'lodash'
 

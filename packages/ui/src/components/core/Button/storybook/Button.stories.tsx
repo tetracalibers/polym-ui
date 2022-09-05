@@ -1,5 +1,5 @@
 import { ComponentStory } from '@storybook/react'
-import { coreArgTypes } from '../model/argTypes'
+import { coreArgTypes } from './argTypes'
 import { defaultButtonCoreProps } from '../model/props'
 import { DocsPage } from './docsPage'
 import { Button } from '..'
