@@ -1,6 +1,6 @@
 import { ComponentStory } from '@storybook/react'
-import { fillVerArgTypes } from './argTypes'
-import { defaultFillLinkListProps, LinkList } from '..'
+import { borderVerArgTypes } from './argTypes'
+import { defaultBorderLinkListProps, LinkList } from '..'
 
 export default {
   title: 'navigation/LinkList',
@@ -16,7 +16,7 @@ export default {
     },
   },
   argTypes: {
-    ...fillVerArgTypes,
+    ...borderVerArgTypes,
   },
 }
 
@@ -34,5 +34,5 @@ const Template: ComponentStory<typeof LinkList> = ({ ...args }) => (
 
 export const border = Template.bind({})
 border.args = {
-  ...defaultFillLinkListProps,
+  ...defaultBorderLinkListProps,
 }
