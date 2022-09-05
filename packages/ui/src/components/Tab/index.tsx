@@ -1,6 +1,4 @@
 import {
-  ForwardedRef,
-  forwardRef,
   ReactElement,
   ReactNode,
   createContext,
@@ -19,6 +17,11 @@ import { Anchor } from '../core/Anchor'
 import { match } from 'ts-pattern'
 import _ from 'lodash'
 import { CoreUl } from '../LinkList/styled/core'
+import {
+  getBorderLinkList,
+  getFillLinkList,
+  getUnderlineLinkList,
+} from '../LinkList'
 
 /* -------------------------------------------- */
 /* UTILITY                                      */
@@ -123,7 +126,7 @@ const TitleTab = ({ children, panelId, tabId }: TitleTabProps) => {
   )
 
   return (
-    <li role='presentation'>
+    <li role='presentation' data-active={activePanelId === panelId}>
       <Anchor
         href={'#' + panelId}
         role='tab'
@@ -135,7 +138,7 @@ const TitleTab = ({ children, panelId, tabId }: TitleTabProps) => {
         onClick={onAnchorClick}
         onKeyDown={onAnchorKeyDown}
       >
-        {children}
+        <span>{children}</span>
       </Anchor>
     </li>
   )
@@ -149,18 +152,17 @@ type TitleTabListProps = {
   children: [...ReactElement<TitleTabProps, typeof TitleTab>[]]
 }
 
-const _TitleTabList = (
-  { children }: TitleTabListProps,
-  ref?: ForwardedRef<HTMLUListElement>
-) => {
+const TitleTabList = ({ children, ...props }: TitleTabListProps) => {
   return (
-    <CoreUl role='tablist' ref={ref}>
+    <CoreUl role='tablist' {...props}>
       {children}
     </CoreUl>
   )
 }
 
-const TitleTabList = forwardRef(_TitleTabList)
+TitleTabList.Fill = getFillLinkList(TitleTabList)
+TitleTabList.Border = getBorderLinkList(TitleTabList)
+TitleTabList.Underline = getUnderlineLinkList(TitleTabList)
 
 /* -------------------------------------------- */
 /* PANEL                                        */
@@ -230,7 +232,7 @@ export const Tab = ({ titleStyleFn, children }: TabProps) => {
       )
     })
 
-    return <TitleTabList>{items}</TitleTabList>
+    return <TitleTabList.Underline>{items}</TitleTabList.Underline>
   }, [panels])
 
   // 最初は1つ目のタブをアクティブ化
