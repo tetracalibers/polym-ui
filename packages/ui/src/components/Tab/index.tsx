@@ -52,6 +52,7 @@ export const useTabPanels = () => {
   return [collection, addItem] as const
 }
 
+// li > a という構成ならいつでも使える
 export const useShiftLink = (updateFn: (id: string) => void) => {
   const shiftByClick = (e: SyntheticEvent<HTMLAnchorElement>) => {
     e.preventDefault()
@@ -63,11 +64,11 @@ export const useShiftLink = (updateFn: (id: string) => void) => {
   }
 
   const getPrevTab = (e: SyntheticEvent) => {
-    return parent(e)?.previousElementSibling as HTMLElement
+    return parent(e)?.previousElementSibling?.firstElementChild as HTMLElement
   }
 
   const getNextTab = (e: SyntheticEvent) => {
-    return parent(e)?.nextElementSibling as HTMLElement
+    return parent(e)?.nextElementSibling?.firstElementChild as HTMLElement
   }
 
   const shiftByArrowKeyDown = (e: KeyboardEvent<HTMLAnchorElement>) => {
