@@ -4,8 +4,8 @@ import { LoremIpsum } from 'react-lorem-ipsum'
 import { Tab } from '../'
 import { FileName } from '../../with-icon/FileName'
 import { LeftLineHeading } from '../../heading/LeftLine'
-import { underlineLinkListArgTypes } from '../../LinkList/storybook/argTypes'
 import { defaultUnderLineLinkListProps } from '../../LinkList'
+import { underlineTabArgTypes } from './argTypes'
 
 export default {
   title: 'hide-and-seek/Tab',
@@ -22,7 +22,7 @@ export default {
     },
   },
   argTypes: {
-    ...underlineLinkListArgTypes,
+    ...underlineTabArgTypes,
   },
 }
 

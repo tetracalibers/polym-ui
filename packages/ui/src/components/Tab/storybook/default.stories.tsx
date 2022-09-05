@@ -2,9 +2,9 @@ import { ComponentStory } from '@storybook/react'
 import { DocsPage } from './docsPage'
 import { LoremIpsum } from 'react-lorem-ipsum'
 import { Tab } from '..'
-import { CenterLineHeading } from '../../heading/CenterLine'
 import { FileName } from '../../with-icon/FileName'
 import { LeftLineHeading } from '../../heading/LeftLine'
+import { coreTabArgTypes } from './argTypes'
 
 export default {
   title: 'hide-and-seek/Tab',
@@ -20,7 +20,9 @@ export default {
       },
     },
   },
-  argTypes: {},
+  argTypes: {
+    ...coreTabArgTypes,
+  },
 }
 
 const Template: ComponentStory<typeof Tab> = () => (
