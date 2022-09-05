@@ -1,4 +1,6 @@
 import {
+  borderHoverEffectOptions,
+  defaultBorderLinkListProps,
   defaultFillLinkListProps,
   fillHoverEffectOptions,
   underlineHoverEffectOptions,
@@ -62,6 +64,27 @@ export const fillVerArgTypes = {
       category: 'effect',
       defaultValue: {
         summary: defaultFillLinkListProps.hoverEffect,
+        details: null,
+      },
+    },
+  },
+}
+
+export const borderVerArgTypes = {
+  ...coreArgTypes,
+  hoverEffect: {
+    control: {
+      type: 'radio',
+    },
+    options: borderHoverEffectOptions,
+    description: '',
+    table: {
+      type: {
+        summary: null,
+      },
+      category: 'effect',
+      defaultValue: {
+        summary: defaultBorderLinkListProps.hoverEffect,
         details: null,
       },
     },

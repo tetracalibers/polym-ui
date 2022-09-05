@@ -5,6 +5,7 @@ import { getDefaultProps, getPropType, NotRequired } from 'react-tsx-props'
 import { CoreUl } from './styled/core'
 import { injectUnderlineStyle } from './styled/underline'
 import { injectFillStyle } from './styled/fill'
+import { injectBorderStyle } from './styled/border'
 
 /* -------------------------------------------- */
 /* LINKLIST.ITEM                                */
@@ -138,3 +139,41 @@ LinkList.Fill = getFillVersion(LinkList)
 /* -------------------------------------------- */
 /* BORDER STYLE                                 */
 /* -------------------------------------------- */
+
+export const borderHoverEffectOptions = [
+  'borderGoAround',
+  'borderMerging',
+] as const
+
+const borderStyleConf = {
+  hoverEffect:
+    NotRequired<typeof borderHoverEffectOptions[number]>('borderGoAround'),
+}
+
+export type BorderLinkListProps = LinkListCoreProps &
+  getPropType<typeof borderStyleConf>
+
+export const defaultBorderLinkListProps = {
+  ...defaultLinkListCoreProps,
+  ...getDefaultProps<BorderLinkListProps>(borderStyleConf),
+}
+
+const getBorderVersion = (CoreComponent: typeof LinkList) => {
+  const Component = styled(CoreComponent)`
+    ${injectBorderStyle}
+  `
+
+  return ({
+    children,
+    hoverEffect = defaultBorderLinkListProps.hoverEffect,
+    ...props
+  }: BorderLinkListProps) => {
+    return (
+      <ThemeProvider theme={{ hoverEffect }}>
+        <Component {...props}>{children}</Component>
+      </ThemeProvider>
+    )
+  }
+}
+
+LinkList.Border = getBorderVersion(LinkList)
