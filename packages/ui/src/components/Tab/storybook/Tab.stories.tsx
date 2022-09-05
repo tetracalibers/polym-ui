@@ -5,7 +5,6 @@ import { DocsPage } from './docsPage'
 import { LoremIpsum } from 'react-lorem-ipsum'
 import { Tab } from '../'
 import { CenterLineHeading } from '../../heading/CenterLine'
-import { FolderName } from '../../with-icon/FolderName'
 import { FileName } from '../../with-icon/FileName'
 
 export default {

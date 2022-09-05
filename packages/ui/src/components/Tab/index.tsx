@@ -19,7 +19,6 @@ import { Anchor } from '../core/Anchor'
 import { match } from 'ts-pattern'
 import _ from 'lodash'
 import { CoreUl } from '../LinkList/styled/core'
-import { LinkList } from '../LinkList'
 
 /* -------------------------------------------- */
 /* UTILITY                                      */
