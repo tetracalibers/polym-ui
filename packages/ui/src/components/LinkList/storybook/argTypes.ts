@@ -28,7 +28,7 @@ export const coreArgTypes = {
   },
 }
 
-export const underlineVerArgTypes = {
+export const underlineLinkListArgTypes = {
   ...coreArgTypes,
   hoverEffect: {
     control: {
@@ -49,7 +49,7 @@ export const underlineVerArgTypes = {
   },
 }
 
-export const fillVerArgTypes = {
+export const fillLinkListArgTypes = {
   ...coreArgTypes,
   hoverEffect: {
     control: {
@@ -70,7 +70,7 @@ export const fillVerArgTypes = {
   },
 }
 
-export const borderVerArgTypes = {
+export const borderLinkListArgTypes = {
   ...coreArgTypes,
   hoverEffect: {
     control: {

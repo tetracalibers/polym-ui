@@ -1,5 +1,5 @@
 import { ComponentStory } from '@storybook/react'
-import { fillVerArgTypes } from './argTypes'
+import { fillLinkListArgTypes } from './argTypes'
 import { defaultFillLinkListProps, LinkList } from '..'
 
 export default {
@@ -16,7 +16,7 @@ export default {
     },
   },
   argTypes: {
-    ...fillVerArgTypes,
+    ...fillLinkListArgTypes,
   },
 }
 

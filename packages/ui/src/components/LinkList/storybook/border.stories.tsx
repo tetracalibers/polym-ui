@@ -1,5 +1,5 @@
 import { ComponentStory } from '@storybook/react'
-import { borderVerArgTypes } from './argTypes'
+import { borderLinkListArgTypes } from './argTypes'
 import { defaultBorderLinkListProps, LinkList } from '..'
 
 export default {
@@ -16,7 +16,7 @@ export default {
     },
   },
   argTypes: {
-    ...borderVerArgTypes,
+    ...borderLinkListArgTypes,
   },
 }
 

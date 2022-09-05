@@ -1,5 +1,5 @@
 import { ComponentStory } from '@storybook/react'
-import { underlineVerArgTypes } from './argTypes'
+import { underlineLinkListArgTypes } from './argTypes'
 import { defaultUnderLineLinkListProps, LinkList } from '..'
 
 export default {
@@ -16,7 +16,7 @@ export default {
     },
   },
   argTypes: {
-    ...underlineVerArgTypes,
+    ...underlineLinkListArgTypes,
   },
 }
 
