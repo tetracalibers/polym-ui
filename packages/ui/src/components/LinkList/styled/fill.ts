@@ -30,10 +30,22 @@ const setEffect = (type: FillLinkListProps['hoverEffect']) => {
       return css`
         & > li a::after {
           transition: all var(--duration);
+          background-color: var(--bg-color);
           /*背景の形状*/
           width: 0;
           height: 100%;
           border-radius: 3rem;
+          /*アニメーションの指定*/
+          z-index: -1;
+          bottom: 0;
+          left: 0;
+          opacity: 0; /*はじめは透過0*/
+        }
+
+        &[data-active='true'] a::after,
+        & a:hover::after {
+          width: 100%; /*横幅を伸ばす*/
+          opacity: 1; /*不透明に*/
         }
       `
     })
@@ -44,16 +56,76 @@ const setEffect = (type: FillLinkListProps['hoverEffect']) => {
         }
 
         & > li a:after {
+          background-color: var(--bg-color);
           /*背景の形状*/
           width: 0;
           height: 1px;
           border-radius: 1rem 1rem 0 0;
+          /*アニメーションの指定*/
+          z-index: -1;
+          bottom: 0;
+          left: 0;
+          opacity: 0; /*はじめは透過0*/
         }
 
         &[data-active='true'] a::after,
         & a:hover::after {
-          animation: ${fromUnderlineToFill} calc(var(--duration) - 0.2s)
-            forwards;
+          animation: ${fromUnderlineToFill}
+            calc(var(--duration) - var(--duration) * 0.28) forwards;
+        }
+
+        &[data-active='true'] a::after,
+        & a:hover::after {
+          width: 100%; /*横幅を伸ばす*/
+          opacity: 1; /*不透明に*/
+        }
+      `
+    })
+    .with('fillFromHorizontalLine', () => {
+      return css`
+        & > li a {
+          overflow: hidden;
+          transition: all calc(var(--duration) * 0.28);
+        }
+
+        & > li[data-active='true'] a,
+        & > li a:hover {
+          background-color: var(--bg-color);
+        }
+
+        /*背景がつくのアニメーションの開始を遅らせる*/
+        & > li a:hover {
+          transition-delay: calc(var(--duration) - var(--duration) * 0.28);
+        }
+
+        & > li a::before {
+          content: '';
+          position: absolute;
+          /* 線の位置 */
+          top: 0;
+          transform: translateX(-100%); /*X方向に-100%移動*/
+        }
+
+        & > li a::after {
+          /* 線の位置 */
+          bottom: 0;
+          transform: translateX(100%); /*X方向に100%移動*/
+        }
+
+        & > li a::after,
+        & > li a::before {
+          left: 0;
+          /*線の形状*/
+          height: 2px;
+          width: 100%;
+          background-color: var(--bg-color);
+          /*アニメーションの指定*/
+          transition: all calc(var(--duration) - var(--duration) * 0.28);
+        }
+
+        & li a:hover::before,
+        & li a:hover::after {
+          transform: translateX(0); /*X方向に0%移動*/
         }
       `
     })
@@ -73,23 +145,11 @@ export const injectFillStyle = css`
   & > li a::after {
     content: '';
     position: absolute;
-    background-color: var(--bg-color);
-    /*アニメーションの指定*/
-    z-index: -1;
-    bottom: 0;
-    left: 0;
-    opacity: 0; /*はじめは透過0*/
   }
 
   &[data-active='true'] a,
   & a:hover {
     color: var(--color);
-  }
-
-  &[data-active='true'] a::after,
-  & a:hover::after {
-    width: 100%; /*横幅を伸ばす*/
-    opacity: 1; /*不透明に*/
   }
 
   ${({ theme }) => setEffect(theme.hoverEffect)}
