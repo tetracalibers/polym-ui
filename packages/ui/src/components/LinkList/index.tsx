@@ -17,7 +17,9 @@ const _Item = ({ children, ...superProps }: LinkItemProps) => {
   // TODO keyが必須
   return (
     <li>
-      <Anchor {...superProps}>{children}</Anchor>
+      <Anchor {...superProps}>
+        <span>{children}</span>
+      </Anchor>
     </li>
   )
 }
@@ -140,14 +142,10 @@ LinkList.Fill = getFillVersion(LinkList)
 /* BORDER STYLE                                 */
 /* -------------------------------------------- */
 
-export const borderHoverEffectOptions = [
-  'borderGoAround',
-  'borderMerging',
-] as const
+export const borderHoverEffectOptions = ['goAround', 'twoLinesMerge'] as const
 
 const borderStyleConf = {
-  hoverEffect:
-    NotRequired<typeof borderHoverEffectOptions[number]>('borderGoAround'),
+  hoverEffect: NotRequired<typeof borderHoverEffectOptions[number]>('goAround'),
 }
 
 export type BorderLinkListProps = LinkListCoreProps &
