@@ -1,11 +1,64 @@
-import { css } from 'styled-components'
+import { FillLinkListProps } from './../index'
+import { css, keyframes } from 'styled-components'
 import { ColorPalette as $ } from 'styled-utility-first'
+import { match } from 'ts-pattern'
 
 const variables = css`
   --color: ${$.grayScale.light};
   --bg-color: ${$.pastel.pink};
-  --duration: 0.5s;
+  --duration: 0.7s;
 `
+
+const fromUnderlineToFill = keyframes`
+  0% {
+    width: 0%;
+    height: 1px;
+  }
+  50% {
+    width: 100%;
+    height: 1px;
+  }
+  100% {
+    width: 100%;
+    height: 100%;
+  }
+`
+
+const setEffect = (type: FillLinkListProps['hoverEffect']) => {
+  return match(type)
+    .with('fillFromLeft', () => {
+      return css`
+        & > li a::after {
+          transition: all var(--duration);
+          /*背景の形状*/
+          width: 0;
+          height: 100%;
+          border-radius: 3rem;
+        }
+      `
+    })
+    .with('fillFromUnderline', () => {
+      return css`
+        & > li a {
+          transition: all var(--duration);
+        }
+
+        & > li a:after {
+          /*背景の形状*/
+          width: 0;
+          height: 1px;
+          border-radius: 1rem 1rem 0 0;
+        }
+
+        &[data-active='true'] a::after,
+        & a:hover::after {
+          animation: ${fromUnderlineToFill} calc(var(--duration) - 0.2s)
+            forwards;
+        }
+      `
+    })
+    .otherwise(() => '')
+}
 
 export const injectFillStyle = css`
   & {
@@ -22,15 +75,10 @@ export const injectFillStyle = css`
     position: absolute;
     background-color: var(--bg-color);
     /*アニメーションの指定*/
-    transition: all 0.5s;
     z-index: -1;
     bottom: 0;
     left: 0;
-    /*背景の形状*/
-    width: 0;
-    height: 100%;
     opacity: 0; /*はじめは透過0*/
-    border-radius: 3rem;
   }
 
   &[data-active='true'] a,
@@ -43,4 +91,6 @@ export const injectFillStyle = css`
     width: 100%; /*横幅を伸ばす*/
     opacity: 1; /*不透明に*/
   }
+
+  ${({ theme }) => setEffect(theme.hoverEffect)}
 `
