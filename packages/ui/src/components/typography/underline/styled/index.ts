@@ -64,6 +64,6 @@ export const injectWavyLineStyle = css`
       0.1em 1em;
   background-repeat: repeat-x;
   background-size: 0.2em 0.1em;
-  text-shadow: 0.05em 0 var(--bg-color), -0.05em 0 var(--bg-color);
+  text-shadow: 0.025em 0 var(--bg-color), -0.025em 0 var(--bg-color);
   background-position-y: calc(1em - var(--under-offset));
 `
