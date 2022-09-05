@@ -18,7 +18,8 @@ const setEffect = (type: UnderLineLinkListProps['hoverEffect']) => {
         }
 
         & > li[data-active='true'] a::after,
-        & > li a:hover::after {
+        & > li a:hover::after,
+        & > li a:focus::after {
           transform: scale(1, 1); /*X方向にスケール拡大*/
         }
       `
@@ -36,7 +37,8 @@ const setEffect = (type: UnderLineLinkListProps['hoverEffect']) => {
         }
 
         & > li[data-active='true'] a::after,
-        & > li a:hover::after {
+        & > li a:hover::after,
+        & > li a:focus::after {
           transform: scale(1, 1); /*X方向にスケール拡大*/
         }
       `
@@ -55,7 +57,8 @@ const setEffect = (type: UnderLineLinkListProps['hoverEffect']) => {
         }
 
         & > li[data-active='true'] a::after,
-        & > li a:hover::after {
+        & > li a:hover::after,
+        & > li a:focus::after {
           height: 2px; /*縦幅を変化*/
           border-radius: 0; /*丸みをなくす*/
           transform: scale(0.8, 1); /*X方向0.8、Y方向1にスケール拡大*/
@@ -72,6 +75,10 @@ export const injectUnderlineStyle = css`
     --duration: 0.5s;
   }
 
+  & > li a:focus {
+    outline: none;
+  }
+
   & > li a {
     /*基点とするためrelativeを指定*/
     position: relative;
@@ -86,7 +93,8 @@ export const injectUnderlineStyle = css`
   }
 
   & > li[data-active='true'] a,
-  & > li a:hover {
+  & > li a:hover,
+  & > li a:focus {
     color: var(--color);
   }
 

@@ -43,7 +43,8 @@ const setEffect = (type: FillLinkListProps['hoverEffect']) => {
         }
 
         & > li[data-active='true'] a::after,
-        & > li a:hover::after {
+        & > li a:hover::after,
+        & > li a:focus::after {
           width: 100%; /*横幅を伸ばす*/
           opacity: 1; /*不透明に*/
         }
@@ -68,13 +69,15 @@ const setEffect = (type: FillLinkListProps['hoverEffect']) => {
         }
 
         & > li[data-active='true'] a::after,
-        & > li a:hover::after {
+        & > li a:hover::after,
+        & > li a:focus::after {
           animation: ${fromUnderlineToFill}
             calc(var(--duration) - var(--duration) * 0.28) forwards;
         }
 
         & > li[data-active='true'] a::after,
-        & > li a:hover::after {
+        & > li a:hover::after,
+        & > li a:focus::after {
           width: 100%; /*横幅を伸ばす*/
           opacity: 1; /*不透明に*/
         }
@@ -88,12 +91,14 @@ const setEffect = (type: FillLinkListProps['hoverEffect']) => {
         }
 
         & > li[data-active='true'] a,
-        & > li a:hover {
+        & > li a:hover,
+        & > li a:focus {
           background-color: var(--bg-color);
         }
 
         /*背景がつくのアニメーションの開始を遅らせる*/
-        & > li a:hover {
+        & > li a:hover,
+        & > li a:focus {
           transition-delay: calc(var(--duration) - var(--duration) * 0.28);
         }
 
@@ -123,7 +128,9 @@ const setEffect = (type: FillLinkListProps['hoverEffect']) => {
         }
 
         & > li a:hover::before,
-        & > li a:hover::after {
+        & > li a:hover::after,
+        & > li a:focus::before,
+        & > li a:focus::after {
           transform: translateX(0); /*X方向に0%移動*/
         }
       `
@@ -134,6 +141,10 @@ const setEffect = (type: FillLinkListProps['hoverEffect']) => {
 export const injectFillStyle = css`
   & {
     ${variables}
+  }
+
+  & > li a:focus {
+    outline: none;
   }
 
   & > li {
@@ -152,7 +163,8 @@ export const injectFillStyle = css`
   }
 
   & > li[data-active='true'] a,
-  & > li a:hover {
+  & > li a:hover,
+  & > li a:focus {
     color: var(--color);
   }
 
