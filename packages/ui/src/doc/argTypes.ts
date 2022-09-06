@@ -7,7 +7,7 @@ const withDefaultAs = useSetDefaultAs({})
 /* REACT                                        */
 /* -------------------------------------------- */
 
-const children = ({ type = null, required = true }) => ({
+const children = (type: string | null = null, required = true) => ({
   children: {
     control: {
       type,
@@ -28,6 +28,74 @@ const children = ({ type = null, required = true }) => ({
 /* -------------------------------------------- */
 /* CSS                                          */
 /* -------------------------------------------- */
+
+const fontSize = (defaultProps: {
+  fontSizeV?: number
+  fontSizeU?: CssStyle.Unit.Length
+}) => ({
+  fontSizeV: {
+    ...withDefaultAs('fontSize'),
+    control: {
+      type: 'number',
+    },
+    table: {
+      ...withDefaultAs('fontSize').table,
+      defaultValue: {
+        summary: defaultProps.fontSizeV,
+        detail: null,
+      },
+    },
+  },
+  fontSizeU: {
+    ...withDefaultAs('fontSize'),
+    control: {
+      type: 'select',
+    },
+    options: CssStyle.Unit.length,
+    description: 'Units of fontSizeV',
+    table: {
+      ...withDefaultAs('fontSize').table,
+      defaultValue: {
+        summary: defaultProps.fontSizeU,
+        detail: null,
+      },
+    },
+  },
+})
+
+const lineHeight = (defaultProps: {
+  lineHeightV?: number
+  lineHeightU?: CssStyle.Unit.Length
+}) => ({
+  lineHeightV: {
+    ...withDefaultAs('lineHeight'),
+    control: {
+      type: 'number',
+    },
+    table: {
+      ...withDefaultAs('lineHeight').table,
+      defaultValue: {
+        summary: defaultProps.lineHeightV,
+        detail: null,
+      },
+    },
+  },
+  lineHeightU: {
+    ...withDefaultAs('lineHeight'),
+    control: {
+      type: 'select',
+    },
+    options: CssStyle.Unit.length,
+    description: 'Units of lineHeightV',
+    table: {
+      ...withDefaultAs('lineHeight').table,
+      defaultValue: {
+        summary: defaultProps.lineHeightU,
+        detail: null,
+      },
+    },
+  },
+})
 
 const borderRadius = (defaultProps: {
   borderRadiusV?: number
@@ -250,6 +318,8 @@ const slope = (defaultProps: { slope?: number }) => ({
 
 export const ArgType = {
   children,
+  fontSize,
+  lineHeight,
   borderRadius,
   paddingX,
   paddingY,
