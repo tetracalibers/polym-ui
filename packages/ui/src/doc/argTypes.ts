@@ -3,6 +3,32 @@ import { useSetDefaultAs } from 'story-builder'
 
 const withDefaultAs = useSetDefaultAs({})
 
+/* -------------------------------------------- */
+/* REACT                                        */
+/* -------------------------------------------- */
+
+const children = ({ type = null, required = true }) => ({
+  children: {
+    control: {
+      type,
+    },
+    description: '',
+    table: {
+      category: 'react',
+      type: {
+        summary: null,
+      },
+    },
+    type: {
+      required,
+    },
+  },
+})
+
+/* -------------------------------------------- */
+/* CSS                                          */
+/* -------------------------------------------- */
+
 const borderRadius = (defaultProps: {
   borderRadiusV?: number
   borderRadiusU?: CssStyle.Unit.Length
@@ -220,7 +246,10 @@ const slope = (defaultProps: { slope?: number }) => ({
   },
 })
 
+/* -------------------------------------------- */
+
 export const ArgType = {
+  children,
   borderRadius,
   paddingX,
   paddingY,
