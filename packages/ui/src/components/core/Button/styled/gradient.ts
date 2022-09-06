@@ -18,7 +18,6 @@ export const injectFlowGradientStyle = css`
   ${baseStyle}
 
   ${({ theme }) => css`
-    --color: ${theme.color};
     --bg-color-1: ${theme.bgColor01};
     --bg-color-2: ${theme.bgColor02};
     --bg-color-3: ${theme.bgColor03};
