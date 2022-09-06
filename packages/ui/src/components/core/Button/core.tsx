@@ -14,7 +14,11 @@ import {
 } from './model/anchor'
 import { ButtonCharacterProps } from './model/button'
 import { defaultButtonCoreProps } from './model/props'
-import { BurglarizeStyleProps, GradientStyleProps } from './model/style'
+import {
+  BurglarizeStyleProps,
+  defaultBurglarizeStyleProps,
+  GradientStyleProps,
+} from './model/style'
 import { CheckSemanticButton } from './styled'
 import { injectBurglarizeStyle } from './styled/burglarize'
 import { injectGradientStyle } from './styled/gradient'
@@ -122,11 +126,40 @@ export const getBurglarizeClickElement = <
   `
 
   return forwardRef(
-    ({ children, ref, ...props }: BurglarizeClickProps<CORE>) => {
+    ({
+      children,
+      ref,
+      pushTo = defaultBurglarizeStyleProps.pushTo,
+      color = defaultBurglarizeStyleProps.color,
+      bgColor = defaultBurglarizeStyleProps.bgColor,
+      borderRadiusU = defaultBurglarizeStyleProps.borderRadiusU,
+      borderRadiusV = defaultBurglarizeStyleProps.borderRadiusV,
+      offset = defaultBurglarizeStyleProps.offset,
+      paddingXU = defaultBurglarizeStyleProps.paddingXU,
+      paddingYU = defaultBurglarizeStyleProps.paddingYU,
+      paddingXV = defaultBurglarizeStyleProps.paddingXV,
+      paddingYV = defaultBurglarizeStyleProps.paddingYV,
+      duration = defaultBurglarizeStyleProps.duration,
+      ...props
+    }: BurglarizeClickProps<CORE>) => {
       return (
-        <ThemeProvider theme={{}}>
+        <ThemeProvider
+          theme={{
+            pushTo,
+            color,
+            bgColor,
+            borderRadiusU,
+            borderRadiusV,
+            paddingXV,
+            paddingXU,
+            paddingYV,
+            paddingYU,
+            duration,
+            offset,
+          }}
+        >
           <Component {...props} ref={ref}>
-            {children}
+            <span>{children}</span>
           </Component>
         </ThemeProvider>
       )
@@ -134,5 +167,5 @@ export const getBurglarizeClickElement = <
   )
 }
 
-Button.Burglarize = getGradientClickElement<ButtonCoreProps>(Button)
-Anchor.Burglarize = getGradientClickElement<AnchorCoreProps>(Anchor)
+Button.Burglarize = getBurglarizeClickElement<ButtonCoreProps>(Button)
+Anchor.Burglarize = getBurglarizeClickElement<AnchorCoreProps>(Anchor)

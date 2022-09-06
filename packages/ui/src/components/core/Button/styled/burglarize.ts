@@ -9,22 +9,25 @@ const baseStyle = css`
   ${({ theme }) => css`
     --border-radius: ${theme.borderRadiusV + theme.borderRadiusU};
     --color: ${theme.color};
-    --duration: ${theme.duration}s; // 0.3s
-    --padding: ${theme.paddingV + theme.paddingU};
+    --duration: ${theme.duration}s;
+    --paddingX: ${theme.paddingXV + theme.paddingXU};
+    --paddingY: ${theme.paddingYV + theme.paddingYU};
     --bg-color: ${theme.bgColor};
     --offset: ${theme.offset}px;
   `}
 
-  /*影の基点とするためrelativeを指定*/
-  position: relative;
-  /*ボタンの形状*/
-  text-decoration: none;
-  display: inline-block;
-  text-align: center;
-  background: transparent;
-  border-radius: var(--border-radius);
-  border: solid 1px var(--color);
-  transition: all calc(var(--duration) * 2 / 3) ease;
+  & {
+    /*影の基点とするためrelativeを指定*/
+    position: relative;
+    /*ボタンの形状*/
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    background: transparent;
+    border-radius: var(--border-radius);
+    border: solid 1px var(--color);
+    transition: all calc(var(--duration) * 2 / 3) ease;
+  }
 
   /*hoverをした後のボタンの形状*/
   &:hover {
@@ -32,13 +35,13 @@ const baseStyle = css`
   }
 
   /*ボタンの中のテキスト*/
-  & span {
+  & > span {
     position: relative;
     z-index: 2; /*z-indexの数値をあげて文字を背景よりも手前に表示*/
     /*テキストの形状*/
     display: block;
-    padding: var(--padding);
-    background: var(--bg-color);
+    padding: var(--paddingY) var(--paddingX);
+    background-color: var(--bg-color);
     border-radius: var(--border-radius);
     color: var(--color);
     /*アニメーションの指定*/
@@ -51,7 +54,6 @@ const baseStyle = css`
     /*絶対配置で影の位置を決める*/
     position: absolute;
     z-index: -1;
-    // TODO shadowPosition
     /*影の形状*/
     width: 100%;
     height: 100%;
@@ -59,10 +61,9 @@ const baseStyle = css`
     background-color: var(--color);
   }
 
-  &:hover span {
+  &:hover > span {
     background-color: var(--color);
     color: var(--bg-color);
-    // TODO hoverTransform
   }
 `
 
@@ -75,7 +76,7 @@ const effectByPushToAs = (pushTo: BurglarizeStyleProps['pushTo']) => {
           left: 0;
         }
 
-        &:hover span {
+        &:hover > span {
           transform: translateY(var(--offset));
         }
       `
@@ -87,7 +88,7 @@ const effectByPushToAs = (pushTo: BurglarizeStyleProps['pushTo']) => {
           left: var(--offset);
         }
 
-        &:hover span {
+        &:hover > span {
           transform: translate(var(--offset), var(--offset));
         }
       `
@@ -99,7 +100,7 @@ const effectByPushToAs = (pushTo: BurglarizeStyleProps['pushTo']) => {
           right: var(--offset);
         }
 
-        &:hover span {
+        &:hover > span {
           transform: translate(calc(-1 * var(--offset)), var(--offset));
         }
       `
