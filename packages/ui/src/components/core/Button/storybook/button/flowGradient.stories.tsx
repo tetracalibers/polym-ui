@@ -1,4 +1,5 @@
 import { ComponentStory } from '@storybook/react'
+import { Text } from '../../../../Text'
 import { Button } from '../../core'
 import { defaultButtonCharacterProps } from '../../model/button'
 import { defaultFlowGradientStyleProps } from '../../model/style'
@@ -25,7 +26,9 @@ export default {
 }
 
 const Template: ComponentStory<typeof Button> = ({ children, ...args }) => (
-  <Button.FlowGradient {...args}>{children}</Button.FlowGradient>
+  <Button.FlowGradient {...args}>
+    <Text color={'#FFF'}>{children as string}</Text>
+  </Button.FlowGradient>
 )
 
 export const flowGradient = Template.bind({})
