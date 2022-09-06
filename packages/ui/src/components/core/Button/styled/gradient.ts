@@ -45,10 +45,23 @@ const shrinkStyle = css`
   }
 `
 
+const expandStyle = css`
+  /*背景色*/
+  background: linear-gradient(to right, #44ea76 0%, #39fad7 80%, #39fad7 100%);
+
+  /*hoverした際のスケールで全体を拡大し影を付ける*/
+  &:hover {
+    transform: scale(1.05);
+    /*ボックスの影*/
+    box-shadow: 0 15px 15px rgba(57, 250, 215, 0.4);
+  }
+`
+
 const injectThemeStyleAs = (type: GradientStyleProps['hoverEffect']) => {
   return match(type)
     .with('flow', () => flowStyle)
     .with('shrink', () => shrinkStyle)
+    .with('expand', () => expandStyle)
     .otherwise(() => '')
 }
 
