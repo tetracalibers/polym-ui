@@ -8,7 +8,6 @@ const baseStyle = css`
 
   /*ボタンの形状*/
   display: inline-block;
-  color: #fff;
   padding: 18px 60px;
   border-radius: 30px;
   text-decoration: none;
@@ -20,19 +19,28 @@ const baseStyle = css`
 export const injectFlowGradientStyle = css`
   ${baseStyle}
 
+  ${({ theme }) => css`
+    --color: ${theme.color};
+    --bg-color-1: ${theme.bgColor01};
+    --bg-color-2: ${theme.bgColor02};
+    --bg-color-3: ${theme.bgColor03};
+    --bg-color-4: ${theme.bgColor04};
+    --slope: ${theme.slope}deg;
+  `}
+
   /*背景の色と形状*/
   background: linear-gradient(
-    270deg,
-    #3bade3 0%,
-    #576fe6 25%,
-    #9844b7 51%,
-    #ff357f 100%
+    var(--slope),
+    var(--bg-color-1) 0%,
+    var(--bg-color-2) 25%,
+    var(--bg-color-3) 51%,
+    var(--bg-color-4) 100%
   );
   background-position: 1% 50%;
   background-size: 200% auto;
+  color: var(--color);
 
   &:hover {
-    color: #fff;
     background-position: 99% 50%;
   }
 `

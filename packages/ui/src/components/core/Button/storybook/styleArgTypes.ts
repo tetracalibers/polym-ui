@@ -3,6 +3,7 @@ import {
   defaultGradientStyleProps,
   defaultBurglarizeStyleProps,
   burglarizePushToOptions,
+  defaultFlowGradientStyleProps,
 } from './../model/style'
 import { ArgType } from '../../../../doc/argTypes'
 
@@ -25,6 +26,17 @@ export const gradientStyleArgTypes = {
       },
     },
   },
+}
+
+/* -------------------------------------------- */
+
+export const flowGradientStyleArgTypes = {
+  ...ArgType.color(defaultFlowGradientStyleProps),
+  ...ArgType.bgColor01(defaultFlowGradientStyleProps),
+  ...ArgType.bgColor02(defaultFlowGradientStyleProps),
+  ...ArgType.bgColor03(defaultFlowGradientStyleProps),
+  ...ArgType.bgColor04(defaultFlowGradientStyleProps),
+  ...ArgType.slope(defaultFlowGradientStyleProps),
 }
 
 /* -------------------------------------------- */

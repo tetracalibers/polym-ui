@@ -147,6 +147,73 @@ const bgColor = (defaultProps: { bgColor?: string }) => ({
   },
 })
 
+const bgColor01 = (defaultProps: { bgColor01?: string }) => ({
+  bgColor01: {
+    ...withDefaultAs('backgroundColor'),
+    table: {
+      ...withDefaultAs('backgroundColor').table,
+      defaultValue: {
+        summary: defaultProps.bgColor01,
+        detail: null,
+      },
+    },
+  },
+})
+
+const bgColor02 = (defaultProps: { bgColor02?: string }) => ({
+  bgColor02: {
+    ...withDefaultAs('backgroundColor'),
+    table: {
+      ...withDefaultAs('backgroundColor').table,
+      defaultValue: {
+        summary: defaultProps.bgColor02,
+        detail: null,
+      },
+    },
+  },
+})
+
+const bgColor03 = (defaultProps: { bgColor03?: string }) => ({
+  bgColor03: {
+    ...withDefaultAs('backgroundColor'),
+    table: {
+      ...withDefaultAs('backgroundColor').table,
+      defaultValue: {
+        summary: defaultProps.bgColor03,
+        detail: null,
+      },
+    },
+  },
+})
+
+const bgColor04 = (defaultProps: { bgColor04?: string }) => ({
+  bgColor04: {
+    ...withDefaultAs('backgroundColor'),
+    table: {
+      ...withDefaultAs('backgroundColor').table,
+      defaultValue: {
+        summary: defaultProps.bgColor04,
+        detail: null,
+      },
+    },
+  },
+})
+
+const slope = (defaultProps: { slope?: number }) => ({
+  slope: {
+    control: {
+      type: 'number',
+    },
+    table: {
+      ...withDefaultAs('background').table,
+      defaultValue: {
+        summary: defaultProps.slope,
+        detail: null,
+      },
+    },
+  },
+})
+
 export const ArgType = {
   borderRadius,
   paddingX,
@@ -154,4 +221,9 @@ export const ArgType = {
   duration,
   color,
   bgColor,
+  bgColor01,
+  bgColor02,
+  bgColor03,
+  bgColor04,
+  slope,
 }

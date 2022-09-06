@@ -17,6 +17,7 @@ import { defaultButtonCoreProps } from './model/props'
 import {
   BurglarizeStyleProps,
   defaultBurglarizeStyleProps,
+  defaultFlowGradientStyleProps,
   FlowGradientStyleProps,
   GradientStyleProps,
 } from './model/style'
@@ -125,11 +126,29 @@ export const getFlowGradientClickElement = <
   const Component = styled(CoreComponent)`
     ${injectFlowGradientStyle}
   `
-
   return forwardRef(
-    ({ children, ref, ...props }: FlowGradientClickProps<CORE>) => {
+    ({
+      children,
+      ref,
+      color = defaultFlowGradientStyleProps.color,
+      bgColor01 = defaultFlowGradientStyleProps.bgColor01,
+      bgColor02 = defaultFlowGradientStyleProps.bgColor02,
+      bgColor03 = defaultFlowGradientStyleProps.bgColor03,
+      bgColor04 = defaultFlowGradientStyleProps.bgColor04,
+      slope = defaultFlowGradientStyleProps.slope,
+      ...props
+    }: FlowGradientClickProps<CORE>) => {
       return (
-        <ThemeProvider theme={{}}>
+        <ThemeProvider
+          theme={{
+            color,
+            bgColor01,
+            bgColor02,
+            bgColor03,
+            bgColor04,
+            slope,
+          }}
+        >
           <Component {...props} ref={ref}>
             {children}
           </Component>

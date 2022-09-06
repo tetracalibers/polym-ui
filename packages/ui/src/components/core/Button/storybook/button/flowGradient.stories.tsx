@@ -2,7 +2,7 @@ import { ComponentStory } from '@storybook/react'
 import { Button } from '../../core'
 import { defaultButtonCharacterProps } from '../../model/button'
 import { defaultFlowGradientStyleProps } from '../../model/style'
-import { gradientStyleArgTypes } from '../styleArgTypes'
+import { flowGradientStyleArgTypes } from '../styleArgTypes'
 import { buttonArgTypes } from './argTypes'
 
 export default {
@@ -20,7 +20,7 @@ export default {
   },
   argTypes: {
     ...buttonArgTypes,
-    ...gradientStyleArgTypes,
+    ...flowGradientStyleArgTypes,
   },
 }
 
@@ -32,5 +32,5 @@ export const flowGradient = Template.bind({})
 flowGradient.args = {
   ...defaultButtonCharacterProps,
   ...defaultFlowGradientStyleProps,
-  children: 'Correct Usage',
+  children: 'Liquid',
 }

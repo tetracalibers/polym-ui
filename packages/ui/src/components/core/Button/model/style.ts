@@ -29,7 +29,14 @@ export const defaultGradientStyleProps = {
 
 /* flowGradient ------------------------------- */
 
-const flowGradientConf = {}
+const flowGradientConf = {
+  color: NotRequired<CSST.Property.Color>('#ffffff'),
+  bgColor01: NotRequired<CSST.Property.BackgroundColor>('#3bade3'),
+  bgColor02: NotRequired<CSST.Property.BackgroundColor>('#576fe6'),
+  bgColor03: NotRequired<CSST.Property.BackgroundColor>('#9844b7'),
+  bgColor04: NotRequired<CSST.Property.BackgroundColor>('#ff357f'),
+  slope: NotRequired<number>(270),
+}
 
 export type FlowGradientStyleProps = getPropType<typeof flowGradientConf>
 export const defaultFlowGradientStyleProps = {
