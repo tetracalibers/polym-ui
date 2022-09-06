@@ -1,10 +1,10 @@
 import { ComponentStory } from '@storybook/react'
-import { coreArgTypes } from './argTypes'
-import { defaultButtonCoreProps } from '../model/props'
-import { DocsPage } from './docsPage'
-import { Button } from '..'
-import { DarkTextBox } from '../../../../mock/TestBox'
-import { VerticalStack } from '../../../layout-algorithm/VerticalStack'
+import { DocsPage } from '../docsPage'
+import { Button } from '../..'
+import { DarkTextBox } from '../../../../../mock/TestBox'
+import { VerticalStack } from '../../../../layout-algorithm/VerticalStack'
+import { buttonArgTypes } from './argTypes'
+import { defaultButtonCharacterProps } from '../../model/button'
 
 export default {
   title: 'core/Button',
@@ -18,7 +18,7 @@ export default {
     },
   },
   argTypes: {
-    ...coreArgTypes,
+    ...buttonArgTypes,
   },
 }
 
@@ -28,13 +28,13 @@ const Template: ComponentStory<typeof Button> = ({ children, ...args }) => (
 
 export const playground = Template.bind({})
 playground.args = {
-  ...defaultButtonCoreProps,
+  ...defaultButtonCharacterProps,
   children: 'Correct Usage',
 }
 
 export const violationUsage01 = Template.bind({})
 violationUsage01.args = {
-  ...defaultButtonCoreProps,
+  ...defaultButtonCharacterProps,
   children: <a>Examples of Violations</a>,
 }
 violationUsage01.argTypes = {

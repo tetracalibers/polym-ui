@@ -2,12 +2,12 @@ import { defaultIconOnlyProps } from './props'
 import { CssStyle } from 'ts-typedef-helper'
 import { useSetDefaultAs } from 'story-builder'
 import { defaultButtonCoreProps } from '../../Button/model/props'
-import { coreArgTypes } from '../../Button/storybook/argTypes'
 const withDefaultAs = useSetDefaultAs(defaultIconOnlyProps)
 import _ from 'lodash'
+import { buttonArgTypes } from '../../Button/storybook/button/argTypes'
 
 export const iconOnlyCoreArgTypes = {
-  ..._.omit(coreArgTypes, 'children'),
+  ..._.omit(buttonArgTypes, 'children'),
   label: {
     control: {
       type: 'text',

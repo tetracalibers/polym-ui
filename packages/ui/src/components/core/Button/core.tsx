@@ -6,7 +6,7 @@ import {
   ElementType,
   forwardRef,
 } from 'react'
-import styled from 'styled-components'
+import styled, { ThemeProvider } from 'styled-components'
 import { CheckSemanticAnchor } from '../Anchor/styled'
 import {
   AnchorCharacterProps,
@@ -14,6 +14,7 @@ import {
 } from './model/anchor'
 import { ButtonCharacterProps } from './model/button'
 import { defaultButtonCoreProps } from './model/props'
+import { GradientStyleProps } from './model/style'
 import { CheckSemanticButton } from './styled'
 import { injectGradientStyle } from './styled/gradient'
 
@@ -77,7 +78,8 @@ export const Anchor = ({
 
 /* gradient ----------------------------------- */
 
-type GradientClickProps<CORE extends ButtonCoreProps | AnchorCoreProps> = CORE
+type GradientClickProps<CORE extends ButtonCoreProps | AnchorCoreProps> = CORE &
+  GradientStyleProps
 
 export const getGradientClickElement = <
   CORE extends ButtonCoreProps | AnchorCoreProps
@@ -88,13 +90,17 @@ export const getGradientClickElement = <
     ${injectGradientStyle}
   `
 
-  return forwardRef(({ children, ref, ...props }: GradientClickProps<CORE>) => {
-    return (
-      <Component {...props} ref={ref}>
-        {children}
-      </Component>
-    )
-  })
+  return forwardRef(
+    ({ children, ref, effectType, ...props }: GradientClickProps<CORE>) => {
+      return (
+        <ThemeProvider theme={{ effectType }}>
+          <Component {...props} ref={ref}>
+            {children}
+          </Component>
+        </ThemeProvider>
+      )
+    }
+  )
 }
 
 Button.Gradient = getGradientClickElement<ButtonCoreProps>(Button)

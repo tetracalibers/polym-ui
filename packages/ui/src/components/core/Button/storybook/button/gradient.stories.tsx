@@ -1,9 +1,12 @@
 import { ComponentStory } from '@storybook/react'
 import { Button } from '../../core'
 import { defaultButtonCharacterProps } from '../../model/button'
+import { defaultGradientStyleProps } from '../../model/style'
+import { gradientStyleArgTypes } from '../styleArgTypes'
+import { buttonArgTypes } from './argTypes'
 
 export default {
-  title: 'botton/Gradient',
+  title: 'button/Gradient',
   component: Button,
   parameters: {
     docs: {
@@ -15,7 +18,10 @@ export default {
       default: 'light',
     },
   },
-  argTypes: {},
+  argTypes: {
+    ...buttonArgTypes,
+    ...gradientStyleArgTypes,
+  },
 }
 
 const Template: ComponentStory<typeof Button> = ({ children, ...args }) => (
@@ -25,5 +31,6 @@ const Template: ComponentStory<typeof Button> = ({ children, ...args }) => (
 export const playground = Template.bind({})
 playground.args = {
   ...defaultButtonCharacterProps,
+  ...defaultGradientStyleProps,
   children: 'Correct Usage',
 }
