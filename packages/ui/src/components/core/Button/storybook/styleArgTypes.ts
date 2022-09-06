@@ -5,7 +5,7 @@ import {
 import { CssStyle } from 'ts-typedef-helper'
 
 export const gradientStyleArgTypes = {
-  effectType: {
+  hoverEffect: {
     control: {
       type: 'radio',
     },
@@ -17,7 +17,7 @@ export const gradientStyleArgTypes = {
         summary: null,
       },
       defaultValue: {
-        summary: defaultGradientStyleProps.effectType,
+        summary: defaultGradientStyleProps.hoverEffect,
       },
     },
   },

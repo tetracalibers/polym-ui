@@ -7,14 +7,14 @@ import {
 
 export const gradientEffectTypeOptions = [
   'flow',
-  'zoomIn',
-  'zoomOut',
+  'shrink',
+  'expand',
   'toFill',
 ] as const
 type GradientEffectTypeOptions = typeof gradientEffectTypeOptions[number]
 
 const gradientConf = {
-  effectType: NotRequired<GradientEffectTypeOptions>('flow'),
+  hoverEffect: NotRequired<GradientEffectTypeOptions>('flow'),
 }
 
 export type GradientStyleProps = getPropType<typeof gradientConf>

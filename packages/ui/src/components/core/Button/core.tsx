@@ -91,9 +91,9 @@ export const getGradientClickElement = <
   `
 
   return forwardRef(
-    ({ children, ref, effectType, ...props }: GradientClickProps<CORE>) => {
+    ({ children, ref, hoverEffect, ...props }: GradientClickProps<CORE>) => {
       return (
-        <ThemeProvider theme={{ effectType }}>
+        <ThemeProvider theme={{ hoverEffect }}>
           <Component {...props} ref={ref}>
             {children}
           </Component>

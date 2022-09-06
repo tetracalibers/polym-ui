@@ -15,7 +15,7 @@ export default {
       },
     },
     backgrounds: {
-      default: 'light',
+      default: 'white',
     },
   },
   argTypes: {
