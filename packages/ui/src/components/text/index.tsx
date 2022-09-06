@@ -1,5 +1,6 @@
 import { ComponentPropsWithoutRef } from 'react'
-import styled from 'styled-components'
+import styled, { ThemeProvider } from 'styled-components'
+import { defaultTextBaseStyleProps, TextBaseStyleProps } from './model/style'
 import {
   Core,
   injectDashedLineStyle,
@@ -13,10 +14,31 @@ import {
 
 type TextCoreProps = {
   children: string
-} & Omit<ComponentPropsWithoutRef<'span'>, 'children'>
+} & Omit<ComponentPropsWithoutRef<'span'>, 'children'> &
+  TextBaseStyleProps
 
-export const Text = ({ children, ...props }: TextCoreProps) => {
-  return <Core {...props}>{children}</Core>
+export const Text = ({
+  children,
+  color = defaultTextBaseStyleProps.color,
+  fontSizeV = defaultTextBaseStyleProps.fontSizeV,
+  fontSizeU = defaultTextBaseStyleProps.fontSizeU,
+  lineHeightV = defaultTextBaseStyleProps.lineHeightV,
+  lineHeightU = defaultTextBaseStyleProps.lineHeightU,
+  ...props
+}: TextCoreProps) => {
+  return (
+    <ThemeProvider
+      theme={{
+        color,
+        fontSizeV,
+        fontSizeU,
+        lineHeightV,
+        lineHeightU,
+      }}
+    >
+      <Core {...props}>{children}</Core>
+    </ThemeProvider>
+  )
 }
 
 /* -------------------------------------------- */
