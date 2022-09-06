@@ -31,12 +31,15 @@ export const gradientStyleArgTypes = {
 /* -------------------------------------------- */
 
 export const flowGradientStyleArgTypes = {
-  ...ArgType.color(defaultFlowGradientStyleProps),
   ...ArgType.bgColor01(defaultFlowGradientStyleProps),
   ...ArgType.bgColor02(defaultFlowGradientStyleProps),
   ...ArgType.bgColor03(defaultFlowGradientStyleProps),
   ...ArgType.bgColor04(defaultFlowGradientStyleProps),
   ...ArgType.slope(defaultFlowGradientStyleProps),
+  ...ArgType.borderRadius(defaultFlowGradientStyleProps),
+  ...ArgType.paddingY(defaultFlowGradientStyleProps),
+  ...ArgType.paddingX(defaultFlowGradientStyleProps),
+  ...ArgType.duration(defaultFlowGradientStyleProps),
 }
 
 /* -------------------------------------------- */

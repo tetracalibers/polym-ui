@@ -8,8 +8,6 @@ const baseStyle = css`
 
   /*ボタンの形状*/
   display: inline-block;
-  padding: 18px 60px;
-  border-radius: 30px;
   text-decoration: none;
   outline: none;
   /*アニメーションの指定*/
@@ -26,6 +24,10 @@ export const injectFlowGradientStyle = css`
     --bg-color-3: ${theme.bgColor03};
     --bg-color-4: ${theme.bgColor04};
     --slope: ${theme.slope}deg;
+    --paddingX: ${theme.paddingXV + theme.paddingXU};
+    --paddingY: ${theme.paddingYV + theme.paddingYU};
+    --duration: ${theme.duration}s;
+    --border-radius: ${theme.borderRadiusV + theme.borderRadiusU};
   `}
 
   /*背景の色と形状*/
@@ -39,6 +41,9 @@ export const injectFlowGradientStyle = css`
   background-position: 1% 50%;
   background-size: 200% auto;
   color: var(--color);
+  padding: var(--paddingY) var(--paddingX);
+  border-radius: var(--border-radius);
+  transition: all var(--duration) ease-out;
 
   &:hover {
     background-position: 99% 50%;

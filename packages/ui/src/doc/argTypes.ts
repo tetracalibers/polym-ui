@@ -143,6 +143,7 @@ const bgColor = (defaultProps: { bgColor?: string }) => ({
         summary: defaultProps.bgColor,
         detail: null,
       },
+      subcategory: 'gradient',
     },
   },
 })
@@ -156,6 +157,7 @@ const bgColor01 = (defaultProps: { bgColor01?: string }) => ({
         summary: defaultProps.bgColor01,
         detail: null,
       },
+      subcategory: 'gradient',
     },
   },
 })
@@ -169,6 +171,7 @@ const bgColor02 = (defaultProps: { bgColor02?: string }) => ({
         summary: defaultProps.bgColor02,
         detail: null,
       },
+      subcategory: 'gradient',
     },
   },
 })
@@ -182,6 +185,7 @@ const bgColor03 = (defaultProps: { bgColor03?: string }) => ({
         summary: defaultProps.bgColor03,
         detail: null,
       },
+      subcategory: 'gradient',
     },
   },
 })
@@ -195,6 +199,7 @@ const bgColor04 = (defaultProps: { bgColor04?: string }) => ({
         summary: defaultProps.bgColor04,
         detail: null,
       },
+      subcategory: 'gradient',
     },
   },
 })
@@ -210,6 +215,7 @@ const slope = (defaultProps: { slope?: number }) => ({
         summary: defaultProps.slope,
         detail: null,
       },
+      subcategory: 'gradient',
     },
   },
 })

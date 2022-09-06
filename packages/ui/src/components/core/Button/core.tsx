@@ -130,23 +130,35 @@ export const getFlowGradientClickElement = <
     ({
       children,
       ref,
-      color = defaultFlowGradientStyleProps.color,
       bgColor01 = defaultFlowGradientStyleProps.bgColor01,
       bgColor02 = defaultFlowGradientStyleProps.bgColor02,
       bgColor03 = defaultFlowGradientStyleProps.bgColor03,
       bgColor04 = defaultFlowGradientStyleProps.bgColor04,
       slope = defaultFlowGradientStyleProps.slope,
+      borderRadiusV = defaultFlowGradientStyleProps.borderRadiusV,
+      borderRadiusU = defaultFlowGradientStyleProps.borderRadiusU,
+      paddingXU = defaultFlowGradientStyleProps.paddingXU,
+      paddingYU = defaultFlowGradientStyleProps.paddingYU,
+      paddingXV = defaultFlowGradientStyleProps.paddingXV,
+      paddingYV = defaultFlowGradientStyleProps.paddingYV,
+      duration = defaultFlowGradientStyleProps.duration,
       ...props
     }: FlowGradientClickProps<CORE>) => {
       return (
         <ThemeProvider
           theme={{
-            color,
             bgColor01,
             bgColor02,
             bgColor03,
             bgColor04,
             slope,
+            borderRadiusV,
+            borderRadiusU,
+            paddingXU,
+            paddingYU,
+            paddingXV,
+            paddingYV,
+            duration,
           }}
         >
           <Component {...props} ref={ref}>

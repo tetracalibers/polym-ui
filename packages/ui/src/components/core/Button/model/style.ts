@@ -30,12 +30,18 @@ export const defaultGradientStyleProps = {
 /* flowGradient ------------------------------- */
 
 const flowGradientConf = {
-  color: NotRequired<CSST.Property.Color>('#ffffff'),
-  bgColor01: NotRequired<CSST.Property.BackgroundColor>('#3bade3'),
+  bgColor01: NotRequired<CSST.Property.BackgroundColor>('#45b6eb'),
   bgColor02: NotRequired<CSST.Property.BackgroundColor>('#576fe6'),
-  bgColor03: NotRequired<CSST.Property.BackgroundColor>('#9844b7'),
-  bgColor04: NotRequired<CSST.Property.BackgroundColor>('#ff357f'),
+  bgColor03: NotRequired<CSST.Property.BackgroundColor>('#bd33ef'),
+  bgColor04: NotRequired<CSST.Property.BackgroundColor>('#E3008C'),
   slope: NotRequired<number>(270),
+  borderRadiusV: NotRequired<number>(5),
+  borderRadiusU: NotRequired<CssStyle.Unit.Length>('em'),
+  paddingYV: NotRequired<number>(1.5),
+  paddingXV: NotRequired<number>(4),
+  paddingYU: NotRequired<CssStyle.Unit.Length>('em'),
+  paddingXU: NotRequired<CssStyle.Unit.Length>('em'),
+  duration: NotRequired<number>(0.3),
 }
 
 export type FlowGradientStyleProps = getPropType<typeof flowGradientConf>
