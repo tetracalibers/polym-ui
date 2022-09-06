@@ -1,13 +1,13 @@
 import { ComponentStory } from '@storybook/react'
 import { Button } from '../../core'
 import { defaultButtonCharacterProps } from '../../model/button'
-import { defaultGradientStyleProps } from '../../model/style'
-import { gradientStyleArgTypes } from '../styleArgTypes'
+import { defaultBurglarizeStyleProps } from '../../model/style'
+import { burglarizeStyleArgTypes } from '../styleArgTypes'
 import { buttonArgTypes } from './argTypes'
 
 export default {
-  title: 'button/Gradient',
-  component: Button.Gradient,
+  title: 'button/Burglarize',
+  component: Button.Burglarize,
   parameters: {
     docs: {
       description: {
@@ -15,22 +15,22 @@ export default {
       },
     },
     backgrounds: {
-      default: 'white',
+      default: 'light',
     },
   },
   argTypes: {
     ...buttonArgTypes,
-    ...gradientStyleArgTypes,
+    ...burglarizeStyleArgTypes,
   },
 }
 
 const Template: ComponentStory<typeof Button> = ({ children, ...args }) => (
-  <Button.Gradient {...args}>{children}</Button.Gradient>
+  <Button.Burglarize {...args}>{children}</Button.Burglarize>
 )
 
-export const gradient = Template.bind({})
-gradient.args = {
+export const Burglarize = Template.bind({})
+Burglarize.args = {
   ...defaultButtonCharacterProps,
-  ...defaultGradientStyleProps,
-  children: 'Correct Usage',
+  ...defaultBurglarizeStyleProps,
+  children: 'Press!!',
 }

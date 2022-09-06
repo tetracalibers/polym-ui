@@ -21,7 +21,7 @@ export const buttonArgTypes = {
   },
   children: {
     control: {
-      type: null,
+      type: 'text',
     },
     description: 'Element to be displayed as a button label. ',
     table: {
