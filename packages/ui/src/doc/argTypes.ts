@@ -63,11 +63,8 @@ const fontSize = (defaultProps: {
   },
 })
 
-const lineHeight = (defaultProps: {
-  lineHeightV?: number
-  lineHeightU?: CssStyle.Unit.Length
-}) => ({
-  lineHeightV: {
+const lineHeight = (defaultProps: { lineHeight?: number }) => ({
+  lineHeight: {
     ...withDefaultAs('lineHeight'),
     control: {
       type: 'number',
@@ -75,22 +72,7 @@ const lineHeight = (defaultProps: {
     table: {
       ...withDefaultAs('lineHeight').table,
       defaultValue: {
-        summary: defaultProps.lineHeightV,
-        detail: null,
-      },
-    },
-  },
-  lineHeightU: {
-    ...withDefaultAs('lineHeight'),
-    control: {
-      type: 'select',
-    },
-    options: CssStyle.Unit.length,
-    description: 'Units of lineHeightV',
-    table: {
-      ...withDefaultAs('lineHeight').table,
-      defaultValue: {
-        summary: defaultProps.lineHeightU,
+        summary: defaultProps.lineHeight,
         detail: null,
       },
     },

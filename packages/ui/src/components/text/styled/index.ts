@@ -5,7 +5,7 @@ export const Core = styled.span`
   ${({ theme }) => css`
     --font-size: ${theme.fontSizeV + theme.fontSizeU};
     --color: ${theme.color};
-    --line-height: ${theme.lineHeightV + theme.lineHeightU};
+    --line-height: ${theme.lineHeight};
   `}
 
   font-size: var(--font-size);

@@ -14,11 +14,23 @@ const coreConf = {
   color: NotRequired<CSST.Property.Color>($.grayScale.dark),
   fontSizeV: NotRequired<number>(1),
   fontSizeU: NotRequired<CssStyle.Unit.Length>('rem'),
-  lineHeightV: NotRequired<number>(1),
-  lineHeightU: NotRequired<CssStyle.Unit.Length>('rem'),
+  lineHeight: NotRequired<number>(1.5),
 }
 
 export type TextBaseStyleProps = getPropType<typeof coreConf>
 export const defaultTextBaseStyleProps = {
   ...getDefaultProps<TextBaseStyleProps>(coreConf),
+}
+
+/* glow --------------------------------------- */
+
+const glowConf = {
+  color: NotRequired<CSST.Property.Color>($.grayScale.light),
+}
+
+export type TextGlowStyleProps = TextBaseStyleProps &
+  getPropType<typeof glowConf>
+export const defaultTextGlowStyleProps = {
+  ...defaultTextBaseStyleProps,
+  ...getDefaultProps<TextGlowStyleProps>(glowConf),
 }

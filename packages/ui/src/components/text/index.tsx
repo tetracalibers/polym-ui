@@ -7,6 +7,7 @@ import {
   injectSolidLineStyle,
   injectWavyLineStyle,
 } from './styled'
+import { injectGlowStyle } from './styled/glow'
 
 /* -------------------------------------------- */
 /* CORE                                         */
@@ -22,8 +23,7 @@ export const Text = ({
   color = defaultTextBaseStyleProps.color,
   fontSizeV = defaultTextBaseStyleProps.fontSizeV,
   fontSizeU = defaultTextBaseStyleProps.fontSizeU,
-  lineHeightV = defaultTextBaseStyleProps.lineHeightV,
-  lineHeightU = defaultTextBaseStyleProps.lineHeightU,
+  lineHeight = defaultTextBaseStyleProps.lineHeight,
   ...props
 }: TextCoreProps) => {
   return (
@@ -32,8 +32,7 @@ export const Text = ({
         color,
         fontSizeV,
         fontSizeU,
-        lineHeightV,
-        lineHeightU,
+        lineHeight,
       }}
     >
       <Core {...props}>{children}</Core>
@@ -93,3 +92,21 @@ const getWavyLineText = (CoreComponent: typeof Text) => {
 }
 
 Text.WavyLine = getWavyLineText(Text)
+
+/* -------------------------------------------- */
+/* GLOW                                         */
+/* -------------------------------------------- */
+
+type GlowProps = TextCoreProps
+
+const getGlowText = (CoreComponent: typeof Text) => {
+  const Component = styled(CoreComponent)`
+    ${injectGlowStyle}
+  `
+
+  return ({ children, ...props }: GlowProps) => {
+    return <Component {...props}>{children}</Component>
+  }
+}
+
+Text.Glow = getGlowText(Text)
