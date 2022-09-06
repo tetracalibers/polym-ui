@@ -17,7 +17,9 @@ const baseStyle = css`
   transition: all 0.3s ease-out;
 `
 
-const flowStyle = css`
+export const injectFlowGradientStyle = css`
+  ${baseStyle}
+
   /*背景の色と形状*/
   background: linear-gradient(
     270deg,
@@ -76,7 +78,7 @@ const toFillStyle = css`
 
 const injectThemeStyleAs = (type: GradientStyleProps['hoverEffect']) => {
   return match(type)
-    .with('flow', () => flowStyle)
+    .with('flow', () => injectFlowGradientStyle)
     .with('shrink', () => shrinkStyle)
     .with('expand', () => expandStyle)
     .with('toFill', () => toFillStyle)

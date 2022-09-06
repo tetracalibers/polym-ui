@@ -27,6 +27,15 @@ export const defaultGradientStyleProps = {
   ...getDefaultProps<GradientStyleProps>(gradientConf),
 }
 
+/* flowGradient ------------------------------- */
+
+const flowGradientConf = {}
+
+export type FlowGradientStyleProps = getPropType<typeof flowGradientConf>
+export const defaultFlowGradientStyleProps = {
+  ...getDefaultProps<FlowGradientStyleProps>(flowGradientConf),
+}
+
 /* burglarize --------------------------------- */
 
 export const burglarizePushToOptions = ['bottom', 'left', 'right'] as const

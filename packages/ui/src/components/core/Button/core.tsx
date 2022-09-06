@@ -17,11 +17,12 @@ import { defaultButtonCoreProps } from './model/props'
 import {
   BurglarizeStyleProps,
   defaultBurglarizeStyleProps,
+  FlowGradientStyleProps,
   GradientStyleProps,
 } from './model/style'
 import { CheckSemanticButton } from './styled'
 import { injectBurglarizeStyle } from './styled/burglarize'
-import { injectGradientStyle } from './styled/gradient'
+import { injectFlowGradientStyle, injectGradientStyle } from './styled/gradient'
 
 /* -------------------------------------------- */
 /* CORE                                         */
@@ -110,6 +111,36 @@ export const getGradientClickElement = <
 
 Button.Gradient = getGradientClickElement<ButtonCoreProps>(Button)
 Anchor.Gradient = getGradientClickElement<AnchorCoreProps>(Anchor)
+
+/* flowGradient ------------------------------- */
+
+type FlowGradientClickProps<CORE extends ButtonCoreProps | AnchorCoreProps> =
+  CORE & FlowGradientStyleProps
+
+export const getFlowGradientClickElement = <
+  CORE extends ButtonCoreProps | AnchorCoreProps
+>(
+  CoreComponent: ElementType
+) => {
+  const Component = styled(CoreComponent)`
+    ${injectFlowGradientStyle}
+  `
+
+  return forwardRef(
+    ({ children, ref, ...props }: FlowGradientClickProps<CORE>) => {
+      return (
+        <ThemeProvider theme={{}}>
+          <Component {...props} ref={ref}>
+            {children}
+          </Component>
+        </ThemeProvider>
+      )
+    }
+  )
+}
+
+Button.FlowGradient = getFlowGradientClickElement<ButtonCoreProps>(Button)
+Anchor.FlowGradient = getFlowGradientClickElement<AnchorCoreProps>(Anchor)
 
 /* burglarize --------------------------------- */
 
