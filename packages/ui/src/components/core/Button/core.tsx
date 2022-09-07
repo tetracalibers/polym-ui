@@ -23,7 +23,8 @@ import {
 } from './model/style'
 import { CheckSemanticButton } from './styled'
 import { injectBurglarizeStyle } from './styled/burglarize'
-import { injectFlowGradientStyle, injectGradientStyle } from './styled/gradient'
+import { injectFlowGradientStyle } from './styled/flowGradient'
+import { injectGradientStyle } from './styled/gradient'
 
 /* -------------------------------------------- */
 /* CORE                                         */
@@ -172,6 +173,8 @@ export const getFlowGradientClickElement = <
 
 Button.FlowGradient = getFlowGradientClickElement<ButtonCoreProps>(Button)
 Anchor.FlowGradient = getFlowGradientClickElement<AnchorCoreProps>(Anchor)
+
+/* scaleGradient ------------------------------ */
 
 /* burglarize --------------------------------- */
 

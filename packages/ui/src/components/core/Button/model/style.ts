@@ -49,6 +49,8 @@ export const defaultFlowGradientStyleProps = {
   ...getDefaultProps<FlowGradientStyleProps>(flowGradientConf),
 }
 
+/* scale gradient ----------------------------- */
+
 /* burglarize --------------------------------- */
 
 export const burglarizePushToOptions = ['bottom', 'left', 'right'] as const
