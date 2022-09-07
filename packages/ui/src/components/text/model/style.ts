@@ -12,7 +12,7 @@ import { CssStyle } from 'ts-typedef-helper'
 
 const coreConf = {
   color: NotRequired<CSST.Property.Color>($.grayScale.dark),
-  fontSizeV: NotRequired<number>(2),
+  fontSizeV: NotRequired<number>(1),
   fontSizeU: NotRequired<CssStyle.Unit.Length>('rem'),
   lineHeight: NotRequired<number>(1.5),
 }
