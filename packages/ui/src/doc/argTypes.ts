@@ -428,6 +428,72 @@ const shadowColor = (defaultProps: { shadowColor?: string }) => ({
   },
 })
 
+/* border ------------------------------------- */
+
+const borderWidth = (defaultProps: {
+  borderWidthV?: number
+  borderWidthU?: CssStyle.Unit.Length
+}) => ({
+  borderWidthV: {
+    control: {
+      type: 'number',
+    },
+    description: '',
+    table: {
+      ...withDefaultAs('borderWidth').table,
+      defaultValue: {
+        summary: defaultProps.borderWidthV,
+        detail: null,
+      },
+      subcategory: 'Border',
+    },
+  },
+  borderWidthU: {
+    ...withDefaultAs('borderWidth'),
+    control: {
+      type: 'select',
+    },
+    options: CssStyle.Unit.length,
+    description: 'Units of borderWidthV',
+    table: {
+      ...withDefaultAs('borderWidth').table,
+      defaultValue: {
+        summary: defaultProps.borderWidthU,
+        detail: null,
+      },
+      subcategory: 'Border',
+    },
+  },
+})
+
+const borderStyle = (defaultProps: { borderStyle?: string }) => ({
+  borderStyle: {
+    ...withDefaultAs('borderStyle'),
+    table: {
+      ...withDefaultAs('borderStyle').table,
+      defaultValue: {
+        summary: defaultProps.borderStyle,
+        detail: null,
+      },
+      subcategory: 'Border',
+    },
+  },
+})
+
+const borderColor = (defaultProps: { borderColor?: string }) => ({
+  borderColor: {
+    ...withDefaultAs('borderColor'),
+    table: {
+      ...withDefaultAs('borderColor').table,
+      defaultValue: {
+        summary: defaultProps.borderColor,
+        detail: null,
+      },
+      subcategory: 'Border',
+    },
+  },
+})
+
 /* line --------------------------------------- */
 
 const lineColor = (
@@ -579,4 +645,7 @@ export const ArgType = {
   shadowOffsetX,
   shadowOffsetY,
   shadowColor,
+  borderWidth,
+  borderColor,
+  borderStyle,
 }

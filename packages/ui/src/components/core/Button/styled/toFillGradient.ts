@@ -23,6 +23,10 @@ export const injectToFillGradientStyle = css`
     --shadow-offsetY: ${theme.shadowOffsetYV + theme.shadowOffsetYU};
     --shadow-blur: ${theme.shadowBlurV + theme.shadowBlurU};
     --shadow-color: ${theme.shadowColor};
+    /* border */
+    --border-width: ${theme.borderWidthV + theme.borderWidthU};
+    --border-style: ${theme.borderStyle};
+    --border-color: ${theme.borderColor};
   `}
   
   display: inline-block;
@@ -32,7 +36,7 @@ export const injectToFillGradientStyle = css`
   text-decoration: none;
   outline: none;
 
-  border: 1px solid #fa6c9f;
+  border: var(--border-width) var(--border-style) var(--border-color);
 
   transition: all var(--duration) ease-out;
 

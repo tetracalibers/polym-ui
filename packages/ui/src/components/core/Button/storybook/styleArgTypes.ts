@@ -96,6 +96,9 @@ export const toFillGradientStyleArgTypes = {
   ...ArgType.shadowColor(defaultToFillGradientStyleProps),
   ...ArgType.shadowOffsetX(defaultToFillGradientStyleProps),
   ...ArgType.shadowOffsetY(defaultToFillGradientStyleProps),
+  ...ArgType.borderColor(defaultToFillGradientStyleProps),
+  ...ArgType.borderWidth(defaultToFillGradientStyleProps),
+  ...ArgType.borderStyle(defaultToFillGradientStyleProps),
 }
 
 /* -------------------------------------------- */
