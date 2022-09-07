@@ -3,16 +3,14 @@ import styled, { ThemeProvider } from 'styled-components'
 import {
   defaultTextBaseStyleProps,
   defaultTextGlowStyleProps,
+  defaultTextSolidlineStyleProps,
   TextBaseStyleProps,
   TextGlowStyleProps,
+  TextSolidlineStyleProps,
 } from './model/style'
-import {
-  Core,
-  injectDashedLineStyle,
-  injectSolidLineStyle,
-  injectWavyLineStyle,
-} from './styled'
+import { Core, injectDashedLineStyle, injectWavyLineStyle } from './styled'
 import { injectGlowStyle } from './styled/glow'
+import { injectSolidLineStyle } from './styled/solidline'
 
 /* -------------------------------------------- */
 /* CORE                                         */
@@ -49,14 +47,36 @@ export const Text = ({
 /* SOLIDLINE                                    */
 /* -------------------------------------------- */
 
-type SolidLineTextProps = TextCoreProps
+type SolidLineTextProps = TextCoreProps & TextSolidlineStyleProps
 
 const getSolidLineText = (CoreComponent: typeof Text) => {
   const Component = styled(CoreComponent)`
     ${injectSolidLineStyle}
   `
-  return ({ children, ...props }: SolidLineTextProps) => {
-    return <Component {...props}>{children}</Component>
+  return ({
+    children,
+    lineColor = defaultTextSolidlineStyleProps.lineColor,
+    bgColor = defaultTextSolidlineStyleProps.bgColor,
+    underOffsetV = defaultTextSolidlineStyleProps.underOffsetV,
+    underOffsetU = defaultTextSolidlineStyleProps.underOffsetU,
+    thicknessV = defaultTextSolidlineStyleProps.thicknessV,
+    thicknessU = defaultTextSolidlineStyleProps.thicknessU,
+    ...props
+  }: SolidLineTextProps) => {
+    return (
+      <ThemeProvider
+        theme={{
+          lineColor,
+          bgColor,
+          underOffsetV,
+          underOffsetU,
+          thicknessV,
+          thicknessU,
+        }}
+      >
+        <Component {...props}>{children}</Component>
+      </ThemeProvider>
+    )
   }
 }
 

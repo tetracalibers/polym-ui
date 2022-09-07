@@ -22,6 +22,24 @@ export const defaultTextBaseStyleProps = {
   ...getDefaultProps<TextBaseStyleProps>(coreConf),
 }
 
+/* solid line --------------------------------- */
+
+const solidlineConf = {
+  lineColor: NotRequired<CSST.Property.Color>('#EA005E'),
+  bgColor: NotRequired<CSST.Property.BackgroundColor>('#ffffff'),
+  underOffsetV: NotRequired<number>(0.1),
+  underOffsetU: NotRequired<CssStyle.Unit.Length>('em'),
+  thicknessV: NotRequired<number>(1.5),
+  thicknessU: NotRequired<CssStyle.Unit.Length>('px'),
+}
+
+export type TextSolidlineStyleProps = TextBaseStyleProps &
+  getPropType<typeof solidlineConf>
+export const defaultTextSolidlineStyleProps = {
+  ...defaultTextBaseStyleProps,
+  ...getDefaultProps<TextSolidlineStyleProps>(solidlineConf),
+}
+
 /* glow --------------------------------------- */
 
 const glowConf = {

@@ -13,19 +13,6 @@ export const Core = styled.span`
   line-height: var(--line-height);
 `
 
-export const injectSolidLineStyle = css`
-  --line-color: ${$.vivid.red};
-  --bg-color: #fff;
-  --under-offset: 0.1em;
-  --thickness: 1.5px;
-
-  background-image: linear-gradient(var(--line-color), var(--line-color));
-  background-repeat: no-repeat;
-  background-size: 100% var(--thickness);
-  background-position-y: calc(1em - var(--under-offset));
-  text-shadow: 0.05em 0 var(--bg-color), -0.05em 0 var(--bg-color);
-`
-
 export const injectDashedLineStyle = css`
   --line-color: ${$.vivid.red};
   --bg-color: #fff;
