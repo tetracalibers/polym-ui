@@ -86,6 +86,30 @@ export const defaultScaleGradientStyleProps = {
   ...getDefaultProps<ScaleGradientStyleProps>(scaleGradientConf),
 }
 
+/* to fill gradient --------------------------- */
+
+const toFillGradientConf = {
+  /* gradient ----------------------------------- */
+  bgColor01: NotRequired<CSST.Property.BackgroundColor>('#ffa8a8'),
+  bgColor02: NotRequired<CSST.Property.BackgroundColor>('#fcff00'),
+  bgColor03: NotRequired<CSST.Property.BackgroundColor>('#c9ffbf'),
+  slope: NotRequired<number>(270),
+  /* box ---------------------------------------- */
+  borderRadiusV: NotRequired<number>(5),
+  borderRadiusU: NotRequired<CssStyle.Unit.Length>('em'),
+  paddingYV: NotRequired<number>(1.5),
+  paddingXV: NotRequired<number>(4),
+  paddingYU: NotRequired<CssStyle.Unit.Length>('em'),
+  paddingXU: NotRequired<CssStyle.Unit.Length>('em'),
+  /* effect ------------------------------------- */
+  duration: NotRequired<number>(0.4),
+}
+
+export type ToFillGradientStyleProps = getPropType<typeof toFillGradientConf>
+export const defaultToFillGradientStyleProps = {
+  ...getDefaultProps<ToFillGradientStyleProps>(toFillGradientConf),
+}
+
 /* burglarize --------------------------------- */
 
 export const burglarizePushToOptions = ['bottom', 'left', 'right'] as const

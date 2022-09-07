@@ -19,15 +19,18 @@ import {
   defaultBurglarizeStyleProps,
   defaultFlowGradientStyleProps,
   defaultScaleGradientStyleProps,
+  defaultToFillGradientStyleProps,
   FlowGradientStyleProps,
   GradientStyleProps,
   ScaleGradientStyleProps,
+  ToFillGradientStyleProps,
 } from './model/style'
 import { CheckSemanticButton } from './styled'
 import { injectBurglarizeStyle } from './styled/burglarize'
 import { injectFlowGradientStyle } from './styled/flowGradient'
 import { injectGradientStyle } from './styled/gradient'
 import { injectScaleGradientStyle } from './styled/scaleGradient'
+import { injectToFillGradientStyle } from './styled/toFillGradient'
 
 /* -------------------------------------------- */
 /* CORE                                         */
@@ -250,6 +253,64 @@ export const getScaleGradientClickElement = <
 
 Button.ScaleGradient = getScaleGradientClickElement<ButtonCoreProps>(Button)
 Anchor.ScaleGradient = getScaleGradientClickElement<AnchorCoreProps>(Anchor)
+
+/* toFillGradient ----------------------------- */
+
+type ToFillGradientClickProps<CORE extends ButtonCoreProps | AnchorCoreProps> =
+  CORE & ToFillGradientStyleProps
+
+export const getToFillGradientClickElement = <
+  CORE extends ButtonCoreProps | AnchorCoreProps
+>(
+  CoreComponent: ElementType
+) => {
+  const Component = styled(CoreComponent)`
+    ${injectToFillGradientStyle}
+  `
+  return forwardRef(
+    ({
+      children,
+      ref,
+      bgColor01 = defaultToFillGradientStyleProps.bgColor01,
+      bgColor02 = defaultToFillGradientStyleProps.bgColor02,
+      bgColor03 = defaultToFillGradientStyleProps.bgColor03,
+      slope = defaultToFillGradientStyleProps.slope,
+      borderRadiusV = defaultToFillGradientStyleProps.borderRadiusV,
+      borderRadiusU = defaultToFillGradientStyleProps.borderRadiusU,
+      paddingXU = defaultToFillGradientStyleProps.paddingXU,
+      paddingYU = defaultToFillGradientStyleProps.paddingYU,
+      paddingXV = defaultToFillGradientStyleProps.paddingXV,
+      paddingYV = defaultToFillGradientStyleProps.paddingYV,
+      duration = defaultToFillGradientStyleProps.duration,
+      ...props
+    }: ToFillGradientClickProps<CORE>) => {
+      return (
+        <ThemeProvider
+          theme={{
+            bgColor01,
+            bgColor02,
+            bgColor03,
+            slope,
+            borderRadiusV,
+            borderRadiusU,
+            paddingXU,
+            paddingYU,
+            paddingXV,
+            paddingYV,
+            duration,
+          }}
+        >
+          <Component {...props} ref={ref}>
+            {children}
+          </Component>
+        </ThemeProvider>
+      )
+    }
+  )
+}
+
+Button.ToFillGradient = getToFillGradientClickElement<ButtonCoreProps>(Button)
+Anchor.ToFillGradient = getToFillGradientClickElement<AnchorCoreProps>(Anchor)
 
 /* burglarize --------------------------------- */
 

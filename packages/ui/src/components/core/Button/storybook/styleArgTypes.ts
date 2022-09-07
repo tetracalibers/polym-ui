@@ -6,6 +6,7 @@ import {
   defaultFlowGradientStyleProps,
   defaultScaleGradientStyleProps,
   scaleGradientHoverEffectOptions,
+  defaultToFillGradientStyleProps,
 } from './../model/style'
 import { ArgType } from '../../../../doc/argTypes'
 
@@ -78,6 +79,19 @@ export const scaleGradientStyleArgTypes = {
       },
     },
   },
+}
+
+/* -------------------------------------------- */
+
+export const toFillGradientStyleArgTypes = {
+  ...ArgType.bgColor01(defaultToFillGradientStyleProps),
+  ...ArgType.bgColor02(defaultToFillGradientStyleProps),
+  ...ArgType.bgColor03(defaultToFillGradientStyleProps),
+  ...ArgType.slope(defaultToFillGradientStyleProps),
+  ...ArgType.borderRadius(defaultToFillGradientStyleProps),
+  ...ArgType.paddingY(defaultToFillGradientStyleProps),
+  ...ArgType.paddingX(defaultToFillGradientStyleProps),
+  ...ArgType.duration(defaultToFillGradientStyleProps),
 }
 
 /* -------------------------------------------- */
