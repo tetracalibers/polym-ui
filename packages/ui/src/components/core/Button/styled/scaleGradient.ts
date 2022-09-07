@@ -21,29 +21,6 @@ const baseStyle = css`
   `}
 `
 
-const shrinkStyle = css`
-  /*背景の色と形状*/
-  background: linear-gradient(to right, #52a0fd 0%, #00e2fa 80%, #00e2fa 100%);
-  /* offsetX offsetY blurRadius */
-  box-shadow: 0 15px 15px rgba(82, 160, 253, 0.4);
-
-  &:hover {
-    transform: scale(var(--scale));
-  }
-`
-
-const expandStyle = css`
-  /*背景色*/
-  background: linear-gradient(to right, #44ea76 0%, #39fad7 80%, #39fad7 100%);
-
-  /*hoverした際のスケールで全体を拡大し影を付ける*/
-  &:hover {
-    transform: scale(var(--scale));
-    /*ボックスの影*/
-    box-shadow: 0 15px 15px rgba(57, 250, 215, 0.4);
-  }
-`
-
 const effectAs = (type: ScaleGradientStyleProps['hoverEffect']) => {
   return match(type)
     .with('shrink', () => {
