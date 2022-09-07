@@ -227,7 +227,7 @@ const bgColor = (defaultProps: { bgColor?: string }) => ({
   },
 })
 
-/* gradient ----------------------------------- */
+/* Gradient ----------------------------------- */
 
 const bgColor01 = (defaultProps: { bgColor01?: string }) => ({
   bgColor01: {
@@ -238,7 +238,7 @@ const bgColor01 = (defaultProps: { bgColor01?: string }) => ({
         summary: defaultProps.bgColor01,
         detail: null,
       },
-      subcategory: 'gradient',
+      subcategory: 'Gradient',
     },
   },
 })
@@ -252,7 +252,7 @@ const bgColor02 = (defaultProps: { bgColor02?: string }) => ({
         summary: defaultProps.bgColor02,
         detail: null,
       },
-      subcategory: 'gradient',
+      subcategory: 'Gradient',
     },
   },
 })
@@ -266,7 +266,7 @@ const bgColor03 = (defaultProps: { bgColor03?: string }) => ({
         summary: defaultProps.bgColor03,
         detail: null,
       },
-      subcategory: 'gradient',
+      subcategory: 'Gradient',
     },
   },
 })
@@ -280,7 +280,7 @@ const bgColor04 = (defaultProps: { bgColor04?: string }) => ({
         summary: defaultProps.bgColor04,
         detail: null,
       },
-      subcategory: 'gradient',
+      subcategory: 'Gradient',
     },
   },
 })
@@ -296,7 +296,86 @@ const slope = (defaultProps: { slope?: number }) => ({
         summary: defaultProps.slope,
         detail: null,
       },
-      subcategory: 'gradient',
+      subcategory: 'Gradient',
+    },
+  },
+})
+
+/* shadow ------------------------------------- */
+
+const shadowOffsetX = (defaultProps: { shadowOffsetX?: number }) => ({
+  shadowOffsetX: {
+    control: {
+      type: 'number',
+    },
+    description: '',
+    table: {
+      ...withDefaultAs('boxShadow').table,
+      type: {
+        summary: 'number (px)',
+      },
+      defaultValue: {
+        summary: defaultProps.shadowOffsetX,
+        detail: null,
+      },
+      subcategory: 'Shadow',
+    },
+  },
+})
+
+const shadowOffsetY = (defaultProps: { shadowOffsetY?: number }) => ({
+  shadowOffsetY: {
+    control: {
+      type: 'number',
+    },
+    description: '',
+    table: {
+      ...withDefaultAs('boxShadow').table,
+      type: {
+        summary: 'number (px)',
+      },
+      defaultValue: {
+        summary: defaultProps.shadowOffsetY,
+        detail: null,
+      },
+      subcategory: 'Shadow',
+    },
+  },
+})
+
+const shadowBlur = (defaultProps: { shadowBlur?: number }) => ({
+  shadowBlur: {
+    control: {
+      type: 'number',
+    },
+    description: '',
+    type: {
+      summary: 'number (px)',
+    },
+    table: {
+      ...withDefaultAs('boxShadow').table,
+      defaultValue: {
+        summary: defaultProps.shadowBlur,
+        detail: null,
+      },
+      subcategory: 'Shadow',
+    },
+  },
+})
+
+const shadowColor = (defaultProps: { shadowColor?: string }) => ({
+  shadowColor: {
+    control: {
+      type: 'color',
+    },
+    description: '',
+    table: {
+      ...withDefaultAs('boxShadow').table,
+      defaultValue: {
+        summary: defaultProps.shadowColor,
+        detail: null,
+      },
+      subcategory: 'Shadow',
     },
   },
 })
@@ -448,4 +527,8 @@ export const ArgType = {
   underOffset,
   thickness,
   scaleFactor,
+  shadowBlur,
+  shadowOffsetX,
+  shadowOffsetY,
+  shadowColor,
 }

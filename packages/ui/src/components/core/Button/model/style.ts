@@ -56,18 +56,26 @@ export type ScaleGradientHoverEffectOptions =
   typeof scaleGradientHoverEffectOptions[number]
 
 const scaleGradientConf = {
+  /* gradient ----------------------------------- */
   bgColor01: NotRequired<CSST.Property.BackgroundColor>('#ee5af6 '),
   bgColor02: NotRequired<CSST.Property.BackgroundColor>('#736EFE'),
   slope: NotRequired<number>(90),
+  /* box ---------------------------------------- */
   borderRadiusV: NotRequired<number>(5),
   borderRadiusU: NotRequired<CssStyle.Unit.Length>('em'),
   paddingYV: NotRequired<number>(1.5),
   paddingXV: NotRequired<number>(4),
   paddingYU: NotRequired<CssStyle.Unit.Length>('em'),
   paddingXU: NotRequired<CssStyle.Unit.Length>('em'),
+  /* effect ------------------------------------- */
   duration: NotRequired<number>(0.3),
   hoverEffect: NotRequired<ScaleGradientHoverEffectOptions>('shrink'),
   scaleFactor: NotRequired<number>(0.05),
+  /* shadow ------------------------------------- */
+  shadowOffsetX: NotRequired<number>(0),
+  shadowOffsetY: NotRequired<number>(15),
+  shadowBlur: NotRequired<number>(15),
+  shadowColor: NotRequired<CSST.Property.Color>('#f5cbff'),
 }
 
 export type ScaleGradientStyleProps = getPropType<typeof scaleGradientConf>

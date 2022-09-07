@@ -206,6 +206,10 @@ export const getScaleGradientClickElement = <
       duration = defaultScaleGradientStyleProps.duration,
       hoverEffect = defaultScaleGradientStyleProps.hoverEffect,
       scaleFactor = defaultScaleGradientStyleProps.scaleFactor,
+      shadowOffsetX = defaultScaleGradientStyleProps.shadowOffsetX,
+      shadowOffsetY = defaultScaleGradientStyleProps.shadowOffsetY,
+      shadowBlur = defaultScaleGradientStyleProps.shadowBlur,
+      shadowColor = defaultScaleGradientStyleProps.shadowColor,
       ...props
     }: ScaleGradientClickProps<CORE>) => {
       return (
@@ -223,6 +227,10 @@ export const getScaleGradientClickElement = <
             duration,
             hoverEffect,
             scaleFactor,
+            shadowOffsetX,
+            shadowOffsetY,
+            shadowBlur,
+            shadowColor,
           }}
         >
           <Component {...props} ref={ref}>

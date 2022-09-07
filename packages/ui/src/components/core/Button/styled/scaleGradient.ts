@@ -18,6 +18,11 @@ const baseStyle = css`
     /* onHover */
     --duration: ${theme.duration}s;
     --scale-factor: ${theme.scaleFactor};
+    /* shadow */
+    --shadow-offsetX: ${theme.shadowOffsetX}px;
+    --shadow-offsetY: ${theme.shadowOffsetY}px;
+    --shadow-blur: ${theme.shadowBlur}px;
+    --shadow-color: ${theme.shadowColor};
   `}
 `
 
@@ -25,7 +30,8 @@ const effectAs = (type: ScaleGradientStyleProps['hoverEffect']) => {
   return match(type)
     .with('shrink', () => {
       return css`
-        box-shadow: 0 15px 15px #f5cbff;
+        box-shadow: var(--shadow-offsetX) var(--shadow-offsetY)
+          var(--shadow-blur) var(--shadow-color);
 
         &:hover {
           transform: scale(calc(1 - var(--scale-factor)));
@@ -36,7 +42,8 @@ const effectAs = (type: ScaleGradientStyleProps['hoverEffect']) => {
       return css`
         &:hover {
           transform: scale(calc(1 + var(--scale-factor)));
-          box-shadow: 0 15px 15px #f5cbff;
+          box-shadow: var(--shadow-offsetX) var(--shadow-offsetY)
+            var(--shadow-blur) var(--shadow-color);
         }
       `
     })

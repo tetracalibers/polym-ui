@@ -58,6 +58,10 @@ export const scaleGradientStyleArgTypes = {
     needIncrement: 'hoverEffect="expand"',
     notNeedIncrement: 'hoverEffect="shrink"',
   }),
+  ...ArgType.shadowBlur(defaultScaleGradientStyleProps),
+  ...ArgType.shadowColor(defaultScaleGradientStyleProps),
+  ...ArgType.shadowOffsetX(defaultScaleGradientStyleProps),
+  ...ArgType.shadowOffsetY(defaultScaleGradientStyleProps),
   hoverEffect: {
     control: {
       type: 'radio',
