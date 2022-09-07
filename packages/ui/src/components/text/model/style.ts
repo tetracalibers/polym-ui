@@ -90,3 +90,15 @@ export type TextCloudStyleProps = getPropType<typeof cloudConf>
 export const defaultTextCloudStyleProps = {
   ...getDefaultProps<TextCloudStyleProps>(cloudConf),
 }
+
+/* fire --------------------------------------- */
+
+const fireConf = {
+  ...coreConf,
+  color: NotRequired<CSST.Property.Color>('#fff'),
+}
+
+export type TextFireStyleProps = getPropType<typeof fireConf>
+export const defaultTextFireStyleProps = {
+  ...getDefaultProps<TextFireStyleProps>(fireConf),
+}

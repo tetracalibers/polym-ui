@@ -9,6 +9,7 @@ import {
   TextBaseStyleProps,
   TextCloudStyleProps,
   TextDashedLineStyleProps,
+  TextFireStyleProps,
   TextGlowStyleProps,
   TextSolidlineStyleProps,
   TextWavyLineStyleProps,
@@ -16,6 +17,7 @@ import {
 import { Core } from './styled'
 import { injectCloudStyle } from './styled/cloud'
 import { injectDashedLineStyle } from './styled/dashedline'
+import { injectFireStyle } from './styled/fire'
 import { injectGlowStyle } from './styled/glow'
 import { injectSolidLineStyle } from './styled/solidline'
 import { injectWavyLineStyle } from './styled/wavyline'
@@ -202,3 +204,21 @@ const getCloudText = (CoreComponent: typeof Text) => {
 }
 
 Text.Cloud = getCloudText(Text)
+
+/* -------------------------------------------- */
+/* FIRE                                         */
+/* -------------------------------------------- */
+
+type FireProps = TextCoreProps & TextFireStyleProps
+
+const getFireText = (CoreComponent: typeof Text) => {
+  const Component = styled(CoreComponent)`
+    ${injectFireStyle}
+  `
+
+  return ({ children, ...props }: FireProps) => {
+    return <Component {...props}>{children}</Component>
+  }
+}
+
+Text.Fire = getFireText(Text)

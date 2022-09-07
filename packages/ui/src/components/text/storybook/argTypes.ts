@@ -3,6 +3,7 @@ import {
   defaultTextBaseStyleProps,
   defaultTextCloudStyleProps,
   defaultTextDashedLineStyleProps,
+  defaultTextFireStyleProps,
   defaultTextGlowStyleProps,
   defaultTextSolidlineStyleProps,
   defaultTextWavyLineStyleProps,
@@ -57,4 +58,9 @@ export const glowTextArgTypes = {
 export const cloudTextArgTypes = {
   ...textArgTypes,
   ...ArgType.color(defaultTextCloudStyleProps),
+}
+
+export const fireTextArgTypes = {
+  ...textArgTypes,
+  ...ArgType.color(defaultTextFireStyleProps),
 }
