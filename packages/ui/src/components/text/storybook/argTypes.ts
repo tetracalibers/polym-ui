@@ -2,6 +2,7 @@ import { ArgType } from '../../../doc/argTypes'
 import {
   defaultTextBaseStyleProps,
   defaultTextGlowStyleProps,
+  defaultTextSolidlineStyleProps,
 } from '../model/style'
 
 export const textArgTypes = {
@@ -11,10 +12,20 @@ export const textArgTypes = {
   ...ArgType.lineHeight(defaultTextBaseStyleProps),
 }
 
+export const solidlineTextArgTypes = {
+  ...textArgTypes,
+  ...ArgType.lineColor(defaultTextSolidlineStyleProps, {
+    subcategory: 'Text Decoration',
+  }),
+  ...ArgType.bgColor(defaultTextSolidlineStyleProps),
+  ...ArgType.underOffset(defaultTextSolidlineStyleProps),
+  ...ArgType.thickness(defaultTextSolidlineStyleProps, {
+    subcategory: 'Text Decoration',
+  }),
+}
+
 export const glowTextArgTypes = {
-  ...ArgType.children('text'),
+  ...textArgTypes,
   ...ArgType.color(defaultTextGlowStyleProps),
-  ...ArgType.fontSize(defaultTextGlowStyleProps),
-  ...ArgType.lineHeight(defaultTextGlowStyleProps),
   ...ArgType.duration(defaultTextGlowStyleProps),
 }

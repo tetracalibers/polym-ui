@@ -29,6 +29,10 @@ const children = (type: string | null = null, required = true) => ({
 /* CSS                                          */
 /* -------------------------------------------- */
 
+type CssOptionalArgs = {
+  subcategory?: string
+}
+
 const fontSize = (defaultProps: {
   fontSizeV?: number
   fontSizeU?: CssStyle.Unit.Length
@@ -219,10 +223,11 @@ const bgColor = (defaultProps: { bgColor?: string }) => ({
         summary: defaultProps.bgColor,
         detail: null,
       },
-      subcategory: 'gradient',
     },
   },
 })
+
+/* gradient ----------------------------------- */
 
 const bgColor01 = (defaultProps: { bgColor01?: string }) => ({
   bgColor01: {
@@ -296,6 +301,110 @@ const slope = (defaultProps: { slope?: number }) => ({
   },
 })
 
+/* line --------------------------------------- */
+
+const lineColor = (
+  defaultProps: { lineColor?: string },
+  option?: CssOptionalArgs
+) => ({
+  lineColor: {
+    ...withDefaultAs('borderColor'),
+    table: {
+      ...withDefaultAs('borderColor').table,
+      defaultValue: {
+        summary: defaultProps.lineColor,
+        detail: null,
+      },
+      subcategory:
+        option?.subcategory ?? withDefaultAs('borderColor').table.subcategory,
+    },
+  },
+})
+
+const underOffset = (
+  defaultProps: {
+    underOffsetV?: number
+    underOffsetU?: CssStyle.Unit.Length
+  },
+  option?: CssOptionalArgs
+) => ({
+  underOffsetV: {
+    ...withDefaultAs('textUnderlineOffset'),
+    control: {
+      type: 'number',
+    },
+    table: {
+      ...withDefaultAs('textUnderlineOffset').table,
+      defaultValue: {
+        summary: defaultProps.underOffsetV,
+        detail: null,
+      },
+      subcategory:
+        option?.subcategory ??
+        withDefaultAs('textUnderlineOffset').table.subcategory,
+    },
+  },
+  underOffsetU: {
+    ...withDefaultAs('textUnderlineOffset'),
+    control: {
+      type: 'select',
+    },
+    options: CssStyle.Unit.length,
+    description: 'Units of underOffsetV',
+    table: {
+      ...withDefaultAs('textUnderlineOffset').table,
+      defaultValue: {
+        summary: defaultProps.underOffsetU,
+        detail: null,
+      },
+      subcategory:
+        option?.subcategory ??
+        withDefaultAs('textUnderlineOffset').table.subcategory,
+    },
+  },
+})
+
+const thickness = (
+  defaultProps: {
+    thicknessV?: number
+    thicknessU?: CssStyle.Unit.Length
+  },
+  option?: CssOptionalArgs
+) => ({
+  thicknessV: {
+    ...withDefaultAs('borderWidth'),
+    control: {
+      type: 'number',
+    },
+    table: {
+      ...withDefaultAs('borderWidth').table,
+      defaultValue: {
+        summary: defaultProps.thicknessV,
+        detail: null,
+      },
+      subcategory:
+        option?.subcategory ?? withDefaultAs('borderWidth').table.subcategory,
+    },
+  },
+  thicknessU: {
+    ...withDefaultAs('borderWidth'),
+    control: {
+      type: 'select',
+    },
+    options: CssStyle.Unit.length,
+    description: 'Units of thicknessV',
+    table: {
+      ...withDefaultAs('borderWidth').table,
+      defaultValue: {
+        summary: defaultProps.thicknessU,
+        detail: null,
+      },
+      subcategory:
+        option?.subcategory ?? withDefaultAs('borderWidth').table.subcategory,
+    },
+  },
+})
+
 /* -------------------------------------------- */
 
 export const ArgType = {
@@ -313,4 +422,7 @@ export const ArgType = {
   bgColor03,
   bgColor04,
   slope,
+  lineColor,
+  underOffset,
+  thickness,
 }

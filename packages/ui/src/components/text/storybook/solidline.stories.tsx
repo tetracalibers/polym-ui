@@ -1,5 +1,7 @@
 import { ComponentStory } from '@storybook/react'
 import { Text } from '..'
+import { defaultTextSolidlineStyleProps } from '../model/style'
+import { solidlineTextArgTypes } from './argTypes'
 
 export default {
   title: 'Text',
@@ -14,7 +16,9 @@ export default {
       default: 'white',
     },
   },
-  argTypes: {},
+  argTypes: {
+    ...solidlineTextArgTypes,
+  },
 }
 
 const Template: ComponentStory<typeof Text> = ({ children, ...args }) => (
@@ -23,6 +27,7 @@ const Template: ComponentStory<typeof Text> = ({ children, ...args }) => (
 
 export const solidline = Template.bind({})
 solidline.args = {
+  ...defaultTextSolidlineStyleProps,
   children:
     'The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax quiz prog. Junk MTV quiz graced by fox whelps. Bawds',
 }
