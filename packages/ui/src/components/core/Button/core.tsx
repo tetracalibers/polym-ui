@@ -293,6 +293,7 @@ export const getToFillGradientClickElement = <
       borderWidthV = defaultToFillGradientStyleProps.borderWidthV,
       borderColor = defaultToFillGradientStyleProps.borderColor,
       borderStyle = defaultToFillGradientStyleProps.borderStyle,
+      afterColor = defaultToFillGradientStyleProps.afterColor,
       ...props
     }: ToFillGradientClickProps<CORE>) => {
       return (
@@ -320,6 +321,7 @@ export const getToFillGradientClickElement = <
             borderStyle,
             borderWidthU,
             borderWidthV,
+            afterColor,
           }}
         >
           <Component {...props} ref={ref}>

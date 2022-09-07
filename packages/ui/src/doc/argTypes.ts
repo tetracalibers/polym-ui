@@ -204,6 +204,8 @@ const duration = (defaultProps: { duration?: number }) => ({
   },
 })
 
+/* text color --------------------------------- */
+
 const color = (defaultProps: { color?: string }) => ({
   color: {
     ...withDefaultAs('color'),
@@ -213,6 +215,18 @@ const color = (defaultProps: { color?: string }) => ({
     },
   },
 })
+
+const afterColor = (defaultProps: { afterColor?: string }) => ({
+  afterColor: {
+    ...withDefaultAs('color'),
+    table: {
+      ...withDefaultAs('color').table,
+      defaultValue: defaultProps,
+    },
+  },
+})
+
+/* background color --------------------------- */
 
 const bgColor = (defaultProps: { bgColor?: string }) => ({
   bgColor: {
@@ -631,6 +645,7 @@ export const ArgType = {
   paddingY,
   duration,
   color,
+  afterColor,
   bgColor,
   bgColor01,
   bgColor02,

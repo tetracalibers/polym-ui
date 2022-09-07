@@ -27,6 +27,8 @@ export const injectToFillGradientStyle = css`
     --border-width: ${theme.borderWidthV + theme.borderWidthU};
     --border-style: ${theme.borderStyle};
     --border-color: ${theme.borderColor};
+    /* color */
+    --after-color: ${theme.afterColor};
   `}
   
   display: inline-block;
@@ -35,15 +37,16 @@ export const injectToFillGradientStyle = css`
 
   text-decoration: none;
   outline: none;
-
   border: var(--border-width) var(--border-style) var(--border-color);
 
   transition: all var(--duration) ease-out;
 
+  color: var(--border-color);
+
   &:hover {
     /*ボタンの形状*/
     border-color: transparent;
-    color: #fff;
+    color: var(--after-color);
     /*背景の色と形状*/
     background-image: linear-gradient(
       var(--slope),

@@ -99,6 +99,7 @@ export const toFillGradientStyleArgTypes = {
   ...ArgType.borderColor(defaultToFillGradientStyleProps),
   ...ArgType.borderWidth(defaultToFillGradientStyleProps),
   ...ArgType.borderStyle(defaultToFillGradientStyleProps),
+  ...ArgType.afterColor(defaultToFillGradientStyleProps),
 }
 
 /* -------------------------------------------- */

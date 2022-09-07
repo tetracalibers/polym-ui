@@ -115,7 +115,9 @@ const toFillGradientConf = {
   borderWidthV: NotRequired<number>(1),
   borderWidthU: NotRequired<CssStyle.Unit.Length>('px'),
   borderStyle: NotRequired<CSST.Property.BorderStyle>('solid'),
-  borderColor: NotRequired<CSST.Property.BorderColor>('#fa6c9f'),
+  borderColor: NotRequired<CSST.Property.BorderColor>('#E3008C'),
+  /* color -------------------------------------- */
+  afterColor: NotRequired<CSST.Property.Color>('#694E4E'),
 }
 
 export type ToFillGradientStyleProps = getPropType<typeof toFillGradientConf>

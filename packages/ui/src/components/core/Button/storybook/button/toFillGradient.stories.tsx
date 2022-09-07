@@ -27,7 +27,7 @@ export default {
 
 const Template: ComponentStory<typeof Button> = ({ children, ...args }) => (
   <Button.ToFillGradient {...args}>
-    <Text color={'#FFF'}>{children as string}</Text>
+    <Text color={'inherit'}>{children as string}</Text>
   </Button.ToFillGradient>
 )
 
