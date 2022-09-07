@@ -11,13 +11,18 @@ export const injectToFillGradientStyle = css`
     --bg-color-1: ${theme.bgColor01};
     --bg-color-2: ${theme.bgColor02};
     --bg-color-3: ${theme.bgColor03};
-    --slope: ${theme.slope}deg; // 270
+    --slope: ${theme.slope}deg;
     /* box */
     --paddingX: ${theme.paddingXV + theme.paddingXU};
     --paddingY: ${theme.paddingYV + theme.paddingYU};
     --border-radius: ${theme.borderRadiusV + theme.borderRadiusU};
     /* onHover */
-    --duration: ${theme.duration}s; // 0.4
+    --duration: ${theme.duration}s;
+    /* shadow */
+    --shadow-offsetX: ${theme.shadowOffsetXV + theme.shadowOffsetXU};
+    --shadow-offsetY: ${theme.shadowOffsetYV + theme.shadowOffsetYU};
+    --shadow-blur: ${theme.shadowBlurV + theme.shadowBlurU};
+    --shadow-color: ${theme.shadowColor};
   `}
   
   display: inline-block;
@@ -45,6 +50,7 @@ export const injectToFillGradientStyle = css`
     background-size: 200% auto;
     background-position: right center;
     /*ボックスの影*/
-    box-shadow: 0 5px 10px rgb(230, 238, 156);
+    box-shadow: var(--shadow-offsetX) var(--shadow-offsetY) var(--shadow-blur)
+      var(--shadow-color);
   }
 `

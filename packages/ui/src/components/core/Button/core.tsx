@@ -282,6 +282,13 @@ export const getToFillGradientClickElement = <
       paddingXV = defaultToFillGradientStyleProps.paddingXV,
       paddingYV = defaultToFillGradientStyleProps.paddingYV,
       duration = defaultToFillGradientStyleProps.duration,
+      shadowOffsetXV = defaultScaleGradientStyleProps.shadowOffsetXV,
+      shadowOffsetYV = defaultScaleGradientStyleProps.shadowOffsetYV,
+      shadowBlurV = defaultScaleGradientStyleProps.shadowBlurV,
+      shadowOffsetXU = defaultScaleGradientStyleProps.shadowOffsetXU,
+      shadowOffsetYU = defaultScaleGradientStyleProps.shadowOffsetYU,
+      shadowBlurU = defaultScaleGradientStyleProps.shadowBlurU,
+      shadowColor = defaultScaleGradientStyleProps.shadowColor,
       ...props
     }: ToFillGradientClickProps<CORE>) => {
       return (
@@ -298,6 +305,13 @@ export const getToFillGradientClickElement = <
             paddingXV,
             paddingYV,
             duration,
+            shadowOffsetXV,
+            shadowOffsetYV,
+            shadowBlurV,
+            shadowOffsetXU,
+            shadowOffsetYU,
+            shadowBlurU,
+            shadowColor,
           }}
         >
           <Component {...props} ref={ref}>

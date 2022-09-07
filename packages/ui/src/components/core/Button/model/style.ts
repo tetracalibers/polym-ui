@@ -103,6 +103,14 @@ const toFillGradientConf = {
   paddingXU: NotRequired<CssStyle.Unit.Length>('em'),
   /* effect ------------------------------------- */
   duration: NotRequired<number>(0.4),
+  /* shadow ------------------------------------- */
+  shadowOffsetXV: NotRequired<number>(0),
+  shadowOffsetYV: NotRequired<number>(5),
+  shadowOffsetXU: NotRequired<CssStyle.Unit.Length>('px'),
+  shadowOffsetYU: NotRequired<CssStyle.Unit.Length>('px'),
+  shadowBlurV: NotRequired<number>(10),
+  shadowBlurU: NotRequired<CssStyle.Unit.Length>('px'),
+  shadowColor: NotRequired<CSST.Property.Color>('rgb(230, 238, 156)'),
 }
 
 export type ToFillGradientStyleProps = getPropType<typeof toFillGradientConf>

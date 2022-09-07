@@ -92,6 +92,10 @@ export const toFillGradientStyleArgTypes = {
   ...ArgType.paddingY(defaultToFillGradientStyleProps),
   ...ArgType.paddingX(defaultToFillGradientStyleProps),
   ...ArgType.duration(defaultToFillGradientStyleProps),
+  ...ArgType.shadowBlur(defaultToFillGradientStyleProps),
+  ...ArgType.shadowColor(defaultToFillGradientStyleProps),
+  ...ArgType.shadowOffsetX(defaultToFillGradientStyleProps),
+  ...ArgType.shadowOffsetY(defaultToFillGradientStyleProps),
 }
 
 /* -------------------------------------------- */
