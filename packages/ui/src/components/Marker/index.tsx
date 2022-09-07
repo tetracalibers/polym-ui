@@ -1,6 +1,6 @@
 import { ComponentPropsWithoutRef, ReactNode } from 'react'
-import { Emphasis, Highlight, Important } from '../markup'
 import { MarkerCoreProps } from './model/props'
+import { Em, Mark } from './styled/marker'
 
 export type MarkerProps = {
   children: ReactNode
@@ -9,8 +9,8 @@ export type MarkerProps = {
 
 export const Marker = ({ children, byAuthor, ...props }: MarkerProps) => {
   return byAuthor ? (
-    <Emphasis {...props}>{children}</Emphasis>
+    <Em {...props}>{children}</Em>
   ) : (
-    <Highlight {...props}>{children}</Highlight>
+    <Mark {...props}>{children}</Mark>
   )
 }
