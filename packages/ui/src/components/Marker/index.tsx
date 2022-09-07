@@ -1,27 +1,16 @@
 import { ComponentPropsWithoutRef, ReactNode } from 'react'
-
-type EmTagProps = {
-  byAuthor: false
-  isImportant: false
-} & Omit<ComponentPropsWithoutRef<'em'>, 'children'>
-
-type MarkTagProps = {
-  byAuthor: true
-  isImportant: boolean
-} & Omit<ComponentPropsWithoutRef<'mark'>, 'children'>
-
-type StrongTagProps = {
-  byAuthor: boolean
-  isImportant: true
-} & Omit<ComponentPropsWithoutRef<'strong'>, 'children'>
+import { Emphasis, Highlight, Important } from '../markup'
+import { MarkerCoreProps } from './model/props'
 
 export type MarkerProps = {
   children: ReactNode
-} & (EmTagProps | MarkTagProps | StrongTagProps)
+} & MarkerCoreProps &
+  Omit<ComponentPropsWithoutRef<'em'>, 'children'>
 
-export const Marker = ({
-  children,
-  byAuthor,
-  isImportant,
-  ...props
-}: MarkerProps) => {}
+export const Marker = ({ children, byAuthor, ...props }: MarkerProps) => {
+  return byAuthor ? (
+    <Emphasis {...props}>{children}</Emphasis>
+  ) : (
+    <Highlight {...props}>{children}</Highlight>
+  )
+}

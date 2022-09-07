@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef } from 'react'
+import { ComponentPropsWithoutRef, ReactNode } from 'react'
 import styled, { ThemeProvider } from 'styled-components'
 import {
   defaultTextBaseStyleProps,
@@ -22,7 +22,7 @@ import { injectWavyLineStyle } from './styled/wavyline'
 /* -------------------------------------------- */
 
 type TextCoreProps = {
-  children: string
+  children: ReactNode
 } & Omit<ComponentPropsWithoutRef<'span'>, 'children'> &
   TextBaseStyleProps
 
