@@ -303,19 +303,35 @@ const slope = (defaultProps: { slope?: number }) => ({
 
 /* shadow ------------------------------------- */
 
-const shadowOffsetX = (defaultProps: { shadowOffsetX?: number }) => ({
-  shadowOffsetX: {
+const shadowOffsetX = (defaultProps: {
+  shadowOffsetXV?: number
+  shadowOffsetXU?: CssStyle.Unit.Length
+}) => ({
+  shadowOffsetXV: {
     control: {
       type: 'number',
     },
     description: '',
     table: {
       ...withDefaultAs('boxShadow').table,
-      type: {
-        summary: 'number (px)',
-      },
       defaultValue: {
-        summary: defaultProps.shadowOffsetX,
+        summary: defaultProps.shadowOffsetXV,
+        detail: null,
+      },
+      subcategory: 'Shadow',
+    },
+  },
+  shadowOffsetXU: {
+    ...withDefaultAs('boxShadow'),
+    control: {
+      type: 'select',
+    },
+    options: CssStyle.Unit.length,
+    description: 'Units of shadowOffsetXV',
+    table: {
+      ...withDefaultAs('boxShadow').table,
+      defaultValue: {
+        summary: defaultProps.shadowOffsetXU,
         detail: null,
       },
       subcategory: 'Shadow',
@@ -323,19 +339,35 @@ const shadowOffsetX = (defaultProps: { shadowOffsetX?: number }) => ({
   },
 })
 
-const shadowOffsetY = (defaultProps: { shadowOffsetY?: number }) => ({
-  shadowOffsetY: {
+const shadowOffsetY = (defaultProps: {
+  shadowOffsetYV?: number
+  shadowOffsetYU?: CssStyle.Unit.Length
+}) => ({
+  shadowOffsetYV: {
     control: {
       type: 'number',
     },
     description: '',
     table: {
       ...withDefaultAs('boxShadow').table,
-      type: {
-        summary: 'number (px)',
-      },
       defaultValue: {
-        summary: defaultProps.shadowOffsetY,
+        summary: defaultProps.shadowOffsetYV,
+        detail: null,
+      },
+      subcategory: 'Shadow',
+    },
+  },
+  shadowOffsetYU: {
+    ...withDefaultAs('boxShadow'),
+    control: {
+      type: 'select',
+    },
+    options: CssStyle.Unit.length,
+    description: 'Units of shadowOffsetXV',
+    table: {
+      ...withDefaultAs('boxShadow').table,
+      defaultValue: {
+        summary: defaultProps.shadowOffsetYU,
         detail: null,
       },
       subcategory: 'Shadow',
@@ -343,19 +375,35 @@ const shadowOffsetY = (defaultProps: { shadowOffsetY?: number }) => ({
   },
 })
 
-const shadowBlur = (defaultProps: { shadowBlur?: number }) => ({
-  shadowBlur: {
+const shadowBlur = (defaultProps: {
+  shadowBlurV?: number
+  shadowBlurU?: CssStyle.Unit.Length
+}) => ({
+  shadowBlurV: {
     control: {
       type: 'number',
     },
     description: '',
-    type: {
-      summary: 'number (px)',
-    },
     table: {
       ...withDefaultAs('boxShadow').table,
       defaultValue: {
-        summary: defaultProps.shadowBlur,
+        summary: defaultProps.shadowBlurV,
+        detail: null,
+      },
+      subcategory: 'Shadow',
+    },
+  },
+  shadowBlurU: {
+    ...withDefaultAs('boxShadow'),
+    control: {
+      type: 'select',
+    },
+    options: CssStyle.Unit.length,
+    description: 'Units of shadowBlurV',
+    table: {
+      ...withDefaultAs('boxShadow').table,
+      defaultValue: {
+        summary: defaultProps.shadowBlurU,
         detail: null,
       },
       subcategory: 'Shadow',

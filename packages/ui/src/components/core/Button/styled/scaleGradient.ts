@@ -19,9 +19,9 @@ const baseStyle = css`
     --duration: ${theme.duration}s;
     --scale-factor: ${theme.scaleFactor};
     /* shadow */
-    --shadow-offsetX: ${theme.shadowOffsetX}px;
-    --shadow-offsetY: ${theme.shadowOffsetY}px;
-    --shadow-blur: ${theme.shadowBlur}px;
+    --shadow-offsetX: ${theme.shadowOffsetXV + theme.shadowOffsetXU};
+    --shadow-offsetY: ${theme.shadowOffsetYV + theme.shadowOffsetYU};
+    --shadow-blur: ${theme.shadowBlurV + theme.shadowBlurU};
     --shadow-color: ${theme.shadowColor};
   `}
 `

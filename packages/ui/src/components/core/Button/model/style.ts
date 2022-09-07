@@ -72,9 +72,12 @@ const scaleGradientConf = {
   hoverEffect: NotRequired<ScaleGradientHoverEffectOptions>('shrink'),
   scaleFactor: NotRequired<number>(0.05),
   /* shadow ------------------------------------- */
-  shadowOffsetX: NotRequired<number>(0),
-  shadowOffsetY: NotRequired<number>(15),
-  shadowBlur: NotRequired<number>(15),
+  shadowOffsetXV: NotRequired<number>(0),
+  shadowOffsetYV: NotRequired<number>(15),
+  shadowOffsetXU: NotRequired<CssStyle.Unit.Length>('px'),
+  shadowOffsetYU: NotRequired<CssStyle.Unit.Length>('px'),
+  shadowBlurV: NotRequired<number>(15),
+  shadowBlurU: NotRequired<CssStyle.Unit.Length>('px'),
   shadowColor: NotRequired<CSST.Property.Color>('#f5cbff'),
 }
 
