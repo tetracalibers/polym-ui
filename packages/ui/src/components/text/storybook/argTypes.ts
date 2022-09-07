@@ -7,6 +7,7 @@ import {
   defaultTextGlowStyleProps,
   defaultTextSolidlineStyleProps,
   defaultTextWavyLineStyleProps,
+  triggerOptions,
 } from '../model/style'
 
 export const textArgTypes = {
@@ -53,6 +54,7 @@ export const glowTextArgTypes = {
   ...textArgTypes,
   ...ArgType.color(defaultTextGlowStyleProps),
   ...ArgType.duration(defaultTextGlowStyleProps),
+  ...ArgType.trigger(defaultTextGlowStyleProps, triggerOptions),
 }
 
 export const cloudTextArgTypes = {
@@ -64,4 +66,5 @@ export const fireTextArgTypes = {
   ...textArgTypes,
   ...ArgType.color(defaultTextFireStyleProps),
   ...ArgType.duration(defaultTextFireStyleProps),
+  ...ArgType.trigger(defaultTextFireStyleProps, triggerOptions),
 }

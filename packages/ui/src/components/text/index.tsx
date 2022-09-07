@@ -176,10 +176,11 @@ const getGlowText = (CoreComponent: typeof Text) => {
   return ({
     children,
     duration = defaultTextGlowStyleProps.duration,
+    trigger = defaultTextGlowStyleProps.trigger,
     ...props
   }: GlowProps) => {
     return (
-      <ThemeProvider theme={{ duration }}>
+      <ThemeProvider theme={{ duration, trigger }}>
         <Component {...props}>{children}</Component>
       </ThemeProvider>
     )
@@ -220,10 +221,11 @@ const getFireText = (CoreComponent: typeof Text) => {
   return ({
     children,
     duration = defaultTextFireStyleProps.duration,
+    trigger = defaultTextFireStyleProps.trigger,
     ...props
   }: FireProps) => {
     return (
-      <ThemeProvider theme={{ duration }}>
+      <ThemeProvider theme={{ duration, trigger }}>
         <Component {...props}>{children}</Component>
       </ThemeProvider>
     )

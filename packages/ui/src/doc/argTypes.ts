@@ -634,6 +634,27 @@ const scaleFactor = (
   },
 })
 
+const trigger = (
+  defaultProps: { trigger?: string },
+  triggerOptions: readonly string[]
+) => ({
+  trigger: {
+    control: {
+      type: 'radio',
+    },
+    options: triggerOptions,
+    description:
+      'Which action activates the effect. (Setting "none" always activates the effect.)',
+    table: {
+      defaultValue: {
+        summary: defaultProps.trigger,
+        details: null,
+      },
+      category: 'effect',
+    },
+  },
+})
+
 /* -------------------------------------------- */
 
 export const ArgType = {
@@ -663,4 +684,5 @@ export const ArgType = {
   borderWidth,
   borderColor,
   borderStyle,
+  trigger,
 }

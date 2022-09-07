@@ -8,6 +8,9 @@ import * as CSST from 'csstype'
 import { ColorPalette as $ } from 'styled-utility-first'
 import { CssStyle } from 'ts-typedef-helper'
 
+export const triggerOptions = ['hover', 'none'] as const
+export type TriggerOptions = typeof triggerOptions[number]
+
 /* core --------------------------------------- */
 
 const coreConf = {
@@ -72,6 +75,7 @@ const glowConf = {
   ...coreConf,
   color: NotRequired<CSST.Property.Color>($.grayScale.light),
   duration: NotRequired<number>(1),
+  trigger: NotRequired<TriggerOptions>('none'),
 }
 
 export type TextGlowStyleProps = getPropType<typeof glowConf>
@@ -97,6 +101,7 @@ const fireConf = {
   ...coreConf,
   color: NotRequired<CSST.Property.Color>('#fff'),
   duration: NotRequired<number>(1),
+  trigger: NotRequired<TriggerOptions>('none'),
 }
 
 export type TextFireStyleProps = getPropType<typeof fireConf>
