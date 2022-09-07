@@ -51,6 +51,21 @@ export const defaultTextDashedLineStyleProps = {
   ...getDefaultProps<TextDashedLineStyleProps>(dashedLineConf),
 }
 
+/* wavy line ---------------------------------- */
+
+const wavyLineConf = {
+  ...coreConf,
+  lineColor: NotRequired<CSST.Property.Color>('#EA005E'),
+  bgColor: NotRequired<CSST.Property.BackgroundColor>('#ffffff'),
+  underOffsetV: NotRequired<number>(0.05),
+  underOffsetU: NotRequired<CssStyle.Unit.Length>('em'),
+}
+
+export type TextWavyLineStyleProps = getPropType<typeof wavyLineConf>
+export const defaultTextWavyLineStyleProps = {
+  ...getDefaultProps<TextWavyLineStyleProps>(wavyLineConf),
+}
+
 /* glow --------------------------------------- */
 
 const glowConf = {

@@ -1,8 +1,10 @@
 import { ArgType } from '../../../doc/argTypes'
 import {
   defaultTextBaseStyleProps,
+  defaultTextDashedLineStyleProps,
   defaultTextGlowStyleProps,
   defaultTextSolidlineStyleProps,
+  defaultTextWavyLineStyleProps,
 } from '../model/style'
 
 export const textArgTypes = {
@@ -25,7 +27,24 @@ export const solidlineTextArgTypes = {
 }
 
 export const dashedlineTextArgTypes = {
-  ...solidlineTextArgTypes,
+  ...textArgTypes,
+  ...ArgType.lineColor(defaultTextDashedLineStyleProps, {
+    subcategory: 'Text Decoration',
+  }),
+  ...ArgType.bgColor(defaultTextDashedLineStyleProps),
+  ...ArgType.underOffset(defaultTextDashedLineStyleProps),
+  ...ArgType.thickness(defaultTextDashedLineStyleProps, {
+    subcategory: 'Text Decoration',
+  }),
+}
+
+export const wavylineTextArgTypes = {
+  ...textArgTypes,
+  ...ArgType.lineColor(defaultTextWavyLineStyleProps, {
+    subcategory: 'Text Decoration',
+  }),
+  ...ArgType.bgColor(defaultTextWavyLineStyleProps),
+  ...ArgType.underOffset(defaultTextWavyLineStyleProps),
 }
 
 export const glowTextArgTypes = {

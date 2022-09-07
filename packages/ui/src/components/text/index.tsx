@@ -6,13 +6,16 @@ import {
   defaultTextGlowStyleProps,
   defaultTextSolidlineStyleProps,
   TextBaseStyleProps,
+  TextDashedLineStyleProps,
   TextGlowStyleProps,
   TextSolidlineStyleProps,
+  TextWavyLineStyleProps,
 } from './model/style'
-import { Core, injectWavyLineStyle } from './styled'
+import { Core } from './styled'
 import { injectDashedLineStyle } from './styled/dashedline'
 import { injectGlowStyle } from './styled/glow'
 import { injectSolidLineStyle } from './styled/solidline'
+import { injectWavyLineStyle } from './styled/wavyline'
 
 /* -------------------------------------------- */
 /* CORE                                         */
@@ -88,7 +91,7 @@ Text.SolidLine = getSolidLineText(Text)
 /* DASHEDLINE                                   */
 /* -------------------------------------------- */
 
-type DashedLineProps = SolidLineTextProps
+type DashedLineProps = TextCoreProps & TextDashedLineStyleProps
 
 const getDashedLineText = (CoreComponent: typeof Text) => {
   const Component = styled(CoreComponent)`
@@ -128,15 +131,26 @@ Text.DashedLine = getDashedLineText(Text)
 /* WAVYLINE                                     */
 /* -------------------------------------------- */
 
-type WavyLineProps = SolidLineTextProps
+type WavyLineProps = TextCoreProps & TextWavyLineStyleProps
 
 const getWavyLineText = (CoreComponent: typeof Text) => {
   const Component = styled(CoreComponent)`
     ${injectWavyLineStyle}
   `
 
-  return ({ children, ...props }: WavyLineProps) => {
-    return <Component {...props}>{children}</Component>
+  return ({
+    children,
+    lineColor = defaultTextDashedLineStyleProps.lineColor,
+    bgColor = defaultTextDashedLineStyleProps.bgColor,
+    underOffsetV = defaultTextDashedLineStyleProps.underOffsetV,
+    underOffsetU = defaultTextDashedLineStyleProps.underOffsetU,
+    ...props
+  }: WavyLineProps) => {
+    return (
+      <ThemeProvider theme={{ lineColor, bgColor, underOffsetV, underOffsetU }}>
+        <Component {...props}>{children}</Component>
+      </ThemeProvider>
+    )
   }
 }
 
