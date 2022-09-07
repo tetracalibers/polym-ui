@@ -196,7 +196,6 @@ export const getScaleGradientClickElement = <
       ref,
       bgColor01 = defaultScaleGradientStyleProps.bgColor01,
       bgColor02 = defaultScaleGradientStyleProps.bgColor02,
-      bgColor03 = defaultScaleGradientStyleProps.bgColor03,
       slope = defaultScaleGradientStyleProps.slope,
       borderRadiusV = defaultScaleGradientStyleProps.borderRadiusV,
       borderRadiusU = defaultScaleGradientStyleProps.borderRadiusU,
@@ -214,7 +213,6 @@ export const getScaleGradientClickElement = <
           theme={{
             bgColor01,
             bgColor02,
-            bgColor03,
             slope,
             borderRadiusV,
             borderRadiusU,

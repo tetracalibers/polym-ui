@@ -49,7 +49,6 @@ export const flowGradientStyleArgTypes = {
 export const scaleGradientStyleArgTypes = {
   ...ArgType.bgColor01(defaultScaleGradientStyleProps),
   ...ArgType.bgColor02(defaultScaleGradientStyleProps),
-  ...ArgType.bgColor03(defaultScaleGradientStyleProps),
   ...ArgType.slope(defaultScaleGradientStyleProps),
   ...ArgType.borderRadius(defaultScaleGradientStyleProps),
   ...ArgType.paddingY(defaultScaleGradientStyleProps),

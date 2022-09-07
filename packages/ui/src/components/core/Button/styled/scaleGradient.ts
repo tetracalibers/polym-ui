@@ -9,7 +9,6 @@ const baseStyle = css`
     /* gradient */
     --bg-color-1: ${theme.bgColor01};
     --bg-color-2: ${theme.bgColor02};
-    --bg-color-3: ${theme.bgColor03};
     --slope: ${theme.slope}deg; // 90
     /* box */
     --paddingX: ${theme.paddingXV + theme.paddingXU};
