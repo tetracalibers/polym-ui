@@ -4,7 +4,7 @@ import { defaultTextGlowStyleProps } from '../model/style'
 import { glowTextArgTypes } from './argTypes'
 
 export default {
-  title: 'Text',
+  title: 'text/Glow',
   component: Text,
   parameters: {
     docs: {
