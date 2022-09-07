@@ -1,6 +1,7 @@
 import { ArgType } from '../../../doc/argTypes'
 import {
   defaultTextBaseStyleProps,
+  defaultTextCloudStyleProps,
   defaultTextDashedLineStyleProps,
   defaultTextGlowStyleProps,
   defaultTextSolidlineStyleProps,
@@ -51,4 +52,9 @@ export const glowTextArgTypes = {
   ...textArgTypes,
   ...ArgType.color(defaultTextGlowStyleProps),
   ...ArgType.duration(defaultTextGlowStyleProps),
+}
+
+export const cloudTextArgTypes = {
+  ...textArgTypes,
+  ...ArgType.color(defaultTextCloudStyleProps),
 }

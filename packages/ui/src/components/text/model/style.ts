@@ -83,7 +83,7 @@ export const defaultTextGlowStyleProps = {
 
 const cloudConf = {
   ...coreConf,
-  duration: NotRequired<number>(1),
+  color: NotRequired<CSST.Property.Color>('#fff'),
 }
 
 export type TextCloudStyleProps = getPropType<typeof cloudConf>

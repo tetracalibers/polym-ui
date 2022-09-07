@@ -196,16 +196,8 @@ const getCloudText = (CoreComponent: typeof Text) => {
     ${injectCloudStyle}
   `
 
-  return ({
-    children,
-    duration = defaultTextCloudStyleProps.duration,
-    ...props
-  }: CloudProps) => {
-    return (
-      <ThemeProvider theme={{ duration }}>
-        <Component {...props}>{children}</Component>
-      </ThemeProvider>
-    )
+  return ({ children, ...props }: CloudProps) => {
+    return <Component {...props}>{children}</Component>
   }
 }
 
