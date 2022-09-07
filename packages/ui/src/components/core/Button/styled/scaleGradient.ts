@@ -1,6 +1,7 @@
 import { css } from 'styled-components'
 import { ResetCss } from 'styled-utility-first'
 import { match } from 'ts-pattern'
+import { ScaleGradientStyleProps } from '../model/style'
 
 const baseStyle = css`
   ${ResetCss.button}
@@ -16,7 +17,7 @@ const baseStyle = css`
     --border-radius: ${theme.borderRadiusV + theme.borderRadiusU};
     /* onHover */
     --duration: ${theme.duration}s;
-    --scale-factor: ${theme.scaleFactor}; // 0.05
+    --scale-factor: ${theme.scaleFactor};
   `}
 `
 
@@ -27,7 +28,7 @@ const shrinkStyle = css`
   box-shadow: 0 15px 15px rgba(82, 160, 253, 0.4);
 
   &:hover {
-    transform: scale(0.95);
+    transform: scale(var(--scale));
   }
 `
 
@@ -37,11 +38,33 @@ const expandStyle = css`
 
   /*hoverした際のスケールで全体を拡大し影を付ける*/
   &:hover {
-    transform: scale(1.05);
+    transform: scale(var(--scale));
     /*ボックスの影*/
     box-shadow: 0 15px 15px rgba(57, 250, 215, 0.4);
   }
 `
+
+const effectAs = (type: ScaleGradientStyleProps['hoverEffect']) => {
+  return match(type)
+    .with('shrink', () => {
+      return css`
+        box-shadow: 0 15px 15px #f5cbff;
+
+        &:hover {
+          transform: scale(calc(1 - var(--scale-factor)));
+        }
+      `
+    })
+    .with('expand', () => {
+      return css`
+        &:hover {
+          transform: scale(calc(1 + var(--scale-factor)));
+          box-shadow: 0 15px 15px #f5cbff;
+        }
+      `
+    })
+    .otherwise(() => '')
+}
 
 export const injectScaleGradientStyle = css`
   ${baseStyle}
@@ -60,10 +83,5 @@ export const injectScaleGradientStyle = css`
     var(--bg-color-2) 100%
   );
 
-  /* offsetX offsetY blurRadius */
-  box-shadow: 0 15px 15px #f5cbff;
-
-  &:hover {
-    transform: scale(0.95);
-  }
+  ${({ theme }) => effectAs(theme.hoverEffect)}
 `
