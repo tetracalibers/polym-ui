@@ -25,6 +25,7 @@ export const defaultTextBaseStyleProps = {
 /* solid line --------------------------------- */
 
 const solidlineConf = {
+  ...coreConf,
   lineColor: NotRequired<CSST.Property.Color>('#EA005E'),
   bgColor: NotRequired<CSST.Property.BackgroundColor>('#ffffff'),
   underOffsetV: NotRequired<number>(0.1),
@@ -33,23 +34,32 @@ const solidlineConf = {
   thicknessU: NotRequired<CssStyle.Unit.Length>('px'),
 }
 
-export type TextSolidlineStyleProps = TextBaseStyleProps &
-  getPropType<typeof solidlineConf>
+export type TextSolidlineStyleProps = getPropType<typeof solidlineConf>
 export const defaultTextSolidlineStyleProps = {
-  ...defaultTextBaseStyleProps,
   ...getDefaultProps<TextSolidlineStyleProps>(solidlineConf),
+}
+
+/* dashed line -------------------------------- */
+
+const dashedLineConf = {
+  ...coreConf,
+  ...solidlineConf,
+}
+
+export type TextDashedLineStyleProps = getPropType<typeof dashedLineConf>
+export const defaultTextDashedLineStyleProps = {
+  ...getDefaultProps<TextDashedLineStyleProps>(dashedLineConf),
 }
 
 /* glow --------------------------------------- */
 
 const glowConf = {
+  ...coreConf,
   color: NotRequired<CSST.Property.Color>($.grayScale.light),
   duration: NotRequired<number>(1),
 }
 
-export type TextGlowStyleProps = TextBaseStyleProps &
-  getPropType<typeof glowConf>
+export type TextGlowStyleProps = getPropType<typeof glowConf>
 export const defaultTextGlowStyleProps = {
-  ...defaultTextBaseStyleProps,
   ...getDefaultProps<TextGlowStyleProps>(glowConf),
 }

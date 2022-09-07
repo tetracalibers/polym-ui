@@ -2,13 +2,15 @@ import { ComponentPropsWithoutRef } from 'react'
 import styled, { ThemeProvider } from 'styled-components'
 import {
   defaultTextBaseStyleProps,
+  defaultTextDashedLineStyleProps,
   defaultTextGlowStyleProps,
   defaultTextSolidlineStyleProps,
   TextBaseStyleProps,
   TextGlowStyleProps,
   TextSolidlineStyleProps,
 } from './model/style'
-import { Core, injectDashedLineStyle, injectWavyLineStyle } from './styled'
+import { Core, injectWavyLineStyle } from './styled'
+import { injectDashedLineStyle } from './styled/dashedline'
 import { injectGlowStyle } from './styled/glow'
 import { injectSolidLineStyle } from './styled/solidline'
 
@@ -93,8 +95,30 @@ const getDashedLineText = (CoreComponent: typeof Text) => {
     ${injectDashedLineStyle}
   `
 
-  return ({ children, ...props }: DashedLineProps) => {
-    return <Component {...props}>{children}</Component>
+  return ({
+    children,
+    lineColor = defaultTextDashedLineStyleProps.lineColor,
+    bgColor = defaultTextDashedLineStyleProps.bgColor,
+    underOffsetV = defaultTextDashedLineStyleProps.underOffsetV,
+    underOffsetU = defaultTextDashedLineStyleProps.underOffsetU,
+    thicknessV = defaultTextDashedLineStyleProps.thicknessV,
+    thicknessU = defaultTextDashedLineStyleProps.thicknessU,
+    ...props
+  }: DashedLineProps) => {
+    return (
+      <ThemeProvider
+        theme={{
+          lineColor,
+          bgColor,
+          underOffsetV,
+          underOffsetU,
+          thicknessV,
+          thicknessU,
+        }}
+      >
+        <Component {...props}>{children}</Component>
+      </ThemeProvider>
+    )
   }
 }
 

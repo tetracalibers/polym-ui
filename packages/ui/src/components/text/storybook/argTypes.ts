@@ -24,6 +24,10 @@ export const solidlineTextArgTypes = {
   }),
 }
 
+export const dashedlineTextArgTypes = {
+  ...solidlineTextArgTypes,
+}
+
 export const glowTextArgTypes = {
   ...textArgTypes,
   ...ArgType.color(defaultTextGlowStyleProps),

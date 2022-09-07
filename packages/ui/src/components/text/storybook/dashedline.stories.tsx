@@ -1,5 +1,7 @@
 import { ComponentStory } from '@storybook/react'
 import { Text } from '..'
+import { defaultTextDashedLineStyleProps } from '../model/style'
+import { dashedlineTextArgTypes } from './argTypes'
 
 export default {
   title: 'Text',
@@ -14,7 +16,9 @@ export default {
       default: 'white',
     },
   },
-  argTypes: {},
+  argTypes: {
+    ...dashedlineTextArgTypes,
+  },
 }
 
 const Template: ComponentStory<typeof Text> = ({ children, ...args }) => (
@@ -23,6 +27,7 @@ const Template: ComponentStory<typeof Text> = ({ children, ...args }) => (
 
 export const dashedline = Template.bind({})
 dashedline.args = {
+  ...defaultTextDashedLineStyleProps,
   children:
     'The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax quiz prog. Junk MTV quiz graced by fox whelps. Bawds',
 }
