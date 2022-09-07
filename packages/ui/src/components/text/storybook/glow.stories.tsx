@@ -11,9 +11,9 @@ export default {
       description: {
         component: '',
       },
-      backgrounds: {
-        default: 'dark',
-      },
+    },
+    backgrounds: {
+      default: 'dark',
     },
   },
   argTypes: {

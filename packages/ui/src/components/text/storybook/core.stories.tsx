@@ -11,9 +11,9 @@ export default {
       description: {
         component: '',
       },
-      backgrounds: {
-        default: 'white',
-      },
+    },
+    backgrounds: {
+      default: 'white',
     },
   },
   argTypes: {

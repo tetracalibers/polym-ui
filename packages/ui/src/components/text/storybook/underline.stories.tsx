@@ -2,16 +2,16 @@ import { ComponentStory } from '@storybook/react'
 import { Text } from '..'
 
 export default {
-  title: 'typography/Text',
+  title: 'Text',
   component: Text,
   parameters: {
     docs: {
       description: {
         component: '',
       },
-      backgrounds: {
-        default: 'white',
-      },
+    },
+    backgrounds: {
+      default: 'white',
     },
   },
   argTypes: {},
