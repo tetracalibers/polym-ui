@@ -21,14 +21,12 @@ import {
   defaultScaleGradientStyleProps,
   defaultToFillGradientStyleProps,
   FlowGradientStyleProps,
-  GradientStyleProps,
   ScaleGradientStyleProps,
   ToFillGradientStyleProps,
 } from './model/style'
 import { CheckSemanticButton } from './styled'
 import { injectBurglarizeStyle } from './styled/burglarize'
 import { injectFlowGradientStyle } from './styled/flowGradient'
-import { injectGradientStyle } from './styled/gradient'
 import { injectScaleGradientStyle } from './styled/scaleGradient'
 import { injectToFillGradientStyle } from './styled/toFillGradient'
 
@@ -89,36 +87,6 @@ export const Anchor = ({
 /* -------------------------------------------- */
 /* WITH STYLE                                   */
 /* -------------------------------------------- */
-
-/* gradient ----------------------------------- */
-
-type GradientClickProps<CORE extends ButtonCoreProps | AnchorCoreProps> = CORE &
-  GradientStyleProps
-
-export const getGradientClickElement = <
-  CORE extends ButtonCoreProps | AnchorCoreProps
->(
-  CoreComponent: ElementType
-) => {
-  const Component = styled(CoreComponent)`
-    ${injectGradientStyle}
-  `
-
-  return forwardRef(
-    ({ children, ref, hoverEffect, ...props }: GradientClickProps<CORE>) => {
-      return (
-        <ThemeProvider theme={{ hoverEffect }}>
-          <Component {...props} ref={ref}>
-            {children}
-          </Component>
-        </ThemeProvider>
-      )
-    }
-  )
-}
-
-Button.Gradient = getGradientClickElement<ButtonCoreProps>(Button)
-Anchor.Gradient = getGradientClickElement<AnchorCoreProps>(Anchor)
 
 /* flowGradient ------------------------------- */
 

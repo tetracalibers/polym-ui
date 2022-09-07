@@ -1,6 +1,4 @@
 import {
-  gradientEffectTypeOptions,
-  defaultGradientStyleProps,
   defaultBurglarizeStyleProps,
   burglarizePushToOptions,
   defaultFlowGradientStyleProps,
@@ -9,27 +7,6 @@ import {
   defaultToFillGradientStyleProps,
 } from './../model/style'
 import { ArgType } from '../../../../doc/argTypes'
-
-/* -------------------------------------------- */
-
-export const gradientStyleArgTypes = {
-  hoverEffect: {
-    control: {
-      type: 'radio',
-    },
-    options: gradientEffectTypeOptions,
-    description: '',
-    table: {
-      category: 'effect',
-      type: {
-        summary: null,
-      },
-      defaultValue: {
-        summary: defaultGradientStyleProps.hoverEffect,
-      },
-    },
-  },
-}
 
 /* -------------------------------------------- */
 

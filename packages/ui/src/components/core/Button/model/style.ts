@@ -8,25 +8,6 @@ import * as CSST from 'csstype'
 import { ColorPalette } from 'styled-utility-first'
 import { CssStyle } from 'ts-typedef-helper'
 
-/* gradient ----------------------------------- */
-
-export const gradientEffectTypeOptions = [
-  'flow',
-  'shrink',
-  'expand',
-  'toFill',
-] as const
-type GradientEffectTypeOptions = typeof gradientEffectTypeOptions[number]
-
-const gradientConf = {
-  hoverEffect: NotRequired<GradientEffectTypeOptions>('flow'),
-}
-
-export type GradientStyleProps = getPropType<typeof gradientConf>
-export const defaultGradientStyleProps = {
-  ...getDefaultProps<GradientStyleProps>(gradientConf),
-}
-
 /* flowGradient ------------------------------- */
 
 const flowGradientConf = {
