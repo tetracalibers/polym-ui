@@ -41,3 +41,11 @@ export const AtagIsNotButtonTag = css`
     content: '[A11Y WARMING] Screen reader users will not know that it is a button; use the button tag or add role="button".'
   }
 `
+
+/* markタグを入れ子にしない（冗長なマークアップ） */
+export const NoMarkWithinMark = css`
+  & mark::after {
+    ${alertStyle}
+    content: '[A11Y WARMING] Nesting "mark" tags is redundant markup. Some screen readers may read the meaning of this tag multiple times, leading to user stress.'
+  }
+`

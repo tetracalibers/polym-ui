@@ -23,11 +23,23 @@ playground.args = {
   children: 'Correct Usage',
 }
 
-export const violationUsage = Template.bind({})
-violationUsage.args = {
+export const violationUsage01 = Template.bind({})
+violationUsage01.args = {
   children: <div>I put in a "div" tag.</div>,
 }
-violationUsage.argTypes = {
+violationUsage01.argTypes = {
+  children: {
+    control: {
+      type: null,
+    },
+  },
+}
+
+export const violationUsage02 = Template.bind({})
+violationUsage02.args = {
+  children: <mark>I put in a "mark" tag.</mark>,
+}
+violationUsage02.argTypes = {
   children: {
     control: {
       type: null,

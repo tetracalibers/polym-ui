@@ -1,5 +1,8 @@
 import styled from 'styled-components'
-import { CannotIncludeIfContentModelIsPhasing } from '../../../css/alert'
+import {
+  CannotIncludeIfContentModelIsPhasing,
+  NoMarkWithinMark,
+} from '../../../css/alert'
 
 export const CheckSemanticEmTag = styled.em`
   /* 斜体を解除 */
@@ -25,4 +28,7 @@ export const CheckSemanticMarkTag = styled.mark`
 
   /* 内容モデルはPhrasing */
   ${CannotIncludeIfContentModelIsPhasing}
+
+  /* markタグを入れ子にしない */
+  ${NoMarkWithinMark}
 `
