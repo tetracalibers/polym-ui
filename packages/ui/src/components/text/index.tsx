@@ -2,16 +2,19 @@ import { ComponentPropsWithoutRef, ReactNode } from 'react'
 import styled, { ThemeProvider } from 'styled-components'
 import {
   defaultTextBaseStyleProps,
+  defaultTextCloudStyleProps,
   defaultTextDashedLineStyleProps,
   defaultTextGlowStyleProps,
   defaultTextSolidlineStyleProps,
   TextBaseStyleProps,
+  TextCloudStyleProps,
   TextDashedLineStyleProps,
   TextGlowStyleProps,
   TextSolidlineStyleProps,
   TextWavyLineStyleProps,
 } from './model/style'
 import { Core } from './styled'
+import { injectCloudStyle } from './styled/cloud'
 import { injectDashedLineStyle } from './styled/dashedline'
 import { injectGlowStyle } from './styled/glow'
 import { injectSolidLineStyle } from './styled/solidline'
@@ -181,3 +184,29 @@ const getGlowText = (CoreComponent: typeof Text) => {
 }
 
 Text.Glow = getGlowText(Text)
+
+/* -------------------------------------------- */
+/* CLOUD                                        */
+/* -------------------------------------------- */
+
+type CloudProps = TextCoreProps & TextCloudStyleProps
+
+const getCloudText = (CoreComponent: typeof Text) => {
+  const Component = styled(CoreComponent)`
+    ${injectCloudStyle}
+  `
+
+  return ({
+    children,
+    duration = defaultTextCloudStyleProps.duration,
+    ...props
+  }: CloudProps) => {
+    return (
+      <ThemeProvider theme={{ duration }}>
+        <Component {...props}>{children}</Component>
+      </ThemeProvider>
+    )
+  }
+}
+
+Text.Cloud = getCloudText(Text)

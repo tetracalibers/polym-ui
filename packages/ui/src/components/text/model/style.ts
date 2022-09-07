@@ -78,3 +78,15 @@ export type TextGlowStyleProps = getPropType<typeof glowConf>
 export const defaultTextGlowStyleProps = {
   ...getDefaultProps<TextGlowStyleProps>(glowConf),
 }
+
+/* cloud -------------------------------------- */
+
+const cloudConf = {
+  ...coreConf,
+  duration: NotRequired<number>(1),
+}
+
+export type TextCloudStyleProps = getPropType<typeof cloudConf>
+export const defaultTextCloudStyleProps = {
+  ...getDefaultProps<TextCloudStyleProps>(cloudConf),
+}
