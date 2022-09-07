@@ -1,11 +1,12 @@
 import styled, { css } from 'styled-components'
 import { ColorPalette as $ } from 'styled-utility-first'
-import { Core } from '.'
 
 export const injectGlowStyle = css`
   && {
-    text-decoration: none;
-    transition: 1s;
+    ${({ theme }) => css`
+      --duration: ${theme.duration}s;
+    `}
+    transition: var(--duration);
   }
 
   &&:hover {

@@ -26,6 +26,7 @@ export const defaultTextBaseStyleProps = {
 
 const glowConf = {
   color: NotRequired<CSST.Property.Color>($.grayScale.light),
+  duration: NotRequired<number>(1),
 }
 
 export type TextGlowStyleProps = TextBaseStyleProps &

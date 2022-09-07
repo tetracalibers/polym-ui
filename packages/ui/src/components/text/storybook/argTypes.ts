@@ -16,4 +16,5 @@ export const glowTextArgTypes = {
   ...ArgType.color(defaultTextGlowStyleProps),
   ...ArgType.fontSize(defaultTextGlowStyleProps),
   ...ArgType.lineHeight(defaultTextGlowStyleProps),
+  ...ArgType.duration(defaultTextGlowStyleProps),
 }

@@ -1,6 +1,11 @@
 import { ComponentPropsWithoutRef } from 'react'
 import styled, { ThemeProvider } from 'styled-components'
-import { defaultTextBaseStyleProps, TextBaseStyleProps } from './model/style'
+import {
+  defaultTextBaseStyleProps,
+  defaultTextGlowStyleProps,
+  TextBaseStyleProps,
+  TextGlowStyleProps,
+} from './model/style'
 import {
   Core,
   injectDashedLineStyle,
@@ -97,15 +102,23 @@ Text.WavyLine = getWavyLineText(Text)
 /* GLOW                                         */
 /* -------------------------------------------- */
 
-type GlowProps = TextCoreProps
+type GlowProps = TextCoreProps & TextGlowStyleProps
 
 const getGlowText = (CoreComponent: typeof Text) => {
   const Component = styled(CoreComponent)`
     ${injectGlowStyle}
   `
 
-  return ({ children, ...props }: GlowProps) => {
-    return <Component {...props}>{children}</Component>
+  return ({
+    children,
+    duration = defaultTextGlowStyleProps.duration,
+    ...props
+  }: GlowProps) => {
+    return (
+      <ThemeProvider theme={{ duration }}>
+        <Component {...props}>{children}</Component>
+      </ThemeProvider>
+    )
   }
 }
 
