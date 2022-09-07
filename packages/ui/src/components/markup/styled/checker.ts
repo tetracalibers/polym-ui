@@ -16,3 +16,13 @@ export const CheckSemanticStrongTag = styled.strong`
   /* 内容モデルはPhrasing */
   ${CannotIncludeIfContentModelIsPhasing}
 `
+
+export const CheckSemanticMarkTag = styled.mark`
+  /* マーカー表示を解除 */
+  font-style: normal;
+  background-color: inherit;
+  color: inherit;
+
+  /* 内容モデルはPhrasing */
+  ${CannotIncludeIfContentModelIsPhasing}
+`

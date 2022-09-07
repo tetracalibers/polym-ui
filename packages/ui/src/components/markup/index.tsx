@@ -1,5 +1,9 @@
 import { ComponentPropsWithoutRef, ReactNode } from 'react'
-import { CheckSemanticEmTag, CheckSemanticStrongTag } from './styled/checker'
+import {
+  CheckSemanticEmTag,
+  CheckSemanticMarkTag,
+  CheckSemanticStrongTag,
+} from './styled/checker'
 
 /* -------------------------------------------- */
 
@@ -19,4 +23,14 @@ export type StrongTagProps = {
 
 export const Important = ({ children, ...props }: StrongTagProps) => {
   return <CheckSemanticStrongTag {...props}>{children}</CheckSemanticStrongTag>
+}
+
+/* -------------------------------------------- */
+
+export type MarkTagProps = {
+  children: ReactNode
+} & Omit<ComponentPropsWithoutRef<'mark'>, 'children'>
+
+export const Highlight = ({ children, ...props }: MarkTagProps) => {
+  return <CheckSemanticMarkTag {...props}>{children}</CheckSemanticMarkTag>
 }
