@@ -63,4 +63,5 @@ export const cloudTextArgTypes = {
 export const fireTextArgTypes = {
   ...textArgTypes,
   ...ArgType.color(defaultTextFireStyleProps),
+  ...ArgType.duration(defaultTextFireStyleProps),
 }

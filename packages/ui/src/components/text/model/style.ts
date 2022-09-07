@@ -96,6 +96,7 @@ export const defaultTextCloudStyleProps = {
 const fireConf = {
   ...coreConf,
   color: NotRequired<CSST.Property.Color>('#fff'),
+  duration: NotRequired<number>(1),
 }
 
 export type TextFireStyleProps = getPropType<typeof fireConf>

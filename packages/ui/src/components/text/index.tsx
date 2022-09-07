@@ -4,6 +4,7 @@ import {
   defaultTextBaseStyleProps,
   defaultTextCloudStyleProps,
   defaultTextDashedLineStyleProps,
+  defaultTextFireStyleProps,
   defaultTextGlowStyleProps,
   defaultTextSolidlineStyleProps,
   TextBaseStyleProps,
@@ -216,8 +217,16 @@ const getFireText = (CoreComponent: typeof Text) => {
     ${injectFireStyle}
   `
 
-  return ({ children, ...props }: FireProps) => {
-    return <Component {...props}>{children}</Component>
+  return ({
+    children,
+    duration = defaultTextFireStyleProps.duration,
+    ...props
+  }: FireProps) => {
+    return (
+      <ThemeProvider theme={{ duration }}>
+        <Component {...props}>{children}</Component>
+      </ThemeProvider>
+    )
   }
 }
 
