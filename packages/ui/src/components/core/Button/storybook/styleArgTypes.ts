@@ -4,6 +4,8 @@ import {
   defaultBurglarizeStyleProps,
   burglarizePushToOptions,
   defaultFlowGradientStyleProps,
+  defaultScaleGradientStyleProps,
+  scaleGradientHoverEffectOptions,
 } from './../model/style'
 import { ArgType } from '../../../../doc/argTypes'
 
@@ -40,6 +42,39 @@ export const flowGradientStyleArgTypes = {
   ...ArgType.paddingY(defaultFlowGradientStyleProps),
   ...ArgType.paddingX(defaultFlowGradientStyleProps),
   ...ArgType.duration(defaultFlowGradientStyleProps),
+}
+
+/* -------------------------------------------- */
+
+export const scaleGradientStyleArgTypes = {
+  ...ArgType.bgColor01(defaultScaleGradientStyleProps),
+  ...ArgType.bgColor02(defaultScaleGradientStyleProps),
+  ...ArgType.bgColor03(defaultScaleGradientStyleProps),
+  ...ArgType.slope(defaultScaleGradientStyleProps),
+  ...ArgType.borderRadius(defaultScaleGradientStyleProps),
+  ...ArgType.paddingY(defaultScaleGradientStyleProps),
+  ...ArgType.paddingX(defaultScaleGradientStyleProps),
+  ...ArgType.duration(defaultScaleGradientStyleProps),
+  ...ArgType.scaleFactor(defaultScaleGradientStyleProps, {
+    needIncrement: 'hoverEffect="expand"',
+    notNeedIncrement: 'hoverEffect="shrink"',
+  }),
+  hoverEffect: {
+    control: {
+      type: 'radio',
+    },
+    options: scaleGradientHoverEffectOptions,
+    description: '',
+    table: {
+      category: 'effect',
+      type: {
+        summary: null,
+      },
+      defaultValue: {
+        summary: defaultScaleGradientStyleProps.hoverEffect,
+      },
+    },
+  },
 }
 
 /* -------------------------------------------- */

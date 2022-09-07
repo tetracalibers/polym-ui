@@ -51,6 +51,31 @@ export const defaultFlowGradientStyleProps = {
 
 /* scale gradient ----------------------------- */
 
+export const scaleGradientHoverEffectOptions = ['shrink', 'expand'] as const
+export type ScaleGradientHoverEffectOptions =
+  typeof scaleGradientHoverEffectOptions[number]
+
+const scaleGradientConf = {
+  bgColor01: NotRequired<CSST.Property.BackgroundColor>('#45b6eb'),
+  bgColor02: NotRequired<CSST.Property.BackgroundColor>('#576fe6'),
+  bgColor03: NotRequired<CSST.Property.BackgroundColor>('#bd33ef'),
+  slope: NotRequired<number>(90),
+  borderRadiusV: NotRequired<number>(5),
+  borderRadiusU: NotRequired<CssStyle.Unit.Length>('em'),
+  paddingYV: NotRequired<number>(1.5),
+  paddingXV: NotRequired<number>(4),
+  paddingYU: NotRequired<CssStyle.Unit.Length>('em'),
+  paddingXU: NotRequired<CssStyle.Unit.Length>('em'),
+  duration: NotRequired<number>(0.3),
+  hoverEffect: NotRequired<ScaleGradientHoverEffectOptions>('shrink'),
+  scaleFactor: NotRequired<number>(0.05),
+}
+
+export type ScaleGradientStyleProps = getPropType<typeof scaleGradientConf>
+export const defaultScaleGradientStyleProps = {
+  ...getDefaultProps<ScaleGradientStyleProps>(scaleGradientConf),
+}
+
 /* burglarize --------------------------------- */
 
 export const burglarizePushToOptions = ['bottom', 'left', 'right'] as const

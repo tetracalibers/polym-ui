@@ -405,6 +405,28 @@ const thickness = (
   },
 })
 
+const scaleFactor = (
+  defaultProps: { scaleFactor?: number },
+  conditions: {
+    needIncrement: string
+    notNeedIncrement: string
+  }
+) => ({
+  scaleFactor: {
+    control: {
+      type: 'number',
+    },
+    description: `A value that controls the scaling factor of the element.\nIf ${conditions.notNeedIncrement}, the value is as is; if ${conditions.needIncrement}, the value is the actual magnification factor plus 1.`,
+    table: {
+      ...withDefaultAs('scale').table,
+      defaultValue: {
+        summary: defaultProps.scaleFactor,
+        details: null,
+      },
+    },
+  },
+})
+
 /* -------------------------------------------- */
 
 export const ArgType = {
@@ -425,4 +447,5 @@ export const ArgType = {
   lineColor,
   underOffset,
   thickness,
+  scaleFactor,
 }

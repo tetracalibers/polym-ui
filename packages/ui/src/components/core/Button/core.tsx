@@ -18,13 +18,16 @@ import {
   BurglarizeStyleProps,
   defaultBurglarizeStyleProps,
   defaultFlowGradientStyleProps,
+  defaultScaleGradientStyleProps,
   FlowGradientStyleProps,
   GradientStyleProps,
+  ScaleGradientStyleProps,
 } from './model/style'
 import { CheckSemanticButton } from './styled'
 import { injectBurglarizeStyle } from './styled/burglarize'
 import { injectFlowGradientStyle } from './styled/flowGradient'
 import { injectGradientStyle } from './styled/gradient'
+import { injectScaleGradientStyle } from './styled/scaleGradient'
 
 /* -------------------------------------------- */
 /* CORE                                         */
@@ -175,6 +178,66 @@ Button.FlowGradient = getFlowGradientClickElement<ButtonCoreProps>(Button)
 Anchor.FlowGradient = getFlowGradientClickElement<AnchorCoreProps>(Anchor)
 
 /* scaleGradient ------------------------------ */
+
+type ScaleGradientClickProps<CORE extends ButtonCoreProps | AnchorCoreProps> =
+  CORE & ScaleGradientStyleProps
+
+export const getScaleGradientClickElement = <
+  CORE extends ButtonCoreProps | AnchorCoreProps
+>(
+  CoreComponent: ElementType
+) => {
+  const Component = styled(CoreComponent)`
+    ${injectScaleGradientStyle}
+  `
+  return forwardRef(
+    ({
+      children,
+      ref,
+      bgColor01 = defaultScaleGradientStyleProps.bgColor01,
+      bgColor02 = defaultScaleGradientStyleProps.bgColor02,
+      bgColor03 = defaultScaleGradientStyleProps.bgColor03,
+      slope = defaultScaleGradientStyleProps.slope,
+      borderRadiusV = defaultScaleGradientStyleProps.borderRadiusV,
+      borderRadiusU = defaultScaleGradientStyleProps.borderRadiusU,
+      paddingXU = defaultScaleGradientStyleProps.paddingXU,
+      paddingYU = defaultScaleGradientStyleProps.paddingYU,
+      paddingXV = defaultScaleGradientStyleProps.paddingXV,
+      paddingYV = defaultScaleGradientStyleProps.paddingYV,
+      duration = defaultScaleGradientStyleProps.duration,
+      hoverEffect = defaultScaleGradientStyleProps.hoverEffect,
+      scaleFactor = defaultScaleGradientStyleProps.scaleFactor,
+      ...props
+    }: ScaleGradientClickProps<CORE>) => {
+      return (
+        <ThemeProvider
+          theme={{
+            bgColor01,
+            bgColor02,
+            bgColor03,
+            slope,
+            borderRadiusV,
+            borderRadiusU,
+            paddingXU,
+            paddingYU,
+            paddingXV,
+            paddingYV,
+            duration,
+            hoverEffect,
+            scaleFactor,
+          }}
+        >
+          <Component {...props} ref={ref}>
+            {children}
+          </Component>
+        </ThemeProvider>
+      )
+    }
+  )
+}
+
+Button.ScaleGradient = getScaleGradientClickElement<ButtonCoreProps>(Button)
+Anchor.ScaleGradient = getScaleGradientClickElement<AnchorCoreProps>(Anchor)
 
 /* burglarize --------------------------------- */
 
