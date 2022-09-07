@@ -35,5 +35,5 @@ export const scaleGradient = Template.bind({})
 scaleGradient.args = {
   ...defaultButtonCharacterProps,
   ...defaultScaleGradientStyleProps,
-  children: 'Liquid',
+  children: 'Touch me',
 }

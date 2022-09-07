@@ -56,7 +56,7 @@ export type ScaleGradientHoverEffectOptions =
   typeof scaleGradientHoverEffectOptions[number]
 
 const scaleGradientConf = {
-  bgColor01: NotRequired<CSST.Property.BackgroundColor>('#5EFCE8 '),
+  bgColor01: NotRequired<CSST.Property.BackgroundColor>('#ee5af6 '),
   bgColor02: NotRequired<CSST.Property.BackgroundColor>('#736EFE'),
   slope: NotRequired<number>(90),
   borderRadiusV: NotRequired<number>(5),

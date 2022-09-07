@@ -32,7 +32,6 @@ export const injectFlowGradientStyle = css`
   );
   background-position: 1% 50%;
   background-size: 200% auto;
-  color: var(--color);
   padding: var(--paddingY) var(--paddingX);
   border-radius: var(--border-radius);
   transition: all var(--duration) ease-out;

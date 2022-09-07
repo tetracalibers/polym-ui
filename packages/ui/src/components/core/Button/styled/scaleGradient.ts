@@ -45,4 +45,25 @@ const expandStyle = css`
 
 export const injectScaleGradientStyle = css`
   ${baseStyle}
+
+  display: inline-block;
+  text-decoration: none;
+  outline: none;
+  padding: var(--paddingY) var(--paddingX);
+  border-radius: var(--border-radius);
+  transition: all var(--duration) ease-out;
+
+  background: linear-gradient(
+    var(--slope),
+    var(--bg-color-1) 0%,
+    var(--bg-color-2) 80%,
+    var(--bg-color-2) 100%
+  );
+
+  /* offsetX offsetY blurRadius */
+  box-shadow: 0 15px 15px #f5cbff;
+
+  &:hover {
+    transform: scale(0.95);
+  }
 `

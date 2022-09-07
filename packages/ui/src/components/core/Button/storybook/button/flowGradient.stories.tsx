@@ -35,5 +35,5 @@ export const flowGradient = Template.bind({})
 flowGradient.args = {
   ...defaultButtonCharacterProps,
   ...defaultFlowGradientStyleProps,
-  children: 'Liquid',
+  children: 'Touch me',
 }
