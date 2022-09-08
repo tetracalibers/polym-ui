@@ -5,6 +5,7 @@ import { useInput } from './module/useInput'
 import { useComposite } from './module/useComposite'
 import { useShareId } from './module/useShareId'
 import { useRegisterId } from './module/useRegisterId'
+import { useThrottle } from './module/useThrottle'
 
 export {
   useUnFocus,
@@ -14,4 +15,5 @@ export {
   useComposite,
   useShareId,
   useRegisterId,
+  useThrottle,
 }
