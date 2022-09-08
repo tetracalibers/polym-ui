@@ -39,7 +39,7 @@ const build = (
   colors: GradientStyleProps['g_colors'],
   stops: GradientStyleProps['g_stops']
 ) => {
-  return _.zipWith(_.zip(colors!, stops!), (color: any, stop: any) => {
+  return _.zipWith(_.zip(colors!, stops!), ([color, stop]) => {
     return `${color} ${stop}%`
   })
 }
@@ -49,7 +49,7 @@ export const gradientStyle = css`
     && {
       --slope: ${theme.g_slope}deg;
       background-image: linear-gradient(
-        var(slope),
+        var(--slope),
         ${build(theme.g_colors, theme.g_stops).join(', ')}
       );
     }
