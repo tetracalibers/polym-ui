@@ -1,10 +1,12 @@
 import { ComponentStory } from '@storybook/react'
+import { withHoverFadeWave } from '../../../../hoc/hover/fadeWave'
 import { Text } from '../../../../Text'
 import { Button } from '../../core'
 import { defaultButtonCharacterProps } from '../../model/button'
 import { defaultFadeWaveStyleProps } from '../../model/style'
 import { fadeWaveStyleArgTypes } from '../styleArgTypes'
 import { buttonArgTypes } from './argTypes'
+import { withGradient } from '../../../../hoc/gradient/gradient'
 
 export default {
   title: 'button/FadeWave',
@@ -25,11 +27,15 @@ export default {
   },
 }
 
-const Template: ComponentStory<typeof Button> = ({ children, ...args }) => (
-  <Button.FadeWave {...args}>
-    <Text color={'#4d608b'}>{children}</Text>
-  </Button.FadeWave>
-)
+const Template: ComponentStory<typeof Button> = ({ children, ...args }) => {
+  const MyButton = withHoverFadeWave(withGradient(Button))
+
+  return (
+    <MyButton {...args}>
+      <Text color={'#4d608b'}>{children}</Text>
+    </MyButton>
+  )
+}
 
 export const fadeWave = Template.bind({})
 fadeWave.args = {
