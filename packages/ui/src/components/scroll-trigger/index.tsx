@@ -1,5 +1,6 @@
-import { cloneElement, ReactElement } from 'react'
+import { cloneElement, ReactElement, useEffect, useState } from 'react'
 import styled from 'styled-components'
+import { useThrottle } from '@polym/hooks'
 import { AsFromProps, defaultAsFromProps } from './model/props'
 import { Fixed } from './styled/asFrom'
 
@@ -13,7 +14,9 @@ export const ScrollTrigger = ({ children }: ScrollTriggerProps) => {
     children.props.onClick && children.props.onClick()
   }
 
-  const TriggerButton = cloneElement(children, { onClick: goTop })
+  const TriggerButton = cloneElement(children, {
+    onClick: goTop,
+  })
 
   return <>{TriggerButton}</>
 }
@@ -29,9 +32,32 @@ const getAsFrom = (CoreComponent: typeof ScrollTrigger) => {
     startHeightU = defaultAsFromProps.startHeightU,
     appearFrom = defaultAsFromProps.appearFrom,
   }: ScrollTriggerAsFromProps) => {
+    const [visible, setVisible] = useState<boolean>()
+
+    const visibleController = useThrottle(() => {
+      const scrollHeight = Math.max(
+        window.pageYOffset,
+        document.documentElement.scrollTop,
+        document.body.scrollTop
+      )
+      if (scrollHeight > startHeightV!) {
+        return setVisible(true)
+      }
+      visible && setVisible(false)
+    }, 100) // 100msに一度実行
+
+    useEffect(() => {
+      // マウント時にも実行
+      visibleController()
+      window.addEventListener('scroll', visibleController)
+
+      // アンマウント時にイベントリスナーを解除
+      return () => window.removeEventListener('scroll', visibleController)
+    }, [visibleController])
+
     return (
       <CoreComponent>
-        <Fixed>{children}</Fixed>
+        <Fixed data-visible={visible}>{children}</Fixed>
       </CoreComponent>
     )
   }
