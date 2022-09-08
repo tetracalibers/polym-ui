@@ -12,6 +12,7 @@ import { getScaleGradientClickElement } from './scaleGradient'
 import { CheckSemanticButton } from './styled'
 import { getToFillGradientClickElement } from './toFillGradient'
 import { getBurglarizeClickElement } from './burglarize'
+import { getShineClickElement } from './shine'
 
 /* -------------------------------------------- */
 /* CORE                                         */
@@ -82,3 +83,6 @@ Anchor.ToFillGradient = getToFillGradientClickElement<AnchorCoreProps>(Anchor)
 
 Button.Burglarize = getBurglarizeClickElement<ButtonCoreProps>(Button)
 Anchor.Burglarize = getBurglarizeClickElement<AnchorCoreProps>(Anchor)
+
+Button.Shine = getShineClickElement<ButtonCoreProps>(Button)
+Anchor.Shine = getShineClickElement<AnchorCoreProps>(Anchor)

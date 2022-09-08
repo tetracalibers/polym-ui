@@ -130,3 +130,11 @@ const burglarizeConf = {
 export type BurglarizeStyleProps = getPropType<typeof burglarizeConf>
 export const defaultBurglarizeStyleProps =
   getDefaultProps<BurglarizeStyleProps>(burglarizeConf)
+
+/* shine -------------------------------------- */
+
+const shineConf = {}
+
+export type ShineStyleProps = getPropType<typeof shineConf>
+export const defaultShineStyleProps =
+  getDefaultProps<ShineStyleProps>(shineConf)

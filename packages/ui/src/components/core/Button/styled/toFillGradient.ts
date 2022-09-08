@@ -1,7 +1,5 @@
 import { css } from 'styled-components'
 import { ResetCss } from 'styled-utility-first'
-import { match } from 'ts-pattern'
-import { GradientStyleProps } from '../model/style'
 
 export const injectToFillGradientStyle = css`
   ${ResetCss.button}

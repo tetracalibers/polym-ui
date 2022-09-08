@@ -122,3 +122,7 @@ export const burglarizeStyleArgTypes = {
     },
   },
 }
+
+/* shine -------------------------------------- */
+
+export const shineStyleArgTypes = {}
