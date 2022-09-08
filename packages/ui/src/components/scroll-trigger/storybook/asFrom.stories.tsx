@@ -23,15 +23,15 @@ export default {
   argTypes: {},
 }
 
-const Template: ComponentStory<typeof ScrollTrigger> = ({ ...args }) => (
+const Template: ComponentStory<typeof ScrollTrigger.AsFrom> = ({ ...args }) => (
   <VerticalStack separateFrom={2} as={NeedScrollPage}>
     <CenterLineHeading>Scroll down to see the button.</CenterLineHeading>
     <LoremIpsum />
-    <ScrollTrigger {...args}>
+    <ScrollTrigger.AsFrom {...args}>
       <Button.ToFillGradient>Page Top</Button.ToFillGradient>
-    </ScrollTrigger>
+    </ScrollTrigger.AsFrom>
   </VerticalStack>
 )
 
-export const normal = Template.bind({})
-normal.args = {}
+export const asFrom = Template.bind({})
+asFrom.args = {}
