@@ -15,8 +15,7 @@ type AppearFromOptions = typeof appearFromOptions[number]
 
 const asFromConf = {
   /* feature */
-  startHeightV: NotRequired<number>(50),
-  startHeightU: NotRequired<CssStyle.Unit.Length>('vh'),
+  startHeight: NotRequired<number>(50),
   /* animation */
   appearFrom: NotRequired<AppearFromOptions>('bottom'),
 }

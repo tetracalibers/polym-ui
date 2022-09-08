@@ -8,6 +8,8 @@ import { CenterLineHeading } from '../../heading/CenterLine'
 import { VerticalStack } from '../../layout-algorithm/VerticalStack'
 import { Text } from '../../Text'
 import { GrLinkTop } from 'react-icons/gr'
+import { asFromArgTypes } from './argTypes'
+import { defaultAsFromProps } from '../model/props'
 
 export default {
   title: 'scroll/ScrollTrigger',
@@ -22,7 +24,9 @@ export default {
       default: 'white',
     },
   },
-  argTypes: {},
+  argTypes: {
+    ...asFromArgTypes,
+  },
 }
 
 const Template: ComponentStory<typeof ScrollTrigger.AsFrom> = ({ ...args }) => (
@@ -36,4 +40,6 @@ const Template: ComponentStory<typeof ScrollTrigger.AsFrom> = ({ ...args }) => (
 )
 
 export const asFrom = Template.bind({})
-asFrom.args = {}
+asFrom.args = {
+  ...defaultAsFromProps,
+}

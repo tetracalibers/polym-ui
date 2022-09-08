@@ -28,8 +28,7 @@ export type ScrollTriggerAsFromProps = ScrollTriggerProps & AsFromProps
 const getAsFrom = (CoreComponent: typeof ScrollTrigger) => {
   return ({
     children,
-    startHeightV = defaultAsFromProps.startHeightV,
-    startHeightU = defaultAsFromProps.startHeightU,
+    startHeight = defaultAsFromProps.startHeight,
     appearFrom = defaultAsFromProps.appearFrom,
   }: ScrollTriggerAsFromProps) => {
     const [visible, setVisible] = useState<boolean>()
@@ -40,7 +39,7 @@ const getAsFrom = (CoreComponent: typeof ScrollTrigger) => {
         document.documentElement.scrollTop,
         document.body.scrollTop
       )
-      if (scrollHeight > startHeightV!) {
+      if (scrollHeight > startHeight!) {
         return setVisible(true)
       }
       visible && setVisible(false)
