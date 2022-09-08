@@ -10,15 +10,24 @@ const shine = keyframes`
 export const injectShineStyle = css`
   ${ResetCss.button}
 
+  ${({ theme }) => css`
+    --bg-color: ${theme.bgColor};
+    --duration: ${theme.duration}s;
+    --paddingY: ${theme.paddingYV + theme.paddingYU};
+    --paddingX: ${theme.paddingXV + theme.paddingXU};
+    --border-radius: ${theme.borderRadiusV + theme.borderRadiusU};
+  `}
+
   /*キラッと光る基点とするためrelativeを指定*/
   position: relative;
   /*ボタンの形状*/
   display: inline-block;
-  background: #333;
-  padding: 10px 20px;
+  background: var(--bg-color);
+  padding: var(--paddingY) var(--paddingX);
   text-decoration: none;
   outline: none;
   overflow: hidden;
+  border-radius: var(--border-radius);
 
   &::before {
     content: '';
@@ -38,6 +47,6 @@ export const injectShineStyle = css`
   }
 
   &:hover::before {
-    animation: ${shine} 0.7s;
+    animation: ${shine} var(--duration);
   }
 `

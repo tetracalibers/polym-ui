@@ -5,6 +5,7 @@ import {
   defaultScaleGradientStyleProps,
   scaleGradientHoverEffectOptions,
   defaultToFillGradientStyleProps,
+  defaultShineStyleProps,
 } from './../model/style'
 import { ArgType } from '../../../../doc/argTypes'
 
@@ -125,4 +126,10 @@ export const burglarizeStyleArgTypes = {
 
 /* shine -------------------------------------- */
 
-export const shineStyleArgTypes = {}
+export const shineStyleArgTypes = {
+  ...ArgType.bgColor(defaultShineStyleProps),
+  ...ArgType.borderRadius(defaultShineStyleProps),
+  ...ArgType.paddingY(defaultShineStyleProps),
+  ...ArgType.paddingX(defaultShineStyleProps),
+  ...ArgType.duration(defaultShineStyleProps),
+}

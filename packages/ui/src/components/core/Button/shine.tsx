@@ -21,11 +21,29 @@ export const getShineClickElement = <
     ({
       children,
       ref,
-
+      bgColor = defaultShineStyleProps.bgColor,
+      borderRadiusU = defaultShineStyleProps.borderRadiusU,
+      borderRadiusV = defaultShineStyleProps.borderRadiusV,
+      paddingXU = defaultShineStyleProps.paddingXU,
+      paddingYU = defaultShineStyleProps.paddingYU,
+      paddingXV = defaultShineStyleProps.paddingXV,
+      paddingYV = defaultShineStyleProps.paddingYV,
+      duration = defaultShineStyleProps.duration,
       ...props
     }: ShineClickProps<CORE>) => {
       return (
-        <ThemeProvider theme={{}}>
+        <ThemeProvider
+          theme={{
+            bgColor,
+            borderRadiusU,
+            borderRadiusV,
+            paddingXU,
+            paddingYU,
+            paddingXV,
+            paddingYV,
+            duration,
+          }}
+        >
           <Component {...props} ref={ref}>
             <span>{children}</span>
           </Component>

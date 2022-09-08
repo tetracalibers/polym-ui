@@ -133,7 +133,16 @@ export const defaultBurglarizeStyleProps =
 
 /* shine -------------------------------------- */
 
-const shineConf = {}
+const shineConf = {
+  bgColor: NotRequired<CSST.Property.BackgroundColor>('rgb(63, 81, 181)'),
+  borderRadiusV: NotRequired<number>(4),
+  borderRadiusU: NotRequired<CssStyle.Unit.Length>('em'),
+  paddingYV: NotRequired<number>(1),
+  paddingXV: NotRequired<number>(2),
+  paddingYU: NotRequired<CssStyle.Unit.Length>('em'),
+  paddingXU: NotRequired<CssStyle.Unit.Length>('em'),
+  duration: NotRequired<number>(0.7),
+}
 
 export type ShineStyleProps = getPropType<typeof shineConf>
 export const defaultShineStyleProps =
