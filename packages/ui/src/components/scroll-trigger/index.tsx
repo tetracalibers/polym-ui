@@ -1,5 +1,5 @@
 import { cloneElement, ReactElement, useEffect, useState } from 'react'
-import styled from 'styled-components'
+import styled, { ThemeProvider } from 'styled-components'
 import { useThrottle } from '@polym/hooks'
 import { AsFromProps, defaultAsFromProps } from './model/props'
 import { Fixed } from './styled/asFrom'
@@ -55,9 +55,11 @@ const getAsFrom = (CoreComponent: typeof ScrollTrigger) => {
     }, [visibleController])
 
     return (
-      <CoreComponent>
-        <Fixed data-visible={visible}>{children}</Fixed>
-      </CoreComponent>
+      <ThemeProvider theme={{ appearFrom }}>
+        <CoreComponent>
+          <Fixed data-visible={visible}>{children}</Fixed>
+        </CoreComponent>
+      </ThemeProvider>
     )
   }
 }
