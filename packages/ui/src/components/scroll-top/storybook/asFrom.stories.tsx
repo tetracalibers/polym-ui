@@ -1,19 +1,17 @@
 import { ComponentStory } from '@storybook/react'
 import LoremIpsum from 'react-lorem-ipsum'
-import { ScrollTrigger } from '..'
-import { NeedScrollPage, NeedScrollPage400vh } from '../../../mock/TestBox'
+import { ScrollTop } from '..'
+import { NeedScrollPage } from '../../../mock/TestBox'
 import { CircleIconClick } from '../../button/CircleIcon'
-import { Button } from '../../core/Button/core'
 import { CenterLineHeading } from '../../heading/CenterLine'
 import { VerticalStack } from '../../layout-algorithm/VerticalStack'
-import { Text } from '../../Text'
 import { GrLinkTop } from 'react-icons/gr'
 import { asFromArgTypes } from './argTypes'
 import { defaultAsFromProps } from '../model/props'
 
 export default {
-  title: 'scroll/ScrollTrigger',
-  component: ScrollTrigger,
+  title: 'scroll/ScrollTop',
+  component: ScrollTop,
   parameters: {
     docs: {
       description: {
@@ -29,13 +27,13 @@ export default {
   },
 }
 
-const Template: ComponentStory<typeof ScrollTrigger.AsFrom> = ({ ...args }) => (
+const Template: ComponentStory<typeof ScrollTop.AsFrom> = ({ ...args }) => (
   <VerticalStack separateFrom={2} as={NeedScrollPage}>
     <CenterLineHeading>Scroll down to see the button.</CenterLineHeading>
     <LoremIpsum />
-    <ScrollTrigger.AsFrom {...args}>
+    <ScrollTop.AsFrom {...args}>
       <CircleIconClick.Button icon={<GrLinkTop />} label='go to page top' />
-    </ScrollTrigger.AsFrom>
+    </ScrollTop.AsFrom>
   </VerticalStack>
 )
 

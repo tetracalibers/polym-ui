@@ -4,11 +4,11 @@ import { useThrottle } from '@polym/hooks'
 import { AsFromProps, defaultAsFromProps } from './model/props'
 import { Fixed } from './styled/asFrom'
 
-export type ScrollTriggerProps = {
+export type ScrollTopProps = {
   children: ReactElement<any, 'button'>
 }
 
-export const ScrollTrigger = ({ children }: ScrollTriggerProps) => {
+export const ScrollTop = ({ children }: ScrollTopProps) => {
   const goTop = () => {
     window.scroll({ top: 0, behavior: 'smooth' })
     children.props.onClick && children.props.onClick()
@@ -23,14 +23,14 @@ export const ScrollTrigger = ({ children }: ScrollTriggerProps) => {
 
 /* 指定の高さを超えたら出現 ------------------------------- */
 
-export type ScrollTriggerAsFromProps = ScrollTriggerProps & AsFromProps
+export type ScrollTopAsFromProps = ScrollTopProps & AsFromProps
 
-const getAsFrom = (CoreComponent: typeof ScrollTrigger) => {
+const getAsFrom = (CoreComponent: typeof ScrollTop) => {
   return ({
     children,
     startHeight = defaultAsFromProps.startHeight,
     appearFrom = defaultAsFromProps.appearFrom,
-  }: ScrollTriggerAsFromProps) => {
+  }: ScrollTopAsFromProps) => {
     const [visible, setVisible] = useState<boolean>()
 
     const visibleController = useThrottle(() => {
@@ -64,7 +64,7 @@ const getAsFrom = (CoreComponent: typeof ScrollTrigger) => {
   }
 }
 
-ScrollTrigger.AsFrom = getAsFrom(ScrollTrigger)
+ScrollTop.AsFrom = getAsFrom(ScrollTop)
 
 /* 範囲内でのみ出現 ----------------------------------- */
 

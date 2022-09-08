@@ -1,6 +1,6 @@
 import { ComponentStory } from '@storybook/react'
 import LoremIpsum from 'react-lorem-ipsum'
-import { ScrollTrigger } from '..'
+import { ScrollTop } from '..'
 import { NeedScrollPage, NeedScrollPage400vh } from '../../../mock/TestBox'
 import { Button } from '../../core/Button/core'
 import { CenterLineHeading } from '../../heading/CenterLine'
@@ -8,8 +8,8 @@ import { VerticalStack } from '../../layout-algorithm/VerticalStack'
 import { Text } from '../../Text'
 
 export default {
-  title: 'scroll/ScrollTrigger',
-  component: ScrollTrigger,
+  title: 'scroll/ScrollTop',
+  component: ScrollTop,
   parameters: {
     docs: {
       description: {
@@ -23,13 +23,13 @@ export default {
   argTypes: {},
 }
 
-const Template: ComponentStory<typeof ScrollTrigger> = ({ ...args }) => (
+const Template: ComponentStory<typeof ScrollTop> = ({ ...args }) => (
   <VerticalStack separateFrom={2} as={NeedScrollPage}>
     <CenterLineHeading>Scroll down to see the button.</CenterLineHeading>
     <LoremIpsum />
-    <ScrollTrigger {...args}>
+    <ScrollTop {...args}>
       <Button.ToFillGradient>Page Top</Button.ToFillGradient>
-    </ScrollTrigger>
+    </ScrollTop>
   </VerticalStack>
 )
 
