@@ -13,6 +13,7 @@ import { CheckSemanticButton } from './styled'
 import { getToFillGradientClickElement } from './toFillGradient'
 import { getBurglarizeClickElement } from './burglarize'
 import { getShineClickElement } from './shine'
+import { getFadeWaveClickElement } from './fadeWave'
 
 /* -------------------------------------------- */
 /* CORE                                         */
@@ -86,3 +87,6 @@ Anchor.Burglarize = getBurglarizeClickElement<AnchorCoreProps>(Anchor)
 
 Button.Shine = getShineClickElement<ButtonCoreProps>(Button)
 Anchor.Shine = getShineClickElement<AnchorCoreProps>(Anchor)
+
+Button.FadeWave = getFadeWaveClickElement<ButtonCoreProps>(Button)
+Anchor.FadeWave = getFadeWaveClickElement<AnchorCoreProps>(Anchor)

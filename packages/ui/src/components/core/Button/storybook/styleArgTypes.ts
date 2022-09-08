@@ -6,6 +6,7 @@ import {
   scaleGradientHoverEffectOptions,
   defaultToFillGradientStyleProps,
   defaultShineStyleProps,
+  defaultFadeWaveStyleProps,
 } from './../model/style'
 import { ArgType } from '../../../../doc/argTypes'
 
@@ -132,4 +133,14 @@ export const shineStyleArgTypes = {
   ...ArgType.paddingY(defaultShineStyleProps),
   ...ArgType.paddingX(defaultShineStyleProps),
   ...ArgType.duration(defaultShineStyleProps),
+}
+
+/* fade wave ---------------------------------- */
+
+export const fadeWaveStyleArgTypes = {
+  ...ArgType.bgColor(defaultFadeWaveStyleProps),
+  ...ArgType.borderRadius(defaultFadeWaveStyleProps),
+  ...ArgType.paddingY(defaultFadeWaveStyleProps),
+  ...ArgType.paddingX(defaultFadeWaveStyleProps),
+  ...ArgType.duration(defaultFadeWaveStyleProps),
 }
