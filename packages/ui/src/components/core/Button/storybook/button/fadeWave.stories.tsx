@@ -28,7 +28,7 @@ export default {
 }
 
 const Template: ComponentStory<typeof Button> = ({ children, ...args }) => {
-  const MyButton = withHoverFadeWave(withGradient(Button))
+  const MyButton = withHoverFadeWave(withGradient(Button.StyleBase))
 
   return (
     <MyButton {...args}>

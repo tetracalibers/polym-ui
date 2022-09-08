@@ -8,6 +8,22 @@ import * as CSST from 'csstype'
 import { ColorPalette } from 'styled-utility-first'
 import { CssStyle } from 'ts-typedef-helper'
 
+/* base --------------------------------------- */
+
+const baseConf = {
+  borderRadiusV: NotRequired<number>(5),
+  borderRadiusU: NotRequired<CssStyle.Unit.Length>('em'),
+  paddingYV: NotRequired<number>(1.5),
+  paddingXV: NotRequired<number>(4),
+  paddingYU: NotRequired<CssStyle.Unit.Length>('em'),
+  paddingXU: NotRequired<CssStyle.Unit.Length>('em'),
+}
+
+export type BaseStyleProps = getPropType<typeof baseConf>
+export const defaultBaseStyleProps = {
+  ...getDefaultProps<BaseStyleProps>(baseConf),
+}
+
 /* flowGradient ------------------------------- */
 
 const flowGradientConf = {

@@ -14,6 +14,7 @@ import { getToFillGradientClickElement } from './toFillGradient'
 import { getBurglarizeClickElement } from './burglarize'
 import { getShineClickElement } from './shine'
 import { getFadeWaveClickElement } from './fadeWave'
+import { getStyleBaseClickElement } from './styleBase'
 
 /* -------------------------------------------- */
 /* CORE                                         */
@@ -72,6 +73,9 @@ export const Anchor = ({
 /* -------------------------------------------- */
 /* WITH STYLE                                   */
 /* -------------------------------------------- */
+
+Button.StyleBase = getStyleBaseClickElement<ButtonCoreProps>(Button)
+Anchor.StyleBase = getStyleBaseClickElement<AnchorCoreProps>(Anchor)
 
 Button.FlowGradient = getFlowGradientClickElement<ButtonCoreProps>(Button)
 Anchor.FlowGradient = getFlowGradientClickElement<AnchorCoreProps>(Anchor)
