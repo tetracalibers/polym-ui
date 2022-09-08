@@ -2,10 +2,12 @@ import { ComponentStory } from '@storybook/react'
 import LoremIpsum from 'react-lorem-ipsum'
 import { ScrollTrigger } from '..'
 import { NeedScrollPage, NeedScrollPage400vh } from '../../../mock/TestBox'
+import { CircleIconClick } from '../../button/CircleIcon'
 import { Button } from '../../core/Button/core'
 import { CenterLineHeading } from '../../heading/CenterLine'
 import { VerticalStack } from '../../layout-algorithm/VerticalStack'
 import { Text } from '../../Text'
+import { GrLinkTop } from 'react-icons/gr'
 
 export default {
   title: 'scroll/ScrollTrigger',
@@ -28,7 +30,7 @@ const Template: ComponentStory<typeof ScrollTrigger.AsFrom> = ({ ...args }) => (
     <CenterLineHeading>Scroll down to see the button.</CenterLineHeading>
     <LoremIpsum />
     <ScrollTrigger.AsFrom {...args}>
-      <Button.ToFillGradient>Page Top</Button.ToFillGradient>
+      <CircleIconClick.Button icon={<GrLinkTop />} label='go to page top' />
     </ScrollTrigger.AsFrom>
   </VerticalStack>
 )

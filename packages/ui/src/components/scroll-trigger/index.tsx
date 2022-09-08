@@ -1,6 +1,7 @@
 import { cloneElement, ReactElement } from 'react'
 import styled from 'styled-components'
 import { AsFromProps, defaultAsFromProps } from './model/props'
+import { Fixed } from './styled/asFrom'
 
 export type ScrollTriggerProps = {
   children: ReactElement<any, 'button'>
@@ -22,15 +23,17 @@ export const ScrollTrigger = ({ children }: ScrollTriggerProps) => {
 export type ScrollTriggerAsFromProps = ScrollTriggerProps & AsFromProps
 
 const getAsFrom = (CoreComponent: typeof ScrollTrigger) => {
-  const Component = styled(CoreComponent)``
-
   return ({
     children,
     startHeightV = defaultAsFromProps.startHeightV,
     startHeightU = defaultAsFromProps.startHeightU,
     appearFrom = defaultAsFromProps.appearFrom,
   }: ScrollTriggerAsFromProps) => {
-    return <Component>{children}</Component>
+    return (
+      <CoreComponent>
+        <Fixed>{children}</Fixed>
+      </CoreComponent>
+    )
   }
 }
 
