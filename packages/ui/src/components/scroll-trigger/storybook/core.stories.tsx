@@ -3,7 +3,9 @@ import LoremIpsum from 'react-lorem-ipsum'
 import { ScrollTrigger } from '..'
 import { NeedScrollPage, NeedScrollPage400vh } from '../../../mock/TestBox'
 import { Button } from '../../core/Button/core'
+import { CenterLineHeading } from '../../heading/CenterLine'
 import { VerticalStack } from '../../layout-algorithm/VerticalStack'
+import { Text } from '../../Text'
 
 export default {
   title: 'scroll/ScrollTrigger',
@@ -22,7 +24,8 @@ export default {
 }
 
 const Template: ComponentStory<typeof ScrollTrigger> = ({ ...args }) => (
-  <VerticalStack separateFrom={1} as={NeedScrollPage}>
+  <VerticalStack separateFrom={2} as={NeedScrollPage}>
+    <CenterLineHeading>Scroll down to see the button.</CenterLineHeading>
     <LoremIpsum />
     <ScrollTrigger {...args}>
       <Button.ToFillGradient>Page Top</Button.ToFillGradient>
