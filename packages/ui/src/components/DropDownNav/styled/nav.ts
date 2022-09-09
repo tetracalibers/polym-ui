@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import { ResetCss } from 'styled-utility-first'
 
 export const Nav = styled.nav`
+  /* reset -------------------------------------- */
   & button,
   & a {
     ${ResetCss.button}
@@ -13,6 +14,19 @@ export const Nav = styled.nav`
   & ul {
     list-style: none;
   }
+
+  /* arrow icon --------------------------------- */
+
+  & [aria-haspopup='menu'] svg {
+    width: 1.5em;
+    height: 1.5em;
+  }
+
+  & [aria-haspopup='menu'][aria-expanded='true'] svg {
+    transform: rotate(180deg);
+  }
+
+  /* depth -------------------------------------- */
 
   /*2階層目以降は横並びにしない*/
   & ul ul {

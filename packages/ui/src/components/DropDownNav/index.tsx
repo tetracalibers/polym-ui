@@ -1,17 +1,23 @@
+import { useState } from 'react'
 import { DifferStack } from '../layout-algorithm/DifferStack'
 import { Menu, mockData, SubMenu } from './helper/type'
 import { Nav } from './styled/nav'
+import { RiArrowDropDownLine } from 'react-icons/ri'
+import { WithIcon } from '../with-icon/core'
 
 type DropdownProps = {
   subMenus: (SubMenu | Menu)[]
+  dropdown: boolean
 }
 
 const Dropdown = ({ subMenus }: DropdownProps) => {
   return (
-    <ul className='dropdown'>
+    <ul role='menu'>
       {subMenus.map((subMenu, index) => (
-        <li key={index} className='menu-items'>
-          <a href={subMenu.url}>{subMenu.title}</a>
+        <li key={index} role='presentation'>
+          <a href={subMenu.url} role='menuitem'>
+            {subMenu.title}
+          </a>
         </li>
       ))}
     </ul>
@@ -25,17 +31,32 @@ type MenuItemProps = {
 }
 
 const MenuItem = ({ item }: MenuItemProps) => {
+  const [dropdown, setDropdown] = useState(false)
+
   return (
-    <li className='menu-items'>
+    <li role='presentation'>
       {item.subMenus ? (
         <>
-          <button type='button' aria-haspopup='menu'>
-            {item.title}{' '}
-          </button>
-          <Dropdown subMenus={item.subMenus} />
+          <WithIcon
+            as='button'
+            iconChild='last'
+            alignItems={'center'}
+            type='button'
+            aria-haspopup='menu'
+            aria-expanded={dropdown}
+            onClick={() => setDropdown(prev => !prev)}
+          >
+            {item.title}
+            <RiArrowDropDownLine />
+          </WithIcon>
+          {dropdown && (
+            <Dropdown subMenus={item.subMenus} dropdown={dropdown} />
+          )}
         </>
       ) : (
-        <a href={item.url}>{item.title}</a>
+        <a href={item.url} role='menuitem'>
+          {item.title}
+        </a>
       )}
     </li>
   )
@@ -45,8 +66,14 @@ const MenuItem = ({ item }: MenuItemProps) => {
 
 export const DropDownNav = () => {
   return (
-    <Nav>
-      <DifferStack className='menus' as={'ul'} justifyContent={'center'}>
+    <Nav aria-label=''>
+      <DifferStack
+        className='menus'
+        as={'ul'}
+        justifyContent={'center'}
+        role='menubar'
+        aria-label=''
+      >
         {mockData.map((menu, index) => {
           return <MenuItem item={menu} key={index} />
         })}
