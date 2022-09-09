@@ -52,6 +52,10 @@ export const Nav = styled.nav`
     color: #f5f4f0;
   }
 
+  & li:hover {
+    transition: all 0.3s;
+  }
+
   /* filterとかかけると縦並びのliまで及ぶので注意 */
   & > ul > li:hover {
     background-color: rgb(240, 98, 146);
@@ -87,7 +91,6 @@ export const Nav = styled.nav`
   }
 
   & ul ul li:hover {
-    transition: all 0.3s;
     background-color: #ce9ffc;
     color: white;
   }
