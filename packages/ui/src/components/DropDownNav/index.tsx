@@ -1,7 +1,7 @@
 import { Fragment, useState } from 'react'
 import { DifferStack } from '../layout-algorithm/DifferStack'
 import { Menu, mockData, SubMenu } from './helper/type'
-import { Horizontal, Nav } from './styled/nav'
+import { Horizontal, Nav, TopUl } from './styled/nav'
 import { RiArrowDropDownLine, RiArrowDropRightLine } from 'react-icons/ri'
 import { WithIcon } from '../with-icon/core'
 
@@ -71,16 +71,11 @@ const MenuItem = ({ item, depth }: MenuItemProps) => {
 export const DropDownNav = () => {
   return (
     <Nav aria-label=''>
-      <DifferStack
-        as={'ul'}
-        justifyContent={'space-around'}
-        role='menubar'
-        aria-label=''
-      >
+      <TopUl role='menubar' aria-label=''>
         {mockData.map((menu, index) => {
           return <MenuItem item={menu} key={index} depth={0} />
         })}
-      </DifferStack>
+      </TopUl>
     </Nav>
   )
 }

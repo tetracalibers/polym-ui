@@ -11,6 +11,12 @@ export const Nav = styled.nav`
     font-size: 1.2rem;
   }
 
+  & a {
+    display: inline-flex;
+    height: 1.5em;
+    align-items: center;
+  }
+
   & ul {
     list-style: none;
   }
@@ -30,7 +36,7 @@ export const Nav = styled.nav`
 
   /*2階層目以降は横並びにしない*/
   & ul ul {
-    padding: 0;
+    padding-left: 0;
   }
 
   /*下の階層のulや矢印の基点にするためliにrelativeを指定*/
@@ -42,5 +48,11 @@ export const Nav = styled.nav`
 export const Horizontal = styled.div`
   display: flex;
   flex-direction: row;
-  align-items: start;
+  align-items: flex-start;
+`
+
+export const TopUl = styled.ul`
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 `
