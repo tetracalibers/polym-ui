@@ -116,6 +116,7 @@ export const Nav = styled.nav`
     margin-top: var(--nav-paddingY);
   }
 
+  /* liとliの間に区切り線 */
   & ul ul li + li {
     border-top: 1px dashed #ce9ffc;
   }
@@ -154,7 +155,7 @@ export const Horizontal = styled.div`
 
   & > button *:last-child {
     position: absolute;
-    left: calc(100% - var(--icon-height) - 1em);
+    left: calc(100% - var(--icon-height));
   }
 `
 
