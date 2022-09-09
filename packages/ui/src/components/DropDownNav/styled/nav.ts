@@ -115,6 +115,10 @@ export const Nav = styled.nav`
     /* bar下部のpadding分下にずらす */
     margin-top: var(--nav-paddingY);
   }
+
+  & ul ul li + li {
+    border-top: 1px dashed #ce9ffc;
+  }
 `
 
 /* 横ポップアップの中身 */
