@@ -53,6 +53,11 @@ export const Horizontal = styled.div`
   align-items: flex-start;
   /* 別レイヤーにすることで開閉による親要素の伸縮回避 */
   position: absolute;
+
+  & ul {
+    white-space: nowrap;
+    overflow: visible;
+  }
 `
 
 export const TopUl = styled.ul`
