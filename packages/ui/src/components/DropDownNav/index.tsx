@@ -37,10 +37,7 @@ const MenuItem = ({ item, depth }: MenuItemProps) => {
     <li role='presentation'>
       {item.subMenus ? (
         <Direction>
-          <WithIcon
-            as='button'
-            iconChild='last'
-            alignItems={'center'}
+          <button
             type='button'
             aria-haspopup='menu'
             aria-expanded={dropdown}
@@ -48,7 +45,7 @@ const MenuItem = ({ item, depth }: MenuItemProps) => {
           >
             {item.title}
             {depth > 0 ? <RiArrowDropRightLine /> : <RiArrowDropDownLine />}
-          </WithIcon>
+          </button>
           {dropdown && (
             <Dropdown
               subMenus={item.subMenus}

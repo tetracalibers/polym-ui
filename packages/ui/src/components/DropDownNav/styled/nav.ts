@@ -18,12 +18,29 @@ export const Nav = styled.nav`
     text-decoration: none;
     color: inherit;
     font-size: var(--font-size);
+    /* クリック可能範囲を広げるための基点 */
+    position: relative;
   }
 
-  & a {
-    display: inline-flex;
+  /* アイコンと横並び */
+  & a,
+  & button {
+    display: flex;
     height: var(--icon-height);
     align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  /* クリック可能範囲を広げる */
+  button::before,
+  a::before {
+    content: '';
+    position: absolute;
+    top: calc(-1 * var(--nav-paddingY));
+    left: 0;
+    right: 0;
+    bottom: calc(-1 * var(--nav-paddingY));
   }
 
   & ul {
