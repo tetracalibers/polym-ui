@@ -78,23 +78,27 @@ export const Nav = styled.nav`
     padding-top: var(--nav-paddingY);
   }
 
-  /* navBarの真下に来るliはbarと隙間を開ける */
+  /* navBarの真下に来るli */
   & > ul > li > ul > li:first-child {
+    /* bar下部のpadding分下にずらす */
     margin-top: var(--nav-paddingY);
-    padding-top: var(--nav-paddingY);
   }
 `
 
+/* 横ポップアップの中身 */
 export const Horizontal = styled.div`
   position: relative;
 
   & ul {
+    /* 改行させない */
     white-space: nowrap;
     overflow: visible;
     position: absolute;
-    left: 100%;
-    /* padding分引き上げる */
+    /* ちょっとだけ隙間を空けて横に並べる */
+    left: calc(100% + 2.5px);
+    /* padding分引き上げることでテキストの高さを揃える */
     top: calc(-1 * var(--nav-paddingY));
+    /* liの幅を継承して統一 */
     width: 100%;
   }
 
