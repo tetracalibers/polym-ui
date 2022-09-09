@@ -1,0 +1,52 @@
+{
+  "name": "@polym/class",
+  "version": "0.0.0",
+  "description": "Separate logic with class syntax here",
+  "author": {
+    "name": "tomixy",
+    "url": "https://tetracalibers.notion.site/tetracalibers/tomixy-TetraCalibers-30b94fb9fc054d4da667539ef35f42c6"
+  },
+  "homepage": "https://github.com/tetracalibers/polym-ui/tree/main/packages/core#readme",
+  "license": "MIT",
+  "type": "module",
+  "types": "lib/@types/index.d.ts",
+  "main": "./lib/bundle.cjs",
+  "module": "./lib/bundle.es.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tetracalibers/polym-ui.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "type:check": "tsc --noEmit",
+    "prebuild": " yarn type:check && rimraf lib",
+    "build": "rollup -c --watch",
+    "start": "yarn build && node lib/bundle.cjs"
+  },
+  "bugs": {
+    "url": "https://github.com/tetracalibers/polym-ui/issues"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.18.5",
+    "@rollup/plugin-commonjs": "^22.0.1",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.3.0",
+    "@rollup/plugin-typescript": "^8.3.3",
+    "@types/react": "^18.0.17",
+    "@types/react-dom": "^18.0.6",
+    "babel-loader": "^8.2.5",
+    "csstype": "^3.1.0",
+    "esbuild": "^0.14.48",
+    "nanoid": "^4.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.34.2",
+    "react-tsx-props": "*",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.75.7",
+    "rollup-plugin-esbuild": "^4.9.1",
+    "ts-pattern": "^4.0.5",
+    "ts-typedef-helper": "*",
+    "typescript": "^4.7.4"
+  }
+}
