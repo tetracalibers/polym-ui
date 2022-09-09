@@ -9,6 +9,7 @@ export const Nav = styled.nav`
     text-decoration: none;
     color: #4d608b;
     font-size: 1.2rem;
+    flex: 1;
   }
 
   & a {
@@ -42,6 +43,7 @@ export const Nav = styled.nav`
   /*下の階層のulや矢印の基点にするためliにrelativeを指定*/
   & ul li {
     position: relative;
+    height: 1.5rem;
   }
 `
 
@@ -49,10 +51,14 @@ export const Horizontal = styled.div`
   display: flex;
   flex-direction: row;
   align-items: flex-start;
+  /* 別レイヤーにすることで開閉による親要素の伸縮回避 */
+  position: absolute;
 `
 
 export const TopUl = styled.ul`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  padding-left: 1em;
+  padding-right: 1em;
 `
