@@ -2,19 +2,20 @@ import { useState } from 'react'
 import { DifferStack } from '../layout-algorithm/DifferStack'
 import { Menu, mockData, SubMenu } from './helper/type'
 import { Nav } from './styled/nav'
-import { RiArrowDropDownLine } from 'react-icons/ri'
+import { RiArrowDropDownLine, RiArrowDropRightLine } from 'react-icons/ri'
 import { WithIcon } from '../with-icon/core'
 
 type DropdownProps = {
   subMenus: (SubMenu | Menu)[]
   dropdown: boolean
+  depth: number
 }
 
-const Dropdown = ({ subMenus }: DropdownProps) => {
+const Dropdown = ({ subMenus, depth }: DropdownProps) => {
   return (
     <ul role='menu'>
       {subMenus.map((subMenu, index) => (
-        <MenuItem item={subMenu} key={index} />
+        <MenuItem item={subMenu} key={index} depth={depth + 1} />
       ))}
     </ul>
   )
@@ -24,9 +25,10 @@ const Dropdown = ({ subMenus }: DropdownProps) => {
 
 type MenuItemProps = {
   item: Menu
+  depth: number
 }
 
-const MenuItem = ({ item }: MenuItemProps) => {
+const MenuItem = ({ item, depth }: MenuItemProps) => {
   const [dropdown, setDropdown] = useState(false)
 
   return (
@@ -43,10 +45,14 @@ const MenuItem = ({ item }: MenuItemProps) => {
             onClick={() => setDropdown(prev => !prev)}
           >
             {item.title}
-            <RiArrowDropDownLine />
+            {depth > 0 ? <RiArrowDropRightLine /> : <RiArrowDropDownLine />}
           </WithIcon>
           {dropdown && (
-            <Dropdown subMenus={item.subMenus} dropdown={dropdown} />
+            <Dropdown
+              subMenus={item.subMenus}
+              dropdown={dropdown}
+              depth={depth}
+            />
           )}
         </>
       ) : (
@@ -71,7 +77,7 @@ export const DropDownNav = () => {
         aria-label=''
       >
         {mockData.map((menu, index) => {
-          return <MenuItem item={menu} key={index} />
+          return <MenuItem item={menu} key={index} depth={0} />
         })}
       </DifferStack>
     </Nav>
