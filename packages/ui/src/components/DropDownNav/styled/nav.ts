@@ -4,14 +4,8 @@ import { ResetCss } from 'styled-utility-first'
 export const Nav = styled.nav`
   --font-size: 1.2rem;
   --icon-height: 1.5rem;
-  --nav-paddingX: 1rem;
   --nav-paddingY: 1rem;
 
-  background-color: #4d608b;
-  color: #f5f4f0;
-  padding: var(--nav-paddingY) 0;
-
-  /* reset -------------------------------------- */
   & button,
   & a {
     ${ResetCss.button}
@@ -49,6 +43,18 @@ export const Nav = styled.nav`
 
   & > ul {
     margin: 0;
+  }
+
+  & > ul > li {
+    padding-top: var(--nav-paddingY);
+    padding-bottom: var(--nav-paddingY);
+    background-color: #4d608b;
+    color: #f5f4f0;
+  }
+
+  /* filterとかかけると縦並びのliまで及ぶので注意 */
+  & > ul > li:hover {
+    background-color: rgb(240, 98, 146);
   }
 
   /* arrow icon --------------------------------- */
@@ -149,6 +155,6 @@ export const TopUl = styled.ul`
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding-left: var(--nav-paddingX);
-  padding-right: var(--nav-paddingX);
+  padding-left: 0;
+  padding-right: 0;
 `
