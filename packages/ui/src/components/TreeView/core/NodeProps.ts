@@ -1,5 +1,6 @@
 import { LiHTMLAttributes, MutableRefObject } from 'react'
-import { TreeNode, MutableTreeState } from './structure'
+import { MutableTreeState } from './MutableTreeState'
+import { TreeNode } from '@polym/tree-logic'
 
 export interface NodeProps extends LiHTMLAttributes<HTMLLIElement> {
   node: TreeNode

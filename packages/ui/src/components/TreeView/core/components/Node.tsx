@@ -15,8 +15,8 @@ import {
 } from 'react'
 
 import { NodeLabel } from './NodeLabel'
-import { Path } from '../structure'
-import { isNode, Keyboard } from '../utils'
+import { Path } from '@polym/tree-logic'
+import { isNode, Keyboard } from '@polym/tree-logic'
 import styled from 'styled-components'
 import { NodeProps } from '../NodeProps'
 

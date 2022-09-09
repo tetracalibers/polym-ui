@@ -34,6 +34,7 @@
   "devDependencies": {
     "@babel/core": "^7.18.5",
     "@polym/hooks": "*",
+    "@polym/tree-logic": "*",
     "@polym/semantic-html-data": "*",
     "@rollup/plugin-commonjs": "^22.0.1",
     "@rollup/plugin-json": "^4.1.0",

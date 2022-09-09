@@ -2,8 +2,8 @@ import { ComponentStory } from '@storybook/react'
 import { logicArgTypes } from '../model/argTypes'
 import { defaultProps } from '../model/props'
 import { DocsPage } from './docsPage'
-import { Tree } from '../../../../lib/bundle.es'
 import { mockData } from '../mock/data'
+import { Tree } from '../core/components/Tree'
 
 export default {
   title: 'hide-and-seek/TreeView',

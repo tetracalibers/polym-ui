@@ -9,7 +9,8 @@ import {
 } from 'react'
 import { Node } from './Node'
 import { RootNode, RootProps } from './Root'
-import { TreeNode, MutableTreeState } from '../structure'
+import { MutableTreeState } from '../MutableTreeState'
+import { TreeNode } from '@polym/tree-logic'
 import { INode } from '../DataType'
 
 export type TreeProps = {

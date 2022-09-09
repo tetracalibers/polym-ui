@@ -1,5 +1,6 @@
 import isHotkey from 'is-hotkey'
-import { Node, TreeNode } from './structure'
+import { TreeNode } from './TreeNode'
+import { Node } from './Node'
 
 export const isNode = (t: any): t is 'node' => t === 'node'
 export const isLeaf = (t: any): t is 'leaf' => t === 'leaf'
