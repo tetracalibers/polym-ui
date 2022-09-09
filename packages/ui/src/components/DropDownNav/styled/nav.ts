@@ -47,7 +47,6 @@ export const Nav = styled.nav`
 
   /* depth -------------------------------------- */
 
-  /*2階層目以降は横並びにしない*/
   & ul ul {
     padding-left: 0;
     background-color: #cddeff;
@@ -64,13 +63,25 @@ export const Nav = styled.nav`
     text-align: center;
   }
 
+  /* 縦並びの間の隙間 */
   & ul ul li {
-    margin-top: var(--nav-paddingY);
+    margin-top: calc(var(--nav-paddingY) * 1.5);
+  }
+
+  /* 縦並びの最後のliの下の隙間 */
+  & ul ul li:last-child {
+    padding-bottom: var(--nav-paddingY);
+  }
+
+  /* 縦並びの最初のliの上の隙間 */
+  & ul ul li:first-child {
+    padding-top: var(--nav-paddingY);
   }
 
   /* navBarの真下に来るliはbarと隙間を開ける */
   & > ul > li > ul > li:first-child {
     margin-top: var(--nav-paddingY);
+    padding-top: var(--nav-paddingY);
   }
 `
 
@@ -82,7 +93,8 @@ export const Horizontal = styled.div`
     overflow: visible;
     position: absolute;
     left: 100%;
-    top: 0;
+    /* padding分引き上げる */
+    top: calc(-1 * var(--nav-paddingY));
     width: 100%;
   }
 
