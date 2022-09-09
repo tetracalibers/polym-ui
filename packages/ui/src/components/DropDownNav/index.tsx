@@ -1,7 +1,7 @@
-import { useState } from 'react'
+import { Fragment, useState } from 'react'
 import { DifferStack } from '../layout-algorithm/DifferStack'
 import { Menu, mockData, SubMenu } from './helper/type'
-import { Nav } from './styled/nav'
+import { Horizontal, Nav } from './styled/nav'
 import { RiArrowDropDownLine, RiArrowDropRightLine } from 'react-icons/ri'
 import { WithIcon } from '../with-icon/core'
 
@@ -31,10 +31,12 @@ type MenuItemProps = {
 const MenuItem = ({ item, depth }: MenuItemProps) => {
   const [dropdown, setDropdown] = useState(false)
 
+  const Direction = depth > 0 ? Horizontal : Fragment
+
   return (
     <li role='presentation'>
       {item.subMenus ? (
-        <>
+        <Direction>
           <WithIcon
             as='button'
             iconChild='last'
@@ -54,7 +56,7 @@ const MenuItem = ({ item, depth }: MenuItemProps) => {
               depth={depth}
             />
           )}
-        </>
+        </Direction>
       ) : (
         <a href={item.url} role='menuitem'>
           {item.title}
@@ -70,9 +72,8 @@ export const DropDownNav = () => {
   return (
     <Nav aria-label=''>
       <DifferStack
-        className='menus'
         as={'ul'}
-        justifyContent={'center'}
+        justifyContent={'space-around'}
         role='menubar'
         aria-label=''
       >

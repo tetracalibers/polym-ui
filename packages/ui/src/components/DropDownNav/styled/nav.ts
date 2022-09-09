@@ -30,7 +30,6 @@ export const Nav = styled.nav`
 
   /*2階層目以降は横並びにしない*/
   & ul ul {
-    display: block;
     padding: 0;
   }
 
@@ -38,4 +37,10 @@ export const Nav = styled.nav`
   & ul li {
     position: relative;
   }
+`
+
+export const Horizontal = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: start;
 `

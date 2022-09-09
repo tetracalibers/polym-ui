@@ -51,6 +51,16 @@ export const mockData: Menu[] = [
           {
             title: 'Service02-C',
             url: '#service/02/C',
+            subMenus: [
+              {
+                title: 'Service02-C-01',
+                url: '#service/02/C/01',
+              },
+              {
+                title: 'Service02-C-02',
+                url: '#service/02/C/02',
+              },
+            ],
           },
           {
             title: 'Service02-D',
