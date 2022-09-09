@@ -83,19 +83,26 @@ export const Horizontal = styled.div`
     position: absolute;
     left: 100%;
     top: 0;
-  }
-
-  & > button {
-    position: relative;
-  }
-
-  & > button *:last-child {
-    position: absolute;
-    left: 100%;
+    width: 100%;
   }
 
   & ul li:first-child {
     margin-top: 0;
+  }
+
+  /* 矢印アイコンの配置 ---------------------------------- */
+
+  /* WithIconのdisplay:inline-flexを打ち消す */
+  && > button {
+    position: relative;
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+
+  & > button *:last-child {
+    position: absolute;
+    left: calc(100% - var(--icon-height) - 1em);
   }
 `
 
