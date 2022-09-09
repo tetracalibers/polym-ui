@@ -63,19 +63,25 @@ export const Nav = styled.nav`
     text-align: center;
   }
 
+  & ul ul li:hover {
+    transition: all 0.3s;
+    background-color: #ce9ffc;
+    color: white;
+  }
+
   /* 縦並びの間の隙間 */
   & ul ul li {
-    margin-top: calc(var(--nav-paddingY) * 1.5);
+    padding: calc(var(--nav-paddingY) * 0.75) 0;
   }
 
   /* 縦並びの最後のliの下の隙間 */
   & ul ul li:last-child {
-    padding-bottom: var(--nav-paddingY);
+    padding-bottom: calc(var(--nav-paddingY) * 0.75);
   }
 
   /* 縦並びの最初のliの上の隙間 */
   & ul ul li:first-child {
-    padding-top: var(--nav-paddingY);
+    padding-top: calc(var(--nav-paddingY) * 0.75);
   }
 
   /* navBarの真下に来るli */
@@ -97,7 +103,7 @@ export const Horizontal = styled.div`
     /* ちょっとだけ隙間を空けて横に並べる */
     left: calc(100% + 2.5px);
     /* padding分引き上げることでテキストの高さを揃える */
-    top: calc(-1 * var(--nav-paddingY));
+    top: calc(-1 * var(--nav-paddingY) * 0.75);
     /* liの幅を継承して統一 */
     width: 100%;
   }
