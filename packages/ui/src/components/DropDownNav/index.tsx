@@ -14,11 +14,7 @@ const Dropdown = ({ subMenus }: DropdownProps) => {
   return (
     <ul role='menu'>
       {subMenus.map((subMenu, index) => (
-        <li key={index} role='presentation'>
-          <a href={subMenu.url} role='menuitem'>
-            {subMenu.title}
-          </a>
-        </li>
+        <MenuItem item={subMenu} key={index} />
       ))}
     </ul>
   )
