@@ -31,7 +31,8 @@
       "examples/**/*",
       "utility/**/*",
       "core/**/*",
-      "tools"
+      "tools",
+      "website/*"
     ]
   },
   "devDependencies": {
