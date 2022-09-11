@@ -1,10 +1,4 @@
-import {
-  ElementType,
-  forwardRef,
-  HTMLAttributes,
-  ReactNode,
-  useState,
-} from 'react'
+import { ElementType, forwardRef, ReactNode } from 'react'
 import { PositionManager } from '../styled/tooltip'
 
 type TooltipProps = {
@@ -13,22 +7,12 @@ type TooltipProps = {
 
 export const withToolTip = <Props,>(MainComponent: ElementType) => {
   return forwardRef(({ tip, ...props }: TooltipProps & Props) => {
-    const [visible, changeVisibleState] = useState(false)
-    const show = () => changeVisibleState(true)
-    const hide = () => changeVisibleState(false)
-
     return (
-      <PositionManager data-visible={visible}>
-        <div>
-          <MainComponent
-            {...props}
-            onMouseEnter={show}
-            onMouseLeave={hide}
-            onTouchStart={show}
-            onBlur={hide}
-          />
+      <PositionManager>
+        <div onTouchStart={() => ''}>
+          <MainComponent {...props} />
         </div>
-        {visible && tip}
+        {tip}
       </PositionManager>
     )
   })
