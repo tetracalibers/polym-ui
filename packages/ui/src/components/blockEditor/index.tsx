@@ -11,22 +11,20 @@ import { DifferStack } from '../layout-algorithm/DifferStack'
 export const BlockEditor = () => {
   const [blocks, dispatch] = useReducer(reducer, [])
 
-  const draggingBlockOldPos = useRef<number | null>(null)
-  const [draggingBlockNewPos, setDraggingBlockNewPos] = useState<number | null>(
-    null
-  )
+  const oldPos = useRef<number | null>(null)
+  const [newPos, setNewPos] = useState<number | null>(null)
 
   const dragStart = (_e: DragEvent<HTMLDivElement>, idx: number) => {
-    draggingBlockOldPos.current = idx
+    oldPos.current = idx
   }
 
   const dragEnter = (_e: DragEvent<HTMLDivElement>, idx: number) => {
-    setDraggingBlockNewPos(idx)
+    setNewPos(idx)
   }
 
   const sortBydrop = () => {
-    const old_pos = draggingBlockOldPos.current
-    const new_pos = draggingBlockNewPos
+    const old_pos = oldPos.current
+    const new_pos = newPos
 
     if (old_pos !== null && new_pos !== null) {
       dispatch({
@@ -38,8 +36,8 @@ export const BlockEditor = () => {
       })
     }
 
-    draggingBlockOldPos.current = null
-    setDraggingBlockNewPos(null)
+    oldPos.current = null
+    setNewPos(null)
   }
 
   return (
@@ -65,9 +63,10 @@ export const BlockEditor = () => {
           {
             /* editor */ blocks.map((block, idx) => (
               <>
-                {idx === draggingBlockNewPos && idx === 0 && (
-                  <span>ここに挿入</span>
-                )}
+                {
+                  /* 下へ移動中 */ idx === newPos &&
+                    newPos < oldPos.current! && <span>ここに挿入</span>
+                }
                 <div
                   draggable
                   onDragStart={e => dragStart(e, idx)}
@@ -86,9 +85,10 @@ export const BlockEditor = () => {
                     id={block.key}
                   />
                 </div>
-                {idx === draggingBlockNewPos && idx > 0 && (
-                  <span>ここに挿入</span>
-                )}
+                {
+                  /* 上へ移動中 */ idx === newPos &&
+                    newPos > oldPos.current! && <span>ここに挿入</span>
+                }
               </>
             ))
           }
