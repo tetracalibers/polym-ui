@@ -1,13 +1,28 @@
-import { DragEvent, useReducer, useRef, useState } from 'react'
+import {
+  createContext,
+  Dispatch,
+  DragEvent,
+  useReducer,
+  useRef,
+  useState,
+} from 'react'
 import { VerticalStack } from '../layout-algorithm/VerticalStack'
 import { WithSidebar } from '../layout-algorithm/WithSidebar'
 import { EditorBlock } from './EditorBlock'
 import { blockConf } from './module/block'
-import { reducer } from './module/reducer'
+import { Action, reducer } from './module/reducer'
 import { EditPanel, PreviewPanel } from './styled/panel'
 import { ToolButton } from './button/ToolButton'
 import { DifferStack } from '../layout-algorithm/DifferStack'
 import { InsertHere } from './nav/InsertHere'
+
+type BlockEditorState = {
+  dispatch: Dispatch<Action>
+}
+
+export const BlockEditorContext = createContext<BlockEditorState>(
+  {} as BlockEditorState
+)
 
 export const BlockEditor = () => {
   const [blocks, dispatch] = useReducer(reducer, [])
@@ -42,66 +57,69 @@ export const BlockEditor = () => {
   }
 
   return (
-    <VerticalStack as={EditPanel}>
-      <DifferStack justifyContent='center'>
-        {
-          /* toolBar */ blockConf.map(block => {
-            return (
-              <ToolButton
-                type={block.type}
-                icon={block.icon}
-                insertFn={() =>
-                  dispatch({ type: 'INSERT', args: { type: block.type } })
-                }
-                key={block.type}
-              />
-            )
-          })
-        }
-      </DifferStack>
-      <WithSidebar mainMinWidth={40} sideWidth='40vw'>
-        <VerticalStack spaceV={1}>
+    <BlockEditorContext.Provider value={{ dispatch }}>
+      <VerticalStack as={EditPanel}>
+        <DifferStack justifyContent='center'>
           {
-            /* editor */ blocks.map((block, idx) => (
-              <>
-                {
-                  /* 下へ移動中 */ idx === newPos &&
-                    newPos < oldPos.current! && <InsertHere />
-                }
-                <div
-                  draggable
-                  onDragStart={e => dragStart(e, idx)}
-                  onDragEnter={e => dragEnter(e, idx)}
-                  onDragEnd={sortBydrop}
-                  key={block.key}
-                >
-                  <EditorBlock
-                    type={block.type}
-                    updateFn={e =>
-                      dispatch({
-                        type: 'UPDATE',
-                        args: { key: block.key, content: e.target.value },
-                      })
-                    }
-                    id={block.key}
-                  />
-                </div>
-                {
-                  /* 上へ移動中 */ idx === newPos &&
-                    newPos > oldPos.current! && <InsertHere />
-                }
-              </>
-            ))
+            /* toolBar */ blockConf.map(block => {
+              return (
+                <ToolButton
+                  type={block.type}
+                  icon={block.icon}
+                  insertFn={() =>
+                    dispatch({ type: 'INSERT', args: { type: block.type } })
+                  }
+                  key={block.type}
+                />
+              )
+            })
           }
-        </VerticalStack>
-        <PreviewPanel>
-          {
-            /* preview */ blocks.map(block => (
-              <span key={block.key}>{block.format(block.content)}</span>
-            ))
-          }
-        </PreviewPanel>
-      </WithSidebar>
-    </VerticalStack>
+        </DifferStack>
+        <WithSidebar mainMinWidth={40} sideWidth='40vw'>
+          <VerticalStack spaceV={1}>
+            {
+              /* editor */ blocks.map((block, idx) => (
+                <>
+                  {
+                    /* 下へ移動中 */ idx === newPos &&
+                      newPos < oldPos.current! && <InsertHere />
+                  }
+                  <div
+                    draggable
+                    onDragStart={e => dragStart(e, idx)}
+                    onDragEnter={e => dragEnter(e, idx)}
+                    onDragEnd={sortBydrop}
+                    key={block.key}
+                  >
+                    <EditorBlock
+                      type={block.type}
+                      updateFn={e =>
+                        dispatch({
+                          type: 'UPDATE',
+                          args: { key: block.key, content: e.target.value },
+                        })
+                      }
+                      id={block.key}
+                      pos={idx}
+                    />
+                  </div>
+                  {
+                    /* 上へ移動中 */ idx === newPos &&
+                      newPos > oldPos.current! && <InsertHere />
+                  }
+                </>
+              ))
+            }
+          </VerticalStack>
+          <PreviewPanel>
+            {
+              /* preview */ blocks.map(block => (
+                <span key={block.key}>{block.format(block.content)}</span>
+              ))
+            }
+          </PreviewPanel>
+        </WithSidebar>
+      </VerticalStack>
+    </BlockEditorContext.Provider>
   )
 }

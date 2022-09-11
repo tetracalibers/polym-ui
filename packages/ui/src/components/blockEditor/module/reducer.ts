@@ -55,7 +55,7 @@ export type MoveDownAction = {
   }
 }
 
-type Action =
+export type Action =
   | InsertAction
   | DeleteAction
   | UpdateAction
