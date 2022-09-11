@@ -7,6 +7,7 @@ import { reducer } from './module/reducer'
 import { EditPanel, PreviewPanel } from './styled/panel'
 import { ToolButton } from './button/ToolButton'
 import { DifferStack } from '../layout-algorithm/DifferStack'
+import { InsertHere } from './nav/InsertHere'
 
 export const BlockEditor = () => {
   const [blocks, dispatch] = useReducer(reducer, [])
@@ -65,7 +66,7 @@ export const BlockEditor = () => {
               <>
                 {
                   /* 下へ移動中 */ idx === newPos &&
-                    newPos < oldPos.current! && <span>ここに挿入</span>
+                    newPos < oldPos.current! && <InsertHere />
                 }
                 <div
                   draggable
@@ -87,7 +88,7 @@ export const BlockEditor = () => {
                 </div>
                 {
                   /* 上へ移動中 */ idx === newPos &&
-                    newPos > oldPos.current! && <span>ここに挿入</span>
+                    newPos > oldPos.current! && <InsertHere />
                 }
               </>
             ))
