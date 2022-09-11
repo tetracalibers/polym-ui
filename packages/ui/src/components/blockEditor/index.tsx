@@ -13,47 +13,49 @@ export const BlockEditor = () => {
   const [blocks, dispatch] = useReducer(reducer, [])
 
   return (
-    <WithSidebar as={EditPanel} mainMinWidth={40} sideWidth='40vw'>
-      <VerticalStack>
-        <DifferStack justifyContent={'space-evenly'}>
+    <VerticalStack as={EditPanel}>
+      <DifferStack justifyContent='center'>
+        {
+          /* toolBar */ blockConf.map(block => {
+            return (
+              <ToolButton
+                type={block.type}
+                icon={block.icon}
+                insertFn={() =>
+                  dispatch({ type: 'INSERT', args: { type: block.type } })
+                }
+                key={block.type}
+              />
+            )
+          })
+        }
+      </DifferStack>
+      <WithSidebar mainMinWidth={40} sideWidth='40vw'>
+        <div>
           {
-            /* toolBar */ blockConf.map(block => {
-              return (
-                <ToolButton
-                  type={block.type}
-                  icon={block.icon}
-                  insertFn={() =>
-                    dispatch({ type: 'INSERT', args: { type: block.type } })
-                  }
-                  key={block.type}
-                />
-              )
-            })
+            /* editor */ blocks.map(block => (
+              <EditorBlock
+                type={block.type}
+                updateFn={e =>
+                  dispatch({
+                    type: 'UPDATE',
+                    args: { key: block.key, content: e.target.value },
+                  })
+                }
+                key={block.key}
+                id={block.key}
+              />
+            ))
           }
-        </DifferStack>
-        {
-          /* editor */ blocks.map(block => (
-            <EditorBlock
-              type={block.type}
-              updateFn={e =>
-                dispatch({
-                  type: 'UPDATE',
-                  args: { key: block.key, content: e.target.value },
-                })
-              }
-              key={block.key}
-              id={block.key}
-            />
-          ))
-        }
-      </VerticalStack>
-      <PreviewPanel>
-        {
-          /* preview */ blocks.map(block => (
-            <span key={block.key}>{block.format(block.content)}</span>
-          ))
-        }
-      </PreviewPanel>
-    </WithSidebar>
+        </div>
+        <PreviewPanel>
+          {
+            /* preview */ blocks.map(block => (
+              <span key={block.key}>{block.format(block.content)}</span>
+            ))
+          }
+        </PreviewPanel>
+      </WithSidebar>
+    </VerticalStack>
   )
 }
