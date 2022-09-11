@@ -3,7 +3,6 @@ import { ColorPalette } from 'styled-utility-first'
 
 export const StretchTextArea = styled.textarea`
   color: ${ColorPalette.grayScale.dark};
-  border-radius: 5px;
   box-sizing: border-box;
   outline: none;
   width: 100%;
@@ -13,5 +12,9 @@ export const StretchTextArea = styled.textarea`
   resize: none;
   overflow: auto;
   height: auto;
-  background-color: white;
+  border: none;
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  border-radius: 10px;
 `

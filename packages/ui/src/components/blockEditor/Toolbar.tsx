@@ -9,7 +9,5 @@ type ToolbarProps = {
 }
 
 export const Toolbar = ({ type, icon, insertFn }: ToolbarProps) => {
-  return (
-    <IconOnly.Button label={type} icon={icon} onClick={insertFn} key={type} />
-  )
+  return <IconOnly.Button label={type} icon={icon} onClick={insertFn} />
 }
