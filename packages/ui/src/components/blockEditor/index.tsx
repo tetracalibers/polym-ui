@@ -1,5 +1,4 @@
 import { useReducer } from 'react'
-import { IconOnly } from '../core/IconOnly'
 import { EditorBlock } from './EditorBlock'
 import { blockConf } from './module/block'
 import { reducer } from './module/reducer'
