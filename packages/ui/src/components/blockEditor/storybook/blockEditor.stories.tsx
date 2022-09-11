@@ -10,6 +10,9 @@ export default {
         component: 'Component that wraps the "strong" tag in HTML',
       },
     },
+    backgrounds: {
+      default: 'white',
+    },
   },
   argTypes: {},
 }
