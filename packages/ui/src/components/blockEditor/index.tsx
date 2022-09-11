@@ -66,9 +66,6 @@ export const BlockEditor = () => {
                 <ToolButton
                   type={block.type}
                   icon={block.icon}
-                  insertFn={() =>
-                    dispatch({ type: 'INSERT', args: { type: block.type } })
-                  }
                   key={block.type}
                 />
               )
