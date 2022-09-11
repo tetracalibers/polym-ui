@@ -1,6 +1,7 @@
 import styled, { keyframes } from 'styled-components'
 import { ResetCss } from 'styled-utility-first'
 import { Button } from '../../core/Button/core'
+import { IconOnly } from '../../core/IconOnly'
 
 export const Flex = styled.div`
   display: flex;
@@ -29,7 +30,7 @@ const slideIn = keyframes`
   }
 `
 
-export const ActionButton = styled(Button)`
+export const ActionButton = styled(IconOnly.Button)`
   ${ResetCss.button}
   transform: translateX(-200%);
   opacity: 0;

@@ -20,15 +20,9 @@ export const BlockLabel = ({ type }: BlockLabelProps) => {
           {type}
         </WithIcon>
       </TagButton>
-      <ActionButton>
-        <ImMoveUp />
-      </ActionButton>
-      <ActionButton>
-        <ImMoveDown />
-      </ActionButton>
-      <ActionButton>
-        <TbTrash />
-      </ActionButton>
+      <ActionButton label='Move up one' icon={<ImMoveUp />} />
+      <ActionButton label='Move down one' icon={<ImMoveDown />} />
+      <ActionButton label='Delete' icon={<TbTrash />} />
     </Flex>
   )
 }
