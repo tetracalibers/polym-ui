@@ -6,7 +6,7 @@ import { EditorBlock } from './EditorBlock'
 import { blockConf } from './module/block'
 import { reducer } from './module/reducer'
 import { EditPanel, PreviewPanel } from './styled/panel'
-import { Toolbar } from './Toolbar'
+import { ToolButton } from './button/ToolButton'
 
 export const BlockEditor = () => {
   const [blocks, dispatch] = useReducer(reducer, [])
@@ -18,7 +18,7 @@ export const BlockEditor = () => {
           {
             /* toolBar */ blockConf.map(block => {
               return (
-                <Toolbar
+                <ToolButton
                   type={block.type}
                   icon={block.icon}
                   insertFn={() =>
