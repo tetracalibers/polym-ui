@@ -7,6 +7,7 @@ import { blockConf } from './module/block'
 import { reducer } from './module/reducer'
 import { EditPanel, PreviewPanel } from './styled/panel'
 import { ToolButton } from './button/ToolButton'
+import { DifferStack } from '../layout-algorithm/DifferStack'
 
 export const BlockEditor = () => {
   const [blocks, dispatch] = useReducer(reducer, [])
@@ -14,7 +15,7 @@ export const BlockEditor = () => {
   return (
     <WithSidebar as={EditPanel} mainMinWidth={40} sideWidth='40vw'>
       <VerticalStack>
-        <div>
+        <DifferStack justifyContent={'space-evenly'}>
           {
             /* toolBar */ blockConf.map(block => {
               return (
@@ -29,7 +30,7 @@ export const BlockEditor = () => {
               )
             })
           }
-        </div>
+        </DifferStack>
         {
           /* editor */ blocks.map(block => (
             <EditorBlock

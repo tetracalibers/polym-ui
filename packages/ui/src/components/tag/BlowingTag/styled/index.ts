@@ -10,7 +10,7 @@ const tailSelector = (tailPos: CharacterProps['tailPos']) => {
     .with('left', () => {
       return '&::before'
     })
-    .exhaustive()
+    .otherwise(() => '')
 }
 
 const tailPosition = (tailPos: CharacterProps['tailPos']) => {
@@ -39,7 +39,7 @@ const tailPosition = (tailPos: CharacterProps['tailPos']) => {
         top: 50%;
       `
     })
-    .exhaustive()
+    .otherwise(() => '')
 }
 
 /**
@@ -51,8 +51,8 @@ const formula = (
   height: CharacterProps['height']
 ) => {
   const compare = {
-    small: width >= height ? height : width,
-    large: width <= height ? height : width,
+    small: width! >= height! ? height! : width!,
+    large: width! <= height! ? height! : width!,
   }
   const scale = width === height ? 0.66 : compare.small / compare.large
   return `${width} * (${scale} / 5) * 1px`
@@ -93,7 +93,7 @@ const tailBorder = (
         border-right: 0;
       `
     })
-    .exhaustive()
+    .otherwise(() => '')
 }
 
 const tailMargin = (
@@ -126,7 +126,7 @@ const tailMargin = (
         margin-right: calc(${formula(width, height)} * -1);
       `
     })
-    .exhaustive()
+    .otherwise(() => '')
 }
 
 export const StyledElement = styled.div<CharacterProps>`

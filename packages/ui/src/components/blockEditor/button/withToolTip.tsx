@@ -1,4 +1,11 @@
-import { ElementType, forwardRef, ReactNode, useState } from 'react'
+import {
+  ElementType,
+  forwardRef,
+  HTMLAttributes,
+  ReactNode,
+  useState,
+} from 'react'
+import { PositionManager } from '../styled/tooltip'
 
 type TooltipProps = {
   tip: ReactNode
@@ -11,17 +18,18 @@ export const withToolTip = <Props,>(MainComponent: ElementType) => {
     const hide = () => changeVisibleState(false)
 
     return (
-      <>
-        <MainComponent
-          {...props}
-          onMouseEnter={show}
-          onMouseLeave={hide}
-          onTouchStart={show}
-          onFocus={show}
-          onBlur={hide}
-        />
+      <PositionManager data-visible={visible}>
+        <div>
+          <MainComponent
+            {...props}
+            onMouseEnter={show}
+            onMouseLeave={hide}
+            onTouchStart={show}
+            onBlur={hide}
+          />
+        </div>
         {visible && tip}
-      </>
+      </PositionManager>
     )
   })
 }
