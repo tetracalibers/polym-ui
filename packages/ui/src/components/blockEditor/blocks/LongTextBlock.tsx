@@ -1,16 +1,24 @@
 import { useTextareaStretch } from '@polym/hooks'
 import { StretchTextArea } from '../styled/longTextBlock'
 import { VisuallyHidden } from '../../a11y-helper/VisuallyHidden'
-import { ChangeEvent } from 'react'
+import { ChangeEvent, useContext } from 'react'
 import { BlockType } from '../module/block'
+import { BlockEditorContext } from '..'
 
 export type LongTextBlockProps = {
-  updateFn: (e: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => void
   type: BlockType
   id: string
 }
 
-export const LongTextBlock = ({ updateFn, type, id }: LongTextBlockProps) => {
+export const LongTextBlock = ({ type, id }: LongTextBlockProps) => {
+  const { dispatch } = useContext(BlockEditorContext)
+
+  const updateFn = (e: ChangeEvent<HTMLTextAreaElement>) =>
+    dispatch({
+      type: 'UPDATE',
+      args: { key: id, content: e.target.value },
+    })
+
   const [rows, updateState] = useTextareaStretch({
     onChange: updateFn,
   })

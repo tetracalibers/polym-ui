@@ -90,12 +90,6 @@ export const BlockEditor = () => {
                   >
                     <EditorBlock
                       type={block.type}
-                      updateFn={e =>
-                        dispatch({
-                          type: 'UPDATE',
-                          args: { key: block.key, content: e.target.value },
-                        })
-                      }
                       id={block.key}
                       pos={idx}
                       maxPos={blocks.length - 1}
