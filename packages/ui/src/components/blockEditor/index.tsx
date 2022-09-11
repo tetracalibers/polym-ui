@@ -1,5 +1,4 @@
-import { useReducer } from 'react'
-import { HorizontalStack } from '../layout-algorithm/HorizontalStack'
+import { DragEvent, useReducer, useRef, useState } from 'react'
 import { VerticalStack } from '../layout-algorithm/VerticalStack'
 import { WithSidebar } from '../layout-algorithm/WithSidebar'
 import { EditorBlock } from './EditorBlock'
@@ -11,6 +10,37 @@ import { DifferStack } from '../layout-algorithm/DifferStack'
 
 export const BlockEditor = () => {
   const [blocks, dispatch] = useReducer(reducer, [])
+
+  const draggingBlockOldPos = useRef<number | null>(null)
+  const [draggingBlockNewPos, setDraggingBlockNewPos] = useState<number | null>(
+    null
+  )
+
+  const dragStart = (_e: DragEvent<HTMLDivElement>, idx: number) => {
+    draggingBlockOldPos.current = idx
+  }
+
+  const dragEnter = (_e: DragEvent<HTMLDivElement>, idx: number) => {
+    setDraggingBlockNewPos(idx)
+  }
+
+  const sortBydrop = () => {
+    const old_pos = draggingBlockOldPos.current
+    const new_pos = draggingBlockNewPos
+
+    if (old_pos !== null && new_pos !== null) {
+      dispatch({
+        type: 'DRAG_SORT',
+        args: {
+          old_pos,
+          new_pos,
+        },
+      })
+    }
+
+    draggingBlockOldPos.current = null
+    setDraggingBlockNewPos(null)
+  }
 
   return (
     <VerticalStack as={EditPanel}>
@@ -33,18 +63,33 @@ export const BlockEditor = () => {
       <WithSidebar mainMinWidth={40} sideWidth='40vw'>
         <div>
           {
-            /* editor */ blocks.map(block => (
-              <EditorBlock
-                type={block.type}
-                updateFn={e =>
-                  dispatch({
-                    type: 'UPDATE',
-                    args: { key: block.key, content: e.target.value },
-                  })
-                }
-                key={block.key}
-                id={block.key}
-              />
+            /* editor */ blocks.map((block, idx) => (
+              <>
+                {idx === draggingBlockNewPos && idx === 0 && (
+                  <span>ここに挿入</span>
+                )}
+                <div
+                  draggable
+                  onDragStart={e => dragStart(e, idx)}
+                  onDragEnter={e => dragEnter(e, idx)}
+                  onDragEnd={sortBydrop}
+                  key={block.key}
+                >
+                  <EditorBlock
+                    type={block.type}
+                    updateFn={e =>
+                      dispatch({
+                        type: 'UPDATE',
+                        args: { key: block.key, content: e.target.value },
+                      })
+                    }
+                    id={block.key}
+                  />
+                </div>
+                {idx === draggingBlockNewPos && idx > 0 && (
+                  <span>ここに挿入</span>
+                )}
+              </>
             ))
           }
         </div>

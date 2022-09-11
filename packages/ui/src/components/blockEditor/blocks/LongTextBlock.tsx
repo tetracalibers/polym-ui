@@ -10,9 +10,9 @@ export const LongTextBlock = ({ updateFn, type, id }: LongTextBlockProps) => {
   })
 
   return (
-    <div>
+    <>
       <label htmlFor={id}>{type}</label>
       <StretchTextArea onChange={updateState} rows={rows} id={id} />
-    </div>
+    </>
   )
 }
