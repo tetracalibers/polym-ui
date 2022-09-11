@@ -59,7 +59,7 @@ export const BlockEditor = () => {
         }
       </DifferStack>
       <WithSidebar mainMinWidth={40} sideWidth='40vw'>
-        <div>
+        <VerticalStack spaceV={1}>
           {
             /* editor */ blocks.map((block, idx) => (
               <>
@@ -92,7 +92,7 @@ export const BlockEditor = () => {
               </>
             ))
           }
-        </div>
+        </VerticalStack>
         <PreviewPanel>
           {
             /* preview */ blocks.map(block => (
