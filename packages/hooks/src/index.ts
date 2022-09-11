@@ -6,6 +6,7 @@ import { useComposite } from './module/useComposite'
 import { useShareId } from './module/useShareId'
 import { useRegisterId } from './module/useRegisterId'
 import { useThrottle } from './module/useThrottle'
+import { useTextareaStretch } from './module/useTextareaStretch'
 
 export {
   useUnFocus,
@@ -16,4 +17,5 @@ export {
   useShareId,
   useRegisterId,
   useThrottle,
+  useTextareaStretch,
 }
