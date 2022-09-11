@@ -41,6 +41,7 @@ export const BlockEditor = () => {
                 })
               }
               key={block.key}
+              id={block.key}
             />
           ))
         }

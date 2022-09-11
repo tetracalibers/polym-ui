@@ -4,15 +4,15 @@ import { StretchTextArea } from '../styled/longTextBlock'
 
 export type LongTextBlockProps = EditorBlockProps
 
-export const LongTextBlock = ({ updateFn, type, key }: LongTextBlockProps) => {
+export const LongTextBlock = ({ updateFn, type, id }: LongTextBlockProps) => {
   const [rows, updateState] = useTextareaStretch({
     onChange: updateFn,
   })
 
   return (
-    <div key={key}>
-      <label htmlFor={key}>{type}</label>
-      <StretchTextArea onChange={updateState} rows={rows} id={key} />
+    <div>
+      <label htmlFor={id}>{type}</label>
+      <StretchTextArea onChange={updateState} rows={rows} id={id} />
     </div>
   )
 }
