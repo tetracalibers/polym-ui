@@ -1,6 +1,7 @@
 import { ReactElement, SyntheticEvent } from 'react'
 import { IconOnly } from '../core/IconOnly'
 import { BlockType } from './module/block'
+import { ToolIconButton } from './styled/toolbar'
 
 type ToolbarProps = {
   type: BlockType
@@ -9,5 +10,5 @@ type ToolbarProps = {
 }
 
 export const Toolbar = ({ type, icon, insertFn }: ToolbarProps) => {
-  return <IconOnly.Button label={type} icon={icon} onClick={insertFn} />
+  return <ToolIconButton label={type} icon={icon} onClick={insertFn} />
 }
