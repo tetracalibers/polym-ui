@@ -19,4 +19,8 @@ export const PositionManager = styled.div`
     left: 50%;
     transform: translateX(-50%);
   }
+
+  &[data-visible='true'] > :last-child * {
+    line-height: 1;
+  }
 `

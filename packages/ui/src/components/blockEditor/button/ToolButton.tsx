@@ -4,6 +4,7 @@ import { BlowingTag } from '../../tag/BlowingTag'
 import { BlockType } from '../module/block'
 import { ToolIconButton } from '../styled/toolButton'
 import { withToolTip } from './withToolTip'
+import { Text } from '../../Text'
 
 type ToolButtonProps = {
   type: BlockType
@@ -19,7 +20,11 @@ export const ToolButton = ({ type, icon, insertFn }: ToolButtonProps) => {
       label={type}
       icon={icon}
       onClick={insertFn}
-      tip={<BlowingTag>{type}</BlowingTag>}
+      tip={
+        <BlowingTag>
+          <Text color='#fff'>{type}</Text>
+        </BlowingTag>
+      }
     />
   )
 }
