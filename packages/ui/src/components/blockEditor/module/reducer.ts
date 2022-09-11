@@ -41,7 +41,27 @@ export type DragSortAction = {
   }
 }
 
-type Action = InsertAction | DeleteAction | UpdateAction | DragSortAction
+export type MoveUpAction = {
+  type: 'MOVE_UP'
+  args: {
+    old_pos: number
+  }
+}
+
+export type MoveDownAction = {
+  type: 'MOVE_DOWN'
+  args: {
+    old_pos: number
+  }
+}
+
+type Action =
+  | InsertAction
+  | DeleteAction
+  | UpdateAction
+  | DragSortAction
+  | MoveUpAction
+  | MoveDownAction
 
 export const reducer = (state: Store[], action: Action): Store[] => {
   return match(action.type)
@@ -69,6 +89,14 @@ export const reducer = (state: Store[], action: Action): Store[] => {
       const { old_pos, new_pos } = (action as DragSortAction).args
       const sorted = arrayMoveImmutable(state, old_pos, new_pos)
       return sorted
+    })
+    .with('MOVE_UP', () => {
+      const { old_pos } = (action as MoveUpAction).args
+      return arrayMoveImmutable(state, old_pos, old_pos - 1)
+    })
+    .with('MOVE_DOWN', () => {
+      const { old_pos } = (action as MoveDownAction).args
+      return arrayMoveImmutable(state, old_pos, old_pos + 1)
     })
     .exhaustive()
 }
