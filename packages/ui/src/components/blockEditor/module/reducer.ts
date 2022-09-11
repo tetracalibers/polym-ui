@@ -10,21 +10,21 @@ export type Store = {
   format: Block['format']
 }
 
-type InsertAction = {
+export type InsertAction = {
   type: 'INSERT'
   args: {
     type: BlockType
   }
 }
 
-type DeleteAction = {
+export type DeleteAction = {
   type: 'DELETE'
   args: {
     key: string
   }
 }
 
-type UpdateAction = {
+export type UpdateAction = {
   type: 'UPDATE'
   args: {
     key: string
