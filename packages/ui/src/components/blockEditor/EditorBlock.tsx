@@ -8,12 +8,19 @@ export type EditorBlockProps = {
   type: BlockType
   id: string
   pos: number
+  maxPos: number
 }
 
-export const EditorBlock = ({ type, updateFn, id, pos }: EditorBlockProps) => {
+export const EditorBlock = ({
+  type,
+  updateFn,
+  id,
+  pos,
+  maxPos,
+}: EditorBlockProps) => {
   return (
     <>
-      <BlockLabel type={type} pos={pos} />
+      <BlockLabel type={type} pos={pos} maxPos={maxPos} />
       <LongTextBlock type={type} updateFn={updateFn} id={id} />
     </>
   )

@@ -101,6 +101,7 @@ export const BlockEditor = () => {
                       }
                       id={block.key}
                       pos={idx}
+                      maxPos={blocks.length - 1}
                     />
                   </div>
                   {

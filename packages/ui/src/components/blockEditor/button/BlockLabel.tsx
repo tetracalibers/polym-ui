@@ -9,9 +9,10 @@ import { MoveUpButton } from './MoveUpButton'
 export type BlockLabelProps = {
   type: BlockType
   pos: number
+  maxPos: number
 }
 
-export const BlockLabel = ({ type, pos }: BlockLabelProps) => {
+export const BlockLabel = ({ type, pos, maxPos }: BlockLabelProps) => {
   const icon = _.find(blockConf, { type })?.icon
 
   return (
@@ -23,7 +24,9 @@ export const BlockLabel = ({ type, pos }: BlockLabelProps) => {
         </WithIcon>
       </TagButton>
       {pos !== 0 && <MoveUpButton pos={pos} />}
-      <ActionButton label='Move down one' icon={<ImMoveDown />} />
+      {pos !== maxPos && (
+        <ActionButton label='Move down one' icon={<ImMoveDown />} />
+      )}
       <ActionButton label='Delete' icon={<TbTrash />} />
     </Flex>
   )
