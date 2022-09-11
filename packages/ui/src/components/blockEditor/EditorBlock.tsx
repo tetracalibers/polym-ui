@@ -1,12 +1,6 @@
-import { ChangeEvent } from 'react'
-import { BlockType } from './module/block'
-
-type EditorBlockProps = {
-  updateFn: (e: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => void
-  key: string
-  type: BlockType
-}
+import { EditorBlockProps } from './blocks/EditorBlockProps'
+import { LongTextBlock } from './blocks/LongTextBlock'
 
 export const EditorBlock = ({ key, type, updateFn }: EditorBlockProps) => {
-  return <textarea key={key} placeholder={type} onChange={updateFn}></textarea>
+  return <LongTextBlock key={key} type={type} updateFn={updateFn} />
 }

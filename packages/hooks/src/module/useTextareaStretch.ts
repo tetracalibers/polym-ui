@@ -1,11 +1,16 @@
 import { ChangeEvent, ChangeEventHandler, useCallback, useState } from 'react'
 
-export const useTextareaStretch = (
-  minRows: number,
-  maxRows: number,
-  lineHeight: number,
+export const useTextareaStretch = ({
+  minRows = 1,
+  maxRows = 5000,
+  lineHeight = 24,
+  onChange,
+}: {
+  minRows?: number
+  maxRows?: number
+  lineHeight?: number
   onChange?: ChangeEventHandler<HTMLTextAreaElement>
-) => {
+}) => {
   const [textareaRows, setTextareaRows] = useState(Math.min(minRows!, maxRows!))
 
   // 最大行数まで改行した時に高さが増える仕組み
@@ -28,7 +33,7 @@ export const useTextareaStretch = (
         e.target.scrollTop = e.target.scrollHeight
       }
       // 最大を超えないように行数をセット
-      setTextareaRows(Math.min(currentRows, maxRows!))
+      setTextareaRows(Math.min(currentRows, maxRows))
       onChange && onChange(e)
     },
     [onChange, minRows, maxRows]
