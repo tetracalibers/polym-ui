@@ -5,7 +5,7 @@ import { Button } from '../../core/Button'
 const show = keyframes`
   0% {
     opacity: 0;
-    transform: translate(0, 0) scale(0);
+    transform: translate(-50%, -50%) scale(0);
   }
   99.9%, to {
     opacity: 1;
@@ -22,6 +22,8 @@ export const OverlayWrapper = styled.div`
   /* 要素の中央がコンテナの中央になるよう修正 */
   transform: translate(-50%, -50%) scale(0.3);
   z-index: 999;
+  /* 縮んだ分広がる */
+  margin-right: -25%;
 
   /* modal window自体のスタイル ------------------------ */
   background-color: rgba(236, 239, 241, 0.6);

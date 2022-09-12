@@ -1,14 +1,8 @@
-import {
-  ReactNode,
-  ReactElement,
-  createContext,
-  useContext,
-  useState,
-} from 'react'
+import { ReactNode, ReactElement, createContext, useContext } from 'react'
 import { VisuallyHidden } from '../a11y-helper/VisuallyHidden'
-import { BackCover, CloseButton, OverlayWrapper } from './styled'
+import { BackCover, OverlayWrapper } from './styled'
 import { useRegisterId, useShareId, useShareState } from '@polym/hooks'
-import { AiOutlineClose } from 'react-icons/ai'
+import { VerticalStack } from '../layout-algorithm/VerticalStack'
 
 /* -------------------------------------------- */
 /* CONTEXT                                      */
@@ -101,7 +95,7 @@ export const Modal = ({ children }: ModalProps) => {
           aria-describedby={contentId}
           aria-modal={true}
         >
-          {children}
+          <VerticalStack>{children}</VerticalStack>
         </OverlayWrapper>
       </>
     </ModalContext.Provider>
