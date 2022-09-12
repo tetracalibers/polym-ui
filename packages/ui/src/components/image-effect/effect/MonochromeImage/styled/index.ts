@@ -25,6 +25,8 @@ export const Mask = styled.span<CharacterProps>`
   && img {
     filter: grayscale(var(--grayscale));
     transition: var(--duration) ease-in-out;
+    /* filterのmobile対応 */
+    transform: translateZ(0);
   }
 
   && img:hover {

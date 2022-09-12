@@ -26,6 +26,8 @@ export const Mask = styled.span<CharacterProps>`
   && img {
     filter: blur(0);
     transition: var(--duration) ease-in-out;
+    /* filterのmobile対応 */
+    transform: translateZ(0);
     ${({ trigger }) => trigger === 'none' && insertEffect}
   }
 

@@ -6,10 +6,10 @@ export const computeBlurKeyframes = (
 ) => keyframes`
   from {
     filter: blur(${blurRadius}px);
-    transform: scale(1.02);
+    transform: scale(1.02) translateZ(0); /* translateZはfilterのmobile対応 */
   }
   to {
     filter: blur(0);
-    transform: scale(1);
+    transform: scale(1) translateZ(0);
   }
 `

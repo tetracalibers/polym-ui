@@ -17,6 +17,7 @@ export const RateButton = styled(IconOnly.Button)`
   &[data-coloring='true'] svg {
     fill: #ebf928;
     filter: drop-shadow(0px 0px 6px ivory);
+    /* filterのmobile対応 */
     transform: translateZ(0);
   }
 `

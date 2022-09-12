@@ -11,6 +11,8 @@ const insertDrawEffect = css`
 const insertImgEffect = css`
   filter: blur(var(--img-blur)) opacity(var(--img-opacity))
     grayScale(var(--img-grayscale));
+  /* filterのmobile対応 */
+  transform: translateZ(0);
 `
 
 const insertTxtEffect = css`

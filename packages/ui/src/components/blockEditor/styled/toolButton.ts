@@ -51,5 +51,7 @@ export const ToolIconButton = styled(IconOnly.Button)`
     font-size: calc(var(--size) * 0.64);
     color: #ffffff80;
     filter: drop-shadow(1px 1px 10px white);
+    /* filterのmobile対応 */
+    transform: translateZ(0);
   }
 `
