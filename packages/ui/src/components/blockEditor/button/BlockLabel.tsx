@@ -1,10 +1,10 @@
 import { WithIcon } from '../../with-icon/core'
 import { blockConf, BlockType } from '../module/block'
-import { ActionButton, Flex, TagButton } from '../styled/blockLabel'
+import { Flex, TagButton } from '../styled/blockLabel'
 import _ from 'lodash'
-import { TbTrash } from 'react-icons/tb'
 import { MoveUpButton } from './MoveUpButton'
 import { MoveDownButton } from './MoveDownButton'
+import { DeleteButton } from './DeleteButton'
 
 export type BlockLabelProps = {
   type: BlockType
@@ -25,7 +25,7 @@ export const BlockLabel = ({ type, pos, maxPos }: BlockLabelProps) => {
       </TagButton>
       {pos !== 0 && <MoveUpButton pos={pos} />}
       {pos !== maxPos && <MoveDownButton pos={pos} />}
-      <ActionButton label='Delete' icon={<TbTrash />} />
+      <DeleteButton />
     </Flex>
   )
 }
