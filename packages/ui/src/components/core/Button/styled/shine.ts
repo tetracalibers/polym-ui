@@ -2,7 +2,7 @@ import { css, keyframes } from 'styled-components'
 import { ResetCss } from 'styled-utility-first'
 
 const shine = keyframes`
-  100% {
+  99.9%, to {
     left: 125%;
   }
 `

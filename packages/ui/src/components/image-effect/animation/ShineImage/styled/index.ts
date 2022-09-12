@@ -4,7 +4,7 @@ import { match } from 'ts-pattern'
 import { ColorPalette as $, Truthy } from 'styled-utility-first'
 
 const throughShine = keyframes`
-  100% {
+  99.9%, to {
     /*画面の見えていない左から右へ移動する終了地点*/
     left: 125%;
   }

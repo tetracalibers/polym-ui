@@ -5,7 +5,7 @@ import { CharacterProps } from '../model/props'
 import { styleMixin } from '../css-props/props'
 
 const diagonalKeyframes = keyframes`
-  100% {
+  99.9%, to {
     left: -10%;
   }
 `

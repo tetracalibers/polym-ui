@@ -6,7 +6,7 @@ const waveKeyframes = keyframes`
   0% {
     transform: scale(0.68);
   }
-  100% {
+  99.9%, to {
     transform: scale(1.2);
     opacity: 0;
   }

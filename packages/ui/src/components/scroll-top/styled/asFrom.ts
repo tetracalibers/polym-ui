@@ -1,45 +1,44 @@
 import styled, { css, keyframes } from 'styled-components'
-import { match } from 'ts-pattern'
 
 const upMove = keyframes`
-  from {
+  0% {
     opacity: 0;
     transform: translateY(100px);
   }
-  to {
+  99.9%, to {
     opacity: 1;
     transform: translateY(0);
   }
 `
 
 const downMove = keyframes`
-  from {
+  0% {
     opacity: 1;
     transform: translateY(0);
   }
-  to {
+  99.9%, to {
     opacity: 1;
     transform: translateY(100px);
   }
 `
 
 const toLeftMove = keyframes`
-  from {
+  0% {
     opacity: 0;
     transform: translateX(100px);
   }
-  to {
+  99.9%, to {
     opacity: 1;
     transform: translateX(0);
   }
 `
 
 const toRightMove = keyframes`
-  from {
+  0% {
     opacity: 1;
     transform: translateX(0);
   }
-  to {
+  99.9%, to {
     opacity: 1;
     transform: translateX(100px);
   }

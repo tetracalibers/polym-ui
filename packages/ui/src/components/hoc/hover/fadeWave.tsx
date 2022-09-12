@@ -1,12 +1,5 @@
-import {
-  getDefaultProps,
-  getPropType,
-  NotRequired,
-  Required,
-} from 'react-tsx-props'
+import { getDefaultProps, getPropType, NotRequired } from 'react-tsx-props'
 import * as CSST from 'csstype'
-import { ColorPalette } from 'styled-utility-first'
-import { CssStyle } from 'ts-typedef-helper'
 import styled, { css, keyframes, ThemeProvider } from 'styled-components'
 import { ElementType, forwardRef } from 'react'
 
@@ -43,7 +36,7 @@ const fadeWaveMotion = keyframes`
   0% {
     transform: scale(0);
   }
-  100% {
+  99.9%, to {
     transform: scale(var(--wave-scale));
     opacity: 0;
   }

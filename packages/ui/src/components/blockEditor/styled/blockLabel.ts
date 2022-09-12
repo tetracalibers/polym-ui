@@ -24,7 +24,7 @@ const slideIn = keyframes`
     opacity: 0;
     transform: translateX(-200%) rotate(720deg);
   }
-  100% {
+  99.9%, to {
     opacity: 1;
     transform: translateX(0%) rotate(0);
   }

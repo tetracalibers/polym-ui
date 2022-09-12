@@ -11,7 +11,7 @@ const ripple = keyframes`
   30% {
     opacity: 1;
   }
-  100% {
+  99.9%, to {
     transform: scale(2);/*アニメーションで大きくなった2倍の円の指定*/
   }
 `

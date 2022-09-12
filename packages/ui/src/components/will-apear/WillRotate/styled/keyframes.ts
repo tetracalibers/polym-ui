@@ -1,37 +1,37 @@
 import { keyframes } from 'styled-components'
 
 export const rotateXKeyframes = keyframes`
-  from {
+  0% {
     transform: rotateX(0);
   }
-  to {
+  99.9%, to {
     transform: rotateX(-360deg);
   }
 `
 
 export const rotateYKeyframes = keyframes`
-  from {
+  0% {
     transform: rotateY(0);
   }
-  to {
+  99.9%, to {
     transform: rotateY(-360deg);
   }
 `
 
 export const rotateZleftKeyframes = keyframes`
-  from {
+  0% {
     transform: rotateZ(0);
   }
-  to {
+  99.9%, to {
     transform: rotateZ(-360deg);
   }
 `
 
 export const rotateZrightKeyframes = keyframes`
-  from {
+  0% {
     transform: rotateZ(0);
   }
-  to {
+  99.9%, to {
     transform: rotateZ(360deg);
   }
 `

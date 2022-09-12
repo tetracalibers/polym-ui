@@ -7,7 +7,7 @@ const caretColorKeyframes = keyframes`
   0% {
     caret-color: transparent;
   }
-  100% {
+  99.9%, to {
     caret-color: ${$.grayScale.dark};
   }
 `
@@ -17,7 +17,7 @@ const showResetButton = keyframes`
     color: transparent;
     left: 0%;
   }
-  100% {
+  99.9%, to {
     color: #F48FB1;
     left: 92.5%;
   }

@@ -4,11 +4,11 @@ import { CharacterProps } from '../model/props'
 export const computeBlurKeyframes = (
   blurRadius: CharacterProps['blurRadius']
 ) => keyframes`
-  from {
+  0% {
     filter: blur(${blurRadius}px);
     transform: scale(1.02) translateZ(0); /* translateZはfilterのmobile対応 */
   }
-  to {
+  99.9%, to {
     filter: blur(0);
     transform: scale(1) translateZ(0);
   }

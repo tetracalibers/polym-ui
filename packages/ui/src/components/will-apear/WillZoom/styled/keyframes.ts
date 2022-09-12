@@ -4,10 +4,10 @@ import { CharacterProps } from '../model/props'
 export const getZoomInKeyframes = (
   scaleF: CharacterProps['scaleFactor']
 ) => keyframes`
-  from {
+  0% {
     transform: scale(${scaleF});
   }
-  to {
+  99.9%, to {
     transform: scale(1);
   }
 `
@@ -15,10 +15,10 @@ export const getZoomInKeyframes = (
 export const getZoomOutKeyframes = (
   scaleF: CharacterProps['scaleFactor']
 ) => keyframes`
-  from {
+  0% {
     transform: scale(${1 + scaleF});
   }
-  to {
+  99.9%, to {
     transform: scale(1);
   }
 `

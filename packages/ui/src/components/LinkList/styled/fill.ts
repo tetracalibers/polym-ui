@@ -18,7 +18,7 @@ const fromUnderlineToFill = keyframes`
     width: 100%;
     height: 1px;
   }
-  100% {
+  99.9%, to {
     width: 100%;
     height: 100%;
   }

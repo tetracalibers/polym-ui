@@ -1,13 +1,6 @@
-import {
-  getDefaultProps,
-  getPropType,
-  NotRequired,
-  Required,
-} from 'react-tsx-props'
+import { getDefaultProps, getPropType, NotRequired } from 'react-tsx-props'
 import * as CSST from 'csstype'
-import { ColorPalette } from 'styled-utility-first'
-import { CssStyle } from 'ts-typedef-helper'
-import styled, { css, keyframes, ThemeProvider } from 'styled-components'
+import styled, { css, ThemeProvider } from 'styled-components'
 import { ElementType, forwardRef } from 'react'
 import _ from 'lodash'
 

@@ -1,10 +1,10 @@
 import { keyframes } from 'styled-components'
 
 export const bgDelayKeyframes = keyframes`
-  from {
+  0% {
     opacity: 0;
   }
-  to {
+  99.9%, to {
     opacity: 1;
   }
 `
@@ -13,7 +13,7 @@ export const childrenDelayKeyframes = keyframes`
   0% {
     opacity: 0;
   }
-  100% {
+  99.9%, to {
     opacity: 1;
   }
 `
@@ -30,7 +30,7 @@ export const bgSlideFromLeft = keyframes`
   50.001% {
     transform-origin: right;
   }
-  100% {
+  99.9%, to {
     transform-origin: right;
     transform: scaleX(0);
   }
@@ -48,7 +48,7 @@ export const bgSlideFromRight = keyframes`
   50.001% {
     transform-origin: left;
   }
-  100% {
+  99.9%, to {
     transform-origin: left;
     transform: scaleX(0);
   }
@@ -66,7 +66,7 @@ export const bgSlideFromBottom = keyframes`
   50.001% {
     transform-origin: top;
   }
-  100% {
+  99.9%, to {
     transform-origin: top;
     transform: scaleY(0);
   }
@@ -84,7 +84,7 @@ export const bgSlideFromTop = keyframes`
   50.001% {
     transform-origin: bottom;
   }
-  100% {
+  99.9%, to {
     transform-origin: bottom;
     transform: scaleY(0);
   }
