@@ -80,10 +80,9 @@ export type ModalProps = {
     ReactElement<ContentProps, typeof Content>,
     ReactElement<ControlsProps, typeof Controls>
   ]
-  open: boolean
 }
 
-export const Modal = ({ children, open }: ModalProps) => {
+export const Modal = ({ children }: ModalProps) => {
   const [titleId, updateTitleId] = useShareId()
   const [contentId, updateContentId] = useShareId()
 
@@ -92,28 +91,19 @@ export const Modal = ({ children, open }: ModalProps) => {
     [titleId, contentId]
   )
 
-  const [isOpen, setOpenStatus] = useState(open)
-  const closeAction = () => setOpenStatus(false)
-
   return (
     <ModalContext.Provider value={shareState}>
-      {isOpen && (
-        <>
-          <BackCover />
-          <OverlayWrapper
-            role='dialog'
-            aria-labelledby={titleId}
-            aria-describedby={contentId}
-            aria-modal={true}
-          >
-            {children}
-            <CloseButton onClick={closeAction}>
-              <AiOutlineClose aria-hidden='true' />
-              <VisuallyHidden>Close</VisuallyHidden>
-            </CloseButton>
-          </OverlayWrapper>
-        </>
-      )}
+      <>
+        <BackCover />
+        <OverlayWrapper
+          role='dialog'
+          aria-labelledby={titleId}
+          aria-describedby={contentId}
+          aria-modal={true}
+        >
+          {children}
+        </OverlayWrapper>
+      </>
     </ModalContext.Provider>
   )
 }

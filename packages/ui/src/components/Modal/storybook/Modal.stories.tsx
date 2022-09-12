@@ -46,5 +46,4 @@ const Template: ComponentStory<typeof Modal> = ({ ...args }) => (
 export const playground = Template.bind({})
 playground.args = {
   ...defaultModalProps,
-  open: true,
 }
