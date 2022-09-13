@@ -5,8 +5,9 @@ import { AnchorCoreProps } from '../Anchor'
 import { BaseStyleProps, defaultBaseStyleProps } from './model/style'
 import { injectBaseStyle } from './styled/styleBase'
 
-type StyleBaseClickProps<CORE extends ButtonCoreProps | AnchorCoreProps> =
-  CORE & BaseStyleProps
+export type StyleBaseClickProps<
+  CORE extends ButtonCoreProps | AnchorCoreProps
+> = CORE & BaseStyleProps
 
 export const getStyleBaseClickElement = <
   CORE extends ButtonCoreProps | AnchorCoreProps

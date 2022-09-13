@@ -6,7 +6,7 @@ import { defaultButtonCharacterProps } from '../../model/button'
 import { defaultFadeWaveStyleProps } from '../../model/style'
 import { fadeWaveStyleArgTypes } from '../styleArgTypes'
 import { buttonArgTypes } from './argTypes'
-import { withGradient } from '../../../../hoc/gradient/gradient'
+import { withGradient } from '../../../../hoc/gradient'
 
 export default {
   title: 'button/FadeWave',

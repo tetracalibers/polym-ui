@@ -8,6 +8,7 @@ import { Modal } from '../../Modal'
 import { Text } from '../../Text'
 import { Alert } from '../styled/Alert'
 import { ActionButton } from '../styled/blockLabel'
+import { DangerButton } from './DangerButton'
 
 export type DeleteButtonProps = {
   id: string
@@ -45,7 +46,7 @@ export const DeleteButton = ({ id, type }: DeleteButtonProps) => {
           </Modal.Content>
           <Modal.Controls>
             <Button onClick={closeConfirm}>Cancel</Button>
-            <Button onClick={execDelete}>Delete</Button>
+            <DangerButton onClick={execDelete}>Delete</DangerButton>
           </Modal.Controls>
         </Modal>
       )}
