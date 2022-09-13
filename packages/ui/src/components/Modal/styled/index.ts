@@ -10,6 +10,7 @@ const show = keyframes`
   99.9%, to {
     opacity: 1;
     transform: translate(-50%, -50%) scale(1);
+    margin-right: -25%;
   }
 `
 
@@ -20,10 +21,7 @@ export const OverlayWrapper = styled.div`
   top: 50%;
   left: 50%;
   /* 要素の中央がコンテナの中央になるよう修正 */
-  transform: translate(-50%, -50%) scale(0.3);
   z-index: 999;
-  /* 縮んだ分広がる */
-  margin-right: -25%;
 
   /* modal window自体のスタイル ------------------------ */
   background-color: rgba(236, 239, 241, 0.6);
@@ -35,7 +33,7 @@ export const OverlayWrapper = styled.div`
   border-radius: 1rem;
 
   animation-name: ${show};
-  animation-duration: 0.75s;
+  animation-duration: 0.5s;
   animation-fill-mode: forwards;
 `
 
