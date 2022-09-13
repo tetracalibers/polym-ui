@@ -1,18 +1,26 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { GrAlert } from 'react-icons/gr'
 import { TbTrash } from 'react-icons/tb'
+import { BlockEditorContext } from '..'
 import { Button } from '../../core/Button'
+import { HorizontalCenter } from '../../layout-algorithm/HorizontalCenter'
 import { Modal } from '../../Modal'
 import { Text } from '../../Text'
 import { Alert } from '../styled/Alert'
 import { ActionButton } from '../styled/blockLabel'
 
-export type DeleteButtonProps = {}
+export type DeleteButtonProps = {
+  id: string
+  type: string
+}
 
-export const DeleteButton = () => {
+export const DeleteButton = ({ id, type }: DeleteButtonProps) => {
   const [isOpen, setOpenFlag] = useState(false)
   const openConfirm = () => setOpenFlag(true)
   const closeConfirm = () => setOpenFlag(false)
+
+  const { dispatch } = useContext(BlockEditorContext)
+  const execDelete = () => dispatch({ type: 'DELETE', args: { key: id } })
 
   return (
     <>
@@ -25,17 +33,19 @@ export const DeleteButton = () => {
             </Alert>
           </Modal.Title>
           <Modal.Content>
-            <Text fontSizeV={1.25} color='#EA005E'>
-              Press the
+            <HorizontalCenter textCenter>
+              <p>
+                The button to delete the <Text fontSizeV={1.5}>{type}</Text>{' '}
+                block has been clicked.
+              </p>
               <Text fontSizeV={2} color='#EA005E'>
-                "Delete"
+                Delete?
               </Text>
-              button to delete the block.
-            </Text>
+            </HorizontalCenter>
           </Modal.Content>
           <Modal.Controls>
             <Button onClick={closeConfirm}>Cancel</Button>
-            <Button>Delete</Button>
+            <Button onClick={execDelete}>Delete</Button>
           </Modal.Controls>
         </Modal>
       )}

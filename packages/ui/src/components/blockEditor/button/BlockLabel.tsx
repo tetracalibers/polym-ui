@@ -10,9 +10,10 @@ export type BlockLabelProps = {
   type: BlockType
   pos: number
   maxPos: number
+  id: string
 }
 
-export const BlockLabel = ({ type, pos, maxPos }: BlockLabelProps) => {
+export const BlockLabel = ({ type, pos, maxPos, id }: BlockLabelProps) => {
   const icon = _.find(blockConf, { type })?.icon
 
   return (
@@ -25,7 +26,7 @@ export const BlockLabel = ({ type, pos, maxPos }: BlockLabelProps) => {
       </TagButton>
       {pos !== 0 && <MoveUpButton pos={pos} />}
       {pos !== maxPos && <MoveDownButton pos={pos} />}
-      <DeleteButton />
+      <DeleteButton id={id} type={type} />
     </Flex>
   )
 }
