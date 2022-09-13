@@ -14,6 +14,7 @@ export type EditorBlockProps = {
 export const EditorBlock = ({ type, id, pos, maxPos }: EditorBlockProps) => {
   const Block = match(type)
     .with('link', () => <LinkBlock id={id} />)
+    .with('separator', () => <></>)
     .otherwise(() => <LongTextBlock type={type} id={id} />)
 
   return (
