@@ -36,7 +36,7 @@ export type UpdateAction = {
   type: 'UPDATE'
   args: {
     key: string
-    formatArg: { [arg: string]: string }
+    diff: { [arg: string]: string }
   }
 }
 
@@ -85,8 +85,10 @@ export const reducer = (state: StoreArr, action: Action): StoreArr => {
       ] as StoreArr
     })
     .with('UPDATE', () => {
-      const { key, formatArg } = (action as UpdateAction).args
-      return state.map(s => (s.key === key ? { ...s, formatArg } : s))
+      const { key, diff } = (action as UpdateAction).args
+      return state.map(s =>
+        s.key === key ? { ...s, formatArg: { ...s.formatArg, ...diff } } : s
+      )
     })
     .with('DELETE', () => {
       const { key } = (action as DeleteAction).args
