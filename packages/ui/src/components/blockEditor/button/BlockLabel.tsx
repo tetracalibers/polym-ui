@@ -1,5 +1,5 @@
 import { WithIcon } from '../../with-icon/core'
-import { blockConf, BlockType } from '../module/block'
+import { blockConf, BlockType } from '../module/config'
 import { Flex, TagButton } from '../styled/blockLabel'
 import _ from 'lodash'
 import { MoveUpButton } from './MoveUpButton'

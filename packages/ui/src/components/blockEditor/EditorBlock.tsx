@@ -2,7 +2,7 @@ import { match } from 'ts-pattern'
 import { LinkBlock } from './blocks/LinkBlock'
 import { LongTextBlock } from './blocks/LongTextBlock'
 import { BlockLabel } from './button/BlockLabel'
-import { BlockType } from './module/block'
+import { BlockType } from './module/config'
 
 export type EditorBlockProps = {
   type: BlockType

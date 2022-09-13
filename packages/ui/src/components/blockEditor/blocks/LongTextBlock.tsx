@@ -2,7 +2,7 @@ import { useTextareaStretch } from '@polym/hooks'
 import { StretchTextArea } from '../styled/longTextBlock'
 import { VisuallyHidden } from '../../a11y-helper/VisuallyHidden'
 import { ChangeEvent, useContext } from 'react'
-import { BlockType } from '../module/block'
+import { BlockType } from '../module/config'
 import { BlockEditorContext } from '..'
 
 export type LongTextBlockProps = {

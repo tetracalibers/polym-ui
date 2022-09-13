@@ -1,7 +1,7 @@
 import _ from 'lodash'
 import { nanoid } from 'nanoid'
 import { match } from 'ts-pattern'
-import { blockConf, BlockType } from './block'
+import { blockConf, BlockType } from './config'
 import { FormatArgs } from './FormatArgs'
 import { arrayMoveImmutable } from 'array-move'
 import { ReactNode } from 'react'

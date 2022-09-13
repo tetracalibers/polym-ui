@@ -9,7 +9,7 @@ import {
 import { VerticalStack } from '../layout-algorithm/VerticalStack'
 import { WithSidebar } from '../layout-algorithm/WithSidebar'
 import { EditorBlock } from './EditorBlock'
-import { blockConf } from './module/block'
+import { blockConf } from './module/config'
 import { Action, reducer } from './module/reducer'
 import { EditPanel, PreviewPanel } from './styled/panel'
 import { ToolButton } from './button/ToolButton'

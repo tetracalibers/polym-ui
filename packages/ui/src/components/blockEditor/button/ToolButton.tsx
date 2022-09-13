@@ -1,7 +1,7 @@
 import { ReactElement, useContext } from 'react'
 import { IconOnlyCoreProps } from '../../core/IconOnly'
 import { BlowingTag } from '../../tag/BlowingTag'
-import { BlockType } from '../module/block'
+import { BlockType } from '../module/config'
 import { ToolIconButton } from '../styled/toolButton'
 import { withToolTip } from './withToolTip'
 import { Text } from '../../Text'
