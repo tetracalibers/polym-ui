@@ -1,4 +1,5 @@
-import { VisuallyHidden } from '../../a11y-helper/VisuallyHidden'
+import { VisuallyHidden } from '../../../a11y-helper/VisuallyHidden'
+import { UrlInput } from './UrlInput'
 
 export type LinkBlockProps = {
   id: string
@@ -7,10 +8,7 @@ export type LinkBlockProps = {
 export const LinkBlock = ({ id }: LinkBlockProps) => {
   return (
     <>
-      <label htmlFor={id + '_url'}>
-        <VisuallyHidden>url of link</VisuallyHidden>
-      </label>
-      <input id={id + '_url'}></input>
+      <UrlInput id={id} />
       <label htmlFor={id + '_textlabel'}>
         <VisuallyHidden>text label of link</VisuallyHidden>
       </label>
