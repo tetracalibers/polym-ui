@@ -2,12 +2,12 @@ import { useContext, useState } from 'react'
 import { GrAlert } from 'react-icons/gr'
 import { TbTrash } from 'react-icons/tb'
 import { BlockEditorContext } from '..'
-import { Button } from '../../core/Button/core'
 import { HorizontalCenter } from '../../layout-algorithm/HorizontalCenter'
 import { Modal } from '../../Modal'
 import { Text } from '../../Text'
 import { Alert } from '../styled/Alert'
 import { ActionButton } from '../styled/blockLabel'
+import { CancelButton } from './CancelButton'
 import { DangerButton } from './DangerButton'
 
 export type DeleteButtonProps = {
@@ -39,13 +39,13 @@ export const DeleteButton = ({ id, type }: DeleteButtonProps) => {
                 The button to delete the <Text fontSizeV={1.5}>{type}</Text>{' '}
                 block has been clicked.
               </p>
-              <Text fontSizeV={2} color='#EA005E'>
+              <Text fontSizeV={2} color='#f83600'>
                 Delete?
               </Text>
             </HorizontalCenter>
           </Modal.Content>
           <Modal.Controls>
-            <Button onClick={closeConfirm}>Cancel</Button>
+            <CancelButton onClick={closeConfirm}>Cancel</CancelButton>
             <DangerButton onClick={execDelete}>Delete</DangerButton>
           </Modal.Controls>
         </Modal>
