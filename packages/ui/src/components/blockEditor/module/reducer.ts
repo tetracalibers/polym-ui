@@ -1,15 +1,22 @@
 import _ from 'lodash'
 import { nanoid } from 'nanoid'
 import { match } from 'ts-pattern'
-import { Block, blockConf, BlockType } from './block'
+import { blockConf, BlockType } from './block'
+import { FormatArgs } from './FormatArgs'
 import { arrayMoveImmutable } from 'array-move'
+import { ReactNode } from 'react'
+import { ValueOf } from './ValueOf'
 
-export type Store = {
-  content: string
-  type: BlockType
+export type Store<T extends BlockType> = {
+  formatArg: FormatArgs[T]
+  type: T
   key: string
-  format: Block['format']
+  format: (args: FormatArgs[T]) => ReactNode
 }
+
+export type StoreArr = ValueOf<{
+  [t in BlockType]: Store<t>
+}>[]
 
 export type InsertAction = {
   type: 'INSERT'
@@ -29,7 +36,7 @@ export type UpdateAction = {
   type: 'UPDATE'
   args: {
     key: string
-    content: string
+    formatArg: { [arg: string]: string }
   }
 }
 
@@ -63,7 +70,7 @@ export type Action =
   | MoveUpAction
   | MoveDownAction
 
-export const reducer = (state: Store[], action: Action): Store[] => {
+export const reducer = (state: StoreArr, action: Action): StoreArr => {
   return match(action.type)
     .with('INSERT', () => {
       const { type } = (action as InsertAction).args
@@ -71,15 +78,15 @@ export const reducer = (state: Store[], action: Action): Store[] => {
         ...state,
         {
           ...action.args,
-          content: '',
+          formatArg: {},
           key: nanoid(),
           format: _.find(blockConf, { type })?.format,
         },
-      ] as Store[]
+      ] as StoreArr
     })
     .with('UPDATE', () => {
-      const { key, content } = (action as UpdateAction).args
-      return state.map(s => (s.key === key ? { ...s, content } : s))
+      const { key, formatArg } = (action as UpdateAction).args
+      return state.map(s => (s.key === key ? { ...s, formatArg } : s))
     })
     .with('DELETE', () => {
       const { key } = (action as DeleteAction).args
@@ -98,5 +105,5 @@ export const reducer = (state: Store[], action: Action): Store[] => {
       const { old_pos } = (action as MoveDownAction).args
       return arrayMoveImmutable(state, old_pos, old_pos + 1)
     })
-    .exhaustive()
+    .exhaustive() as StoreArr
 }

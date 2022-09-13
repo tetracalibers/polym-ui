@@ -106,7 +106,9 @@ export const BlockEditor = () => {
           <PreviewPanel>
             {
               /* preview */ blocks.map(block => (
-                <span key={block.key}>{block.format(block.content)}</span>
+                <span key={block.key}>
+                  {block.format(block.formatArg as any)}
+                </span>
               ))
             }
           </PreviewPanel>
