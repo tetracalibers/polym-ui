@@ -39,7 +39,6 @@ export const ActionButton = styled(IconOnly.Button)`
   height: 2rem;
   position: relative;
   border-radius: 50%;
-  background-color: #9cdaf8;
   background-image: linear-gradient(315deg, #9cdaf8 0%, #98fcbd 74%);
   color: cadetblue;
   box-shadow: inset 14px 0px 5px -10px rgb(255 255 255 / 20%),

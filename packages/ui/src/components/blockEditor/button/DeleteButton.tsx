@@ -10,11 +10,16 @@ import { Alert } from '../styled/Alert'
 import { ActionButton } from '../styled/blockLabel'
 import { CancelButton } from './CancelButton'
 import { DangerButton } from './DangerButton'
+import styled from 'styled-components'
 
 export type DeleteButtonProps = {
   id: string
   type: string
 }
+
+const OpenModalButton = styled(ActionButton)`
+  background-image: linear-gradient(135deg, #fccf31 10%, #f55555 100%);
+`
 
 export const DeleteButton = ({ id, type }: DeleteButtonProps) => {
   const [isOpen, setOpenFlag] = useState(false)
@@ -26,7 +31,11 @@ export const DeleteButton = ({ id, type }: DeleteButtonProps) => {
 
   return (
     <>
-      <ActionButton label='Delete' icon={<TbTrash />} onClick={openConfirm} />
+      <OpenModalButton
+        label='Delete'
+        icon={<TbTrash />}
+        onClick={openConfirm}
+      />
       {isOpen && (
         <Modal>
           <Modal.Title>
