@@ -15,7 +15,7 @@ export default {
 }
 
 const JSeXample: ComponentStory<typeof CodeHighlight> = () => (
-  <CodeHighlight lang='javascript'>
+  <CodeHighlight lang='js'>
     {`
 if (Prism.languages.markup) {
   Prism.languages.markup.tag.addInlined('script', 'javascript')

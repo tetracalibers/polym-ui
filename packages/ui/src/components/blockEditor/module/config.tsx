@@ -1,4 +1,4 @@
-import { ReactElement, ReactNode } from 'react'
+import { Fragment, ReactElement, ReactNode } from 'react'
 import { FiLink } from 'react-icons/fi'
 import {
   IoImageOutline,
@@ -21,6 +21,7 @@ import { BsBlockquoteLeft } from 'react-icons/bs'
 import { ImTerminal, ImCommand } from 'react-icons/im'
 import { FormatArgs } from './FormatArgs'
 import { ValueOf } from './ValueOf'
+import { CodeHighlight } from '../../CodeHighlight'
 
 const blockType = [
   'link', // block | inline
@@ -60,11 +61,14 @@ export const blockConf: Blocks = [
   {
     type: 'link',
     icon: <FiLink />,
-    format: ({ url, label }) => (
-      <div>
-        <a href={url}>{label}</a>
-      </div>
-    ),
+    format: ({ url, label, boxType = 'block' }) => {
+      const Wrap = boxType === 'inline' ? Fragment : 'div'
+      return (
+        <Wrap>
+          <a href={url}>{label}</a>
+        </Wrap>
+      )
+    },
   },
   {
     type: 'image',
@@ -75,14 +79,14 @@ export const blockConf: Blocks = [
     type: 'code',
     icon: <RiCodeSSlashFill />,
     select: ['inline', 'block'],
-    format: ({ input, boxType }) =>
-      boxType === 'inline' ? (
-        <code>{input}</code>
-      ) : (
-        <pre>
-          <code>{input}</code>
-        </pre>
-      ),
+    format: ({ input, boxType = 'block', lang = 'js' }) => {
+      const isInline = boxType === 'inline'
+      return (
+        <CodeHighlight lang={lang} isInline={isInline}>
+          {input}
+        </CodeHighlight>
+      )
+    },
   },
   {
     type: 'keyboard',
