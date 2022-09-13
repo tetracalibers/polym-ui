@@ -32,11 +32,11 @@ export type DeleteAction = {
   }
 }
 
-export type UpdateAction = {
+export type UpdateAction<T extends BlockType = BlockType> = {
   type: 'UPDATE'
   args: {
     key: string
-    diff: { [arg: string]: string }
+    diff: { [arg in keyof FormatArgs[T]]?: string }
   }
 }
 
