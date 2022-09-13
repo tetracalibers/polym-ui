@@ -7,13 +7,13 @@ export type LinkBlockProps = {
 export const LinkBlock = ({ id }: LinkBlockProps) => {
   return (
     <>
-      <VisuallyHidden>
-        <label htmlFor={id + '_url'}>url of link</label>
-      </VisuallyHidden>
+      <label htmlFor={id + '_url'}>
+        <VisuallyHidden>url of link</VisuallyHidden>
+      </label>
       <input id={id + '_url'}></input>
-      <VisuallyHidden>
-        <label htmlFor={id + '_textlabel'}>text label of link</label>
-      </VisuallyHidden>
+      <label htmlFor={id + '_textlabel'}>
+        <VisuallyHidden>text label of link</VisuallyHidden>
+      </label>
       <input id={id + '_textlabel'}></input>
     </>
   )
