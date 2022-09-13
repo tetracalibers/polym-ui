@@ -2,6 +2,7 @@ import { useContext, useState } from 'react'
 import { GrAlert } from 'react-icons/gr'
 import { TbTrash } from 'react-icons/tb'
 import { BlockEditorContext } from '..'
+import { DifferStack } from '../../layout-algorithm/DifferStack'
 import { HorizontalCenter } from '../../layout-algorithm/HorizontalCenter'
 import { Modal } from '../../Modal'
 import { Text } from '../../Text'
@@ -45,8 +46,10 @@ export const DeleteButton = ({ id, type }: DeleteButtonProps) => {
             </HorizontalCenter>
           </Modal.Content>
           <Modal.Controls>
-            <CancelButton onClick={closeConfirm}>Cancel</CancelButton>
-            <DangerButton onClick={execDelete}>Delete</DangerButton>
+            <DifferStack justifyContent={'space-evenly'}>
+              <CancelButton onClick={closeConfirm}>Cancel</CancelButton>
+              <DangerButton onClick={execDelete}>Delete</DangerButton>
+            </DifferStack>
           </Modal.Controls>
         </Modal>
       )}
