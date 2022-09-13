@@ -60,7 +60,11 @@ export const blockConf: Blocks = [
   {
     type: 'link',
     icon: <FiLink />,
-    format: ({ url, label }) => <a href={url}>{label}</a>,
+    format: ({ url, label }) => (
+      <div>
+        <a href={url}>{label}</a>
+      </div>
+    ),
   },
   {
     type: 'image',

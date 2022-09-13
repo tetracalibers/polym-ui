@@ -13,7 +13,8 @@ const Wrapper = styled.div`
   --bg-color__hover: rgba(255, 255, 255, 0.75);
   --float-color: #8c1bab;
   --border-color: #ce9ffc;
-  --border-radius: 1.5em;
+  --border-radius: 0;
+  --margin-top: 0.5rem;
 
   background-color: var(--bg-color);
   backdrop-filter: blur(4px);
@@ -22,8 +23,11 @@ const Wrapper = styled.div`
   outline: none;
   width: 100%;
   font-size: 16px;
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   transition: box-shadow 0.2s ease;
+
+  &:not(:first-child) {
+    margin-top: var(--margin-top);
+  }
 
   &:hover,
   &:focus-within {
@@ -32,8 +36,13 @@ const Wrapper = styled.div`
 
   &:focus-within {
     border: 1.5px solid var(--border-color);
-    margin: -1.5px;
+    margin-bottom: -1.5px;
+    margin-top: calc(var(--margin-top) - 1.5px);
     background-color: rgba(255, 255, 255, 0);
+  }
+
+  &:first-child:focus-within {
+    margin-top: -1.5px;
   }
 `
 
@@ -89,7 +98,9 @@ const Label = styled.label`
     transform: translate3d(0, -3.12rem, 0) scale3d(0.82, 0.82, 1);
   }
 
-  ${Input}:focus + &::before {
+  /* focus時と入力済みの場合 */
+  ${Input}:focus + &::before,
+  ${Input}:not(:placeholder-shown) + &::before {
     color: var(--float-color);
   }
 `
@@ -97,12 +108,18 @@ const Label = styled.label`
 export const FloatLabelInput = ({
   id,
   label,
+  type,
   ...inputProps
 }: FloatLabelInputProps) => {
   return (
     <Wrapper>
       {/* inputとlabelの順序を変えるとラベルが表示されないぞ */}
-      <Input id={id} placeholder={label} {...inputProps} />
+      <Input
+        id={id}
+        placeholder={label}
+        type={type ?? 'text'}
+        {...inputProps}
+      />
       <Label htmlFor={id} data-label={label}>
         <VisuallyHidden>{label}</VisuallyHidden>
       </Label>
