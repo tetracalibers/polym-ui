@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle, css } from 'styled-components'
+import { createGlobalStyle, css } from 'styled-components'
 
 const pastelfairyTheme = css`
   pre[class*='language-'] {
@@ -16,13 +16,10 @@ const pastelfairyTheme = css`
     word-spacing: normal;
     word-break: normal;
     line-height: 1.5;
-    -moz-tab-size: 2;
-    -o-tab-size: 2;
     tab-size: 2;
-    -webkit-hyphens: none;
-    -moz-hyphens: none;
-    -ms-hyphens: none;
     hyphens: none;
+    font-family: 'IBM Plex Mono' !important;
+    font-style: italic;
   }
 
   /* Selection */
@@ -73,6 +70,7 @@ const pastelfairyTheme = css`
   .token.punctuation,
   .token.namespace {
     color: #b2bec3;
+    font-style: normal;
   }
 
   .token.constant,
