@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { BiDotsHorizontalRounded } from 'react-icons/bi'
 import styled from 'styled-components'
 import { BlockEditorContext } from '..'
@@ -13,10 +13,22 @@ const OpenMenuButton = styled(ActionButton)`
 export const ChangeTypeButton = ({}: ChangeTypeButtonProps) => {
   const { dispatch } = useContext(BlockEditorContext)
 
+  const [open, setOpenFlag] = useState(false)
+
   return (
-    <OpenMenuButton
-      label='change block type'
-      icon={<BiDotsHorizontalRounded />}
-    />
+    <>
+      <OpenMenuButton
+        label='change block type'
+        icon={<BiDotsHorizontalRounded />}
+        onClick={() => setOpenFlag(flag => !flag)}
+      />
+      {open && (
+        <ul>
+          <li>To Inline</li>
+          <li>To Block</li>
+          <li>Cancel</li>
+        </ul>
+      )}
+    </>
   )
 }
