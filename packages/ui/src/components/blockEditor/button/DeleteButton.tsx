@@ -18,7 +18,7 @@ export type DeleteButtonProps = {
 }
 
 const OpenModalButton = styled(ActionButton)`
-  background-image: linear-gradient(135deg, #fccf31 10%, #f55555 100%);
+  background-image: linear-gradient(135deg, #fad7a1 10%, #e96d71 100%);
 `
 
 export const DeleteButton = ({ id, type }: DeleteButtonProps) => {

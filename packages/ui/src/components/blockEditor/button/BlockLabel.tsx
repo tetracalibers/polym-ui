@@ -5,6 +5,7 @@ import _ from 'lodash'
 import { MoveUpButton } from './MoveUpButton'
 import { MoveDownButton } from './MoveDownButton'
 import { DeleteButton } from './DeleteButton'
+import { ChangeTypeButton } from './ChangeTypeButton'
 
 export type BlockLabelProps = {
   type: BlockType
@@ -18,6 +19,7 @@ export const BlockLabel = ({ type, pos, maxPos, id }: BlockLabelProps) => {
 
   return (
     <Flex>
+      <DeleteButton id={id} type={type} />
       <TagButton>
         <WithIcon alignItems='center'>
           {icon}
@@ -26,7 +28,7 @@ export const BlockLabel = ({ type, pos, maxPos, id }: BlockLabelProps) => {
       </TagButton>
       {pos !== 0 && <MoveUpButton pos={pos} />}
       {pos !== maxPos && <MoveDownButton pos={pos} />}
-      <DeleteButton id={id} type={type} />
+      <ChangeTypeButton />
     </Flex>
   )
 }
