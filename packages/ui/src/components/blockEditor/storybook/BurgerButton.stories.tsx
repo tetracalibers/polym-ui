@@ -19,5 +19,5 @@ export default {
 
 const Template: ComponentStory<typeof BurgerButton> = () => <BurgerButton />
 
-export const floatLabelInput = Template.bind({})
-floatLabelInput.args = {}
+export const burgerButton = Template.bind({})
+burgerButton.args = {}
