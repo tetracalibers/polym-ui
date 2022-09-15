@@ -1,6 +1,6 @@
-import { SyntheticEvent, useState } from 'react'
 import styled from 'styled-components'
 import { ResetCss } from 'styled-utility-first'
+import { ButtonCoreProps } from '../../core/Button/core'
 import { IconOnly } from '../../core/IconOnly'
 
 /* -------------------------------------------- */
@@ -10,8 +10,8 @@ import { IconOnly } from '../../core/IconOnly'
 const Button = styled(IconOnly.Button)`
   ${ResetCss.button}
 
-  --size: 50px;
-  --line-height: 3px;
+  --size: 2rem;
+  --line-height: 2px;
   --gap: calc(var(--size) / 10);
   --paddingY: calc(
     (var(--size) - (var(--line-height) * 3 + var(--gap)) * 2) * 0.5
@@ -23,8 +23,6 @@ const Button = styled(IconOnly.Button)`
 
   width: var(--size);
   height: var(--size);
-
-  background-color: red;
 `
 
 const Lines = styled.div`
@@ -59,21 +57,21 @@ const Lines = styled.div`
   }
 
   /* 360度回転し、その中の線が回転して×に */
-  [data-open='true'] & {
+  [aria-expanded='true'] & {
     transform: rotate(360deg);
     transform-origin: center center;
   }
 
-  [data-open='true'] & > span:nth-of-type(1) {
+  [aria-expanded='true'] & > span:nth-of-type(1) {
     top: calc(var(--line2-y) - var(--line-height) * 2);
     transform: translateY(calc(var(--line-height) * 2)) rotate(-45deg);
   }
 
-  [data-open='true'] & > span:nth-of-type(2) {
+  [aria-expanded='true'] & > span:nth-of-type(2) {
     opacity: 0;
   }
 
-  [data-open='true'] & > span:nth-of-type(3) {
+  [aria-expanded='true'] & > span:nth-of-type(3) {
     top: calc(var(--line2-y) + var(--line-height) * 2);
     transform: translateY(calc(var(--line-height) * -2)) rotate(45deg);
   }
@@ -84,24 +82,13 @@ const Lines = styled.div`
 /* -------------------------------------------- */
 
 export type BurgerButtonProps = {
-  onOpen?: (e: SyntheticEvent<HTMLButtonElement>) => void
-  onClose?: (e: SyntheticEvent<HTMLButtonElement>) => void
-}
+  label: string
+} & Omit<ButtonCoreProps, 'children'>
 
-export const BurgerButton = ({ onOpen, onClose }: BurgerButtonProps) => {
-  const [isOpen, setOpenFlag] = useState(false)
-  const open = (e: SyntheticEvent<HTMLButtonElement>) => {
-    setOpenFlag(true)
-    onOpen && onOpen(e)
-  }
-  const close = (e: SyntheticEvent<HTMLButtonElement>) => {
-    setOpenFlag(false)
-    onClose && onClose(e)
-  }
-
+export const BurgerButton = ({ label, ...buttonProps }: BurgerButtonProps) => {
   return (
     <Button
-      label={isOpen ? 'close menu' : 'open menu'}
+      label={label}
       icon={
         <Lines>
           <span></span>
@@ -109,8 +96,7 @@ export const BurgerButton = ({ onOpen, onClose }: BurgerButtonProps) => {
           <span></span>
         </Lines>
       }
-      data-open={isOpen}
-      onClick={isOpen ? close : open}
+      {...buttonProps}
     />
   )
 }

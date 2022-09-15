@@ -1,20 +1,18 @@
-import { useState } from 'react'
-import { BiDotsHorizontalRounded } from 'react-icons/bi'
 import styled from 'styled-components'
 import { ResetCss } from 'styled-utility-first'
-import { Button } from '../../core/Button'
-import { Text } from '../../Text'
 import { BlockType } from '../module/config'
 import { StoreMap } from '../module/reducer'
-import { ActionButton } from '../styled/blockLabel'
+import { Popup } from './PopupMenu'
 import { ChangeBoxTypeMenu } from './ChangeBoxTypeMenu'
+import { BurgerButton } from './BurgerButton'
 
 /* -------------------------------------------- */
 /* STYLE                                        */
 /* -------------------------------------------- */
 
-const OpenMenuButton = styled(ActionButton)`
+const OpenMenuButton = styled(BurgerButton)`
   background-image: linear-gradient(135deg, #ce9ffc 10%, #7367f0 100%);
+  border-radius: 50%;
 `
 
 const PositionManager = styled.div`
@@ -67,7 +65,6 @@ export const ChangeTypeButton = <T extends BlockType>({
   block,
 }: ChangeTypeButtonProps<T>) => {
   const { currBox, allowBox, id } = block
-  const [open, setOpenFlag] = useState(false)
 
   const convertible = allowBox === 'both'
 
@@ -75,23 +72,18 @@ export const ChangeTypeButton = <T extends BlockType>({
     <>
       {convertible && (
         <PositionManager>
-          <OpenMenuButton
-            label='change block type'
-            icon={<BiDotsHorizontalRounded />}
-            onClick={() => setOpenFlag(flag => !flag)}
-          />
-          {open && (
-            <MenuList>
-              {allowBox === 'both' && (
-                <ChangeBoxTypeMenu initialBox={currBox} id={id} />
-              )}
-              <li>
-                <Button>
-                  <Text>Cancel</Text>
-                </Button>
-              </li>
-            </MenuList>
-          )}
+          <Popup>
+            <Popup.Trigger>
+              <OpenMenuButton label='block type options' />
+            </Popup.Trigger>
+            <Popup.Menu>
+              <MenuList>
+                {allowBox === 'both' && (
+                  <ChangeBoxTypeMenu initialBox={currBox} id={id} />
+                )}
+              </MenuList>
+            </Popup.Menu>
+          </Popup>
         </PositionManager>
       )}
     </>
