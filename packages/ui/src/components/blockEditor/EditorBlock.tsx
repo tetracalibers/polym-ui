@@ -1,4 +1,5 @@
 import { match } from 'ts-pattern'
+import { KeyboardBlock } from './blocks/KeyboardBlock'
 import { LinkBlock } from './blocks/LinkBlock'
 import { LongTextBlock } from './blocks/LongTextBlock'
 import { BlockLabel } from './button/BlockLabel'
@@ -19,6 +20,7 @@ export const EditorBlock = <T extends BlockType>({
   const { type, id } = block
   const Block = match(type as BlockType)
     .with('link', () => <LinkBlock id={id} />)
+    .with('keyboard', () => <KeyboardBlock />)
     .with('separator', () => <></>)
     .otherwise(() => <LongTextBlock type={type} id={id} />)
 
