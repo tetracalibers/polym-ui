@@ -22,6 +22,7 @@ import { ImTerminal, ImCommand } from 'react-icons/im'
 import { FormatArgs } from './FormatArgs'
 import { ValueOf } from './ValueOf'
 import { CodeHighlight } from '../../CodeHighlight'
+import { MathFormula } from '../previews/MathFormula'
 
 const blockType = [
   'link', // block | inline
@@ -197,7 +198,9 @@ export const blockConf: Blocks = [
     type: 'formula',
     icon: <TbMath />,
     boxType: 'both',
-    format: ({ input, boxType }) =>
-      boxType === 'inline' ? <span>{input}</span> : <div>{input}</div>,
+    format: ({ input, boxType = 'block' }) => {
+      const isInline = boxType === 'inline'
+      return <MathFormula isInline={isInline} texSrc={input} />
+    },
   },
 ]
