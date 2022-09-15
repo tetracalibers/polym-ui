@@ -2,6 +2,7 @@ import _ from 'lodash'
 import { useContext, useState } from 'react'
 import { BlockEditorContext } from '..'
 import { Button } from '../../core/Button/core'
+import { Text } from '../../Text'
 import { UpdateAction } from '../module/reducer'
 
 export type ChangeBoxTypeMenuProps = {
@@ -43,7 +44,9 @@ export const ChangeBoxTypeMenu = ({
 
   return (
     <li>
-      <Button onClick={convertFn}>To {_.upperFirst(nextBoxType)}</Button>
+      <Button onClick={convertFn}>
+        <Text>To {_.upperFirst(nextBoxType)}</Text>
+      </Button>
     </li>
   )
 }
