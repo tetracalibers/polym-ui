@@ -5,14 +5,15 @@ import { StoreMap } from '../module/reducer'
 import { Popup } from './PopupMenu'
 import { ChangeBoxTypeMenu } from './ChangeBoxTypeMenu'
 import { BurgerButton } from './BurgerButton'
+import { ActionButtonStyle } from '../styled/blockLabel'
 
 /* -------------------------------------------- */
 /* STYLE                                        */
 /* -------------------------------------------- */
 
 const OpenMenuButton = styled(BurgerButton)`
+  ${ActionButtonStyle}
   background-image: linear-gradient(135deg, #ce9ffc 10%, #7367f0 100%);
-  border-radius: 50%;
 `
 
 const PositionManager = styled.div`

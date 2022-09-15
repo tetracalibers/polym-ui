@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components'
+import styled, { css, keyframes } from 'styled-components'
 import { ResetCss } from 'styled-utility-first'
 import { Button } from '../../core/Button/core'
 import { IconOnly } from '../../core/IconOnly'
@@ -30,8 +30,7 @@ const slideIn = keyframes`
   }
 `
 
-export const ActionButton = styled(IconOnly.Button)`
-  ${ResetCss.button}
+export const ActionButtonStyle = css`
   transform: translateX(-200%);
   opacity: 0;
   animation: ${slideIn} 0.75s ease-out forwards;
@@ -49,6 +48,11 @@ export const ActionButton = styled(IconOnly.Button)`
     inset -20px 15px 10px -20px rgb(255 255 255 / 20%),
     inset 0px 20px 30px -5px rgb(255 255 255 / 30%),
     0px 2px 1px -1px rgb(245 225 183 / 80%);
+`
+
+export const ActionButton = styled(IconOnly.Button)`
+  ${ResetCss.button}
+  ${ActionButtonStyle}
   & > svg {
     position: absolute;
     top: 50%;
