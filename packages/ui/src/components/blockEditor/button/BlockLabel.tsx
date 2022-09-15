@@ -28,7 +28,7 @@ export const BlockLabel = ({ type, pos, maxPos, id }: BlockLabelProps) => {
       </TagButton>
       {pos !== 0 && <MoveUpButton pos={pos} />}
       {pos !== maxPos && <MoveDownButton pos={pos} />}
-      <ChangeTypeButton />
+      <ChangeTypeButton type={type} />
     </Flex>
   )
 }

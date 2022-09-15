@@ -49,7 +49,7 @@ export type BlockType = typeof blockType[number]
 export type Block<T extends BlockType> = {
   type: T
   icon: ReactElement
-  select?: string[]
+  boxType: 'inline' | 'block' | 'both'
   format: (args: FormatArgs[T]) => ReactNode
 }
 
@@ -61,6 +61,7 @@ export const blockConf: Blocks = [
   {
     type: 'link',
     icon: <FiLink />,
+    boxType: 'both',
     format: ({ url, label, boxType = 'block' }) => {
       const Wrap = boxType === 'inline' ? Fragment : 'div'
       return (
@@ -73,12 +74,13 @@ export const blockConf: Blocks = [
   {
     type: 'image',
     icon: <IoImageOutline />,
+    boxType: 'block',
     format: ({ url }) => <img src={url} />,
   },
   {
     type: 'code',
     icon: <RiCodeSSlashFill />,
-    select: ['inline', 'block'],
+    boxType: 'both',
     format: ({ input, boxType = 'block', lang = 'js' }) => {
       const isInline = boxType === 'inline'
       return (
@@ -91,36 +93,43 @@ export const blockConf: Blocks = [
   {
     type: 'keyboard',
     icon: <SiAutohotkey />,
+    boxType: 'inline',
     format: ({ input }) => <kbd>{input}</kbd>,
   },
   {
     type: 'marker',
     icon: <RiMarkPenFill />,
+    boxType: 'inline',
     format: ({ input }) => <mark>{input}</mark>,
   },
   {
     type: 'toggle',
+    boxType: 'block',
     icon: <IoIosArrowDropdownCircle />,
     format: ({ input }) => <div>{input}</div>,
   },
   {
     type: 'info',
     icon: <IoInformationCircleSharp />,
+    boxType: 'block',
     format: ({ input }) => <div>{input}</div>,
   },
   {
     type: 'alert',
     icon: <IoAlertCircleOutline />,
+    boxType: 'block',
     format: ({ input }) => <div>{input}</div>,
   },
   {
     type: 'paragraph',
     icon: <BiParagraph />,
+    boxType: 'both',
     format: ({ input }) => <p>{input}</p>,
   },
   {
     type: 'ulist',
     icon: <RiListCheck />,
+    boxType: 'block',
     format: ({ items }) => (
       <ul>
         {items.map((item, idx) => (
@@ -132,6 +141,7 @@ export const blockConf: Blocks = [
   {
     type: 'olist',
     icon: <RiListOrdered />,
+    boxType: 'block',
     format: ({ items }) => (
       <ol>
         {items.map(({ item }, idx) => (
@@ -148,16 +158,19 @@ export const blockConf: Blocks = [
   {
     type: 'separator',
     icon: <TbSeparatorHorizontal />,
+    boxType: 'block',
     format: () => <hr />,
   },
   {
     type: 'heading',
     icon: <TbHeading />,
+    boxType: 'block',
     format: ({ text }) => <h2>{text}</h2>,
   },
   {
     type: 'command',
     icon: <ImCommand />,
+    boxType: 'inline',
     format: ({ input }) => <kbd>{input}</kbd>,
   },
   //{
@@ -168,19 +181,20 @@ export const blockConf: Blocks = [
   {
     type: 'blockquote',
     icon: <BsBlockquoteLeft />,
-    select: ['inline', 'block'],
+    boxType: 'both',
     format: ({ input, boxType }) =>
       boxType === 'inline' ? <q>{input}</q> : <blockquote>{input}</blockquote>,
   },
   {
     type: 'terminal',
     icon: <ImTerminal />,
+    boxType: 'block',
     format: ({ input }) => <samp>{input}</samp>,
   },
   {
     type: 'formula',
     icon: <TbMath />,
-    select: ['inline', 'block'],
+    boxType: 'both',
     format: ({ input, boxType }) =>
       boxType === 'inline' ? <span>{input}</span> : <div>{input}</div>,
   },

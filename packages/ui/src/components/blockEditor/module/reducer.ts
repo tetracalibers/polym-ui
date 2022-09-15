@@ -11,6 +11,8 @@ export type Store<T extends BlockType> = {
   formatArg: FormatArgs[T]
   type: T
   key: string
+  allowBox: 'inline' | 'block' | 'both'
+  currBox: 'inline' | 'block'
   format: (args: FormatArgs[T]) => ReactNode
 }
 
@@ -74,15 +76,20 @@ export const reducer = (state: StoreArr, action: Action): StoreArr => {
   return match(action.type)
     .with('INSERT', () => {
       const { type } = (action as InsertAction).args
-      return [
-        ...state,
-        {
-          ...action.args,
-          formatArg: {},
-          key: nanoid(),
-          format: _.find(blockConf, { type })?.format,
-        },
-      ] as StoreArr
+      const newBlockInfo = _.find(blockConf, { type })
+      if (newBlockInfo === undefined) {
+        return state
+      }
+      const allowBox = newBlockInfo.boxType
+      const initialBlock: Store<typeof type> = {
+        ...action.args,
+        formatArg: {},
+        key: nanoid(),
+        allowBox,
+        currBox: allowBox === 'both' ? 'block' : allowBox,
+        format: newBlockInfo.format,
+      } as Store<typeof type>
+      return [...state, initialBlock] as StoreArr
     })
     .with('UPDATE', () => {
       const { key, diff } = (action as UpdateAction).args
