@@ -23,7 +23,8 @@ import { FormatArgs } from './FormatArgs'
 import { ValueOf } from './ValueOf'
 import { CodeHighlight } from '../../CodeHighlight'
 import { MathFormula } from '../previews/MathFormula'
-import { ParagraphBlock } from '../previews/Paragraph'
+import { ParagraphPreview } from '../previews/Paragraph'
+import { KeyBoardPreview } from '../previews/Keyboard'
 
 const blockType = [
   'link', // block | inline
@@ -98,7 +99,7 @@ export const blockConf: Blocks = [
     type: 'keyboard',
     icon: <SiAutohotkey />,
     boxType: 'inline',
-    format: ({ input }) => <kbd>{input}</kbd>,
+    format: ({ input }) => <KeyBoardPreview>{input}</KeyBoardPreview>,
   },
   {
     type: 'marker',
@@ -130,7 +131,7 @@ export const blockConf: Blocks = [
     boxType: 'both',
     format: ({ input, boxType = 'block' }) => {
       const isInline = boxType === 'inline'
-      return <ParagraphBlock isInline={isInline}>{input}</ParagraphBlock>
+      return <ParagraphPreview isInline={isInline}>{input}</ParagraphPreview>
     },
   },
   {

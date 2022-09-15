@@ -9,7 +9,7 @@ const inlineParagraph = styled.p`
   display: inline;
 `
 
-export const ParagraphBlock = ({
+export const ParagraphPreview = ({
   children,
   isInline = false,
 }: ParagraphBlockProps) => {
