@@ -46,10 +46,12 @@ const blockType = [
 ] as const
 export type BlockType = typeof blockType[number]
 
+export type BoxType = 'inline' | 'block' | 'both'
+
 export type Block<T extends BlockType> = {
   type: T
   icon: ReactElement
-  boxType: 'inline' | 'block' | 'both'
+  boxType: BoxType
   format: (args: FormatArgs[T]) => ReactNode
 }
 

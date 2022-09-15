@@ -1,7 +1,7 @@
 import _ from 'lodash'
 import { nanoid } from 'nanoid'
 import { match } from 'ts-pattern'
-import { blockConf, BlockType } from './config'
+import { blockConf, BlockType, BoxType } from './config'
 import { FormatArgs } from './FormatArgs'
 import { arrayMoveImmutable } from 'array-move'
 import { ReactNode } from 'react'
@@ -10,15 +10,18 @@ import { ValueOf } from './ValueOf'
 export type Store<T extends BlockType> = {
   formatArg: FormatArgs[T]
   type: T
-  key: string
-  allowBox: 'inline' | 'block' | 'both'
-  currBox: 'inline' | 'block'
+  id: string
+  allowBox: BoxType
+  currBox: Omit<BoxType, 'both'>
+  icon: ReactNode
   format: (args: FormatArgs[T]) => ReactNode
 }
 
-export type StoreArr = ValueOf<{
+export type StoreMap = {
   [t in BlockType]: Store<t>
-}>[]
+}
+
+export type StoreArr = ValueOf<StoreMap>[]
 
 export type InsertAction = {
   type: 'INSERT'
@@ -30,14 +33,14 @@ export type InsertAction = {
 export type DeleteAction = {
   type: 'DELETE'
   args: {
-    key: string
+    id: string
   }
 }
 
 export type UpdateAction<T extends BlockType = BlockType> = {
   type: 'UPDATE'
   args: {
-    key: string
+    id: string
     diff: { [arg in keyof FormatArgs[T]]?: string }
   }
 }
@@ -80,26 +83,27 @@ export const reducer = (state: StoreArr, action: Action): StoreArr => {
       if (newBlockInfo === undefined) {
         return state
       }
-      const allowBox = newBlockInfo.boxType
+      const { boxType: allowBox, icon } = newBlockInfo
       const initialBlock: Store<typeof type> = {
-        ...action.args,
+        type,
         formatArg: {},
-        key: nanoid(),
+        id: nanoid(),
         allowBox,
         currBox: allowBox === 'both' ? 'block' : allowBox,
+        icon,
         format: newBlockInfo.format,
       } as Store<typeof type>
       return [...state, initialBlock] as StoreArr
     })
     .with('UPDATE', () => {
-      const { key, diff } = (action as UpdateAction).args
+      const { id, diff } = (action as UpdateAction).args
       return state.map(s =>
-        s.key === key ? { ...s, formatArg: { ...s.formatArg, ...diff } } : s
+        s.id === id ? { ...s, formatArg: { ...s.formatArg, ...diff } } : s
       )
     })
     .with('DELETE', () => {
-      const { key } = (action as DeleteAction).args
-      return _.reject(state, { key })
+      const { id } = (action as DeleteAction).args
+      return _.reject(state, { id })
     })
     .with('DRAG_SORT', () => {
       const { old_pos, new_pos } = (action as DragSortAction).args

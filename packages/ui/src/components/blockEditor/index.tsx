@@ -86,11 +86,10 @@ export const BlockEditor = () => {
                     onDragStart={e => dragStart(e, idx)}
                     onDragEnter={e => dragEnter(e, idx)}
                     onDragEnd={sortBydrop}
-                    key={block.key}
+                    key={block.id}
                   >
                     <EditorBlock
-                      type={block.type}
-                      id={block.key}
+                      block={block}
                       pos={idx}
                       maxPos={blocks.length - 1}
                     />
@@ -106,7 +105,7 @@ export const BlockEditor = () => {
           <PreviewPanel>
             {
               /* preview */ blocks.map(block => (
-                <span key={block.key}>
+                <span key={block.id}>
                   {block.format(block.formatArg as any)}
                 </span>
               ))
