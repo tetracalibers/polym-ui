@@ -23,6 +23,7 @@ import { FormatArgs } from './FormatArgs'
 import { ValueOf } from './ValueOf'
 import { CodeHighlight } from '../../CodeHighlight'
 import { MathFormula } from '../previews/MathFormula'
+import { ParagraphBlock } from '../previews/Paragraph'
 
 const blockType = [
   'link', // block | inline
@@ -127,7 +128,10 @@ export const blockConf: Blocks = [
     type: 'paragraph',
     icon: <BiParagraph />,
     boxType: 'both',
-    format: ({ input }) => <p>{input}</p>,
+    format: ({ input, boxType = 'block' }) => {
+      const isInline = boxType === 'inline'
+      return <ParagraphBlock isInline={isInline}>{input}</ParagraphBlock>
+    },
   },
   {
     type: 'ulist',
