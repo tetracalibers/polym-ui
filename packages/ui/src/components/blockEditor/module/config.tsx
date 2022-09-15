@@ -132,7 +132,7 @@ export const blockConf: Blocks = [
     type: 'ulist',
     icon: <RiListCheck />,
     boxType: 'block',
-    format: ({ items }) => (
+    format: ({ items = [] }) => (
       <ul>
         {items.map((item, idx) => (
           <li key={idx}>{item}</li>
@@ -144,7 +144,7 @@ export const blockConf: Blocks = [
     type: 'olist',
     icon: <RiListOrdered />,
     boxType: 'block',
-    format: ({ items }) => (
+    format: ({ items = [] }) => (
       <ol>
         {items.map(({ item }, idx) => (
           <li key={idx}>{item}</li>
