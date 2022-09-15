@@ -1,7 +1,6 @@
-import { useContext, useState } from 'react'
+import { useState } from 'react'
 import { BiDotsHorizontalRounded } from 'react-icons/bi'
 import styled from 'styled-components'
-import { BlockEditorContext } from '..'
 import { BlockType } from '../module/config'
 import { StoreMap } from '../module/reducer'
 import { ActionButton } from '../styled/blockLabel'
@@ -18,8 +17,7 @@ const OpenMenuButton = styled(ActionButton)`
 export const ChangeTypeButton = <T extends BlockType>({
   block,
 }: ChangeTypeButtonProps<T>) => {
-  const { currBox, allowBox } = block
-  const { dispatch } = useContext(BlockEditorContext)
+  const { currBox, allowBox, id } = block
   const [open, setOpenFlag] = useState(false)
 
   const convertible = allowBox === 'both'
@@ -35,7 +33,9 @@ export const ChangeTypeButton = <T extends BlockType>({
           />
           {open && (
             <ul>
-              <ChangeBoxTypeMenu allowBox={allowBox} currBox={currBox} />
+              {allowBox === 'both' && (
+                <ChangeBoxTypeMenu initialBox={currBox} id={id} />
+              )}
               <li>Cancel</li>
             </ul>
           )}

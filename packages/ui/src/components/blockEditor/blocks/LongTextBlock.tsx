@@ -16,7 +16,7 @@ export const LongTextBlock = ({ type, id }: LongTextBlockProps) => {
   const updateFn = (e: ChangeEvent<HTMLTextAreaElement>) =>
     dispatch({
       type: 'UPDATE',
-      args: { key: id, diff: { input: e.target.value } },
+      args: { id, diff: { input: e.target.value } },
     })
 
   const [rows, updateState] = useTextareaStretch({

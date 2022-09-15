@@ -12,7 +12,7 @@ export type Store<T extends BlockType> = {
   type: T
   id: string
   allowBox: BoxType
-  currBox: Omit<BoxType, 'both'>
+  currBox: 'inline' | 'block'
   icon: ReactNode
   format: (args: FormatArgs[T]) => ReactNode
 }

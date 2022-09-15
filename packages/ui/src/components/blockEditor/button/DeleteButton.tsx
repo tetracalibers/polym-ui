@@ -27,7 +27,7 @@ export const DeleteButton = ({ id, type }: DeleteButtonProps) => {
   const closeConfirm = () => setOpenFlag(false)
 
   const { dispatch } = useContext(BlockEditorContext)
-  const execDelete = () => dispatch({ type: 'DELETE', args: { key: id } })
+  const execDelete = () => dispatch({ type: 'DELETE', args: { id } })
 
   return (
     <>

@@ -17,7 +17,7 @@ export const UrlInput = ({ id }: UrlInputProps) => {
 
     const action: UpdateAction<'link'> = {
       type: 'UPDATE',
-      args: { key: id, diff: { url: value } },
+      args: { id, diff: { url: value } },
     }
 
     dispatch(action)

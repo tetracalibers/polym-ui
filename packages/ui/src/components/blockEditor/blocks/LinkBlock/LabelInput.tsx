@@ -14,7 +14,7 @@ export const LabelInput = ({ id }: LabelInputProps) => {
     const action: UpdateAction<'link'> = {
       type: 'UPDATE',
       args: {
-        key: id,
+        id,
         diff: {
           label: e.target.value,
         },
