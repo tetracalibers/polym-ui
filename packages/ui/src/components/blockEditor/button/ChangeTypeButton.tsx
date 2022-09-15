@@ -5,6 +5,7 @@ import { BlockEditorContext } from '..'
 import { BlockType } from '../module/config'
 import { StoreMap } from '../module/reducer'
 import { ActionButton } from '../styled/blockLabel'
+import { ChangeBoxTypeMenu } from './ChangeBoxTypeMenu'
 
 export type ChangeTypeButtonProps<T extends BlockType> = {
   block: StoreMap[T]
@@ -17,23 +18,28 @@ const OpenMenuButton = styled(ActionButton)`
 export const ChangeTypeButton = <T extends BlockType>({
   block,
 }: ChangeTypeButtonProps<T>) => {
-  const { type } = block
+  const { currBox, allowBox } = block
   const { dispatch } = useContext(BlockEditorContext)
   const [open, setOpenFlag] = useState(false)
 
+  const convertible = allowBox === 'both'
+
   return (
     <>
-      <OpenMenuButton
-        label='change block type'
-        icon={<BiDotsHorizontalRounded />}
-        onClick={() => setOpenFlag(flag => !flag)}
-      />
-      {open && (
-        <ul>
-          <li>To Inline</li>
-          <li>To Block</li>
-          <li>Cancel</li>
-        </ul>
+      {convertible && (
+        <>
+          <OpenMenuButton
+            label='change block type'
+            icon={<BiDotsHorizontalRounded />}
+            onClick={() => setOpenFlag(flag => !flag)}
+          />
+          {open && (
+            <ul>
+              <ChangeBoxTypeMenu allowBox={allowBox} currBox={currBox} />
+              <li>Cancel</li>
+            </ul>
+          )}
+        </>
       )}
     </>
   )
