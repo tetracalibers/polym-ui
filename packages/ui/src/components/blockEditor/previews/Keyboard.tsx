@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { AiOutlinePlus } from 'react-icons/ai'
 
 const Kbd = styled.kbd`
   height: 41px;
@@ -18,9 +19,19 @@ const Kbd = styled.kbd`
 `
 
 export type KeyBoardBlockProps = {
-  children: string
+  keyNames: string[]
 }
 
-export const KeyBoardPreview = ({ children }: KeyBoardBlockProps) => {
-  return <Kbd>{children}</Kbd>
+export const KeyBoardPreview = ({ keyNames }: KeyBoardBlockProps) => {
+  const Keys = keyNames.reduce((prev, curr) => {
+    return (
+      <>
+        {prev}
+        <AiOutlinePlus aria-label='and' />
+        <Kbd>{curr}</Kbd>
+      </>
+    )
+  }, <></>)
+
+  return Keys
 }

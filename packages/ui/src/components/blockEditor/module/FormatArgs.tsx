@@ -14,7 +14,7 @@ export type FormatArgs = {
     boxType: 'inline' | 'block' // select
   }
   keyboard: {
-    input: string // textarea
+    keyNames: string[] // textarea
   }
   marker: {
     input: string // textarea
