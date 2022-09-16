@@ -174,7 +174,7 @@ export const blockConf: Blocks = [
     type: 'heading',
     icon: <TbHeading />,
     boxType: 'block',
-    format: ({ text, level = 2 }) => <Heading level={level}>{text}</Heading>,
+    format: ({ input, level = 2 }) => <Heading level={level}>{input}</Heading>,
   },
   {
     type: 'command',

@@ -44,7 +44,7 @@ export type FormatArgs = {
   separator: {}
   heading: {
     level: 1 | 2 | 3 | 4 | 5 | 6 // select
-    text: string // input
+    input: string // input
   }
   paragraph: {
     input: string // textarea
