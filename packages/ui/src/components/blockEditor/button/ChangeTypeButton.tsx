@@ -8,6 +8,7 @@ import { BurgerButton } from './BurgerButton'
 import { ActionButtonStyle } from '../styled/blockLabel'
 import { match } from 'ts-pattern'
 import { HeadingLevelSelect } from './HeadingLevelSelect'
+import { FormatArgs } from '../module/FormatArgs'
 
 /* -------------------------------------------- */
 /* STYLE                                        */
@@ -67,10 +68,13 @@ export type ChangeTypeButtonProps<T extends BlockType> = {
 export const ChangeTypeButton = <T extends BlockType>({
   block,
 }: ChangeTypeButtonProps<T>) => {
-  const { currBox, allowBox, id, type } = block
+  const { currBox, allowBox, id, type, formatArg } = block
 
   const Option = match(type as BlockType)
-    .with('heading', () => <HeadingLevelSelect />)
+    .with('heading', () => {
+      const level = (formatArg as FormatArgs['heading']).level
+      return <HeadingLevelSelect id={id} initialLevel={level} />
+    })
     .otherwise(() => false)
 
   const convertible = allowBox === 'both' || Option

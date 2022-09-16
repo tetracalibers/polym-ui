@@ -25,6 +25,7 @@ import { CodeHighlight } from '../../CodeHighlight'
 import { MathFormula } from '../previews/MathFormula'
 import { ParagraphPreview } from '../previews/Paragraph'
 import { KeyBoardPreview } from '../previews/Keyboard'
+import { Heading } from '../../core/Heading'
 
 const blockType = [
   'link', // block | inline
@@ -173,7 +174,7 @@ export const blockConf: Blocks = [
     type: 'heading',
     icon: <TbHeading />,
     boxType: 'block',
-    format: ({ text }) => <h2>{text}</h2>,
+    format: ({ text, level = 2 }) => <Heading level={level}>{text}</Heading>,
   },
   {
     type: 'command',

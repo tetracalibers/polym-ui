@@ -43,7 +43,7 @@ export type FormatArgs = {
   }
   separator: {}
   heading: {
-    level: number // select
+    level: 1 | 2 | 3 | 4 | 5 | 6 // select
     text: string // input
   }
   paragraph: {

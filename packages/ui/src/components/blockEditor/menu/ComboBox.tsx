@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import { useRef } from 'react'
+import { ChangeEvent, ForwardedRef, forwardRef, useRef } from 'react'
 import { VisuallyHidden } from '../../a11y-helper/VisuallyHidden'
 import { IconOnly } from '../../core/IconOnly'
 import { ChoiceItem } from '../../DropdownSelect/model/props'
@@ -167,9 +167,14 @@ export const SelectList = styled.ul`
 export type ComboBoxProps = {
   choices: ChoiceItem[]
   label: string
+  onSelect?: (e: ChangeEvent<HTMLSelectElement>) => void
+  initialSelected?: ChoiceItem
 }
 
-export const ComboBox = ({ choices, label }: ComboBoxProps) => {
+const _ComboBox = (
+  { choices, label, onSelect, initialSelected }: ComboBoxProps,
+  ref?: ForwardedRef<HTMLSelectElement>
+) => {
   const inputRef = useRef<HTMLInputElement>(null)
   const rootRef = useRef<HTMLDivElement>(null)
   const listRef = useRef<HTMLUListElement>(null)
@@ -179,6 +184,7 @@ export const ComboBox = ({ choices, label }: ComboBoxProps) => {
     inputRef,
     rootRef,
     listRef,
+    initialSelected,
   })
 
   const name = _.snakeCase(label)
@@ -194,6 +200,10 @@ export const ComboBox = ({ choices, label }: ComboBoxProps) => {
         name={name}
         tabIndex={-1}
         value={selectedItem?.value}
+        onChange={(e: ChangeEvent<HTMLSelectElement>) =>
+          onSelect && onSelect(e)
+        }
+        ref={ref}
       >
         {choices.map(item => (
           <option value={item.value} key={getItemKey(item.value)}>
@@ -235,3 +245,5 @@ export const ComboBox = ({ choices, label }: ComboBoxProps) => {
     </Root>
   )
 }
+
+export const ComboBox = forwardRef(_ComboBox)
