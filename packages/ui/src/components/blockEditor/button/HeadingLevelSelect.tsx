@@ -1,5 +1,5 @@
-import { DropdownSelect } from '../../DropdownSelect'
 import { ChoiceItem } from '../../DropdownSelect/model/props'
+import { ComboBox } from '../menu/ComboBox'
 
 const options: ChoiceItem[] = [...new Array(6)].map((_, idx) => ({
   value: idx + 1,
@@ -7,12 +7,5 @@ const options: ChoiceItem[] = [...new Array(6)].map((_, idx) => ({
 }))
 
 export const HeadingLevelSelect = () => {
-  return (
-    <DropdownSelect
-      choices={options}
-      name='heading-lavel'
-      onSelect={() => {}}
-      initialValue={1}
-    />
-  )
+  return <ComboBox choices={options} label='heading-lavel' />
 }
