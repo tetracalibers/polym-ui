@@ -1,4 +1,4 @@
-import { ChangeEvent, useContext } from 'react'
+import { useContext } from 'react'
 import { BlockEditorContext } from '..'
 import { ChoiceItem } from '../../DropdownSelect/model/props'
 import { ComboBox } from '../menu/ComboBox'

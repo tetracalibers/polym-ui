@@ -15,7 +15,7 @@ export const CodeHighlight = ({
 }: CodeHighlightProps) => {
   useEffect(() => {
     Prism.highlightAll()
-  }, [children])
+  }, [children, lang])
 
   const Wrap = isInline ? Fragment : 'pre'
 

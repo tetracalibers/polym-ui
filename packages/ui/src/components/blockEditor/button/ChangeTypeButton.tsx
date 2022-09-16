@@ -9,6 +9,7 @@ import { ActionButtonStyle } from '../styled/blockLabel'
 import { match } from 'ts-pattern'
 import { HeadingLevelSelect } from './HeadingLevelSelect'
 import { FormatArgs } from '../module/FormatArgs'
+import { CodeLangSelect } from '../menu/CodeLangSelect'
 
 /* -------------------------------------------- */
 /* STYLE                                        */
@@ -74,6 +75,10 @@ export const ChangeTypeButton = <T extends BlockType>({
     .with('heading', () => {
       const level = (formatArg as FormatArgs['heading']).level
       return <HeadingLevelSelect id={id} initialLevel={level} />
+    })
+    .with('code', () => {
+      const lang = (formatArg as FormatArgs['code']).lang
+      return <CodeLangSelect id={id} initialLang={lang} />
     })
     .otherwise(() => false)
 

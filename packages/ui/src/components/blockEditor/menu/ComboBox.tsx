@@ -99,7 +99,7 @@ export const AutoComplete = styled.div`
 export const SelectList = styled.ul`
   /* メニューをスクロール可能にする */
   max-height: 12em;
-  overflow-y: scroll;
+  overflow-y: auto;
   /* iOSで慣性スクロールができるようにする */
   -webkit-overflow-scrolling: touch;
 
