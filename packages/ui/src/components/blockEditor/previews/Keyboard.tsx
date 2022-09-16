@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { AiOutlinePlus } from 'react-icons/ai'
+import { Fragment } from 'react'
 
 const Kbd = styled.kbd`
   height: 41px;
@@ -23,13 +24,13 @@ export type KeyBoardBlockProps = {
 }
 
 export const KeyBoardPreview = ({ keyNames }: KeyBoardBlockProps) => {
-  const Keys = keyNames.reduce((prev, curr) => {
+  const Keys = keyNames.reduce((prev, curr, idx) => {
     return (
-      <>
+      <Fragment key={curr + '_' + idx}>
         {prev}
-        <AiOutlinePlus aria-label='and' />
+        {!!idx && <AiOutlinePlus aria-label='and' />}
         <Kbd>{curr}</Kbd>
-      </>
+      </Fragment>
     )
   }, <></>)
 
