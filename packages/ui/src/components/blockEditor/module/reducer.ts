@@ -41,7 +41,7 @@ export type UpdateAction<T extends BlockType = BlockType> = {
   type: 'UPDATE'
   args: {
     id: string
-    diff: { [arg in keyof FormatArgs[T]]?: string }
+    diff: { [arg in keyof FormatArgs[T]]?: FormatArgs[T][arg] }
   }
 }
 

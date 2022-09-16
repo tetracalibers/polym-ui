@@ -20,7 +20,7 @@ export const EditorBlock = <T extends BlockType>({
   const { type, id } = block
   const Block = match(type as BlockType)
     .with('link', () => <LinkBlock id={id} />)
-    .with('keyboard', () => <KeyboardBlock />)
+    .with('keyboard', () => <KeyboardBlock id={id} />)
     .with('separator', () => <></>)
     .otherwise(() => <LongTextBlock type={type} id={id} />)
 
