@@ -49,7 +49,7 @@ const Label = styled.label`
     transform-origin: left top;
     transition: transform 0.2s ease;
     position: relative;
-    left: calc(-1 * var(--gap));
+    left: calc(-1.5 * var(--gap));
   }
 
   ${Input}:placeholder-shown + &::before {
