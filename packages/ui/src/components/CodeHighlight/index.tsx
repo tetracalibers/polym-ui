@@ -1,6 +1,7 @@
 import { Fragment, useEffect } from 'react'
 import Prism from 'prismjs'
 import { GlobalTheme } from './styled/global'
+import 'prismjs/components/prism-typescript'
 
 type CodeHighlightProps = {
   lang: string
