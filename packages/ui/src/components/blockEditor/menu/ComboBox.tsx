@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import { ChangeEvent, ForwardedRef, forwardRef, useRef } from 'react'
+import { useRef } from 'react'
 import { VisuallyHidden } from '../../a11y-helper/VisuallyHidden'
 import { IconOnly } from '../../core/IconOnly'
 import { ChoiceItem } from '../../DropdownSelect/model/props'
@@ -167,14 +167,16 @@ export const SelectList = styled.ul`
 export type ComboBoxProps = {
   choices: ChoiceItem[]
   label: string
-  onSelect?: (e: ChangeEvent<HTMLSelectElement>) => void
+  onSelect?: (selected: ChoiceItem) => void
   initialSelected?: ChoiceItem
 }
 
-const _ComboBox = (
-  { choices, label, onSelect, initialSelected }: ComboBoxProps,
-  ref?: ForwardedRef<HTMLSelectElement>
-) => {
+export const ComboBox = ({
+  choices,
+  label,
+  onSelect,
+  initialSelected,
+}: ComboBoxProps) => {
   const inputRef = useRef<HTMLInputElement>(null)
   const rootRef = useRef<HTMLDivElement>(null)
   const listRef = useRef<HTMLUListElement>(null)
@@ -185,6 +187,7 @@ const _ComboBox = (
     rootRef,
     listRef,
     initialSelected,
+    onSelect,
   })
 
   const name = _.snakeCase(label)
@@ -194,17 +197,7 @@ const _ComboBox = (
   return (
     <Root {...attr.root}>
       {/* 値をサーバに送るためのname属性 */}
-      <VisuallyHidden
-        as='select'
-        aria-hidden='true'
-        name={name}
-        tabIndex={-1}
-        value={selectedItem?.value}
-        onChange={(e: ChangeEvent<HTMLSelectElement>) =>
-          onSelect && onSelect(e)
-        }
-        ref={ref}
-      >
+      <VisuallyHidden as='select' aria-hidden='true' name={name} tabIndex={-1}>
         {choices.map(item => (
           <option value={item.value} key={getItemKey(item.value)}>
             {item.label ?? item.value}
@@ -245,5 +238,3 @@ const _ComboBox = (
     </Root>
   )
 }
-
-export const ComboBox = forwardRef(_ComboBox)

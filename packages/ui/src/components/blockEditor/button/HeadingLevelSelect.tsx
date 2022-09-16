@@ -24,8 +24,8 @@ export const HeadingLevelSelect = ({
 }: HeadingLevelSelectProps) => {
   const { dispatch } = useContext(BlockEditorContext)
 
-  const updateFn = (e: ChangeEvent<HTMLSelectElement>) => {
-    const level = +e.target.value
+  const updateFn = (selectedItem: ChoiceItem) => {
+    const level = +selectedItem.value
     if (isValidLevel(level)) {
       const action: UpdateAction<'heading'> = {
         type: 'UPDATE',
