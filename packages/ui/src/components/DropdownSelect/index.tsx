@@ -1,5 +1,6 @@
 import _ from 'lodash'
 import {
+  ComponentPropsWithoutRef,
   FormEvent,
   forwardRef,
   KeyboardEvent,
@@ -11,13 +12,13 @@ import {
 import { CharacterProps, ChoiceItem, defaultProps } from './model/props'
 import { Root, AutoComplete, SelectList } from './styled'
 import { match } from 'ts-pattern'
-import { SelectComponentPropWithRef } from '../../types/polymorphic/fixedAs'
 import { useInput, useUnFocus } from '@polym/hooks'
 import { PolymorphicRef } from '../../types/polymorphic/standard'
 import { VisuallyHidden } from '../a11y-helper/VisuallyHidden'
 import { ArrowIcon } from '../icon/ArrowIcon'
 
-export type DropdownSelectProps = SelectComponentPropWithRef<CharacterProps>
+export type DropdownSelectProps = CharacterProps &
+  ComponentPropsWithoutRef<'select'>
 
 export type DropdownSelectComponent = (
   props: DropdownSelectProps
@@ -231,7 +232,7 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
     return (
       <Root ref={thisComponentEref}>
         {/* id={name}であるテキストボックスと関連づけ（SRで読み上げ） */}
-        <label htmlFor={name}>label</label>
+        <label htmlFor={name}>{name}</label>
         {/* 値をサーバに送るためのname属性 */}
         <VisuallyHidden
           as='select'

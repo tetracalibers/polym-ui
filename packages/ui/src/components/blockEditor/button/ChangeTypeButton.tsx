@@ -6,6 +6,8 @@ import { Popup } from './PopupMenu'
 import { ChangeBoxTypeMenu } from './ChangeBoxTypeMenu'
 import { BurgerButton } from './BurgerButton'
 import { ActionButtonStyle } from '../styled/blockLabel'
+import { match } from 'ts-pattern'
+import { HeadingLevelSelect } from './HeadingLevelSelect'
 
 /* -------------------------------------------- */
 /* STYLE                                        */
@@ -65,9 +67,13 @@ export type ChangeTypeButtonProps<T extends BlockType> = {
 export const ChangeTypeButton = <T extends BlockType>({
   block,
 }: ChangeTypeButtonProps<T>) => {
-  const { currBox, allowBox, id } = block
+  const { currBox, allowBox, id, type } = block
 
-  const convertible = allowBox === 'both'
+  const Option = match(type as BlockType)
+    .with('heading', () => <HeadingLevelSelect />)
+    .otherwise(() => false)
+
+  const convertible = allowBox === 'both' || Option
 
   return (
     <>
@@ -82,6 +88,7 @@ export const ChangeTypeButton = <T extends BlockType>({
                 {allowBox === 'both' && (
                   <ChangeBoxTypeMenu initialBox={currBox} id={id} />
                 )}
+                {Option && <li>{Option}</li>}
               </MenuList>
             </Popup.Menu>
           </Popup>
