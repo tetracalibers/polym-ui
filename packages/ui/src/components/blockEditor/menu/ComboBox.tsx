@@ -3,9 +3,119 @@ import { useRef } from 'react'
 import { VisuallyHidden } from '../../a11y-helper/VisuallyHidden'
 import { IconOnly } from '../../core/IconOnly'
 import { ChoiceItem } from '../../DropdownSelect/model/props'
-import { AutoComplete, Root, SelectList } from '../../DropdownSelect/styled'
+import { Root } from '../../DropdownSelect/styled'
 import { useCombobox } from './useCombobox'
 import { VscChevronDown } from 'react-icons/vsc'
+import styled from 'styled-components'
+import { ResetCss } from 'styled-utility-first'
+import { editInputStyle } from '../styled/editInput'
+
+export const AutoComplete = styled.div`
+  --icon-size: 2rem;
+  --icon-color: #0396ff;
+
+  display: flex;
+  position: relative;
+
+  & input {
+    ${editInputStyle}
+    margin: 0;
+    padding: 1rem;
+  }
+
+  & button {
+    ${ResetCss.button}
+    position: absolute;
+    right: 2.5%;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  & button svg {
+    width: var(--icon-size);
+    height: var(--icon-size);
+    fill: var(--icon-color);
+    stroke: var(--icon-color);
+    transform: rotate(0deg);
+    transition: transform 0.5s ease;
+  }
+
+  & button[data-open='true'] svg {
+    transform: rotate(180deg);
+  }
+`
+
+export const SelectList = styled.ul`
+  /* メニューをスクロール可能にする */
+  max-height: 12em;
+  overflow-y: scroll;
+  /* iOSで慣性スクロールができるようにする */
+  -webkit-overflow-scrolling: touch;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: #cdf0ea;
+    border-radius: 6px;
+    box-shadow: rgb(0 0 0 / 6%) 0px 2px 4px 0px inset;
+    box-shadow: rgb(171 216 255) -3px -3px 6px 0px inset,
+      rgb(255 255 255 / 50%) 3px 3px 6px 1px inset;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #ecc5fb;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    background-clip: content-box;
+  }
+
+  --gap: 1rem;
+  --bg-color: #f7f9ff;
+  --shadow-color: #b1b2ff;
+
+  /* scroll hint */
+  background: linear-gradient(var(--bg-color) 33%, rgba(255, 255, 255, 0)),
+    linear-gradient(rgba(255, 255, 255, 0), var(--bg-color) 66%) 0 100%,
+    radial-gradient(
+      farthest-side at 50% 0,
+      var(--shadow-color),
+      rgba(255, 255, 255, 0)
+    ),
+    radial-gradient(
+        farthest-side at 50% 100%,
+        var(--shadow-color),
+        rgba(255, 255, 255, 0)
+      )
+      0 100%;
+  background-color: var(--bg-color);
+  background-repeat: no-repeat;
+  background-attachment: local, local, scroll, scroll;
+  background-size: 100% 33px, 100% 33px, 100% 11px, 100% 11px;
+
+  /* design */
+  position: absolute;
+  width: 100%;
+  top: 110%;
+  list-style: none;
+  box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
+  border-radius: 10px;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+
+  && > li[role='option'] {
+    display: block;
+    padding: var(--gap) 0;
+    border: none;
+  }
+
+  && > li[role='option']:hover,
+  && > li[role='option']:focus {
+    background-image: linear-gradient(to right, #fdeb71 10%, #f8d800 100%);
+    box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+  }
+`
 
 export type ComboBoxProps = {
   choices: ChoiceItem[]
@@ -50,7 +160,7 @@ export const ComboBox = ({ choices, label }: ComboBoxProps) => {
       </VisuallyHidden>
       <AutoComplete>
         {/* このinputBoxの値はサーバには送らないため、name属性は不要 */}
-        <input {...attr.input} />
+        <input {...attr.input} placeholder={label} />
         <IconOnly.Button
           icon={<VscChevronDown />}
           label={isOpen ? 'close' : 'open'}
@@ -60,8 +170,8 @@ export const ComboBox = ({ choices, label }: ComboBoxProps) => {
         {isOpen && (
           <>
             <SelectList {...attr.list}>
-              {visibleItems.map(item => (
-                <li {...attr.listItem} key={getItemKey(item.value)}>
+              {visibleItems.map((item, idx) => (
+                <li {...attr.listItem(idx)} key={getItemKey(item.value)}>
                   {item.label ?? item.value}
                 </li>
               ))}
