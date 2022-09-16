@@ -15,7 +15,8 @@ import { match } from 'ts-pattern'
 import { useInput, useUnFocus } from '@polym/hooks'
 import { PolymorphicRef } from '../../types/polymorphic/standard'
 import { VisuallyHidden } from '../a11y-helper/VisuallyHidden'
-import { ArrowIcon } from '../icon/ArrowIcon'
+import { VscChevronDown } from 'react-icons/vsc'
+import { IconOnly } from '../core/IconOnly'
 
 export type DropdownSelectProps = CharacterProps &
   ComponentPropsWithoutRef<'select'>
@@ -232,7 +233,9 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
     return (
       <Root ref={thisComponentEref}>
         {/* id={name}であるテキストボックスと関連づけ（SRで読み上げ） */}
-        <label htmlFor={name}>{name}</label>
+        <label htmlFor={name}>
+          <VisuallyHidden>{name}</VisuallyHidden>
+        </label>
         {/* 値をサーバに送るためのname属性 */}
         <VisuallyHidden
           as='select'
@@ -268,10 +271,12 @@ export const DropdownSelect: DropdownSelectComponent = forwardRef(
             ref={inputEref}
             value={typedText}
           />
-          <ArrowIcon
-            direction={isOpen ? 'up' : 'down'}
+          <IconOnly.Button
+            icon={<VscChevronDown />}
+            label={isOpen ? 'close' : 'open'}
             onMouseDown={toggleOpenByClick}
             onTouchEnd={toggleOpenByClick}
+            data-open={isOpen}
           />
           {isOpen && (
             <>
