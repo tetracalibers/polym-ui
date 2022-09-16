@@ -6,22 +6,73 @@ import { ChoiceItem } from '../../DropdownSelect/model/props'
 import { Root } from '../../DropdownSelect/styled'
 import { useCombobox } from './useCombobox'
 import { VscChevronDown } from 'react-icons/vsc'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { ResetCss } from 'styled-utility-first'
 import { editInputStyle } from '../styled/editInput'
 
-export const AutoComplete = styled.div`
+const variables = css`
   --icon-size: 2rem;
   --icon-color: #0396ff;
+  --gap: 1rem;
+  --bg-color: #f7f9ff;
+  --shadow-color: #b1b2ff;
+  --float-color: #8c1bab;
+`
+
+export const FloatLabelManager = styled.div``
+
+export const Input = styled.input`
+  ${editInputStyle}
+  margin: 0;
+  padding: 1.8rem 1rem 0.6rem;
+  font-size: 1rem;
+
+  /* 表示状態を検知するために透明にして残しておく */
+  &::placeholder {
+    color: rgba(255, 255, 255, 0);
+  }
+`
+
+const Label = styled.label`
+  display: block;
+  position: relative;
+  max-height: 0;
+  pointer-events: none;
+  width: 100%;
+
+  &::before {
+    color: var(--color);
+    content: attr(data-label);
+    display: inline-block;
+    filter: blur(0);
+    backface-visibility: hidden;
+    transform-origin: left top;
+    transition: transform 0.2s ease;
+    position: relative;
+    left: calc(-1 * var(--gap));
+  }
+
+  ${Input}:placeholder-shown + &::before {
+    transform: translate3d(0, -2.2rem, 0) scale3d(1, 1, 1);
+  }
+
+  &::before,
+  ${Input}:focus + &::before {
+    transform: translate3d(0, -3.12rem, 0) scale3d(0.82, 0.82, 1);
+  }
+
+  /* focus時と入力済みの場合 */
+  ${Input}:focus + &::before,
+  ${Input}:not(:placeholder-shown) + &::before {
+    color: var(--float-color);
+  }
+`
+
+export const AutoComplete = styled.div`
+  ${variables}
 
   display: flex;
   position: relative;
-
-  & input {
-    ${editInputStyle}
-    margin: 0;
-    padding: 1rem;
-  }
 
   & button {
     ${ResetCss.button}
@@ -68,10 +119,6 @@ export const SelectList = styled.ul`
     border: 1px solid transparent;
     background-clip: content-box;
   }
-
-  --gap: 1rem;
-  --bg-color: #f7f9ff;
-  --shadow-color: #b1b2ff;
 
   /* scroll hint */
   background: linear-gradient(var(--bg-color) 33%, rgba(255, 255, 255, 0)),
@@ -140,10 +187,6 @@ export const ComboBox = ({ choices, label }: ComboBoxProps) => {
 
   return (
     <Root {...attr.root}>
-      {/* テキストボックスと関連づけ（SRで読み上げ） */}
-      <label htmlFor={inputId}>
-        <VisuallyHidden>{label}</VisuallyHidden>
-      </label>
       {/* 値をサーバに送るためのname属性 */}
       <VisuallyHidden
         as='select'
@@ -159,8 +202,14 @@ export const ComboBox = ({ choices, label }: ComboBoxProps) => {
         ))}
       </VisuallyHidden>
       <AutoComplete>
-        {/* このinputBoxの値はサーバには送らないため、name属性は不要 */}
-        <input {...attr.input} placeholder={label} />
+        <FloatLabelManager>
+          {/* このinputBoxの値はサーバには送らないため、name属性は不要 */}
+          <Input {...attr.input} placeholder={label} />
+          {/* テキストボックスと関連づけ（SRで読み上げ） */}
+          <Label htmlFor={inputId} data-label={label}>
+            <VisuallyHidden>{label}</VisuallyHidden>
+          </Label>
+        </FloatLabelManager>
         <IconOnly.Button
           icon={<VscChevronDown />}
           label={isOpen ? 'close' : 'open'}

@@ -7,5 +7,5 @@ const options: ChoiceItem[] = [...new Array(6)].map((_, idx) => ({
 }))
 
 export const HeadingLevelSelect = () => {
-  return <ComboBox choices={options} label='heading-lavel' />
+  return <ComboBox choices={options} label='heading-level' />
 }
