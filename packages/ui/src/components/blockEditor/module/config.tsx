@@ -100,7 +100,7 @@ export const blockConf: Blocks = [
     type: 'keyboard',
     icon: <SiAutohotkey />,
     boxType: 'inline',
-    format: ({ keyNames = [] }) => <KeyBoardPreview keyNames={keyNames} />,
+    format: ({ items = [] }) => <KeyBoardPreview keyNames={items} />,
   },
   {
     type: 'marker',

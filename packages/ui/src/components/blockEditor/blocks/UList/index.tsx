@@ -4,10 +4,7 @@ import { editInputStyle } from '../../styled/editInput'
 import { GroupPanel } from '../GroupPanel'
 import { ResetCss } from 'styled-utility-first'
 import { TbCodePlus } from 'react-icons/tb'
-import * as Local from '../reducer/addmore.reducer'
-import * as Global from '../../module/reducer'
-import { useReducer, useContext, ChangeEvent, useEffect } from 'react'
-import { BlockEditorContext } from '../..'
+import { useAddmore } from '../reducer/useAddmore'
 
 const Ul = styled.ul`
   padding-left: 1rem;
@@ -68,40 +65,7 @@ export type UListBlockProps = {
 }
 
 export const UListBlock = ({ id }: UListBlockProps) => {
-  const [items, localDispatch] = useReducer(Local.reducer, [])
-  const { dispatch: globalDispatch } = useContext(BlockEditorContext)
-
-  const updateFn = (e: ChangeEvent<HTMLInputElement>, pos: number) => {
-    const localAction: Local.UpdateAction = {
-      type: 'UPDATE',
-      args: {
-        pos,
-        item: e.target.value,
-      },
-    }
-    localDispatch(localAction)
-  }
-
-  useEffect(() => {
-    const globalAction: Global.UpdateAction<'ulist'> = {
-      type: 'UPDATE',
-      args: {
-        id,
-        diff: {
-          items,
-        },
-      },
-    }
-    globalDispatch(globalAction)
-  }, [items])
-
-  const addFn = () => {
-    const localAction: Local.AddAction = {
-      type: 'ADD',
-      args: {},
-    }
-    localDispatch(localAction)
-  }
+  const { items, addFn, updateFn } = useAddmore(id)
 
   return (
     <GroupPanel>

@@ -4,11 +4,8 @@ import { ResetCss } from 'styled-utility-first'
 import { BsPlusSquareDotted } from 'react-icons/bs'
 import { editInputStyle } from '../../styled/editInput'
 import { GroupPanel } from '../GroupPanel'
-import { useReducer, ChangeEvent, useContext, useEffect } from 'react'
-import * as Local from '../reducer/addmore.reducer'
-import * as Global from '../../module/reducer'
-import { BlockEditorContext } from '../..'
 import _ from 'lodash'
+import { useAddmore } from '../reducer/useAddmore'
 
 const Panel = styled(GroupPanel)`
   display: flex;
@@ -42,44 +39,11 @@ type KeyBoardBlockProps = {
 }
 
 export const KeyboardBlock = ({ id }: KeyBoardBlockProps) => {
-  const [keyNames, localDispatch] = useReducer(Local.reducer, [])
-  const { dispatch: globalDispatch } = useContext(BlockEditorContext)
-
-  const updateFn = (e: ChangeEvent<HTMLInputElement>, pos: number) => {
-    const localAction: Local.UpdateAction = {
-      type: 'UPDATE',
-      args: {
-        pos,
-        item: e.target.value,
-      },
-    }
-    localDispatch(localAction)
-  }
-
-  useEffect(() => {
-    const globalAction: Global.UpdateAction<'keyboard'> = {
-      type: 'UPDATE',
-      args: {
-        id,
-        diff: {
-          keyNames,
-        },
-      },
-    }
-    globalDispatch(globalAction)
-  }, [keyNames])
-
-  const addFn = () => {
-    const localAction: Local.AddAction = {
-      type: 'ADD',
-      args: {},
-    }
-    localDispatch(localAction)
-  }
+  const { items, addFn, updateFn } = useAddmore(id)
 
   return (
     <Panel>
-      {keyNames.map((keyName, idx) => (
+      {items.map((keyName, idx) => (
         <InlineInput
           value={keyName}
           key={`${id}_${idx}`}
