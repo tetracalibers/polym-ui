@@ -2,10 +2,15 @@ import styled from 'styled-components'
 import { GroupPanel } from '../GroupPanel'
 import { useAddmore } from '../reducer/useAddmore'
 import { AddSeparator } from './AddSeparator'
-import { listStyle, Li, Input } from './style'
+import { Input } from './style'
 
 const Ol = styled.ol`
-  ${listStyle}
+  padding-left: 2rem;
+  margin: 0;
+`
+
+const Li = styled.li`
+  padding-left: 0;
 `
 
 export type OListBlockProps = {
