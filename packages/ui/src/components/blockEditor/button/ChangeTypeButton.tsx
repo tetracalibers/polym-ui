@@ -10,6 +10,7 @@ import { match } from 'ts-pattern'
 import { HeadingLevelSelect } from './HeadingLevelSelect'
 import { FormatArgs } from '../module/FormatArgs'
 import { CodeLangSelect } from '../menu/CodeLangSelect'
+import { OListStartStepper } from '../optionEdit/OlistStart'
 
 /* -------------------------------------------- */
 /* STYLE                                        */
@@ -79,6 +80,10 @@ export const ChangeTypeButton = <T extends BlockType>({
     .with('code', () => {
       const lang = (formatArg as FormatArgs['code']).lang
       return <CodeLangSelect id={id} initialLang={lang} />
+    })
+    .with('olist', () => {
+      const order = (formatArg as FormatArgs['olist']).order
+      return <OListStartStepper id={id} order={order} />
     })
     .otherwise(() => false)
 

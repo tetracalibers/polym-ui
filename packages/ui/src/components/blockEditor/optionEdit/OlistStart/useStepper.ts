@@ -10,7 +10,7 @@ type UseStepperArgs = {
 }
 
 export const useStepper = ({
-  start = 1,
+  start = 0,
   step = 1,
   min,
   max,
