@@ -38,15 +38,14 @@ export type KeyBoardBlockProps = {
 }
 
 export const KeyBoardPreview = ({ keyNames }: KeyBoardBlockProps) => {
-  const Keys = keyNames.reduce((prev, curr, idx) => {
+  const Keys = keyNames.map((curr, idx) => {
     return (
       <Fragment key={curr + '_' + idx}>
-        {prev}
         {!!idx && <AiOutlinePlus aria-label='and' />}
         <Kbd>{curr}</Kbd>
       </Fragment>
     )
-  }, <></>)
+  })
 
   return <Layout>{Keys}</Layout>
 }
