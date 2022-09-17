@@ -10,10 +10,10 @@ export type FloatLabelInputProps = {
 const Wrapper = styled.div`
   --color: #4d608b;
   --bg-color: rgba(255, 255, 255, 0.25);
-  --bg-color__hover: rgba(255, 255, 255, 0.75);
+  --bg-color__hover: rgba(255, 255, 255, 0.5);
   --float-color: #8c1bab;
   --border-color: #ce9ffc;
-  --border-radius: 0;
+  --border-radius: 10px;
   --margin-top: 0.5rem;
 
   background-color: var(--bg-color);
@@ -31,14 +31,14 @@ const Wrapper = styled.div`
 
   &:hover,
   &:focus-within {
-    box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+    background-color: rgba(255, 255, 255, 0);
   }
 
   &:focus-within {
     border: 1.5px solid var(--border-color);
     margin-bottom: -1.5px;
     margin-top: calc(var(--margin-top) - 1.5px);
-    background-color: rgba(255, 255, 255, 0);
+    box-shadow: -13px -10px 32px 0 rgb(31 38 135 / 37%);
   }
 
   &:first-child:focus-within {

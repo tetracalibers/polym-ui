@@ -1,9 +1,44 @@
 import _ from 'lodash'
 import { useContext, useState } from 'react'
+import styled from 'styled-components'
 import { BlockEditorContext } from '..'
 import { Button } from '../../core/Button/core'
 import { Text } from '../../Text'
 import { UpdateAction } from '../module/reducer'
+import { editInputStyle } from '../styled/editInput'
+
+const ConvertButton = styled(Button)`
+  && {
+    ${editInputStyle}
+    font-size: 1rem;
+    width: 100%;
+    border-radius: 10px;
+    display: block;
+
+    cursor: pointer;
+    border: none;
+    box-shadow: 0px 20px 20px -17px rgba(0, 111, 255, 0.53);
+    background: rgb(2, 0, 36);
+    background: linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0) 5%,
+      rgba(255, 255, 255, 0.5) 6%,
+      rgba(255, 255, 255, 0) 9%,
+      rgba(255, 255, 255, 0.5) 10%,
+      rgba(255, 255, 255, 0) 17%,
+      rgba(255, 255, 255, 0.5) 19%,
+      rgba(255, 255, 255, 0) 21%
+    );
+    background-size: 150%;
+    background-position: right;
+    transition: 1s;
+  }
+
+  &&:hover {
+    background-position: left;
+    box-shadow: none;
+  }
+`
 
 export type ChangeBoxTypeMenuProps = {
   initialBox: 'inline' | 'block'
@@ -44,9 +79,9 @@ export const ChangeBoxTypeMenu = ({
 
   return (
     <li>
-      <Button onClick={convertFn}>
+      <ConvertButton onClick={convertFn}>
         <Text>To {_.upperFirst(nextBoxType)}</Text>
-      </Button>
+      </ConvertButton>
     </li>
   )
 }
