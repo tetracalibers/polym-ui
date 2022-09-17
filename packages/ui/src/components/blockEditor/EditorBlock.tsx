@@ -2,10 +2,11 @@ import { match } from 'ts-pattern'
 import { KeyboardBlock } from './blocks/KeyboardBlock'
 import { LinkBlock } from './blocks/LinkBlock'
 import { LongTextBlock } from './blocks/LongTextBlock'
-import { UListBlock } from './blocks/UList'
+import { UListBlock } from './blocks/ListBlock/UnOrder'
 import { BlockLabel } from './button/BlockLabel'
 import { BlockType } from './module/config'
 import { StoreMap } from './module/reducer'
+import { OListBlock } from './blocks/ListBlock/Order'
 
 export type EditorBlockProps<T extends BlockType> = {
   pos: number
@@ -23,6 +24,7 @@ export const EditorBlock = <T extends BlockType>({
     .with('link', () => <LinkBlock id={id} />)
     .with('keyboard', () => <KeyboardBlock id={id} />)
     .with('ulist', () => <UListBlock id={id} />)
+    .with('olist', () => <OListBlock id={id} />)
     .with('separator', () => <></>)
     .otherwise(() => <LongTextBlock type={type} id={id} />)
 
