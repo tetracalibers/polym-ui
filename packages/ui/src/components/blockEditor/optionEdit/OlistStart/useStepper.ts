@@ -17,8 +17,8 @@ export const useStepper = ({
 }: UseStepperArgs) => {
   const initial: Store = {
     count: start,
-    canIncrement: min ? start >= min : true,
-    canDecrement: max ? start <= max : true,
+    canIncrement: true,
+    canDecrement: true,
     hasError: false,
   }
   const [state, dispatch] = useReducer(reducer, initial)

@@ -40,8 +40,8 @@ const validate = (
   min: number | undefined,
   max: number | undefined
 ) => {
-  const NotBelowMin = min ? min <= now : true
-  const NotExceedsMax = max ? max >= now : true
+  const NotBelowMin = min !== undefined ? min <= now : true
+  const NotExceedsMax = max !== undefined ? max >= now : true
   return {
     NotExceedsMax,
     NotBelowMin,
@@ -55,9 +55,9 @@ export const reducer = (state: Store, action: Action) => {
       const { max, min } = (action as IncrementAction).args
       const count = state.count + 1
       // ここからさらに1増やしてもエラーにならないか
-      const canIncrement = validate(count + 1, max, min).NotExceedsMax
+      const canIncrement = validate(count + 1, min, max).NotExceedsMax
       // ここからさらに1減らしてもエラーにならないか
-      const canDecrement = state.canDecrement
+      const canDecrement = validate(count - 1, min, max).NotBelowMin
       // 既にエラーかどうか
       const hasError = validate(count, min, max).hasError
       return { count, canIncrement, canDecrement, hasError }
@@ -65,8 +65,8 @@ export const reducer = (state: Store, action: Action) => {
     .with('DECREMENT', () => {
       const { min, max } = (action as DecrementAction).args
       const count = state.count - 1
-      const canIncrement = state.canIncrement
-      const canDecrement = validate(count - 1, max, min).NotBelowMin
+      const canIncrement = validate(count + 1, min, max).NotExceedsMax
+      const canDecrement = validate(count - 1, min, max).NotBelowMin
       const hasError = validate(count, min, max).hasError
       return { count, canIncrement, canDecrement, hasError }
     })
@@ -75,10 +75,10 @@ export const reducer = (state: Store, action: Action) => {
       const count = parseInt(value, 10)
       const valid = !isNaN(count)
       const canIncrement = valid
-        ? validate(count + 1, max, min).NotExceedsMax
+        ? validate(count + 1, min, max).NotExceedsMax
         : false
       const canDecrement = valid
-        ? validate(count - 1, max, min).NotBelowMin
+        ? validate(count - 1, min, max).NotBelowMin
         : false
       const hasError = valid ? validate(count, min, max).hasError : true
       return { count, canIncrement, canDecrement, hasError }

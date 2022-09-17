@@ -8,20 +8,67 @@ import { VisuallyHidden } from '../../../a11y-helper/VisuallyHidden'
 import { editInputStyle } from '../../styled/editInput'
 
 const Root = styled.div`
+  --float-color: #8c1bab;
+  --gap: 0.5rem;
+  --icon-size: 2rem;
+  --icon-color: cadetblue;
+
   display: flex;
+  align-items: center;
 `
 
 const IconButton = styled(IconOnly.Button)`
   ${ResetCss.button}
+  color: #7d8188;
+
+  box-shadow: inset 14px 0px 5px -10px rgb(255 255 255 / 20%),
+    inset 13px 0px 2px -10px rgb(255 255 255 / 20%),
+    inset 0px -3px 5px 0px rgb(250 241 220 / 50%),
+    inset 0px -20px 10px 1px rgb(255 255 255 / 30%),
+    inset -20px 10px 5px -20px rgb(255 255 255 / 30%),
+    inset -20px 15px 10px -20px rgb(255 255 255 / 20%),
+    inset 0px 20px 30px -5px rgb(255 255 255 / 30%),
+    0px 2px 1px -1px rgb(245 225 183 / 80%);
+
+  height: var(--icon-size);
+  border-radius: 50%;
+  padding-left: var(--gap);
+  padding-right: var(--gap);
+  box-sizing: border-box;
+  text-align: center;
+
+  &[disabled] {
+    background: none;
+    color: #b0bec5;
+  }
+
+  & svg {
+    width: var(--icon-size);
+    height: var(--icon-size);
+  }
 `
 
 const DecrementButton = styled(IconButton).attrs({
   icon: <CgMathMinus />,
-})``
+})`
+  margin-right: var(--gap);
+  background-image: linear-gradient(
+    135deg,
+    rgba(42, 250, 223, 1) 10%,
+    rgba(76, 131, 255, 1) 100%
+  );
+`
 
 const IncrementButton = styled(IconButton).attrs({
   icon: <CgMathPlus />,
-})``
+})`
+  margin-left: var(--gap);
+  background-image: linear-gradient(
+    135deg,
+    rgba(255, 150, 249, 1) 10%,
+    rgba(195, 43, 172, 1) 100%
+  );
+`
 
 const FloatLabelContainer = styled.div``
 
@@ -30,6 +77,7 @@ const Input = styled(NumberInput)`
   margin: 0;
   padding: 1.8rem 1rem 0.6rem;
   font-size: 1rem;
+  width: 100%;
 
   /* 表示状態を検知するために透明にして残しておく */
   &::placeholder {
@@ -50,10 +98,10 @@ const Label = styled.label`
     display: inline-block;
     filter: blur(0);
     backface-visibility: hidden;
-    transform-origin: left top;
     transition: transform 0.2s ease;
     position: relative;
-    left: calc(-1.5 * var(--gap));
+    padding-left: var(--gap);
+    padding-right: var(--gap);
   }
 
   ${Input}:placeholder-shown + &::before {
