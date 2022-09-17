@@ -8,8 +8,9 @@ export const editInputStyle = css`
   font-size: 16px;
   padding: 0.5em 1em;
   border: none;
-  background-color: rgba(255, 255, 255, 0.25);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  background-color: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(4px);
   border-radius: 10px;
+  box-shadow: rgb(50 50 105 / 15%) 0px 2px 5px 0px,
+    rgb(0 0 0 / 5%) 0px 1px 1px 0px;
 `

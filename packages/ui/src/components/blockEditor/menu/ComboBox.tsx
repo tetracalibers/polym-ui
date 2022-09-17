@@ -26,7 +26,6 @@ export const Input = styled.input`
   margin: 0;
   padding: 1.8rem 1rem 0.6rem;
   font-size: 1rem;
-  box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
 
   /* 表示状態を検知するために透明にして残しておく */
   &::placeholder {

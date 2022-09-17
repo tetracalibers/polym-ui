@@ -10,7 +10,6 @@ export type FloatLabelInputProps = {
 const Wrapper = styled.div`
   --color: #4d608b;
   --bg-color: rgba(255, 255, 255, 0.25);
-  --bg-color__hover: rgba(255, 255, 255, 0.5);
   --float-color: #8c1bab;
   --border-color: #ce9ffc;
   --border-radius: 10px;
@@ -23,26 +22,9 @@ const Wrapper = styled.div`
   outline: none;
   width: 100%;
   font-size: 16px;
-  transition: box-shadow 0.2s ease;
 
   &:not(:first-child) {
     margin-top: var(--margin-top);
-  }
-
-  &:hover,
-  &:focus-within {
-    background-color: rgba(255, 255, 255, 0);
-  }
-
-  &:focus-within {
-    border: 1.5px solid var(--border-color);
-    margin-bottom: -1.5px;
-    margin-top: calc(var(--margin-top) - 1.5px);
-    box-shadow: -13px -10px 32px 0 rgb(31 38 135 / 37%);
-  }
-
-  &:first-child:focus-within {
-    margin-top: -1.5px;
   }
 `
 
@@ -60,10 +42,6 @@ const Input = styled.input`
   padding: 1.8rem 1rem 0.6rem;
   font-size: 1rem;
   caret-color: var(--color);
-
-  &:focus {
-    background-color: var(--bg-color__hover);
-  }
 
   /* 表示状態を検知するために透明にして残しておく */
   &::placeholder {
