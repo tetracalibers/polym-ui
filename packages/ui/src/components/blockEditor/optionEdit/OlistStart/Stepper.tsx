@@ -79,6 +79,14 @@ const Input = styled(NumberInput)`
   font-size: 1rem;
   width: 100%;
 
+  &:focus {
+    outline: none;
+  }
+
+  &[data-has-error='true'] {
+    border: 2px solid #ff0f6d;
+  }
+
   /* 表示状態を検知するために透明にして残しておく */
   &::placeholder {
     color: rgba(255, 255, 255, 0);
@@ -135,7 +143,7 @@ export const Stepper = ({
   start = 0,
   label,
 }: StepperProps) => {
-  const { count, attr } = useStepper({ min, max, step, start })
+  const { count, attr, hasError } = useStepper({ min, max, step, start })
 
   const { 'aria-label': decreLabel, ...decreAttrs } = attr.decrementButton
   const { 'aria-label': increLabel, ...increAttrs } = attr.incrementButton
@@ -144,7 +152,7 @@ export const Stepper = ({
     <Root>
       <DecrementButton label={decreLabel!} {...decreAttrs} />
       <FloatLabelContainer>
-        <Input {...attr.input} placeholder={label} />
+        <Input {...attr.input} placeholder={label} data-has-error={hasError} />
         <Label {...attr.label} data-label={label}>
           <VisuallyHidden>{label}</VisuallyHidden>
         </Label>

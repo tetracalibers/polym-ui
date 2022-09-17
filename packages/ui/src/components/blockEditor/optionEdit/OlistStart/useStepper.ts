@@ -1,5 +1,5 @@
 import { ChangeEvent, ComponentPropsWithoutRef, useReducer } from 'react'
-import { reducer, Store } from './stepper.reducer'
+import { reducer, Store, validate } from './stepper.reducer'
 import { useNanoId } from '@polym/hooks'
 
 type UseStepperArgs = {
@@ -17,12 +17,12 @@ export const useStepper = ({
 }: UseStepperArgs) => {
   const initial: Store = {
     count: start,
-    canIncrement: true,
-    canDecrement: true,
-    hasError: false,
+    canIncrement: validate(start + 1, min, max).NotExceedsMax,
+    canDecrement: validate(start - 1, min, max).NotBelowMin,
+    hasError: validate(start, min, max).hasError,
   }
   const [state, dispatch] = useReducer(reducer, initial)
-  const { canDecrement, canIncrement, count } = state
+  const { canDecrement, canIncrement, count, hasError } = state
 
   const onDecrement = () => dispatch({ type: 'DECREMENT', args: { min, max } })
   const onIncrement = () => dispatch({ type: 'INCREMENT', args: { min, max } })
@@ -62,6 +62,7 @@ export const useStepper = ({
 
   return {
     count,
+    hasError,
     attr: {
       decrementButton: decrementButtonAttrs,
       incrementButton: incrementButtonAttrs,

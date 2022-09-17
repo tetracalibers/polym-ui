@@ -35,7 +35,7 @@ export type DecrementAction = {
 
 export type Action = IncrementAction | DecrementAction | InputAction
 
-const validate = (
+export const validate = (
   now: number,
   min: number | undefined,
   max: number | undefined
