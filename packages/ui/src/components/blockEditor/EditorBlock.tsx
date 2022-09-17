@@ -8,6 +8,7 @@ import { BlockType } from './module/config'
 import { StoreMap } from './module/reducer'
 import { OListBlock } from './blocks/ListBlock/Order'
 import { FormatArgs } from './module/FormatArgs'
+import { BlockquoteBlock } from './blocks/BlockquoteBlock'
 
 export type EditorBlockProps<T extends BlockType> = {
   pos: number
@@ -25,7 +26,10 @@ export const EditorBlock = <T extends BlockType>({
     .with('link', () => <LinkBlock id={id} />)
     .with('keyboard', () => <KeyboardBlock id={id} />)
     .with('ulist', () => <UListBlock id={id} />)
-    .with('olist', () => <OListBlock id={id} start={(formatArg as FormatArgs['olist']).order} />)
+    .with('olist', () => (
+      <OListBlock id={id} start={(formatArg as FormatArgs['olist']).order} />
+    ))
+    .with('blockquote', () => <BlockquoteBlock id={id} />)
     .with('separator', () => <></>)
     .otherwise(() => <LongTextBlock type={type} id={id} />)
 

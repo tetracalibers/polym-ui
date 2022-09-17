@@ -1,14 +1,16 @@
-import { ChangeEvent, ChangeEventHandler, useCallback, useState } from 'react'
+import { ChangeEventHandler, useState, useCallback, ChangeEvent } from 'react'
 
 export const useTextareaStretch = ({
   minRows = 1,
   maxRows = 5000,
   lineHeight = 24,
+  padding = 16,
   onChange,
 }: {
   minRows?: number
   maxRows?: number
   lineHeight?: number
+  padding?: number
   onChange?: ChangeEventHandler<HTMLTextAreaElement>
 }) => {
   const [textareaRows, setTextareaRows] = useState(Math.min(minRows!, maxRows!))
@@ -22,7 +24,9 @@ export const useTextareaStretch = ({
       // 行数のリセット
       e.target.rows = minRows!
       // 現在の行数
-      const currentRows = Math.floor(e.target.scrollHeight / lineHeight!)
+      const currentRows = Math.floor(
+        (e.target.scrollHeight - padding!) / lineHeight!
+      )
       // 変化がなければ
       if (currentRows === previewsRows) {
         e.target.rows = currentRows

@@ -50,7 +50,7 @@ export type FormatArgs = {
   }
   blockquote: {
     input: string // 引用文 // textarea
-    from?: string // 出典 // input
+    cite?: string // 出典 // input
     boxType: 'inline' | 'block' // select
   }
   formula: {
