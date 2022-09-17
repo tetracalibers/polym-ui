@@ -5,7 +5,7 @@ import { BsPlusSquareDotted } from 'react-icons/bs'
 import { editInputStyle } from '../../styled/editInput'
 import { GroupPanel } from '../GroupPanel'
 import { useReducer, ChangeEvent, useContext, useEffect } from 'react'
-import * as Local from './reducer'
+import * as Local from '../reducer/addmore.reducer'
 import * as Global from '../../module/reducer'
 import { BlockEditorContext } from '../..'
 import _ from 'lodash'
@@ -50,7 +50,7 @@ export const KeyboardBlock = ({ id }: KeyBoardBlockProps) => {
       type: 'UPDATE',
       args: {
         pos,
-        keyName: e.target.value,
+        item: e.target.value,
       },
     }
     localDispatch(localAction)

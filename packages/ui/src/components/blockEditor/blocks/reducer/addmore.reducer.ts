@@ -1,7 +1,5 @@
 import _ from 'lodash'
-import { nanoid } from 'nanoid'
 import { match } from 'ts-pattern'
-import * as G from '../../module/reducer'
 
 export type Store = string[]
 
@@ -21,7 +19,7 @@ export type UpdateAction = {
   type: 'UPDATE'
   args: {
     pos: number
-    keyName: string
+    item: string
   }
 }
 
@@ -37,8 +35,8 @@ export const reducer = (state: Store, action: Action) => {
       return state.slice(pos, pos + 1)
     })
     .with('UPDATE', () => {
-      const { keyName, pos } = (action as UpdateAction).args
-      const newState = state.map((s, idx) => (idx === pos ? keyName : s))
+      const { item, pos } = (action as UpdateAction).args
+      const newState = state.map((s, idx) => (idx === pos ? item : s))
       return newState
     })
     .exhaustive()
