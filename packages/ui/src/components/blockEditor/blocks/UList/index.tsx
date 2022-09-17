@@ -71,12 +71,8 @@ export const UListBlock = ({ id }: UListBlockProps) => {
     <GroupPanel>
       <Ul>
         {items.map((item, idx) => (
-          <Li>
-            <Input
-              value={item}
-              key={`${id}_${idx}`}
-              onChange={e => updateFn(e, idx)}
-            />
+          <Li key={`${id}_${idx}`}>
+            <Input value={item} onChange={e => updateFn(e, idx)} />
           </Li>
         ))}
       </Ul>
