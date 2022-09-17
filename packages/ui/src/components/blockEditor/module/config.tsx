@@ -151,8 +151,8 @@ export const blockConf: Blocks = [
     type: 'olist',
     icon: <RiListOrdered />,
     boxType: 'block',
-    format: ({ items = [] }) => (
-      <ol>
+    format: ({ items = [], order = 1 }) => (
+      <ol start={order}>
         {items.map((item, idx) => (
           <li key={idx}>{item}</li>
         ))}

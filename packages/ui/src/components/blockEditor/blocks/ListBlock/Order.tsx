@@ -15,14 +15,15 @@ const Li = styled.li`
 
 export type OListBlockProps = {
   id: string
+  start: number
 }
 
-export const OListBlock = ({ id }: OListBlockProps) => {
+export const OListBlock = ({ id, start = 1 }: OListBlockProps) => {
   const { items, addFn, updateFn } = useAddmore(id)
 
   return (
     <GroupPanel>
-      <Ol>
+      <Ol start={start}>
         {items.map((item, idx) => (
           <Li key={`${id}_${idx}`}>
             <Input value={item} onChange={e => updateFn(e, idx)} />

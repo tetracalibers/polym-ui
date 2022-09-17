@@ -6,6 +6,7 @@ import { NumberInput } from '../../../core/Input/styled/stepper'
 import { CgMathMinus, CgMathPlus } from 'react-icons/cg'
 import { VisuallyHidden } from '../../../a11y-helper/VisuallyHidden'
 import { editInputStyle } from '../../styled/editInput'
+import { ChangeEvent, useEffect } from 'react'
 
 const Root = styled.div`
   --float-color: #8c1bab;
@@ -136,6 +137,7 @@ export type StepperProps = {
   step?: number
   start?: number
   label: string
+  onChange?: (value: number) => void
 }
 
 export const Stepper = ({
@@ -144,11 +146,19 @@ export const Stepper = ({
   step = 1,
   start = 0,
   label,
+  onChange,
 }: StepperProps) => {
   const { count, attr, hasError } = useStepper({ min, max, step, start })
 
   const { 'aria-label': decreLabel, ...decreAttrs } = attr.decrementButton
   const { 'aria-label': increLabel, ...increAttrs } = attr.incrementButton
+
+  useEffect(() => {
+    if (hasError) {
+      return
+    }
+    onChange && onChange(count)
+  }, [count, hasError])
 
   return (
     <Root>
