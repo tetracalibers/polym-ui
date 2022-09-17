@@ -153,7 +153,7 @@ export const blockConf: Blocks = [
     boxType: 'block',
     format: ({ items = [] }) => (
       <ol>
-        {items.map(({ item }, idx) => (
+        {items.map((item, idx) => (
           <li key={idx}>{item}</li>
         ))}
       </ol>

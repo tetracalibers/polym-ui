@@ -36,10 +36,8 @@ export type FormatArgs = {
     items: string[] // input
   }
   olist: {
-    items: {
-      order: number // input
-      item: string // input
-    }[]
+    items: string[]
+    order: number
   }
   separator: {}
   heading: {
