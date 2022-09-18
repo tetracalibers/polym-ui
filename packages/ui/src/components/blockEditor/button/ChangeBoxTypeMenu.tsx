@@ -30,12 +30,11 @@ const ConvertButton = styled(Button)`
       rgba(255, 255, 255, 0) 21%
     );
     background-size: 150%;
-    background-position: right;
+    background-position: left;
     transition: 1s;
   }
 
   &&:hover {
-    background-position: left;
     box-shadow: none;
   }
 `
