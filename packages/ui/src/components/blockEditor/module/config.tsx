@@ -26,6 +26,7 @@ import { MathFormula } from '../previews/MathFormula'
 import { ParagraphPreview } from '../previews/Paragraph'
 import { KeyBoardPreview } from '../previews/Keyboard'
 import { Heading } from '../../core/Heading'
+import { Blockquote } from '../previews/Blockquote'
 
 const blockType = [
   'link', // block | inline
@@ -191,8 +192,14 @@ export const blockConf: Blocks = [
     type: 'blockquote',
     icon: <BsBlockquoteLeft />,
     boxType: 'both',
-    format: ({ input, boxType }) =>
-      boxType === 'inline' ? <q>{input}</q> : <blockquote>{input}</blockquote>,
+    format: ({ input, cite, boxType = 'block' }) => {
+      const isInline = boxType === 'inline'
+      return (
+        <Blockquote isInline={isInline} cite={cite}>
+          {input}
+        </Blockquote>
+      )
+    },
   },
   {
     type: 'terminal',
