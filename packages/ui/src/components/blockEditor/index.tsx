@@ -103,13 +103,15 @@ export const BlockEditor = () => {
             }
           </VerticalStack>
           <PreviewPanel>
-            {
-              /* preview */ blocks.map(block => (
-                <span key={block.id}>
-                  {block.format(block.formatArg as any)}
-                </span>
-              ))
-            }
+            <VerticalStack spaceV={2.5}>
+              {
+                /* preview */ blocks.map(block => (
+                  <Fragment key={block.id}>
+                    {block.format(block.formatArg as any)}
+                  </Fragment>
+                ))
+              }
+            </VerticalStack>
           </PreviewPanel>
         </WithSidebar>
       </VerticalStack>
