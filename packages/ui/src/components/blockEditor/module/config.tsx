@@ -27,6 +27,7 @@ import { ParagraphPreview } from '../previews/Paragraph'
 import { KeyBoardPreview } from '../previews/Keyboard'
 import { Heading } from '../../core/Heading'
 import { Blockquote } from '../previews/Blockquote'
+import { ToggleContent } from '../previews/Toggle'
 
 const blockType = [
   'link', // block | inline
@@ -113,7 +114,9 @@ export const blockConf: Blocks = [
     type: 'toggle',
     boxType: 'block',
     icon: <IoIosArrowDropdownCircle />,
-    format: ({ input }) => <div>{input}</div>,
+    format: ({ input, summary }) => (
+      <ToggleContent summary={summary}>{input}</ToggleContent>
+    ),
   },
   {
     type: 'info',
