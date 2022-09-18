@@ -89,7 +89,7 @@ export const reducer = (state: StoreArr, action: Action): StoreArr => {
         formatArg: {},
         id: nanoid(),
         allowBox,
-        currBox: allowBox === 'both' ? 'block' : allowBox,
+        currBox: allowBox === 'both' ? 'inline' : allowBox,
         icon,
         format: newBlockInfo.format,
       } as Store<typeof type>
