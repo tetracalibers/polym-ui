@@ -29,6 +29,7 @@ import { Blockquote } from '../previews/Blockquote'
 import { ToggleContent } from '../previews/Toggle'
 import { GrBlockQuote } from 'react-icons/gr'
 import { LinkPreview } from '../previews/Link'
+import { Separator } from '../previews/Separator'
 
 const blockType = [
   'link', // block | inline
@@ -173,7 +174,7 @@ export const blockConf: Blocks = [
     type: 'separator',
     icon: <TbSeparatorHorizontal />,
     boxType: 'block',
-    format: () => <hr />,
+    format: () => <Separator />,
   },
   {
     type: 'heading',
