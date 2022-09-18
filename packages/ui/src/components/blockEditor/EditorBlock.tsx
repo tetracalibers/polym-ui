@@ -9,6 +9,7 @@ import { StoreMap } from './module/reducer'
 import { OListBlock } from './blocks/ListBlock/Order'
 import { FormatArgs } from './module/FormatArgs'
 import { BlockquoteBlock } from './blocks/BlockquoteBlock'
+import { ToggleBlock } from './blocks/ToggleBlock'
 
 export type EditorBlockProps<T extends BlockType> = {
   pos: number
@@ -30,6 +31,7 @@ export const EditorBlock = <T extends BlockType>({
       <OListBlock id={id} start={(formatArg as FormatArgs['olist']).order} />
     ))
     .with('blockquote', () => <BlockquoteBlock id={id} />)
+    .with('toggle', () => <ToggleBlock id={id} />)
     .with('separator', () => <></>)
     .otherwise(() => <LongTextBlock type={type} id={id} />)
 
