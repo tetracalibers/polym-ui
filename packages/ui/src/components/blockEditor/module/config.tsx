@@ -17,7 +17,6 @@ import { BiParagraph } from 'react-icons/bi'
 //import { VscRepo } from 'react-icons/vsc'
 import { TbSeparatorHorizontal, TbHeading, TbMath } from 'react-icons/tb'
 //import { CgListTree } from 'react-icons/cg'
-import { BsBlockquoteLeft } from 'react-icons/bs'
 import { ImTerminal, ImCommand } from 'react-icons/im'
 import { FormatArgs } from './FormatArgs'
 import { ValueOf } from './ValueOf'
@@ -28,6 +27,7 @@ import { KeyBoardPreview } from '../previews/Keyboard'
 import { Heading } from '../../core/Heading'
 import { Blockquote } from '../previews/Blockquote'
 import { ToggleContent } from '../previews/Toggle'
+import { GrBlockQuote } from 'react-icons/gr'
 
 const blockType = [
   'link', // block | inline
@@ -193,7 +193,7 @@ export const blockConf: Blocks = [
   //},
   {
     type: 'blockquote',
-    icon: <BsBlockquoteLeft />,
+    icon: <GrBlockQuote />,
     boxType: 'both',
     format: ({ input, cite, boxType = 'block' }) => {
       const isInline = boxType === 'inline'
