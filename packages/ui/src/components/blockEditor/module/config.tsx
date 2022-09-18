@@ -1,4 +1,4 @@
-import { Fragment, ReactElement, ReactNode } from 'react'
+import { ReactElement, ReactNode } from 'react'
 import { FiLink } from 'react-icons/fi'
 import {
   IoImageOutline,
@@ -28,6 +28,7 @@ import { Heading } from '../../core/Heading'
 import { Blockquote } from '../previews/Blockquote'
 import { ToggleContent } from '../previews/Toggle'
 import { GrBlockQuote } from 'react-icons/gr'
+import { LinkPreview } from '../previews/Link'
 
 const blockType = [
   'link', // block | inline
@@ -70,12 +71,12 @@ export const blockConf: Blocks = [
     type: 'link',
     icon: <FiLink />,
     boxType: 'both',
-    format: ({ url = '', label = '', boxType = 'block' }) => {
-      const Wrap = boxType === 'inline' ? Fragment : 'div'
+    format: ({ url = '', label = '', boxType = 'inline' }) => {
+      const isInline = boxType === 'inline'
       return (
-        <Wrap>
-          <a href={url}>{label}</a>
-        </Wrap>
+        <LinkPreview url={url} isInline={isInline}>
+          {label}
+        </LinkPreview>
       )
     },
   },
@@ -89,7 +90,7 @@ export const blockConf: Blocks = [
     type: 'code',
     icon: <RiCodeSSlashFill />,
     boxType: 'both',
-    format: ({ input, boxType = 'block', lang = 'js' }) => {
+    format: ({ input, boxType = 'inline', lang = 'js' }) => {
       const isInline = boxType === 'inline'
       return (
         <CodeHighlight lang={lang} isInline={isInline}>
@@ -134,7 +135,7 @@ export const blockConf: Blocks = [
     type: 'paragraph',
     icon: <BiParagraph />,
     boxType: 'both',
-    format: ({ input, boxType = 'block' }) => {
+    format: ({ input, boxType = 'inline' }) => {
       const isInline = boxType === 'inline'
       return <ParagraphPreview isInline={isInline}>{input}</ParagraphPreview>
     },
@@ -195,7 +196,7 @@ export const blockConf: Blocks = [
     type: 'blockquote',
     icon: <GrBlockQuote />,
     boxType: 'both',
-    format: ({ input, cite, boxType = 'block' }) => {
+    format: ({ input, cite, boxType = 'inline' }) => {
       const isInline = boxType === 'inline'
       return (
         <Blockquote isInline={isInline} cite={cite}>
@@ -214,7 +215,7 @@ export const blockConf: Blocks = [
     type: 'formula',
     icon: <TbMath />,
     boxType: 'both',
-    format: ({ input, boxType = 'block' }) => {
+    format: ({ input, boxType = 'inline' }) => {
       const isInline = boxType === 'inline'
       return <MathFormula isInline={isInline} texSrc={input} />
     },
