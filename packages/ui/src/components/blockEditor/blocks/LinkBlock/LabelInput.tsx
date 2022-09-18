@@ -5,9 +5,10 @@ import { FloatLabelInput } from '../FloatLabelInput'
 
 type LabelInputProps = {
   id: string
+  value: string
 }
 
-export const LabelInput = ({ id }: LabelInputProps) => {
+export const LabelInput = ({ id, value }: LabelInputProps) => {
   const { dispatch } = useContext(BlockEditorContext)
 
   const updateFn = (e: ChangeEvent<HTMLInputElement>) => {
@@ -23,5 +24,12 @@ export const LabelInput = ({ id }: LabelInputProps) => {
     dispatch(action)
   }
 
-  return <FloatLabelInput id={id} label='display text' onChange={updateFn} />
+  return (
+    <FloatLabelInput
+      id={id}
+      label='display text'
+      onChange={updateFn}
+      value={value ?? ''}
+    />
+  )
 }

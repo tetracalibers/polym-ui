@@ -70,7 +70,7 @@ export const blockConf: Blocks = [
     type: 'link',
     icon: <FiLink />,
     boxType: 'both',
-    format: ({ url, label, boxType = 'block' }) => {
+    format: ({ url = '', label = '', boxType = 'block' }) => {
       const Wrap = boxType === 'inline' ? Fragment : 'div'
       return (
         <Wrap>

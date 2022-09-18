@@ -24,7 +24,9 @@ export const EditorBlock = <T extends BlockType>({
 }: EditorBlockProps<T>) => {
   const { type, id, formatArg } = block
   const Block = match(type as BlockType)
-    .with('link', () => <LinkBlock id={id} />)
+    .with('link', () => (
+      <LinkBlock id={id} value={formatArg as FormatArgs['link']} />
+    ))
     .with('keyboard', () => <KeyboardBlock id={id} />)
     .with('ulist', () => <UListBlock id={id} />)
     .with('olist', () => (
