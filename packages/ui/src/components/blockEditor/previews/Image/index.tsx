@@ -1,12 +1,20 @@
 import styled from 'styled-components'
 
-const Figure = styled.figure<{ $src: string }>`
+const Figure = styled.figure`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem 1rem 1rem;
+  margin: 0;
+  border-radius: 1rem;
+`
+
+const ImgShadow = styled.div<{ $src: string }>`
   position: relative;
   padding: 0;
   width: 500px;
   max-width: 90%;
-  margin-right: auto;
-  margin-left: auto;
+  margin: 0 auto;
 
   &::after {
     content: ' ';
@@ -32,6 +40,12 @@ const Img = styled.img`
   position: relative;
 `
 
+const Figcaption = styled.figcaption`
+  width: 100%;
+  text-align: center;
+  color: #b0bec5;
+`
+
 type ImagePreviewProps = {
   url: string
   caption?: string
@@ -39,9 +53,11 @@ type ImagePreviewProps = {
 
 export const ImagePreview = ({ url, caption }: ImagePreviewProps) => {
   return (
-    <Figure $src={url}>
-      <Img src={url} />
-      <figcaption>{caption}</figcaption>
+    <Figure>
+      <ImgShadow $src={url}>
+        <Img src={url} />
+      </ImgShadow>
+      <Figcaption>{caption}</Figcaption>
     </Figure>
   )
 }
