@@ -1,6 +1,7 @@
-import { useState, KeyboardEvent } from 'react'
+import { useState, KeyboardEvent, useRef } from 'react'
 import styled from 'styled-components'
 import { match } from 'ts-pattern'
+import { useOnClickOutside } from './useOnClickOutside'
 
 const ClickAreaOrigin = styled.div`
   position: relative;
@@ -97,21 +98,26 @@ type LightBoxProps = {
 
 export const LightBox = ({ src }: LightBoxProps) => {
   const [isViewLarger, setViewLargerFlag] = useState(false)
+  const modalRef = useRef<HTMLImageElement>(null)
 
   const label = 'Enlarge image'
 
   const open = () => setViewLargerFlag(true)
+  const close = () => setViewLargerFlag(false)
 
-  const openByEnter = (e: KeyboardEvent<HTMLDivElement>) => {
+  useOnClickOutside(modalRef, close)
+
+  const modalKeyOperation = (e: KeyboardEvent<HTMLDivElement>) => {
     match(e.key)
       .with('Enter', () => open())
+      .with('Tab', () => close())
       .otherwise(() => {})
   }
 
   return (
     <>
       <ClickAreaOrigin>
-        <ClickArea onClick={open} onKeyDown={openByEnter} tabIndex={0}>
+        <ClickArea onClick={open} onKeyDown={modalKeyOperation} tabIndex={0}>
           {label}
         </ClickArea>
         <ImgShadow $src={src}>
@@ -120,7 +126,7 @@ export const LightBox = ({ src }: LightBoxProps) => {
       </ClickAreaOrigin>
       {/* 画像拡大は晴眼ユーザのためだけのものなので、aria-hiddenで隠してしまう */}
       <ModalOverlay data-visible={isViewLarger} aria-hidden='true'>
-        <LargeImg src={src} />
+        <LargeImg src={src} ref={modalRef} />
       </ModalOverlay>
     </>
   )
