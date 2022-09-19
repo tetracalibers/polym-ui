@@ -30,6 +30,7 @@ import { ToggleContent } from '../previews/Toggle'
 import { GrBlockQuote } from 'react-icons/gr'
 import { LinkPreview } from '../previews/Link'
 import { Separator } from '../previews/Separator'
+import { ImagePreview } from '../previews/Image'
 
 const blockType = [
   'link', // block | inline
@@ -85,7 +86,7 @@ export const blockConf: Blocks = [
     type: 'image',
     icon: <IoImageOutline />,
     boxType: 'block',
-    format: ({ url }) => <img src={url} />,
+    format: ({ url }) => <ImagePreview url={url} />,
   },
   {
     type: 'code',
