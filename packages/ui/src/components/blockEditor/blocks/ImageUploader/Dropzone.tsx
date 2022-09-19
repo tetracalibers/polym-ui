@@ -13,25 +13,55 @@ import styled from 'styled-components'
 import { ResetCss } from 'styled-utility-first'
 import { VisuallyHidden } from '../../../a11y-helper/VisuallyHidden'
 import { Button } from '../../../core/Button/core'
+import { editInputStyle } from '../../styled/editInput'
 
 const DropField = styled.div`
+  ${editInputStyle}
+
   --danger-color: #ff0f6d;
   --active-color: #69e3eb;
+  --width: 100%;
 
-  border: 1.5px dashed #b0bec5;
-  width: 100%;
-  height: 200px;
+  width: var(--width);
+  min-height: 200px;
+  height: fit-content;
 
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(2px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-right-color: rgba(255, 255, 255, 0.1);
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+  text-decoration: none;
+  overflow: hidden;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* ClickAreaの基点 */
   position: relative;
 
-  &[data-focused='true'] {
-    border-color: var(--active-color);
-    border-style: dotted;
+  &:before {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 50%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.5);
+    filter: blur(0px);
+    transition: 0.75s;
+    transform: skewX(45deg) translateX(calc(var(--width) + 100vw));
+  }
+
+  &[data-focused='true']:before {
+    transform: skewX(45deg) translateX(calc(var(--width) * -1 - 100vw));
   }
 
   &[data-has-error='true'] {
     border-color: var(--danger-color);
     border-style: solid;
+    border-width: 2px;
   }
 `
 
@@ -53,10 +83,21 @@ const FieldLabel = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: -1rem;
 
-  & > span::after {
+  & > [data-error]::after {
     content: attr(data-error);
     color: var(--danger-color);
+    display: block;
+    font-size: 0.75em;
+    margin: 1rem 0;
+  }
+
+  & svg {
+    width: 3rem;
+    height: 3rem;
   }
 `
 
@@ -194,7 +235,7 @@ export const Dropzone = ({
       </VisuallyHidden>
       <FieldLabel>
         <FiUploadCloud />
-        <span data-error={errMsg}>{label}</span>
+        <div data-error={errMsg}>{label}</div>
       </FieldLabel>
     </DropField>
   )
