@@ -35,7 +35,9 @@ export const EditorBlock = <T extends BlockType>({
     ))
     .with('blockquote', () => <BlockquoteBlock id={id} />)
     .with('toggle', () => <ToggleBlock id={id} />)
-    .with('image', () => <ImageBlock id={id} />)
+    .with('image', () => (
+      <ImageBlock id={id} value={formatArg as FormatArgs['image']} />
+    ))
     .with('separator', () => <></>)
     .otherwise(() => <LongTextBlock type={type} id={id} />)
 
