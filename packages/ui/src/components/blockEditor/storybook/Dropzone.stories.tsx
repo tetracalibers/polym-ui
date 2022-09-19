@@ -1,6 +1,6 @@
 import { ComponentStory } from '@storybook/react'
 import { EditPanel } from '../styled/panel'
-import { Dropzone } from '../blocks/ImageUploader/Dropzone'
+import { Dropzone } from '../blocks/ImageBlock/Dropzone'
 
 export default {
   title: 'editor/Dropzone',
