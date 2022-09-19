@@ -5,6 +5,7 @@ import { Tab } from '../../../Tab'
 import { FormatArgs } from '../../module/FormatArgs'
 import { UpdateAction } from '../../module/reducer'
 import { GroupPanel } from '../GroupPanel'
+import { CaptionInput } from './CaptionInput'
 import { Dropzone } from './Dropzone'
 import { UrlInput } from './UrlInput'
 
@@ -64,6 +65,7 @@ export const ImageBlock = ({ id, value }: ImageBlockProps) => {
           <UrlInput id={id} value={value.url} />
         </Tab.Panel>
       </Tab>
+      <CaptionInput id={id} value={value.caption ?? ''} />
     </Container>
   )
 }
