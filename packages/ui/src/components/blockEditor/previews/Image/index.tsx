@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { LightBox } from './LightBox'
 
 const Figure = styled.figure`
   display: flex;
@@ -54,9 +55,7 @@ type ImagePreviewProps = {
 export const ImagePreview = ({ url, caption }: ImagePreviewProps) => {
   return (
     <Figure>
-      <ImgShadow $src={url}>
-        <Img src={url} />
-      </ImgShadow>
+      <LightBox src={url} />
       <Figcaption>{caption}</Figcaption>
     </Figure>
   )
