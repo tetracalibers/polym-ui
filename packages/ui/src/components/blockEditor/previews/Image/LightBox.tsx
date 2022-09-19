@@ -100,8 +100,6 @@ export const LightBox = ({ src }: LightBoxProps) => {
   const [isViewLarger, setViewLargerFlag] = useState(false)
   const modalRef = useRef<HTMLImageElement>(null)
 
-  const label = 'Enlarge image'
-
   const open = () => setViewLargerFlag(true)
   const close = () => setViewLargerFlag(false)
 
@@ -117,9 +115,7 @@ export const LightBox = ({ src }: LightBoxProps) => {
   return (
     <>
       <ClickAreaOrigin>
-        <ClickArea onClick={open} onKeyDown={modalKeyOperation} tabIndex={0}>
-          {label}
-        </ClickArea>
+        <ClickArea onClick={open} onKeyDown={modalKeyOperation} tabIndex={0} />
         <ImgShadow $src={src}>
           <Img src={src} />
         </ImgShadow>
