@@ -32,12 +32,14 @@ type UseFileDropArgs = {
   acceptMimeTypes: FileTypes[]
   updateFn?: (files: File[]) => void
   selectedFiles: File[]
+  multiple?: boolean
 }
 
 export const useFileDrop = ({
   acceptMimeTypes,
   updateFn,
   selectedFiles,
+  multiple,
 }: UseFileDropArgs) => {
   const [isFocusedZone, setDragzoneFocus] = useState(false)
   const [errMsg, setErrMsg] = useState<string>('')
@@ -114,7 +116,7 @@ export const useFileDrop = ({
 
   const fileInputRegister = {
     type: 'file',
-    multiple: true,
+    multiple,
     accept: accept,
     ref: fileInputRef,
     onClick: openFileSelectDialog,

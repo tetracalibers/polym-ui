@@ -101,6 +101,7 @@ type DropzoneProps = {
   hasError?: boolean
   updateFn?: (files: File[]) => void
   selectedFiles?: File[]
+  multiple?: boolean
 }
 
 export const Dropzone = ({
@@ -109,11 +110,13 @@ export const Dropzone = ({
   hasError = false,
   updateFn,
   selectedFiles = [],
+  multiple = false,
 }: DropzoneProps) => {
   const { isFocusedZone, errMsg, register } = useFileDrop({
     acceptMimeTypes,
     updateFn,
     selectedFiles,
+    multiple,
   })
   const inputId = useNanoId()
 

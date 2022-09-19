@@ -10,6 +10,7 @@ import { OListBlock } from './blocks/ListBlock/Order'
 import { FormatArgs } from './module/FormatArgs'
 import { BlockquoteBlock } from './blocks/BlockquoteBlock'
 import { ToggleBlock } from './blocks/ToggleBlock'
+import { ImageBlock } from './blocks/ImageBlock'
 
 export type EditorBlockProps<T extends BlockType> = {
   pos: number
@@ -34,6 +35,7 @@ export const EditorBlock = <T extends BlockType>({
     ))
     .with('blockquote', () => <BlockquoteBlock id={id} />)
     .with('toggle', () => <ToggleBlock id={id} />)
+    .with('image', () => <ImageBlock id={id} />)
     .with('separator', () => <></>)
     .otherwise(() => <LongTextBlock type={type} id={id} />)
 
