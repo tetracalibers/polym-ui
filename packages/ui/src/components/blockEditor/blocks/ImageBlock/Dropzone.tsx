@@ -5,15 +5,18 @@ import styled from 'styled-components'
 import { ResetCss } from 'styled-utility-first'
 import { VisuallyHidden } from '../../../a11y-helper/VisuallyHidden'
 import { Button } from '../../../core/Button/core'
+import { HorizontalStack } from '../../../layout-algorithm/HorizontalStack'
+import { VerticalStack } from '../../../layout-algorithm/VerticalStack'
+import { WithIcon } from '../../../with-icon/core'
 import { editInputStyle } from '../../styled/editInput'
 import { FileTypes, imageFileTypes } from './FileTypes'
+import { MiniPreview } from './MiniPreview'
 import { useFileDrop } from './useFileDrop'
 
 const DropField = styled.div`
   ${editInputStyle}
 
   --danger-color: #ff0f6d;
-  --active-color: #69e3eb;
   --width: 100%;
 
   width: var(--width);
@@ -79,20 +82,39 @@ const FieldLabel = styled.div`
   align-items: center;
   font-size: 1.5rem;
   text-align: center;
-  margin-bottom: -1rem;
-
-  & > [data-error]::after {
-    content: attr(data-error);
-    color: var(--danger-color);
-    display: block;
-    font-size: 0.75em;
-    margin: 1rem 0;
-  }
 
   & svg {
     width: 3rem;
     height: 3rem;
   }
+`
+
+const Message = styled.div`
+  &[data-error]::after {
+    content: attr(data-error);
+    color: var(--danger-color);
+    display: block;
+    font-size: 0.75em;
+    text-align: center;
+    padding-top: 1em;
+  }
+
+  && {
+    margin: 0;
+  }
+
+  &[data-error='']::after {
+    display: none;
+  }
+`
+
+const WithPreview = styled(VerticalStack)`
+  align-items: center;
+`
+
+const FieldLabelInline = styled(WithIcon)`
+  font-size: 1.25em;
+  text-align: center;
 `
 
 type DropzoneProps = {
@@ -112,7 +134,7 @@ export const Dropzone = ({
   selectedFiles = [],
   multiple = false,
 }: DropzoneProps) => {
-  const { isFocusedZone, errMsg, register } = useFileDrop({
+  const { isFocusedZone, errMsg, register, files } = useFileDrop({
     acceptMimeTypes,
     updateFn,
     selectedFiles,
@@ -133,10 +155,25 @@ export const Dropzone = ({
         </label>
         <input id={inputId} tabIndex={-1} {...register.fileInput} />
       </VisuallyHidden>
-      <FieldLabel>
-        <FiUploadCloud />
-        <div data-error={errMsg}>{label}</div>
-      </FieldLabel>
+      {files.length > 0 ? (
+        <WithPreview spaceV={1}>
+          <HorizontalStack spaceV={0.5}>
+            {files.map((file, idx) => (
+              <MiniPreview file={file} key={file.name + '_' + idx} />
+            ))}
+          </HorizontalStack>
+          <FieldLabelInline alignItems='center'>
+            <FiUploadCloud />
+            {label}
+          </FieldLabelInline>
+          <Message data-error={errMsg} />
+        </WithPreview>
+      ) : (
+        <FieldLabel>
+          <FiUploadCloud />
+          <Message data-error={errMsg}>{label}</Message>
+        </FieldLabel>
+      )}
     </DropField>
   )
 }

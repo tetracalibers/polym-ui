@@ -38,11 +38,12 @@ type UseFileDropArgs = {
 export const useFileDrop = ({
   acceptMimeTypes,
   updateFn,
-  selectedFiles,
+  selectedFiles = [],
   multiple,
 }: UseFileDropArgs) => {
   const [isFocusedZone, setDragzoneFocus] = useState(false)
   const [errMsg, setErrMsg] = useState<string>('')
+  const [files, setFiles] = useState(selectedFiles)
 
   const fileInputRef = useRef<HTMLInputElement>(null)
 
@@ -67,7 +68,8 @@ export const useFileDrop = ({
     } else {
       setErrMsg('')
     }
-    const allFiles = selectedFiles!.concat(acceptNewFiles)
+    const allFiles = files.concat(acceptNewFiles)
+    setFiles(allFiles)
     updateFn && updateFn(allFiles)
   }
 
@@ -126,6 +128,7 @@ export const useFileDrop = ({
   return {
     isFocusedZone,
     errMsg,
+    files,
     register: {
       dropField: dropFieldRegister,
       clickArea: ClickAreaRegister,
