@@ -105,6 +105,12 @@ export const useFileDrop = ({
     }
   }, [selectedFiles])
 
+  const deleteFile = (pos: number) => {
+    const updated = files.filter((_, i) => i !== pos)
+    setFiles(updated)
+    updateFn && updateFn(updated)
+  }
+
   const dropFieldRegister = {
     onDrop: addFile,
     onDragOver: cancelDefaultAction,
@@ -129,6 +135,7 @@ export const useFileDrop = ({
     isFocusedZone,
     errMsg,
     files,
+    deleteFile,
     register: {
       dropField: dropFieldRegister,
       clickArea: ClickAreaRegister,

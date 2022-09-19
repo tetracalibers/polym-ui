@@ -19,8 +19,8 @@ const DropField = styled.div`
   --danger-color: #ff0f6d;
   --width: 100%;
 
+  padding: 2rem 1rem;
   width: var(--width);
-  min-height: 200px;
   height: fit-content;
 
   background: rgba(255, 255, 255, 0.5);
@@ -134,7 +134,7 @@ export const Dropzone = ({
   selectedFiles = [],
   multiple = false,
 }: DropzoneProps) => {
-  const { isFocusedZone, errMsg, register, files } = useFileDrop({
+  const { isFocusedZone, errMsg, register, files, deleteFile } = useFileDrop({
     acceptMimeTypes,
     updateFn,
     selectedFiles,
@@ -159,7 +159,12 @@ export const Dropzone = ({
         <WithPreview spaceV={1}>
           <HorizontalStack spaceV={0.5}>
             {files.map((file, idx) => (
-              <MiniPreview file={file} key={file.name + '_' + idx} />
+              <MiniPreview
+                file={file}
+                key={file.name + '_' + idx}
+                pos={idx}
+                deleteFn={deleteFile}
+              />
             ))}
           </HorizontalStack>
           <FieldLabelInline alignItems='center'>

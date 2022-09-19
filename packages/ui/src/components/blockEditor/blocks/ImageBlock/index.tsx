@@ -11,12 +11,12 @@ export const ImageBlock = ({ id }: ImageBlockProps) => {
   const { dispatch } = useContext(BlockEditorContext)
 
   const updateFn = (files: File[]) => {
-    if (files.length === 0) {
-      return
-    }
     const action: UpdateAction<'image'> = {
       type: 'UPDATE',
-      args: { id, diff: { url: URL.createObjectURL(files[0]) } },
+      args: {
+        id,
+        diff: { url: files.length === 0 ? '' : URL.createObjectURL(files[0]) },
+      },
     }
     dispatch(action)
   }
