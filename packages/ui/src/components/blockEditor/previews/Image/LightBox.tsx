@@ -1,15 +1,15 @@
-import { ReactElement, ReactNode, useState } from 'react'
-import { ResetCss } from 'styled-utility-first'
-import { VisuallyHidden } from '../../../a11y-helper/VisuallyHidden'
-import { Button } from '../../../core/Button/core'
+import { useState, KeyboardEvent } from 'react'
 import styled from 'styled-components'
+import { match } from 'ts-pattern'
 
 const ClickAreaOrigin = styled.div`
   position: relative;
 `
 
-const ClickArea = styled(Button)`
-  ${ResetCss.button}
+// buttonタグを使うと、スクリーンリーダから隠すことが面倒になる
+// （buttonとして読み上げられちゃうし、roleは変えるのは望ましくない）
+const ClickArea = styled.div`
+  cursor: pointer;
   position: absolute;
   width: 100%;
   height: 100%;
@@ -20,6 +20,14 @@ const ClickArea = styled(Button)`
   background-color: rgba(255, 255, 255, 0);
   color: rgba(255, 255, 255, 0);
   z-index: 10;
+
+  &:focus {
+    box-shadow: rgb(0 0 0 / 40%) 0px 30px 90px;
+    outline: none;
+    padding: 1rem 0;
+    margin-top: -1rem;
+    border-radius: 1rem;
+  }
 `
 
 const ImgShadow = styled.div<{ $src: string }>`
@@ -92,15 +100,26 @@ export const LightBox = ({ src }: LightBoxProps) => {
 
   const label = 'Enlarge image'
 
+  const open = () => setViewLargerFlag(true)
+
+  const openByEnter = (e: KeyboardEvent<HTMLDivElement>) => {
+    match(e.key)
+      .with('Enter', () => open())
+      .otherwise(() => {})
+  }
+
   return (
     <>
       <ClickAreaOrigin>
-        <ClickArea onClick={() => setViewLargerFlag(true)}>{label}</ClickArea>
+        <ClickArea onClick={open} onKeyDown={openByEnter} tabIndex={0}>
+          {label}
+        </ClickArea>
         <ImgShadow $src={src}>
           <Img src={src} />
         </ImgShadow>
       </ClickAreaOrigin>
-      <ModalOverlay data-visible={isViewLarger}>
+      {/* 画像拡大は晴眼ユーザのためだけのものなので、aria-hiddenで隠してしまう */}
+      <ModalOverlay data-visible={isViewLarger} aria-hidden='true'>
         <LargeImg src={src} />
       </ModalOverlay>
     </>
