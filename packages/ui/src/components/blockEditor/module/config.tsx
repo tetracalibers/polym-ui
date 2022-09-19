@@ -86,7 +86,9 @@ export const blockConf: Blocks = [
     type: 'image',
     icon: <IoImageOutline />,
     boxType: 'block',
-    format: ({ url }) => <ImagePreview url={url} />,
+    format: ({ url, caption = '' }) => (
+      <ImagePreview url={url} caption={caption} />
+    ),
   },
   {
     type: 'code',
