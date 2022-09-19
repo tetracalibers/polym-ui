@@ -1,6 +1,6 @@
-import { Text } from '../../Text'
+import { Text } from '../../../Text'
 import { BiRightArrow } from 'react-icons/bi'
-import { PositionManager } from '../styled/insertHere'
+import { PositionManager } from '../../styled/insertHere'
 
 export const InsertHere = () => {
   return (
