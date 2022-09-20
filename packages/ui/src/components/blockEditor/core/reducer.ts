@@ -7,7 +7,7 @@ import { arrayMoveImmutable } from 'array-move'
 import { ReactNode } from 'react'
 import { ValueOf } from '../types/ValueOf'
 
-export type Store<T extends BlockType> = {
+export type Store<T extends BlockType = BlockType> = {
   formatArg: FormatArgs[T]
   type: T
   id: string
