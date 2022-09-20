@@ -1,4 +1,4 @@
-import { ChangeEvent, useContext } from 'react'
+import { ChangeEvent, ComponentPropsWithoutRef, useContext } from 'react'
 import styled, { css } from 'styled-components'
 import { useTextareaStretch, useNanoId } from '@polym/hooks'
 import { BlockEditorContext } from '..'
@@ -64,9 +64,13 @@ const Label = styled.label`
 export type FloatLabelTextareaProps = {
   id: string
   label: string
-}
+} & ComponentPropsWithoutRef<'textarea'>
 
-export const FloatLabelTextarea = ({ id, label }: FloatLabelTextareaProps) => {
+export const FloatLabelTextarea = ({
+  id,
+  label,
+  ...textareaProps
+}: FloatLabelTextareaProps) => {
   const { dispatch } = useContext(BlockEditorContext)
 
   const updateFn = (e: ChangeEvent<HTMLTextAreaElement>) =>
@@ -88,6 +92,7 @@ export const FloatLabelTextarea = ({ id, label }: FloatLabelTextareaProps) => {
         rows={rows}
         id={inputId}
         placeholder={label}
+        {...textareaProps}
       />
       <Label htmlFor={inputId} data-label={label}>
         <VisuallyHidden>{label}</VisuallyHidden>

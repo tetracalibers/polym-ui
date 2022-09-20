@@ -1,16 +1,18 @@
+import { FormatArgs } from '../../core/FormatArgs'
 import { GroupPanel } from '../GroupPanel'
 import { CiteInput } from './CiteInput'
 import { ContentInput } from './ContentInput'
 
 export type BlockquoteBlockProps = {
   id: string
+  value: FormatArgs['blockquote']
 }
 
-export const BlockquoteBlock = ({ id }: BlockquoteBlockProps) => {
+export const BlockquoteBlock = ({ id, value }: BlockquoteBlockProps) => {
   return (
     <GroupPanel>
-      <ContentInput id={id} />
-      <CiteInput id={id} />
+      <ContentInput id={id} value={value.input ?? ''} />
+      <CiteInput id={id} value={value.cite ?? ''} />
     </GroupPanel>
   )
 }

@@ -1,13 +1,14 @@
 import { ChangeEvent, useContext } from 'react'
 import { BlockEditorContext } from '../..'
-import { UpdateAction } from '../../core/reducer'
+import { UpdateAction } from '../../core/actions'
 import { FloatLabelInput } from '../FloatLabelInput'
 
 type CiteInputProps = {
   id: string
+  value: string
 }
 
-export const CiteInput = ({ id }: CiteInputProps) => {
+export const CiteInput = ({ id, value }: CiteInputProps) => {
   const { dispatch } = useContext(BlockEditorContext)
 
   const updateFn = (e: ChangeEvent<HTMLInputElement>) => {
@@ -23,5 +24,7 @@ export const CiteInput = ({ id }: CiteInputProps) => {
     dispatch(action)
   }
 
-  return <FloatLabelInput id={id} label='source' onChange={updateFn} />
+  return (
+    <FloatLabelInput id={id} label='source' onChange={updateFn} value={value} />
+  )
 }

@@ -46,7 +46,9 @@ export const EditorBlock = <T extends BlockType>({
       const { order, items } = formatArg as FormatArgs['olist']
       return <OListBlock id={id} start={order} items={items ?? []} />
     })
-    .with('blockquote', () => <BlockquoteBlock id={id} />)
+    .with('blockquote', () => (
+      <BlockquoteBlock id={id} value={formatArg as FormatArgs['blockquote']} />
+    ))
     .with('toggle', () => <ToggleBlock id={id} />)
     .with('image', () => (
       <ImageBlock id={id} value={formatArg as FormatArgs['image']} />
