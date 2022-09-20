@@ -49,7 +49,9 @@ export const EditorBlock = <T extends BlockType>({
     .with('blockquote', () => (
       <BlockquoteBlock id={id} value={formatArg as FormatArgs['blockquote']} />
     ))
-    .with('toggle', () => <ToggleBlock id={id} />)
+    .with('toggle', () => (
+      <ToggleBlock id={id} value={formatArg as FormatArgs['toggle']} />
+    ))
     .with('image', () => (
       <ImageBlock id={id} value={formatArg as FormatArgs['image']} />
     ))

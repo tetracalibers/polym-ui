@@ -1,13 +1,14 @@
 import { ChangeEvent, useContext } from 'react'
 import { BlockEditorContext } from '../..'
-import { UpdateAction } from '../../core/reducer'
+import { UpdateAction } from '../../core/actions'
 import { FloatLabelInput } from '../FloatLabelInput'
 
 type SummaryEditorProps = {
   id: string
+  value: string
 }
 
-export const SummaryEditor = ({ id }: SummaryEditorProps) => {
+export const SummaryEditor = ({ id, value }: SummaryEditorProps) => {
   const { dispatch } = useContext(BlockEditorContext)
 
   const updateFn = (e: ChangeEvent<HTMLInputElement>) => {
@@ -23,5 +24,12 @@ export const SummaryEditor = ({ id }: SummaryEditorProps) => {
     dispatch(action)
   }
 
-  return <FloatLabelInput id={id} label='summary' onChange={updateFn} />
+  return (
+    <FloatLabelInput
+      id={id}
+      label='summary'
+      onChange={updateFn}
+      value={value}
+    />
+  )
 }
