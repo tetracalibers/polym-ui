@@ -17,7 +17,7 @@ import { BiParagraph } from 'react-icons/bi'
 //import { VscRepo } from 'react-icons/vsc'
 import { TbSeparatorHorizontal, TbHeading, TbMath } from 'react-icons/tb'
 //import { CgListTree } from 'react-icons/cg'
-import { ImTerminal, ImCommand } from 'react-icons/im'
+import { ImTerminal } from 'react-icons/im'
 import { FormatArgs } from './FormatArgs'
 import { ValueOf } from './ValueOf'
 import { CodeHighlight } from '../../CodeHighlight'
@@ -184,12 +184,6 @@ export const blockConf: Blocks = [
     icon: <TbHeading />,
     boxType: 'block',
     format: ({ input, level = 2 }) => <Heading level={level}>{input}</Heading>,
-  },
-  {
-    type: 'command',
-    icon: <ImCommand />,
-    boxType: 'inline',
-    format: ({ input }) => <kbd>{input}</kbd>,
   },
   //{
   //  type: 'dirtree',
