@@ -2,7 +2,7 @@ import { useContext } from 'react'
 import { BlockEditorContext } from '..'
 import { ChoiceItem } from '../../DropdownSelect/model/props'
 import { ComboBox } from '../menu/ComboBox'
-import { UpdateAction } from '../module/reducer'
+import { UpdateAction } from '../core/reducer'
 
 const options: ChoiceItem[] = [...new Array(6)].map((_, idx) => ({
   value: idx + 1,

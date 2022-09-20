@@ -1,4 +1,4 @@
-import { FormatArgs } from '../../module/FormatArgs'
+import { FormatArgs } from '../../core/FormatArgs'
 
 export type LangOption = {
   value: FormatArgs['code']['lang']

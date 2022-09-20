@@ -1,7 +1,7 @@
 import { useReducer, useContext, ChangeEvent, useEffect } from 'react'
 import { BlockEditorContext } from '../..'
 import * as Local from '../reducer/addmore.reducer'
-import * as Global from '../../module/reducer'
+import * as Global from '../../core/reducer'
 
 export const useAddmore = (id: string) => {
   const [items, localDispatch] = useReducer(Local.reducer, [])

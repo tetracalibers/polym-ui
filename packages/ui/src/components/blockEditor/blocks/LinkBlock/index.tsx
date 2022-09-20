@@ -1,4 +1,4 @@
-import { FormatArgs } from '../../module/FormatArgs'
+import { FormatArgs } from '../../core/FormatArgs'
 import { GroupPanel } from '../GroupPanel'
 import { LabelInput } from './LabelInput'
 import { UrlInput } from './UrlInput'

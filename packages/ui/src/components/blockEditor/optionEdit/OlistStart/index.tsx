@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 import { BlockEditorContext } from '../..'
-import { UpdateAction } from '../../module/reducer'
+import { UpdateAction } from '../../core/reducer'
 import { Stepper } from './Stepper'
 
 export type OListStartStepperProps = {

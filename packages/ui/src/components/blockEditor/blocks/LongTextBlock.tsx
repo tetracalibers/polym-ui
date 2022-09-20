@@ -1,6 +1,6 @@
 import { VisuallyHidden } from '../../a11y-helper/VisuallyHidden'
 import { ChangeEvent, useContext } from 'react'
-import { BlockType } from '../module/config'
+import { BlockType } from '../core/config'
 import { BlockEditorContext } from '..'
 import { editInputStyle } from '../styled/editInput'
 import styled from 'styled-components'

@@ -3,8 +3,8 @@ import { useContext } from 'react'
 import { BlockEditorContext } from '..'
 import { ChoiceItem } from '../../DropdownSelect/model/props'
 import { langOptions } from '../blocks/CodeBlock/LangOption'
-import { FormatArgs } from '../module/FormatArgs'
-import { UpdateAction } from '../module/reducer'
+import { FormatArgs } from '../core/FormatArgs'
+import { UpdateAction } from '../core/reducer'
 import { ComboBox } from './ComboBox'
 
 export type CodeLangSelectProps = {
