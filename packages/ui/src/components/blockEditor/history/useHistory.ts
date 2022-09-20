@@ -36,7 +36,7 @@ export const useHistory = <T>(initialPresent: Present<T>) => {
   )
 
   return {
-    state: state.present,
+    currState: state.present as T,
     setHistory,
     undo,
     redo,
