@@ -55,12 +55,10 @@ export const EditorBlock = <T extends BlockType>({
     .with('image', () => (
       <ImageBlock id={id} value={formatArg as FormatArgs['image']} />
     ))
-    .with('heading', () => (
-      <HeadingBlock
-        id={id}
-        level={(formatArg as FormatArgs['heading']).level ?? 2}
-      />
-    ))
+    .with('heading', () => {
+      const { level, input } = formatArg as FormatArgs['heading']
+      return <HeadingBlock id={id} level={level ?? 2} text={input ?? ''} />
+    })
     .with('code', () => (
       <CodeBlock
         id={id}
