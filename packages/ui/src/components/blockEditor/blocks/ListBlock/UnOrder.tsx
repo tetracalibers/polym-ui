@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { FormatArgs } from '../../core/FormatArgs'
 import { GroupPanel } from '../GroupPanel'
 import { useAddmore } from '../reducer/useAddmore'
 import { AddSeparator } from './AddSeparator'
@@ -15,10 +16,11 @@ const Li = styled.li`
 
 export type UListBlockProps = {
   id: string
+  items: FormatArgs['ulist']['items']
 }
 
-export const UListBlock = ({ id }: UListBlockProps) => {
-  const { items, addFn, updateFn } = useAddmore(id)
+export const UListBlock = ({ id, items = [] }: UListBlockProps) => {
+  const { addFn, updateFn } = useAddmore(id)
 
   return (
     <GroupPanel>

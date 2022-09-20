@@ -39,5 +39,5 @@ export const useAddmore = (id: string) => {
     localDispatch(localAction)
   }
 
-  return { items, addFn, updateFn }
+  return { addFn, updateFn }
 }

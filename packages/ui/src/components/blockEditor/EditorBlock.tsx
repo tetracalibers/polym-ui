@@ -36,10 +36,16 @@ export const EditorBlock = <T extends BlockType>({
         keyNames={(formatArg as FormatArgs['keyboard']).items ?? []}
       />
     ))
-    .with('ulist', () => <UListBlock id={id} />)
-    .with('olist', () => (
-      <OListBlock id={id} start={(formatArg as FormatArgs['olist']).order} />
+    .with('ulist', () => (
+      <UListBlock
+        id={id}
+        items={(formatArg as FormatArgs['ulist']).items ?? []}
+      />
     ))
+    .with('olist', () => {
+      const { order, items } = formatArg as FormatArgs['olist']
+      return <OListBlock id={id} start={order} items={items ?? []} />
+    })
     .with('blockquote', () => <BlockquoteBlock id={id} />)
     .with('toggle', () => <ToggleBlock id={id} />)
     .with('image', () => (

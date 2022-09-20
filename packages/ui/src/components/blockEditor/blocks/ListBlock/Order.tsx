@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { FormatArgs } from '../../core/FormatArgs'
 import { GroupPanel } from '../GroupPanel'
 import { useAddmore } from '../reducer/useAddmore'
 import { AddSeparator } from './AddSeparator'
@@ -16,10 +17,11 @@ const Li = styled.li`
 export type OListBlockProps = {
   id: string
   start: number
+  items: FormatArgs['olist']['items']
 }
 
-export const OListBlock = ({ id, start = 1 }: OListBlockProps) => {
-  const { items, addFn, updateFn } = useAddmore(id)
+export const OListBlock = ({ id, start = 1, items = [] }: OListBlockProps) => {
+  const { addFn, updateFn } = useAddmore(id)
 
   return (
     <GroupPanel>
