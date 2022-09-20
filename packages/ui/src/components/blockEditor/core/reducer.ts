@@ -14,9 +14,9 @@ import {
   MoveUpAction,
   MoveDownAction,
 } from './actions'
-import { getRewindActions, RewindActionMap } from './rewind.actions'
+import { getRewindAction, RewindActionMap } from './rewind.actions'
 
-type HistoryAction = ReturnType<typeof getRewindActions[keyof RewindActionMap]>
+type HistoryAction = ReturnType<typeof getRewindAction[keyof RewindActionMap]>
 
 export type EditorState = {
   blocks: BlockState[]
@@ -52,7 +52,7 @@ export const reducer = (state: EditorState, action: Action) => {
       const matchBlock = _.find(blockConf, { type }) as Block<typeof type>
       const id = _id ?? nanoid()
       const newBlock = makeInitialBlock({ id, type, matchBlock })
-      const rewind = getRewindActions.INSERT(id)
+      const rewind = getRewindAction.INSERT(id)
       return {
         blocks: pushNew(blocks, newBlock),
         undoActions: updateUndo(undoActions, rewind, by),
@@ -65,7 +65,7 @@ export const reducer = (state: EditorState, action: Action) => {
       if (target === undefined) {
         return state
       }
-      const rewind = getRewindActions.UPDATE(id, target.formatArg)
+      const rewind = getRewindAction.UPDATE(id, target.formatArg)
       return {
         blocks: blocks.map(b =>
           b.id === id ? { ...b, formatArg: { ...b.formatArg, ...diff } } : b
@@ -80,7 +80,7 @@ export const reducer = (state: EditorState, action: Action) => {
       if (target === undefined) {
         return state
       }
-      const rewind = getRewindActions.DELETE(target.type, id)
+      const rewind = getRewindAction.DELETE(target.type, id)
       return {
         blocks: _.reject(state.blocks, { id }),
         undoActions: updateUndo(undoActions, rewind, by),
@@ -89,7 +89,7 @@ export const reducer = (state: EditorState, action: Action) => {
     })
     .with('DRAG_SORT', () => {
       const { old_pos, new_pos, by } = (action as DragSortAction).args
-      const rewind = getRewindActions.DRAG_SORT(old_pos, new_pos)
+      const rewind = getRewindAction.DRAG_SORT(old_pos, new_pos)
       return {
         blocks: arrayMoveImmutable(state.blocks, old_pos, new_pos),
         undoActions: updateUndo(undoActions, rewind, by),
@@ -98,7 +98,7 @@ export const reducer = (state: EditorState, action: Action) => {
     })
     .with('MOVE_UP', () => {
       const { old_pos, by } = (action as MoveUpAction).args
-      const rewind = getRewindActions.MOVE_UP(old_pos)
+      const rewind = getRewindAction.MOVE_UP(old_pos)
       return {
         blocks: arrayMoveImmutable(state.blocks, old_pos, old_pos - 1),
         undoActions: updateUndo(undoActions, rewind, by),
@@ -107,7 +107,7 @@ export const reducer = (state: EditorState, action: Action) => {
     })
     .with('MOVE_DOWN', () => {
       const { old_pos, by } = (action as MoveDownAction).args
-      const rewind = getRewindActions.MOVE_DOWN(old_pos)
+      const rewind = getRewindAction.MOVE_DOWN(old_pos)
       return {
         blocks: arrayMoveImmutable(state.blocks, old_pos, old_pos + 1),
         undoActions: updateUndo(undoActions, rewind, by),

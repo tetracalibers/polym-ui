@@ -12,49 +12,52 @@ import { FormatArgs } from './FormatArgs'
 
 // prettier-ignore
 export interface RewindActionMap {
-  INSERT: (id: string) => [DeleteAction]
-  UPDATE: (id: string, diff: ValueOf<FormatArgs>) => [UpdateAction]
-  DELETE: (type: BlockType, id: string) => [InsertAction]
-  DRAG_SORT: (old_pos: number, new_pos: number) => [DragSortAction]
-  MOVE_UP: (old_pos: number) => [MoveDownAction]
-  MOVE_DOWN: (old_pos: number) => [MoveUpAction]
+  INSERT: (id: string) => DeleteAction
+  UPDATE: (id: string, diff: ValueOf<FormatArgs>) => UpdateAction
+  DELETE: (type: BlockType, id: string) => InsertAction
+  DRAG_SORT: (old_pos: number, new_pos: number) => DragSortAction
+  MOVE_UP: (old_pos: number) => MoveDownAction
+  MOVE_DOWN: (old_pos: number) => MoveUpAction
 }
 
-const rewindInsertActions: RewindActionMap['INSERT'] = id => [
-  { type: 'DELETE', args: { id } },
-]
+const rewindInsertAction: RewindActionMap['INSERT'] = id => ({
+  type: 'DELETE',
+  args: { id },
+})
 
-const rewindUpdateActions: RewindActionMap['UPDATE'] = (id, diff) => [
-  { type: 'UPDATE', args: { id, diff } },
-]
+const rewindUpdateAction: RewindActionMap['UPDATE'] = (id, diff) => ({
+  type: 'UPDATE',
+  args: { id, diff },
+})
 
-const rewindDeleteActions: RewindActionMap['DELETE'] = (type, id) => [
-  { type: 'INSERT', args: { id, type } },
-]
+const rewindDeleteAction: RewindActionMap['DELETE'] = (type, id) => ({
+  type: 'INSERT',
+  args: { id, type },
+})
 
-const rewindDragSortActions: RewindActionMap['DRAG_SORT'] = (
+const rewindDragSortAction: RewindActionMap['DRAG_SORT'] = (
   old_pos,
   new_pos
-) => [
-  {
-    type: 'DRAG_SORT',
-    args: { old_pos: new_pos, new_pos: old_pos },
-  },
-]
+) => ({
+  type: 'DRAG_SORT',
+  args: { old_pos: new_pos, new_pos: old_pos },
+})
 
-const rewindMoveUpActions: RewindActionMap['MOVE_UP'] = old_pos => [
-  { type: 'MOVE_DOWN', args: { old_pos } },
-]
+const rewindMoveUpAction: RewindActionMap['MOVE_UP'] = old_pos => ({
+  type: 'MOVE_DOWN',
+  args: { old_pos },
+})
 
-const rewindMoveDownActions: RewindActionMap['MOVE_DOWN'] = old_pos => [
-  { type: 'MOVE_UP', args: { old_pos } },
-]
+const rewindMoveDownAction: RewindActionMap['MOVE_DOWN'] = old_pos => ({
+  type: 'MOVE_UP',
+  args: { old_pos },
+})
 
-export const getRewindActions: RewindActionMap = {
-  INSERT: rewindInsertActions,
-  UPDATE: rewindUpdateActions,
-  DELETE: rewindDeleteActions,
-  DRAG_SORT: rewindDragSortActions,
-  MOVE_UP: rewindMoveUpActions,
-  MOVE_DOWN: rewindMoveDownActions,
+export const getRewindAction: RewindActionMap = {
+  INSERT: rewindInsertAction,
+  UPDATE: rewindUpdateAction,
+  DELETE: rewindDeleteAction,
+  DRAG_SORT: rewindDragSortAction,
+  MOVE_UP: rewindMoveUpAction,
+  MOVE_DOWN: rewindMoveDownAction,
 }
