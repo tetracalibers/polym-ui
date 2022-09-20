@@ -80,8 +80,7 @@ export const reducer = (state: EditorState, action: Action) => {
       if (target === undefined) {
         return state
       }
-      const { type, formatArg } = target
-      const rewind = getRewindActions.DELETE(type, id, formatArg)
+      const rewind = getRewindActions.DELETE(target.type, id)
       return {
         blocks: _.reject(state.blocks, { id }),
         undoActions: updateUndo(undoActions, rewind, by),

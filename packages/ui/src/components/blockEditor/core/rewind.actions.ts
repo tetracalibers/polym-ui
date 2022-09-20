@@ -14,7 +14,7 @@ import { FormatArgs } from './FormatArgs'
 export interface RewindActionMap {
   INSERT: (id: string) => [DeleteAction]
   UPDATE: (id: string, diff: ValueOf<FormatArgs>) => [UpdateAction]
-  DELETE: (type: BlockType, id: string, diff: ValueOf<FormatArgs>) => [InsertAction, UpdateAction]
+  DELETE: (type: BlockType, id: string) => [InsertAction]
   DRAG_SORT: (old_pos: number, new_pos: number) => [DragSortAction]
   MOVE_UP: (old_pos: number) => [MoveDownAction]
   MOVE_DOWN: (old_pos: number) => [MoveUpAction]
@@ -28,9 +28,8 @@ const rewindUpdateActions: RewindActionMap['UPDATE'] = (id, diff) => [
   { type: 'UPDATE', args: { id, diff } },
 ]
 
-const rewindDeleteActions: RewindActionMap['DELETE'] = (type, id, diff) => [
+const rewindDeleteActions: RewindActionMap['DELETE'] = (type, id) => [
   { type: 'INSERT', args: { id, type } },
-  { type: 'UPDATE', args: { id, diff } },
 ]
 
 const rewindDragSortActions: RewindActionMap['DRAG_SORT'] = (

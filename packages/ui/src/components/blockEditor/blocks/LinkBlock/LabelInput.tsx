@@ -1,6 +1,6 @@
 import { ChangeEvent, useContext } from 'react'
 import { BlockEditorContext } from '../..'
-import { UpdateAction } from '../../core/reducer'
+import { UpdateAction } from '../../core/actions'
 import { FloatLabelInput } from '../FloatLabelInput'
 
 type LabelInputProps = {

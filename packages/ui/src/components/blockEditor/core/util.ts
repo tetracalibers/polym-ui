@@ -1,4 +1,5 @@
 import { Block, BlockType } from './config'
+import { initialFormatArgs } from './FormatArgs'
 import { BlockState } from './store'
 
 type MakeInitialBlockArgs<T extends BlockType> = {
@@ -15,7 +16,7 @@ export const makeInitialBlock = <T extends BlockType>({
   const { boxType: allowBox, icon, format } = matchBlock
   return {
     type,
-    formatArg: {},
+    formatArg: initialFormatArgs[type],
     id,
     allowBox,
     currBox: allowBox === 'both' ? 'inline' : allowBox,

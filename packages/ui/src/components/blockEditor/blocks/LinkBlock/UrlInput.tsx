@@ -1,7 +1,7 @@
 import { ChangeEvent, useContext } from 'react'
 import { FloatLabelInput } from '../FloatLabelInput'
 import { BlockEditorContext } from '../..'
-import { UpdateAction } from '../../core/reducer'
+import { UpdateAction } from '../../core/actions'
 
 type UrlInputProps = {
   id: string

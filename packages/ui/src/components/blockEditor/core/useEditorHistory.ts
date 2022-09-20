@@ -1,4 +1,4 @@
-import { useCallback, useReducer } from 'react'
+import { useCallback, useReducer, useEffect } from 'react'
 import { Action } from './actions'
 import { reducer } from './reducer'
 import { last } from './util'
@@ -12,6 +12,10 @@ export const useEditorHistory = () => {
 
   const canUndo = state.undoActions.length > 0
   const canRedo = state.redoActions.length > 0
+
+  //useEffect(() => {
+  //  console.log(state.undoActions)
+  //}, [state.undoActions])
 
   const undo = useCallback(() => {
     if (canUndo) {
