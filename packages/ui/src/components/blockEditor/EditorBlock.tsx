@@ -11,6 +11,7 @@ import { FormatArgs } from './module/FormatArgs'
 import { BlockquoteBlock } from './blocks/BlockquoteBlock'
 import { ToggleBlock } from './blocks/ToggleBlock'
 import { ImageBlock } from './blocks/ImageBlock'
+import { HeadingBlock } from './blocks/HeadingBlock'
 
 export type EditorBlockProps<T extends BlockType> = {
   pos: number
@@ -37,6 +38,12 @@ export const EditorBlock = <T extends BlockType>({
     .with('toggle', () => <ToggleBlock id={id} />)
     .with('image', () => (
       <ImageBlock id={id} value={formatArg as FormatArgs['image']} />
+    ))
+    .with('heading', () => (
+      <HeadingBlock
+        id={id}
+        level={(formatArg as FormatArgs['heading']).level ?? 2}
+      />
     ))
     .with('separator', () => <></>)
     .otherwise(() => <LongTextBlock type={type} id={id} />)
