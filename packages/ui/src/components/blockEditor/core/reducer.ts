@@ -4,7 +4,7 @@ import { match } from 'ts-pattern'
 import { Block, blockConf } from './config'
 import { arrayMoveImmutable } from 'array-move'
 import { BlockState } from './store'
-import { cutLast, last, makeInitialBlock, pushNew } from './util'
+import { cutLast, makeInitialBlock, pushNew } from './util'
 import {
   Action,
   InsertAction,
@@ -16,89 +16,103 @@ import {
 } from './actions'
 import { getRewindActions, RewindActionMap } from './rewind.actions'
 
+type HistoryAction = ReturnType<typeof getRewindActions[keyof RewindActionMap]>
+
 export type EditorState = {
   blocks: BlockState[]
-  undoActions: ReturnType<typeof getRewindActions[keyof RewindActionMap]>[]
-  redoActions: ReturnType<typeof getRewindActions[keyof RewindActionMap]>[]
+  undoActions: HistoryAction[]
+  redoActions: HistoryAction[]
+}
+
+const updateUndo = (
+  prev: HistoryAction[],
+  curr: HistoryAction,
+  mode: 'undo' | 'redo' | undefined
+) => {
+  return mode === 'undo' ? cutLast(prev) : pushNew(prev, curr)
+}
+
+const updateRedo = (
+  prev: HistoryAction[],
+  curr: HistoryAction,
+  mode: 'undo' | 'redo' | undefined
+) => {
+  return mode === 'redo'
+    ? cutLast(prev)
+    : mode === 'undo'
+    ? pushNew(prev, curr)
+    : prev
 }
 
 export const reducer = (state: EditorState, action: Action) => {
   const { blocks, undoActions, redoActions } = state
   return match(action.type)
     .with('INSERT', () => {
-      const { type } = (action as InsertAction).args
+      const { type, id: _id, by } = (action as InsertAction).args
       const matchBlock = _.find(blockConf, { type }) as Block<typeof type>
-      const id = nanoid()
+      const id = _id ?? nanoid()
       const newBlock = makeInitialBlock({ id, type, matchBlock })
-      const undoThis = getRewindActions.INSERT(id)
+      const rewind = getRewindActions.INSERT(id)
       return {
         blocks: pushNew(blocks, newBlock),
-        undoActions: pushNew(undoActions, undoThis),
-        redoActions,
+        undoActions: updateUndo(undoActions, rewind, by),
+        redoActions: updateRedo(redoActions, rewind, by),
       }
     })
     .with('UPDATE', () => {
-      const { id, diff } = (action as UpdateAction).args
-      const idx = blocks.findIndex(b => b.id === id)
-      const undoThis = getRewindActions.UPDATE(id, blocks[idx].formatArg)
+      const { id, diff, by } = (action as UpdateAction).args
+      const target = blocks.find(b => b.id === id)
+      if (target === undefined) {
+        return state
+      }
+      const rewind = getRewindActions.UPDATE(id, target.formatArg)
       return {
-        blocks: blocks.map((b, i) =>
-          i === idx ? { ...b, formatArg: { ...b.formatArg, ...diff } } : b
+        blocks: blocks.map(b =>
+          b.id === id ? { ...b, formatArg: { ...b.formatArg, ...diff } } : b
         ),
-        undoActions: pushNew(undoActions, undoThis),
-        redoActions,
+        undoActions: updateUndo(undoActions, rewind, by),
+        redoActions: updateRedo(redoActions, rewind, by),
       }
     })
     .with('DELETE', () => {
-      const { id } = (action as DeleteAction).args
+      const { id, by } = (action as DeleteAction).args
       const target = blocks.find(block => block.id === id) as BlockState
+      if (target === undefined) {
+        return state
+      }
       const { type, formatArg } = target
-      const undoThis = getRewindActions.DELETE(type, id, formatArg)
+      const rewind = getRewindActions.DELETE(type, id, formatArg)
       return {
         blocks: _.reject(state.blocks, { id }),
-        undoActions: pushNew(undoActions, undoThis),
-        redoActions,
+        undoActions: updateUndo(undoActions, rewind, by),
+        redoActions: updateRedo(redoActions, rewind, by),
       }
     })
     .with('DRAG_SORT', () => {
-      const { old_pos, new_pos } = (action as DragSortAction).args
-      const undoThis = getRewindActions.DRAG_SORT(old_pos, new_pos)
+      const { old_pos, new_pos, by } = (action as DragSortAction).args
+      const rewind = getRewindActions.DRAG_SORT(old_pos, new_pos)
       return {
         blocks: arrayMoveImmutable(state.blocks, old_pos, new_pos),
-        undoActions: pushNew(undoActions, undoThis),
-        redoActions,
+        undoActions: updateUndo(undoActions, rewind, by),
+        redoActions: updateRedo(redoActions, rewind, by),
       }
     })
     .with('MOVE_UP', () => {
-      const { old_pos } = (action as MoveUpAction).args
-      const undoThis = getRewindActions.MOVE_UP(old_pos)
+      const { old_pos, by } = (action as MoveUpAction).args
+      const rewind = getRewindActions.MOVE_UP(old_pos)
       return {
         blocks: arrayMoveImmutable(state.blocks, old_pos, old_pos - 1),
-        undoActions: pushNew(undoActions, undoThis),
-        redoActions,
+        undoActions: updateUndo(undoActions, rewind, by),
+        redoActions: updateRedo(redoActions, rewind, by),
       }
     })
     .with('MOVE_DOWN', () => {
-      const { old_pos } = (action as MoveDownAction).args
-      const undoThis = getRewindActions.MOVE_DOWN(old_pos)
+      const { old_pos, by } = (action as MoveDownAction).args
+      const rewind = getRewindActions.MOVE_DOWN(old_pos)
       return {
         blocks: arrayMoveImmutable(state.blocks, old_pos, old_pos + 1),
-        undoActions: pushNew(undoActions, undoThis),
-        redoActions,
-      }
-    })
-    .with('CONSUME_UNDO', () => {
-      return {
-        blocks,
-        undoActions: cutLast(undoActions),
-        redoActions: pushNew(redoActions, last(undoActions)),
-      }
-    })
-    .with('CONSUME_REDO', () => {
-      return {
-        blocks,
-        undoActions,
-        redoActions: cutLast(redoActions),
+        undoActions: updateUndo(undoActions, rewind, by),
+        redoActions: updateRedo(redoActions, rewind, by),
       }
     })
     .exhaustive()

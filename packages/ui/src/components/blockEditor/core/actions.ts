@@ -5,6 +5,8 @@ export type InsertAction = {
   type: 'INSERT'
   args: {
     type: BlockType
+    id?: string
+    by?: 'redo' | 'undo'
   }
 }
 
@@ -12,6 +14,7 @@ export type DeleteAction = {
   type: 'DELETE'
   args: {
     id: string
+    by?: 'redo' | 'undo'
   }
 }
 
@@ -20,6 +23,7 @@ export type UpdateAction<T extends BlockType = BlockType> = {
   args: {
     id: string
     diff: { [arg in keyof FormatArgs[T]]?: FormatArgs[T][arg] }
+    by?: 'redo' | 'undo'
   }
 }
 
@@ -28,6 +32,7 @@ export type DragSortAction = {
   args: {
     old_pos: number
     new_pos: number
+    by?: 'redo' | 'undo'
   }
 }
 
@@ -35,6 +40,7 @@ export type MoveUpAction = {
   type: 'MOVE_UP'
   args: {
     old_pos: number
+    by?: 'redo' | 'undo'
   }
 }
 
@@ -42,23 +48,14 @@ export type MoveDownAction = {
   type: 'MOVE_DOWN'
   args: {
     old_pos: number
+    by?: 'redo' | 'undo'
   }
 }
 
-export type BlockAction =
+export type Action =
   | InsertAction
   | DeleteAction
   | UpdateAction
   | DragSortAction
   | MoveUpAction
   | MoveDownAction
-
-export type ConsumeUndoAction = {
-  type: 'CONSUME_UNDO'
-}
-
-export type ConsumeRedoAction = {
-  type: 'CONSUME_REDO'
-}
-
-export type Action = BlockAction | ConsumeUndoAction | ConsumeRedoAction

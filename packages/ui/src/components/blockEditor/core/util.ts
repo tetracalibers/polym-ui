@@ -29,3 +29,5 @@ export const pushNew = <T = any>(arr: T[], newElem: T) => arr.concat([newElem])
 export const cutLast = <T = any>(arr: T[]) => arr.slice(0, arr.length - 1)
 
 export const last = <T = any>(arr: T[]) => arr[arr.length - 1]
+
+export const isEmptyObj = (obj: any) => Object.keys(obj).length === 0

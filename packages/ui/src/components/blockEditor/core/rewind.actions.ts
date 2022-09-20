@@ -29,14 +29,19 @@ const rewindUpdateActions: RewindActionMap['UPDATE'] = (id, diff) => [
 ]
 
 const rewindDeleteActions: RewindActionMap['DELETE'] = (type, id, diff) => [
-  { type: 'INSERT', args: { type } },
+  { type: 'INSERT', args: { id, type } },
   { type: 'UPDATE', args: { id, diff } },
 ]
 
 const rewindDragSortActions: RewindActionMap['DRAG_SORT'] = (
   old_pos,
   new_pos
-) => [{ type: 'DRAG_SORT', args: { old_pos: new_pos, new_pos: old_pos } }]
+) => [
+  {
+    type: 'DRAG_SORT',
+    args: { old_pos: new_pos, new_pos: old_pos },
+  },
+]
 
 const rewindMoveUpActions: RewindActionMap['MOVE_UP'] = old_pos => [
   { type: 'MOVE_DOWN', args: { old_pos } },
