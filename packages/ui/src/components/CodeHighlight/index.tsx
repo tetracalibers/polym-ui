@@ -1,7 +1,16 @@
-import { Fragment, useEffect } from 'react'
+import { ReactNode, useEffect } from 'react'
 import Prism from 'prismjs'
 import { GlobalTheme } from './styled/global'
 import 'prismjs/components/prism-typescript'
+
+type BoxTypeSwitchProps = {
+  isInline: boolean
+  children: ReactNode
+}
+
+const BoxTypeSwitch = ({ isInline, children }: BoxTypeSwitchProps) => {
+  return isInline ? <>{children}</> : <pre>{children}</pre>
+}
 
 type CodeHighlightProps = {
   lang: string
@@ -16,16 +25,14 @@ export const CodeHighlight = ({
 }: CodeHighlightProps) => {
   useEffect(() => {
     Prism.highlightAll()
-  }, [children, lang])
-
-  const Wrap = isInline ? Fragment : 'pre'
+  }, [children, lang, isInline])
 
   return (
     <>
       <GlobalTheme />
-      <Wrap>
+      <BoxTypeSwitch isInline={isInline}>
         <code className={'language-' + lang}>{children}</code>
-      </Wrap>
+      </BoxTypeSwitch>
     </>
   )
 }
