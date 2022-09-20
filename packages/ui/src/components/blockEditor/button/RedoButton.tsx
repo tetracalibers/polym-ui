@@ -8,10 +8,11 @@ type RedoButtonProps = {
 
 export const RedoButton = ({ canRedo, redo }: RedoButtonProps) => {
   return (
-    <>
-      {canRedo && (
-        <ToolIconButton label='redo' icon={<ImRedo />} onClick={redo} />
-      )}
-    </>
+    <ToolIconButton
+      label='redo'
+      icon={<ImRedo />}
+      onClick={redo}
+      disabled={!canRedo}
+    />
   )
 }

@@ -23,3 +23,9 @@ export const makeInitialBlock = <T extends BlockType>({
     format,
   } as BlockState<T>
 }
+
+export const pushNew = <T = any>(arr: T[], newElem: T) => arr.concat([newElem])
+
+export const cutLast = <T = any>(arr: T[]) => arr.slice(0, arr.length - 1)
+
+export const last = <T = any>(arr: T[]) => arr[arr.length - 1]

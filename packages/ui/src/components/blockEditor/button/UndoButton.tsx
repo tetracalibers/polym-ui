@@ -8,10 +8,11 @@ type UndoButtonProps = {
 
 export const UndoButton = ({ canUndo, undo }: UndoButtonProps) => {
   return (
-    <>
-      {canUndo && (
-        <ToolIconButton label='undo' icon={<ImUndo />} onClick={undo} />
-      )}
-    </>
+    <ToolIconButton
+      label='undo'
+      icon={<ImUndo />}
+      onClick={undo}
+      disabled={!canUndo}
+    />
   )
 }

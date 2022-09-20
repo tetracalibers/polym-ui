@@ -11,7 +11,7 @@ import { BlockType } from './config'
 import { FormatArgs } from './FormatArgs'
 
 // prettier-ignore
-interface RewindActionMap {
+export interface RewindActionMap {
   INSERT: (id: string) => [DeleteAction]
   UPDATE: (id: string, diff: ValueOf<FormatArgs>) => [UpdateAction]
   DELETE: (type: BlockType, id: string, diff: ValueOf<FormatArgs>) => [InsertAction, UpdateAction]

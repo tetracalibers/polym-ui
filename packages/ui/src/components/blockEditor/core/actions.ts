@@ -45,10 +45,20 @@ export type MoveDownAction = {
   }
 }
 
-export type Action =
+export type BlockAction =
   | InsertAction
   | DeleteAction
   | UpdateAction
   | DragSortAction
   | MoveUpAction
   | MoveDownAction
+
+export type ConsumeUndoAction = {
+  type: 'CONSUME_UNDO'
+}
+
+export type ConsumeRedoAction = {
+  type: 'CONSUME_REDO'
+}
+
+export type Action = BlockAction | ConsumeUndoAction | ConsumeRedoAction

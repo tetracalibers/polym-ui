@@ -1,19 +1,19 @@
-import { createContext, Dispatch, Fragment, useEffect, useReducer } from 'react'
+import { createContext, Dispatch, Fragment } from 'react'
 import { VerticalStack } from '../layout-algorithm/VerticalStack'
 import { WithSidebar } from '../layout-algorithm/WithSidebar'
 import { EditorBlock } from './EditorBlock'
 import { blockConf } from './core/config'
-import { Action, reducer, StoreArr } from './core/reducer'
 import { EditPanel, PreviewPanel } from './styled/panel'
 import { ToolButton } from './button/ToolButton'
 import { DifferStack } from '../layout-algorithm/DifferStack'
 import { DragSortable } from './blocks/DragSortable'
 import { PosDiff } from './types/PosDiff'
 import { RequiredNotNull } from './types/RequiredNotNull'
-import { useHistory } from './history/useHistory'
 import { useShareState } from '@polym/hooks'
-import { UndoButton } from './button/UndoButton'
+import { Action } from './core/actions'
+import { useEditorHistory } from './core/useEditorHistory'
 import { RedoButton } from './button/RedoButton'
+import { UndoButton } from './button/UndoButton'
 
 type BlockEditorState = {
   dispatch: Dispatch<Action>
@@ -24,13 +24,7 @@ export const BlockEditorContext = createContext<BlockEditorState>(
 )
 
 export const BlockEditor = () => {
-  const [blocks, dispatch] = useReducer(reducer, [])
-  const { setHistory, undo, redo, canUndo, canRedo, currState } =
-    useHistory<StoreArr>([])
-
-  useEffect(() => {
-    setHistory(blocks)
-  }, [blocks])
+  const { blocks, dispatch, undo, redo, canUndo, canRedo } = useEditorHistory()
 
   const sortBydrop = (pos: RequiredNotNull<PosDiff>) => {
     dispatch({
