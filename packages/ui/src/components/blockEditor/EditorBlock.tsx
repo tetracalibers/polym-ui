@@ -59,12 +59,10 @@ export const EditorBlock = <T extends BlockType>({
       const { level, input } = formatArg as FormatArgs['heading']
       return <HeadingBlock id={id} level={level ?? 2} text={input ?? ''} />
     })
-    .with('code', () => (
-      <CodeBlock
-        id={id}
-        lang={(formatArg as FormatArgs['code']).lang ?? 'js'}
-      />
-    ))
+    .with('code', () => {
+      const { input, lang } = formatArg as FormatArgs['code']
+      return <CodeBlock id={id} lang={lang ?? 'js'} code={input ?? ''} />
+    })
     .with('separator', () => <></>)
     .otherwise(() => <LongTextBlock type={type} id={id} />)
 

@@ -7,16 +7,17 @@ import { LangOption, langOptions } from './LangOption'
 export type CodeBlockProps = {
   id: string
   lang: LangOption['value']
+  code: string
 }
 
-export const CodeBlock = ({ id, lang }: CodeBlockProps) => {
+export const CodeBlock = ({ id, lang, code }: CodeBlockProps) => {
   const langName = useMemo(() => {
     return _.find(langOptions, { value: lang })!.label
   }, [lang])
 
   return (
     <GroupPanel>
-      <FloatLabelTextarea id={id} label={langName} />
+      <FloatLabelTextarea id={id} label={langName} value={code} />
     </GroupPanel>
   )
 }
