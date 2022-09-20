@@ -25,9 +25,6 @@ export type FormatArgs = {
   alert: {
     input: string // textarea
   }
-  command: {
-    input: string // textarea
-  }
   toggle: {
     summary: string // input
     input: string // textarea

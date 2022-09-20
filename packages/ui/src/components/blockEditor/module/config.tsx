@@ -47,7 +47,6 @@ const blockType = [
   //'wordCard', // block
   'separator', // block
   'heading', // block
-  'command', // inline
   'terminal', // block
   //'dirtree', // block
   'blockquote', // block | inline
