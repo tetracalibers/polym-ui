@@ -1,6 +1,5 @@
 import styled, { css, keyframes } from 'styled-components'
 import { ResetCss } from 'styled-utility-first'
-import { Button } from '../../core/Button/core'
 import { IconOnly } from '../../core/IconOnly'
 
 export const Flex = styled.div`
@@ -8,15 +7,17 @@ export const Flex = styled.div`
   flex-wrap: nowrap;
 `
 
-export const TagButton = styled(Button)`
-  ${ResetCss.button}
-  background: #B5DEFF;
+export const TagButton = styled.div`
+  background: #b5deff;
   color: #4d608b;
   padding: 0.25em 0.75em;
   border-radius: 1em;
   font-size: 1rem;
   height: 2rem;
   margin-right: auto;
+  box-sizing: border-box;
+  align-items: center;
+  display: flex;
 `
 
 const slideIn = keyframes`
