@@ -5,7 +5,6 @@ import { LongTextBlock } from './blocks/LongTextBlock'
 import { UListBlock } from './blocks/ListBlock/UnOrder'
 import { BlockLabel } from './button/BlockLabel'
 import { BlockType } from './core/config'
-import { StoreMap } from './core/reducer'
 import { OListBlock } from './blocks/ListBlock/Order'
 import { FormatArgs } from './core/FormatArgs'
 import { BlockquoteBlock } from './blocks/BlockquoteBlock'
@@ -13,11 +12,12 @@ import { ToggleBlock } from './blocks/ToggleBlock'
 import { ImageBlock } from './blocks/ImageBlock'
 import { HeadingBlock } from './blocks/HeadingBlock'
 import { CodeBlock } from './blocks/CodeBlock'
+import { BlockStateMap } from './core/store'
 
 export type EditorBlockProps<T extends BlockType> = {
   pos: number
   maxPos: number
-  block: StoreMap[T]
+  block: BlockStateMap[T]
 }
 
 export const EditorBlock = <T extends BlockType>({
@@ -30,7 +30,12 @@ export const EditorBlock = <T extends BlockType>({
     .with('link', () => (
       <LinkBlock id={id} value={formatArg as FormatArgs['link']} />
     ))
-    .with('keyboard', () => <KeyboardBlock id={id} />)
+    .with('keyboard', () => (
+      <KeyboardBlock
+        id={id}
+        keyNames={(formatArg as FormatArgs['keyboard']).items ?? []}
+      />
+    ))
     .with('ulist', () => <UListBlock id={id} />)
     .with('olist', () => (
       <OListBlock id={id} start={(formatArg as FormatArgs['olist']).order} />

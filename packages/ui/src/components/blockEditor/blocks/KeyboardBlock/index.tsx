@@ -6,6 +6,7 @@ import { editInputStyle } from '../../styled/editInput'
 import { GroupPanel } from '../GroupPanel'
 import _ from 'lodash'
 import { useAddmore } from '../reducer/useAddmore'
+import { FormatArgs } from '../../core/FormatArgs'
 
 const Panel = styled(GroupPanel)`
   display: flex;
@@ -36,14 +37,15 @@ const InlineInput = styled.input`
 
 type KeyBoardBlockProps = {
   id: string
+  keyNames: FormatArgs['keyboard']['items']
 }
 
-export const KeyboardBlock = ({ id }: KeyBoardBlockProps) => {
-  const { items, addFn, updateFn } = useAddmore(id)
+export const KeyboardBlock = ({ id, keyNames = [] }: KeyBoardBlockProps) => {
+  const { addFn, updateFn } = useAddmore(id)
 
   return (
     <Panel>
-      {items.map((keyName, idx) => (
+      {keyNames.map((keyName, idx) => (
         <InlineInput
           value={keyName}
           key={`${id}_${idx}`}

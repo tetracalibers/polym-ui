@@ -1,7 +1,7 @@
 import { useReducer, useContext, ChangeEvent, useEffect } from 'react'
 import { BlockEditorContext } from '../..'
 import * as Local from '../reducer/addmore.reducer'
-import * as Global from '../../core/reducer'
+import { UpdateAction } from '../../core/actions'
 
 export const useAddmore = (id: string) => {
   const [items, localDispatch] = useReducer(Local.reducer, [])
@@ -19,7 +19,7 @@ export const useAddmore = (id: string) => {
   }
 
   useEffect(() => {
-    const globalAction: Global.UpdateAction = {
+    const globalAction: UpdateAction = {
       type: 'UPDATE',
       args: {
         id,
