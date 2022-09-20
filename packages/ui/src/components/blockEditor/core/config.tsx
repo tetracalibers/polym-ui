@@ -63,7 +63,7 @@ export type Block<T extends BlockType> = {
   format: (args: FormatArgs[T]) => ReactNode
 }
 
-type Blocks = ValueOf<{
+export type Blocks = ValueOf<{
   [t in BlockType]: Block<t>
 }>[]
 
