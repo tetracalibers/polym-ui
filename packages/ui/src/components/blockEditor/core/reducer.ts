@@ -5,7 +5,7 @@ import { blockConf, BlockType, BoxType } from './config'
 import { FormatArgs } from './FormatArgs'
 import { arrayMoveImmutable } from 'array-move'
 import { ReactNode } from 'react'
-import { ValueOf } from './ValueOf'
+import { ValueOf } from '../types/ValueOf'
 
 export type Store<T extends BlockType> = {
   formatArg: FormatArgs[T]
