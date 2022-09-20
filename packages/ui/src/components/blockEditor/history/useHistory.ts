@@ -1,13 +1,13 @@
 import { useCallback, useReducer } from 'react'
-import { HistoryState, historyReducer, initialHistoryState } from './reducer'
+import { HistoryState, historyReducer, getInitialHistory } from './reducer'
 
-type Present = HistoryState['present']
+type Present<T> = HistoryState<T>['present']
 
-export const useHistory = (initialPresent: Present) => {
-  const [state, dispatch] = useReducer(historyReducer, {
-    ...initialHistoryState,
-    present: initialPresent,
-  })
+export const useHistory = <T>(initialPresent: Present<T>) => {
+  const [state, dispatch] = useReducer(
+    historyReducer,
+    getInitialHistory(initialPresent)
+  )
 
   const canUndo = state.past.length !== 0
   const canRedo = state.future.length !== 0
@@ -25,7 +25,7 @@ export const useHistory = (initialPresent: Present) => {
   }, [canRedo, dispatch])
 
   const setHistory = useCallback(
-    (newPresent: Present) =>
+    (newPresent: Present<T>) =>
       dispatch({ type: 'SET_HISTORY', args: { newPresent } }),
     [dispatch]
   )

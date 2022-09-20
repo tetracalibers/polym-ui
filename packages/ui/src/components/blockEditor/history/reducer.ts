@@ -1,21 +1,19 @@
 import { match } from 'ts-pattern'
-import { BlockType } from '../core/config'
-import { Store as BlockState } from '../core/reducer'
 
-export type HistoryState = {
-  past: BlockState[]
-  present: BlockState
-  future: BlockState[]
+export type HistoryState<T> = {
+  past: T[]
+  present: T
+  future: T[]
 }
 
-export const initialHistoryState: HistoryState = {
+export const getInitialHistory = <T>(initialPresent: T): HistoryState<T> => ({
   // 過去の状態
   past: [],
   // 今の状態
-  present: {} as BlockState,
+  present: initialPresent,
   // undo履歴
   future: [],
-}
+})
 
 export type UndoAction = {
   type: 'UNDO'
@@ -25,27 +23,30 @@ export type RedoAction = {
   type: 'REDO'
 }
 
-export type SetHistoryAction<T extends BlockType = BlockType> = {
+export type SetHistoryAction<T> = {
   type: 'SET_HISTORY'
   args: {
-    newPresent: BlockState<T>
+    newPresent: T
   }
 }
 
-export type ClearHistoryAction<T extends BlockType = BlockType> = {
+export type ClearHistoryAction<T> = {
   type: 'CLEAR_HISTORY'
   args: {
-    initialPresent: BlockState<T>
+    initialPresent: T
   }
 }
 
-export type HistoryAction =
+export type HistoryAction<T> =
   | UndoAction
   | RedoAction
-  | ClearHistoryAction
-  | SetHistoryAction
+  | ClearHistoryAction<T>
+  | SetHistoryAction<T>
 
-export const historyReducer = (state: HistoryState, action: HistoryAction) => {
+export const historyReducer = <T>(
+  state: HistoryState<T>,
+  action: HistoryAction<T>
+) => {
   const { past, present, future } = state
 
   return match(action.type)
@@ -56,7 +57,7 @@ export const historyReducer = (state: HistoryState, action: HistoryAction) => {
         past: newPast,
         present: previous,
         future: [present, ...future],
-      } as HistoryState
+      } as HistoryState<T>
     })
     .with('REDO', () => {
       const next = future[0]
@@ -65,10 +66,10 @@ export const historyReducer = (state: HistoryState, action: HistoryAction) => {
         past: [...past, present],
         present: next,
         future: newFuture,
-      } as HistoryState
+      } as HistoryState<T>
     })
     .with('SET_HISTORY', () => {
-      const { newPresent } = (action as SetHistoryAction).args
+      const { newPresent } = (action as SetHistoryAction<T>).args
       if (newPresent === present) {
         return state
       }
@@ -76,14 +77,11 @@ export const historyReducer = (state: HistoryState, action: HistoryAction) => {
         past: [...past, present],
         present: newPresent,
         future: [],
-      } as HistoryState
+      } as HistoryState<T>
     })
     .with('CLEAR_HISTORY', () => {
-      const { initialPresent } = (action as ClearHistoryAction).args
-      return {
-        ...initialHistoryState,
-        present: initialPresent,
-      } as HistoryState
+      const { initialPresent } = (action as ClearHistoryAction<T>).args
+      return getInitialHistory(initialPresent)
     })
     .exhaustive()
 }
