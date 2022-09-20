@@ -136,6 +136,7 @@ export const useCombobox = ({
   // クリックしたものを選択
   const onClickToSelect = (e: FormEvent<HTMLUListElement>) => {
     e.preventDefault()
+    e.stopPropagation()
     if (e.target === listRef.current) return
     const list = e.target as Element
     const idx = list.attributes.getNamedItem('data-idx')?.value

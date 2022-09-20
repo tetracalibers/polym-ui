@@ -1,7 +1,7 @@
 import { useState, KeyboardEvent, useRef } from 'react'
 import styled from 'styled-components'
 import { match } from 'ts-pattern'
-import { useOnClickOutside } from './useOnClickOutside'
+import { useOnClickOutside } from '../../hooks/useOnClickOutside'
 
 const ClickAreaOrigin = styled.div`
   position: relative;

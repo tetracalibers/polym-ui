@@ -5,9 +5,11 @@ import {
   SyntheticEvent,
   useCallback,
   useContext,
+  useRef,
   useState,
 } from 'react'
 import { useNanoId, useShareState } from '@polym/hooks'
+import { useOnClickOutside } from '../hooks/useOnClickOutside'
 
 /* -------------------------------------------- */
 /* UTILITY                                      */
@@ -88,8 +90,10 @@ export type PopupProps = {
 
 export const Popup = ({ children }: PopupProps) => {
   const [isOpen, setOpenFlag] = useState(false)
+  const rootRef = useRef<HTMLDivElement>(null)
   const menuId = useNanoId()
 
+  const close = () => setOpenFlag(false)
   const toggleOpen = useCallback((isOpen: boolean) => {
     setOpenFlag(!isOpen)
   }, [])
@@ -99,8 +103,12 @@ export const Popup = ({ children }: PopupProps) => {
     menuId,
   ])
 
+  useOnClickOutside(rootRef, close)
+
   return (
-    <PopupContext.Provider value={shareState}>{children}</PopupContext.Provider>
+    <PopupContext.Provider value={shareState}>
+      <div ref={rootRef}>{children}</div>
+    </PopupContext.Provider>
   )
 }
 
