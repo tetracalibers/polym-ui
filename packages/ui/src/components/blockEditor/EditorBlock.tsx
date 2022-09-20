@@ -12,6 +12,7 @@ import { BlockquoteBlock } from './blocks/BlockquoteBlock'
 import { ToggleBlock } from './blocks/ToggleBlock'
 import { ImageBlock } from './blocks/ImageBlock'
 import { HeadingBlock } from './blocks/HeadingBlock'
+import { CodeBlock } from './blocks/CodeBlock'
 
 export type EditorBlockProps<T extends BlockType> = {
   pos: number
@@ -43,6 +44,12 @@ export const EditorBlock = <T extends BlockType>({
       <HeadingBlock
         id={id}
         level={(formatArg as FormatArgs['heading']).level ?? 2}
+      />
+    ))
+    .with('code', () => (
+      <CodeBlock
+        id={id}
+        lang={(formatArg as FormatArgs['code']).lang ?? 'js'}
       />
     ))
     .with('separator', () => <></>)

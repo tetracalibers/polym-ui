@@ -2,33 +2,10 @@ import _ from 'lodash'
 import { useContext } from 'react'
 import { BlockEditorContext } from '..'
 import { ChoiceItem } from '../../DropdownSelect/model/props'
+import { langOptions } from '../blocks/CodeBlock/LangOption'
 import { FormatArgs } from '../module/FormatArgs'
 import { UpdateAction } from '../module/reducer'
 import { ComboBox } from './ComboBox'
-
-type LangOption = {
-  value: FormatArgs['code']['lang']
-  label: string
-}
-
-const langOptions: LangOption[] = [
-  {
-    value: 'js',
-    label: 'JavaScript',
-  },
-  {
-    value: 'ts',
-    label: 'TypeScript',
-  },
-  {
-    value: 'css',
-    label: 'CSS',
-  },
-  {
-    value: 'html',
-    label: 'HTML',
-  },
-]
 
 export type CodeLangSelectProps = {
   id: string
