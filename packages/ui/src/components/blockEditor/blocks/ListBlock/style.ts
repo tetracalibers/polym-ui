@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components'
-import { editInputStyle } from '../../styled/editInput'
+import styled from 'styled-components'
+import { editInputStyle } from '../style'
 
 export const Input = styled.input`
   ${editInputStyle}

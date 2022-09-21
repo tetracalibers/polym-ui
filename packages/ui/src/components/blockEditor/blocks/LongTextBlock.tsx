@@ -2,10 +2,10 @@ import { VisuallyHidden } from '../../a11y-helper/VisuallyHidden'
 import { ChangeEvent, useContext } from 'react'
 import { BlockType } from '../core/config'
 import { BlockEditorContext } from '..'
-import { editInputStyle } from '../styled/editInput'
 import styled from 'styled-components'
 import { GroupPanel } from '../organisms/GroupPanel'
 import { useTextareaStretch } from '@polym/hooks'
+import { editInputStyle } from './style'
 
 export type LongTextBlockProps = {
   type: BlockType

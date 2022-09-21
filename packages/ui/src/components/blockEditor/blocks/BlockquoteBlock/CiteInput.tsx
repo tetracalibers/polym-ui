@@ -1,7 +1,7 @@
 import { ChangeEvent, useContext } from 'react'
 import { BlockEditorContext } from '../..'
 import { UpdateAction } from '../../core/actions'
-import { FloatLabelInput } from '../FloatLabelInput'
+import { FloatLabelInput } from '../../reusable/FloatLabel/FloatLabelInput'
 
 type CiteInputProps = {
   id: string
