@@ -1,6 +1,6 @@
 import { VerticalStack } from '../../../layout-algorithm/VerticalStack'
 import { FormatArgs } from '../../types/FormatArgs'
-import { GroupPanel } from '../../dedicated/GroupPanel'
+import { GroupPanel } from '../style/GroupPanel'
 import { DetailEditor } from './DetailEditor'
 import { SummaryEditor } from './SummaryEditor'
 

@@ -1,7 +1,7 @@
 import _ from 'lodash'
 import { useMemo } from 'react'
 import { FloatLabelTextarea } from '../../reusable/FloatLabel/FloatLabelTextarea'
-import { GroupPanel } from '../../dedicated/GroupPanel'
+import { GroupPanel } from '../style/GroupPanel'
 import { LangOption, langOptions } from './LangOption'
 
 export type CodeBlockProps = {

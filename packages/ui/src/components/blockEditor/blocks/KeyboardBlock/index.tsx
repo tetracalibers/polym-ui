@@ -2,11 +2,11 @@ import styled from 'styled-components'
 import { IconOnly } from '../../../core/IconOnly'
 import { ResetCss } from 'styled-utility-first'
 import { BsPlusSquareDotted } from 'react-icons/bs'
-import { GroupPanel } from '../../dedicated/GroupPanel'
+import { GroupPanel } from '../style/GroupPanel'
 import _ from 'lodash'
 import { useAddmore } from '../../reusable/AddMore/useAddmore'
 import { FormatArgs } from '../../types/FormatArgs'
-import { editInputStyle } from '../style'
+import { editInputStyle } from '../style/input'
 
 const Panel = styled(GroupPanel)`
   display: flex;

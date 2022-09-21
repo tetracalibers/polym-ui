@@ -3,9 +3,9 @@ import { ChangeEvent, useContext } from 'react'
 import { BlockType } from '../core/config'
 import { BlockEditorContext } from '..'
 import styled from 'styled-components'
-import { GroupPanel } from '../dedicated/GroupPanel'
+import { GroupPanel } from './style/GroupPanel'
 import { useTextareaStretch } from '@polym/hooks'
-import { editInputStyle } from './style'
+import { editInputStyle } from './style/input'
 
 export type LongTextBlockProps = {
   type: BlockType

@@ -1,5 +1,5 @@
 import { FormatArgs } from '../../types/FormatArgs'
-import { GroupPanel } from '../../dedicated/GroupPanel'
+import { GroupPanel } from '../style/GroupPanel'
 import { LabelInput } from './LabelInput'
 import { UrlInput } from './UrlInput'
 

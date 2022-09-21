@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { FormatArgs } from '../../types/FormatArgs'
-import { GroupPanel } from '../../dedicated/GroupPanel'
+import { GroupPanel } from '../style/GroupPanel'
 import { useAddmore } from '../../reusable/AddMore/useAddmore'
 import { AddSeparator } from './AddSeparator'
 import { Input } from './style'
