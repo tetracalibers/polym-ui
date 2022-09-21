@@ -22,29 +22,10 @@ const Tag = styled.div`
   box-sizing: border-box;
   align-items: center;
   display: flex;
-  border-radius: 1rem 1rem 0 0;
-  background: radial-gradient(
-      105.68% 45.69% at 92.95% 50%,
-      rgb(105 244 253 / 0%) 0%,
-      rgba(160, 255, 244, 0.095) 53.91%,
-      rgba(254, 216, 255, 0) 100%
-    ),
-    radial-gradient(
-      103.18% 103.18% at 90.11% 102.39%,
-      #c9fff2a1 0%,
-      rgba(230, 255, 250, 0) 100%
-    ),
-    radial-gradient(
-      90.45% 90.45% at 87.84% 9.55%,
-      #ffd2f5 0%,
-      rgba(254, 219, 246, 0) 100%
-    ),
-    linear-gradient(
-      135.66deg,
-      rgba(203, 185, 255, 0.8) 14.89%,
-      rgba(216, 202, 254, 0) 74.33%
-    );
-  background-blend-mode: normal, normal, normal, normal, normal, normal;
+  border-radius: 0 1rem;
+  background-image: linear-gradient(-225deg, #e3fdf566 0%, #fff4fdb8 100%);
+  box-shadow: rgb(136 165 191 / 48%) 0px 0px 16px 0px,
+    inset rgb(255 255 255 / 80%) -3px -2px 13px 0px;
 `
 
 export type BlockLabelProps<T extends BlockType> = {
