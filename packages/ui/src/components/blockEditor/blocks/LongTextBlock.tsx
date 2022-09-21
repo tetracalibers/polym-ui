@@ -3,7 +3,7 @@ import { ChangeEvent, useContext } from 'react'
 import { BlockType } from '../core/config'
 import { BlockEditorContext } from '..'
 import styled from 'styled-components'
-import { GroupPanel } from '../organisms/GroupPanel'
+import { GroupPanel } from '../dedicated/GroupPanel'
 import { useTextareaStretch } from '@polym/hooks'
 import { editInputStyle } from './style'
 

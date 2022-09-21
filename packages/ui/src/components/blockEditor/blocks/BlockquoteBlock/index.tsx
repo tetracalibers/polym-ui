@@ -1,5 +1,5 @@
 import { FormatArgs } from '../../types/FormatArgs'
-import { GroupPanel } from '../../organisms/GroupPanel'
+import { GroupPanel } from '../../dedicated/GroupPanel'
 import { CiteInput } from './CiteInput'
 import { ContentInput } from './ContentInput'
 

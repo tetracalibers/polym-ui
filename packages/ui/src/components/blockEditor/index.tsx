@@ -1,7 +1,7 @@
 import { createContext, Dispatch, Fragment } from 'react'
 import { VerticalStack } from '../layout-algorithm/VerticalStack'
 import { WithSidebar } from '../layout-algorithm/WithSidebar'
-import { EditorBlock } from './organisms/EditorBlock'
+import { EditorBlock } from './dedicated/EditorBlock'
 import { blockConf } from './core/config'
 import { EditPanel, PreviewPanel } from './styled/panel'
 import { InsertButton } from './button/InsertButton'

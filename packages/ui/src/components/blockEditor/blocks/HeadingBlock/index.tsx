@@ -1,5 +1,5 @@
 import { FloatLabelTextarea } from '../../reusable/FloatLabel/FloatLabelTextarea'
-import { GroupPanel } from '../../organisms/GroupPanel'
+import { GroupPanel } from '../../dedicated/GroupPanel'
 
 export type HeadingBlockProps = {
   id: string
