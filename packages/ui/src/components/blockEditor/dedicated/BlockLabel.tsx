@@ -14,16 +14,37 @@ const Flex = styled.div`
 `
 
 const Tag = styled.div`
-  background: #b5deff;
-  color: #4d608b;
+  color: #697dab;
   padding: 0.25em 0.75em;
-  border-radius: 1em;
   font-size: 1rem;
   height: 2rem;
   margin-right: auto;
   box-sizing: border-box;
   align-items: center;
   display: flex;
+  border-radius: 1rem 1rem 0 0;
+  background: radial-gradient(
+      105.68% 45.69% at 92.95% 50%,
+      rgb(105 244 253 / 0%) 0%,
+      rgba(160, 255, 244, 0.095) 53.91%,
+      rgba(254, 216, 255, 0) 100%
+    ),
+    radial-gradient(
+      103.18% 103.18% at 90.11% 102.39%,
+      #c9fff2a1 0%,
+      rgba(230, 255, 250, 0) 100%
+    ),
+    radial-gradient(
+      90.45% 90.45% at 87.84% 9.55%,
+      #ffd2f5 0%,
+      rgba(254, 219, 246, 0) 100%
+    ),
+    linear-gradient(
+      135.66deg,
+      rgba(203, 185, 255, 0.8) 14.89%,
+      rgba(216, 202, 254, 0) 74.33%
+    );
+  background-blend-mode: normal, normal, normal, normal, normal, normal;
 `
 
 export type BlockLabelProps<T extends BlockType> = {
