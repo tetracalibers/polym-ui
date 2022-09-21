@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 import { ImMoveDown } from 'react-icons/im'
 import { BlockEditorContext } from '..'
-import { ActionButton } from '../styled/blockLabel'
+import { ActionButton } from './styled'
 
 export type MoveDownButtonProps = {
   pos: number

@@ -1,8 +1,8 @@
 import { useContext } from 'react'
 import { TbTrash } from 'react-icons/tb'
 import { BlockEditorContext } from '..'
-import { ActionButton } from '../styled/blockLabel'
 import styled from 'styled-components'
+import { ActionButton } from './styled'
 
 export type DeleteButtonProps = {
   id: string

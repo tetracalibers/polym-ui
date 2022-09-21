@@ -1,5 +1,5 @@
 import { ImUndo } from 'react-icons/im'
-import { ToolIconButton } from '../styled/toolButton'
+import { BlockIconButton } from './styled'
 
 type UndoButtonProps = {
   canUndo: boolean
@@ -8,7 +8,7 @@ type UndoButtonProps = {
 
 export const UndoButton = ({ canUndo, undo }: UndoButtonProps) => {
   return (
-    <ToolIconButton
+    <BlockIconButton
       label='undo'
       icon={<ImUndo />}
       onClick={undo}

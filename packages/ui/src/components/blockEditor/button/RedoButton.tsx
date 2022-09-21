@@ -1,5 +1,5 @@
 import { ImRedo } from 'react-icons/im'
-import { ToolIconButton } from '../styled/toolButton'
+import { BlockIconButton } from './styled'
 
 type RedoButtonProps = {
   canRedo: boolean
@@ -8,7 +8,7 @@ type RedoButtonProps = {
 
 export const RedoButton = ({ canRedo, redo }: RedoButtonProps) => {
   return (
-    <ToolIconButton
+    <BlockIconButton
       label='redo'
       icon={<ImRedo />}
       onClick={redo}
