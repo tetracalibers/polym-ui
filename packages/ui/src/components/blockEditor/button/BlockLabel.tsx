@@ -23,7 +23,7 @@ export const BlockLabel = <T extends BlockType>({
 
   return (
     <Flex>
-      <DeleteButton id={id} type={type} />
+      <DeleteButton id={id} />
       <TagButton>
         <WithIcon alignItems='center'>
           {icon}

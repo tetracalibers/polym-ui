@@ -61,7 +61,7 @@ export const BlockEditor = () => {
             <DragSortable
               render={(block, idx) => (
                 <EditorBlock
-                  block={block}
+                  block={block as any}
                   pos={idx}
                   maxPos={blocks.length - 1}
                 />
