@@ -18,7 +18,7 @@ import { BiParagraph } from 'react-icons/bi'
 import { TbSeparatorHorizontal, TbHeading, TbMath } from 'react-icons/tb'
 //import { CgListTree } from 'react-icons/cg'
 import { ImTerminal } from 'react-icons/im'
-import { FormatArgs } from '../types/FormatArgs'
+import { FormatArgs, initialFormatArgs as init } from '../types/FormatArgs'
 import { ValueOf } from '../types/ValueOf'
 import { CodeHighlight } from '../../CodeHighlight'
 import { MathFormula } from '../previews/MathFormula'
@@ -72,7 +72,7 @@ export const blockConf: Blocks = [
     type: 'link',
     icon: <FiLink />,
     boxType: 'both',
-    format: ({ url = '', label = '', boxType = 'inline' }) => {
+    format: ({ url, label, boxType } = { ...init.link }) => {
       const isInline = boxType === 'inline'
       return (
         <LinkPreview url={url} isInline={isInline}>
@@ -85,7 +85,7 @@ export const blockConf: Blocks = [
     type: 'image',
     icon: <IoImageOutline />,
     boxType: 'block',
-    format: ({ url, caption = '' }) => (
+    format: ({ url, caption } = { ...init.image }) => (
       <ImagePreview url={url} caption={caption} />
     ),
   },
@@ -93,7 +93,7 @@ export const blockConf: Blocks = [
     type: 'code',
     icon: <RiCodeSSlashFill />,
     boxType: 'both',
-    format: ({ input, boxType = 'inline', lang = 'js' }) => {
+    format: ({ input, boxType, lang } = { ...init.code }) => {
       const isInline = boxType === 'inline'
       return (
         <CodeHighlight lang={lang} isInline={isInline}>
@@ -106,19 +106,21 @@ export const blockConf: Blocks = [
     type: 'keyboard',
     icon: <SiAutohotkey />,
     boxType: 'inline',
-    format: ({ items = [] }) => <KeyBoardPreview keyNames={items} />,
+    format: ({ items } = { ...init.keyboard }) => (
+      <KeyBoardPreview keyNames={items} />
+    ),
   },
   {
     type: 'marker',
     icon: <RiMarkPenFill />,
     boxType: 'inline',
-    format: ({ input }) => <mark>{input}</mark>,
+    format: ({ input } = { ...init.marker }) => <mark>{input}</mark>,
   },
   {
     type: 'toggle',
     boxType: 'block',
     icon: <IoIosArrowDropdownCircle />,
-    format: ({ input, summary }) => (
+    format: ({ input, summary } = { ...init.toggle }) => (
       <ToggleContent summary={summary}>{input}</ToggleContent>
     ),
   },
@@ -126,19 +128,19 @@ export const blockConf: Blocks = [
     type: 'info',
     icon: <IoInformationCircleSharp />,
     boxType: 'block',
-    format: ({ input }) => <div>{input}</div>,
+    format: ({ input } = { ...init.info }) => <div>{input}</div>,
   },
   {
     type: 'alert',
     icon: <IoAlertCircleOutline />,
     boxType: 'block',
-    format: ({ input }) => <div>{input}</div>,
+    format: ({ input } = { ...init.alert }) => <div>{input}</div>,
   },
   {
     type: 'paragraph',
     icon: <BiParagraph />,
     boxType: 'both',
-    format: ({ input, boxType = 'inline' }) => {
+    format: ({ input, boxType } = { ...init.paragraph }) => {
       const isInline = boxType === 'inline'
       return <ParagraphPreview isInline={isInline}>{input}</ParagraphPreview>
     },
@@ -147,7 +149,7 @@ export const blockConf: Blocks = [
     type: 'ulist',
     icon: <RiListCheck />,
     boxType: 'block',
-    format: ({ items = [] }) => (
+    format: ({ items } = { ...init.ulist }) => (
       <ul>
         {items.map((item, idx) => (
           <li key={idx}>{item}</li>
@@ -159,7 +161,7 @@ export const blockConf: Blocks = [
     type: 'olist',
     icon: <RiListOrdered />,
     boxType: 'block',
-    format: ({ items = [], order = 1 }) => (
+    format: ({ items, order } = { ...init.olist }) => (
       <ol start={order}>
         {items.map((item, idx) => (
           <li key={idx}>{item}</li>
@@ -182,7 +184,9 @@ export const blockConf: Blocks = [
     type: 'heading',
     icon: <TbHeading />,
     boxType: 'block',
-    format: ({ input, level = 2 }) => <Heading level={level}>{input}</Heading>,
+    format: ({ input, level } = { ...init.heading }) => (
+      <Heading level={level}>{input}</Heading>
+    ),
   },
   //{
   //  type: 'dirtree',
@@ -193,7 +197,7 @@ export const blockConf: Blocks = [
     type: 'blockquote',
     icon: <GrBlockQuote />,
     boxType: 'both',
-    format: ({ input, cite, boxType = 'inline' }) => {
+    format: ({ input, cite, boxType } = { ...init.blockquote }) => {
       const isInline = boxType === 'inline'
       return (
         <Blockquote isInline={isInline} cite={cite}>
@@ -206,13 +210,15 @@ export const blockConf: Blocks = [
     type: 'terminal',
     icon: <ImTerminal />,
     boxType: 'block',
-    format: ({ input }) => <samp>{input}</samp>,
+    format: ({ input, user, location } = { ...init.terminal }) => (
+      <samp>{input}</samp>
+    ),
   },
   {
     type: 'formula',
     icon: <TbMath />,
     boxType: 'both',
-    format: ({ input, boxType = 'inline' }) => {
+    format: ({ input, boxType } = { ...init.formula }) => {
       const isInline = boxType === 'inline'
       return <MathFormula isInline={isInline} texSrc={input} />
     },
