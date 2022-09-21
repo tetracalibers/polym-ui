@@ -5,7 +5,7 @@ import _ from 'lodash'
 import { MoveUpButton } from './MoveUpButton'
 import { MoveDownButton } from './MoveDownButton'
 import { DeleteButton } from './DeleteButton'
-import { ConvertMenu } from '../convert/ConvertMenu'
+import { ConvertMenu } from '../convert'
 import { BlockStateMap } from '../core/store'
 
 export type BlockLabelProps<T extends BlockType> = {

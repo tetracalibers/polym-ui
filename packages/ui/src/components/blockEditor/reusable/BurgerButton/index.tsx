@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { ResetCss } from 'styled-utility-first'
-import { ButtonCoreProps } from '../../core/Button/core'
-import { IconOnly } from '../../core/IconOnly'
+import { ButtonCoreProps } from '../../../core/Button/core'
+import { IconOnly } from '../../../core/IconOnly'
 
 /* -------------------------------------------- */
 /* STYLE                                        */
