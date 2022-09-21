@@ -5,7 +5,7 @@ import { BlockType } from '../core/config'
 import { withToolTip } from '../reusable/tooltip/withToolTip'
 import { Text } from '../../Text'
 import { BlockEditorContext } from '..'
-import { BlockIconButton } from './styled'
+import { BlockIconButton } from './style/BlockIconButton'
 
 type InsertButtonProps = {
   type: BlockType

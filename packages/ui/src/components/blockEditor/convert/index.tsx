@@ -10,7 +10,7 @@ import { FormatArgs } from '../types/FormatArgs'
 import { CodeLangSelect } from './CodeLangSelect'
 import { OListStartStepper } from './OlistOrderStart'
 import { BlockStateMap } from '../core/store'
-import { ActionButtonStyle } from '../button/styled'
+import { ActionButtonStyle } from '../button/style/ActionButton'
 
 /* -------------------------------------------- */
 /* STYLE                                        */

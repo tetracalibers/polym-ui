@@ -1,5 +1,5 @@
 import { ImRedo } from 'react-icons/im'
-import { BlockIconButton } from './styled'
+import { HistoryButton, HistoryButtonShadow } from './style/HistoryButton'
 
 type RedoButtonProps = {
   canRedo: boolean
@@ -8,11 +8,13 @@ type RedoButtonProps = {
 
 export const RedoButton = ({ canRedo, redo }: RedoButtonProps) => {
   return (
-    <BlockIconButton
-      label='redo'
-      icon={<ImRedo />}
-      onClick={redo}
-      disabled={!canRedo}
-    />
+    <HistoryButtonShadow>
+      <HistoryButton
+        label='redo'
+        icon={<ImRedo />}
+        onClick={redo}
+        disabled={!canRedo}
+      />
+    </HistoryButtonShadow>
   )
 }

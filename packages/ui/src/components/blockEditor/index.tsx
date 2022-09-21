@@ -15,6 +15,8 @@ import { RedoButton } from './button/RedoButton'
 import { UndoButton } from './button/UndoButton'
 import { EditPanel } from './dedicated/EditPanel'
 import { PreviewPanel } from './dedicated/PreviewPanel'
+import { HorizontalCenter } from '../layout-algorithm/HorizontalCenter'
+import { HistoryButtonGroup } from './dedicated/HistoryButtonGroup'
 
 type BlockEditorState = {
   dispatch: Dispatch<Action>
@@ -42,9 +44,11 @@ export const BlockEditor = () => {
   return (
     <BlockEditorContext.Provider value={shareState}>
       <VerticalStack as={EditPanel}>
-        <DifferStack justifyContent='center'>
+        <HistoryButtonGroup>
           <UndoButton canUndo={canUndo} undo={undo} />
           <RedoButton canRedo={canRedo} redo={redo} />
+        </HistoryButtonGroup>
+        <DifferStack justifyContent='center'>
           {
             /* toolBar */ blockConf.map(block => {
               return (

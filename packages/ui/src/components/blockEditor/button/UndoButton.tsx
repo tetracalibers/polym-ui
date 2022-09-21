@@ -1,5 +1,5 @@
 import { ImUndo } from 'react-icons/im'
-import { BlockIconButton } from './styled'
+import { HistoryButton, HistoryButtonShadow } from './style/HistoryButton'
 
 type UndoButtonProps = {
   canUndo: boolean
@@ -8,11 +8,13 @@ type UndoButtonProps = {
 
 export const UndoButton = ({ canUndo, undo }: UndoButtonProps) => {
   return (
-    <BlockIconButton
-      label='undo'
-      icon={<ImUndo />}
-      onClick={undo}
-      disabled={!canUndo}
-    />
+    <HistoryButtonShadow>
+      <HistoryButton
+        label='undo'
+        onClick={undo}
+        disabled={!canUndo}
+        icon={<ImUndo />}
+      />
+    </HistoryButtonShadow>
   )
 }
