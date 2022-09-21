@@ -31,6 +31,7 @@ import { GrBlockQuote } from 'react-icons/gr'
 import { LinkPreview } from '../previews/Link'
 import { Separator } from '../previews/Separator'
 import { ImagePreview } from '../previews/Image'
+import { Terminal } from '../previews/Terminal'
 
 const blockType = [
   'link', // block | inline
@@ -210,8 +211,13 @@ export const blockConf: Blocks = [
     type: 'terminal',
     icon: <ImTerminal />,
     boxType: 'block',
-    format: ({ input, user, location } = { ...init.terminal }) => (
-      <samp>{input}</samp>
+    format: ({ input, user, location, output } = { ...init.terminal }) => (
+      <Terminal
+        user={user}
+        location={location}
+        command={input}
+        output={output}
+      />
     ),
   },
   {

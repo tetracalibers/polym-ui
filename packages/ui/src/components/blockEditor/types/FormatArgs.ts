@@ -58,6 +58,7 @@ export type FormatArgs = {
     input: string // textarea
     location: string
     user: string
+    output: string
   }
 }
 
@@ -121,5 +122,6 @@ export const initialFormatArgs: FormatArgs = {
     input: '',
     location: '~',
     user: 'root@mypc',
+    output: '',
   },
 }
