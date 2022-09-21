@@ -1,5 +1,5 @@
 import { ElementType, forwardRef, ReactNode } from 'react'
-import { PositionManager } from '../styled/tooltip'
+import { PositionManager } from './tooltip'
 
 type TooltipProps = {
   tip: ReactNode

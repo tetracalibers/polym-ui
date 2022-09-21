@@ -1,5 +1,5 @@
-import { FloatLabelTextarea } from '../FloatLabelTextarea'
-import { GroupPanel } from '../GroupPanel'
+import { FloatLabelTextarea } from '../../reusable/FloatLabel/FloatLabelTextarea'
+import { EditPanel } from '../../design/EditPanel'
 
 export type HeadingBlockProps = {
   id: string
@@ -9,8 +9,8 @@ export type HeadingBlockProps = {
 
 export const HeadingBlock = ({ id, level, text }: HeadingBlockProps) => {
   return (
-    <GroupPanel>
+    <EditPanel>
       <FloatLabelTextarea id={id} label={'h' + level} value={text ?? ''} />
-    </GroupPanel>
+    </EditPanel>
   )
 }

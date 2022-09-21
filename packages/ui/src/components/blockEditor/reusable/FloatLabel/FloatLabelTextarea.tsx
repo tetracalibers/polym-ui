@@ -1,9 +1,9 @@
 import { ChangeEvent, ComponentPropsWithoutRef, useContext } from 'react'
 import styled, { css } from 'styled-components'
 import { useTextareaStretch, useNanoId } from '@polym/hooks'
-import { BlockEditorContext } from '..'
-import { VisuallyHidden } from '../../a11y-helper/VisuallyHidden'
-import { StretchTextArea } from './LongTextBlock'
+import { BlockEditorContext } from '../..'
+import { VisuallyHidden } from '../../../a11y-helper/VisuallyHidden'
+import { StretchTextArea } from '../../blocks/LongTextBlock'
 
 const FloatLabelContainer = styled.div``
 

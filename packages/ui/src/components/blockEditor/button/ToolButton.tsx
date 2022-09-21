@@ -3,7 +3,7 @@ import { IconOnlyCoreProps } from '../../core/IconOnly'
 import { BlowingTag } from '../../tag/BlowingTag'
 import { BlockType } from '../core/config'
 import { ToolIconButton } from '../styled/toolButton'
-import { withToolTip } from './withToolTip'
+import { withToolTip } from '../reusable/tooltip/withToolTip'
 import { Text } from '../../Text'
 import { BlockEditorContext } from '..'
 

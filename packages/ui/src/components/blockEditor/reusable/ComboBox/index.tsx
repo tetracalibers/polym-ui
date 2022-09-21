@@ -1,14 +1,14 @@
 import _ from 'lodash'
 import { useRef } from 'react'
-import { VisuallyHidden } from '../../a11y-helper/VisuallyHidden'
-import { IconOnly } from '../../core/IconOnly'
-import { ChoiceItem } from '../../DropdownSelect/model/props'
-import { Root } from '../../DropdownSelect/styled'
 import { useCombobox } from './useCombobox'
 import { VscChevronDown } from 'react-icons/vsc'
 import styled, { css } from 'styled-components'
 import { ResetCss } from 'styled-utility-first'
-import { editInputStyle } from '../styled/editInput'
+import { VisuallyHidden } from '../../../a11y-helper/VisuallyHidden'
+import { IconOnly } from '../../../core/IconOnly'
+import { ChoiceItem } from '../../../DropdownSelect/model/props'
+import { Root } from '../../../DropdownSelect/styled'
+import { editInputStyle } from '../../styled/editInput'
 
 const variables = css`
   --icon-size: 2rem;

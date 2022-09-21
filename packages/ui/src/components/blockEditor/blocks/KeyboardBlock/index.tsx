@@ -3,12 +3,12 @@ import { IconOnly } from '../../../core/IconOnly'
 import { ResetCss } from 'styled-utility-first'
 import { BsPlusSquareDotted } from 'react-icons/bs'
 import { editInputStyle } from '../../styled/editInput'
-import { GroupPanel } from '../GroupPanel'
+import { EditPanel } from '../../design/EditPanel'
 import _ from 'lodash'
-import { useAddmore } from '../reducer/useAddmore'
-import { FormatArgs } from '../../core/FormatArgs'
+import { useAddmore } from '../../reusable/AddMore/useAddmore'
+import { FormatArgs } from '../../types/FormatArgs'
 
-const Panel = styled(GroupPanel)`
+const Panel = styled(EditPanel)`
   display: flex;
   gap: 1em;
   align-items: center;

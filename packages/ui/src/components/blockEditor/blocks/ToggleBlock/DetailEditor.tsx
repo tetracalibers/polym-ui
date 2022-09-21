@@ -1,4 +1,4 @@
-import { FloatLabelTextarea } from '../FloatLabelTextarea'
+import { FloatLabelTextarea } from '../../reusable/FloatLabel/FloatLabelTextarea'
 
 export type DetailEditorProps = {
   id: string

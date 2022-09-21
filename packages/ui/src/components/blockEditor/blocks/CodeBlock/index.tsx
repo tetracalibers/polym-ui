@@ -1,7 +1,7 @@
 import _ from 'lodash'
 import { useMemo } from 'react'
-import { FloatLabelTextarea } from '../FloatLabelTextarea'
-import { GroupPanel } from '../GroupPanel'
+import { FloatLabelTextarea } from '../../reusable/FloatLabel/FloatLabelTextarea'
+import { EditPanel } from '../../design/EditPanel'
 import { LangOption, langOptions } from './LangOption'
 
 export type CodeBlockProps = {
@@ -16,8 +16,8 @@ export const CodeBlock = ({ id, lang, code }: CodeBlockProps) => {
   }, [lang])
 
   return (
-    <GroupPanel>
+    <EditPanel>
       <FloatLabelTextarea id={id} label={langName} value={code} />
-    </GroupPanel>
+    </EditPanel>
   )
 }

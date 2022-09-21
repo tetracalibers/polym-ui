@@ -9,7 +9,7 @@ import {
   useState,
 } from 'react'
 import { useNanoId, useShareState } from '@polym/hooks'
-import { useOnClickOutside } from '../hooks/useOnClickOutside'
+import { useOnClickOutside } from '../../hooks/useOnClickOutside'
 
 /* -------------------------------------------- */
 /* UTILITY                                      */

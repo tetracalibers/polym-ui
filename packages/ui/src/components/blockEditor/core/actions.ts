@@ -1,5 +1,5 @@
 import { BlockType } from './config'
-import { FormatArgs } from './FormatArgs'
+import { FormatArgs } from '../types/FormatArgs'
 
 export type InsertAction = {
   type: 'INSERT'

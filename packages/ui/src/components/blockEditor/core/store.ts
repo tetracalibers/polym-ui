@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 import { ValueOf } from '../types/ValueOf'
 import { BlockType, BoxType } from './config'
-import { FormatArgs } from './FormatArgs'
+import { FormatArgs } from '../types/FormatArgs'
 
 export type BlockState<T extends BlockType = BlockType> = {
   formatArg: FormatArgs[T]

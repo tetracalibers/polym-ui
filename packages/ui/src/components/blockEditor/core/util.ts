@@ -1,5 +1,5 @@
 import { Block, BlockType } from './config'
-import { initialFormatArgs } from './FormatArgs'
+import { initialFormatArgs } from '../types/FormatArgs'
 import { BlockState } from './store'
 
 type MakeInitialBlockArgs<T extends BlockType> = {

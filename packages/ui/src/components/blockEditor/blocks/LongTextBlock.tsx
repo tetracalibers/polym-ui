@@ -4,7 +4,7 @@ import { BlockType } from '../core/config'
 import { BlockEditorContext } from '..'
 import { editInputStyle } from '../styled/editInput'
 import styled from 'styled-components'
-import { GroupPanel } from './GroupPanel'
+import { EditPanel } from '../design/EditPanel'
 import { useTextareaStretch } from '@polym/hooks'
 
 export type LongTextBlockProps = {
@@ -38,11 +38,11 @@ export const LongTextBlock = ({ type, id }: LongTextBlockProps) => {
   })
 
   return (
-    <GroupPanel>
+    <EditPanel>
       <VisuallyHidden>
         <label htmlFor={id}>{type}</label>
       </VisuallyHidden>
       <StretchTextArea onChange={updateState} rows={rows} id={id} />
-    </GroupPanel>
+    </EditPanel>
   )
 }

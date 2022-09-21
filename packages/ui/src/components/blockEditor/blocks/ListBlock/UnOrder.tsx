@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import { FormatArgs } from '../../core/FormatArgs'
-import { GroupPanel } from '../GroupPanel'
-import { useAddmore } from '../reducer/useAddmore'
+import { FormatArgs } from '../../types/FormatArgs'
+import { EditPanel } from '../../design/EditPanel'
+import { useAddmore } from '../../reusable/AddMore/useAddmore'
 import { AddSeparator } from './AddSeparator'
 import { Input } from './style'
 
@@ -23,7 +23,7 @@ export const UListBlock = ({ id, items = [] }: UListBlockProps) => {
   const { addFn, updateFn } = useAddmore(id)
 
   return (
-    <GroupPanel>
+    <EditPanel>
       <Ul>
         {items.map((item, idx) => (
           <Li key={`${id}_${idx}`}>
@@ -32,6 +32,6 @@ export const UListBlock = ({ id, items = [] }: UListBlockProps) => {
         ))}
       </Ul>
       <AddSeparator addFn={addFn} />
-    </GroupPanel>
+    </EditPanel>
   )
 }

@@ -2,14 +2,14 @@ import { useContext } from 'react'
 import styled from 'styled-components'
 import { BlockEditorContext } from '../..'
 import { Tab } from '../../../Tab'
-import { FormatArgs } from '../../core/FormatArgs'
-import { UpdateAction } from '../../core/reducer'
-import { GroupPanel } from '../GroupPanel'
+import { FormatArgs } from '../../types/FormatArgs'
+import { UpdateAction } from '../../core/actions'
+import { EditPanel } from '../../design/EditPanel'
 import { CaptionInput } from './CaptionInput'
 import { Dropzone } from './Dropzone'
 import { UrlInput } from './UrlInput'
 
-const Container = styled(GroupPanel)`
+const Container = styled(EditPanel)`
   /* tabのスタイル上書き */
   & ul[role='tablist'] {
     --duration: 0.3s;

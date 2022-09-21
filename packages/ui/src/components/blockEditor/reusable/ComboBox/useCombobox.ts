@@ -7,11 +7,11 @@ import {
   ComponentPropsWithRef,
   FormEvent,
 } from 'react'
-import { ChoiceItem } from '../../DropdownSelect/model/props'
+import { ChoiceItem } from '../../../DropdownSelect/model/props'
 import { useInput, useNanoId, useUnFocus } from '@polym/hooks'
 import _ from 'lodash'
 import { match } from 'ts-pattern'
-import { useScrollToViewFocus } from './useScrollToViewFocus'
+import { useScrollToViewFocus } from '../../hooks/useScrollToViewFocus'
 
 export type UseComboboxArgs = {
   choices: ChoiceItem[]

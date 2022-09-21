@@ -1,6 +1,18 @@
 import { Text } from '../../../Text'
 import { BiRightArrow } from 'react-icons/bi'
-import { PositionManager } from '../../styled/insertHere'
+import styled from 'styled-components'
+
+export const PositionManager = styled.div`
+  position: relative;
+
+  /* icon */
+  & > :first-child {
+    position: absolute;
+    width: 1.5rem;
+    height: 1.5rem;
+    left: -1.5rem;
+  }
+`
 
 export const InsertHere = () => {
   return (

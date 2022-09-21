@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { BlockEditorContext } from '..'
 import { Button } from '../../core/Button/core'
 import { Text } from '../../Text'
-import { UpdateAction } from '../core/reducer'
+import { UpdateAction } from '../core/actions'
 import { editInputStyle } from '../styled/editInput'
 
 const ConvertButton = styled(Button)`

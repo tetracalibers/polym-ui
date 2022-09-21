@@ -1,5 +1,5 @@
-import { FormatArgs } from '../../core/FormatArgs'
-import { GroupPanel } from '../GroupPanel'
+import { FormatArgs } from '../../types/FormatArgs'
+import { EditPanel } from '../../design/EditPanel'
 import { CiteInput } from './CiteInput'
 import { ContentInput } from './ContentInput'
 
@@ -10,9 +10,9 @@ export type BlockquoteBlockProps = {
 
 export const BlockquoteBlock = ({ id, value }: BlockquoteBlockProps) => {
   return (
-    <GroupPanel>
+    <EditPanel>
       <ContentInput id={id} value={value.input ?? ''} />
       <CiteInput id={id} value={value.cite ?? ''} />
-    </GroupPanel>
+    </EditPanel>
   )
 }

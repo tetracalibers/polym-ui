@@ -1,16 +1,16 @@
 import styled from 'styled-components'
 import { ResetCss } from 'styled-utility-first'
 import { BlockType } from '../core/config'
-import { StoreMap } from '../core/reducer'
-import { Popup } from './PopupMenu'
-import { ChangeBoxTypeMenu } from './ChangeBoxTypeMenu'
+import { Popup } from '../reusable/PopupMenu'
+import { ChangeBoxTypeMenu } from '../convert/ChangeBoxTypeMenu'
 import { BurgerButton } from './BurgerButton'
 import { ActionButtonStyle } from '../styled/blockLabel'
 import { match } from 'ts-pattern'
 import { HeadingLevelSelect } from './HeadingLevelSelect'
-import { FormatArgs } from '../core/FormatArgs'
-import { CodeLangSelect } from '../menu/CodeLangSelect'
-import { OListStartStepper } from '../optionEdit/OlistStart'
+import { FormatArgs } from '../types/FormatArgs'
+import { CodeLangSelect } from '../convert/CodeLangSelect'
+import { OListStartStepper } from '../convert/OlistOrderStart'
+import { BlockStateMap } from '../core/store'
 
 /* -------------------------------------------- */
 /* STYLE                                        */
@@ -64,7 +64,7 @@ const MenuList = styled.ul`
 /* -------------------------------------------- */
 
 export type ChangeTypeButtonProps<T extends BlockType> = {
-  block: StoreMap[T]
+  block: BlockStateMap[T]
 }
 
 export const ChangeTypeButton = <T extends BlockType>({

@@ -8,7 +8,7 @@ import {
   MoveUpAction,
 } from './actions'
 import { BlockType } from './config'
-import { FormatArgs } from './FormatArgs'
+import { FormatArgs } from '../types/FormatArgs'
 
 // prettier-ignore
 export interface RewindActionMap {

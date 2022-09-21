@@ -1,6 +1,6 @@
 import { useReducer, useContext, ChangeEvent, useEffect } from 'react'
 import { BlockEditorContext } from '../..'
-import * as Local from '../reducer/addmore.reducer'
+import * as Local from './addmore.reducer'
 import { UpdateAction } from '../../core/actions'
 
 export const useAddmore = (id: string) => {
