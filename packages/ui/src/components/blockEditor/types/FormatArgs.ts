@@ -119,9 +119,9 @@ export const initialFormatArgs: FormatArgs = {
     boxType: 'inline',
   },
   terminal: {
-    input: '',
+    input: 'find . -name ".my.cnf"', // TODO テスト用の仮文字列
     location: '~',
     user: 'root@mypc',
-    output: '',
+    output: './root/.my.cnf', // TODO テスト用の仮文字列
   },
 }
