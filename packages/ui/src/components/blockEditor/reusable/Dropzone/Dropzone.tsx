@@ -9,9 +9,11 @@ import { HorizontalStack } from '../../../layout-algorithm/HorizontalStack'
 import { VerticalStack } from '../../../layout-algorithm/VerticalStack'
 import { WithIcon } from '../../../with-icon/core'
 import { editInputStyle } from '../../style/input'
-import { FileTypes, imageFileTypes } from './FileTypes'
+import { FileLink } from '../../types/FileLink'
+import { FileTypes, imageFileTypes } from '../../types/FileTypes'
 import { MiniPreview } from './MiniPreview'
 import { useFileDrop } from './useFileDrop'
+import { useMemo } from 'react'
 
 const DropField = styled.div`
   ${editInputStyle}
@@ -121,9 +123,10 @@ type DropzoneProps = {
   acceptMimeTypes?: FileTypes[]
   label?: string
   hasError?: boolean
-  updateFn?: (files: File[]) => void
-  selectedFiles?: File[]
+  updateFn?: (filelinks: FileLink[]) => void
   multiple?: boolean
+  initialFileLinks?: FileLink[]
+  previewLinks?: string[]
 }
 
 export const Dropzone = ({
@@ -131,16 +134,21 @@ export const Dropzone = ({
   label = 'Upload Image',
   hasError = false,
   updateFn,
-  selectedFiles = [],
+  initialFileLinks = [],
   multiple = false,
+  previewLinks = [],
 }: DropzoneProps) => {
-  const { isFocusedZone, errMsg, register, files, deleteFile } = useFileDrop({
+  const { isFocusedZone, errMsg, register, deleteFile } = useFileDrop({
     acceptMimeTypes,
     updateFn,
-    selectedFiles,
     multiple,
+    initialFileLinks,
   })
   const inputId = useNanoId()
+
+  const validPreview = useMemo(() => {
+    return previewLinks.filter(link => link.length > 0)
+  }, [previewLinks])
 
   return (
     <DropField
@@ -155,13 +163,13 @@ export const Dropzone = ({
         </label>
         <input id={inputId} tabIndex={-1} {...register.fileInput} />
       </VisuallyHidden>
-      {files.length > 0 ? (
+      {validPreview.length > 0 ? (
         <WithPreview spaceV={1}>
           <HorizontalStack spaceV={0.5}>
-            {files.map((file, idx) => (
+            {validPreview.map((link, idx) => (
               <MiniPreview
-                file={file}
-                key={file.name + '_' + idx}
+                imgSrc={link}
+                key={`${link}_${idx}`}
                 pos={idx}
                 deleteFn={deleteFile}
               />

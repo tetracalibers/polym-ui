@@ -7,7 +7,8 @@ import {
   useCallback,
   useEffect,
 } from 'react'
-import { FileTypes } from './FileTypes'
+import { FileLink } from '../../types/FileLink'
+import { FileTypes } from '../../types/FileTypes'
 
 const isDragEvt = (e: any): e is DragEvent => {
   // dataTransferを持っているかどうかで判定
@@ -30,20 +31,20 @@ const getFilesFromEvent = (e: DragEvent | ChangeEvent): File[] => {
 
 type UseFileDropArgs = {
   acceptMimeTypes: FileTypes[]
-  updateFn?: (files: File[]) => void
-  selectedFiles: File[]
+  updateFn?: (filelinks: FileLink[]) => void
+  initialFileLinks?: FileLink[]
   multiple?: boolean
 }
 
 export const useFileDrop = ({
   acceptMimeTypes,
   updateFn,
-  selectedFiles = [],
+  initialFileLinks = [],
   multiple,
 }: UseFileDropArgs) => {
   const [isFocusedZone, setDragzoneFocus] = useState(false)
   const [errMsg, setErrMsg] = useState<string>('')
-  const [files, setFiles] = useState(selectedFiles)
+  const [fileLinks, setFileLinks] = useState(initialFileLinks)
 
   const fileInputRef = useRef<HTMLInputElement>(null)
 
@@ -68,9 +69,13 @@ export const useFileDrop = ({
     } else {
       setErrMsg('')
     }
-    const allFiles = files.concat(acceptNewFiles)
-    setFiles(allFiles)
-    updateFn && updateFn(allFiles)
+    const newFileLinks = acceptNewFiles.map(file => ({
+      file,
+      link: URL.createObjectURL(file),
+    }))
+    const allFileLinks = fileLinks.concat(newFileLinks)
+    setFileLinks(allFileLinks)
+    updateFn && updateFn(allFileLinks)
   }
 
   // dragoverイベントは自身の上に他の要素がドラッグされている間、繰り返し発生
@@ -100,14 +105,18 @@ export const useFileDrop = ({
 
   // propsで注入されるselectedFileが空になったら、inputの値も空にする
   useEffect(() => {
-    if (fileInputRef.current && selectedFiles && selectedFiles.length === 0) {
+    if (
+      fileInputRef.current &&
+      initialFileLinks &&
+      initialFileLinks.length === 0
+    ) {
       fileInputRef.current.value = ''
     }
-  }, [selectedFiles])
+  }, [initialFileLinks])
 
   const deleteFile = (pos: number) => {
-    const updated = files.filter((_, i) => i !== pos)
-    setFiles(updated)
+    const updated = fileLinks.filter((_, i) => i !== pos)
+    setFileLinks(updated)
     updateFn && updateFn(updated)
   }
 
@@ -134,7 +143,6 @@ export const useFileDrop = ({
   return {
     isFocusedZone,
     errMsg,
-    files,
     deleteFile,
     register: {
       dropField: dropFieldRegister,

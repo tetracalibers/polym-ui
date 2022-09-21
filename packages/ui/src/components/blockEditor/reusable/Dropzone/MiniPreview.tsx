@@ -37,16 +37,20 @@ const Img = styled.img`
 `
 
 type MiniPreviewProps = {
-  file: File
+  imgSrc: string
   pos: number
   deleteFn: (pos: number) => void
 }
 
-export const MiniPreview = ({ file, pos, deleteFn }: MiniPreviewProps) => {
+export const MiniPreview = ({ imgSrc, pos, deleteFn }: MiniPreviewProps) => {
   return (
-    <PositionManager>
-      <DeleteButton onClick={() => deleteFn(pos)} />
-      <Img src={URL.createObjectURL(file)} />
-    </PositionManager>
+    <>
+      {imgSrc.length > 0 && (
+        <PositionManager>
+          <DeleteButton onClick={() => deleteFn(pos)} />
+          <Img src={imgSrc} />
+        </PositionManager>
+      )}
+    </>
   )
 }

@@ -8,6 +8,7 @@ import { GroupPanel } from '../style/GroupPanel'
 import { CaptionInput } from './CaptionInput'
 import { Dropzone } from '../../reusable/Dropzone/Dropzone'
 import { UrlInput } from './UrlInput'
+import { FileLink } from '../../types/FileLink'
 
 const Container = styled(GroupPanel)`
   /* tabのスタイル上書き */
@@ -44,12 +45,12 @@ type ImageBlockProps = {
 export const ImageBlock = ({ id, value }: ImageBlockProps) => {
   const { dispatch } = useContext(BlockEditorContext)
 
-  const updateFn = (files: File[]) => {
+  const updateFn = (filelinks: FileLink[]) => {
     const action: UpdateAction<'image'> = {
       type: 'UPDATE',
       args: {
         id,
-        diff: { url: files.length === 0 ? '' : URL.createObjectURL(files[0]) },
+        diff: { url: filelinks.length === 0 ? '' : filelinks[0].link },
       },
     }
     dispatch(action)
@@ -59,7 +60,7 @@ export const ImageBlock = ({ id, value }: ImageBlockProps) => {
     <Container>
       <Tab titleTabListTheme={'Fill'} hoverEffect='fillFromUnderline'>
         <Tab.Panel title='File'>
-          <Dropzone updateFn={updateFn} />
+          <Dropzone updateFn={updateFn} previewLinks={[value.url]} />
         </Tab.Panel>
         <Tab.Panel title='URL'>
           <UrlInput id={id} value={value.url} />
