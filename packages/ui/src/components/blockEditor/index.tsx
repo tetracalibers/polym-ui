@@ -3,7 +3,6 @@ import { VerticalStack } from '../layout-algorithm/VerticalStack'
 import { WithSidebar } from '../layout-algorithm/WithSidebar'
 import { EditorBlock } from './dedicated/EditorBlock'
 import { blockConf } from './core/config'
-import { EditPanel, PreviewPanel } from './styled/panel'
 import { InsertButton } from './button/InsertButton'
 import { DifferStack } from '../layout-algorithm/DifferStack'
 import { DragSortable } from './reusable/DragSortable'
@@ -14,6 +13,8 @@ import { Action } from './core/actions'
 import { useEditorHistory } from './core/useEditorHistory'
 import { RedoButton } from './button/RedoButton'
 import { UndoButton } from './button/UndoButton'
+import { EditPanel } from './dedicated/EditPanel'
+import { PreviewPanel } from './dedicated/PreviewPanel'
 
 type BlockEditorState = {
   dispatch: Dispatch<Action>
