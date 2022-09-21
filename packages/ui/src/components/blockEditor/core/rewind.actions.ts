@@ -45,12 +45,12 @@ const rewindDragSortAction: RewindActionMap['DRAG_SORT'] = (
 
 const rewindMoveUpAction: RewindActionMap['MOVE_UP'] = old_pos => ({
   type: 'MOVE_DOWN',
-  args: { old_pos },
+  args: { old_pos: old_pos - 1 },
 })
 
 const rewindMoveDownAction: RewindActionMap['MOVE_DOWN'] = old_pos => ({
   type: 'MOVE_UP',
-  args: { old_pos },
+  args: { old_pos: old_pos + 1 },
 })
 
 export const getRewindAction: RewindActionMap = {
