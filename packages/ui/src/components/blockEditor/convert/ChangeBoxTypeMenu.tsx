@@ -5,7 +5,7 @@ import { BlockEditorContext } from '..'
 import { Button } from '../../core/Button/core'
 import { Text } from '../../Text'
 import { UpdateAction } from '../core/actions'
-import { editInputStyle } from '../styled/editInput'
+import { editInputStyle } from '../style/input'
 
 const ConvertButton = styled(Button)`
   && {

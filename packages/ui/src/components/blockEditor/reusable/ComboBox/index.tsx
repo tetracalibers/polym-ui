@@ -8,7 +8,7 @@ import { VisuallyHidden } from '../../../a11y-helper/VisuallyHidden'
 import { IconOnly } from '../../../core/IconOnly'
 import { ChoiceItem } from '../../../DropdownSelect/model/props'
 import { Root } from '../../../DropdownSelect/styled'
-import { editInputStyle } from '../../styled/editInput'
+import { editInputStyle } from '../../style/input'
 
 const variables = css`
   --icon-size: 2rem;
@@ -181,7 +181,7 @@ export const ComboBox = ({
   const rootRef = useRef<HTMLDivElement>(null)
   const listRef = useRef<HTMLUListElement>(null)
 
-  const { isOpen, selectedItem, attr, inputId, visibleItems } = useCombobox({
+  const { isOpen, attr, inputId, visibleItems } = useCombobox({
     choices,
     inputRef,
     rootRef,

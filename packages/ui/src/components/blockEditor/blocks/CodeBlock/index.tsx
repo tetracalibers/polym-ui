@@ -1,6 +1,6 @@
 import _ from 'lodash'
 import { useMemo } from 'react'
-import { FloatLabelTextarea } from '../../reusable/FloatLabel/FloatLabelTextarea'
+import { FloatLabelTextarea } from '../../reusable/FloatLabel/TextArea'
 import { GroupPanel } from '../style/GroupPanel'
 import { LangOption, langOptions } from './LangOption'
 

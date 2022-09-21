@@ -1,6 +1,6 @@
 import { ComponentStory } from '@storybook/react'
-import { FloatLabelInput } from '../blocks/FloatLabelInput'
-import { EditPanel } from '../styled/panel'
+import { EditPanel } from '../dedicated/EditPanel'
+import { FloatLabelInput } from '../reusable/FloatLabel/Input'
 
 export default {
   title: 'editor/FloatLabelInput',

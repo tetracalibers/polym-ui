@@ -1,6 +1,6 @@
 import { ComponentPropsWithoutRef } from 'react'
 import styled from 'styled-components'
-import { VisuallyHidden } from '../../a11y-helper/VisuallyHidden'
+import { VisuallyHidden } from '../../../a11y-helper/VisuallyHidden'
 
 export type FloatLabelInputProps = {
   id: string

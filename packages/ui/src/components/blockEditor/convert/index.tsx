@@ -4,13 +4,13 @@ import { BlockType } from '../core/config'
 import { Popup } from '../reusable/PopupMenu'
 import { ChangeBoxTypeMenu } from './ChangeBoxTypeMenu'
 import { BurgerButton } from '../reusable/BurgerButton'
-import { ActionButtonStyle } from '../styled/blockLabel'
 import { match } from 'ts-pattern'
 import { HeadingLevelSelect } from './HeadingLevelSelect'
 import { FormatArgs } from '../types/FormatArgs'
 import { CodeLangSelect } from './CodeLangSelect'
 import { OListStartStepper } from './OlistOrderStart'
 import { BlockStateMap } from '../core/store'
+import { ActionButtonStyle } from '../button/styled'
 
 /* -------------------------------------------- */
 /* STYLE                                        */

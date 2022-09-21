@@ -1,9 +1,4 @@
-import {
-  RiCloseCircleLine,
-  RiDeleteBack2Line,
-  RiDeleteBin5Line,
-  RiDeleteBin6Line,
-} from 'react-icons/ri'
+import { RiDeleteBin6Line } from 'react-icons/ri'
 import styled from 'styled-components'
 import { IconOnly } from '../../../core/IconOnly'
 import { ResetCss } from 'styled-utility-first'

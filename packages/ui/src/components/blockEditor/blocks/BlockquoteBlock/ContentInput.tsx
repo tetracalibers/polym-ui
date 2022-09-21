@@ -1,4 +1,4 @@
-import { FloatLabelTextarea } from '../../reusable/FloatLabel/FloatLabelTextarea'
+import { FloatLabelTextarea } from '../../reusable/FloatLabel/TextArea'
 
 export type ContentInputProps = {
   id: string

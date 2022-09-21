@@ -6,7 +6,7 @@ import { FormatArgs } from '../../types/FormatArgs'
 import { UpdateAction } from '../../core/actions'
 import { GroupPanel } from '../style/GroupPanel'
 import { CaptionInput } from './CaptionInput'
-import { Dropzone } from './Dropzone'
+import { Dropzone } from '../../reusable/Dropzone/Dropzone'
 import { UrlInput } from './UrlInput'
 
 const Container = styled(GroupPanel)`

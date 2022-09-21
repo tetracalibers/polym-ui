@@ -5,7 +5,7 @@ import { BlockEditorContext } from '..'
 import styled from 'styled-components'
 import { GroupPanel } from './style/GroupPanel'
 import { useTextareaStretch } from '@polym/hooks'
-import { editInputStyle } from './style/input'
+import { editInputStyle } from '../style/input'
 
 export type LongTextBlockProps = {
   type: BlockType

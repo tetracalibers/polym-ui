@@ -6,7 +6,7 @@ import { GroupPanel } from '../style/GroupPanel'
 import _ from 'lodash'
 import { useAddmore } from '../../reusable/AddMore/useAddmore'
 import { FormatArgs } from '../../types/FormatArgs'
-import { editInputStyle } from '../style/input'
+import { editInputStyle } from '../../style/input'
 
 const Panel = styled(GroupPanel)`
   display: flex;

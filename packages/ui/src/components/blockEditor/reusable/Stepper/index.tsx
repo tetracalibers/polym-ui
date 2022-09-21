@@ -5,8 +5,8 @@ import { ResetCss } from 'styled-utility-first'
 import { NumberInput } from '../../../core/Input/styled/stepper'
 import { CgMathMinus, CgMathPlus } from 'react-icons/cg'
 import { VisuallyHidden } from '../../../a11y-helper/VisuallyHidden'
-import { editInputStyle } from '../../styled/editInput'
-import { ChangeEvent, useEffect } from 'react'
+import { useEffect } from 'react'
+import { editInputStyle } from '../../style/input'
 
 const Root = styled.div`
   --float-color: #8c1bab;
