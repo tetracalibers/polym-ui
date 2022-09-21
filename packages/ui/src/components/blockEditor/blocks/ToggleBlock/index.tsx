@@ -1,6 +1,6 @@
 import { VerticalStack } from '../../../layout-algorithm/VerticalStack'
 import { FormatArgs } from '../../types/FormatArgs'
-import { EditPanel } from '../../design/EditPanel'
+import { GroupPanel } from '../../organisms/GroupPanel'
 import { DetailEditor } from './DetailEditor'
 import { SummaryEditor } from './SummaryEditor'
 
@@ -11,7 +11,7 @@ export type ToggleBlockProps = {
 
 export const ToggleBlock = ({ id, value }: ToggleBlockProps) => {
   return (
-    <VerticalStack as={EditPanel} spaceV={0.75}>
+    <VerticalStack as={GroupPanel} spaceV={0.75}>
       <SummaryEditor id={id} value={value.summary ?? ''} />
       <DetailEditor id={id} value={value.input ?? ''} />
     </VerticalStack>

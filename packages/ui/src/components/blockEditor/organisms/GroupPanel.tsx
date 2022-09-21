@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const EditPanel = styled.div`
+export const GroupPanel = styled.div`
   box-sizing: border-box;
   width: 100%;
   padding: 1em;

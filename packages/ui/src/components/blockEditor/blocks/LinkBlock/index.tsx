@@ -1,5 +1,5 @@
 import { FormatArgs } from '../../types/FormatArgs'
-import { EditPanel } from '../../design/EditPanel'
+import { GroupPanel } from '../../organisms/GroupPanel'
 import { LabelInput } from './LabelInput'
 import { UrlInput } from './UrlInput'
 
@@ -10,9 +10,9 @@ export type LinkBlockProps = {
 
 export const LinkBlock = ({ id, value }: LinkBlockProps) => {
   return (
-    <EditPanel>
+    <GroupPanel>
       <UrlInput id={id} value={value.url} />
       <LabelInput id={id} value={value.label} />
-    </EditPanel>
+    </GroupPanel>
   )
 }

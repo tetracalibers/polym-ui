@@ -4,12 +4,12 @@ import { BlockEditorContext } from '../..'
 import { Tab } from '../../../Tab'
 import { FormatArgs } from '../../types/FormatArgs'
 import { UpdateAction } from '../../core/actions'
-import { EditPanel } from '../../design/EditPanel'
+import { GroupPanel } from '../../organisms/GroupPanel'
 import { CaptionInput } from './CaptionInput'
 import { Dropzone } from './Dropzone'
 import { UrlInput } from './UrlInput'
 
-const Container = styled(EditPanel)`
+const Container = styled(GroupPanel)`
   /* tabのスタイル上書き */
   & ul[role='tablist'] {
     --duration: 0.3s;
