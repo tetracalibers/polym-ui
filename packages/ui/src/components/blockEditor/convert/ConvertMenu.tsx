@@ -2,14 +2,14 @@ import styled from 'styled-components'
 import { ResetCss } from 'styled-utility-first'
 import { BlockType } from '../core/config'
 import { Popup } from '../reusable/PopupMenu'
-import { ChangeBoxTypeMenu } from '../convert/ChangeBoxTypeMenu'
-import { BurgerButton } from './BurgerButton'
+import { ChangeBoxTypeMenu } from './ChangeBoxTypeMenu'
+import { BurgerButton } from '../button/BurgerButton'
 import { ActionButtonStyle } from '../styled/blockLabel'
 import { match } from 'ts-pattern'
-import { HeadingLevelSelect } from './HeadingLevelSelect'
+import { HeadingLevelSelect } from '../button/HeadingLevelSelect'
 import { FormatArgs } from '../types/FormatArgs'
-import { CodeLangSelect } from '../convert/CodeLangSelect'
-import { OListStartStepper } from '../convert/OlistOrderStart'
+import { CodeLangSelect } from './CodeLangSelect'
+import { OListStartStepper } from './OlistOrderStart'
 import { BlockStateMap } from '../core/store'
 
 /* -------------------------------------------- */
@@ -63,13 +63,13 @@ const MenuList = styled.ul`
 /* LOGIC                                        */
 /* -------------------------------------------- */
 
-export type ChangeTypeButtonProps<T extends BlockType> = {
+export type ConvertMenuProps<T extends BlockType> = {
   block: BlockStateMap[T]
 }
 
-export const ChangeTypeButton = <T extends BlockType>({
+export const ConvertMenu = <T extends BlockType>({
   block,
-}: ChangeTypeButtonProps<T>) => {
+}: ConvertMenuProps<T>) => {
   const { currBox, allowBox, id, type, formatArg } = block
 
   const Option = match(type as BlockType)

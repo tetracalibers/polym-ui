@@ -5,11 +5,11 @@ import _ from 'lodash'
 import { MoveUpButton } from './MoveUpButton'
 import { MoveDownButton } from './MoveDownButton'
 import { DeleteButton } from './DeleteButton'
-import { ChangeTypeButton } from './ChangeTypeButton'
-import { StoreMap } from '../core/reducer'
+import { ConvertMenu } from '../convert/ConvertMenu'
+import { BlockStateMap } from '../core/store'
 
 export type BlockLabelProps<T extends BlockType> = {
-  block: StoreMap[T]
+  block: BlockStateMap[T]
   pos: number
   maxPos: number
 }
@@ -32,7 +32,7 @@ export const BlockLabel = <T extends BlockType>({
       </TagButton>
       {pos !== 0 && <MoveUpButton pos={pos} />}
       {pos !== maxPos && <MoveDownButton pos={pos} />}
-      <ChangeTypeButton block={block} />
+      <ConvertMenu block={block} />
     </Flex>
   )
 }
