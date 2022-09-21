@@ -4,7 +4,7 @@ import { WithSidebar } from '../layout-algorithm/WithSidebar'
 import { EditorBlock } from './organisms/EditorBlock'
 import { blockConf } from './core/config'
 import { EditPanel, PreviewPanel } from './styled/panel'
-import { ToolButton } from './button/ToolButton'
+import { InsertButton } from './button/InsertButton'
 import { DifferStack } from '../layout-algorithm/DifferStack'
 import { DragSortable } from './reusable/DragSortable'
 import { PosDiff } from './types/PosDiff'
@@ -47,7 +47,7 @@ export const BlockEditor = () => {
           {
             /* toolBar */ blockConf.map(block => {
               return (
-                <ToolButton
+                <InsertButton
                   type={block.type}
                   icon={block.icon}
                   key={block.type}

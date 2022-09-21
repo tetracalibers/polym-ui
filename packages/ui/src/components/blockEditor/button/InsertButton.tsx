@@ -7,14 +7,14 @@ import { withToolTip } from '../reusable/tooltip/withToolTip'
 import { Text } from '../../Text'
 import { BlockEditorContext } from '..'
 
-type ToolButtonProps = {
+type InsertButtonProps = {
   type: BlockType
   icon: ReactElement
 }
 
 const HoverTipButton = withToolTip<IconOnlyCoreProps>(ToolIconButton)
 
-export const ToolButton = ({ type, icon }: ToolButtonProps) => {
+export const InsertButton = ({ type, icon }: InsertButtonProps) => {
   const { dispatch } = useContext(BlockEditorContext)
 
   return (
