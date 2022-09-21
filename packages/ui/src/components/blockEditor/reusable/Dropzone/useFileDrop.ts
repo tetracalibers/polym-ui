@@ -69,11 +69,16 @@ export const useFileDrop = ({
     } else {
       setErrMsg('')
     }
+    if (acceptNewFiles.length === 0) {
+      return
+    }
     const newFileLinks = acceptNewFiles.map(file => ({
       file,
       link: URL.createObjectURL(file),
     }))
-    const allFileLinks = fileLinks.concat(newFileLinks)
+    const allFileLinks = multiple
+      ? fileLinks.concat(newFileLinks)
+      : newFileLinks
     setFileLinks(allFileLinks)
     updateFn && updateFn(allFileLinks)
   }
