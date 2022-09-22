@@ -29,7 +29,6 @@ export default {
 }
 
 const Template: ComponentStory<typeof TextArea> = ({ children, ...args }) => (
-  // @ts-ignore
   <TextArea {...args}>{children}</TextArea>
 )
 
